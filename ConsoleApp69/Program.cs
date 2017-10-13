@@ -11,7 +11,8 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            Type type = Type.GetType("System.String");
+            bool obj = false;
+            Type type = obj.GetType();
             Console.WriteLine(type.Name);
             Console.ReadLine();
         }
