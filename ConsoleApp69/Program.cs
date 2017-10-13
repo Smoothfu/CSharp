@@ -16,6 +16,11 @@ namespace ConsoleApp69
         {
             _value = value;
         }
+
+        public void ShowValue()
+        {
+            Console.WriteLine(_value);
+        }
     }
     class Program
     {
@@ -23,7 +28,15 @@ namespace ConsoleApp69
         {
             Type type = Type.GetType("ConsoleApp69.TestClass");
             object[] constructParams = new object[] { "Hello" };
-            TestClass obj = (TestClass)Activator.CreateInstance(type, constructParams);            
+            TestClass obj = (TestClass)Activator.CreateInstance(type, constructParams);
+
+            //Get information of the method
+
+            MethodInfo mi = type.GetMethod("ShowValue");
+
+            BindingFlags flag = BindingFlags.Public | BindingFlags.Instance;
+            object[] parameters = new object[] { "Hello" };
+            
         }
     }
 }
