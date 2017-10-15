@@ -11,14 +11,16 @@ namespace ConsoleApp72
     {
         static void Main(string[] args)
         {
-            MyClass obj = new MyClass();
-            Type type = obj.GetType();
-            Console.WriteLine(type.FullName);
-            Console.WriteLine(type.Module.Assembly.FullName);
-            Console.WriteLine(type.Module.FullyQualifiedName);
-            Console.WriteLine(type.Module.MetadataToken);
-            Console.WriteLine(type.Module.ModuleVersionId);
-            Console.WriteLine(type.Assembly.FullName);
+            Type type = typeof(MyClass);
+            MethodInfo[] mis = type.GetMethods();
+            foreach(MethodInfo mi in mis)
+            {
+                Console.WriteLine(mi.Module.Assembly.FullName);
+                Console.WriteLine(mi.Name);
+                Console.WriteLine(mi.ReturnType);
+                Console.WriteLine(mi.ReturnParameter);
+            }
+
             Console.ReadLine();
         }
     }
@@ -33,6 +35,11 @@ namespace ConsoleApp72
         public void Subtract(int x,int y)
         {
             Console.WriteLine("{0}-{1}={2}", x, y, x - y);
+        }
+
+        public int Multiply(int x,int y)
+        {
+            return x * y;
         }
     }
 }
