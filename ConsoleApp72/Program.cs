@@ -12,14 +12,12 @@ namespace ConsoleApp72
         static void Main(string[] args)
         {
             Type type = typeof(MyClass);
-            MethodInfo[] mis = type.GetMethods();
-            foreach(MethodInfo mi in mis)
+            PropertyInfo[] listPropertyInfo = type.GetProperties();
+            foreach(PropertyInfo pi in listPropertyInfo)
             {
-                Console.WriteLine(mi.Module.Assembly.FullName);
-                Console.WriteLine(mi.Name);
-                Console.WriteLine(mi.ReturnType);
-                Console.WriteLine(mi.ReturnParameter);
+                Console.WriteLine("Property name is :" + pi.Name);
             }
+
 
             Console.ReadLine();
         }
@@ -27,6 +25,9 @@ namespace ConsoleApp72
 
     public class MyClass
     {
+        public string Name { get; set; }
+        public string Age { get; set; }
+        public int Num { get; set; }
         public void Add(int x,int y)
         {
             Console.WriteLine("{0}+{1}={2}", x, y, x + y);
