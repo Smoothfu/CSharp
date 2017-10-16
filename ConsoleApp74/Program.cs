@@ -11,25 +11,21 @@ namespace ConsoleApp74
     {
         static void Main(string[] args)
         {
-            MyClass obj = new MyClass("Fred");
-            Type type = obj.GetType();
+            Type type = typeof(MyClass);
+            Type[] pt = new Type[2];
+            pt[0] = typeof(string);
+            pt[1] = typeof(int);
 
-            //get the all construtors
-            ConstructorInfo[] cis = type.GetConstructors();
+            //Retrieve the constructor based on the parameter type
+            ConstructorInfo ci = type.GetConstructor(pt);
 
-            //traverse all the constructors
+            //Construct object array, as the input parameters of the constructor
+            object[] obj = new object[] { "Fred", 30 };
 
-            cis.All(x =>
-            {
-                //get all the parameters of the constrcutor
-                ParameterInfo[] pis = x.GetParameters();
-                pis.All(y =>
-                {
-                    Console.WriteLine("ParameterType: "+y.ParameterType.ToString() + "   Name:" + y.Name + "\n");
-                    return true;
-                });
-                return true;
-            });
+            //Invoke the constructor to come object
+            object o = ci.Invoke(obj);
+            ((MyClass)o).Add(10, 20);
+
 
             
             Console.ReadLine();
