@@ -13,9 +13,7 @@ namespace ConsoleApp74
         {
             MyClass obj = new MyClass("Fred");
             Type type = obj.GetType();
-            Console.WriteLine(type.Name);
-            Console.WriteLine(type.FullName);
-            Console.WriteLine(type.Assembly.FullName);
+           
 
             MethodInfo[] mis = type.GetMethods();
             mis.All(x =>
@@ -23,6 +21,7 @@ namespace ConsoleApp74
                 Console.WriteLine(x.Module.FullyQualifiedName);
                 Console.WriteLine(x.Name);
                 Console.WriteLine(x.ReturnType);
+                Console.WriteLine(x.MemberType);
                 return true;
             });
             Console.ReadLine();
