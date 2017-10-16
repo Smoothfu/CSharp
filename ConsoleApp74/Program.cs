@@ -16,6 +16,15 @@ namespace ConsoleApp74
             Console.WriteLine(type.Name);
             Console.WriteLine(type.FullName);
             Console.WriteLine(type.Assembly.FullName);
+
+            MethodInfo[] mis = type.GetMethods();
+            mis.All(x =>
+            {
+                Console.WriteLine(x.Module.FullyQualifiedName);
+                Console.WriteLine(x.Name);
+                Console.WriteLine(x.ReturnType);
+                return true;
+            });
             Console.ReadLine();
         }
     }
