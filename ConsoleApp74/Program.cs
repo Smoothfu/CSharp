@@ -12,24 +12,14 @@ namespace ConsoleApp74
         static void Main(string[] args)
         {
             Type type = typeof(MyClass);
-            Type[] pts = new Type[2];
-            pts[0] = typeof(string);
-            pts[1] = typeof(int);
 
-            //Get the constructor based on the parameter type
-            ConstructorInfo ci = type.GetConstructor(pts);
+            //the parameters of the constructor
+            object[] objs = new object[2] { "Fred", 30 };
 
-            //construct the object array,as the input parameter of the construrctor
-            object[] objs = new object[] { "Fred", 30 };
+            //Invoke the static method CreateInstance of the Activator, to come the new object
+            object obj = Activator.CreateInstance(type, objs);
 
-            //Invoke the constructor to come object
-            object obj = ci.Invoke(objs);
-
-            //test
-            ((MyClass)obj).Add(10, 20);
-
-
-            
+            ((MyClass)obj).Add(100000, 34425432);
             Console.ReadLine();
         }
     }
