@@ -11,21 +11,26 @@ namespace ConsoleApp74
     {
         static void Main(string[] args)
         {
-            Type type = typeof(MyClass);
+            MyClass obj = new MyClass();
+            Type type = obj.GetType();
+            PropertyInfo[] pis = type.GetProperties();
 
-            //the parameters of the constructor
-            object[] objs = new object[2] { "Fred", 30 };
-
-            //Invoke the static method CreateInstance of the Activator, to come the new object
-            object obj = Activator.CreateInstance(type, objs);
-
-            ((MyClass)obj).Add(100000, 34425432);
+            pis.All(x =>
+            {
+                Console.WriteLine(x.MemberType);
+                Console.WriteLine(x.Module.FullyQualifiedName);
+                Console.WriteLine(x.PropertyType);
+                Console.WriteLine(x.ReflectedType);
+                return true;
+            });
             Console.ReadLine();
         }
     }
 
     public class MyClass
     {
+        public string Name { get; set; }
+        public int Age { get; set; }
         public string _name;
         public int _age;
         public MyClass(string name)
