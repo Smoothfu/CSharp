@@ -11,16 +11,20 @@ namespace ConsoleApp74
     {
         static void Main(string[] args)
         {
+
             MyClass obj = new MyClass();
             Type type = obj.GetType();
-            PropertyInfo[] pis = type.GetProperties();
+            MethodInfo[] mis = type.GetMethods();
 
-            pis.All(x =>
+            mis.All(x =>
             {
+                Console.WriteLine(x.ReturnType);
+                Console.WriteLine(x.Name);
                 Console.WriteLine(x.MemberType);
                 Console.WriteLine(x.Module.FullyQualifiedName);
-                Console.WriteLine(x.PropertyType);
                 Console.WriteLine(x.ReflectedType);
+
+                Console.WriteLine("\n\r");
                 return true;
             });
             Console.ReadLine();
