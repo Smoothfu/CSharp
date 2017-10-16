@@ -13,17 +13,25 @@ namespace ConsoleApp74
         {
             MyClass obj = new MyClass("Fred");
             Type type = obj.GetType();
-           
 
-            MethodInfo[] mis = type.GetMethods();
-            mis.All(x =>
+            //get the all construtors
+            ConstructorInfo[] cis = type.GetConstructors();
+
+            //traverse all the constructors
+
+            cis.All(x =>
             {
-                Console.WriteLine(x.Module.FullyQualifiedName);
-                Console.WriteLine(x.Name);
-                Console.WriteLine(x.ReturnType);
-                Console.WriteLine(x.MemberType);
+                //get all the parameters of the constrcutor
+                ParameterInfo[] pis = x.GetParameters();
+                pis.All(y =>
+                {
+                    Console.WriteLine("ParameterType: "+y.ParameterType.ToString() + "   Name:" + y.Name + "\n");
+                    return true;
+                });
                 return true;
             });
+
+            
             Console.ReadLine();
         }
     }
@@ -31,10 +39,30 @@ namespace ConsoleApp74
     public class MyClass
     {
         public string _name;
+        public int _age;
         public MyClass(string name)
         {
             _name = name;
             Console.WriteLine("This is the constructor _name :{0}", _name);
+        }
+
+        public MyClass(int age)
+        {
+            _age = age;
+            Console.WriteLine("This is the constructor _age: {0}", _age);
+        }
+
+
+        public MyClass(string name,int age)
+        {
+            _name = name;
+            _age = age;
+            Console.WriteLine("In the constructor the _name is {0},the _age is {1}", _name, _age);
+
+        }
+        public MyClass()
+        {
+            Console.WriteLine("This is the default constructor!");
         }
 
         public void Add(int x,int y)
