@@ -11,10 +11,32 @@ namespace ConsoleApp74
     {
         static void Main(string[] args)
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            Console.WriteLine(assembly.FullName);
-            assembly.Modules.All(x => { Console.WriteLine(x.FullyQualifiedName);Console.WriteLine(x.GetType().Name);return true;});
+            MyClass obj = new MyClass("Fred");
+            Type type = obj.GetType();
+            Console.WriteLine(type.Name);
+            Console.WriteLine(type.FullName);
+            Console.WriteLine(type.Assembly.FullName);
             Console.ReadLine();
+        }
+    }
+
+    public class MyClass
+    {
+        public string _name;
+        public MyClass(string name)
+        {
+            _name = name;
+            Console.WriteLine("This is the constructor _name :{0}", _name);
+        }
+
+        public void Add(int x,int y)
+        {
+            Console.WriteLine("{0}+{1}={2}", x, y, x + y);
+        }
+
+        public int Subtract(int x,int y)
+        {
+            return x - y;
         }
     }
 }
