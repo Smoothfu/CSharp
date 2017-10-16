@@ -11,22 +11,20 @@ namespace ConsoleApp74
     {
         static void Main(string[] args)
         {
-
             MyClass obj = new MyClass();
             Type type = obj.GetType();
-            MethodInfo[] mis = type.GetMethods();
+            object obj1 = Activator.CreateInstance(type);
 
-            mis.All(x =>
-            {
-                Console.WriteLine("Name: "+x.Name);
-                Console.WriteLine("ReturnType: "+x.ReturnType);               
-                Console.WriteLine("MemberType: "+x.MemberType);
-                Console.WriteLine("Module.FullyQualifiedName: "+x.Module.FullyQualifiedName);
-                Console.WriteLine("ReflectedType: "+x.ReflectedType);
+            FieldInfo fi = type.GetField("_name");
+            fi.SetValue(obj1, "Fred");
 
-                Console.WriteLine("\n\r");
-                return true;
-            });
+
+            PropertyInfo pi = type.GetProperty("_age");
+            pi.SetValue(obj1, 30, null);
+
+            MethodInfo mi = type.GetMethod("Add");
+            mi.Invoke(obj1, null);
+            Console.ReadLine();
             Console.ReadLine();
         }
     }
