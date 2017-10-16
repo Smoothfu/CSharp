@@ -12,19 +12,21 @@ namespace ConsoleApp74
         static void Main(string[] args)
         {
             Type type = typeof(MyClass);
-            Type[] pt = new Type[2];
-            pt[0] = typeof(string);
-            pt[1] = typeof(int);
+            Type[] pts = new Type[2];
+            pts[0] = typeof(string);
+            pts[1] = typeof(int);
 
-            //Retrieve the constructor based on the parameter type
-            ConstructorInfo ci = type.GetConstructor(pt);
+            //Get the constructor based on the parameter type
+            ConstructorInfo ci = type.GetConstructor(pts);
 
-            //Construct object array, as the input parameters of the constructor
-            object[] obj = new object[] { "Fred", 30 };
+            //construct the object array,as the input parameter of the construrctor
+            object[] objs = new object[] { "Fred", 30 };
 
             //Invoke the constructor to come object
-            object o = ci.Invoke(obj);
-            ((MyClass)o).Add(10, 20);
+            object obj = ci.Invoke(objs);
+
+            //test
+            ((MyClass)obj).Add(10, 20);
 
 
             
