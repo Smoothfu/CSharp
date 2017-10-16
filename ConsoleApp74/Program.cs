@@ -18,11 +18,11 @@ namespace ConsoleApp74
 
             mis.All(x =>
             {
-                Console.WriteLine(x.ReturnType);
-                Console.WriteLine(x.Name);
-                Console.WriteLine(x.MemberType);
-                Console.WriteLine(x.Module.FullyQualifiedName);
-                Console.WriteLine(x.ReflectedType);
+                Console.WriteLine("Name: "+x.Name);
+                Console.WriteLine("ReturnType: "+x.ReturnType);               
+                Console.WriteLine("MemberType: "+x.MemberType);
+                Console.WriteLine("Module.FullyQualifiedName: "+x.Module.FullyQualifiedName);
+                Console.WriteLine("ReflectedType: "+x.ReflectedType);
 
                 Console.WriteLine("\n\r");
                 return true;
