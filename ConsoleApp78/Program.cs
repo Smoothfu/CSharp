@@ -25,10 +25,8 @@ namespace ConsoleApp78
                 try
                 {
                     int i = Convert.ToInt32(a);
-                    intList.Add(i);
-                    continue;
+                    intList.Add(i);                     
                 }
-
                 catch(Exception ex)
                 {                     
                 }
