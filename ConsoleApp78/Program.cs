@@ -27,16 +27,16 @@ namespace ConsoleApp78
                     int i = Convert.ToInt32(a);
                     intList.Add(i);                     
                 }
-                catch(Exception ex)
+                catch
                 {                     
-                }
-                
-            }
-
-            foreach(var i in intList)
+                }                
+            }           
+           
+            intList.ForEach(x =>
             {
-                Console.WriteLine(i);
-            }
+                Console.WriteLine("x={0}", x);
+                Console.WriteLine("2*x={0}", 2 * x);
+            });
 
             Console.ReadLine();
         }
