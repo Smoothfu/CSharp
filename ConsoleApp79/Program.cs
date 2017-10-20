@@ -27,38 +27,38 @@ namespace ConsoleApp79
     }
     class Program
     {
+        static void Swap<T>(ref T lhs,ref T rhs)
+        {
+            T temp;
+            temp = lhs;
+            lhs = rhs;
+            rhs = temp;
+        }
         static void Main(string[] args)
         {
-            //声明一个整型数组
-            MyGenericArray<int> intArray = new MyGenericArray<int>(5);
-            //设置值
-            for (int i = 0; i < 5; i++)
-            {
-                intArray.setItem(i, i * 5);
-            }
+            int a, b;
+            char c, d;
+            a = 10;
+            b = 20;
+            c = 'I';
+            d = 'V';
 
-            //获取值
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine(intArray.getItem(i));
-            }
+            //在交换之前显示值
+            Console.WriteLine("Int values before calling swap: ");
+            Console.WriteLine("a={0},b={1}", a, b);
+            Console.WriteLine("Char values before calling swap: ");
+            Console.WriteLine("c={0},d={1}", c, d);
 
-            Console.WriteLine();
+            //调用 swap
+            Swap<int>(ref a, ref b);
+            Swap<char>(ref c, ref d);
 
-            //声明一个字符数组
-            MyGenericArray<Char> charArray = new MyGenericArray<Char>(5);
-
-            //设置值
-            for (int i = 0; i < 5; i++)
-            {
-                charArray.setItem(i, (char)(i + 97));
-            }
-
-            //获取值
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine(charArray.getItem(i));
-            }
+            //在交换之后显示值
+            Console.WriteLine("Int values after calling swap: ");
+            Console.WriteLine("a={0},b={1}", a, b);
+            Console.WriteLine("Char vlues after calling swap: ");
+            Console.WriteLine("c={0},d={1}", c, d);
+            Console.ReadLine();
             Console.ReadLine();
         }
     }
