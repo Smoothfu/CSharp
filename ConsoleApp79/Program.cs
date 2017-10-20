@@ -7,38 +7,60 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp79
 {
+    public class MyGenericArray<T>
+    {
+        private T[] array;
+        public MyGenericArray(int size)
+        {
+            array = new T[size + 1];
+        }
+
+        public T getItem(int index)
+        {
+            return array[index];
+        }
+
+        public void setItem(int index, T value)
+        {
+            array[index] = value;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            ArrayList al = new ArrayList();
-            Console.WriteLine("Adding some numbers：");
-            al.Add(45);
-            al.Add(78);
-            al.Add(33);
-            al.Add(56);
-            al.Add(12);
-            al.Add(23);
-            al.Add(9);
-
-            Console.WriteLine("Capacity :{0}", al.Capacity);
-            Console.WriteLine("Count:{0}\n", al.Count);
-
-            foreach(int i in al)
+            //声明一个整型数组
+            MyGenericArray<int> intArray = new MyGenericArray<int>(5);
+            //设置值
+            for (int i = 0; i < 5; i++)
             {
-                Console.Write(i+"\t");
+                intArray.setItem(i, i * 5);
+            }
+
+            //获取值
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(intArray.getItem(i));
             }
 
             Console.WriteLine();
-            Console.WriteLine("\nSorted Content: ");
-            al.Sort();
 
-            foreach(int i in al)
+            //声明一个字符数组
+            MyGenericArray<Char> charArray = new MyGenericArray<Char>(5);
+
+            //设置值
+            for (int i = 0; i < 5; i++)
             {
-                Console.Write(i+"\t");
+                charArray.setItem(i, (char)(i + 97));
             }
 
+            //获取值
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(charArray.getItem(i));
+            }
             Console.ReadLine();
         }
     }
 }
+ 
