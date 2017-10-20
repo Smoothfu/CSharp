@@ -4,40 +4,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ConsoleApp79
 {
-    delegate T NumberChange<T>(T n);
+    public class MyClass
+    {
+        [Conditional("DEBUG")]
+        public static void Message(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+    }
+     
     class Program
     {
-        static int num = 10;
-        public static int AddNum(int p)
+        static void function1()
         {
-            num += p;
-            return num;
+            MyClass.Message("In function 1.");
+            
         }
 
-        public static int MultNum(int q)
+        static void function2()
         {
-            num *= q;
-            return num;
-        }
-
-        public static int getNum()
-        {
-            return num;
+            MyClass.Message("In function 2.");
         }
         static void Main(string[] args)
         {
-            //创建委托实例
-            NumberChange<int> nc1 = new NumberChange<int>(AddNum);
-            NumberChange<int> nc2 = new NumberChange<int>(MultNum);
-
-            //使用委托对象调用方法
-            nc1(25);
-            Console.WriteLine("Value of Num: {0}", getNum());
-            nc2(5);
-            Console.WriteLine("Value of Num:{0}", getNum());
+            MyClass.Message("In Main function.");
+            function1();
 
             Console.ReadLine();
         }
