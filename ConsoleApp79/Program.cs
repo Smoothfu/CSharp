@@ -8,22 +8,95 @@ using System.Diagnostics;
 
 namespace ConsoleApp79
 {     
-     
-    class Program
-    {      
-        [Obsolete("Don't use OldMethod,use NewMethod instead",true)]
-        static void OldMethod()
+    //一个自定义特性bugfix被赋给类及其成员
+    [AttributeUsage(AttributeTargets.Class|AttributeTargets.Constructor|AttributeTargets.Field|AttributeTargets.Method|AttributeTargets.Property,AllowMultiple =true)]
+    public class DebugInfo : System.Attribute
+    {
+        private int bugNo;
+        private string developer;
+        private string lastReview;
+        public string message;
+
+        public DebugInfo(int bg,string dev,string d)
         {
-            Console.WriteLine("It is the old method");
+            this.bugNo = bg;
+            this.developer = dev;
+            this.lastReview = d;
         }
 
-        static void NewMethod()
+        public int BugNo
         {
-            Console.WriteLine("It is the new method");
+            get
+            {
+                return bugNo;
+            }
         }
+
+        public string Developer
+        {
+            get
+            {
+                return developer;
+            }
+        }
+
+        public string LastReview
+        {
+            get
+            {
+                return lastReview;
+            }
+        }
+
+        public string Message
+        {
+            get
+            {
+                return message;
+            }
+            set
+            {
+                message = value;
+            }
+        }
+    }
+
+    [DebugInfo(45,"Zara Ali","12/8/2012",Message ="Return type mismatch")]
+    [DebugInfo(49,"Nuha Ali","10/10/2012",Message ="Unused variable")]
+
+    class Rectangle
+    {
+        //成员变量
+        protected double length;
+        protected double width;
+        public Rectangle(double l,double w)
+        {
+            length = l;
+            width = w;
+        }
+        
+        [DebugInfo(55,"Zara Ali","19/10/2012",Message="Return type mismatch")]
+
+        public double GetArea()
+        {
+            return length * width;
+        }
+        public void Display()
+        {
+            Console.WriteLine("Length:{0}", length);
+            Console.WriteLine("Width:{0}", width);
+            Console.WriteLine("Area: {0}",GetArea());
+        
+        }
+    }
+    class Program
+    {   
+        
         static void Main(string[] args)
         {
-            OldMethod();
+            Rectangle rect = new Rectangle(20, 20);
+            rect.Display();
+            Console.ReadLine();
         }
     }
 }
