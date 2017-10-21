@@ -6,11 +6,24 @@ using System.Threading.Tasks;
 using System.Reflection;
 
 namespace ConsoleApp80
-{
-    class Student
+{   
+    public abstract class Person
+    {
+        public abstract string Name
+        {
+            get;set;
+        }
+
+        public abstract int Age
+        {
+            get;set;
+        }
+    }
+
+    class Student : Person
     {
         private string code = "N.A";
-        private string name = "not known";
+        private string name = "N.A";
         private int age = 0;
 
         //声明类型为string的Code属性
@@ -27,7 +40,7 @@ namespace ConsoleApp80
         }
 
         //声明类型为string的Name属性
-        public string Name
+        public override string Name
         {
             get
             {
@@ -36,11 +49,11 @@ namespace ConsoleApp80
             set
             {
                 name = value;
-            }
+            }            
         }
-        
+
         //声明类型为int的Age属性
-        public int Age
+        public override int Age
         {
             get
             {
@@ -54,7 +67,7 @@ namespace ConsoleApp80
 
         public override string ToString()
         {
-            return "Code= " + code + ",Name= " + name + ",Age= " + age;
+            return "Name= " + name + " Age= " + age + " Code= " + code;
         }
     }
     class Program
@@ -73,9 +86,6 @@ namespace ConsoleApp80
             //增加年龄
             stu.Age += 1;
             Console.WriteLine("Student Info:{0}", stu);
-            Console.ReadLine();
-            
-           
             Console.ReadLine();
         }
     }
