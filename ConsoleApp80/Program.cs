@@ -8,44 +8,66 @@ using System.IO;
 
 namespace ConsoleApp80
 {
+    //发布器类
+    public class EventTest
+    {
+        private int value;
+        public delegate void NumManipulationHandler();
+        public event NumManipulationHandler ChangeNum;
+
+        protected virtual void OnNumChanged()
+        {
+            if (null != ChangeNum)
+            {
+                //事件被触发
+                ChangeNum();
+                
+            }
+            else
+            {
+                Console.WriteLine("event not fired");
+            }
+        }
+
+        public EventTest()
+        {
+            int n = 5;
+            SetValue(n);
+        }
+
+        public void SetValue(int n)
+        {
+            if(value!=n)
+            {
+                value = n;
+                OnNumChanged();
+            }
+        }
+    }
+
+    //订阅器类
+    public class SubscribedEvent
+    {
+        public void Printf()
+        {
+            Console.WriteLine("event fire");
+        }
+    }
+
+    //触发
     class Program
     {
-        static FileStream fs;
-        static StreamWriter sw;
-
-        //委托声明
-        public delegate void printWord(string str);
-
-        //该方法打印到控制台
-        public static void WriteToScreen(string str)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("The string is :{0}", str);
-        }
 
-        //该方法打印到文件
-        public static void WriteToFile(string str)
-        {
-            string fileName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            fs = new FileStream(fileName + "\\message.txt",FileMode.Append,FileAccess.Write);
-            sw = new StreamWriter(fs);
-            sw.WriteLine(str);
-            sw.Flush();
-            sw.Close();
-            fs.Close();
-        }
-
-        //该方法把委托作为参数，并使用它调用方法
-        public static void SendString(printWord str)
-        {
-            str("This is delegate!");
-        }
-        static void Main(string[] args)
-        {
-            printWord pw1 = new printWord(WriteToScreen);
-            printWord pw2 = new printWord(WriteToFile);
-            SendString(pw1);
-            SendString(pw2);
-            
+            //实例化对象，第一次没有触发事件
+            EventTest e = new EventTest();
+            //实例化对象
+            SubscribedEvent v = new SubscribedEvent();
+            //注册
+            e.ChangeNum += new EventTest.NumManipulationHandler(v.Printf);
+            e.SetValue(7);
+            e.SetValue(11);
             Console.ReadLine();
         }
     }
