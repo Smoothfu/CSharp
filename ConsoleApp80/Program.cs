@@ -4,43 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.IO;
 
 namespace ConsoleApp80
 {
-    delegate int NumberChanger(int n);
     class Program
     {
-        static int num = 10;
-        public static int AddNum(int p)
+        static FileStream fs;
+        static StreamWriter sw;
+
+        //委托声明
+        public delegate void printWord(string str);
+
+        //该方法打印到控制台
+        public static void WriteToScreen(string str)
         {
-            num += p;
-            return num;
+            Console.WriteLine("The string is :{0}", str);
         }
 
-        public static int MultNum(int q)
+        //该方法打印到文件
+        public static void WriteToFile(string str)
         {
-            num *= q;
-            return num;
+            string fileName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            fs = new FileStream(fileName + "\\message.txt",FileMode.Append,FileAccess.Write);
+            sw = new StreamWriter(fs);
+            sw.WriteLine(str);
+            sw.Flush();
+            sw.Close();
+            fs.Close();
         }
 
-        public static int getNum()
+        //该方法把委托作为参数，并使用它调用方法
+        public static void SendString(printWord str)
         {
-            return num;
+            str("This is delegate!");
         }
         static void Main(string[] args)
         {
-
-            //创建委托实例
-            NumberChanger nc;
-            NumberChanger nc1 = new NumberChanger(AddNum);
-            NumberChanger nc2 = new NumberChanger(MultNum);
-
-            //使用委托对象调用方法
-            nc = nc1;
-            nc += nc2;
-            nc(25);
-            Console.WriteLine("Value of Num:{0}", getNum());
-            Console.ReadLine();
+            printWord pw1 = new printWord(WriteToScreen);
+            printWord pw2 = new printWord(WriteToFile);
+            SendString(pw1);
+            SendString(pw2);
+            
             Console.ReadLine();
         }
     }
