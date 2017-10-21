@@ -31,14 +31,14 @@ namespace ConsoleApp80
         {
 
             //创建委托实例
+            NumberChanger nc;
             NumberChanger nc1 = new NumberChanger(AddNum);
             NumberChanger nc2 = new NumberChanger(MultNum);
 
             //使用委托对象调用方法
-            nc1(25);
-            Console.WriteLine("Value of Num:{0}", getNum());
-
-            nc2(5);
+            nc = nc1;
+            nc += nc2;
+            nc(25);
             Console.WriteLine("Value of Num:{0}", getNum());
             Console.ReadLine();
             Console.ReadLine();
