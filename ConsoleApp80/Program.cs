@@ -8,67 +8,102 @@ using System.IO;
 
 namespace ConsoleApp80
 {
-    //发布器类
-    public class EventTest
+     
+    //boiler 类
+    class Boiler
     {
-        private int value;
-        public delegate void NumManipulationHandler();
-        public event NumManipulationHandler ChangeNum;
-
-        protected virtual void OnNumChanged()
+        private int temp;
+        private int pressure;
+        public Boiler(int t,int p)
         {
-            if (null != ChangeNum)
+            temp = p;
+            pressure = p;
+        }
+
+        public int GetTemp()
+        {
+            return temp;
+        }
+
+        public int GetPressure()
+        {
+            return pressure;
+        }
+    }
+
+    //事件发布器
+    class DelegateBoilerEvent
+    {
+        public delegate void BoilderLogHandler(string status);
+
+        //基于上面的委托定义事件
+        public event BoilderLogHandler BoilerEventLog;
+
+        public void LogProcess()
+        {
+            string remarks = "O.K";
+            Boiler boiler = new Boiler(100, 12);
+            int t = boiler.GetTemp();
+            int p = boiler.GetPressure();
+
+            if(t>150||t<80||p<12||p>15)
             {
-                //事件被触发
-                ChangeNum();
-                
-            }
-            else
-            {
-                Console.WriteLine("event not fired");
+                remarks = "Need Maintenance";
             }
         }
 
-        public EventTest()
+        protected void OnBoilerEventLog(string msg)
         {
-            int n = 5;
-            SetValue(n);
-        }
-
-        public void SetValue(int n)
-        {
-            if(value!=n)
+            if(null!=BoilerEventLog)
             {
-                value = n;
-                OnNumChanged();
+                BoilerEventLog(msg);
             }
         }
     }
 
-    //订阅器类
-    public class SubscribedEvent
+    //该类保留写入日志文件的条款
+    class BoilerInfoLogger
     {
-        public void Printf()
+        FileStream fs;
+        StreamWriter sw;
+        public BoilerInfoLogger()
         {
-            Console.WriteLine("event fire");
+            fs = new FileStream(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+"\\msg.txt", FileMode.Append, FileAccess.Write);
+            sw =new StreamWriter(fs);
+        }
+
+        public void Logger(string info)
+        {
+            sw.WriteLine(info);
+        }
+
+        public void Close()
+        {
+            sw.Close();
+            fs.Close();
         }
     }
-
-    //触发
-    class Program
+   
+    //事件订阅器
+    public class RecordBoilerInfo
     {
-        public static void Main(string[] args)
+        static void Logger(string info)
         {
+            Console.WriteLine(info);
+        }
 
-            //实例化对象，第一次没有触发事件
-            EventTest e = new EventTest();
-            //实例化对象
-            SubscribedEvent v = new SubscribedEvent();
-            //注册
-            e.ChangeNum += new EventTest.NumManipulationHandler(v.Printf);
-            e.SetValue(7);
-            e.SetValue(11);
+        static void Main(string[] args)
+        {
+            BoilerInfoLogger fileLog = new BoilerInfoLogger();
+            DelegateBoilerEvent boilerEvent = new DelegateBoilerEvent();
+            boilerEvent.BoilerEventLog += new DelegateBoilerEvent.BoilderLogHandler(Logger);
+            boilerEvent.BoilerEventLog += new DelegateBoilerEvent.BoilderLogHandler(fileLog.Logger);
+
+            boilerEvent.LogProcess();
+            Console.WriteLine("\n");
+            fileLog.Close();
             Console.ReadLine();
+
         }
     }
 }
