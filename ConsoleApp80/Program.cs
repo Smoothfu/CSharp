@@ -6,86 +6,58 @@ using System.Threading.Tasks;
 using System.Reflection;
 
 namespace ConsoleApp80
-{   
-    public abstract class Person
-    {
-        public abstract string Name
-        {
-            get;set;
-        }
-
-        public abstract int Age
-        {
-            get;set;
-        }
-    }
-
-    class Student : Person
-    {
-        private string code = "N.A";
-        private string name = "N.A";
-        private int age = 0;
-
-        //声明类型为string的Code属性
-        public string Code
-        {
-            get
-            {
-                return code;
-            }
-            set
-            {
-                code = value;
-            }
-        }
-
-        //声明类型为string的Name属性
-        public override string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }            
-        }
-
-        //声明类型为int的Age属性
-        public override int Age
-        {
-            get
-            {
-                return age;
-            }
-            set
-            {
-                age = value;
-            }
-        }
-
-        public override string ToString()
-        {
-            return "Name= " + name + " Age= " + age + " Code= " + code;
-        }
-    }
+{
     class Program
     {
+        static public int size = 10;
+        private string[] nameList = new string[size];
+        public Program()
+        {
+            for(int i=0;i<size;i++)
+            {
+                nameList[i] = "N.A";
+            }
+        }
+
+        public string this[int index]
+        {
+            get
+            {
+                string tmp;
+
+                if(index>=0 && index < size - 1)
+                {
+                    tmp = nameList[index];
+                }
+                else
+                {
+                    tmp = "";
+                }
+                return tmp;
+            }
+            set
+            {
+                if(index>=0 && index < size - 1)
+                {
+                    nameList[index] = value;
+                }
+            }
+        }
         static void Main(string[] args)
         {
-            //创建一个新的Student对象
-            Student stu = new Student();
-            //设置stu的code,name和age
-            stu.Code = "0001";
-            stu.Name = "Fred";
-            stu.Age = 30;
+            Program names = new Program();
+            names[0] = "Zara";
+            names[1] = "ST";
+            names[2] = "ZTT";
+            names[3] = "LY";
+            names[4] = "HT";
+            names[5] = "ZDJALD";
+            names[6] = "SD";
 
-            Console.WriteLine("Student Info:{0}", stu);
-
-            //增加年龄
-            stu.Age += 1;
-            Console.WriteLine("Student Info:{0}", stu);
+            for(int i=0;i<Program.size;i++)
+            {
+                Console.WriteLine(names[i]);
+            }
             Console.ReadLine();
         }
     }
