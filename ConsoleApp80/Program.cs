@@ -7,57 +7,40 @@ using System.Reflection;
 
 namespace ConsoleApp80
 {
+    delegate int NumberChanger(int n);
     class Program
     {
-        static public int size = 10;
-        private string[] nameList = new string[size];
-        public Program()
+        static int num = 10;
+        public static int AddNum(int p)
         {
-            for(int i=0;i<size;i++)
-            {
-                nameList[i] = "N.A";
-            }
+            num += p;
+            return num;
         }
 
-        public string this[int index]
+        public static int MultNum(int q)
         {
-            get
-            {
-                string tmp;
+            num *= q;
+            return num;
+        }
 
-                if(index>=0 && index < size - 1)
-                {
-                    tmp = nameList[index];
-                }
-                else
-                {
-                    tmp = "";
-                }
-                return tmp;
-            }
-            set
-            {
-                if(index>=0 && index < size - 1)
-                {
-                    nameList[index] = value;
-                }
-            }
+        public static int getNum()
+        {
+            return num;
         }
         static void Main(string[] args)
         {
-            Program names = new Program();
-            names[0] = "Zara";
-            names[1] = "ST";
-            names[2] = "ZTT";
-            names[3] = "LY";
-            names[4] = "HT";
-            names[5] = "ZDJALD";
-            names[6] = "SD";
 
-            for(int i=0;i<Program.size;i++)
-            {
-                Console.WriteLine(names[i]);
-            }
+            //创建委托实例
+            NumberChanger nc1 = new NumberChanger(AddNum);
+            NumberChanger nc2 = new NumberChanger(MultNum);
+
+            //使用委托对象调用方法
+            nc1(25);
+            Console.WriteLine("Value of Num:{0}", getNum());
+
+            nc2(5);
+            Console.WriteLine("Value of Num:{0}", getNum());
+            Console.ReadLine();
             Console.ReadLine();
         }
     }
