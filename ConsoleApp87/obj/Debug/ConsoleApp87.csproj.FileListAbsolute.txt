@@ -1,0 +1,6 @@
+D:\D\ConsoleApp87\ConsoleApp87\bin\Debug\ConsoleApp87.exe.config
+D:\D\ConsoleApp87\ConsoleApp87\bin\Debug\ConsoleApp87.exe
+D:\D\ConsoleApp87\ConsoleApp87\bin\Debug\ConsoleApp87.pdb
+D:\D\ConsoleApp87\ConsoleApp87\obj\Debug\ConsoleApp87.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp87\ConsoleApp87\obj\Debug\ConsoleApp87.exe
+D:\D\ConsoleApp87\ConsoleApp87\obj\Debug\ConsoleApp87.pdb
