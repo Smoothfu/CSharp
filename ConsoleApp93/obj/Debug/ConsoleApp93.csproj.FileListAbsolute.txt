@@ -1,0 +1,6 @@
+D:\D\ConsoleApp93\ConsoleApp93\bin\Debug\ConsoleApp93.exe.config
+D:\D\ConsoleApp93\ConsoleApp93\bin\Debug\ConsoleApp93.exe
+D:\D\ConsoleApp93\ConsoleApp93\bin\Debug\ConsoleApp93.pdb
+D:\D\ConsoleApp93\ConsoleApp93\obj\Debug\ConsoleApp93.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp93\ConsoleApp93\obj\Debug\ConsoleApp93.exe
+D:\D\ConsoleApp93\ConsoleApp93\obj\Debug\ConsoleApp93.pdb
