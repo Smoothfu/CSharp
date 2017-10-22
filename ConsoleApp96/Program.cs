@@ -11,11 +11,11 @@ namespace ConsoleApp96
     {
         static void Main(string[] args)
         {
-            Thread lowThread = new Thread(LowPriorityMethod);
+            Thread lowThread = new Thread(new ThreadStart(LowPriorityMethod));
             lowThread.Priority = ThreadPriority.Lowest;
             lowThread.Start();
 
-            Thread highThread = new Thread(HighestPriorityMethod);
+            Thread highThread = new Thread(new ThreadStart(HighestPriorityMethod));
             highThread.Priority = ThreadPriority.Highest;
             highThread.Start();
             Console.ReadLine();
