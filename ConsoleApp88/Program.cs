@@ -16,6 +16,7 @@ namespace ConsoleApp88
             IAsyncResult result = del.BeginInvoke("Hello World.", null, null);
             Console.WriteLine("The main thread is continuing...");
             result.AsyncWaitHandle.WaitOne(-1, false);
+
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
         }
