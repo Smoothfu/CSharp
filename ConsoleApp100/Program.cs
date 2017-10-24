@@ -33,6 +33,7 @@ namespace ConsoleApp100
                     ds.Tables[0].Rows[i][7].ToString(), ds.Tables[0].Rows[i][8].ToString(), ds.Tables[0].Rows[i][9].ToString(), ds.Tables[0].Rows[i][10].ToString(),
                     ds.Tables[0].Rows[i][11].ToString(), ds.Tables[0].Rows[i][12].ToString(), ds.Tables[0].Rows[i][13].ToString(), ds.Tables[0].Rows[i][14].ToString());                 
             }
+            conn.Close();
             Console.WriteLine(conn.State);
             Console.ReadLine();
         }
