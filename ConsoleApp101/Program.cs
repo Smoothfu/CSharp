@@ -21,7 +21,12 @@ namespace ConsoleApp101
             //}
 
 
-            if ((string.Compare(str1, str2, StringComparison.InvariantCultureIgnoreCase)) == 0)
+            //if ((string.Compare(str1, str2, StringComparison.InvariantCultureIgnoreCase)) == 0)
+            //{
+            //    Console.WriteLine("Equal");
+            //}
+
+            if (string.Compare(str1,str2,true)==0)
             {
                 Console.WriteLine("Equal");
             }
