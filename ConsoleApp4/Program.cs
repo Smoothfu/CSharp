@@ -14,6 +14,7 @@ namespace ConsoleApp4
             for(int i=0;i<10;i++)
             {
                 Console.WriteLine("ThreadMethod :"+ i);
+                Thread.Sleep(new TimeSpan(0, 0, 1));
             }
         }
 
@@ -26,17 +27,17 @@ namespace ConsoleApp4
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("The main thread start!");
-
+            Console.WriteLine("Before start thread");
             Program obj1 = new Program();
             Program obj2 = new Program();
 
             Thread thread1 = new Thread(obj1.ThreadMethod);
             Thread thread2 = new Thread(obj2.ThreadMethod);
+
             thread1.Start();
             thread2.Start();
 
-            //Console.WriteLine("Main thread ended!");
+            Console.WriteLine("Main thread ended");
 
             Console.ReadLine();
         }   
