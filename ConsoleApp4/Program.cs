@@ -49,8 +49,19 @@ namespace ConsoleApp4
 
             thread1.Name = "Thread 1";
             thread2.Name = "Thread 2";
-            thread1.Start();
+            //thread1.Start();
             thread2.Start();
+
+            try
+            {
+                //thread1.Abort();
+                thread2.Abort();
+            }
+
+            catch(ThreadAbortException tae)
+            {
+                Console.WriteLine(tae.ToString());
+            }
 
             Console.WriteLine("Main thread ended");
 
