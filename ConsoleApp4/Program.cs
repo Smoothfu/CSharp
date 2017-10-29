@@ -32,14 +32,12 @@ namespace ConsoleApp4
             Program obj2 = new Program();
 
             Thread thread1 = new Thread(obj1.ThreadMethod);
-            Thread thread2 = new Thread(obj2.ThreadMethod2);
+            Thread thread2 = new Thread(obj2.ThreadMethod);
             thread1.Start();
-            thread1.Join();
             thread2.Start();
-            thread2.Join();
 
-            Console.WriteLine("Main thread ended!");
-             
+            //Console.WriteLine("Main thread ended!");
+
             Console.ReadLine();
         }   
     }
