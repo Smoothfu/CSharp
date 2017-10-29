@@ -9,33 +9,25 @@ namespace ConsoleApp4
 {
     class Program
     {
-        static void Add(int x,int y,int z)
-        {
-            Console.WriteLine("{0}+{1}+{2}={3}", x, y, z, x + y + z);
-        }
-
-        static void Subtract(int x,int y,int z)
-        {
-            Console.WriteLine("{0}-{1}-{2}={3}", x, y, z, x - y - z);
-        }
-
-        static void Multiply(int x,int y,int z,int w)
-        {
-            Console.WriteLine("{0}*{1}*{2}*{3}={4}", x, y, z, w, x * y * z * w);
-        }
+        bool done = false;
         static void Main(string[] args)
         {
-            new Thread(WriteY).Start();
+            Program obj = new Program();
+            new Thread(obj.Go).Start();
+
+            obj.Go();
             
             Console.ReadLine();
         }
 
-        static void WriteY()
+        void Go()
         {
-            for(int i=0;i<1000;i++)
+            if(!done)
             {
-                Console.Write("Y");
+               
+                Console.WriteLine("Done");
             }
         }
+         
     }
 }
