@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Security;
 
 namespace ConsoleApp4
 {
@@ -13,26 +14,30 @@ namespace ConsoleApp4
         {
             for(int i=0;i<10;i++)
             {
+                Thread thread = Thread.CurrentThread;
+                Console.WriteLine(thread.Name + " =" + i);
                 try
                 {
-                    Console.WriteLine("ThreadMethod :" + i);
-                    Thread.Sleep(new TimeSpan(0, 0, -1));
+                    Thread.Sleep(1000);
                 }
-                catch(ArgumentException ae)
+                catch(ArgumentException ex)
                 {
-                    Console.WriteLine(ae.Message);
+                    Console.WriteLine(ex.ToString());
+                }
+
+                catch(ThreadInterruptedException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+
+                catch(SecurityException ex)
+                {
+                    Console.WriteLine(ex.ToString());
                 }
                 
             }
         }
-
-        public void ThreadMethod2()
-        {
-            for(int i=0;i<10;i++)
-            {
-                Console.WriteLine("ThreadMethod2: " + i);
-            }
-        }
+         
         static void Main(string[] args)
         {
             Console.WriteLine("Before start thread");
@@ -42,6 +47,8 @@ namespace ConsoleApp4
             Thread thread1 = new Thread(obj1.ThreadMethod);
             Thread thread2 = new Thread(obj2.ThreadMethod);
 
+            thread1.Name = "Thread 1";
+            thread2.Name = "Thread 2";
             thread1.Start();
             thread2.Start();
 
