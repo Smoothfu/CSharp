@@ -25,24 +25,27 @@ namespace ConsoleApp4
         }
         static void Main(string[] args)
         {
-            int x = 10, y = 20, z = 30, w = 40;
-            Thread thread = new Thread(() =>
-              {
-                  Add(x, y, z);
-                  Subtract(x, y, z);
-                  Multiply(x, y, z, w);
-              });
+            // new a thread
+            Thread thread = new Thread(WriteY);
 
+            //start a thread
             thread.Start();
+            //thread.Join();
 
-            Console.WriteLine("Thread State: " + thread.ThreadState);
-
-            thread.Join();
-            if(thread.ThreadState==ThreadState.Stopped)
+            //main thread runs
+            for (int i=0;i<1000;i++)
             {
-                Console.WriteLine("ThreadState: "+thread.ThreadState);
+                Console.Write("X");
             }
             Console.ReadLine();
+        }
+
+        static void WriteY()
+        {
+            for(int i=0;i<1000;i++)
+            {
+                Console.Write("Y");
+            }
         }
     }
 }
