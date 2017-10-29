@@ -49,20 +49,30 @@ namespace ConsoleApp4
 
             thread1.Name = "Thread 1";
             thread2.Name = "Thread 2";
-            //thread1.Start();
+            thread1.Start();
             thread2.Start();
+
+            thread1.Abort();
+            thread2.Abort();
+
+            Console.WriteLine("After Abort");
+
+            Console.WriteLine("Thread1 state: " + thread1.ThreadState);
+            Console.WriteLine("Thread2 state: " + thread2.ThreadState);
+
 
             try
             {
-                //thread1.Abort();
-                thread2.Abort();
+                thread1.Start();
+                thread2.Start();
             }
 
-            catch(ThreadAbortException tae)
+            catch(ThreadStateException te)
             {
-                Console.WriteLine(tae.ToString());
+                Console.WriteLine(te.ToString());
             }
 
+            
             Console.WriteLine("Main thread ended");
 
             Console.ReadLine();
