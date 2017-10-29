@@ -12,33 +12,38 @@ namespace ConsoleApp4
          
         static void Main(string[] args)
         {
-            Console.WriteLine("The main thread started!");
-            Thread thread = new Thread(Go);
-            thread.Start();
-            Console.WriteLine("Thread state: " + thread.ThreadState);
+            Console.WriteLine("Before start thread.");
 
-            thread.Suspend();
-            Console.WriteLine("Thread State after Suspend: " + thread.ThreadState);
+            Thread thread1 = new Thread(ThreadMethod1);
+            Thread thread2 = new Thread(ThreadMethod2);
+            thread1.Start();
+            thread1.Join();
+            thread2.Start();
+            thread2.Join();
 
-            thread.Resume();
-            Console.WriteLine("Thread state after Resume: " + thread.ThreadState);
-            
-
-            Console.WriteLine("Thread has ended");
-
-
-            Console.ReadLine();
-        }
-
-        static void Go()
-        {
-            for(int i=0;i<1000;i++)
+            for(int i=0;i<10;i++)
             {
-                Console.Write("Y");
+                Console.WriteLine("The main thread :{0}", i);
+            }
+            
+            Console.ReadLine();
+        }  
+        
+        public static void ThreadMethod1()
+        {
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine("Thread1 {0}",i);
             }
         }
 
-       
+        public static void ThreadMethod2()
+        {
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine("Thread2 {0}", i);
+            }
+        }
 
     }
 }
