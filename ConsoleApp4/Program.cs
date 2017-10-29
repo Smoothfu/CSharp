@@ -13,8 +13,16 @@ namespace ConsoleApp4
         {
             for(int i=0;i<10;i++)
             {
-                Console.WriteLine("ThreadMethod :"+ i);
-                Thread.Sleep(new TimeSpan(0, 0, 1));
+                try
+                {
+                    Console.WriteLine("ThreadMethod :" + i);
+                    Thread.Sleep(new TimeSpan(0, 0, -1));
+                }
+                catch(ArgumentException ae)
+                {
+                    Console.WriteLine(ae.Message);
+                }
+                
             }
         }
 
