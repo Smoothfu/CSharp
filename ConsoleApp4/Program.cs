@@ -9,27 +9,36 @@ namespace ConsoleApp4
 {
     class Program
     {
-        static bool done = false;
-        static readonly object locker = new object();
-
+         
         static void Main(string[] args)
         {
-            new Thread(Go).Start();
-            Go();
+            Console.WriteLine("The main thread started!");
+            Thread thread = new Thread(Go);
+            thread.Start();
+            Console.WriteLine("Thread state: " + thread.ThreadState);
+
+            thread.Suspend();
+            Console.WriteLine("Thread State after Suspend: " + thread.ThreadState);
+
+            thread.Resume();
+            Console.WriteLine("Thread state after Resume: " + thread.ThreadState);
+            
+
+            Console.WriteLine("Thread has ended");
+
+
             Console.ReadLine();
         }
 
         static void Go()
         {
-            lock (locker)
+            for(int i=0;i<1000;i++)
             {
-                if (!done)
-                {
-                    Console.WriteLine("Done");
-                    done = true;
-                }
+                Console.Write("Y");
             }
         }
+
+       
 
     }
 }
