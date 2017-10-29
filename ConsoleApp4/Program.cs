@@ -9,41 +9,38 @@ namespace ConsoleApp4
 {
     class Program
     {
-         
+        public void ThreadMethod()
+        {
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine("ThreadMethod :"+ i);
+            }
+        }
+
+        public void ThreadMethod2()
+        {
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine("ThreadMethod2: " + i);
+            }
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Before start thread.");
+            Console.WriteLine("The main thread start!");
 
-            Thread thread1 = new Thread(ThreadMethod1);
-            Thread thread2 = new Thread(ThreadMethod2);
+            Program obj1 = new Program();
+            Program obj2 = new Program();
+
+            Thread thread1 = new Thread(obj1.ThreadMethod);
+            Thread thread2 = new Thread(obj2.ThreadMethod2);
             thread1.Start();
             thread1.Join();
             thread2.Start();
             thread2.Join();
 
-            for(int i=0;i<10;i++)
-            {
-                Console.WriteLine("The main thread :{0}", i);
-            }
-            
+            Console.WriteLine("Main thread ended!");
+             
             Console.ReadLine();
-        }  
-        
-        public static void ThreadMethod1()
-        {
-            for(int i=0;i<10;i++)
-            {
-                Console.WriteLine("Thread1 {0}",i);
-            }
-        }
-
-        public static void ThreadMethod2()
-        {
-            for(int i=0;i<10;i++)
-            {
-                Console.WriteLine("Thread2 {0}", i);
-            }
-        }
-
+        }   
     }
 }
