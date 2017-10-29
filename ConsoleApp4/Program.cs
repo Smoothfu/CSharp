@@ -25,18 +25,8 @@ namespace ConsoleApp4
         }
         static void Main(string[] args)
         {
-            // new a thread
-            Thread thread = new Thread(WriteY);
-
-            //start a thread
-            thread.Start();
-            //thread.Join();
-
-            //main thread runs
-            for (int i=0;i<1000;i++)
-            {
-                Console.Write("X");
-            }
+            new Thread(WriteY).Start();
+            
             Console.ReadLine();
         }
 
