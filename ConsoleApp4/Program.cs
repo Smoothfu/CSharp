@@ -9,25 +9,27 @@ namespace ConsoleApp4
 {
     class Program
     {
-        bool done = false;
+        static bool done = false;
+        static readonly object locker = new object();
+
         static void Main(string[] args)
         {
-            Program obj = new Program();
-            new Thread(obj.Go).Start();
-
-            obj.Go();
-            
+            new Thread(Go).Start();
+            Go();
             Console.ReadLine();
         }
 
-        void Go()
+        static void Go()
         {
-            if(!done)
+            lock (locker)
             {
-               
-                Console.WriteLine("Done");
+                if (!done)
+                {
+                    Console.WriteLine("Done");
+                    done = true;
+                }
             }
         }
-         
+
     }
 }
