@@ -42,21 +42,26 @@ namespace ConsoleApp10
         static void Main(string[] args)
         {
             Rectangle rect = new Rectangle(20, 100);
-            rect.Display();
+            
 
             Type type = typeof(Rectangle);
 
-            //iterating through the attributes of the Rectangle class
-            foreach(object att in type.GetCustomAttributes(false))
+             
+            //iterating through the method attributes
+            foreach(MethodInfo mi in type.GetMethods())
             {
-                DebugInfoAttribute dbi = (DebugInfoAttribute)att;
-                if(dbi!=null)
+                foreach(Attribute att in mi.GetCustomAttributes(false))
                 {
-                    Console.WriteLine("Bug No: {0}",dbi.BugNo);
-                    Console.WriteLine("Developer: {0}", dbi.Developer);
-                    Console.WriteLine("Last Reviewed:{0}", dbi.LastReview);
-                    Console.WriteLine("Remarks: {0}", dbi.message);
+                    DebugInfoAttribute dbi = att as DebugInfoAttribute;
+                    if (dbi != null)
+                    {
+                        Console.WriteLine("Bug No:{0} for method:{1}", dbi.BugNo, mi.Name);
+                        Console.WriteLine("Developer:{0}", dbi.Developer);
+                        Console.WriteLine("Last Reviewed:{0}", dbi.LastReview);
+                        Console.WriteLine("Remarks: {0} \n\n", dbi.message);
+                    }
                 }
+                
             }
             Console.ReadLine();
         }
