@@ -17,20 +17,21 @@ namespace ConsoleApp10
     }
     class Program
     {
-        static void function1()
+         [Obsolete("Don't use OldMethod,use NewMethod instead",true)]
+
+         static void OldMethod()
         {
-            MyClass.Message("In Function 1.");
-            function2();
+            Console.WriteLine("It is the old method.");
         }
 
-        static void function2()
+        static void NewMethod()
         {
-            MyClass.Message("In Function 2.");
+            Console.WriteLine("It is the new method.");
         }
         static void Main(string[] args)
         {
-            MyClass.Message("In Main function");
-            function1();
+            OldMethod();
+             
             Console.ReadLine();
         }
     }
