@@ -4,33 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace ConsoleApp10
 {
-    public class MyClass
+
+   [AttributeUsage(AttributeTargets.All)]
+   public class HelpAttribute : Attribute
     {
-        [Conditional("DEBUG")]
-        public static void Message(string msg)
+        public readonly string Url;
+        private string topic;
+        public string Topic
         {
-            Console.WriteLine(msg);
+            get
+            {
+                return topic;
+            }
+            set
+            {
+                topic = value;
+            }
+        }
+
+        public HelpAttribute(string url)
+        {
+            this.Url = url;
         }
     }
-    class Program
+
+    [HelpAttribute("Information on the class Myclass")]
+    class MyClass
     {
-         [Obsolete("Don't use OldMethod,use NewMethod instead",true)]
 
-         static void OldMethod()
-        {
-            Console.WriteLine("It is the old method.");
-        }
-
-        static void NewMethod()
-        {
-            Console.WriteLine("It is the new method.");
-        }
+    }
+    class Program
+    {         
         static void Main(string[] args)
         {
-            OldMethod();
+            MemberInfo mi = typeof(MyClass);
+
+            object[] attributes = mi.GetCustomAttributes(true);
+
+            for(int i=0;i<attributes.Length;i++)
+            {
+                Console.WriteLine(((ConsoleApp10.HelpAttribute)attributes[i]).Url);
+            }
              
             Console.ReadLine();
         }
