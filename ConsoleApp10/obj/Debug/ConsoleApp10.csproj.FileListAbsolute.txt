@@ -1,0 +1,7 @@
+D:\D\ConsoleApp10\ConsoleApp10\bin\Debug\ConsoleApp10.exe.config
+D:\D\ConsoleApp10\ConsoleApp10\bin\Debug\ConsoleApp10.exe
+D:\D\ConsoleApp10\ConsoleApp10\bin\Debug\ConsoleApp10.pdb
+D:\D\ConsoleApp10\ConsoleApp10\obj\Debug\ConsoleApp10.csprojResolveAssemblyReference.cache
+D:\D\ConsoleApp10\ConsoleApp10\obj\Debug\ConsoleApp10.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp10\ConsoleApp10\obj\Debug\ConsoleApp10.exe
+D:\D\ConsoleApp10\ConsoleApp10\obj\Debug\ConsoleApp10.pdb
