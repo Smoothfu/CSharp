@@ -41,15 +41,23 @@ namespace ConsoleApp10
     {         
         static void Main(string[] args)
         {
-            MemberInfo mi = typeof(MyClass);
+            Rectangle rect = new Rectangle(20, 100);
+            rect.Display();
 
-            object[] attributes = mi.GetCustomAttributes(true);
+            Type type = typeof(Rectangle);
 
-            for(int i=0;i<attributes.Length;i++)
+            //iterating through the attributes of the Rectangle class
+            foreach(object att in type.GetCustomAttributes(false))
             {
-                Console.WriteLine(((ConsoleApp10.HelpAttribute)attributes[i]).Url);
+                DebugInfoAttribute dbi = (DebugInfoAttribute)att;
+                if(dbi!=null)
+                {
+                    Console.WriteLine("Bug No: {0}",dbi.BugNo);
+                    Console.WriteLine("Developer: {0}", dbi.Developer);
+                    Console.WriteLine("Last Reviewed:{0}", dbi.LastReview);
+                    Console.WriteLine("Remarks: {0}", dbi.message);
+                }
             }
-             
             Console.ReadLine();
         }
     }

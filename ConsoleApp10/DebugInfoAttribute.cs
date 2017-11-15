@@ -24,20 +24,38 @@ namespace ConsoleApp10
 
         public int BugNo
         {
-            get;
-            private set;
+            get
+            {
+                return bugNo;
+            }
+            set
+            {
+                bugNo = value;
+            }
         }
 
         public string Developer
         {
-            get;
-            private set;
+            get
+            {
+                return developer;
+            }
+            set
+            {
+                developer = value;
+            }
         }
 
         public string LastReview
         {
-            get;
-            private set;
+            get
+            {
+                return lastReview;
+            }
+            set
+            {
+                lastReview = value;
+            }
         }
 
         public string Message
