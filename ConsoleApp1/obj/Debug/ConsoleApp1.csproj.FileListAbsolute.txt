@@ -1,0 +1,13 @@
+D:\D\ConsoleApp16\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+D:\D\ConsoleApp16\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+D:\D\ConsoleApp16\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+D:\D\ConsoleApp16\ConsoleApp1\bin\Debug\ConsoleApp16.dll
+D:\D\ConsoleApp16\ConsoleApp1\bin\Debug\ConsoleApp16.pdb
+D:\D\ConsoleApp16\ConsoleApp1\bin\Debug\ConsoleApp16.dll.config
+D:\D\ConsoleApp16\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp16\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+D:\D\ConsoleApp16\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+D:\D\ConsoleApp16\ConsoleApp1\bin\Debug\ConsoleApp2.dll
+D:\D\ConsoleApp16\ConsoleApp1\bin\Debug\ConsoleApp2.pdb
+D:\D\ConsoleApp16\ConsoleApp1\bin\Debug\ConsoleApp2.dll.config
+D:\D\ConsoleApp16\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
