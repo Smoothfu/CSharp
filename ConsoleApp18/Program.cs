@@ -11,15 +11,30 @@ namespace ConsoleApp18
     {
         static void Main(string[] args)
         {
-            Type type = typeof(MathClass);
-            MathClass.ListProps(type);
+            Type type = typeof(IMath);
+            MathClass.GetInterfaces(type);
             Console.ReadLine();
         }
     }
 
+
+    public interface IMath
+    {
+        void Add(int x, int y);
+    }
     public class MathClass 
     {
+       
 
+        public interface IString
+        {
+            void Substring(string str);
+        }
+
+        public interface ICalculate
+        {
+            void Aggegrate(int x, int y, int z);
+        }
         public int num = 10000;
         public string thisString = "This string";
         public bool IsTrue = true;
@@ -108,6 +123,29 @@ namespace ConsoleApp18
                 Console.WriteLine("Name: " + name);
             }
 
+        }
+
+
+        public static void GetInterfaces(Type type)
+        {
+            Console.WriteLine("****Interfaces****");
+            var interfacesName = from i in type.GetInterfaces() select i.Name;
+            
+            if(interfacesName!=null && interfacesName.Any())
+            {
+                interfacesName.ToList().ForEach(x =>
+                {
+                    Console.WriteLine(x);
+                });
+
+
+
+                interfacesName.ToList().All(y =>
+                {
+                    Console.WriteLine(y);
+                    return true;
+                });
+            }
         }
     }
 }
