@@ -12,19 +12,7 @@ namespace ConsoleApp18
         static void Main(string[] args)
         {
             Type type = typeof(MathClass);
-            MethodInfo[] mis = type.GetMethods();
-            foreach(MethodInfo mi in mis)
-            {
-                Console.WriteLine("HashCode: "+mi.GetHashCode());
-                Console.WriteLine("Parameters: "+mi.GetParameters());
-                Console.WriteLine("Type:"+mi.GetType());
-                Console.WriteLine("MemberType: "+mi.MemberType);
-                Console.WriteLine("MetadataToken:"+mi.MetadataToken);
-                Console.WriteLine("Module:"+mi.Module);
-                Console.WriteLine("Name:"+mi.Name);
-                Console.WriteLine("ReflectedType:"+mi.ReflectedType+"\n\n");
-            }
-
+            MathClass.GetMethodOfType(type);
             Console.ReadLine();
 
         }
@@ -45,6 +33,16 @@ namespace ConsoleApp18
         public void MultiplyMethod(int x,int y)
         {
             Console.WriteLine("{0}*{1}={2}", x, y, x * y);
+        }
+
+        public static void GetMethodOfType(Type type)
+        {
+            Console.WriteLine("****Methods*****");
+            var methodNames = from name in type.GetMethods() select name.Name;
+            foreach(var name in methodNames)
+            {
+                Console.WriteLine("Name: " + name);
+            }
         }
     }
 }
