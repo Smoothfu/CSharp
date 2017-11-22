@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +12,8 @@ namespace ConsoleApp19
         static void Main(string[] args)
         {
 
-            Type type = typeof(MathClass);
-            MathClass.ListVariousStatus(type);
+            Type type = typeof(MathClass); 
+            MathClass.ListMethods(type);
             Console.ReadLine();
         }
     }
@@ -52,6 +53,34 @@ namespace ConsoleApp19
             Console.WriteLine("Is type sealed?{0}", type.IsSealed);
             Console.WriteLine("Is type generic?{0}", type.IsGenericTypeDefinition);
             Console.WriteLine("Is type a class type?{0}", type.IsClass);
+        }
+
+        public static void ListMethods(Type type)
+        {
+            Console.WriteLine("*****Methods*****");
+            MethodInfo[] mis = type.GetMethods();
+
+            mis.ToList().ForEach(x =>
+            {
+
+                //Get return type.
+                string retVal = x.ReturnType.FullName;
+                string paramInfo = "(";
+
+
+                //Get params
+                x.GetParameters().ToList().ForEach(y =>
+                {
+                    paramInfo += string.Format("{0} {1}", y.ParameterType, y.Name);
+                });
+
+                paramInfo += ")";
+
+                //Now display the basic method sig.
+                Console.WriteLine("->{0} {1} {2}", retVal, x.Name, paramInfo);
+            });
+
+           
         }
     }
 }
