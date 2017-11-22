@@ -13,7 +13,7 @@ namespace ConsoleApp19
         {
 
             Type type = typeof(MathClass); 
-            MathClass.ListMethods(type);
+            MathClass.ListMethodss(type);
             Console.ReadLine();
         }
     }
@@ -77,8 +77,19 @@ namespace ConsoleApp19
 
                 //Now display the basic method sig.
                 Console.WriteLine("->{0} {1} {2}", retVal, mi.Name, paramInfo);
+            }           
+        }
+
+        public static void ListMethodss(Type type)
+        {
+            Console.WriteLine("*****Methods*****");
+            var methodNames = from n in type.GetMethods() select n;
+
+            foreach(var name in methodNames)
+            {
+                Console.WriteLine("->{0}", name);
             }
-           
+            Console.WriteLine();
         }
     }
 }
