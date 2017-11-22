@@ -60,26 +60,24 @@ namespace ConsoleApp19
             Console.WriteLine("*****Methods*****");
             MethodInfo[] mis = type.GetMethods();
 
-            mis.ToList().ForEach(x =>
+            foreach(MethodInfo mi in mis)
             {
-
                 //Get return type.
-                string retVal = x.ReturnType.FullName;
+                string retVal = mi.ReturnType.FullName;
+
                 string paramInfo = "(";
 
-
-                //Get params
-                x.GetParameters().ToList().ForEach(y =>
+                //Get params.
+                foreach(ParameterInfo pi in  mi.GetParameters())
                 {
-                    paramInfo += string.Format("{0} {1}", y.ParameterType, y.Name);
-                });
+                    paramInfo += string.Format("{0} {1}", pi.ParameterType, pi.Name);
+                }
 
                 paramInfo += ")";
 
                 //Now display the basic method sig.
-                Console.WriteLine("->{0} {1} {2}", retVal, x.Name, paramInfo);
-            });
-
+                Console.WriteLine("->{0} {1} {2}", retVal, mi.Name, paramInfo);
+            }
            
         }
     }
