@@ -1,0 +1,7 @@
+D:\D\ConsoleApp23\ConsoleApp23\bin\Debug\ConsoleApp23.exe.config
+D:\D\ConsoleApp23\ConsoleApp23\bin\Debug\ConsoleApp23.exe
+D:\D\ConsoleApp23\ConsoleApp23\bin\Debug\ConsoleApp23.pdb
+D:\D\ConsoleApp23\ConsoleApp23\obj\Debug\ConsoleApp23.csprojResolveAssemblyReference.cache
+D:\D\ConsoleApp23\ConsoleApp23\obj\Debug\ConsoleApp23.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp23\ConsoleApp23\obj\Debug\ConsoleApp23.exe
+D:\D\ConsoleApp23\ConsoleApp23\obj\Debug\ConsoleApp23.pdb
