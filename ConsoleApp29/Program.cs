@@ -27,25 +27,23 @@ namespace ConsoleApp29
             Process proc = null;
             try
             {
-                proc = Process.GetProcessById(pId);
-                Console.WriteLine(proc.ProcessName);
-
-                ProcessThreadCollection threads = proc.Threads;
-
-                if (threads != null && threads.Count > 0)
-                {
-                    foreach (ProcessThread pt in threads)
-                    {
-                        string info = string.Format("->Thread ID:{0} \t Start Time: {1} \t Priority:{2}", pt.Id,
-                            pt.StartTime.ToShortTimeString(), pt.PriorityLevel);
-                        Console.WriteLine(info);
-                    }
-
-                }
+                proc = Process.GetProcessById(pId);                 
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
+                return;
+            }
+
+            Console.WriteLine("Here are the loaded modules for: {0}",
+                proc.ProcessName);
+
+            ProcessModuleCollection modules = proc.Modules;
+
+            foreach(ProcessModule pm in modules)
+            {
+                string info = string.Format("->Mod Name: {0}\n,FileName:{1}", pm.ModuleName,pm.FileName);
+                Console.WriteLine(info);
             }
         }
     }
