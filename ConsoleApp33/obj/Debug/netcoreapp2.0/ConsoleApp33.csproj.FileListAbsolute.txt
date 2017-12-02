@@ -1,0 +1,11 @@
+D:\D\ConsoleApp33\ConsoleApp33\bin\Debug\netcoreapp2.0\ConsoleApp33.deps.json
+D:\D\ConsoleApp33\ConsoleApp33\bin\Debug\netcoreapp2.0\ConsoleApp33.runtimeconfig.json
+D:\D\ConsoleApp33\ConsoleApp33\bin\Debug\netcoreapp2.0\ConsoleApp33.runtimeconfig.dev.json
+D:\D\ConsoleApp33\ConsoleApp33\bin\Debug\netcoreapp2.0\ConsoleApp33.dll
+D:\D\ConsoleApp33\ConsoleApp33\bin\Debug\netcoreapp2.0\ConsoleApp33.pdb
+D:\D\ConsoleApp33\ConsoleApp33\obj\Debug\netcoreapp2.0\ConsoleApp33.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp33\ConsoleApp33\obj\Debug\netcoreapp2.0\ConsoleApp33.AssemblyInfoInputs.cache
+D:\D\ConsoleApp33\ConsoleApp33\obj\Debug\netcoreapp2.0\ConsoleApp33.AssemblyInfo.cs
+D:\D\ConsoleApp33\ConsoleApp33\obj\Debug\netcoreapp2.0\ConsoleApp33.dll
+D:\D\ConsoleApp33\ConsoleApp33\obj\Debug\netcoreapp2.0\ConsoleApp33.pdb
+D:\D\ConsoleApp33\ConsoleApp33\obj\Debug\netcoreapp2.0\ConsoleApp33.csprojResolveAssemblyReference.cache
