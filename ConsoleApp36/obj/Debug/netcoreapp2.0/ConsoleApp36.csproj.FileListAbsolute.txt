@@ -1,0 +1,11 @@
+D:\D\ConsoleApp36\ConsoleApp36\bin\Debug\netcoreapp2.0\ConsoleApp36.deps.json
+D:\D\ConsoleApp36\ConsoleApp36\bin\Debug\netcoreapp2.0\ConsoleApp36.runtimeconfig.json
+D:\D\ConsoleApp36\ConsoleApp36\bin\Debug\netcoreapp2.0\ConsoleApp36.runtimeconfig.dev.json
+D:\D\ConsoleApp36\ConsoleApp36\bin\Debug\netcoreapp2.0\ConsoleApp36.dll
+D:\D\ConsoleApp36\ConsoleApp36\bin\Debug\netcoreapp2.0\ConsoleApp36.pdb
+D:\D\ConsoleApp36\ConsoleApp36\obj\Debug\netcoreapp2.0\ConsoleApp36.csprojResolveAssemblyReference.cache
+D:\D\ConsoleApp36\ConsoleApp36\obj\Debug\netcoreapp2.0\ConsoleApp36.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp36\ConsoleApp36\obj\Debug\netcoreapp2.0\ConsoleApp36.AssemblyInfoInputs.cache
+D:\D\ConsoleApp36\ConsoleApp36\obj\Debug\netcoreapp2.0\ConsoleApp36.AssemblyInfo.cs
+D:\D\ConsoleApp36\ConsoleApp36\obj\Debug\netcoreapp2.0\ConsoleApp36.dll
+D:\D\ConsoleApp36\ConsoleApp36\obj\Debug\netcoreapp2.0\ConsoleApp36.pdb
