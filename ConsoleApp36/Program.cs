@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace ConsoleApp36
 {
@@ -23,6 +24,14 @@ namespace ConsoleApp36
                 return;
             }
 
+            List<string> procList = new List<string>();
+            Console.WriteLine("There are {0} process currently and there names are:",procArr.Count());
+            procArr.ToList().ForEach(x =>
+            {
+                Console.WriteLine(x.ProcessName);
+            });
+
+            Console.WriteLine("\n\n\n");
             procArr = (from proc in procArr orderby proc.ProcessName select proc).ToArray();
             foreach(Process proc in procArr.OrderBy(x=>x.Threads.Count))
             {                
