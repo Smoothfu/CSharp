@@ -14,7 +14,15 @@ namespace ConsoleApp41
     {
         static void Main(string[] args)
         {
-            MakeNewAppDomainAD();
+
+            //Show all loaded assemblies in default AppDomain.
+            AppDomain defaultAD = AppDomain.CurrentDomain;
+            defaultAD.ProcessExit += (x,y) =>
+            {
+                Console.WriteLine("Default AD unloaded!");
+            };
+
+            ListAllAssembliesInAppDomainAD(defaultAD);
             MessageBox.Show("Finished");
             Console.ReadLine();
         }
