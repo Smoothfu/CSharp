@@ -1,0 +1,7 @@
+D:\D\ConsoleApp42\ConsoleApp42\bin\Debug\ConsoleApp42.exe.config
+D:\D\ConsoleApp42\ConsoleApp42\bin\Debug\ConsoleApp42.exe
+D:\D\ConsoleApp42\ConsoleApp42\bin\Debug\ConsoleApp42.pdb
+D:\D\ConsoleApp42\ConsoleApp42\obj\Debug\ConsoleApp42.csprojResolveAssemblyReference.cache
+D:\D\ConsoleApp42\ConsoleApp42\obj\Debug\ConsoleApp42.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp42\ConsoleApp42\obj\Debug\ConsoleApp42.exe
+D:\D\ConsoleApp42\ConsoleApp42\obj\Debug\ConsoleApp42.pdb
