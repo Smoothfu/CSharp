@@ -1,0 +1,10 @@
+D:\D\ConsoleApp37\ConsoleApp37\bin\Debug\netcoreapp2.0\ConsoleApp37.deps.json
+D:\D\ConsoleApp37\ConsoleApp37\bin\Debug\netcoreapp2.0\ConsoleApp37.runtimeconfig.json
+D:\D\ConsoleApp37\ConsoleApp37\bin\Debug\netcoreapp2.0\ConsoleApp37.runtimeconfig.dev.json
+D:\D\ConsoleApp37\ConsoleApp37\bin\Debug\netcoreapp2.0\ConsoleApp37.dll
+D:\D\ConsoleApp37\ConsoleApp37\bin\Debug\netcoreapp2.0\ConsoleApp37.pdb
+D:\D\ConsoleApp37\ConsoleApp37\obj\Debug\netcoreapp2.0\ConsoleApp37.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp37\ConsoleApp37\obj\Debug\netcoreapp2.0\ConsoleApp37.AssemblyInfoInputs.cache
+D:\D\ConsoleApp37\ConsoleApp37\obj\Debug\netcoreapp2.0\ConsoleApp37.AssemblyInfo.cs
+D:\D\ConsoleApp37\ConsoleApp37\obj\Debug\netcoreapp2.0\ConsoleApp37.dll
+D:\D\ConsoleApp37\ConsoleApp37\obj\Debug\netcoreapp2.0\ConsoleApp37.pdb
