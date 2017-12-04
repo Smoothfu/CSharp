@@ -18,15 +18,20 @@ namespace ConsoleApp40
         static void StartAndKillProcess()
         {
             Process ieProc = null;
-            //Launch Internet Explorer,and go to tencent!
+            //Launch Internet Explorer,and go to tencent,
+            //with maximized window.
             try
             {
-                ieProc=Process.Start("IExplore.exe", "www.qq.com");
+                ProcessStartInfo starInfo = new ProcessStartInfo("IExplore.exe", "www.qq.com");
+                starInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+                ieProc = Process.Start(starInfo);
             }
             catch(InvalidOperationException ex)
             {
                 Console.WriteLine(ex.Message);
             }
+             
 
             Console.WriteLine("->Hit enter to kill {0}...", ieProc.ProcessName);
             Console.ReadLine();
