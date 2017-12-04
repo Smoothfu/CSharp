@@ -13,8 +13,7 @@ namespace ConsoleApp41
     {
         static void Main(string[] args)
         {
-            InitDAD();
-            ListAllAssembliesInAppDomainAD();
+            MakeNewAppDomain();
             MessageBox.Show("Finished");
             Console.ReadLine();
         }
@@ -76,6 +75,30 @@ namespace ConsoleApp41
             {
                 Console.WriteLine("{0} has been loaded!", s.LoadedAssembly.GetName().Name);
             };
+        }
+
+        private static void MakeNewAppDomain()
+        {
+            //Make a new AppDomain in the current process and list loaded assemblies.
+            AppDomain newAD = AppDomain.CreateDomain("SecondAppDomain");
+            ListAllAssembliesInAppDomainAD(newAD);
+        }
+
+        private static void ListAllAssembliesInAppDomainAD(AppDomain newAD)
+        {
+            //Now get all loaded assemblies in the default AppDomain.
+            var loadedAssemblies = from asm in newAD.GetAssemblies()
+                                   orderby asm.GetName().Name
+                                   select asm;
+
+            Console.WriteLine("*****Here are the assemblies loaded in {0}*****\n",
+                newAD.FriendlyName);
+
+            foreach(var asm in loadedAssemblies)
+            {
+                Console.WriteLine("->Name:{0}", asm.GetName().Name);
+                Console.WriteLine("->Version:{0}\n", asm.GetName().Version);
+            }
         }
     }
 }
