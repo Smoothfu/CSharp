@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ConsoleApp41
 {
@@ -13,7 +14,7 @@ namespace ConsoleApp41
     {
         static void Main(string[] args)
         {
-            MakeNewAppDomain();
+            MakeNewAppDomainAD();
             MessageBox.Show("Finished");
             Console.ReadLine();
         }
@@ -99,6 +100,32 @@ namespace ConsoleApp41
                 Console.WriteLine("->Name:{0}", asm.GetName().Name);
                 Console.WriteLine("->Version:{0}\n", asm.GetName().Version);
             }
+        }
+
+        private static void MakeNewAppDomainAD()
+        {
+            //Make a new AppDomain in the current process.
+            AppDomain newAD = AppDomain.CreateDomain("SecondAppDomainAD");
+            newAD.DomainUnload += (o, s) =>
+            {
+                Console.WriteLine("The second AppDomain has been unloaded!");
+            };
+            try
+            {
+                //Now load *.dll into this new domain.
+                newAD.Load("ConsoleApp35");
+            }
+
+            catch(FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            ListAllAssembliesInAppDomainAD(newAD);
+
+            //Now tear down this AppDomain.
+            AppDomain.Unload(newAD);
+            
         }
     }
 }
