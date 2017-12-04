@@ -13,6 +13,7 @@ namespace ConsoleApp41
     {
         static void Main(string[] args)
         {
+            InitDAD();
             ListAllAssembliesInAppDomainAD();
             MessageBox.Show("Finished");
             Console.ReadLine();
@@ -64,6 +65,17 @@ namespace ConsoleApp41
                 Console.WriteLine("->Version:{0}\n", asm.GetName().Version);
             }
 
+        }
+
+        private static void InitDAD()
+        {
+            //This logic will print out the name of any assembly
+            //loaded into the applocation domain,after it has been created.
+            AppDomain defaultAD = AppDomain.CurrentDomain;
+            defaultAD.AssemblyLoad += (o, s) =>
+            {
+                Console.WriteLine("{0} has been loaded!", s.LoadedAssembly.GetName().Name);
+            };
         }
     }
 }
