@@ -11,7 +11,7 @@ namespace ConsoleApp43
     {
         static void Main(string[] args)
         {
-            ListAllRunningProcesses();
+            GetSpecificProcess();
             Console.ReadLine();
         }
 
@@ -38,6 +38,22 @@ namespace ConsoleApp43
             }
             Console.WriteLine("*************************************************88");
 
+        }
+
+        //If there is no process with the PID of 1692,a runtime exception will be thrown.
+        static void GetSpecificProcess()
+        {
+            Process theProcs = null;
+            try
+            {
+                theProcs = Process.GetProcessById(14312);
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("ProcessName:{0},ID:{1}", theProcs.ProcessName, theProcs.Id);
         }
     }
 }
