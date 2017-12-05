@@ -11,7 +11,12 @@ namespace ConsoleApp43
     {
         static void Main(string[] args)
         {
-            EnumThreadsForPID(14504);
+            //Prompt user for a PID and print out the set of active threads.
+            Console.WriteLine("*****Enter PID of process to investigate*****");
+            Console.WriteLine("PID: ");
+            string PID = Console.ReadLine();
+            int theProcId = int.Parse(PID);
+            EnumThreadsForPID(theProcId);
             Console.ReadLine();
         }
 
