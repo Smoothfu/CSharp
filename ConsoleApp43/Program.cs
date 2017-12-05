@@ -11,12 +11,7 @@ namespace ConsoleApp43
     {
         static void Main(string[] args)
         {
-            //Prompt user for a PID and print out the set of active threads.
-            Console.WriteLine("*****Enter PID of process to investigate*****");
-            Console.WriteLine("PID: ");
-            string PID = Console.ReadLine();
-            int theProcId = int.Parse(PID);
-            EnumThreadsForPID(theProcId);
+            EnumModsForPid(13828);
             Console.ReadLine();
         }
 
@@ -92,6 +87,38 @@ namespace ConsoleApp43
                     pt.Id, pt.StartTime.ToUniversalTime(), pt.PriorityLevel);
                 Console.WriteLine(info);
             }
+        }
+
+        static void EnumModsForPid(int pID)
+        {
+            Process theProc = null;
+            try
+            {
+                theProc = Process.GetProcessById(pID);
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
+            Console.WriteLine("Here are the loaded modules for: {0}\n\n\n", theProc.ProcessName);
+
+            ProcessModuleCollection pmcs = theProc.Modules;
+
+            if(pmcs==null || pmcs.Count==0)
+            {
+                return;
+            }
+
+            Console.WriteLine("Ther are {0} Process Modules in the process:{1}\n\n\n\n\n", pmcs.Count, theProc);
+
+            foreach(ProcessModule pm in pmcs)
+            {
+                string info = string.Format("->Mod Name:{0}", pm.ModuleName);
+                Console.WriteLine(info);
+            }
+
+            Console.WriteLine("*******************************************************");
         }
     }
 }
