@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace ConsoleApp44
 {
@@ -11,7 +12,7 @@ namespace ConsoleApp44
     {
         static void Main(string[] args)
         {
-            DisplayDADStats();
+            ListAllAssembliesInAppDomain();
             Console.ReadLine();
         }
 
@@ -25,8 +26,23 @@ namespace ConsoleApp44
             Console.WriteLine("ID of domain in this process:{0}", defaultAD.Id);
             Console.WriteLine("Is this the default domain?:{0}", defaultAD.IsDefaultAppDomain());
             Console.WriteLine("Base directory of this domain: {0}", defaultAD.BaseDirectory);
+        }
 
+        static void ListAllAssembliesInAppDomain()
+        {
+            //Get access to the AppDomain for the current thread.
+            AppDomain defaultAD = AppDomain.CurrentDomain;
 
+            //Now get all loaded assemblies in the default AppDomain.
+            Assembly[] loadedAssemblies = defaultAD.GetAssemblies();
+
+            Console.WriteLine("******There are the assemblies loaded in {0}*****\n", defaultAD.FriendlyName);
+
+            foreach(Assembly asm in loadedAssemblies)
+            {
+                Console.WriteLine("->Name:{0}", asm.GetName().Name);
+                Console.WriteLine("->Version:{0}\n", asm.GetName().Version);
+            }
         }
     }
 }
