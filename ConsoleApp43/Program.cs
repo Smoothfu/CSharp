@@ -20,12 +20,13 @@ namespace ConsoleApp43
             var procs = Process.GetProcesses();
             if(procs!=null && procs.Count()>0)
             {
+
                 Console.WriteLine("There are {0} processes!\n\n\n", procs.Count());
-                foreach(var proc in procs)
+
+                procs.ToList().ForEach(x =>
                 {
-                    Console.WriteLine("ProcessName:{0},Id:{1}",
-                         proc.ProcessName,proc.Id);
-                }
+                    Console.WriteLine("ProcessName:{0},Id:{1}",x.ProcessName, x.Id);
+                });
             } 
         }
     }
