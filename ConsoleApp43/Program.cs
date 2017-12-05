@@ -11,7 +11,7 @@ namespace ConsoleApp43
     {
         static void Main(string[] args)
         {
-            GetSpecificProcess();
+            EnumThreadsForPID(14504);
             Console.ReadLine();
         }
 
@@ -54,6 +54,39 @@ namespace ConsoleApp43
             }
 
             Console.WriteLine("ProcessName:{0},ID:{1}", theProcs.ProcessName, theProcs.Id);
+        }
+
+        static void EnumThreadsForPID(int PID)
+        {
+            Process theProc = null;
+            try
+            {
+                theProc = Process.GetProcessById(PID);
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
+
+            //List out status for each thread in the specified process.
+            Console.WriteLine("Here are the threads used by :{0}", theProc.ProcessName);
+
+            ProcessThreadCollection theThreads = theProc.Threads;
+
+            if(theThreads==null || theThreads.Count<1)
+            {
+                return;
+            }
+            Console.WriteLine("There are {0} threads in the {1}\n\n\n\n", theThreads.Count, theProc.ProcessName);
+
+
+            foreach(ProcessThread pt in theThreads)
+            {
+                string info = string.Format("->Thread ID:{0} \tStart Time:{1} \tPriority:{2}",
+                    pt.Id, pt.StartTime.ToUniversalTime(), pt.PriorityLevel);
+                Console.WriteLine(info);
+            }
         }
     }
 }
