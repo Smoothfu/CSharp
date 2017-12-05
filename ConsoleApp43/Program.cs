@@ -17,9 +17,16 @@ namespace ConsoleApp43
 
         static void ListProcessAndNames()
         {
-            var currentProc = Process.GetCurrentProcess();
-
-            Console.WriteLine("{0},{1}",currentProc.MainModule, currentProc.ProcessName);
+            var procs = Process.GetProcesses();
+            if(procs!=null && procs.Count()>0)
+            {
+                Console.WriteLine("There are {0} processes!\n\n\n", procs.Count());
+                foreach(var proc in procs)
+                {
+                    Console.WriteLine("ProcessName:{0},Id:{1}",
+                         proc.ProcessName,proc.Id);
+                }
+            } 
         }
     }
 }
