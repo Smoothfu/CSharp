@@ -11,7 +11,7 @@ namespace ConsoleApp43
     {
         static void Main(string[] args)
         {
-            EnumModsForPid(13828);
+            StartAndKillProcess();
             Console.ReadLine();
         }
 
@@ -119,6 +119,36 @@ namespace ConsoleApp43
             }
 
             Console.WriteLine("*******************************************************");
+        }
+
+        static void StartAndKillProcess()
+        {
+            Process ieProc = null;
+
+            //Launch Internet Explorer,and go to facebook with maximized window.
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo("IExplore.exe", "www.facebook.com");
+                startInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                ieProc = Process.Start(startInfo);
+            }
+            catch(InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("->Hit enter to kill {0}...", ieProc.ProcessName);
+            Console.ReadLine();
+
+            //Kill the iexplore.exe process.
+            try
+            {
+                ieProc.Kill();
+            }
+            catch(InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
