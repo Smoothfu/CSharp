@@ -34,15 +34,17 @@ namespace ConsoleApp44
             AppDomain defaultAD = AppDomain.CurrentDomain;
 
             //Now get all loaded assemblies in the default AppDomain.
-            Assembly[] loadedAssemblies = defaultAD.GetAssemblies();
+            var loadedAssemblies = from asm in defaultAD.GetAssemblies()
+                                   orderby asm.GetName().Name
+                                   select asm;
 
-            Console.WriteLine("******There are the assemblies loaded in {0}*****\n", defaultAD.FriendlyName);
+            Console.WriteLine("*****There are the assemblies loaded in {0}******\n", defaultAD.FriendlyName);
 
-            foreach(Assembly asm in loadedAssemblies)
+            foreach(var asm in loadedAssemblies)
             {
                 Console.WriteLine("->Name:{0}", asm.GetName().Name);
                 Console.WriteLine("->Version:{0}\n", asm.GetName().Version);
-            }
+            }             
         }
     }
 }
