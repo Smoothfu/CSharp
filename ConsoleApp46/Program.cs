@@ -15,10 +15,7 @@ namespace ConsoleApp46
             Console.WriteLine("*****Fun with custom AppDomains*****\n");
 
             //Show all loaded assemblies in default AppDomain.
-
-            AppDomain defaultAD = AppDomain.CurrentDomain;
-            ListAllAssembliesInAppDomain(defaultAD);
-            //Make a new AppDomain.
+           
             MakeNewAppDomain();
             Console.ReadLine();
         }
@@ -58,6 +55,10 @@ namespace ConsoleApp46
         {
             //Make a new AppDomain in the current process.
             AppDomain newAD = AppDomain.CreateDomain("SecondAppDomain");
+            newAD.DomainUnload += (o, s) =>
+            {
+                Console.WriteLine("The second AppDomain has been unloaded!");
+            };
             try
             {
                 //Now load ConsoleApp43.exe into this new domain.
@@ -70,6 +71,9 @@ namespace ConsoleApp46
 
             //Lista all assemblies
             ListAllAssembliesInAppDomain(newAD);
+
+            //Now tear down this AppDomain.
+            AppDomain.Unload(newAD);
         }
 
         static void ListAllAssembliesInAppDomain(AppDomain ad)
