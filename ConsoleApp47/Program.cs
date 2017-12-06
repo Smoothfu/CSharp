@@ -11,7 +11,8 @@ namespace ConsoleApp47
     {
         static void Main(string[] args)
         {
-            StartAndKillProcess();
+            DisplayDADStats();
+            
             Console.ReadLine();
         }
 
@@ -110,10 +111,12 @@ namespace ConsoleApp47
         {
             Process ieProc = null;
 
-            //Launch Internet Explorer, and go to tencent!
+            //Launch Internet Explorer, and go to tencent with maximized window.
             try
             {
-                ieProc = Process.Start("IExplore.exe", "www.qq.com");
+                ProcessStartInfo startInfo = new ProcessStartInfo("IExplore.exe", "www.qq.com");
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                ieProc = Process.Start(startInfo);
             }
             catch(InvalidOperationException ex)
             {
@@ -134,6 +137,18 @@ namespace ConsoleApp47
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private static void DisplayDADStats()
+        {
+            //Get access to the AppDomain for the current thread.
+            AppDomain defaultAD = AppDomain.CurrentDomain;
+            //Print out various stats about this domain.
+            Console.WriteLine("Name of this domain: {0}", defaultAD.FriendlyName);
+            Console.WriteLine("Id of domain in this process: {0}", defaultAD.Id);
+            Console.WriteLine("Is this the default domain?{0}", defaultAD.IsDefaultAppDomain());
+            Console.WriteLine("Base directory of this domain: {0}", defaultAD.BaseDirectory);
+
         }
     }
 }
