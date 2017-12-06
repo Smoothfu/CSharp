@@ -11,21 +11,7 @@ namespace ConsoleApp47
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Enter PID of process to investigate*****");
-            Console.WriteLine("PID: ");
-            string pID = Console.ReadLine();
-            int intPID;
-            try
-            {
-                if(int.TryParse(pID, out intPID))
-                {
-                    EnumModsForPid(intPID);
-                }
-            }
-            catch(InvalidOperationException ex)
-            {
-                Console.WriteLine("The invalid operation " + ex.Message);
-            } 
+            StartAndKillProcess();
             Console.ReadLine();
         }
 
@@ -118,6 +104,36 @@ namespace ConsoleApp47
             }
 
             Console.WriteLine("*******************************************");
+        }
+
+        static void StartAndKillProcess()
+        {
+            Process ieProc = null;
+
+            //Launch Internet Explorer, and go to tencent!
+            try
+            {
+                ieProc = Process.Start("IExplore.exe", "www.qq.com");
+            }
+            catch(InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("->Hit enter to kill {0}...", ieProc.ProcessName);
+            Console.ReadLine();
+
+            //Kill the iexplore.exe process
+
+            try
+            {
+                ieProc.Kill();
+            }
+
+            catch(InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
