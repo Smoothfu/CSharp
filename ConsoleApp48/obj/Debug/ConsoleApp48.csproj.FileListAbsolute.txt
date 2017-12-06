@@ -1,0 +1,6 @@
+D:\D\ConsoleApp48\ConsoleApp48\bin\Debug\ConsoleApp48.exe.config
+D:\D\ConsoleApp48\ConsoleApp48\bin\Debug\ConsoleApp48.exe
+D:\D\ConsoleApp48\ConsoleApp48\bin\Debug\ConsoleApp48.pdb
+D:\D\ConsoleApp48\ConsoleApp48\obj\Debug\ConsoleApp48.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp48\ConsoleApp48\obj\Debug\ConsoleApp48.exe
+D:\D\ConsoleApp48\ConsoleApp48\obj\Debug\ConsoleApp48.pdb
