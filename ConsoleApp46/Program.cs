@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.Remoting.Contexts; //For Context type.
+using System.Threading;                 //For Thread type.
 
 namespace ConsoleApp46
 {
@@ -12,11 +14,17 @@ namespace ConsoleApp46
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with custom AppDomains*****\n");
+            Console.WriteLine("*****Fun with object Context *****\n");
 
-            //Show all loaded assemblies in default AppDomain.
-           
-            MakeNewAppDomain();
+            //objects will display contextual info upon creation.
+            SportsCar sport = new SportsCar();
+            Console.WriteLine("\n\n\n\n");
+
+            SportsCar sport2 = new SportsCar();
+            Console.WriteLine("\n\n\n\n");
+
+            SportsCarTS synchroSport = new SportsCarTS();
+            
             Console.ReadLine();
         }
 
@@ -31,7 +39,7 @@ namespace ConsoleApp46
                                    select asm;
 
             Console.WriteLine("***********Here are the assemblies loaded in {0} **************\n", defaultAD.FriendlyName);
-            foreach(var asm in loadedAssemblies)
+            foreach (var asm in loadedAssemblies)
             {
                 Console.WriteLine("->Name:{0}", asm.GetName().Name);
                 Console.WriteLine("->Version:{0}\n", asm.GetName().Version);
@@ -64,7 +72,7 @@ namespace ConsoleApp46
                 //Now load ConsoleApp43.exe into this new domain.
                 newAD.Load("ConsoleApp43");
             }
-            catch(FileNotFoundException ex)
+            catch (FileNotFoundException ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -84,10 +92,43 @@ namespace ConsoleApp46
                                    select asm;
 
             Console.WriteLine("********Here are the assemblies loaded in {0}********\n");
-            foreach(var asm in loadedAssemblies)
+            foreach (var asm in loadedAssemblies)
             {
                 Console.WriteLine("->Name: {0}\n", asm.GetName().Name);
                 Console.WriteLine("->Version: {0}\n", asm.GetName().Version);
+            }
+        }
+    }
+
+    //This context-bound type will only be loaded into a synchronized(hence thread-safe) context.
+    //SportsCarTS demands to be loaded in a synchronization context.
+    [Synchronization]
+    class SportsCarTS : ContextBoundObject
+    {
+        public SportsCarTS()
+        {
+            //Get context informtion and print out context ID.
+            Context ctx = Thread.CurrentContext;
+            Console.WriteLine("{0} object in context {1}",
+                this.ToString(), ctx.ContextID);
+            foreach(IContextProperty icp in ctx.ContextProperties)
+            {
+                Console.WriteLine("->Ctx Prop: {0}", icp.Name);
+            }
+        }
+    }
+
+    //SportsCar has no special contextual needs and will be loaded into the default context of the AppDomain.
+    class SportsCar
+    {
+        public SportsCar()
+        {
+            //Get context information and print out context ID.
+            Context ctx = Thread.CurrentContext;
+            Console.WriteLine("{0} object in context {1}", this.ToString(), ctx.ContextID);
+            foreach(IContextProperty icp in ctx.ContextProperties)
+            {
+                Console.WriteLine("->Ctx Prop :{0}", icp.Name);
             }
         }
     }
