@@ -11,8 +11,21 @@ namespace ConsoleApp47
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("************Fun with Processes************\n");
-            ListAllRunningProcesses();
+            Console.WriteLine("*****Enter PID of process to investigate*****");
+            Console.WriteLine("PID: ");
+            string pID = Console.ReadLine();
+            int intPID;
+            try
+            {
+                if(int.TryParse(pID, out intPID))
+                {
+                    EnumThreadsForPid(intPID);
+                }
+            }
+            catch(InvalidOperationException ex)
+            {
+                Console.WriteLine("The invalid operation " + ex.Message);
+            } 
             Console.ReadLine();
         }
 
@@ -36,6 +49,49 @@ namespace ConsoleApp47
                 Console.WriteLine(info);
             }
             Console.WriteLine("***********************************************");
+        }
+
+        //If there is no process with the PID of 10736,a runtime exception will be thrown.
+
+        static void GetSpecifiedProcess()
+        {
+            Process theProc = null;
+            try
+            {
+                theProc = Process.GetProcessById(10736);
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void EnumThreadsForPid(int pID)
+        {
+            Process theProc = null;
+            try
+            {
+                theProc = Process.GetProcessById(pID);
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
+
+            //List out stats for each thread in the specified process.
+            Console.WriteLine("Here are the threads used by: {0}", theProc.ProcessName);
+
+            ProcessThreadCollection theThreads = theProc.Threads;
+             
+            foreach(ProcessThread pt in theThreads)
+            {
+                string info = string.Format("->Thread ID:{0}  \tStart Time:{1} \tPriority:{2}",
+                    pt.Id, pt.StartTime, pt.PriorityLevel);
+                Console.WriteLine(info);
+            }
+
+            Console.WriteLine("*********************************************************");
         }
     }
 }
