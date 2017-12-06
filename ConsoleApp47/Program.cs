@@ -19,7 +19,7 @@ namespace ConsoleApp47
             {
                 if(int.TryParse(pID, out intPID))
                 {
-                    EnumThreadsForPid(intPID);
+                    EnumModsForPid(intPID);
                 }
             }
             catch(InvalidOperationException ex)
@@ -92,6 +92,32 @@ namespace ConsoleApp47
             }
 
             Console.WriteLine("*********************************************************");
+        }
+
+        static void EnumModsForPid(int pID)
+        {
+            Process theProc = null;
+            try
+            {
+                theProc = Process.GetProcessById(pID);
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }           
+
+            ProcessModuleCollection theMods = theProc.Modules;
+            Console.WriteLine("There are {0} the loaded modules for: {1}\n\n\n\n",theMods.Count, theProc.ProcessName);
+
+
+            foreach (ProcessModule pm in theMods)
+            {
+                string info = string.Format("->Mod Name:{0}", pm.ModuleName);
+                Console.WriteLine(info);
+            }
+
+            Console.WriteLine("*******************************************");
         }
     }
 }
