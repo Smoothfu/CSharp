@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.IO;
 
 namespace ConsoleApp46
 {
@@ -55,8 +56,19 @@ namespace ConsoleApp46
 
         private static void MakeNewAppDomain()
         {
-            //Make a new AppDomain in the current process and list loaded assemblies.
+            //Make a new AppDomain in the current process.
             AppDomain newAD = AppDomain.CreateDomain("SecondAppDomain");
+            try
+            {
+                //Now load ConsoleApp43.exe into this new domain.
+                newAD.Load("ConsoleApp43");
+            }
+            catch(FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            //Lista all assemblies
             ListAllAssembliesInAppDomain(newAD);
         }
 
