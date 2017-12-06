@@ -44,10 +44,10 @@ namespace ConsoleApp48
 
             Console.WriteLine("*******Here are the assemblies loaded in {0}**************\n", defaultAD.FriendlyName);
 
+            Console.WriteLine("{0,-30}{1,-100}{2,10}", "Name", "FullName", "Version");
             foreach(var asm in loadedAssemblies)
             {
-                string info = string.Format("Name:{0,-30}Version:{1,10}", asm.GetName().Name, asm.GetName().Version);
-
+                string info = string.Format("{0,-30}{1,-100}{2,10}", asm.GetName().Name, asm.FullName,asm.GetName().Version);
                 Console.WriteLine(info);
             }
         }
