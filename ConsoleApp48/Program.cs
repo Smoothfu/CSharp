@@ -12,7 +12,7 @@ namespace ConsoleApp48
     {
         static void Main(string[] args)
         {
-            ListAllAssembliesInAppDomain();
+            ListAllAssembliesInAppDomainOrder();
             Console.ReadLine();
         }
         
@@ -30,6 +30,26 @@ namespace ConsoleApp48
                 Console.WriteLine("->Name: {0}\t    Version:{1}\t", asm.GetName().Name, asm.GetName().Version);
             }
 
+        }
+
+        static void ListAllAssembliesInAppDomainOrder()
+        {
+            //Get access to the AppDomain for the current thread.
+            AppDomain defaultAD = AppDomain.CurrentDomain;
+
+            //Now get all loaded assemblies in the default AppDomain.
+            var loadedAssemblies = from asm in defaultAD.GetAssemblies()
+                                   orderby asm.GetName().Name
+                                   select asm;
+
+            Console.WriteLine("*******Here are the assemblies loaded in {0}**************\n", defaultAD.FriendlyName);
+
+            foreach(var asm in loadedAssemblies)
+            {
+                string info = string.Format("Name:{0,-30}Version:{1,10}", asm.GetName().Name, asm.GetName().Version);
+
+                Console.WriteLine(info);
+            }
         }
     }
 }
