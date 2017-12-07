@@ -24,7 +24,7 @@ namespace ConsoleApp49
 
             foreach(MethodInfo mi in mis)
             {
-                Console.WriteLine(mi.Name);
+                Console.WriteLine(mi.Name+","+mi.ReturnType);
             }
         }
     }
@@ -49,6 +49,21 @@ namespace ConsoleApp49
         public void Divide(int x,int y)
         {
             Console.WriteLine("{0}/{1}={2}", x, y, x / y);
+        }
+
+        public static void Add10(int x)
+        {
+            Console.WriteLine("{0}+{1}={2}", x, 10, x + 10);
+        }
+
+        public virtual void Add100(int x)
+        {
+            Console.WriteLine("{0}+{1}={2}", x, 100, x + 100);
+        }
+
+        public bool IsMathClassMethod()
+        {
+            return true;
         }
     }
 }
