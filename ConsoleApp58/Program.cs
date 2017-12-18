@@ -43,6 +43,7 @@ namespace ConsoleApp58
 
             //Now,tell the car which method to call when it wants to send us messages.
             c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent));
+            c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent2));
 
             //Speed up(this will trigger the events).
             Console.WriteLine("*****Speeding up*****");
@@ -51,6 +52,11 @@ namespace ConsoleApp58
                 c1.Accelerate(20);
             }
             Console.ReadLine();
+        }
+
+        private static void OnCarEngineEvent2(string msgForCaller)
+        {
+            Console.WriteLine("=>{0}", msgForCaller.ToUpper());
         }
 
         //This is the target for incoming events
@@ -95,7 +101,14 @@ namespace ConsoleApp58
 
         public void RegisterWithCarEngine(CarEngineHandler methodToCall)
         {
-            listOfHandlers += methodToCall;
+            if (listOfHandlers == null)
+            {
+                listOfHandlers = methodToCall;
+            }
+            else
+            {
+                Delegate.Combine(listOfHandlers, methodToCall);
+            }
         }
 
         //4)Implement the Accelerate() method to invoke the delegate's invocation list under the correct circumstances.
