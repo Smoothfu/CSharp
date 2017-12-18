@@ -12,7 +12,7 @@ namespace ConsoleApp58
     //This class contains methods BinaryOp will point to.
     public class SimpleMath
     {
-        public static int Add(int x,int y)
+        public  int Add(int x,int y)
         {
             return x + y;
         }
@@ -38,11 +38,13 @@ namespace ConsoleApp58
         {
             Console.WriteLine("*****Simple Delegate Example*****\n");
 
-            //Create a BinaryOp delegate object that 'points to' Simple.Add()
-            BinaryOp b = new BinaryOp(SimpleMath.Add);
+            //.NET delegates can also point to instance methods as well.
+            SimpleMath m = new SimpleMath();
+            BinaryOp b = new BinaryOp(m.Add);
 
-
+            //Show information about this object.
             SimpleMath.DisplayDelegateInfo(b);
+            Console.WriteLine("10+10 is {0}", b(10, 10));
             Console.ReadLine();
         }
     } 
