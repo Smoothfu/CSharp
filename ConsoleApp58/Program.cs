@@ -21,6 +21,16 @@ namespace ConsoleApp58
         {
             return x - y;
         }
+
+        public static void DisplayDelegateInfo(Delegate delObj)
+        {
+            //Print the names of each member in the delegate's invocation list.
+            foreach(Delegate del in delObj.GetInvocationList())
+            {
+                Console.WriteLine("Method Name:{0}", del.Method);
+                Console.WriteLine("Type Name:{0}", del.Target);
+            }
+        }
     }
     class Program
     {
@@ -31,9 +41,8 @@ namespace ConsoleApp58
             //Create a BinaryOp delegate object that 'points to' Simple.Add()
             BinaryOp b = new BinaryOp(SimpleMath.Add);
 
-            //Invoke Add() method indirectly using delegate object.
-            Console.WriteLine("10+20 is {0}", b(10, 20));
 
+            SimpleMath.DisplayDelegateInfo(b);
             Console.ReadLine();
         }
     } 
