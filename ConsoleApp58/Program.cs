@@ -95,7 +95,7 @@ namespace ConsoleApp58
 
         public void RegisterWithCarEngine(CarEngineHandler methodToCall)
         {
-            listOfHandlers = methodToCall;
+            listOfHandlers += methodToCall;
         }
 
         //4)Implement the Accelerate() method to invoke the delegate's invocation list under the correct circumstances.
