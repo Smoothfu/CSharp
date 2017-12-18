@@ -6,30 +6,35 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp58
 {
-    public delegate void MathAlgorithmDel(int x, int y);
+    //This delegate can point to any method,taking two integers and returning an integer.
+    public delegate int BinaryOp(int x, int y);
+
+    //This class contains methods BinaryOp will point to.
+    public class SimpleMath
+    {
+        public static int Add(int x,int y)
+        {
+            return x + y;
+        }
+
+        public static int Subtract(int x,int y)
+        {
+            return x - y;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            MathClass mathObj = new MathClass();
-            MathAlgorithmDel AddDel = mathObj.AddMethod;
-            AddDel(10, 20);
-            MathAlgorithmDel SubtractDel = mathObj.SubtractMethod;
-            SubtractDel(10, 20);
+            Console.WriteLine("*****Simple Delegate Example*****\n");
+
+            //Create a BinaryOp delegate object that 'points to' Simple.Add()
+            BinaryOp b = new BinaryOp(SimpleMath.Add);
+
+            //Invoke Add() method indirectly using delegate object.
+            Console.WriteLine("10+20 is {0}", b(10, 20));
+
             Console.ReadLine();
         }
-    }
-
-    public class MathClass
-    {
-        public void AddMethod(int x,int y)
-        {
-            Console.WriteLine("{0}+{1}={2}", x, y, x + y);
-        }
-
-        public void SubtractMethod(int x,int y)
-        {
-            Console.WriteLine("{0}-{1}={2}", x, y, x - y);
-        }
-    }
+    } 
 }
