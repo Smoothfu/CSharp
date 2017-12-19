@@ -103,9 +103,11 @@ namespace ConsoleApp59
         private CarEngineHandler listOfHandlers;
 
         //3)Add registration function for the caller.
+        //Now with multicasting support!
+        //Note we are now using the+=operator,not the assignment operator=.
         public void RegisterWithCarEngine(CarEngineHandler methodToCall)
-        {
-            listOfHandlers = methodToCall;
+        {            
+            listOfHandlers += methodToCall;
         }
 
         //4)Implement the Accelerate() method to invoke the delegate's invocation list under the correct circumstances.
