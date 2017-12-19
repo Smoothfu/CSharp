@@ -17,7 +17,7 @@ namespace ConsoleApp59
             BinaryOp b = new BinaryOp(SimpleMath.Add);
 
             //Invoke Add() method indirectly using delegate object.
-            Console.WriteLine("10+10 is {0}", b(10, 10));
+            Console.WriteLine("10+10 is {0}", b.Invoke(10, 10));
             Console.ReadLine();
         }
     }
