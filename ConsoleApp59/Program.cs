@@ -21,11 +21,14 @@ namespace ConsoleApp59
             //Register multiple targets for the notifications
             
             c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent));
-            c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent2));
 
+            //This time,hold onto the delegate object,so we can unregister later.
+            Car.CarEngineHandler handler2 = new Car.CarEngineHandler(OnCarEngineEvent2);
+            c1.RegisterWithCarEngine(handler2);
 
-            //Speed up(this will trigger the events).
-            Console.WriteLine("*****Speeding up *****");
+            //Speed up this will trigger the events
+            Console.WriteLine("*****Speeding up*****");
+
             for(int i=0;i<10;i++)
             {
                 c1.Accelerate(20);
@@ -117,6 +120,11 @@ namespace ConsoleApp59
         public void RegisterWithCarEngine(CarEngineHandler methodToCall)
         {            
             listOfHandlers += methodToCall;
+        }
+
+        public void UnRegisterWithCarEngine(CarEngineHandler methodToCall)
+        {
+            listOfHandlers -= methodToCall;
         }
 
         //4)Implement the Accelerate() method to invoke the delegate's invocation list under the correct circumstances.
