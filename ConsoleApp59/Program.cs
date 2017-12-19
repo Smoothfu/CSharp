@@ -17,7 +17,11 @@ namespace ConsoleApp59
             Car c1 = new Car("Mercedes Benz", 100, 10);
 
             //Now,tell the car which method to call when it wants to send us messages.
+
+            //Register multiple targets for the notifications
+            
             c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent));
+            c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent2));
 
 
             //Speed up(this will trigger the events).
@@ -28,6 +32,11 @@ namespace ConsoleApp59
             }
 
             Console.ReadLine();
+        }
+
+        private static void OnCarEngineEvent2(string msgForCaller)
+        {
+            Console.WriteLine("=>{0}", msgForCaller.ToUpper());
         }
 
         private static void OnCarEngineEvent(string msgForCaller)
