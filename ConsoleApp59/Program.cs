@@ -10,31 +10,33 @@ namespace ConsoleApp59
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Delegates as event enablers*****\n");
+            Console.WriteLine("*****Method Group Conversion*****\n");
+            Car c1 = new Car();
 
-            //First,make a car object.
+            //Register the simple method name.
+            c1.RegisterWithCarEngine(CallMeHere);
 
-            Car c1 = new Car("Mercedes Benz", 100, 10);
-
-            //Now,tell the car which method to call when it wants to send us messages.
-
-            //Register multiple targets for the notifications
-            
-            c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent));
-
-            //This time,hold onto the delegate object,so we can unregister later.
-            Car.CarEngineHandler handler2 = new Car.CarEngineHandler(OnCarEngineEvent2);
-            c1.RegisterWithCarEngine(handler2);
-
-            //Speed up this will trigger the events
             Console.WriteLine("*****Speeding up*****");
-
             for(int i=0;i<10;i++)
             {
                 c1.Accelerate(20);
             }
 
+            //Unregister the simple method name.
+            c1.UnRegisterWithCarEngine(CallMeHere);
+
+            //No more notifications!
+
+            for(int i=0;i<10;i++)
+            {
+                c1.Accelerate(20);
+            }
             Console.ReadLine();
+        }
+
+        static void CallMeHere(string msg)
+        {
+            Console.WriteLine("=>Message from Car:{0}", msg);
         }
 
         private static void OnCarEngineEvent2(string msgForCaller)
