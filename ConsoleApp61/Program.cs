@@ -10,13 +10,16 @@ namespace ConsoleApp61
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with Action and Func*****");
+            Func<int, int, int> funcTarget = new Func<int, int, int>(Add);
+            int result = funcTarget(40, 40);
+            Console.WriteLine("40+40={0}", result);
 
-            //Use the Action<> delegate to point to DisplayMessage.
-            Action<string, ConsoleColor, int> actionTarget = new Action<string, ConsoleColor, int>(DisplayMessage);
-            actionTarget("Action Message!", ConsoleColor.Yellow, 15);
+            Console.WriteLine("\n\nBelow is return string method!\n");
 
-            Console.WriteLine("\nThis is the end of the action");
+            Func<int, int, string> stringFuncTarget = new Func<int, int, string>(SumToString);
+            string strResult = stringFuncTarget(10, 100);
+            Console.WriteLine("The result of Func<int,int,string> is :{0}", strResult);
+
             Console.ReadLine();
         }
 
@@ -35,6 +38,17 @@ namespace ConsoleApp61
             //Restore color.
             Console.ForegroundColor = previous;
  
+        }
+
+        //Target for the Func<> delegate.
+        static int Add(int x,int y)
+        {
+            return x + y;
+        }
+
+        static string SumToString(int x,int y)
+        {
+            return (x + y).ToString();
         }
     }
 }
