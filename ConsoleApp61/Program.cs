@@ -10,13 +10,24 @@ namespace ConsoleApp61
     {
         static void Main(string[] args)
         {
-            Func<int, int, int> funcTarget = Add;
-            int result = funcTarget.Invoke(100, 100);
-            Console.WriteLine("40+40={0}", result);
 
-            Func<int, int, string> funcTarget2 = SumToString;
-            string sum = funcTarget2.Invoke(90, 499);
-            Console.WriteLine(sum);
+            Console.WriteLine("*****Agh!No Encapsulation!*****\n");
+
+            //Make a Car.
+            Car myCar = new Car();
+
+            //We have direct access to the delegate!
+            myCar.listOfHandlers = new Car.CarEngineHandler(CallWhenExploded);
+
+            myCar.Accelerate(10);
+
+            //We can now assign to a whole new object... confusing at best.
+            myCar.listOfHandlers = new Car.CarEngineHandler(CallHereToo);
+            myCar.Accelerate(10);
+
+
+            //The caller can also directly invoke the delegate!
+            myCar.listOfHandlers.Invoke("Hee,hee,hee...");
 
             Console.ReadLine();
         }
@@ -47,6 +58,36 @@ namespace ConsoleApp61
         static string SumToString(int x,int y)
         {
             return (x + y).ToString();
+        }
+
+        static void CallWhenExploded(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+
+        static void CallHereToo(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+    }
+
+    public class Car
+    {
+        public delegate void CarEngineHandler(string msgForCaller);
+
+
+        //Now a public member!
+        public CarEngineHandler listOfHandlers;
+
+
+        //Just fire out the Exploded notification.
+
+        public void Accelerate(int delta)
+        {
+            if(listOfHandlers!=null)
+            {
+                listOfHandlers("Sorry, this car is dead...");
+            }
         }
     }
 }
