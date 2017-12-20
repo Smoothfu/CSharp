@@ -10,15 +10,13 @@ namespace ConsoleApp61
     {
         static void Main(string[] args)
         {
-            Func<int, int, int> funcTarget = new Func<int, int, int>(Add);
-            int result = funcTarget(40, 40);
+            Func<int, int, int> funcTarget = Add;
+            int result = funcTarget.Invoke(100, 100);
             Console.WriteLine("40+40={0}", result);
 
-            Console.WriteLine("\n\nBelow is return string method!\n");
-
-            Func<int, int, string> stringFuncTarget = new Func<int, int, string>(SumToString);
-            string strResult = stringFuncTarget(10, 100);
-            Console.WriteLine("The result of Func<int,int,string> is :{0}", strResult);
+            Func<int, int, string> funcTarget2 = SumToString;
+            string sum = funcTarget2.Invoke(90, 499);
+            Console.WriteLine(sum);
 
             Console.ReadLine();
         }
