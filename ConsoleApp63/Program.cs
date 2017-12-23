@@ -13,15 +13,11 @@ namespace ConsoleApp63
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Generic Delegates*****\n");
+            Console.WriteLine("******Fun with Action and Func*****");
 
-            //Register targets
-
-            MyGenericDelegate<string> strTarget = new MyGenericDelegate<string>(StringTarget);
-            strTarget("This is a new begining!");
-
-            MyGenericDelegate<int> intTarget = new MyGenericDelegate<int>(IntTarget);
-            intTarget(10000000);
+            //Use the Action<> delegate to point to DisplayMessage.
+            Action<string, ConsoleColor, int> actionTarget = new Action<string, ConsoleColor, int>(DisplayMessage);
+            actionTarget("Action Message!", ConsoleColor.Yellow, 10);
             Console.ReadLine();
         }
 
@@ -33,6 +29,22 @@ namespace ConsoleApp63
         static void IntTarget(int arg)
         {
             Console.WriteLine("++arg is :{0}", ++arg);
+        }
+
+        //This is a target for the Action<> delegate.
+        static void DisplayMessage(string msg,ConsoleColor txtColor,int printCount)
+        {
+            //Set color of console text.
+            ConsoleColor previous = Console.ForegroundColor;
+            Console.ForegroundColor = txtColor;
+
+            for(int i=0;i<printCount;i++)
+            {
+                Console.WriteLine(msg+"\n\n");
+            }
+
+            //restore color.
+            Console.ForegroundColor = previous;
         }
     }
 }
