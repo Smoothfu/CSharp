@@ -84,17 +84,53 @@ namespace ConsoleApp63
 
     public class Car
     {
+        //Car's events
         public delegate void CarEngineHandler(string msgForCaller);
+
+        //This car car send these events.
+        public event CarEngineHandler Exploded;
+        public event CarEngineHandler AboutToBlow;
 
         //Now a public member!
         public CarEngineHandler listOfHandlers;
+        private bool carIsDead;
+
+        public int CurrentSpeed { get; private set; }
+        public int MaxSpeed { get; private set; } = 100;
 
         //Just fire out the Exploded notification.
+
+
         public void Accelerate(int delta)
         {
-            if (listOfHandlers!=null)
+            //Id the car is dead,fire exploded event,
+            if(carIsDead)
             {
-                listOfHandlers("Sorry,this car is dead....");
+                if(Exploded!=null)
+                {
+                    Exploded("Sorry,this car is dead...");
+                }
+                else
+                {
+                    CurrentSpeed += delta;
+
+                    //Almost dead?
+
+                    if(10==MaxSpeed-CurrentSpeed && AboutToBlow!=null)
+                    {
+                        AboutToBlow("Carefully buddy!Gonna blow!");
+                    }
+
+                    //Still OK!
+                    if(CurrentSpeed>=MaxSpeed)
+                    {
+                        carIsDead = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("CurrentSpeed={0}", CurrentSpeed);
+                    }
+                }
             }
         }
 
