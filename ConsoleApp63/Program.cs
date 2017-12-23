@@ -13,33 +13,39 @@ namespace ConsoleApp63
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with Events*****\n");
+            Console.WriteLine("*****Prim and proper events*****\n");
 
+            //Make a car as usual.
             Car c1 = new Car("Mercedes Benz", 100, 10);
 
-            //Register event handlers
-            c1.CarEngineHandlerWithCustomized += new Car.CarEngineHandlerWithCustomizedEventArgs(CarAboutToBlow);
+            //Register event handlers.
+            c1.GenericAboutToBlow += C1_GenericAboutToBlow;
+            c1.GenericAboutToBlow += C1_GenericAboutToBlow1;
 
-            Car.CarEngineHandlerWithCustomizedEventArgs d = new Car.CarEngineHandlerWithCustomizedEventArgs(CarExploded);
-            c1.CarEngineHandlerExploded += d;
-
-            Console.WriteLine("*****Speeding up*****");
-            for (int i = 0; i < 10; i++)
-            {
-                c1.Accelerate(20);
-            }
-
-            //remove CarExploded method from invocation list.
-            c1.CarEngineHandlerExploded -= d;
-
-            Console.WriteLine("\n*****Speeding up******");
-
-            for (int i = 0; i < 10; i++)
-            {
-                c1.Accelerate(20);
-            }
-
+            EventHandler<CarEventArgs> d = new EventHandler<CarEventArgs>(CarExploded);
+            c1.GenericExploded += d;
+            c1.Accelerate(20);
             Console.ReadLine();
+        }
+
+        private static void C1_GenericAboutToBlow1(object sender, CarEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void C1_GenericAboutToBlow(object sender, CarEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void C1_AboutToBlow2(string msgForCaller)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void C1_AboutToBlow1(string msgForCaller)
+        {
+            throw new NotImplementedException();
         }
 
         private static void CarExploded(string msgForCaller)
@@ -169,6 +175,11 @@ namespace ConsoleApp63
         public delegate void CarEngineHandlerWithCustomizedEventArgs(object sender, CarEventArgs e);
         public event CarEngineHandlerWithCustomizedEventArgs CarEngineHandlerWithCustomized;
         public event CarEngineHandlerWithCustomizedEventArgs CarEngineHandlerExploded;
+
+        //Define the generic event
+
+        public event EventHandler<CarEventArgs> GenericExploded;
+        public event EventHandler<CarEventArgs> GenericAboutToBlow;
 
         //Just fire out the Exploded notification.
 
