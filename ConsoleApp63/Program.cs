@@ -13,11 +13,12 @@ namespace ConsoleApp63
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("******Fun with Action and Func*****");
+            Console.WriteLine("Invoke the action delegate with customzied method!\n");
+            Action<int, int> actionAdd = new Action<int, int>(AddMethod);
+            actionAdd(100, 1000);
 
-            //Use the Action<> delegate to point to DisplayMessage.
-            Action<string, ConsoleColor, int> actionTarget = new Action<string, ConsoleColor, int>(DisplayMessage);
-            actionTarget("Action Message!", ConsoleColor.Yellow, 10);
+            Action<int, int, int> actionSubtract = new Action<int, int, int>(SubtractMethod);
+            actionSubtract.Invoke(100, 200, 300);
             Console.ReadLine();
         }
 
@@ -45,6 +46,16 @@ namespace ConsoleApp63
 
             //restore color.
             Console.ForegroundColor = previous;
+        }
+
+        static void AddMethod(int x,int y)
+        {
+            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+        }
+
+        static void SubtractMethod(int x,int y,int z)
+        {
+            Console.WriteLine("{0}-{1}-{2}={3}\n", x, y, z, x - y - z);
         }
     }
 }
