@@ -20,6 +20,7 @@ namespace ConsoleApp63
             Func<int, int, string> funcTaget2 = SumToString;
             string sum = funcTaget2(90, 400);
             Console.WriteLine(sum);
+
             Console.ReadLine();
         }
 
