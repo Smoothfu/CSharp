@@ -25,7 +25,7 @@ namespace ConsoleApp63
             c1.Exploded += d;
 
             Console.WriteLine("*****Speeding up*****");
-            for(int i=0;i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
                 c1.Accelerate(20);
             }
@@ -35,11 +35,10 @@ namespace ConsoleApp63
 
             Console.WriteLine("\n*****Speeding up******");
 
-            for(int i=0;i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
                 c1.Accelerate(20);
-            }            
-
+            }
 
             Console.ReadLine();
         }
@@ -72,7 +71,7 @@ namespace ConsoleApp63
         private static void CallWhenExploded(string msgForCaller)
         {
             Console.WriteLine(msgForCaller + "\n\n");
-        }      
+        }
 
         static void StringTarget(string arg)
         {
@@ -85,38 +84,38 @@ namespace ConsoleApp63
         }
 
         //This is a target for the Action<> delegate.
-        static void DisplayMessage(string msg,ConsoleColor txtColor,int printCount)
+        static void DisplayMessage(string msg, ConsoleColor txtColor, int printCount)
         {
             //Set color of console text.
             ConsoleColor previous = Console.ForegroundColor;
             Console.ForegroundColor = txtColor;
 
-            for(int i=0;i<printCount;i++)
+            for (int i = 0; i < printCount; i++)
             {
-                Console.WriteLine(msg+"\n\n");
+                Console.WriteLine(msg + "\n\n");
             }
 
             //restore color.
             Console.ForegroundColor = previous;
         }
 
-        static void AddMethod(int x,int y)
+        static void AddMethod(int x, int y)
         {
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
 
-        static void SubtractMethod(int x,int y,int z)
+        static void SubtractMethod(int x, int y, int z)
         {
             Console.WriteLine("{0}-{1}-{2}={3}\n", x, y, z, x - y - z);
         }
 
         //Target for the Func<> delegate.
-        static int Add(int x,int y)
+        static int Add(int x, int y)
         {
             return x + y;
         }
 
-        static string SumToString(int x,int y)
+        static string SumToString(int x, int y)
         {
             return (x + y).ToString();
         }
@@ -133,7 +132,7 @@ namespace ConsoleApp63
 
         //Now a public member!
         public CarEngineHandler listOfHandlers;
-        private bool carIsDead { get;  set; }
+        private bool carIsDead { get; set; }
 
         public int CurrentSpeed { get; private set; }
         public int MaxSpeed { get; private set; } = 100;
@@ -142,11 +141,11 @@ namespace ConsoleApp63
 
         public int Delta { get; private set; }
 
-        public Car(string name,int maxSpeed,int deltaValue)
+        public Car(string name, int maxSpeed, int deltaValue)
         {
             CarName = name;
             MaxSpeed = maxSpeed;
-            Delta = deltaValue;           
+            Delta = deltaValue;
         }
 
         //Just fire out the Exploded notification.
@@ -161,45 +160,41 @@ namespace ConsoleApp63
             else
             {
                 carIsDead = true;
-            }
-            //If the car is active
-            if (!carIsDead)
-            {
-                CurrentSpeed += delta;
-                Console.WriteLine("The current speed is :\n" + CurrentSpeed);
-            }
+            }          
 
 
             //Id the car is dead,fire exploded event,
-            if(carIsDead)
+            if (carIsDead)
             {
-                if(Exploded!=null)
+
+                Exploded?.Invoke("Sorry,this car is dead...\n");
+            }
+
+
+            //If the car is active
+            else
+            {
+                CurrentSpeed += delta;
+
+                //Almost dead?
+
+                if (10 == MaxSpeed - CurrentSpeed)
                 {
-                    Exploded("Sorry,this car is dead...");
+                    AboutToBlow?.Invoke("Carefully buddy!Gonna blow!\n");
+                }
+
+                //Still OK!
+                if (CurrentSpeed >= MaxSpeed)
+                {
+                    carIsDead = true;
                 }
                 else
                 {
-                    CurrentSpeed += delta;
-
-                    //Almost dead?
-
-                    if(10==MaxSpeed-CurrentSpeed && AboutToBlow!=null)
-                    {
-                        AboutToBlow("Carefully buddy!Gonna blow!");
-                    }
-
-                    //Still OK!
-                    if(CurrentSpeed>=MaxSpeed)
-                    {
-                        carIsDead = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("CurrentSpeed={0}", CurrentSpeed);
-                    }
+                    Console.WriteLine("CurrentSpeed={0}\n", CurrentSpeed);
                 }
             }
         }
-
     }
+
 }
+
