@@ -13,19 +13,22 @@ namespace ConsoleApp63
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Prim and proper events*****\n");
 
-            //Make a car as usual.
+            Console.WriteLine("Anonymous Methods*****\n");
             Car c1 = new Car("Mercedes Benz", 100, 10);
 
-            //Register event handlers.
-            c1.GenericAboutToBlow += C1_GenericAboutToBlow;
-            c1.GenericAboutToBlow += C1_GenericAboutToBlow1;
+            //Register event handlers as anonymous methods.
+            c1.AboutToBlow += delegate
+            {
+                Console.WriteLine("Eek! Going to fast!");
+            };
 
-            EventHandler<CarEventArgs> d = new EventHandler<CarEventArgs>(CarExploded);
-            c1.GenericExploded += d;
-            c1.Accelerate(20);
+            c1.CarEngineHandlerWithCustomized += delegate (object sender, CarEventArgs e)
+            {
+                Console.WriteLine("Message from Car:{0}", e.msg);
+            };
             Console.ReadLine();
+
         }
 
         private static void C1_GenericAboutToBlow1(object sender, CarEventArgs e)
@@ -53,7 +56,7 @@ namespace ConsoleApp63
             Console.WriteLine("This is from CarExploded: " + msgForCaller);
         }
 
-        private static void CarExploded(object sender,CarEventArgs e)
+        private static void CarExploded(object sender, CarEventArgs e)
         {
             Console.WriteLine("With the CarEventArgs e in CarExploded,{0} says:{1}", sender, e.msg);
         }
@@ -63,16 +66,16 @@ namespace ConsoleApp63
             Console.WriteLine("This is from CarAboutToBlow :" + msgForCaller);
         }
 
-        private static void CarAboutToBlow(object sender,CarEventArgs e)
+        private static void CarAboutToBlow(object sender, CarEventArgs e)
         {
 
             //Just to be safe,perform a runtime check before casting.
             Car c = sender as Car;
-            if(c!=null)
+            if (c != null)
             {
                 Console.WriteLine("With the CarEventArgs e in CarAboutToBlow,{0} says:{1}", sender, e.msg);
             }
-            
+
         }
 
         private static void CarIsAlmostDoomed(string msgForCaller)
@@ -186,7 +189,7 @@ namespace ConsoleApp63
 
         public void Accelerate(int delta)
         {
-           
+
             //Id the car is dead,fire exploded event,
             if (carIsDead)
             {
