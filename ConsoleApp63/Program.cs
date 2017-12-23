@@ -13,18 +13,54 @@ namespace ConsoleApp63
     {
         static void Main(string[] args)
         {
-            //NameOfObject.NameOfEvent +=new RelatedDelegate(fucnctionToCall);
+            Console.WriteLine("*****Fun with Events*****\n");
 
-            Car myCar = new Car();
-            Car.CarEngineHandler d = new Car.CarEngineHandler(CarExplodedEventHandler);
-            myCar.Exploded += d;
+            Car c1 = new Car("Mercedes Benz", 100, 10);
 
-            //When you want to detach from a source of events,use the -=operator,using the following pattern:
-            //Name of object.NameOfEvent-=new RelatedDelegate(functionToCall);
+            //Register event handlers
+            c1.AboutToBlow += new Car.CarEngineHandler(CarIsAlmostDoomed);
+            c1.AboutToBlow += new Car.CarEngineHandler(CarAboutToBlow);
 
-            myCar.Exploded -= d;
+            Car.CarEngineHandler d = new Car.CarEngineHandler(CarExploded);
+            c1.Exploded += d;
+
+            Console.WriteLine("*****Speeding up*****");
+            for(int i=0;i<10;i++)
+            {
+                c1.Accelerate(20);
+            }
+
+            //remove CarExploded method from invocation list.
+            c1.Exploded -= d;
+
+            Console.WriteLine("\n*****Speeding up******");
+
+            for(int i=0;i<10;i++)
+            {
+                c1.Accelerate(20);
+            }            
 
             Console.ReadLine();
+        }
+
+        private static void CarExploded(string msgForCaller)
+        {
+            Console.WriteLine("This is from CarExploded: " + msgForCaller);
+        }
+
+        private static void CarAboutToBlow(string msgForCaller)
+        {
+            Console.WriteLine("This is from CarAboutToBlow :" + msgForCaller);
+        }
+
+        private static void CarIsAlmostDoomed(string msgForCaller)
+        {
+            Console.WriteLine("This is CarIsAlmostDoomed: " + msgForCaller);
+        }
+
+        private static void C1_AboutToBlow(string msgForCaller)
+        {
+            throw new NotImplementedException();
         }
 
         private static void CarExplodedEventHandler(string msgForCaller)
@@ -96,16 +132,43 @@ namespace ConsoleApp63
 
         //Now a public member!
         public CarEngineHandler listOfHandlers;
-        private bool carIsDead;
+        private bool carIsDead { get;  set; }
 
         public int CurrentSpeed { get; private set; }
         public int MaxSpeed { get; private set; } = 100;
+
+        public string CarName { get; private set; }
+
+        public int Delta { get; private set; }
+
+        public Car(string name,int maxSpeed,int deltaValue)
+        {
+            CarName = name;
+            MaxSpeed = maxSpeed;
+            Delta = deltaValue;           
+        }
 
         //Just fire out the Exploded notification.
 
 
         public void Accelerate(int delta)
         {
+            if (CurrentSpeed < MaxSpeed)
+            {
+                carIsDead = false;
+            }
+            else
+            {
+                carIsDead = true;
+            }
+            //If the car is active
+            if (!carIsDead)
+            {
+                CurrentSpeed += delta;
+                Console.WriteLine("The current speed is :\n" + CurrentSpeed);
+            }
+
+
             //Id the car is dead,fire exploded event,
             if(carIsDead)
             {
