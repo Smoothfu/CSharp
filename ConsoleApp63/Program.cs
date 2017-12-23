@@ -13,26 +13,29 @@ namespace ConsoleApp63
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Agh!No encapsulation!*****\n");
+            //NameOfObject.NameOfEvent +=new RelatedDelegate(fucnctionToCall);
 
-            //Make a car.
             Car myCar = new Car();
+            Car.CarEngineHandler d = new Car.CarEngineHandler(CarExplodedEventHandler);
+            myCar.Exploded += d;
 
-            //We have direct access to the delegate!
-            myCar.listOfHandlers = new Car.CarEngineHandler(CallWhenExploded);
-            myCar.Accelerate(10);
+            //When you want to detach from a source of events,use the -=operator,using the following pattern:
+            //Name of object.NameOfEvent-=new RelatedDelegate(functionToCall);
 
-            //The caller can also directly invoke the delegate!
-            myCar.listOfHandlers.Invoke("Hee,hee,hee....");
+            myCar.Exploded -= d;
+
             Console.ReadLine();
+        }
+
+        private static void CarExplodedEventHandler(string msgForCaller)
+        {
+            Console.WriteLine("This is the NameOfObject.NameOfEvent+=new RelatedDelegate(functionToCall)");
         }
 
         private static void CallWhenExploded(string msgForCaller)
         {
             Console.WriteLine(msgForCaller + "\n\n");
-        }
-
-      
+        }      
 
         static void StringTarget(string arg)
         {
