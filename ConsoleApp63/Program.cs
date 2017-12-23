@@ -13,12 +13,12 @@ namespace ConsoleApp63
     {
         static void Main(string[] args)
         {
-            Func<int, int, int> funcTarget = new Func<int, int, int>(Add);
+            Func<int, int, int> funcTarget = Add;
             int result = funcTarget.Invoke(40, 40);
             Console.WriteLine("40+40={0}\n", result);
 
-            Func<int, int, string> funcTarget2 = new Func<int, int, string>(SumToString);
-            string sum = funcTarget2(40, 40);
+            Func<int, int, string> funcTaget2 = SumToString;
+            string sum = funcTaget2(90, 400);
             Console.WriteLine(sum);
             Console.ReadLine();
         }
