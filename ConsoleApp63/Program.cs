@@ -13,16 +13,26 @@ namespace ConsoleApp63
     {
         static void Main(string[] args)
         {
-            Func<int, int, int> funcTarget = Add;
-            int result = funcTarget.Invoke(40, 40);
-            Console.WriteLine("40+40={0}\n", result);
+            Console.WriteLine("*****Agh!No encapsulation!*****\n");
 
-            Func<int, int, string> funcTaget2 = SumToString;
-            string sum = funcTaget2(90, 400);
-            Console.WriteLine(sum);
+            //Make a car.
+            Car myCar = new Car();
 
+            //We have direct access to the delegate!
+            myCar.listOfHandlers = new Car.CarEngineHandler(CallWhenExploded);
+            myCar.Accelerate(10);
+
+            //The caller can also directly invoke the delegate!
+            myCar.listOfHandlers.Invoke("Hee,hee,hee....");
             Console.ReadLine();
         }
+
+        private static void CallWhenExploded(string msgForCaller)
+        {
+            Console.WriteLine(msgForCaller + "\n\n");
+        }
+
+      
 
         static void StringTarget(string arg)
         {
@@ -70,5 +80,23 @@ namespace ConsoleApp63
         {
             return (x + y).ToString();
         }
+    }
+
+    public class Car
+    {
+        public delegate void CarEngineHandler(string msgForCaller);
+
+        //Now a public member!
+        public CarEngineHandler listOfHandlers;
+
+        //Just fire out the Exploded notification.
+        public void Accelerate(int delta)
+        {
+            if (listOfHandlers!=null)
+            {
+                listOfHandlers("Sorry,this car is dead....");
+            }
+        }
+
     }
 }
