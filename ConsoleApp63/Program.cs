@@ -18,11 +18,10 @@ namespace ConsoleApp63
             Car c1 = new Car("Mercedes Benz", 100, 10);
 
             //Register event handlers
-            c1.AboutToBlow += new Car.CarEngineHandler(CarIsAlmostDoomed);
-            c1.AboutToBlow += new Car.CarEngineHandler(CarAboutToBlow);
+            c1.CarEngineHandlerWithCustomized += new Car.CarEngineHandlerWithCustomizedEventArgs(CarAboutToBlow);
 
-            Car.CarEngineHandler d = new Car.CarEngineHandler(CarExploded);
-            c1.Exploded += d;
+            Car.CarEngineHandlerWithCustomizedEventArgs d = new Car.CarEngineHandlerWithCustomizedEventArgs(CarExploded);
+            c1.CarEngineHandlerExploded += d;
 
             Console.WriteLine("*****Speeding up*****");
             for (int i = 0; i < 10; i++)
@@ -31,7 +30,7 @@ namespace ConsoleApp63
             }
 
             //remove CarExploded method from invocation list.
-            c1.Exploded -= d;
+            c1.CarEngineHandlerExploded -= d;
 
             Console.WriteLine("\n*****Speeding up******");
 
@@ -48,9 +47,19 @@ namespace ConsoleApp63
             Console.WriteLine("This is from CarExploded: " + msgForCaller);
         }
 
+        private static void CarExploded(object sender,CarEventArgs e)
+        {
+            Console.WriteLine("With the CarEventArgs e in CarExploded,{0} says:{1}", sender, e.msg);
+        }
+
         private static void CarAboutToBlow(string msgForCaller)
         {
             Console.WriteLine("This is from CarAboutToBlow :" + msgForCaller);
+        }
+
+        private static void CarAboutToBlow(object sender,CarEventArgs e)
+        {
+            Console.WriteLine("With the CarEventArgs e in CarAboutToBlow,{0} says:{1}", sender, e.msg);
         }
 
         private static void CarIsAlmostDoomed(string msgForCaller)
@@ -148,28 +157,23 @@ namespace ConsoleApp63
             Delta = deltaValue;
         }
 
+        //Define the delegate  with customzied CarEventArgs
+
+        public delegate void CarEngineHandlerWithCustomizedEventArgs(object sender, CarEventArgs e);
+        public event CarEngineHandlerWithCustomizedEventArgs CarEngineHandlerWithCustomized;
+        public event CarEngineHandlerWithCustomizedEventArgs CarEngineHandlerExploded;
+
         //Just fire out the Exploded notification.
 
 
         public void Accelerate(int delta)
         {
-            if (CurrentSpeed < MaxSpeed)
-            {
-                carIsDead = false;
-            }
-            else
-            {
-                carIsDead = true;
-            }          
-
-
+           
             //Id the car is dead,fire exploded event,
             if (carIsDead)
             {
-
-                Exploded?.Invoke("Sorry,this car is dead...\n");
+                CarEngineHandlerExploded?.Invoke(this, new CarEventArgs("Sorry,this car is dead..."));
             }
-
 
             //If the car is active
             else
@@ -193,6 +197,15 @@ namespace ConsoleApp63
                     Console.WriteLine("CurrentSpeed={0}\n", CurrentSpeed);
                 }
             }
+        }
+    }
+
+    public class CarEventArgs : EventArgs
+    {
+        public readonly string msg;
+        public CarEventArgs(string message)
+        {
+            msg = message;
         }
     }
 
