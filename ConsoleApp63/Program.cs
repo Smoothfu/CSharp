@@ -59,7 +59,14 @@ namespace ConsoleApp63
 
         private static void CarAboutToBlow(object sender,CarEventArgs e)
         {
-            Console.WriteLine("With the CarEventArgs e in CarAboutToBlow,{0} says:{1}", sender, e.msg);
+
+            //Just to be safe,perform a runtime check before casting.
+            Car c = sender as Car;
+            if(c!=null)
+            {
+                Console.WriteLine("With the CarEventArgs e in CarAboutToBlow,{0} says:{1}", sender, e.msg);
+            }
+            
         }
 
         private static void CarIsAlmostDoomed(string msgForCaller)
