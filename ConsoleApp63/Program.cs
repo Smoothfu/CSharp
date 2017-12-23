@@ -13,12 +13,13 @@ namespace ConsoleApp63
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Invoke the action delegate with customzied method!\n");
-            Action<int, int> actionAdd = new Action<int, int>(AddMethod);
-            actionAdd(100, 1000);
+            Func<int, int, int> funcTarget = new Func<int, int, int>(Add);
+            int result = funcTarget.Invoke(40, 40);
+            Console.WriteLine("40+40={0}\n", result);
 
-            Action<int, int, int> actionSubtract = new Action<int, int, int>(SubtractMethod);
-            actionSubtract.Invoke(100, 200, 300);
+            Func<int, int, string> funcTarget2 = new Func<int, int, string>(SumToString);
+            string sum = funcTarget2(40, 40);
+            Console.WriteLine(sum);
             Console.ReadLine();
         }
 
@@ -56,6 +57,17 @@ namespace ConsoleApp63
         static void SubtractMethod(int x,int y,int z)
         {
             Console.WriteLine("{0}-{1}-{2}={3}\n", x, y, z, x - y - z);
+        }
+
+        //Target for the Func<> delegate.
+        static int Add(int x,int y)
+        {
+            return x + y;
+        }
+
+        static string SumToString(int x,int y)
+        {
+            return (x + y).ToString();
         }
     }
 }
