@@ -12,23 +12,18 @@ namespace ConsoleApp65
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with Extension Methods*****\n");
+            Console.WriteLine("*****Extending Interface Compatible Types*****\n");
 
-            //The int has assumed a new identity!
-            int myInt = 12345678;
-            myInt.DisplayDefiningAssembly();
+            //System.Array implements IEnumerable!
+            string[] data = { "Wow","this","is","sort","of","annoying","but","in","a","weird","way","fun!"};
 
-            //So has the dataset!
-            DataSet ds = new DataSet();
-            ds.DisplayDefiningAssembly();
+            data.PrintDataAndBeep();
 
-            //And the SoundPlayer!
-            System.Media.SoundPlayer sp = new System.Media.SoundPlayer();
-            sp.DisplayDefiningAssembly();
+            Console.WriteLine("\n\n\n\n");
 
-            //Use new integer functionality.
-            Console.WriteLine("Value of myInt:{0}\n\n", myInt);
-            Console.WriteLine("Reversed digits of myInts:{0}\n", myInt.ReverseDigits());
+            //List<T> implements IEnumerable!
+            List<int> myInts = new List<int>() { 10, 15, 20 };
+            myInts.PrintDataAndBeep();
 
             Console.ReadLine();
         }
@@ -58,6 +53,18 @@ namespace ConsoleApp65
 
             //Finally,return the modified string back as an int.
             return int.Parse(newDigits);
+        }
+    }
+
+    static class AnnoyingExtensions
+    {
+        public static void PrintDataAndBeep(this System.Collections.IEnumerable iterator)
+        {
+            foreach(var item in iterator)
+            {
+                Console.WriteLine(item+"\n");
+                Console.Beep();
+            }
         }
     }
 }
