@@ -43,6 +43,8 @@ namespace ConsoleApp65
             Console.WriteLine("obj.GetHashCode()=={0}\n", obj.GetHashCode());
             Console.WriteLine("\n\n\n\n");
         }
+
+        
     }
 
     static class MyExtensions
