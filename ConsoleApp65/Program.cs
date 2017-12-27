@@ -12,17 +12,13 @@ namespace ConsoleApp65
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with Annoymous Types*****\n");
+            Console.WriteLine("*****Fun with Anonymous Types*****\n");
 
             //Make an anonymous type representing a car.
-            var myCar = new { Color = "Black", Make = "Mercedes Benz", CurrentSpeed = 55 };
+            var myCar = new { Color="BlacK",Make="Mercedes Benz",CurrentSpeed=55};
 
-
-            //Now show the color and make.
-            Console.WriteLine("My car is a {0} {1}\n", myCar.Color, myCar.Make);
-
-            //Now call our helper method to build anonymous type via args.
-            BuildAnonType("BMW", "Black", 90);
+            //Reflect over what the compiler generated.
+            ReflectOverAnonymousType(myCar);    
            
             Console.ReadLine();
         }
@@ -37,6 +33,15 @@ namespace ConsoleApp65
 
             //Anon types have custom implementations of each virtual method of System.Object.
             Console.WriteLine("ToString()=={0}\n", car.ToString());
+        }
+
+        static void ReflectOverAnonymousType(object obj)
+        {
+            Console.WriteLine("obj is an instance of :{0}\n", obj.GetType().Name);
+            Console.WriteLine("Base class of {0} is {1}\n", obj.GetType().Name, obj.GetType().BaseType);
+            Console.WriteLine("obj.ToString()=={0}\n", obj.ToString());
+            Console.WriteLine("obj.GetHashCode()=={0}\n", obj.GetHashCode());
+            Console.WriteLine("\n\n\n\n");
         }
     }
 
