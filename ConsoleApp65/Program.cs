@@ -18,10 +18,13 @@ namespace ConsoleApp65
             int myInt = 12345678;
             myInt.DisplayDefiningAssembly();
 
-            //So had the dataset!
+            //So has the dataset!
             DataSet ds = new DataSet();
             ds.DisplayDefiningAssembly();
 
+            //And the SoundPlayer!
+            System.Media.SoundPlayer sp = new System.Media.SoundPlayer();
+            sp.DisplayDefiningAssembly();
 
             //Use new integer functionality.
             Console.WriteLine("Value of myInt:{0}\n\n", myInt);
