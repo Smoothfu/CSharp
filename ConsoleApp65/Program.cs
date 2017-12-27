@@ -24,7 +24,7 @@ namespace ConsoleApp65
 
 
             //Use new integer functionality.
-            Console.WriteLine("Value of myInt:{0}\n", myInt);
+            Console.WriteLine("Value of myInt:{0}\n\n", myInt);
             Console.WriteLine("Reversed digits of myInts:{0}\n", myInt.ReverseDigits());
 
             Console.ReadLine();
