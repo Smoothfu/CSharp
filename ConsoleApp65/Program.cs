@@ -17,6 +17,7 @@ namespace ConsoleApp65
             //Make an anonymous type representing a car.
             var myCar = new { Color = "Black", Make = "Mercedes Benz", CurrentSpeed = 55 };
 
+
             //Now show the color and make.
             Console.WriteLine("My car is a {0} {1}\n", myCar.Color, myCar.Make);
 
