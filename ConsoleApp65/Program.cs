@@ -12,20 +12,30 @@ namespace ConsoleApp65
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Extending Interface Compatible Types*****\n");
+            Console.WriteLine("*****Fun with Annoymous Types*****\n");
 
-            //System.Array implements IEnumerable!
-            string[] data = { "Wow","this","is","sort","of","annoying","but","in","a","weird","way","fun!"};
+            //Make an anonymous type representing a car.
+            var myCar = new { Color = "Black", Make = "Mercedes Benz", CurrentSpeed = 55 };
 
-            data.PrintDataAndBeep();
+            //Now show the color and make.
+            Console.WriteLine("My car is a {0} {1}\n", myCar.Color, myCar.Make);
 
-            Console.WriteLine("\n\n\n\n");
-
-            //List<T> implements IEnumerable!
-            List<int> myInts = new List<int>() { 10, 15, 20 };
-            myInts.PrintDataAndBeep();
-
+            //Now call our helper method to build anonymous type via args.
+            BuildAnonType("BMW", "Black", 90);
+           
             Console.ReadLine();
+        }
+
+        static void BuildAnonType(string make,string color,int currSp)
+        {
+            //Build anon type using incoming args.
+            var car = new { Make = make, Color = color, Speed = currSp };
+
+            //Note you can now use this type to get the property data!
+            Console.WriteLine("You have a {0} {1} going {2} KPH\n", car.Color, car.Make, car.Speed);
+
+            //Anon types have custom implementations of each virtual method of System.Object.
+            Console.WriteLine("ToString()=={0}\n", car.ToString());
         }
     }
 
