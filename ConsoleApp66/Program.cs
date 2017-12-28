@@ -10,8 +10,26 @@ namespace ConsoleApp66
     {
         unsafe static void Main(string[] args)
         {
-            PrintValueAndAddress();
+            Console.WriteLine("*****Calling method with unsafe code*****");
 
+            //Values for swap.
+            int i = 10, j = 20;
+
+            //Swap values "safely."
+            Console.WriteLine("\n*****Safe swap*****\n");
+            Console.WriteLine("Values before safe swap: i={0},j={1}\n", i, j);
+            SafeSwap(ref i, ref j);
+            Console.WriteLine("Values after safe swap: i={0},j={1}\n", i, j);
+
+            //Swap values "unsafely."
+            Console.WriteLine("\n*****Unsafe swap*****\n");
+            Console.WriteLine("Values before unsafe swap: i={0},j={1}\n", i, j);
+            unsafe
+            {
+                UnsafeSwap(&i, &j);
+            }
+
+            Console.WriteLine("Values after unsafe swap:i={0},j={1}\n", i, j);
             Console.ReadLine();
         }
 
@@ -43,6 +61,20 @@ namespace ConsoleApp66
             //Print some stats.
             Console.WriteLine("Value of myInt {0}\n", myInt);
             Console.WriteLine("Address of myInt {0:X}", (int)&pointerToMyInt);
+        }
+
+        unsafe public static void UnsafeSwap(int* i,int* j)
+        {
+            int temp = *i;
+            *i = *j;
+            *j = temp;
+        }
+
+        public static void SafeSwap(ref int i,ref int j)
+        {
+            int temp = i;
+            i = j;
+            j = temp;
         }
     }
 
