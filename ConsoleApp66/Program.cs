@@ -10,7 +10,8 @@ namespace ConsoleApp66
     {
         unsafe static void Main(string[] args)
         {
-            UseAndPinPoint();
+            UseSizeOfOperator();
+            UseSizeOfOperator2();
             Console.ReadLine();
         }
 
@@ -100,6 +101,18 @@ namespace ConsoleApp66
 
             //pr is now unpinned,and ready to be GC-ed once the method completes.
             Console.WriteLine("Point is :{0}\n", pr);
+        }
+
+        static void UseSizeOfOperator()
+        {
+            Console.WriteLine("The size of short is {0}\n", sizeof(short));
+            Console.WriteLine("The size of int is {0}\n", sizeof(int));
+            Console.WriteLine("The size of long is {0}\n", sizeof(long));
+        }
+
+        unsafe static void UseSizeOfOperator2()
+        {
+            Console.WriteLine("The size of Point is {0} \n", sizeof(Point));
         }
     }
 
