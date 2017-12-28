@@ -18,6 +18,7 @@ namespace ConsoleApp66
                 Price = 34.000
             };
 
+
             ReflectOverAnonymousType(purchaseItem);
             Console.ReadLine();
         }
