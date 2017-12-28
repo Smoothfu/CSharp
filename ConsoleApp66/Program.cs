@@ -10,26 +10,7 @@ namespace ConsoleApp66
     {
         unsafe static void Main(string[] args)
         {
-            Console.WriteLine("*****Calling method with unsafe code*****");
-
-            //Values for swap.
-            int i = 10, j = 20;
-
-            //Swap values "safely."
-            Console.WriteLine("\n*****Safe swap*****\n");
-            Console.WriteLine("Values before safe swap: i={0},j={1}\n", i, j);
-            SafeSwap(ref i, ref j);
-            Console.WriteLine("Values after safe swap: i={0},j={1}\n", i, j);
-
-            //Swap values "unsafely."
-            Console.WriteLine("\n*****Unsafe swap*****\n");
-            Console.WriteLine("Values before unsafe swap: i={0},j={1}\n", i, j);
-            unsafe
-            {
-                UnsafeSwap(&i, &j);
-            }
-
-            Console.WriteLine("Values after unsafe swap:i={0},j={1}\n", i, j);
+            UsePointerToPoint();
             Console.ReadLine();
         }
 
@@ -70,6 +51,23 @@ namespace ConsoleApp66
             *j = temp;
         }
 
+        unsafe static void UsePointerToPoint()
+        {
+            //Access members via pointer.
+            Point point;
+            Point* p = &point;
+            p->x = 100;
+            p->y = 200;
+            Console.WriteLine(p->ToString());
+
+            //Access members via pointer indirection.
+            Point point2;
+            Point* p2 = &point2;
+            (*p2).x = 100;
+            (*p2).y = 200;
+            Console.WriteLine((*p2).ToString());
+        }
+
         public static void SafeSwap(ref int i,ref int j)
         {
             int temp = i;
@@ -96,5 +94,15 @@ namespace ConsoleApp66
         public unsafe Node2* Left;
         public unsafe Node2* Right;
 
+    }
+    struct Point
+    {
+        public int x;
+        public int y;
+
+        public override string ToString()
+        {
+            return string.Format("({0},{1})\n", x, y);
+        }
     }
 }
