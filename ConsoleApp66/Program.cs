@@ -10,7 +10,7 @@ namespace ConsoleApp66
     {
         unsafe static void Main(string[] args)
         {
-            UnsafeStackAlloc();
+            UseAndPinPoint();
             Console.ReadLine();
         }
 
@@ -85,6 +85,22 @@ namespace ConsoleApp66
                 Console.Beep();
             }
         }
+
+        unsafe public static void UseAndPinPoint()
+        {
+            PointRef pr = new PointRef();
+            pr.x = 5;
+            pr.y = 6;
+
+            //Pin pr in place so it will not be moved or GC-ed.
+            fixed(int* p=&pr.x)
+            {
+                Console.WriteLine("The pointer x is :{0}\n", pr.x);
+            }
+
+            //pr is now unpinned,and ready to be GC-ed once the method completes.
+            Console.WriteLine("Point is :{0}\n", pr);
+        }
     }
 
     //This entire structure is "unsafe" and can be used only in an unsafe context.
@@ -114,6 +130,16 @@ namespace ConsoleApp66
         public override string ToString()
         {
             return string.Format("({0},{1})\n", x, y);
+        }
+    }
+
+    class PointRef // <=Renamed and retyped.
+    {
+        public int x;
+        public int y;
+        public override string ToString()
+        {
+            return string.Format("({0},{1})", x, y);
         }
     }
 }
