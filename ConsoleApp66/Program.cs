@@ -10,20 +10,7 @@ namespace ConsoleApp66
     {
         unsafe static void Main(string[] args)
         {
-            unsafe
-            {
-                int myInt = 10;
-
-                //Ok,because we are in an unsafe context.
-                SquareIntPointer(&myInt);
-                Console.WriteLine("myInt: {0}\n", myInt);
-            }
-
-            int myInt2 = 5;
-
-            //Compiler error! Must be in unsafe context!
-            SquareIntPointer(&myInt2);
-            Console.WriteLine("myInt: {0}\n", myInt2);
+            PrintValueAndAddress();
 
             Console.ReadLine();
         }
@@ -41,6 +28,21 @@ namespace ConsoleApp66
         {
             //Square the value just for a test.
             *myIntPointer *= *myIntPointer;
+        }
+
+        unsafe static void PrintValueAndAddress()
+        {
+            int myInt;
+
+            //define an int pointer, and assign it the address of myInt.
+            int* pointerToMyInt = &myInt;
+
+            //Assign value of myInt using pointer indirection.
+            *pointerToMyInt = 123;
+
+            //Print some stats.
+            Console.WriteLine("Value of myInt {0}\n", myInt);
+            Console.WriteLine("Address of myInt {0:X}", (int)&pointerToMyInt);
         }
     }
 
