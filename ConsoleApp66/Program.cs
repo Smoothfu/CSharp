@@ -10,7 +10,7 @@ namespace ConsoleApp66
     {
         unsafe static void Main(string[] args)
         {
-            UsePointerToPoint();
+            UnsafeStackAlloc();
             Console.ReadLine();
         }
 
@@ -73,6 +73,17 @@ namespace ConsoleApp66
             int temp = i;
             i = j;
             j = temp;
+        }
+
+        unsafe static void UnsafeStackAlloc()
+        {
+            char* p = stackalloc char[256];
+            for(int k=0;k<256;k++)
+            {
+                p[k] = (char)k;
+                Console.WriteLine("k={0},p[{1}]={2}",k,k,p[k]+"\n");
+                Console.Beep();
+            }
         }
     }
 
