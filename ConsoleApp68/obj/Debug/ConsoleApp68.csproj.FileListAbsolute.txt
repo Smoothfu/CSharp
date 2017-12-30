@@ -1,0 +1,7 @@
+D:\D\ConsoleApp68\ConsoleApp68\bin\Debug\ConsoleApp68.exe.config
+D:\D\ConsoleApp68\ConsoleApp68\bin\Debug\ConsoleApp68.exe
+D:\D\ConsoleApp68\ConsoleApp68\bin\Debug\ConsoleApp68.pdb
+D:\D\ConsoleApp68\ConsoleApp68\obj\Debug\ConsoleApp68.csprojResolveAssemblyReference.cache
+D:\D\ConsoleApp68\ConsoleApp68\obj\Debug\ConsoleApp68.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp68\ConsoleApp68\obj\Debug\ConsoleApp68.exe
+D:\D\ConsoleApp68\ConsoleApp68\obj\Debug\ConsoleApp68.pdb
