@@ -11,21 +11,24 @@ namespace ConsoleApp68
     {
         static void Main(string[] args)
         {
-            List<Rectangle> myListOfRects = new List<Rectangle>
-            {
-                new Rectangle{TopLeft=new Point{X=10,Y=10},
-                BottomRight=new Point{X=200,Y=200}},
-                new Rectangle{TopLeft=new Point{X=2,Y=2},
-                BottomRight=new Point{X=100,Y=100}},
-                new Rectangle{TopLeft=new Point{X=5,Y=5},
-                BottomRight=new Point{X=90,Y=75}}
-            };
-
-            foreach(var rect in myListOfRects)
-            {
-                Console.WriteLine(rect + "\n");
-            }
+            LambdaExpressionSyntax();
             Console.ReadLine();
+        }
+
+        static void LambdaExpressionSyntax()
+        {
+            //Make a list of integers.
+            List<int> intList = new List<int>();
+            intList.AddRange(new int[] { 20, 12, 324, 334, 34, 3890, 45, 7875, 75777, 56457, 4575, 5784, 43789332, 3238, 434678, 89232, 324136 });
+
+            //C# lambda expression.
+            List<int> evenNumbers = intList.FindAll(x => (x % 2) == 0);
+
+            Console.WriteLine("\nHere are your even numbers: \n");
+            foreach(int evenNumber in evenNumbers)
+            {
+                Console.Write("{0}\t", evenNumber);
+            }
         }
 
         static void DeclareImplicitVars()
