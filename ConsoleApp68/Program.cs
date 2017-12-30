@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,9 @@ namespace ConsoleApp68
     {
         static void Main(string[] args)
         {
-            LambdaExpressionSyntax();
+            //Since everything extends System.Object,all classes and structures can use this extension.
+            int myInt = 12345678;
+            myInt.DisplayDefiningAssembly();
             Console.ReadLine();
         }
 
@@ -56,7 +59,6 @@ namespace ConsoleApp68
         }
     }
 
-
     public class Rectangle : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -71,6 +73,15 @@ namespace ConsoleApp68
         public override string ToString()
         {
             return string.Format("TopLeft:{0},BottomRight:{1}\n", TopLeft, BottomRight);
+        }
+    }
+
+    static class ObjectExtensions
+    {
+        //Define an extension method to System.Object.
+        public static void DisplayDefiningAssembly(this object obj)
+        {
+            Console.WriteLine("{0} lives here :->{1}\n", obj.GetType().Name, Assembly.GetAssembly(obj.GetType()));
         }
     }
 }
