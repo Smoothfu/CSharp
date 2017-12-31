@@ -25,15 +25,25 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            foreach(var pi in itemsInStock)
-            {
-                Console.WriteLine(pi);
-            }
+            SelectEverything(itemsInStock);
 
 
             Console.ReadLine();
         }
 
+
+        static void SelectEverything(ProductInfo[] products)
+        {
+            //Get everything!
+            Console.WriteLine("All product details: \n");
+            var allProducts = from p in products select p;
+            
+
+            foreach(var prod in allProducts)
+            {
+                Console.WriteLine(prod.ToString());
+            }
+        }
         static void OfTypeAsFilter()
         {
             //Extract the ints from the ArrayList.
