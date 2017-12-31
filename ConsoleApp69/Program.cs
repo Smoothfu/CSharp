@@ -12,8 +12,23 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            LINQOverArrayList();
+            OfTypeAsFilter();
             Console.ReadLine();
+        }
+
+        static void OfTypeAsFilter()
+        {
+            //Extract the ints from the ArrayList.
+            ArrayList al = new ArrayList();
+            al.AddRange(new object[] { 10, 400, 8,79,5434,32453145,3245425,2345231,3453145,34509903,3245, false, new Car(), "String data" });
+            var myInts = al.OfType<int>();
+
+            //Print int numbers
+
+            foreach(int i in myInts)
+            {
+                Console.WriteLine(i + "\n");
+            }
         }
 
 
