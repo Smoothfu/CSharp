@@ -25,15 +25,22 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            Array objs = GetProjectedSubset(itemsInStock);
-            foreach(object obj in objs)
-            {
-                //Calling ToString() on each anonymous object.
-                Console.WriteLine(obj);
-            }
-
+            GetCountFromQuery();
 
             Console.ReadLine();
+        }
+
+        static void GetCountFromQuery()
+        {
+            string[] arr = {"C Sharp","Data Structure","Operating System","Big Data","Network","Artificial Intelligence","Cloud",""};
+
+            //Get count from the query
+
+            int num = (from g in arr where g.Length > 2 select g).Count();
+
+            //Primt out the number of items.
+            Console.WriteLine("{0} items have longer than 2 fields\n", num);
+
         }
 
         static Array GetProjectedSubset(ProductInfo[] products)
