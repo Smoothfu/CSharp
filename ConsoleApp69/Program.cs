@@ -12,10 +12,37 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            QueryOverInts();            
+            ImmediateExecution();            
             Console.ReadLine();
         }
 
+        static void ImmediateExecution()
+        {
+            int[] numbers = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 54566246, 674567, 562456, 567536745, 1, 2, 3, 4, 5, 3, 23, 232, 32345, 546, 5667, 56498 };
+
+            //Get data right now as int[]
+
+            int[] subsetAsIntArray = (from i in numbers where i > 1000000 select i).ToArray<int>();
+
+            Console.WriteLine("\nGet data right now as int[]\n");
+            foreach(int i in subsetAsIntArray)
+            {
+                Console.WriteLine(i);
+            }
+
+            //Get data right now as List<int>
+            List<int> intList = (from i in numbers where i > 10000000 select i).ToList<int>();
+
+            Console.WriteLine("\n\n\nGet data right now as List<int>\n");
+
+            if(intList!=null && intList.Any())
+            {
+                foreach(var i in intList)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
         static void QueryOverInts()
         {
             int[] numbers = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100,54566246,674567,562456,567536745, 1, 2, 3, 4, 5, 3, 23, 232, 32345, 546, 5667, 56498 };
