@@ -25,10 +25,22 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            GetOverStock(itemsInStock);
+            GetNamesAndDescriptions(itemsInStock);
 
 
             Console.ReadLine();
+        }
+
+        static void GetNamesAndDescriptions(ProductInfo[] products)
+        {
+            Console.WriteLine("Names and Descriptions: \n\n\n");
+
+            var namesDescs = from p in products select new { p.Name, p.Description };
+
+            foreach(var item in namesDescs)
+            {
+                Console.WriteLine(item.ToString());
+            }
         }
 
         static void GetOverStock(ProductInfo[] products)
@@ -44,7 +56,6 @@ namespace ConsoleApp69
                 Console.WriteLine(p.ToString());
             }
         }
-
 
         static void SelectEverything(ProductInfo[] products)
         {
