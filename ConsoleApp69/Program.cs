@@ -25,11 +25,23 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            DisplayUnion();
+            DisplayConcat();
 
             Console.ReadLine();
         }
 
+        static void DisplayConcat()
+        {
+            List<string> myCars = new List<string> { "Yugo", "Aztec", "BMW" };
+            List<string> yourCars = new List<string> { "BMW", "Saah", "Aztec" };
+
+            var carConcat = (from c in myCars select c).Concat(from c2 in yourCars select c2);
+
+            foreach(var c in carConcat)
+            {
+                Console.WriteLine(c + "\n\n");
+            }
+        }
 
         static void DisplayUnion()
         {
@@ -38,8 +50,7 @@ namespace ConsoleApp69
 
             //Get the union of these containers.
 
-            var carUnion = (from c in myCars select c).
-                Union(from c2 in yourCars select c2);
+            var carUnion = (from c in myCars select c).Union(from c2 in yourCars select c2);
 
             Console.WriteLine("Here is everything:\n");
             foreach(string str in carUnion)
