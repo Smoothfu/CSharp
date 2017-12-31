@@ -25,11 +25,27 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            ReverseEverything(itemsInStock);
+            DisplayDiff();
 
             Console.ReadLine();
         }
 
+        static void DisplayDiff()
+        {
+            List<string> myCars = new List<string> { "Yugo", "Aztec", "BMW" };
+            List<string> yourCars = new List<string> { "BMW", "Saab", "Aztec" };
+
+            var carDiff = (from c in myCars select c)
+                .Except(from c2 in yourCars select c2);
+
+            Console.WriteLine("Here is what your don't have,but I do: \n");
+
+            foreach(string str in carDiff)
+            {
+                Console.WriteLine(str);
+            }
+
+        }
         static void ReverseEverything(ProductInfo[] products)
         {
             Console.WriteLine("Product in reverse: \n");
