@@ -25,9 +25,27 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            DisplayDiff();
+            DisplayIntersection();
 
             Console.ReadLine();
+        }
+
+        static void DisplayIntersection()
+        {
+            List<string> myCars = new List<string> { "Yugo", "Aztec", "BMW" };
+            List<string> yourCars = new List<string> { "BMW", "Saab", "Aztec" };
+
+
+            //Get the common members.
+            var carIntersect = (from c in myCars select c).Intersect
+                (from c2 in yourCars select c2);
+
+            Console.WriteLine("Here is what we have in common: \n");
+            
+            foreach(string str in carIntersect)
+            {
+                Console.WriteLine(str+"\n");
+            }
         }
 
         static void DisplayDiff()
