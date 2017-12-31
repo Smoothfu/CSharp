@@ -12,12 +12,15 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            //Since everything extens System.Object,all classes and structures can use this extension.
-            int myInt = 12345678;
-            myInt.DisplayDefiningAssembly();
+            //Make an anonymous type that is composed of another.
+            var purchaseItem = new
+            {
+                TimeBought = DateTime.Now,
+                ItemBought = new { Color = "BlacK", Make = "Mercedes Benz", CurrentSpeed = 55 },
+                Price = 34000
+            };
 
-            System.Data.DataSet ds = new System.Data.DataSet();
-            ds.DisplayDefiningAssembly();
+            Console.WriteLine(purchaseItem.ToString());
             Console.ReadLine();
         }
 
