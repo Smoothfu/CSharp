@@ -12,8 +12,24 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            ImmediateExecution();            
+            Console.WriteLine("*****LINQ Return Values*****\n");
+            IEnumerable<string> subset = GetStringSubset();
+
+            foreach(string item in subset)
+            {
+                Console.WriteLine(item+"\n");
+            }
             Console.ReadLine();
+        }
+
+        static IEnumerable<string> GetStringSubset()
+        {
+            string[] CSBooks = { "C#", "Database", "AI", "Data Structure", "Operating System", "Cloud", "NetWork","Big Data"};
+
+            //Note subset is an IEnumerable<string> -compatible object.
+            IEnumerable<string> theBooks = from c in CSBooks orderby c descending select c;
+
+            return theBooks;
         }
 
         static void ImmediateExecution()
