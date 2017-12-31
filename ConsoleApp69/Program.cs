@@ -25,11 +25,30 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            DisplayIntersection();
+            DisplayUnion();
 
             Console.ReadLine();
         }
 
+
+        static void DisplayUnion()
+        {
+            List<string> myCars = new List<string> { "Yugo", "Aztec", "BMW" };
+            List<string> yourCars = new List<string> { "BMW", "Saab", "Aztec" };
+
+            //Get the union of these containers.
+
+            var carUnion = (from c in myCars select c).
+                Union(from c2 in yourCars select c2);
+
+            Console.WriteLine("Here is everything:\n");
+            foreach(string str in carUnion)
+            {
+                //Prints all distinct memebers 
+                Console.WriteLine(str);
+            }
+
+        }
         static void DisplayIntersection()
         {
             List<string> myCars = new List<string> { "Yugo", "Aztec", "BMW" };
