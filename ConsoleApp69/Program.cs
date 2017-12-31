@@ -11,9 +11,22 @@ namespace ConsoleApp69
     class Program
     {
         static void Main(string[] args)
-        {             
-            QueryOverStrings();            
+        {
+            QueryOverInts();            
             Console.ReadLine();
+        }
+
+        static void QueryOverInts()
+        {
+            int[] numbers = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100,54566246,674567,562456,567536745, 1, 2, 3, 4, 5, 3, 23, 232, 32345, 546, 5667, 56498 };
+
+            //Print only items which is more than 100000
+            IEnumerable<int> subset = from i in numbers where i > 100000 select i ;
+            foreach(int i in subset)
+            {
+                Console.WriteLine("Item:{0}\n", i);
+            }
+            ReflectOverQueryResults(subset);
         }
 
         static void QueryOverStrings()
