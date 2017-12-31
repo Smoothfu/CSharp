@@ -12,8 +12,8 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with LINQ to objects*****\n");
-            QueryOverStrings();            
+            Console.WriteLine("*****Fun with LINQ to objects orderby Array.Sort()*****\n");
+            QueryOverStringsLongHand();            
             Console.ReadLine();
         }
 
@@ -28,6 +28,30 @@ namespace ConsoleApp69
             foreach(var book in subset)
             {
                 Console.WriteLine(book);
+            }
+        }
+
+        static void QueryOverStringsLongHand()
+        {
+            //Assume we have an array of strings.
+            string[] booksArray = new string[] { "C#", "Data Structure", "SOA", "Operating System", "Database", "NetWork", "AI", "Big Data", "Cloud" };
+            string[] bookArr = new string[booksArray.Length];
+
+            for(int i=0;i<booksArray.Length;i++)
+            {
+                bookArr[i] = booksArray[i];
+            }
+
+            //Now sort them.
+            Array.Sort(bookArr);
+
+            //Print out the results.
+            foreach(string book in bookArr)
+            {
+                if(book!=null && !string.IsNullOrEmpty(book))
+                {
+                    Console.WriteLine(book+"\n");
+                }
             }
         }
 
