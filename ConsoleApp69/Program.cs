@@ -12,27 +12,7 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****LINQ over generic Collections*****\n");
-
-            //Make a List<> of Car objects.
-            List<Car> myCarList = new List<Car>()
-            {
-                new Car{PetName="BMW",Color="BLACK",Speed=50,Make="BMW"},
-                new Car{PetName="BENZ",Color="BLACK",Speed=60,Make="BENZ"},
-                new Car{PetName="LINCOLN",Color="BLACK",Speed=70,Make="LINCOLN"},
-                new Car{PetName="BENTLEY",Color="BLACK",Speed=80,Make="BENTLEY"},
-                new Car{PetName="Ferrari",Color="RED",Speed=90,Make="Ferrari"},
-                new Car{PetName="Rolls Royce",Color="BLACK",Speed=100,Make="Rolls Royce"}
-            };
-
-            foreach(var mc in myCarList)
-            {
-                Console.WriteLine(mc);
-            }
-
-            GetFastCars(myCarList);
-
-
+            LINQOverArrayList();
             Console.ReadLine();
         }
 
@@ -50,6 +30,32 @@ namespace ConsoleApp69
             }
         }
 
+        static void LINQOverArrayList()
+        {
+            Console.WriteLine("\n\n*****LINQ over ArrayList*****\n");
+
+            //Here is a nongeneric collection of cars.
+            ArrayList myCars = new ArrayList()
+            {
+                new Car{PetName="BMW",Color="BLACK",Speed=50,Make="BMW"},
+                new Car{PetName="BENZ",Color="BLACK",Speed=60,Make="BENZ"},
+                new Car{PetName="LINCOLN",Color="BLACK",Speed=70,Make="LINCOLN"},
+                new Car{PetName="BENTLEY",Color="BLACK",Speed=80,Make="BENTLEY"},
+                new Car{PetName="Ferrari",Color="RED",Speed=90,Make="Ferrari"},
+                new Car{PetName="Rolls Royce",Color="BLACK",Speed=100,Make="Rolls Royce"}
+            };
+
+            //Transform ArrayList into an IEnumerable<T> -compatible type.
+            var myCarsList = myCars.OfType<Car>();
+
+            //Create a query expression targeting the compatible type.
+            var fastCars = from car in myCarsList where car.Speed > 55 select car;
+
+            foreach(var car in fastCars)
+            {
+                Console.WriteLine("{0}'s speed is faster than 55\n", car.PetName);
+            }
+        }
         static string[] GetStringSubsetAsArray()
         {
             string[] CSBooks = { "C#", "Database", "AI", "Data Structure", "Operating System", "Cloud", "NetWork", "Big Data" };
