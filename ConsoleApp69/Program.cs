@@ -25,10 +25,21 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            GetNamesAndDescriptions(itemsInStock);
+            Array objs = GetProjectedSubset(itemsInStock);
+            foreach(object obj in objs)
+            {
+                //Calling ToString() on each anonymous object.
+                Console.WriteLine(obj);
+            }
 
 
             Console.ReadLine();
+        }
+
+        static Array GetProjectedSubset(ProductInfo[] products)
+        {
+            var nameDescs = from p in products select new { p.Name, p.Description };
+            return nameDescs.ToArray();
         }
 
         static void GetNamesAndDescriptions(ProductInfo[] products)
