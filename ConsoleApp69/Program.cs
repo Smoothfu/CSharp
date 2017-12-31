@@ -26,6 +26,14 @@ namespace ConsoleApp69
             {
                 Console.WriteLine("Item:{0}\n", i);
             }
+
+            Console.WriteLine("\n\n\nChange some data in array.\n");
+            numbers[0] = 352346245;
+
+            foreach(var a in numbers)
+            {
+                Console.WriteLine(a);
+            }
             ReflectOverQueryResults(subset);
         }
 
