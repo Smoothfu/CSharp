@@ -25,10 +25,24 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            SelectEverything(itemsInStock);
+            GetOverStock(itemsInStock);
 
 
             Console.ReadLine();
+        }
+
+        static void GetOverStock(ProductInfo[] products)
+        {
+            Console.WriteLine("The overstock items!\n\n");
+
+            //Get only the items where we have more than 25 in stock.
+
+            var overStock = from p in products where p.NumberInStock > 10 select p;
+
+            foreach(ProductInfo p in overStock)
+            {
+                Console.WriteLine(p.ToString());
+            }
         }
 
 
