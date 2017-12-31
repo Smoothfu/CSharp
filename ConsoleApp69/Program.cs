@@ -25,11 +25,21 @@ namespace ConsoleApp69
                 new ProductInfo{Name="Rolls Royce",Description="Noble car",NumberInStock=15}
             };
 
-            GetCountFromQuery();
+            ReverseEverything(itemsInStock);
 
             Console.ReadLine();
         }
 
+        static void ReverseEverything(ProductInfo[] products)
+        {
+            Console.WriteLine("Product in reverse: \n");
+            var allProducts = from p in products select p;
+            foreach(var prod in allProducts.Reverse())
+            {
+                Console.WriteLine(prod.ToString());
+            }
+        }
+         
         static void GetCountFromQuery()
         {
             string[] arr = {"C Sharp","Data Structure","Operating System","Big Data","Network","Artificial Intelligence","Cloud",""};
