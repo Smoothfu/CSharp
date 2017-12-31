@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,12 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            LambdaExpressionSyntax();
+            //Since everything extens System.Object,all classes and structures can use this extension.
+            int myInt = 12345678;
+            myInt.DisplayDefiningAssembly();
+
+            System.Data.DataSet ds = new System.Data.DataSet();
+            ds.DisplayDefiningAssembly();
             Console.ReadLine();
         }
 
@@ -74,6 +80,15 @@ namespace ConsoleApp69
         public override string ToString()
         {
             return string.Format("LeftTop: {0},RightBottom:{1}\n", LeftTop, RightBottom);
+        }
+    }
+
+    static class ObjectExtensions
+    {
+        //Define an extension method to System.Object
+        public static void DisplayDefiningAssembly(this object obj)
+        {
+            Console.WriteLine("lives here:->{0}\n",  Assembly.GetAssembly(obj.GetType()));
         }
     }
 }
