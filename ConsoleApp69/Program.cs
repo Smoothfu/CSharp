@@ -12,13 +12,25 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Returning LINQ Results via Immediate Execution*****\n");
-            IEnumerable<string> subset = GetStringSubsetAsArray();
+            Console.WriteLine("*****LINQ over generic Collections*****\n");
 
-            foreach(string item in subset)
+            //Make a List<> of Car objects.
+            List<Car> myCarList = new List<Car>()
             {
-                Console.WriteLine(item+"\n");
+                new Car{PetName="BMW",Color="BLACK",Speed=50,Make="BMW"},
+                new Car{PetName="BENZ",Color="BLACK",Speed=60,Make="BENZ"},
+                new Car{PetName="LINCOLN",Color="BLACK",Speed=70,Make="LINCOLN"},
+                new Car{PetName="BENTLEY",Color="BLACK",Speed=80,Make="BENTLEY"},
+                new Car{PetName="Ferrari",Color="RED",Speed=90,Make="Ferrari"},
+                new Car{PetName="Rolls Royce",Color="BLACK",Speed=100,Make="Rolls Royce"}
+            };
+
+            foreach(var mc in myCarList)
+            {
+                Console.WriteLine(mc);
             }
+
+
             Console.ReadLine();
         }
 
@@ -205,6 +217,20 @@ namespace ConsoleApp69
         public static void DisplayDefiningAssembly(this object obj)
         {
             Console.WriteLine("lives here:->{0}\n",  Assembly.GetAssembly(obj.GetType()));
+        }
+    }
+
+    class Car
+    {
+        public string PetName { get; set; } = "";
+        public string Color { get; set; } = "";
+
+        public int Speed { get; set; }
+        public string Make { get; set; } = "";
+
+        public override string ToString()
+        {
+            return string.Format("PetName:{0},Color={1},Speed={2},Make={3}\n\n", PetName, Color, Speed, Make);
         }
     }
 }
