@@ -12,8 +12,8 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****LINQ Return Values*****\n");
-            IEnumerable<string> subset = GetStringSubset();
+            Console.WriteLine("*****Returning LINQ Results via Immediate Execution*****\n");
+            IEnumerable<string> subset = GetStringSubsetAsArray();
 
             foreach(string item in subset)
             {
@@ -22,6 +22,15 @@ namespace ConsoleApp69
             Console.ReadLine();
         }
 
+        static string[] GetStringSubsetAsArray()
+        {
+            string[] CSBooks = { "C#", "Database", "AI", "Data Structure", "Operating System", "Cloud", "NetWork", "Big Data" };
+
+            var theBooks = from c in CSBooks orderby c select c;
+
+            //Map results into an array.
+            return theBooks.ToArray();
+        }
         static IEnumerable<string> GetStringSubset()
         {
             string[] CSBooks = { "C#", "Database", "AI", "Data Structure", "Operating System", "Cloud", "NetWork","Big Data"};
