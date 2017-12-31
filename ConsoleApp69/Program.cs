@@ -30,8 +30,24 @@ namespace ConsoleApp69
                 Console.WriteLine(mc);
             }
 
+            GetFastCars(myCarList);
+
 
             Console.ReadLine();
+        }
+
+
+        static void GetFastCars(List<Car> myCarsList)
+        {
+            //Find all Car objects in the List<>,where the speed is greater than 55.
+            var fastCars = from c in myCarsList where c.Speed > 55 select c;
+
+            Console.WriteLine("\n\n\n\nFind all car objects in the list<> where the speed is greater than 55\n");
+
+            foreach(var car in fastCars)
+            {
+                Console.WriteLine("{0}'speed is fater than 55\n", car.PetName);
+            }
         }
 
         static string[] GetStringSubsetAsArray()
