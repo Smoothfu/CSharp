@@ -12,16 +12,23 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            //Make an anonymous type that is composed of another.
-            var purchaseItem = new
-            {
-                TimeBought = DateTime.Now,
-                ItemBought = new { Color = "BlacK", Make = "Mercedes Benz", CurrentSpeed = 55 },
-                Price = 34000
-            };
-
-            Console.WriteLine(purchaseItem.ToString());
+            Console.WriteLine("*****Fun with LINQ to objects*****\n");
+            QueryOverStrings();            
             Console.ReadLine();
+        }
+
+        static void QueryOverStrings()
+        {
+            //Assume we have an array of strings.
+            string[] currentBooks = { "C#", "Data Structure", "SOA", "Operating System", "Database", "NetWork", "AI", "Big Data" };
+
+            var selectedBooks = from book in currentBooks
+                                where book.Length > 1
+                                select book;
+            foreach(var book in selectedBooks)
+            {
+                Console.WriteLine(book);
+            }
         }
 
         static void DeclareImplicitVars()
