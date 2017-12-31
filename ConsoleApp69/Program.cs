@@ -11,29 +11,7 @@ namespace ConsoleApp69
     {
         static void Main(string[] args)
         {
-            List<Rectangle> myListRectangles = new List<Rectangle>
-            {
-                new Rectangle
-                {
-                    LeftTop=new Point{X=10,Y=10},
-                    RightBottom=new Point{X=200,Y=200}
-                },
-                new Rectangle
-                {
-                    LeftTop=new Point{X=2,Y=2},
-                    RightBottom=new Point{X=100,Y=100}
-                },
-                new Rectangle
-                {
-                    LeftTop=new Point{X=5,Y=5},
-                    RightBottom=new Point{X=90,Y=75}
-                }
-            };
-
-            foreach(var rect in myListRectangles)
-            {
-                Console.WriteLine(rect + "\n");
-            }
+            LambdaExpressionSyntax();
             Console.ReadLine();
         }
 
@@ -48,6 +26,27 @@ namespace ConsoleApp69
             Console.WriteLine("myInt is a: {0}\n", myInt.GetType().Name);
             Console.WriteLine("myBool is a :{0}\n", myInt.GetType().Name);
             Console.WriteLine("myString is a:{0}\n", myString.GetType().Name);           
+        }
+
+        static void LambdaExpressionSyntax()
+        {
+            //Make a list of integers.
+            List<int> intList = new List<int>();
+
+            intList.AddRange(new int[] { 20, 32, 434, 234, 53, 45231, 54323, 343, 32809, 231, 3521359, 342338, 4534243, 42423428, 789823412, 4234218 });
+
+
+            //C# lambda expression.
+            List<int> evenNumbers = intList.FindAll(x => (x % 2) == 0);
+
+            Console.WriteLine("Here are your even numbers: ");
+
+            foreach(int evenNumber in evenNumbers)
+            {
+                Console.Write("{0}  \t", evenNumber);
+            }
+            Console.ReadLine();
+
         }
     }
 
