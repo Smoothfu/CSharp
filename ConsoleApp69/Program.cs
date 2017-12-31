@@ -11,9 +11,8 @@ namespace ConsoleApp69
     class Program
     {
         static void Main(string[] args)
-        {
-            Console.WriteLine("*****Fun with LINQ to objects orderby Array.Sort()*****\n");
-            QueryOverStringsLongHand();            
+        {             
+            QueryOverStrings();            
             Console.ReadLine();
         }
 
@@ -29,6 +28,16 @@ namespace ConsoleApp69
             {
                 Console.WriteLine(book);
             }
+
+            Console.WriteLine("\n\n\nRelecting over a LINQ Result Set*****\n");
+            ReflectOverQueryResults(subset);
+        }
+
+        static void ReflectOverQueryResults(object resultSet)
+        {
+            Console.WriteLine("*****Info about your query*****\n");
+            Console.WriteLine("resultSet is type:{0}\n", resultSet.GetType().Name);
+            Console.WriteLine("resultSet location:{0}\n", resultSet.GetType().Assembly.GetName().Name);
         }
 
         static void QueryOverStringsLongHand()
