@@ -10,7 +10,7 @@ namespace ConsoleApp70
     {
         static void Main(string[] args)
         {
-            QueryStringWithOperators();
+            QuerySytringsWithEnumerabeAndLambdas();
             Console.ReadLine();
         }
 
@@ -54,6 +54,24 @@ namespace ConsoleApp70
             {
                 Console.WriteLine(book + "\n");
             }
+        }
+
+        static void QuerySytringsWithEnumerabeAndLambdas()
+        {
+            Console.WriteLine("*****Using Enumerable /Lambda Expressions*****\n");
+
+            string[] currentBooks = { "C Sharp", "Data Structure", "Network", "Operating System", "Big Data", "Artificial Intelligence", "Cloud", "Compile Language", "SOA" };
+
+            //Build a query expression using extension methods granted to the Array via the Enumerable type.
+            var subset = currentBooks.Where(x => x.Contains(" ")).OrderBy(x => x).Select(x => x);
+
+            //Print out the result.
+            foreach(var book in subset)
+            {
+                Console.WriteLine("Item: {0}\n", book);
+            }
+
+            Console.WriteLine("\n\n\n");
         }
     }
 }
