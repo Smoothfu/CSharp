@@ -10,7 +10,7 @@ namespace ConsoleApp70
     {
         static void Main(string[] args)
         {
-            QueryStringsWithAnonymousMethods();
+            QueryStringsWithRawDelegates();
             Console.ReadLine();
         }
 
@@ -118,5 +118,29 @@ namespace ConsoleApp70
 
             Console.ReadLine();
         }
+
+        public static void QueryStringsWithRawDelegates()
+        {
+            Console.WriteLine("*****Using Raw Delegates*****\n");
+
+            string[] currentBooks = { "C Sharp", "Data Structure", "Network", "Operating System", "Big Data", "Artificial Intelligence", "Cloud", "Compile Language", "SOA" };
+
+            //Build the necessary Func<> delegates.
+            Func<string, bool> searchFilter = new Func<string, bool>(Filter);
+            Func<string, string> itemsToProcess = new Func<string, string>(ProcessItem);
+
+            //Pass the delegates into the methods of Enumerable.
+            var subset = currentBooks.Where(searchFilter).OrderBy(itemsToProcess).Select(itemsToProcess);
+
+            //Print out the results
+            foreach(var book in subset)
+            {
+                Console.WriteLine("Item: {0}\n", book);
+            }
+        }
+
+        //Delegate targets.
+        public static bool Filter(string book) { return book.Contains(" "); }
+        public static string ProcessItem(string book) { return book; }
     }
 }
