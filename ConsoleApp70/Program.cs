@@ -10,7 +10,7 @@ namespace ConsoleApp70
     {
         static void Main(string[] args)
         {
-            QueryStringsWithEnumerableAndLambdas2();
+            QueryStringsWithAnonymousMethods();
             Console.ReadLine();
         }
 
@@ -90,6 +90,33 @@ namespace ConsoleApp70
             }
 
             Console.WriteLine("\n\n\n");
+        }
+
+        static void QueryStringsWithAnonymousMethods()
+        {
+            Console.WriteLine("*****Using Anonymous Methods*****\n\n\n");
+
+            string[] currentBooks = { "C Sharp", "Data Structure", "Network", "Operating System", "Big Data", "Artificial Intelligence", "Cloud", "Compile Language", "SOA" };
+
+            //Build the necessary Func<> delegates using anonymous methods.
+            Func<string, bool> searchFilter = delegate (string book)
+               {
+                   return book.Contains(" ");
+               };
+
+            Func<string, string> itemToProcess = delegate (string str) { return str; };
+
+            //Pass the delegates into the methods of Enumerable.
+            var subset = currentBooks.Where(searchFilter)
+                .OrderBy(itemToProcess).Select(itemToProcess);
+
+            //Print out the results.
+            foreach(var book in subset)
+            {
+                Console.WriteLine("Item: {0}\n", book);
+            }
+
+            Console.ReadLine();
         }
     }
 }
