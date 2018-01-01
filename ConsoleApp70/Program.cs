@@ -10,7 +10,7 @@ namespace ConsoleApp70
     {
         static void Main(string[] args)
         {
-            AggregateOps();
+            QueryStringWithOperators();
             Console.ReadLine();
         }
 
@@ -40,6 +40,20 @@ namespace ConsoleApp70
             Console.WriteLine("Average temp:{0}\n", (from t in winterTemps select t).Average());
 
             Console.WriteLine("Sum of all temps:{0}", (from t in winterTemps select t).Sum());
+        }
+
+        static void QueryStringWithOperators()
+        {
+            Console.WriteLine("*****Using Query Operators*****\n");
+
+            string[] currentBooks = { "C Sharp", "Data Structure", "Network", "Operating System", "Big Data", "Artificial Intelligence", "Cloud", "Compile Language","SOA"};
+
+            var subset = from book in currentBooks orderby book select book;
+
+            foreach(var book in subset)
+            {
+                Console.WriteLine(book + "\n");
+            }
         }
     }
 }
