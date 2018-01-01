@@ -10,14 +10,20 @@ namespace ConsoleApp71
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****GC Basics*****\n");
+            Console.WriteLine("*****Fun with System.GC*****\n");
 
-            //Create a new Car object on the managed heap.We are returned a reference to this object.
+            //print out estimated number of bytes on heap.
+            Console.WriteLine("Estimated number of bytes on heap:{0}", GC.GetTotalMemory(false));
+
+
+            //MaxGeneration is zero based,so add 1 for display purposes.
+            Console.WriteLine("This OS has {0} object genertions.\n", (GC.MaxGeneration + 1));
 
             Car refToMyCar = new Car("BMW", 50);
-
-            //The C# dot operator(.) is used to invoke members on the object using our reference variable.
             Console.WriteLine(refToMyCar.ToString());
+
+            //Print out generation of refToMyCar object.
+            Console.WriteLine("Generation of refToMyCar is :{0}\n", GC.GetGeneration(refToMyCar));
             Console.ReadLine();
         }
     }
