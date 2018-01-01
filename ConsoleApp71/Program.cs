@@ -13,7 +13,7 @@ namespace ConsoleApp71
             Console.WriteLine("*****Fun with System.GC*****\n");
 
             //print out estimated number of bytes on heap.
-            Console.WriteLine("Estimated number of bytes on heap:{0}", GC.GetTotalMemory(false));
+            Console.WriteLine("Estimated number of bytes on heap:{0}\n", GC.GetTotalMemory(false));
 
 
             //MaxGeneration is zero based,so add 1 for display purposes.
@@ -24,6 +24,13 @@ namespace ConsoleApp71
 
             //Print out generation of refToMyCar object.
             Console.WriteLine("Generation of refToMyCar is :{0}\n", GC.GetGeneration(refToMyCar));
+
+            refToMyCar.SpeedUp();
+
+            //Print out the generation of refToMyCar object.
+            Console.WriteLine("Generation of refToMyCar after invoke is :{0}\n", GC.GetGeneration(refToMyCar));
+
+            refToMyCar.SpeedUp();
             Console.ReadLine();
         }
     }
@@ -47,7 +54,12 @@ namespace ConsoleApp71
 
         public override string ToString()
         {
-            return string.Format("{0} is going {1} MPH", PetName, CurrentSpeed);
+            return string.Format("{0} is going {1} MPH\n", PetName, CurrentSpeed);
+        }
+
+        public void SpeedUp()
+        {
+            Console.WriteLine("Speed up to less than 60!\n");
         }
 
     }
