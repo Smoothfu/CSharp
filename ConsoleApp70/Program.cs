@@ -10,7 +10,7 @@ namespace ConsoleApp70
     {
         static void Main(string[] args)
         {
-            DisplayConcatNoDups();
+            AggregateOps();
             Console.ReadLine();
         }
 
@@ -26,6 +26,20 @@ namespace ConsoleApp70
             {
                 Console.WriteLine(str + "\n");
             }
+        }
+
+        static void AggregateOps()
+        {
+            double[] winterTemps = { 2.0, -21.3, 8, -4, 0, 8.2, 23, 34.2, 7, 9.2, -4, 2, 32, 21, 32.1, 23.2, 13.2 };
+
+            //various aggregation examples.
+            Console.WriteLine("Max temp:{0}\n", (from t in winterTemps select t).Max());
+
+            Console.WriteLine("Min temp:{0}\n", (from t in winterTemps select t).Min());
+
+            Console.WriteLine("Average temp:{0}\n", (from t in winterTemps select t).Average());
+
+            Console.WriteLine("Sum of all temps:{0}", (from t in winterTemps select t).Sum());
         }
     }
 }
