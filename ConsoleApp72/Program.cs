@@ -25,6 +25,7 @@ namespace ConsoleApp72
         {
             //If myCar is the only reference to the Car object,it may be destoryed when this method returns.
             Car myCar = new Car();
+
         }
     }
 
