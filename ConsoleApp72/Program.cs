@@ -20,6 +20,12 @@ namespace ConsoleApp72
             Console.WriteLine(refToMyCar.ToString());
             Console.ReadLine();
         }
+
+        static void MakeCar()
+        {
+            //If myCar is the only reference to the Car object,it may be destoryed when this method returns.
+            Car myCar = new Car();
+        }
     }
 
     public class Car
