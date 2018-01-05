@@ -21,7 +21,7 @@ namespace ConsoleApp73
             Car refToMyCar = new Car("BMW", 50);
 
             //Force a garbage collection and wait for each object to be finialized.
-            GC.Collect();
+            GC.Collect(0,GCCollectionMode.Default);
             GC.WaitForPendingFinalizers();
 
             Console.WriteLine(refToMyCar.ToString());
