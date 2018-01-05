@@ -19,6 +19,11 @@ namespace ConsoleApp73
             Console.WriteLine("This OS has {0} object generations.\n", (GC.MaxGeneration + 1));
 
             Car refToMyCar = new Car("BMW", 50);
+
+            //Force a garbage collection and wait for each object to be finialized.
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
             Console.WriteLine(refToMyCar.ToString());
 
 
