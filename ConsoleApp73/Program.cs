@@ -26,7 +26,6 @@ namespace ConsoleApp73
 
             Console.WriteLine(refToMyCar.ToString());
 
-
             //Print out generations of refToMyCar object.
             Console.WriteLine("Generation of refToMyCar is :{0}\n", GC.GetGeneration(refToMyCar));
             Console.ReadLine();
