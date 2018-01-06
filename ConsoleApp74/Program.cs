@@ -10,16 +10,12 @@ namespace ConsoleApp74
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Allocated memory: {0}\n", GC.GetTotalMemory(false));
-            Console.WriteLine("*****Fun with Finalizers*****\n");
-            Console.WriteLine("Hit the return key to shut down this app!\n");
-            Console.WriteLine("and force the GC to invoke Finalize()\n");
-            Console.WriteLine("for finalizable objects created in this AppDomain.\n");
-             
+            Console.WriteLine("*****Fun with Dispose*****\n");
+
+            //Cretae a disposable object and call Dispose()
+            //to free any internal resources
             MyResourceWrapper rw = new MyResourceWrapper();
-
-            Console.WriteLine("Allocated memory: {0}\n", GC.GetTotalMemory(false));
-
+            rw.Dispose();
             Console.ReadLine();
         }
     }
@@ -42,7 +38,8 @@ namespace ConsoleApp74
     }
 
     //override System.Object.Finalize() via finalizer syntax.
-    class MyResourceWrapper
+    //Implementing IDisposable.
+    class MyResourceWrapper:IDisposable
     {
         public MyResourceWrapper()
         {
@@ -59,6 +56,16 @@ namespace ConsoleApp74
 
             //Beep when destoryed testing purposes only!
             Console.Beep();
+        }
+
+
+        //The object user should call this method when they finish with the object.
+        public void Dispose()
+        {
+            //Clean up unmanaged resources...
+            //Dispose other contained disposable objects...
+            //Just for a test.
+            Console.WriteLine("*****In Dispose!*****\n");
         }
     }
 }
