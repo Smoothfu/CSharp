@@ -12,16 +12,13 @@ namespace ConsoleApp74
         static void Main(string[] args)
         {
             Console.WriteLine("*****Fun with Dispose*****\n");
-
-            //Cretae a disposable object and call Dispose()
-            //to free any internal resources
-            MyResourceWrapper rw = new MyResourceWrapper();
-            if(rw is IDisposable)
+            //Dispose() is called automatically when the using scope exists.
+            using (MyResourceWrapper mrw = new MyResourceWrapper())
             {
-                rw.Dispose();
+                //use mrw object.
             }
-           
-            Console.ReadLine();
+
+                Console.ReadLine();
         }
     }
 
