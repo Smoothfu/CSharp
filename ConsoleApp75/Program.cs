@@ -10,12 +10,15 @@ namespace ConsoleApp75
     {
         static void Main(string[] args)
         {
-
             Console.WriteLine("*****Fun with Lazy Instantiation*****\n");
 
-            //This caller does not care about getting all songs but directllt created 10000 objects!
+            //No allocation of AllTracks object here!
             MediaPlayer mPlayer = new MediaPlayer();
             mPlayer.Play();
+
+            //Allocation of AllTracks happens when you call GetAllTracks()
+            MediaPlayer yourPlayer = new MediaPlayer();
+            AllTracks yourMusics = yourPlayer.GetAllTracks();
 
             Console.ReadLine();
 
@@ -35,7 +38,7 @@ namespace ConsoleApp75
     class AllTracks
     {
         //Our media player can have a maximum of 10000 songs.
-        private Song[] allSongs = new Song[10000];
+        private Lazy<AllTracks> allSongs = new Lazy<AllTracks>();
 
         public AllTracks()
         {
