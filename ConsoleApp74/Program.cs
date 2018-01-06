@@ -25,6 +25,10 @@ namespace ConsoleApp74
             Console.WriteLine("Generation of refToMyCar is :{0}\n", GC.GetGeneration(refToMyCar));
 
             Console.WriteLine(GC.GetTotalMemory(false));
+
+            //Force a garbage collection and wait for each object to be finalized.
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             Console.ReadLine();
 
         }
