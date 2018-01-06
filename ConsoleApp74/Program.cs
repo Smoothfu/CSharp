@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ConsoleApp74
 {
@@ -70,6 +71,17 @@ namespace ConsoleApp74
             //Dispose other contained disposable objects...
             //Just for a test.
             Console.WriteLine("*****In Dispose!*****\n");
+        }
+
+        //Assume you have imported the System.IO namespace...
+        static void DisposeFileStream()
+        {
+            FileStream fs = new FileStream("mytext.txt", FileMode.OpenOrCreate);
+             
+            //Confusing,to say the least!
+            //These method calls do the same thing.
+            fs.Close();
+            fs.Dispose();
         }
     }
 }
