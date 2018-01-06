@@ -12,13 +12,13 @@ namespace ConsoleApp74
         static void Main(string[] args)
         {
             Console.WriteLine("*****Fun with Dispose*****\n");
-            //Dispose() is called automatically when the using scope exists.
-            using (MyResourceWrapper mrw = new MyResourceWrapper())
-            {
-                //use mrw object.
-            }
 
-                Console.ReadLine();
+            //Use a comma-delimited list to declare multiple objects to dispose.
+            using (MyResourceWrapper rw1 = new MyResourceWrapper(), rw2 = new MyResourceWrapper())
+            {
+
+            }
+            Console.ReadLine();
         }
     }
 
