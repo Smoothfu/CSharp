@@ -31,6 +31,15 @@ namespace ConsoleApp74
             Console.WriteLine("Allocated memory: {0}\n", GC.GetTotalMemory(false));
             Console.ReadLine();
 
+        /***
+         * public enum GCCollectionMode{
+         * default,//forced is the current default.
+         * Forced,//Tells the runtime to collect immediately!
+         Optimized, //Allows the runtime to determine whether the current time is optimal to reclaim objects
+
+         * 
+         * ***/
+
         }
     }
 
