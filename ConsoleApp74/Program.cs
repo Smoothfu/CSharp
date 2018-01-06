@@ -15,7 +15,11 @@ namespace ConsoleApp74
             //Cretae a disposable object and call Dispose()
             //to free any internal resources
             MyResourceWrapper rw = new MyResourceWrapper();
-            rw.Dispose();
+            if(rw is IDisposable)
+            {
+                rw.Dispose();
+            }
+           
             Console.ReadLine();
         }
     }
