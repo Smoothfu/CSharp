@@ -10,13 +10,14 @@ namespace ConsoleApp74
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine("*****Fun with System.GC*****\n");
 
             //Print out estimated number of bytes on heap.
-            Console.WriteLine("Estimated bytes on heap: {0}\n", GC.GetTotalMemory(false));
+            Console.WriteLine("Estimated bytes on heap:{0}\n", GC.GetTotalMemory(false));
 
             //MaxGeneration is zero based,so add 1 for display purposes.
-            Console.WriteLine("This OS has {0} object generation.\n", (GC.MaxGeneration + 1));
+            Console.WriteLine("This OS has {0} object generations.\n", (GC.MaxGeneration + 1));
 
             Car refToMyCar = new Car("BENZ", 50);
             Console.WriteLine(refToMyCar.ToString());
@@ -24,11 +25,6 @@ namespace ConsoleApp74
             //Print out generation of refToMyCar object.
             Console.WriteLine("Generation of refToMyCar is :{0}\n", GC.GetGeneration(refToMyCar));
 
-            Console.WriteLine(GC.GetTotalMemory(false));
-
-            //Force a garbage collection and wait for each object to be finalized.
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
             Console.ReadLine();
 
         }
