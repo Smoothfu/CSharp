@@ -25,6 +25,10 @@ namespace ConsoleApp74
             //Print out generation of refToMyCar object.
             Console.WriteLine("Generation of refToMyCar is :{0}\n", GC.GetGeneration(refToMyCar));
 
+            //Only investigate generation 0 objects.
+            GC.Collect(0);
+            GC.WaitForPendingFinalizers();
+            Console.WriteLine("Allocated memory: {0}\n", GC.GetTotalMemory(false));
             Console.ReadLine();
 
         }
