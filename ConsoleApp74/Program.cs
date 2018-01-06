@@ -39,46 +39,25 @@ namespace ConsoleApp74
         }
     }
 
-    //override System.Object.Finalize() via finalizer syntax.
-    //Implementing IDisposable.
-    class MyResourceWrapper:IDisposable
+
+    //A sophiscated resource wrapper.
+    public class MyResourceWrapper : IDisposable
     {
-        public MyResourceWrapper()
-        {
-            List<Object> objList = new List<object>();
-            for(int i=0;i<1000;i++)
-            {
-                object obj = new object();
-                objList.Add(obj);
-            }
-        }
+        //The garbage collector will call this method if the object user forgets to call Dispose().
         ~MyResourceWrapper()
         {
-            //Clean up unmanaged resources here.
-
-            //Beep when destoryed testing purposes only!
-            Console.Beep();
+            //Clean up any internal unmangaed resources.
+            //Do not call Dispose() on any managed objects.
         }
 
-
-        //The object user should call this method when they finish with the object.
+        //The object will call this method to clean up resources ASAP.
         public void Dispose()
         {
-            //Clean up unmanaged resources...
-            //Dispose other contained disposable objects...
-            //Just for a test.
-            Console.WriteLine("*****In Dispose!*****\n");
-        }
-
-        //Assume you have imported the System.IO namespace...
-        static void DisposeFileStream()
-        {
-            FileStream fs = new FileStream("mytext.txt", FileMode.OpenOrCreate);
-             
-            //Confusing,to say the least!
-            //These method calls do the same thing.
-            fs.Close();
-            fs.Dispose();
+            //Clean up unmanaged resources here.
+            //Call Dispose() on other contained disposable objects.
+            //No need to finalize if user called Dispose().
+            //so suppress finalization.
+            GC.SuppressFinalize(this);
         }
     }
 }
