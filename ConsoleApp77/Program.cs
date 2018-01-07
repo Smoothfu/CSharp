@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarLibrary;
+using System.IO;
 
 namespace ConsoleApp77
 {
@@ -11,17 +12,34 @@ namespace ConsoleApp77
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****C# CarLibrary Client App*****\n");
+            string path = @"D:\D";
+            ListAllFileInfo(path);
 
-            //Make a sports car.
-            SportCar Benz = new SportCar("Benz", 100, 20);
-            Benz.TurboBoost();
 
-            //Make a minivan.
-            MinVan mv = new MinVan();
-            mv.TurboBoost();
-            Console.WriteLine("Done,Press any key to terminate!\n");
+
             Console.ReadLine();
+        }
+
+       static void ListAllFileInfo(string dir)
+        {
+            DirectoryInfo di = new DirectoryInfo(dir);
+            FileSystemInfo[] fis = di.GetFileSystemInfos();
+
+            foreach (FileSystemInfo fi in fis)
+            {
+                //Check whether it is Folder
+                if(fi is DirectoryInfo)
+                {
+                    //iterate invoke.
+                    ListAllFileInfo(fi.FullName);
+                }
+
+                else
+                {
+                    //output all the files path.
+                    Console.WriteLine(fi.FullName);
+                }
+            }
         }
     }
 }
