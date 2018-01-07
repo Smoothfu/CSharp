@@ -35,3 +35,4 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyVersion("7.7.7.7")]
 [assembly: AssemblyFileVersion("7.7.7.7")]
+[assembly:AssemblyKeyFile(@"D:\D\ConsoleApp77\ConsoleApp77\bin\Debug\MyTestKeyPair.snk")]

@@ -10,13 +10,12 @@ namespace ConsoleApp77
 {
     class Program
     {
+        static int fileCount = 0;
         static void Main(string[] args)
         {
             string path = @"D:\D";
             ListAllFileInfo(path);
-
-
-
+            Console.WriteLine("There are {0} files\n", fileCount);
             Console.ReadLine();
         }
 
@@ -38,6 +37,7 @@ namespace ConsoleApp77
                 {
                     //output all the files path.
                     Console.WriteLine(fi.FullName);
+                    fileCount++;
                 }
             }
         }
