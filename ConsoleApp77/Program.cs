@@ -10,12 +10,18 @@ namespace ConsoleApp77
     class Program
     {
         static void Main(string[] args)
-        { 
-            SportCar sc = new SportCar("BENZ", 100, 50);
-            sc.TurboBoost();
+        {
+            Console.WriteLine("*****C# CarLibrary Client App*****\n");
 
-            MinVan van = new MinVan("Turtle", 100, 20);
-            van.TurboBoost();
+            //Make a sports car.
+            SportCar Benz = new SportCar("Benz", 100, 20);
+            Benz.TurboBoost();
+
+            //Make a minivan.
+            MinVan mv = new MinVan();
+            mv.TurboBoost();
+
+            Console.WriteLine("Done,Press any key to terminate!\n");
             Console.ReadLine();
         }
     }
