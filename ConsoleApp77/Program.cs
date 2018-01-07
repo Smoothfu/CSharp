@@ -20,7 +20,6 @@ namespace ConsoleApp77
             //Make a minivan.
             MinVan mv = new MinVan();
             mv.TurboBoost();
-
             Console.WriteLine("Done,Press any key to terminate!\n");
             Console.ReadLine();
         }
