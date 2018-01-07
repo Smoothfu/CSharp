@@ -38,7 +38,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>ThestrongNameKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>MyOwnStrongNameKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CarLibrary">
@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="MyOwnStrongNameKey.pfx" />
     <None Include="ThestrongNameKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
