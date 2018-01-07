@@ -10,9 +10,9 @@ namespace ConsoleApp76
     {
         static void Main(string[] args)
         {
-            Hexagon h = new Hexagon();
-            Circle c = new Circle();
-            Square s = new Square();
+            ConsoleApp76.Hexagon h = new Hexagon();
+            ConsoleApp76.Circle c = new Circle();
+            ConsoleApp76.Square s = new Square();
             Console.ReadLine();
         }
     }
