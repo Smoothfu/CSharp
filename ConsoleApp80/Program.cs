@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarLibrary;
+using System.Configuration;
 
 namespace ConsoleApp80
 {
@@ -11,13 +12,21 @@ namespace ConsoleApp80
     {
         static void Main(string[] args)
         {
-            SuperCar sc = new SuperCar("BENZ",50.0,100.0);
-            Console.WriteLine(sc);
-            sc.Turbust();
+            Console.WriteLine("*****Reading <appSettings> Data*****\n");
 
-            MiniVan mv = new MiniVan("MiniCooper",25.0,50.0);
-            Console.WriteLine(mv);
-            mv.Turbust();
+            //Get our custom data from the *.config file.
+            AppSettingsReader ar = new AppSettingsReader();
+
+            int numberOfTimes = (int)ar.GetValue("RepeatCount", typeof(int));
+            string textColor = (string)ar.GetValue("TextColor", typeof(string));
+
+            Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), textColor);
+
+            //Now print a message correctly.
+            for(int i=0;i<numberOfTimes;i++)
+            {
+                Console.WriteLine("Wonderful!Floomberg!\n");
+            }
 
             Console.ReadLine();
         }
