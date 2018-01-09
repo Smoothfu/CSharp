@@ -14,7 +14,7 @@ namespace ConsoleApp80
         static void Main(string[] args)
         {
             Type type = Type.GetType("ConsoleApp80.MathClass");
-            ListFields(type);
+            ListInterfaces(type);
 
             Console.ReadLine();
         }
@@ -44,6 +44,29 @@ namespace ConsoleApp80
             }
 
             Console.WriteLine("\n\n\n");
+        }
+
+        //Display property names of type.
+        static void ListProperties(Type type)
+        {
+            Console.WriteLine("*****Properties*****\n\n");
+            var propNames = from p in type.GetProperties() select p.Name;
+
+            foreach(var name in propNames)
+            {
+                Console.WriteLine("Property :{0}\n", name);
+            }
+        }
+
+        //Display implemented interfaces.
+        static void ListInterfaces(Type type)
+        {
+            Console.WriteLine("*****Interfaces*****\n");
+            var ifaces = from i in type.GetInterfaces() select i;
+            foreach(Type i in ifaces)
+            {
+                Console.WriteLine("Name: {0}\n", i.Name);
+            }
         }
     }
 
@@ -100,6 +123,19 @@ namespace ConsoleApp80
         }
 
         public delegate void MathDel(int x, int y);
+
         public event MathDel MathEvent;
+
+        interface ICompute
+        {
+            void AddMethod(int x, int y);
+            void SubractMethod(int x, int y);
+        }
+
+        interface ISum
+        {
+            void SumMethod(int x, int y);
+            void SubtractMethod(int x, int y);
+        }
     }
 }
