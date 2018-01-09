@@ -1,0 +1,5 @@
+D:\D\ConsoleApp80\CarLibrary\bin\Debug\CarLibrary.dll
+D:\D\ConsoleApp80\CarLibrary\bin\Debug\CarLibrary.pdb
+D:\D\ConsoleApp80\CarLibrary\obj\Debug\CarLibrary.csproj.CoreCompileInputs.cache
+D:\D\ConsoleApp80\CarLibrary\obj\Debug\CarLibrary.dll
+D:\D\ConsoleApp80\CarLibrary\obj\Debug\CarLibrary.pdb
