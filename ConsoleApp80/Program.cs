@@ -14,7 +14,7 @@ namespace ConsoleApp80
         static void Main(string[] args)
         {
             Type type = Type.GetType("ConsoleApp80.MathClass");
-            ListMethods(type);
+            ListFields(type);
 
             Console.ReadLine();
         }
@@ -31,6 +31,19 @@ namespace ConsoleApp80
                 Console.WriteLine("MemberType: {0}\n", mi.MemberType);
                 Console.WriteLine("\n\n");
             }
+        }
+
+        static void ListFields(Type type)
+        {
+            Console.WriteLine("*****Fields*****\n");
+            var fieldNames = from f in type.GetFields() select f.Name;
+
+            foreach(var name in fieldNames)
+            {
+                Console.WriteLine("Name: {0}\n", name);
+            }
+
+            Console.WriteLine("\n\n\n");
         }
     }
 
