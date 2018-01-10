@@ -13,6 +13,10 @@ namespace ConsoleApp81
             Hexagon h = new Hexagon();
             Circle c = new Circle();
             Square s = new Square();
+
+            My3DShapes.Circle c3 = new My3DShapes.Circle();
+            My3DShapes.Hexagon h3 = new My3DShapes.Hexagon();
+            My3DShapes.Square s3 = new My3DShapes.Square();
             Console.ReadLine();
         }
     }
@@ -48,3 +52,33 @@ namespace ConsoleApp81
         }
     }
 }
+
+namespace My3DShapes
+{
+    //3D Circle class.
+    public class Circle
+    {
+        public Circle()
+        {
+            Console.WriteLine("This is the 3D Circle!\n");
+        }
+
+    }
+    public class Hexagon
+    {
+        public Hexagon()
+        {
+            Console.WriteLine("This is the 3D Hexagon!\n");
+        }
+    }
+
+    public class Square
+    {
+        public Square()
+        {
+            Console.WriteLine("This is the 3D Square!\n");
+        }
+    }
+}
+
+
