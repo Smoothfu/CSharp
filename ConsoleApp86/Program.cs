@@ -12,17 +12,21 @@ namespace ConsoleApp86
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synchnorous Delegate Review*****\n");
+            Console.WriteLine("*****Async Delegate Invocation*****\n");
 
             //Print out the ID of the executing thread.
-            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
 
-            //Invoke Add() in a synchronous manner.
+            //Invoke Add() on a secondary thread.
             BinaryOp bo = new BinaryOp(Add);
-            int answer = bo(10, 10);
+            IAsyncResult asyncResult = bo.BeginInvoke(10, 10, null, null);
 
-            //These lines will not execute until the Add() method has completed.
+            //Do other work on primary thread...
             Console.WriteLine("Doing more work in Main()!\n");
+
+            //Obtain the result of Add() method when ready.
+            int answer = bo.EndInvoke(asyncResult);
+
             Console.WriteLine("10+10 is {0}\n", answer);
             Console.ReadLine();
         }
