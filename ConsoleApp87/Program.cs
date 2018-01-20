@@ -33,6 +33,8 @@ namespace ConsoleApp87
 
         static int Add(int x,int y)
         {
+            //Print out the ID of the executing thread.
+            Console.WriteLine("Add() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
             return x + y;
         }
     }
