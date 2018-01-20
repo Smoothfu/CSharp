@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.Remoting.Messaging;
 
 namespace ConsoleApp87
 {
@@ -33,8 +34,7 @@ namespace ConsoleApp87
             Console.WriteLine("Doing more work in Main()!\n");
 
             //Obtain the result of the Add() method when ready.
-            int answer = bp.EndInvoke(asyncResult);
-            Console.WriteLine("10+10 is {0}!\n", answer);
+            
             Console.WriteLine("Now the k is :{0}\n", k);
             Console.ReadLine();
         }
@@ -47,10 +47,15 @@ namespace ConsoleApp87
             return x + y;
         }
 
-        static void AddComplete(IAsyncResult asyncResult)
+        static void AddComplete(IAsyncResult asyncResul )
         {
-            Console.WriteLine("AddComplete invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("AddComplete() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("Your addition is complete!\n");
+
+            //Now get the result.
+            AsyncResult ar = (AsyncResult)asyncResul ;
+            BinaryOp bo = (BinaryOp)ar.AsyncDelegate;
+            Console.WriteLine("10+10 is {0}.\n\n\n", bo.EndInvoke(asyncResul));
             isDone = true;
         }
     }
