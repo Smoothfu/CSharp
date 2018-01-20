@@ -20,6 +20,13 @@ namespace ConsoleApp87
             //Invoke Add() on a secondary thread.
             BinaryOp bp = new BinaryOp(Add);
             IAsyncResult asyncResult = bp.BeginInvoke(10, 10, null, null);
+            int k = 0;
+            //This message will keep printing until the Add() method is finished.
+            while(!asyncResult.IsCompleted)
+            {
+                k++;
+            }
+
 
 
             //Do other work on primary thread...
@@ -28,6 +35,7 @@ namespace ConsoleApp87
             //Obtain the result of the Add() method when ready.
             int answer = bp.EndInvoke(asyncResult);
             Console.WriteLine("10+10 is {0}!\n", answer);
+            Console.WriteLine("Now the k is :{0}\n", k);
             Console.ReadLine();
         }
 
