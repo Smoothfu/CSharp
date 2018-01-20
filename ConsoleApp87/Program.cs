@@ -10,25 +10,25 @@ namespace ConsoleApp87
     delegate int BinaryOp(int x, int y);
     class Program
     {
+        private static bool isDone = false;
         static void Main(string[] args)
         {
-            Console.WriteLine("Async Delegate Invocation*****!\n");
+            Console.WriteLine("*****AsyncCallbackDelegate Example*****!\n");
 
             //Print out the ID of the executing thread.
             Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
 
             //Invoke Add() on a secondary thread.
             BinaryOp bp = new BinaryOp(Add);
-            IAsyncResult asyncResult = bp.BeginInvoke(10, 10, null, null);
+            IAsyncResult asyncResult = bp.BeginInvoke(10, 10, new AsyncCallback(AddComplete), null);
             int k = 0;
-            //This message will keep printing until the Add() method is finished.
-            while(!asyncResult.IsCompleted)
+
+            //Assume other work is performed here...
+            while(!isDone)
             {
                 k++;
-            }
-
-
-
+            }      
+            
             //Do other work on primary thread...
             Console.WriteLine("Doing more work in Main()!\n");
 
@@ -43,7 +43,15 @@ namespace ConsoleApp87
         {
             //Print out the ID of the executing thread.
             Console.WriteLine("Add() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+         
             return x + y;
+        }
+
+        static void AddComplete(IAsyncResult asyncResult)
+        {
+            Console.WriteLine("AddComplete invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("Your addition is complete!\n");
+            isDone = true;
         }
     }
 }
