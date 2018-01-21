@@ -21,7 +21,8 @@ namespace ConsoleApp87
 
             //Invoke Add() on a secondary thread.
             BinaryOp bp = new BinaryOp(Add);
-            IAsyncResult asyncResult = bp.BeginInvoke(10, 10, new AsyncCallback(AddComplete), null);
+            IAsyncResult asyncResult = bp.BeginInvoke(10, 10, new AsyncCallback(AddComplete), 
+                "Main() thanks you for adding these numbers.\n");
             int k = 0;
 
             //Assume other work is performed here...
@@ -56,6 +57,10 @@ namespace ConsoleApp87
             AsyncResult ar = (AsyncResult)asyncResul ;
             BinaryOp bo = (BinaryOp)ar.AsyncDelegate;
             Console.WriteLine("10+10 is {0}.\n\n\n", bo.EndInvoke(asyncResul));
+
+            //Retrieve the informational object and cast it to string.
+            string msg = (string)asyncResul.AsyncState;
+            Console.WriteLine("\n{0}\n\n", msg);
             isDone = true;
         }
     }
