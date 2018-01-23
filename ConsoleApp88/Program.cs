@@ -12,17 +12,17 @@ namespace ConsoleApp88
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Adding with Thread objects*****\n");
-            Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
-            AddParams ap = new AddParams(10, 10);
+            Console.WriteLine("*****Background Threads*****\n");
+            Console.WriteLine("This is the start of the Main thread!\n");
+            Printer p = new Printer();
+            Thread bgThread = new Thread(new ThreadStart(p.PrintNumbers));
 
-            Thread t = new Thread(new ParameterizedThreadStart(Add));
-            t.Start(ap);
+            //This is now a background thread.
+            bgThread.IsBackground = true;
+            bgThread.Start();
 
 
-            //Wait here untile you are notified.
-            waitHandle.WaitOne();
-            Console.WriteLine("Other thread is done!\n");
+            Console.WriteLine("This is the end of Main thread!\n");
             Console.ReadLine();
         }
 
@@ -49,6 +49,19 @@ namespace ConsoleApp88
         {
             this.X = x;
             this.Y = y;
+        }
+    }
+
+    public class Printer
+    {
+        public void PrintNumbers()
+        {
+            Console.WriteLine("This is the start of the background thread!\n");
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine(i+"\n");
+            }
+            Console.WriteLine("This is the end of the background thread!\n");
         }
     }
 }
