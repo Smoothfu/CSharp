@@ -12,17 +12,25 @@ namespace ConsoleApp88
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Background Threads*****\n");
-            Console.WriteLine("This is the start of the Main thread!\n");
+            Console.WriteLine("*****Synchronizing Threads!*****\n");
+
             Printer p = new Printer();
-            Thread bgThread = new Thread(new ThreadStart(p.PrintNumbers));
 
-            //This is now a background thread.
-            bgThread.IsBackground = true;
-            bgThread.Start();
+            //Make 10 threads that are all pointing to the same method on the same object.
 
+            Thread[] threads = new Thread[10];
+            
+            for(int i=0;i<10;i++)
+            {
+                threads[i] = new Thread(new ThreadStart(p.PrintNumbers));
+                threads[i].Name = string.Format("Worker thread #{0}", i);
+            }
 
-            Console.WriteLine("This is the end of Main thread!\n");
+            //Now start each one.
+            foreach(Thread thread in threads)
+            {
+                thread.Start();
+            }
             Console.ReadLine();
         }
 
@@ -56,12 +64,15 @@ namespace ConsoleApp88
     {
         public void PrintNumbers()
         {
-            Console.WriteLine("This is the start of the background thread!\n");
+            Console.WriteLine("Name: {0}\n", Thread.CurrentThread.Name);
             for(int i=0;i<10;i++)
             {
-                Console.WriteLine(i+"\n");
+                //Put thread to sleep for a random amout of time.
+                Random r = new Random();
+                Thread.Sleep(1000 * r.Next(5));
+                Console.WriteLine("{0}\n", i); 
             }
-            Console.WriteLine("This is the end of the background thread!\n");
+            
         }
     }
 }
