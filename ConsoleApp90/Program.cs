@@ -12,31 +12,32 @@ namespace ConsoleApp90
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synchronizing Threads*****\n");
+            Console.WriteLine("*****Working with Timer type*****\n");
 
-            Printer p = new Printer();
+            //Create the delegate for the Timer type.
 
-            //Make 10 threads that are all pointing to the same method on the same object.
+            TimerCallback timerCallback = new TimerCallback(PrintTime);
 
-            Thread[] threadArray = new Thread[10];
-            for (int i = 0; i < 10; i++)
-            {
-                threadArray[i] = new Thread(new ThreadStart(p.PrintNumbers));
-                threadArray[i].Name = string.Format("Worker thread #{0}\n", i);
-            }
+            //Establish timer settings.
+            Timer timer = new Timer(
+                timerCallback,         //The TimerCallback delegate object.
+                null,           //Any info to pass into the called method null for no info.
+                10000,              //Amount of time to wait before starting in milliseconds.
+                1000);          //Interval of time between calls in milliseconds
 
-            //Now start each one.
-            foreach (Thread thread in threadArray)
-            {
-                thread.Start();
-            }
 
+            Console.WriteLine("Hit key to termiante!\n");
             Console.ReadLine();
+        }
+
+        static void PrintTime(object obj)
+        {
+            Console.WriteLine("Time is :{0}\n", DateTime.Now.ToLongTimeString());
         }
     }
 
     [Synchronization]
-    public class Printer
+    public class Printer:ContextBoundObject
     {
 
         public void PrintNumbers()
