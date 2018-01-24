@@ -26,8 +26,7 @@ namespace ConsoleApp90
 
             //Now start each one.
             foreach(Thread thread in threadArray)
-            {
-                Console.WriteLine("Name: {0}", thread.Name);
+            {                
                 thread.Start();
             }
 
@@ -44,6 +43,8 @@ namespace ConsoleApp90
             //Use the lock token
             lock(threadLock)
             {
+                //Display Thread info.
+                Console.WriteLine("-> {0} is executing PrintNumbers()\n", Thread.CurrentThread.Name);
                 for (int i = 0; i < 10; i++)
                 {
                     //Put thread to sleep for a random amount of time.
