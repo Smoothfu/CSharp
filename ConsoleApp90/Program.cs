@@ -40,20 +40,27 @@ namespace ConsoleApp90
         protected object threadLock = new object();
         public void PrintNumbers()
         {
-            //Use the lock token
-            lock(threadLock)
+            Monitor.Enter(threadLock);
+            
+            try
             {
                 //Display Thread info.
                 Console.WriteLine("-> {0} is executing PrintNumbers()\n", Thread.CurrentThread.Name);
-                for (int i = 0; i < 10; i++)
+
+                //Print out numbers
+                Console.WriteLine("Your numbers:");
+                for(int i=0;i<10;i++)
                 {
-                    //Put thread to sleep for a random amount of time.
                     Random rnd = new Random();
                     Thread.Sleep(1000 * rnd.Next(5));
-                    Console.Write("{0}\t", i);
+                    Console.Write("{0},", i);
                 }
-                Console.WriteLine("\n\n");
-            }            
+                Console.WriteLine();
+            }
+            finally
+            {
+                Monitor.Exit(threadLock);
+            }
         }
     }
 }
