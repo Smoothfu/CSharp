@@ -12,16 +12,30 @@ namespace ConsoleApp91
     {
         static void Main(string[] args)
         {
-            //Queue the task.
-            ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadProc));
+            Thread mainThread = Thread.CurrentThread;
+            Console.WriteLine("This is the start of the Main thread.\n");
+            //Create an object containing the information needed for the task.
+            TaskInfo ti = new TaskInfo("This report displays the number {0}", 2999);
 
-            Console.WriteLine("Main thread does some work,then sleeps!\n");
+            //Queue the task and data.
 
-            //If you comment out the Sleep,the main thread exists before the thread pool task runs,The thread pool uses background threads
-            //which do not keep the application running.
-            //Thread.Sleep(1000);
+            if (ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadProc), ti))
+            {
+                //If you comment out the sleep,the main thread exits before the ThreadPool task has
+                //a chance to run. ThreadPool uses background threads,which do not keep the application
+                //running.This is a simple example of a race condition.
+
+                //Thread.Sleep(1000);
+                Console.WriteLine("\nMain thread exits.\n");
+                mainThread.Join();
+            }
+            else
+            {
+                Console.WriteLine("Unable to queue ThreadPool request.\n");
+            }
 
             Console.WriteLine("This is the end of the Main thread!\n");
+
             Console.ReadLine();
         }
 
@@ -30,8 +44,33 @@ namespace ConsoleApp91
         {
             //No state object was passed to QueueUserWorkItem,so stateinfo is null.
             Thread thread = Thread.CurrentThread;
-            Console.WriteLine("ThreadProc ManagerThreadId :{0}\n", thread.ManagedThreadId);
+            Console.WriteLine("ThreadProc ManagerThreadId :{0} \n", thread.ManagedThreadId);
             Console.WriteLine("Hello from the thread pool.\n");
+        }
+    }
+
+    //TaskInfo holds state information for a task that will be executed by a ThreadPool thread.
+    
+    public class TaskInfo
+    {
+        
+        //State information for the task.These members can be implemented as read-only properties,read/write
+        //properties with validation,and so on,as required.
+        public string Boilerplate;
+        public int Value;
+
+        //Public constructor provides an easy way to supply all the information needed for the task.
+
+        public TaskInfo(string text,int number)
+        {
+            Console.WriteLine("This is the start of the another thread!\n");
+            Boilerplate = text;
+            Value = number;
+
+            Console.WriteLine("Boilerplate is :{0}\n", Boilerplate);
+            Console.WriteLine("Value is :{0}\n", Value);
+
+            Console.WriteLine("This is the end of the constructor of another thread!\n");
         }
     }
 }
