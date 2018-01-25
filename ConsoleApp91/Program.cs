@@ -12,31 +12,52 @@ namespace ConsoleApp91
     {
         static void Main(string[] args)
         {
-            Thread mainThread = Thread.CurrentThread;
-            Console.WriteLine("This is the start of the Main thread.\n");
-            //Create an object containing the information needed for the task.
-            TaskInfo ti = new TaskInfo("This report displays the number {0}", 2999);
+            //The main thread uses AutoResetEvent to signal the registered wait handle,which executes the callback method.
+            AutoResetEvent ev = new AutoResetEvent(false);
 
-            //Queue the task and data.
+            TaskInfo ti = new TaskInfo();
+            ti.otherInfo = "First task";
 
-            if (ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadProc), ti))
-            {
-                //If you comment out the sleep,the main thread exits before the ThreadPool task has
-                //a chance to run. ThreadPool uses background threads,which do not keep the application
-                //running.This is a simple example of a race condition.
+            //The TaskInfo for the task includes the registered wait handle returned by RegisterWaitForSingleObject.This allows
+            //the wait to be terminated when the object has been singaled once.
 
-                //Thread.Sleep(1000);
-                Console.WriteLine("\nMain thread exits.\n");
-                mainThread.Join();
-            }
-            else
-            {
-                Console.WriteLine("Unable to queue ThreadPool request.\n");
-            }
+            ti.handle = ThreadPool.RegisterWaitForSingleObject(ev,
+                new WaitOrTimerCallback(WaitProc), ti, 1000, false);
 
-            Console.WriteLine("This is the end of the Main thread!\n");
+            //The main thread waits three seconds,to demonstrate the time-outs on the queued thread.and then signals.
+            Thread.Sleep(3100);
+            Console.WriteLine("Main thread signals.\n");
+            ev.Set();
+
+            //The main thread sleeps,which should give the callback method time to execute. If you comment out this line,
+            //the program usually ends before the ThreadPool thread can execute.
+            Thread.Sleep(1000);
+
+            //If you start a thread yourself,you can wait for it to end by calling Thread.Join.This option is not 
+            //available with thread pool threads.
 
             Console.ReadLine();
+             
+
+            Console.ReadLine();
+        }
+
+        public static void WaitProc(object state,bool timedout)
+        {
+            //The state object must be cast to the correct type,because the signature of the WaitOrTimerCallback
+            //delegate specifies type object.
+            TaskInfo ti = (TaskInfo)state;
+            string cause = "TIMED OUT";
+            if(!timedout)
+            {
+                cause = "SIGNALED";
+                //If the callback method executes because the WaitHandle is signaled,stop future execution
+                //of the callback method by unregistering the WaitHandle.
+                if(ti.handle!=null)
+                {
+                    ti.handle.Unregister(null);
+                }
+            }
         }
 
         //This method procedure performs the task.
@@ -49,28 +70,13 @@ namespace ConsoleApp91
         }
     }
 
-    //TaskInfo holds state information for a task that will be executed by a ThreadPool thread.
-    
+    //TaskInfo contains data that will be passed to the callback method.
     public class TaskInfo
     {
-        
-        //State information for the task.These members can be implemented as read-only properties,read/write
-        //properties with validation,and so on,as required.
-        public string Boilerplate;
-        public int Value;
-
-        //Public constructor provides an easy way to supply all the information needed for the task.
-
-        public TaskInfo(string text,int number)
-        {
-            Console.WriteLine("This is the start of the another thread!\n");
-            Boilerplate = text;
-            Value = number;
-
-            Console.WriteLine("Boilerplate is :{0}\n", Boilerplate);
-            Console.WriteLine("Value is :{0}\n", Value);
-
-            Console.WriteLine("This is the end of the constructor of another thread!\n");
-        }
+        public RegisteredWaitHandle handle = null;
+        public string otherInfo = "default";
     }
+
+    
+     
 }
