@@ -10,26 +10,24 @@ namespace ConsoleApp91
 {
     class Program
     {
+        static Random rnd = new Random();
         static void Main(string[] args)
         {
-            Task t = Task.Factory.StartNew(() =>
-            {
-                //Just loop.
-                int ctr = 0;
-                for(ctr=0;ctr<=1000000000;ctr++)
-                { }
-                Console.WriteLine("Finished {0} loop iterations!\n", ctr);
-            });
+            //Wait on a single task with no timeout specified.
+            Task taskA = Task.Run(() => Thread.Sleep(2000));
 
-            t.Wait();
-            if(t.IsCompleted)
+            Console.WriteLine("taskA Status: {0}\n", taskA.Status);
+
+            try
             {
-                Console.WriteLine("The task has completed!\n");
+                taskA.Wait();
+                Console.WriteLine("taskA Status: {0}\n", taskA.Status);
             }
-            else
+            catch(AggregateException ex)
             {
-                Console.WriteLine("The task has not completed!\n");
+                Console.WriteLine(ex.Message);
             }
+            Console.ReadLine();
             
             
             Console.ReadLine();
