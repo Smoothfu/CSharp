@@ -12,18 +12,25 @@ namespace ConsoleApp91
     {
         static void Main(string[] args)
         {
-            Task t = Task.Run(() =>
+            Task t = Task.Factory.StartNew(() =>
             {
                 //Just loop.
                 int ctr = 0;
-                for(ctr=0;ctr<=10000000;ctr++)
-                {
-
-                }
+                for(ctr=0;ctr<=1000000000;ctr++)
+                { }
                 Console.WriteLine("Finished {0} loop iterations!\n", ctr);
-
             });
+
             t.Wait();
+            if(t.IsCompleted)
+            {
+                Console.WriteLine("The task has completed!\n");
+            }
+            else
+            {
+                Console.WriteLine("The task has not completed!\n");
+            }
+            
             
             Console.ReadLine();
         }
