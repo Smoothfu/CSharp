@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
+using System.Drawing;
 
 namespace ConsoleApp93
 {
@@ -11,20 +13,7 @@ namespace ConsoleApp93
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine("*****Fun with the CLR Thread Pool*****\n");
-            Console.WriteLine("Main thread started.ThreadID={0}\n", Thread.CurrentThread.ManagedThreadId);
-
-            Printer p = new Printer();
-            WaitCallback workItem = new WaitCallback(PrintTheNumbers);
-
-            //Queue the method ten times.
-            for(int i=0;i<10;i++)
-            {
-                ThreadPool.QueueUserWorkItem(workItem, p);
-            }
-
-            Console.WriteLine("All tasks queued!\n");
+            ProcessImages();
             Console.ReadLine();
         }
 
@@ -41,6 +30,32 @@ namespace ConsoleApp93
                 task.PrintNumbers();
             }           
         }
+
+        private static void ProcessImages()
+        {
+            //Load up all *.jpg files,and make a few folder for the modified data.
+            string path = @"C:\Users\Default\Pictures";
+            string[] allFiles = Directory.GetFiles(path,"*.jpg",SearchOption.AllDirectories);
+            string newDir = @"C:\Users\Default\Pictures\NewImages";
+            Directory.CreateDirectory(newDir);
+
+            //Process the image data in a blocking manner.
+            
+            foreach(string perFile in allFiles)
+            {
+                string fileName = Path.GetFileName(perFile);
+
+                using (Bitmap bitMap = new Bitmap(perFile))
+                {
+                    bitMap.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    bitMap.Save(Path.Combine(newDir, fileName));
+
+                    //Print out the ID of the thread processing in the current image.
+                    string threadMsg = string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+                    Console.WriteLine(threadMsg);
+                }
+            }
+        }
     }
 
     public class Printer
@@ -53,4 +68,6 @@ namespace ConsoleApp93
             }
         }
     }
+
+    
 }
