@@ -23,6 +23,8 @@ namespace WpfApp5
     /// </summary>
     public partial class MainWindow : Window
     {
+        //New Form-level variable.
+        private CancellationTokenSource cancelToken = new CancellationTokenSource();
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +32,8 @@ namespace WpfApp5
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //This will be used to tell all the worker threads to stop!
+            cancelToken.Cancel();
             //Start a new task to process the files.
             Task.Factory.StartNew(() =>
             {
@@ -39,6 +43,11 @@ namespace WpfApp5
 
         private void ProcessImages()
         {
+            //Use ParallelOptions instance to store the CancellationToken.
+            ParallelOptions parallelOptions = new ParallelOptions();
+            parallelOptions.CancellationToken = cancelToken.Token;
+
+            parallelOptions.MaxDegreeOfParallelism = System.Environment.ProcessorCount;
             //Load up all *.jpg files,and make a few folder for the modified data.
             string path = @"C:\Users\Default\Pictures";
             string[] allFiles = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
@@ -47,23 +56,37 @@ namespace WpfApp5
 
             string fullName = "";
             string threadMsg = "";
-            //Process the image data in a parallel manner!
-            Parallel.ForEach(allFiles, x =>
-            {                
-                fullName += System.IO.Path.GetFullPath(x)+"\t\t";               
 
-                using (Bitmap bitMap = new Bitmap(x))
-                { 
-                    //Invoke on the form object,to allow secondary threads to access controls in a thread-safe manner.
-                    this.Dispatcher.BeginInvoke((Action)delegate
+            try
+            {
+                Parallel.ForEach(allFiles, parallelOptions, x =>
+                {
+                    parallelOptions.CancellationToken.ThrowIfCancellationRequested();
+                    fullName += System.IO.Path.GetFullPath(x) + "\t\t";
+
+                    using (Bitmap bitMap = new Bitmap(x))
                     {
-                         threadMsg+= Thread.CurrentThread.ManagedThreadId.ToString()+ "\t\t";
-                    });
-                }
-            });
+                        //Invoke on the form object,to allow secondary threads to access controls in a thread-safe manner.
+                        this.Dispatcher.BeginInvoke((Action)delegate
+                        {
+                            threadMsg += Thread.CurrentThread.ManagedThreadId.ToString() + "\t\t";
+                        });
+                    }
+                });
+            }
+
+            catch(OperationCanceledException ex)
+            {
+                this.Dispatcher.BeginInvoke((Action)delegate
+                {
+                    MessageBox.Show(threadMsg);
+                });
+            }
+            //Process the image data in a parallel manner!
+          
 
             MessageBox.Show(fullName);
-            MessageBox.Show(threadMsg);
+            
         }
     }
 }
