@@ -39,22 +39,40 @@ namespace ConsoleApp93
             string newDir = @"C:\Users\Default\Pictures\NewImages";
             Directory.CreateDirectory(newDir);
 
-            //Process the image data in a blocking manner.
+            ////Process the image data in a blocking manner.
             
-            foreach(string perFile in allFiles)
+            //foreach(string perFile in allFiles)
+            //{
+            //    string fileName = Path.GetFileName(perFile);
+
+            //    using (Bitmap bitMap = new Bitmap(perFile))
+            //    {
+            //        bitMap.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            //        bitMap.Save(Path.Combine(newDir, fileName));
+
+            //        //Print out the ID of the thread processing in the current image.
+            //        string threadMsg = string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+            //        Console.WriteLine(threadMsg);
+            //    }
+            //}
+
+            //Process the image data in a parallel manner!
+            Parallel.ForEach(allFiles, x =>
             {
-                string fileName = Path.GetFileName(perFile);
+                string fileName = Path.GetFileName(x);
+                string fullName = Path.GetFullPath(x);
+                Console.WriteLine(fullName);
 
-                using (Bitmap bitMap = new Bitmap(perFile))
-                {
-                    bitMap.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                    bitMap.Save(Path.Combine(newDir, fileName));
+                //using (Bitmap bitMap = new Bitmap(x))
+                //{
+                //    bitMap.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                //    bitMap.Save(Path.Combine(newDir, fileName));
 
-                    //Print out the ID of the thread processing in the current image.
-                    string threadMsg = string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
-                    Console.WriteLine(threadMsg);
-                }
-            }
+                //    //Print out the ID of the thread processing in the current image.
+                //    //string threadMsg = string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+                //    //Console.WriteLine(threadMsg);
+                //}
+            });
         }
     }
 
