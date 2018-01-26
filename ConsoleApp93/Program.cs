@@ -11,27 +11,46 @@ namespace ConsoleApp93
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Working with Timer type*****\n");
 
-            //Create the delegate for the Timer type.
-            TimerCallback timeCB = new TimerCallback(PrintTime);
+            Console.WriteLine("*****Fun with the CLR Thread Pool*****\n");
+            Console.WriteLine("Main thread started.ThreadID={0}\n", Thread.CurrentThread.ManagedThreadId);
 
+            Printer p = new Printer();
+            WaitCallback workItem = new WaitCallback(PrintTheNumbers);
 
-            //Establish timer settings.
-            Timer timer = new Timer(
-                timeCB,     //The TimerCallback delegate object.
-                null,       //Any info to pass into the called method null for no info.
-                0,          //Amount of time to wait before starting in milliseconds.
-                1000        //Interval of time between calls in milliseconds
-                );
+            //Queue the method ten times.
+            for(int i=0;i<10;i++)
+            {
+                ThreadPool.QueueUserWorkItem(workItem, p);
+            }
 
-            Console.WriteLine("Hit key to terminate...\n");
+            Console.WriteLine("All tasks queued!\n");
             Console.ReadLine();
         }
 
         static void PrintTime(object state)
         {
             Console.WriteLine("Time is :{0}\n", DateTime.Now.ToLongTimeString());
+        }
+
+        static void PrintTheNumbers(object state)
+        {
+            Printer task = state as Printer;
+            if(task!=null)
+            {
+                task.PrintNumbers();
+            }           
+        }
+    }
+
+    public class Printer
+    {
+        public void PrintNumbers()
+        {
+            for(int i=0;i<100000;i++)
+            {
+                Console.WriteLine(i);
+            }
         }
     }
 }
