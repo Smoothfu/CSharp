@@ -30,7 +30,11 @@ namespace WpfApp5
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ProcessImages();
+            //Start a new task to process the files.
+            Task.Factory.StartNew(() =>
+            {
+                ProcessImages();
+            });           
         }
 
         private void ProcessImages()
