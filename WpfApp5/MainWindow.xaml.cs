@@ -40,11 +40,19 @@ namespace WpfApp5
             string[] words = theBookNames.Split(new char[] {','},
                 StringSplitOptions.RemoveEmptyEntries);
 
-            //Now ,find the ten most common words
-            string[] tenMostCommon = FindTenMostCommon(words);
+            string[] tenMostCommon = null;
+            string longestWord = string.Empty;
 
-            //Get the longest word.
-            string longestWord = FindLongestWord(words);
+            Parallel.Invoke(
+                () =>
+                {
+                    tenMostCommon = FindTenMostCommon(words);
+                },
+                () =>
+                {
+                    //Get the longest word.
+                    longestWord = FindLongestWord(words);
+                });
 
             //Now that all tasks are complete,build a string to show all stats in a message box.
             StringBuilder bookStats = new StringBuilder("Ten Most Common Words are:\n");
