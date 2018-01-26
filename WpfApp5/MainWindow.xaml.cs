@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using System.IO;
 using System.Drawing;
+using System.Net;
 
 namespace WpfApp5
 {
@@ -25,6 +26,7 @@ namespace WpfApp5
     {
         //New Form-level variable.
         private CancellationTokenSource cancelToken = new CancellationTokenSource();
+        string theBookNames;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,13 +34,28 @@ namespace WpfApp5
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //This will be used to tell all the worker threads to stop!
-            cancelToken.Cancel();
-            //Start a new task to process the files.
-            Task.Factory.StartNew(() =>
+            theBookNames = "The C# principle,The Common Language Runtime,Data Structure,Windows Presentation Foundation,NetWork,Big Data,Data Base,Task Parallel Libray,Cloud,Artificial Intelligence,Software Engineer,Software Projects,HardWare,IOT,Web,Internet,Operating System,Compile Language";
+
+            //Get the words from the e-book.
+            string[] words = theBookNames.Split(new char[] {','},
+                StringSplitOptions.RemoveEmptyEntries);
+
+            //Now ,find the ten most common words
+            string[] tenMostCommon = FindTenMostCommon(words);
+
+            //Get the longest word.
+            string longestWord = FindLongestWord(words);
+
+            //Now that all tasks are complete,build a string to show all stats in a message box.
+            StringBuilder bookStats = new StringBuilder("Ten Most Common Words are:\n");
+            foreach(string s in tenMostCommon)
             {
-                ProcessImages();
-            });           
+                bookStats.AppendLine(s);
+            }
+
+            bookStats.AppendFormat("Longest word is :{0}\n", longestWord);
+            bookStats.AppendLine();
+            MessageBox.Show(bookStats.ToString(), "Book Info");
         }
 
         private void ProcessImages()
@@ -87,6 +104,22 @@ namespace WpfApp5
 
             MessageBox.Show(fullName);
             
+        }
+
+        private string FindLongestWord(string [] words)
+        {
+            return (from w in words orderby w.Length descending select w).FirstOrDefault();
+        }
+
+        private string[] FindTenMostCommon(string[] words)
+        {
+            var frequencyOrder = from word in words
+                                 where word.Length > 6
+                                 group word by word into g
+                                 orderby g.Count() descending
+                                 select g.Key;
+            string[] commonWords = (frequencyOrder.Take(10)).ToArray();
+            return commonWords;
         }
     }
 }
