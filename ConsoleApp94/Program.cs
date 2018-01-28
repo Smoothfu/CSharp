@@ -12,24 +12,39 @@ namespace ConsoleApp94
     {
         static void Main(string[] args)
         {
-            Action<string> msgAction;
-            //DisplayMessageDel msgDel;
-            if(Environment.GetCommandLineArgs().Length>0)
-            {
-                msgAction = s => ShowWindowsMessage(s);
-            }
-            else
-            {
-                msgAction = s => Console.WriteLine(s);
-            }
+            List<string> names = new List<string>();
+            names.Add("Fred");
+            names.Add("Floomberg");
+            names.Add("Alexander");
+            names.Add("Franklin");
+            names.Add("Bill Gates");
+            names.Add("Jeff Bezos");
+            names.Add("Larry Page");
+            names.Add("Mark Zuckerberg");
+            names.Add("Larry Ellison");
+            names.Add("Michael Bloomberg\n");
 
-            msgAction("This is the delegate method");
+            //Display the contens of the list using the Print method.
+            names.ForEach(Print);
+
+            //The following demonstrates the anonymous method feature of C# to display the contents of the list to console.
+            names.ForEach(delegate(string name)
+            {
+                Console.WriteLine(name);
+            });
+            
+               
             Console.ReadLine();
         }
 
         private static void ShowWindowsMessage(string msg)
         {
             MessageBox.Show(msg);
+        }
+
+        private static void Print(string str)
+        {
+            Console.WriteLine(str);
         }
     }
 }
