@@ -10,16 +10,29 @@ namespace ConsoleApp95
     {
         static void Main(string[] args)
         {
-            Task t = Task.Run(() => {
+            //Task t = Task.Run(() => {
+            //    //Just loop.
+            //    int ctr = 0;
+            //    for (ctr=0;ctr<=100000000;ctr++)
+            //    {
+
+            //    }
+
+            //    Console.WriteLine("Finished {0} loop iteration.\n", ctr);
+            //});
+            //t.Wait();
+
+            Task t = Task.Factory.StartNew(() =>
+            {
                 //Just loop.
                 int ctr = 0;
-                for (ctr=0;ctr<=100000000;ctr++)
+                for(ctr=0;ctr<=10000000;ctr++)
                 {
-                     
-                }
 
-                Console.WriteLine("Finished {0} loop iteration.\n", ctr);
+                }
+                Console.WriteLine("Finished {0} loop iterations.\n", ctr);
             });
+
             t.Wait();
             Console.ReadLine();
         }
