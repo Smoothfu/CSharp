@@ -16,17 +16,11 @@ namespace ConsoleApp94
             //DisplayMessageDel msgDel;
             if(Environment.GetCommandLineArgs().Length>0)
             {
-                msgAction = delegate (string str)
-                {
-                    ShowWindowsMessage(str);
-                };
+                msgAction = s => ShowWindowsMessage(s);
             }
             else
             {
-                msgAction = delegate (string str)
-                  {
-                      Console.WriteLine(str);
-                  };
+                msgAction = s => Console.WriteLine(s);
             }
 
             msgAction("This is the delegate method");
