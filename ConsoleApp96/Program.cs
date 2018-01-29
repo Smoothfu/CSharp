@@ -4,25 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace ConsoleApp96
 {
     public delegate void ShowValue();
     class Program
     {
+        static Random rnd = new Random();
         static void Main(string[] args)
         {
-            Task t = Task.Factory.StartNew(() =>
-            {
-                //Just loop
-                int ctr = 0;
-                for(ctr=0;ctr<=1000000000;ctr++)
-                {
+            //Wait on a single task with no timeout specified.
+            Task taskA = Task.Run(() => Thread.Sleep(2000));
 
-                }
-                Console.WriteLine("Finished {0} loop iterations.\n", ctr);
-            });
-            t.Wait();
+            Console.WriteLine("taskA status: {0}\n", taskA.Status);
+            try
+            {
+                taskA.Wait();
+                Console.WriteLine("taskA Status:{0}\n", taskA.Status);
+            }
+            catch(AggregateException ex)
+            {
+                Console.WriteLine("Exception in taskA!\n");
+            }
+             
             Console.ReadLine();
         }
 
