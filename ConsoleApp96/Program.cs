@@ -13,8 +13,8 @@ namespace ConsoleApp96
         static void Main(string[] args)
         {
             Name obj = new Name("Fred");
-            ShowValue showMethod = obj.DisplayToWindow;
-            showMethod();
+            Action nameAction = obj.DisplayToWindow;
+            nameAction();
             Console.ReadLine();
         }
 
