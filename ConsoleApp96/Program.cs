@@ -12,9 +12,15 @@ namespace ConsoleApp96
     {
         static void Main(string[] args)
         {
-            Name obj = new Name("Fred");
-            Action actionName = () => obj.DisplayToWindow();
-            actionName();
+            Task t = Task.Run(() =>
+            {
+                //Just loop
+                int ctr = 0;
+                for(ctr=0;ctr<=1000000000;ctr++)
+                { }
+                Console.WriteLine("Finished {0} loop iterations\n", ctr);
+            });
+            t.Wait();
             Console.ReadLine();
         }
 
