@@ -13,11 +13,7 @@ namespace ConsoleApp96
         static void Main(string[] args)
         {
             Name obj = new Name("Fred");
-            Action actionName = delegate ()
-            {
-                obj.DisplayToWindow();
-            };
-
+            Action actionName = () => obj.DisplayToWindow();
             actionName();
             Console.ReadLine();
         }
