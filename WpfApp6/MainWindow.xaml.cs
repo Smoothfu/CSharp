@@ -34,18 +34,32 @@ namespace WpfApp6
 
         private void InvokeMethodExample()
         {
-            Thread.Sleep(5000);
+             
             Dispatcher.Invoke(() =>
             {
+                int sum = 0;
+                for (int i=0;i<1000000000;i++)
+                {
+
+                    sum += i;
+                }
                 btn.Content = "By Invoke";
+                win.Title = sum.ToString();
             });
         }
 
         private void BeginInvokeExample()
         {
+            int sum = 0;
+            
             DispatcherOperation op = Dispatcher.BeginInvoke((Action)(() =>
             {
+                for (int i = 0; i < 1000000000; i++)
+                {
+                    sum += i;
+                }
                 btn.Content = "By BeginInvoke";
+                win.Title = sum.ToString();
             }));
         }
     }
