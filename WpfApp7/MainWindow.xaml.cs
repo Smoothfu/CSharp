@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp7
 {
@@ -27,7 +28,7 @@ namespace WpfApp7
 
             Task.Factory.StartNew(() =>
             {
-                InvokeMethodExample();
+                BeginInvokeExample();
             });
         }
 
@@ -39,6 +40,14 @@ namespace WpfApp7
             {
                 btn.Content = "By Invoke";
             });
+        }
+
+        private void BeginInvokeExample()
+        {
+            DispatcherOperation op = Dispatcher.BeginInvoke((Action)(() =>
+            {
+                btn.Content="By BeginInvoke";
+            }));
         }
     }
 }
