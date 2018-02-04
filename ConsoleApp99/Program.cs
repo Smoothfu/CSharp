@@ -11,7 +11,7 @@ namespace ConsoleApp99
     {
         static void Main(string[] args)
         {
-            ExtractExecutingThread();
+            ExtratctAppDomainHostingThread();
             Console.ReadLine();
         }
 
@@ -26,6 +26,25 @@ namespace ConsoleApp99
             Console.WriteLine("IsBackground:{0}\n", currThread.IsBackground);
             Console.WriteLine("CurrentCulture:{0}\n", currThread.CurrentCulture);
             Console.WriteLine("CurrentUICulture: {0}\n",currThread.CurrentUICulture);  
+        }
+
+        static void ExtratctAppDomainHostingThread()
+        {
+            //Obtain the Application hosting the current thread.
+            AppDomain ad = Thread.GetDomain();
+            Console.WriteLine("ApplicationIdentity:{0}\n", ad.ApplicationIdentity);
+            Console.WriteLine("ApplicationTrust:{0}\n", ad.ApplicationTrust);
+            Console.WriteLine("BaseDirectory:{0}\n", ad.BaseDirectory);
+            Console.WriteLine("DomainManager:{0}\n", ad.DomainManager);
+            Console.WriteLine("DynamicDirectory:{0}\n", ad.DynamicDirectory);
+            Console.WriteLine("FriendlyName:{0}\n", ad.FriendlyName);
+            Console.WriteLine("Id:{0}\n", ad.Id);
+            Console.WriteLine("IsHomogenous:{0}\n", ad.IsHomogenous);
+            //Console.WriteLine("MonitoringSurvivedMemorySize:{0}\n", ad.MonitoringSurvivedMemorySize);
+            //Console.WriteLine("MonitoringTotalAllocatedMemorySize:{0}\n", ad.MonitoringTotalAllocatedMemorySize);
+            //Console.WriteLine("MonitoringTotalProcessorTime:{0}\n", ad.MonitoringTotalProcessorTime);
+            Console.WriteLine("PermissionSet:{0}\n", ad.PermissionSet);
+            Console.WriteLine("RelativeSearchPath:{0}\n", ad.RelativeSearchPath);
         }
 
 
