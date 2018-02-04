@@ -12,11 +12,17 @@ namespace ConsoleApp100
         static void Main(string[] args)
         {
             ThreadStart childRef = new ThreadStart(CallToChildThread);
-            Console.WriteLine("In Main:Creating the Child thread.!\n");
+            Console.WriteLine("In Main:Creating the Child thread!\n");
 
             Thread childThread = new Thread(childRef);
-
             childThread.Start();
+
+            //stop the main thread for some time.
+            Thread.Sleep(2000);
+
+            //now abort the child.
+            Console.WriteLine("In Main:Aborting the Child thread!\n");
+            childThread.Abort();
             Console.ReadLine();
         }
 
@@ -27,14 +33,27 @@ namespace ConsoleApp100
 
         public static void CallToChildThread()
         {
-            Console.WriteLine("Child thread starts!\n");
+            try
+            {
+                Console.WriteLine("Child thread starts!\n");
 
-            //the thread is paused for 5000 milliseconds.
-            int sleepFor = 5000;
+                //do some work, like counting to 10.
+                for(int counter=0;counter<10;counter++)
+                {
+                    Thread.Sleep(500);
+                    Console.WriteLine(counter);
+                }
+            }
 
-            Console.WriteLine("Child Thread Paused for {0} seconds.\n", sleepFor / 1000);
-            Thread.Sleep(sleepFor);
-            Console.WriteLine("Child thread resumes!\n");
+            catch(ThreadAbortException ex)
+            {
+                Console.WriteLine("Thread Abort Exception!\n");
+            }
+
+            finally
+            {
+                Console.WriteLine("Could not catch the Thread Exception!\n");
+            }
         }
     }
 }
