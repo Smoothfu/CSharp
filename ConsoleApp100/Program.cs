@@ -11,8 +11,19 @@ namespace ConsoleApp100
     {
         static void Main(string[] args)
         {
-            NewMethod();
-            OldMethod();
+            int x = 1000, y = 1000;
+
+            Thread thread = new Thread(() =>
+              {
+                  Add(x, y);
+              });
+            
+            //Start the thread.
+            thread.Start();
+
+            
+
+
             Console.ReadLine();
         }
 
@@ -55,6 +66,17 @@ namespace ConsoleApp100
         static void NewMethod()
         {
             Console.WriteLine("It is the new method!\n");
+        }
+
+        static void Add(int x,int y)
+        {
+            for(int i=0;i<1000;i++)
+            {
+                Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+                x = x + 1000;
+                y = y + 1000;
+                Thread.Sleep(500);
+            }
         }
     }
 }
