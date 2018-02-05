@@ -12,8 +12,10 @@ namespace ConsoleApp100
         static void Main(string[] args)
         {
             int x = 1000, y = 1000;
-            ThreadStart threadStart = delegate { Add(x, y); };
-            Thread thread = new Thread(threadStart);
+            Thread thread = new Thread(delegate ()
+              {
+                  Add(x, y);
+              });
             thread.Start();
 
             Console.ReadLine();
