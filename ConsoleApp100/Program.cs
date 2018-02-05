@@ -11,18 +11,8 @@ namespace ConsoleApp100
     {
         static void Main(string[] args)
         {
-            ThreadStart childRef = new ThreadStart(CallToChildThread);
-            Console.WriteLine("In Main:Creating the Child thread!\n");
-
-            Thread childThread = new Thread(childRef);
-            childThread.Start();
-
-            //stop the main thread for some time.
-            Thread.Sleep(2000);
-
-            //now abort the child.
-            Console.WriteLine("In Main:Aborting the Child thread!\n");
-            childThread.Abort();
+            NewMethod();
+            OldMethod();
             Console.ReadLine();
         }
 
@@ -54,6 +44,17 @@ namespace ConsoleApp100
             {
                 Console.WriteLine("Could not catch the Thread Exception!\n");
             }
+        }
+
+        [Obsolete("Don't use OldMethod,use NewMethod instead",true)]
+        static void OldMethod()
+        {
+            Console.WriteLine("It is the old method!\n");
+        }
+
+        static void NewMethod()
+        {
+            Console.WriteLine("It is the new method!\n");
         }
     }
 }
