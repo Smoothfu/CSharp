@@ -13,18 +13,34 @@ namespace ConsoleApp101
     {
         static void Main(string[] args)
         {
-            Action<string> messageTarget;
-            if(Environment.GetCommandLineArgs().Length==1)
-            {
-                messageTarget = s => ShowWindowMessage(s);
-            }
-            else
-            {
-                messageTarget = s => Console.WriteLine(s);
-            }
+            List<string> nameList = new List<string>();
+            nameList.Add("Fred");
+            nameList.Add("Floomberg");
+            nameList.Add("Michael Bloomberg");
+            nameList.Add("Bill Gates");
+            nameList.Add("Elon Musk");
+            nameList.Add("Larry Ellison");
+            nameList.Add("Mark Zuckerberg");
+            nameList.Add("Larry Page");
+            nameList.Add("Jeff Bezos");
+            nameList.Add("Pony Ma");
+            
 
-            messageTarget("Hello World!\n");
+            //Display the contents of the list using the Print method.
+            nameList.ForEach(PrintName);
+            Console.WriteLine("\n\n\n");
+            //The following demonstrates the anonoymous method feature of C#
+            //to display the contents of the list to the console.
+            nameList.ForEach(delegate (string name)
+            {
+                Console.WriteLine(name);
+            });
             Console.ReadLine();
+        }
+
+        private static void PrintName(string str)
+        {
+            Console.WriteLine(str);
         }
 
         private static void ShowWindowMessage(string msg)
