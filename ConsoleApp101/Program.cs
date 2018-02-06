@@ -16,11 +16,11 @@ namespace ConsoleApp101
             Action<string> messageTarget;
             if(Environment.GetCommandLineArgs().Length==1)
             {
-                messageTarget = ShowWindowMessage;
+                messageTarget = delegate (string str) { ShowWindowMessage(str); };
             }
             else
             {
-                messageTarget = Console.WriteLine;
+                messageTarget = delegate (string str) { Console.WriteLine(str); };
             }
 
             messageTarget("Hello World!\n");
