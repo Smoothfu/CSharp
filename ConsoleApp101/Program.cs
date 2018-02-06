@@ -11,13 +11,9 @@ namespace ConsoleApp101
     {
         static void Main(string[] args)
         {
-            int x = 1000, y = 1000;
-            Thread thread = new Thread(new ThreadStart(new Action(() =>
-            {
-                Add(x, y);
-            })));
-
-            thread.Start();
+            Action<int> myAction;
+            myAction = delegate (int a) { Console.WriteLine(a); };
+            myAction(9);
             Console.ReadLine();
         }
 
