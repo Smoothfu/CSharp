@@ -13,9 +13,23 @@ namespace ConsoleApp102
     {
         static void Main(string[] args)
         {
-            SubtractDel del = new SubtractDel(Subtract);
-            del(10, 20);
+            Console.WriteLine("*****Async Delegate Invocation*****\n");
 
+            //Print out the ID of the executing thread.
+            Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Invoke Add() on a secondary thread.
+            BinaryOp bo = new BinaryOp(Add);
+
+            IAsyncResult asyncResult = bo.BeginInvoke(10, 10, null, null);
+
+            //Do other work on primary thread...
+            Console.WriteLine("Doing more work in Main()!\n");
+
+            //Obtain the result of the Add() method when ready.
+
+            int answer = bo.EndInvoke(asyncResult);
+            Console.WriteLine("10+10 is {0}\n", answer);
             Console.ReadLine();
         }
 
