@@ -4,23 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace ConsoleApp101
 {
+    delegate void DisplayMessage(string msg);
     class Program
     {
         static void Main(string[] args)
         {
-            Student stu = new Student { Name = "Fred", Age = 31 };
-            Action<Student, Exception> action = Display;
-            action(stu, null);
-            CallingAction(action);
-            Console.ReadKey(true);
+            DisplayMessage messageTarget;
+            if(Environment.GetCommandLineArgs().Length==1)
+            {
+                messageTarget = ShowWindowMessage;
+            }
+            else
+            {
+                messageTarget = Console.WriteLine;
+            }
 
-            action = Show;
-            action(stu, null);
-            CallingAction(action);
+            messageTarget("Hello World!\n");
             Console.ReadLine();
+        }
+
+        private static void ShowWindowMessage(string msg)
+        {
+            MessageBox.Show(msg);
         }
 
         static void Add(int x,int y)
