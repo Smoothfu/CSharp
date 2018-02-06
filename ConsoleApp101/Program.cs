@@ -11,9 +11,15 @@ namespace ConsoleApp101
     {
         static void Main(string[] args)
         {
-            Action<int> myAction;
-            myAction = r => Console.WriteLine(r);
-            myAction(9);
+            Student stu = new Student { Name = "Fred", Age = 31 };
+            Action<Student, Exception> action = Display;
+            action(stu, null);
+            CallingAction(action);
+            Console.ReadKey(true);
+
+            action = Show;
+            action(stu, null);
+            CallingAction(action);
             Console.ReadLine();
         }
 
@@ -27,5 +33,28 @@ namespace ConsoleApp101
                 y = y + 10000;
             }
         }
+
+        static void Display(Student stu,Exception ex)
+        {
+            Console.WriteLine("Display :{0}\n", stu.Name);
+            Console.WriteLine("Display:{0}\n", stu.Age);
+        }
+
+        static void Show(Student stu,Exception ex)
+        {
+            Console.WriteLine("Show:{0}\n", stu.Name);
+            Console.WriteLine("Show:{0}\n", stu.Age);
+        }
+
+        static void CallingAction(Action<Student,Exception> action)
+        {
+            Console.WriteLine(action.Method.Name.ToString()+"\n");
+        }
+    }
+
+    public class Student
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
     }
 }
