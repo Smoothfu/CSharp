@@ -12,7 +12,7 @@ namespace ConsoleApp101
         static void Main(string[] args)
         {
             Action<int> myAction;
-            myAction = delegate (int a) { Console.WriteLine(a); };
+            myAction = r => Console.WriteLine(r);
             myAction(9);
             Console.ReadLine();
         }
