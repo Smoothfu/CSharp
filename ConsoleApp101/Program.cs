@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace ConsoleApp101
 {
-    delegate void DisplayMessage(string msg);
+    
     class Program
     {
         static void Main(string[] args)
         {
-            DisplayMessage messageTarget;
+            Action<string> messageTarget;
             if(Environment.GetCommandLineArgs().Length==1)
             {
                 messageTarget = ShowWindowMessage;
