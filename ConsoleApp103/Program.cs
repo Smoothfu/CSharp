@@ -19,10 +19,17 @@ namespace ConsoleApp103
 
             //Invoke Add() on a secondary thread.
             BinaryDel del = new BinaryDel(Add);
+
+            //Once the next statement is processed,the calling thread is now blocked until BeginInvoke() completes.
             IAsyncResult asyncResult = del.BeginInvoke(10, 10, null, null);
 
             //Do other work on primary thread...
-            Console.WriteLine("Doing more work in Main()!\n");
+            //This call takes far less than five seconds!
+            //This message will keep printing until the Add() method is finished.
+            while(!asyncResult.IsCompleted)
+            {
+                Console.WriteLine("Doing more work in Main()!Now is {0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-sss:fff"));
+            }
 
             //Obtain the result of the Add() method when ready.
             int answer = del.EndInvoke(asyncResult);
