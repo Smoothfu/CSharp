@@ -26,7 +26,7 @@ namespace ConsoleApp103
             //Do other work on primary thread...
             //This call takes far less than five seconds!
             //This message will keep printing until the Add() method is finished.
-            while(!asyncResult.IsCompleted)
+            while(!asyncResult.AsyncWaitHandle.WaitOne(1000,true))
             {
                 Console.WriteLine("Doing more work in Main()!Now is {0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-sss:fff"));
             }
