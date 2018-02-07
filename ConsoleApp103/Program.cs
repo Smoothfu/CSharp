@@ -10,41 +10,36 @@ namespace ConsoleApp103
     public delegate int BinaryDel(int x, int y);
     class Program
     {
+        private static bool isDone = false;
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Async Delegate Invocation*****\n");
+            Console.WriteLine("*****AsyncCallbackDelegate Example*****\n");
+            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            //Print out the ID of the executing thread.
-            Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
-
-            //Invoke Add() on a secondary thread.
             BinaryDel del = new BinaryDel(Add);
+            IAsyncResult asyncResult = del.BeginInvoke(10, 10, new AsyncCallback(AddComplete), null);
 
-            //Once the next statement is processed,the calling thread is now blocked until BeginInvoke() completes.
-            IAsyncResult asyncResult = del.BeginInvoke(10, 10, null, null);
-
-            //Do other work on primary thread...
-            //This call takes far less than five seconds!
-            //This message will keep printing until the Add() method is finished.
-            while(!asyncResult.AsyncWaitHandle.WaitOne(1000,true))
+            while(!isDone)
             {
-                Console.WriteLine("Doing more work in Main()!Now is {0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-sss:fff"));
+                Console.WriteLine("Now is  {0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-sss:fff"));
             }
 
-            //Obtain the result of the Add() method when ready.
-            int answer = del.EndInvoke(asyncResult);
-
-            Console.WriteLine("10+10={0}\n", answer);
-
-            Console.WriteLine("This is the end of the Main() thread!\n");
-
+            Console.WriteLine("This is the end of the Main thread!\n");
             Console.ReadLine();
         }
 
         static int Add(int x,int y)
         {
+            Console.WriteLine("Add() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(5000);
             return x + y;
+        }
+
+        static void AddComplete(IAsyncResult asyncResult)
+        {
+            Console.WriteLine("AddComplete() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("Your addition is complete!\n");
+            isDone = true;
         }
     }
 }
