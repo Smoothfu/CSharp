@@ -17,10 +17,10 @@ namespace ConsoleApp105
             int x = 10000, y = 10000;
             Console.WriteLine("*****The beginning of the main thread!*****\n");
 
-            Thread thread = new Thread(new ThreadStart(()=>
+            Thread thread = new Thread(new ThreadStart(new Action(()=>
             {
                 (new Program()).AddMethod(x, y);
-            }));
+            }))); 
 
             thread.Start();
 
