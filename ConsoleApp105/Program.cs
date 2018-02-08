@@ -16,7 +16,7 @@ namespace ConsoleApp105
         {
             Console.WriteLine("*****The beginning of the main thread!*****\n");
             BinaryOp bo = new BinaryOp(Add);
-            IAsyncResult asyncResult = bo.BeginInvoke(10, 10, AddComplete, null);
+            IAsyncResult asyncResult = bo.BeginInvoke(10, 10, AddComplete, "Main() thanks you for adding these numbers.");
 
             while(!isDone)
             {
@@ -37,6 +37,10 @@ namespace ConsoleApp105
             AsyncResult ar = (AsyncResult)asyncResult;
             BinaryOp bo = (BinaryOp)ar.AsyncDelegate;
             Console.WriteLine("10+10 is {0}\n", bo.EndInvoke(asyncResult));
+
+            //Retrieve the informational object and cast it to string.
+            string msg = (string)asyncResult.AsyncState;
+            Console.WriteLine(msg + "\n\n\n");
             isDone = true;
         }
 
