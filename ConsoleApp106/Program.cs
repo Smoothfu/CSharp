@@ -43,8 +43,11 @@ namespace ConsoleApp106
 
         static void Add(int x,int y)
         {
+            Thread addThread = Thread.CurrentThread;
+            addThread.Name = "AddThread";
+            Console.WriteLine("The Add thread Id:{0}\n", Thread.CurrentThread.ManagedThreadId);
             TimeSpan ts = new TimeSpan(0, 0,0, 0,10);
-            for(int i=0;i<1000000;i++)
+            for(int i=0;i<100;i++)
             {
                 Console.WriteLine("{0}+{1}={2}.Now is  {3}\n", x, y, x + y, DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
                 x = x + 1000;
