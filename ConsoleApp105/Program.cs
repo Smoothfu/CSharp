@@ -14,16 +14,18 @@ namespace ConsoleApp105
         private static bool isDone;
         static void Main(string[] args)
         {
+            int x = 10000, y = 10000;
             Console.WriteLine("*****The beginning of the main thread!*****\n");
-            BinaryOp bo = new BinaryOp(Add);
-            IAsyncResult asyncResult = bo.BeginInvoke(10, 10, AddComplete, "Main() thanks you for adding these numbers.");
 
-            while(!isDone)
+            Thread thread = new Thread(new ThreadStart(()=>
             {
-                Console.WriteLine("Now is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
-            }
+                (new Program()).AddMethod(x, y);
+            }));
 
-            Console.WriteLine("The end of the main thread!\n");
+            thread.Start();
+
+            Console.WriteLine("\n\n\nThe end of the Main thread!\n");
+
             Console.ReadLine();
         }
 
@@ -47,6 +49,16 @@ namespace ConsoleApp105
         private static int Add(int x,int y)
         {
             return x + y;
+        }
+
+        private void AddMethod(int x,int y)
+        {
+            for(int i=0;i<100000;i++)
+            {
+                Console.WriteLine("{0}+{1}={2} and now is :{3}\n", x, y, x + y,DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+                x = x + 1000;
+                y = y + 1000;
+            }
         }
     }
 }
