@@ -31,16 +31,17 @@ namespace ConsoleApp107
 
             switch(threadCount)
             {
+                case "1":
+                    p.PrintNumbers();
+                    break;
+
                 case "2":
                     //Now make the thread.
                     Thread backgroundThread = new Thread(new ThreadStart(p.PrintNumbers));
                     backgroundThread.Name = "Secondary";
                     backgroundThread.Start();
                     break;
-
-                case "1":
-                    p.PrintNumbers();
-                    break;
+                
                 default:
                     Console.WriteLine("I don't now what you want... you get 1 thread!\n");
                     goto case "1";
