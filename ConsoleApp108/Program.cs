@@ -15,8 +15,7 @@ namespace ConsoleApp108
     {
         static void Main(string[] args)
         {
-
-            var getData = Task.Factory.StartNew(() =>
+            var displayData = Task.Factory.StartNew(() =>
             {
                 Random rnd = new Random();
                 int[] values = new int[100];
@@ -25,9 +24,8 @@ namespace ConsoleApp108
                     values[ctr] = rnd.Next();
                 }
                 return values;
-            });
-
-            var processData = getData.ContinueWith((x) =>
+            }).
+            ContinueWith((x) =>
             {
                 int n = x.Result.Length;
                 long sum = 0;
@@ -40,15 +38,14 @@ namespace ConsoleApp108
 
                 mean = sum / (double)n;
                 return Tuple.Create(n, sum, mean);
-            });
-
-            var displayData = processData.ContinueWith((x) =>
+            }).
+            ContinueWith((x) =>
             {
                 return string.Format("N={0:N0},Total={1:N0},Mean={2:N2}\n", x.Result.Item1, x.Result.Item2, x.Result.Item3);
+
             });
-
             Console.WriteLine(displayData.Result);
-
+           
             Console.ReadLine();
         }
 
