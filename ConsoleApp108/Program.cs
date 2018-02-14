@@ -33,6 +33,17 @@ namespace ConsoleApp108
             }
 
             Task.WaitAll(taskArray);
+
+            Console.WriteLine("\n\n\n");
+
+            foreach(var task in taskArray)
+            {
+                var data = task.AsyncState as CustomData;
+                if(data!=null)
+                {
+                    Console.WriteLine("Task #{0} created at {1},ran on thread #{2}.\n", data.Name, data.CreationTime, data.ThreadNum);
+                }
+            }
             Console.ReadLine();
         }
 
