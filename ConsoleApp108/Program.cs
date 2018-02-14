@@ -11,17 +11,13 @@ namespace ConsoleApp108
     {
         static void Main(string[] args)
         {
-            Thread.CurrentThread.Name = "Main";
+            Thread.CurrentThread.Name = "MainThread";
 
-            //Create a task and supply a user delegate by using a lambda expression.
-            Task taskA = new Task(() => Console.WriteLine("Hello from taskA.!\n"));
-
-            //start the task.
-            taskA.Start();
+            //Define and run the task.
+            Task taskA = Task.Run(() => Console.WriteLine("Hello from taskA!\n"));
 
             //Output a message from the calling thread.
             Console.WriteLine("Hello from thread '{0}'", Thread.CurrentThread.Name);
-            Console.ReadLine();
             taskA.Wait();
             Console.ReadLine();
         }
