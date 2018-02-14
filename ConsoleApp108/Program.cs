@@ -11,24 +11,20 @@ namespace ConsoleApp108
     {
         static void Main(string[] args)
         {
-            Task<Double>[] taskArray =
-            {
-                Task<Double>.Factory.StartNew(()=>DoComputation(1.0)),
-                Task<Double>.Factory.StartNew(()=>DoComputation(100.0)),
-                Task<Double>.Factory.StartNew(()=>DoComputation(1000.0))
-            };
+            //Create the task object by using an Action(of object) to pass in the loop counter.This produces an unexpected result.
 
-            var results = new Double[taskArray.Length];
-
-            Double sum = 0;
-            for (int i = 0; i < taskArray.Length; i++)
+            Task[] taskArray = new Task[10];
+            for(int i=0;i<taskArray.Length;i++)
             {
-                results[i] = taskArray[i].Result;
-                Console.WriteLine("{0:N10} {1}", results[i], i == taskArray.Length - 1 ? "=" : "+ ");
-                sum += results[i];
+                taskArray[i] = Task.Factory.StartNew((object obj) =>
+                  {
+                      var data = new CustomData() { Name = i.ToString(), CreationTime = DateTime.Now.Ticks };
+                      data.ThreadNum = Thread.CurrentThread.ManagedThreadId;
+                      Console.WriteLine("Task #{0} created at {1} on thread #{2}.\n", data.Name, data.CreationTime, data.ThreadNum);
+                  },i);
             }
 
-            Console.WriteLine("{0:N10}", sum);
+            Task.WaitAll(taskArray);
             Console.ReadLine();
         }
 
@@ -41,5 +37,12 @@ namespace ConsoleApp108
             }
             return sum;
         }
+    }
+
+    class CustomData
+    {
+        public long CreationTime;
+        public string Name;
+        public int ThreadNum;
     }
 }
