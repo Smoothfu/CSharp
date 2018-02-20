@@ -10,40 +10,55 @@ namespace ConsoleApp112
     {
         static void Main(string[] args)
         {
-            //Declare an instance of Product and display its initial values.
-            Product item = new Product("Fasteners", 63434);
-            Console.WriteLine("Original values in Main.Name:{0},ID:{1}\n", item.ItemName, item.ItemID);
+            var bc = new BookCollection();
+            bc.ListBooks();
+            Console.WriteLine("\n\n\n");
 
-            //Pass the product instance to ChangeByReference.
-            ChangeByReference(ref item);
-            Console.WriteLine("Back in Main.Name:{0},ID:{1}\n", item.ItemName, item.ItemID);
+            ref var book = ref bc.GetBookByTitle("Data Structure");
+
+            if(book!=null)
+            {
+                book = new Book { Title = "Algorithm", Author = "Alexander" };
+            }
+
+            bc.ListBooks();
             Console.ReadLine();
-        }
+        }       
+    }      
 
-        static void Add10000000(ref int i)
-        {
-            i = i + 10000000;
-        }
-
-        static void ChangeByReference(ref Product itemRef)
-        {
-            //Change the address that is stored in the itemRef parameter.
-            itemRef = new Product("Stapler", 999999);
-
-            //you can change the value of one of the properties of itemRef.The change happens 
-            //to item in Main as well.
-            itemRef.ItemID = 234923243;
-        }
+    public class Book
+    {
+        public string Author;
+        public string Title;
     }
 
-    class Product
+    public class BookCollection
     {
-        public string ItemName { get; set; }
-        public int ItemID { get; set; }
-        public Product(string name,int newId)
+        private Book[] books = {new Book { Title="Dive into C#",Author="Fred"},
+        new Book{Title="Data Structure",Author="Floomberg"}};
+
+        private Book noBook = null;
+
+        public ref Book GetBookByTitle(string title)
         {
-            ItemName = name;
-            ItemID = newId;
+            for(int ctr=0;ctr<books.Length;ctr++)
+            {
+                if(title==books[ctr].Title)
+                {
+                    return ref books[ctr];
+                }
+            }
+
+            return ref noBook;
+        }
+
+        public void ListBooks()
+        {
+            foreach(var book in books)
+            {
+                Console.WriteLine($"{book.Title},by {book.Author}");
+            }
+            Console.WriteLine();
         }
     }
 }
