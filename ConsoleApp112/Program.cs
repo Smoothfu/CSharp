@@ -10,12 +10,17 @@ namespace ConsoleApp112
     {
         static void Main(string[] args)
         {
-            int value;
-            string str1, str2;
-            Method(out value, out str1, out str2);
-            Console.WriteLine("Value ={0}\n", value);
-            Console.WriteLine("str1={0}\n", str1);
-            Console.WriteLine("str2={0}\n", str2);
+            string value = "1640";
+
+            int number;
+            if(Int32.TryParse(value,out number))
+            {
+                Console.WriteLine($"Converted '{value}' to {number}");
+            }
+            else
+            {
+                Console.WriteLine($"Unenable to convert '{value}'");
+            }
             Console.ReadLine();
         }     
         
