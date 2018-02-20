@@ -12,7 +12,7 @@ namespace ConsoleApp112
         {
             string value = "1640";
            
-            if(Int32.TryParse(value,out int number))
+            if(Int32.TryParse(value,out var number))
             {
                 Console.WriteLine($"Converted '{value}' to {number}");
             }
