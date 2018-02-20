@@ -11,9 +11,8 @@ namespace ConsoleApp112
         static void Main(string[] args)
         {
             string value = "1640";
-
-            int number;
-            if(Int32.TryParse(value,out number))
+           
+            if(Int32.TryParse(value,out int number))
             {
                 Console.WriteLine($"Converted '{value}' to {number}");
             }
