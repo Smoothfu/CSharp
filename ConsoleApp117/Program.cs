@@ -19,6 +19,9 @@ namespace ConsoleApp117
             Console.WriteLine("\n\n\n");
 
             BubbleSort(arr);
+
+            SelectionSort(arr);
+
             Console.ReadLine();
         }
 
@@ -43,6 +46,42 @@ namespace ConsoleApp117
             }
 
             Console.WriteLine("The BubbleSort:");
+            foreach(var a in arr)
+            {
+                Console.WriteLine(a);
+            }
+
+            Console.WriteLine("\n\n\n");
+        }
+
+        static void SelectionSort(int [] arr)
+        {
+            if(arr==null ||!arr.Any())
+            {
+                return;
+            }
+
+            for(int i=0;i<arr.Length-1;i++)
+            {
+                int minIndex = i;
+
+                for(int j=i+1;j<arr.Length;j++)
+                {
+                    if(arr[j]<arr[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+
+                if(minIndex!=i)
+                {
+                    int temp = arr[minIndex];
+                    arr[minIndex] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+
+            Console.WriteLine("Selection Sort:");
             foreach(var a in arr)
             {
                 Console.WriteLine(a);
