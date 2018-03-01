@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp120
@@ -10,19 +11,21 @@ namespace ConsoleApp120
     {
         static void Main(string[] args)
         {
-            Task t = Task.Factory.StartNew(() =>
+            //Wait on a single task with no timeout specified.
+            Task taskA = Task.Run(() => Thread.Sleep(2000));
+
+            Console.WriteLine("taskA Status:{0}\n", taskA.Status);
+
+            try
             {
-                //Just loop
-                int ctr = 0;
-                for(ctr=0;ctr<=1000000000;ctr++)
-                {
+                taskA.Wait();
+                Console.WriteLine("taskA Status:{0}\n", taskA.Status);
+            }
 
-                }
-                Console.WriteLine("Finished {0} loop iterations", ctr);
-
-            });
-
-            t.Wait();
+            catch(AggregateException ex)
+            {
+                Console.WriteLine("Exception in taskA!\n");
+            }
             Console.ReadLine();
         }
     }
