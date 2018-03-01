@@ -14,17 +14,21 @@ namespace ConsoleApp120
             //Wait on a single task with no timeout specified.
             Task taskA = Task.Run(() => Thread.Sleep(2000));
 
-            Console.WriteLine("taskA Status:{0}\n", taskA.Status);
-
             try
             {
-                taskA.Wait();
-                Console.WriteLine("taskA Status:{0}\n", taskA.Status);
+                taskA.Wait(1000);
+                bool isCompleted = taskA.IsCompleted;
+                Console.WriteLine("Task A completed:{0},Status:{1}\n", isCompleted, taskA.Status);
+
+                if(!isCompleted)
+                {
+                    Console.WriteLine("Timed out before task A completed!\n");
+                }
             }
 
             catch(AggregateException ex)
             {
-                Console.WriteLine("Exception in taskA!\n");
+                Console.WriteLine(ex.Message);
             }
             Console.ReadLine();
         }
