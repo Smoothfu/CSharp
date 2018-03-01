@@ -10,14 +10,16 @@ namespace ConsoleApp120
     {
         static void Main(string[] args)
         {
-            Task t = Task.Run(() =>
+            Task t = Task.Factory.StartNew(() =>
             {
                 //Just loop
                 int ctr = 0;
-                for (ctr = 0; ctr <= 100000000; ctr++)
+                for(ctr=0;ctr<=1000000000;ctr++)
                 {
-                    Console.WriteLine(ctr);
+
                 }
+                Console.WriteLine("Finished {0} loop iterations", ctr);
+
             });
 
             t.Wait();
