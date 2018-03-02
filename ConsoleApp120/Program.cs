@@ -11,24 +11,29 @@ namespace ConsoleApp120
     {
         static void Main(string[] args)
         {
-            //Wait on a single task with no timeout specified.
-            Task taskA = Task.Run(() => Thread.Sleep(2000));
+            var tasks = new Task[3];
+            var rand = new Random();
+            for(int ctr=0;ctr<=2;ctr++)
+            {
+                tasks[ctr] = Task.Run(() => Thread.Sleep(rand.Next(500, 3000)));
+            }
 
             try
             {
-                taskA.Wait(1000);
-                bool isCompleted = taskA.IsCompleted;
-                Console.WriteLine("Task A completed:{0},Status:{1}\n", isCompleted, taskA.Status);
+                int index = Task.WaitAny(tasks);
+                Console.WriteLine("Task #{0} completed first.\n", tasks[index].Id);
+                Console.WriteLine("Status of all tasks:\n");
 
-                if(!isCompleted)
+                foreach(var t in tasks)
                 {
-                    Console.WriteLine("Timed out before task A completed!\n");
+                    Console.WriteLine("Task #{0}:{1}", t.Id, t.Status);
                 }
+
             }
 
             catch(AggregateException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("An exception occured!\n");
             }
             Console.ReadLine();
         }
