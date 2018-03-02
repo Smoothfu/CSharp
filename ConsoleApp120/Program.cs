@@ -15,25 +15,27 @@ namespace ConsoleApp120
             var rand = new Random();
             for(int ctr=0;ctr<20;ctr++)
             {
-                tasks[ctr] = Task.Run(() => Thread.Sleep(rand.Next(500, 3000)));
+                tasks[ctr] = Task.Run(() => Thread.Sleep(100));
             }
 
             try
             {
-                int index = Task.WaitAny(tasks);
-                Console.WriteLine("Task #{0} completed first.\n", tasks[index].Id);
-                Console.WriteLine("Status of all tasks:\n");
-
-                foreach(var t in tasks)
-                {
-                    Console.WriteLine("Task #{0}:{1}", t.Id, t.Status);
-                }
-
+                Task.WaitAll(tasks);
             }
 
-            catch(AggregateException ex)
+            catch(AggregateException ae)
             {
-                Console.WriteLine("An exception occured!\n");
+                Console.WriteLine("One or more exceptions occured: ");
+                foreach(var ex in ae.Flatten().InnerExceptions)
+                {
+                    Console.WriteLine(" {0}", ex.Message);
+                }                
+            }
+
+            Console.WriteLine("Status of completed tasks:\n");
+            foreach (var t in tasks)
+            {
+                Console.WriteLine(" Task #{0}:{1}", t.Id, t.Status);
             }
             Console.ReadLine();
         }
