@@ -15,51 +15,42 @@ namespace ConsoleApp121
     {
         static void Main(string[] args)
         {
-            decimal[] values = { 163025412.32m, 18905365.59m };
-            string formatString = "C2";
-            Func<string> formatDelegate = () =>
-            {
-                string outPut = string.Format("Formatting using the {0} culture on thread {1}\n",
-                    CultureInfo.CurrentCulture.Name,
-                    Thread.CurrentThread.ManagedThreadId);
 
-                foreach (var value in values)
+            var getData = Task.Factory.StartNew(() =>
+            {
+                Random rnd = new Random();
+                int[] values = new int[100];
+                for (int ctr = 0; ctr <= values.GetUpperBound(0); ctr++)
                 {
-                    outPut += string.Format("{0}  ", value.ToString(formatString));
-                    outPut += Environment.NewLine;
+                    values[ctr] = rnd.Next();
                 }
-                return outPut;
-            };
 
-            Console.WriteLine("The example is running on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
+                return values;
+            });
 
-            //Make the current culture different from the system culture.
-            Console.WriteLine("The current culture is {0}\n", CultureInfo.CurrentCulture.Name);
 
-            if(CultureInfo.CurrentCulture.Name=="fr-FR")
+            var processData = getData.ContinueWith((x) =>
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
-            }
-            else
+                int n = x.Result.Length;
+                long sum = 0;
+                double mean;
+
+                for (int ctr = 0; ctr <= x.Result.GetUpperBound(0); ctr++)
+                {
+                    sum += x.Result[ctr];
+                }
+
+                mean = sum / (double)n;
+                return Tuple.Create(n, sum, mean);
+            });
+
+
+            var displayData = processData.ContinueWith((x) =>
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
-            }
+                return string.Format("N={0:N0},Total={1:N0},Mean={2:N2} \n", x.Result.Item1, x.Result.Item2, x.Result.Item3);
+            });
 
-            //Execute the delegate synchronously.
-            Console.WriteLine("Executing the delegate synchronously!\n");
-            Console.WriteLine(formatDelegate());
-
-            //Call an async delegate to format the values using one format string.
-            Console.WriteLine("Executing a task asynchronously!\n");
-
-            var t1 = Task.Run(formatDelegate);
-            Console.WriteLine(t1.Result);
-
-            Console.WriteLine("Executing a task synchronously!\n");
-
-            var t2 = new Task<string>(formatDelegate);
-            t2.RunSynchronously();
-            Console.WriteLine(t2.Result);
+            Console.WriteLine(displayData.Result);
 
             Console.ReadLine();
         } 
