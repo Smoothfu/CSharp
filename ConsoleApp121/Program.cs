@@ -11,35 +11,32 @@ namespace ConsoleApp121
     {
         static void Main(string[] args)
         {
-            Task<Double>[] taskArray =
+            //Create the task object by using an Action (Of object) to pass in the loop counter, this produces an unexpected result.
+            Task[] taskArray = new Task[10];
+            for (int i = 0; i < taskArray.Length; i++)
             {
-            Task<Double>.Factory.StartNew(()=>DoComputation(1.0)),
-            Task<Double>.Factory.StartNew(()=>DoComputation(100.0)),
-            Task<Double>.Factory.StartNew(()=>DoComputation(1000.0))
-            };
+                taskArray[i] = Task.Factory.StartNew((Object obj) =>
+                  {
+                      var data = new CustomData() { Name = i, CreationTime = DateTime.Now.Ticks };
+                      data.ThreadNum = Thread.CurrentThread.ManagedThreadId;
+                      Console.WriteLine("Task #{0} created at {1} on thread #{2}.\n", data.Name, data.CreationTime, data.ThreadNum);
+                  }, i);
 
+                taskArray[i].Wait();
+                Console.WriteLine("The {0} task has been completed!\n", taskArray[i].Id);
 
-            var results = new Double[taskArray.Length];
-            double sum = 0;
-            for(int i=0;i<taskArray.Length;i++)
-            {
-                results[i] = taskArray[i].Result;
-                Console.WriteLine("{0:N1} {1}\n", results[i], i == taskArray.Length - 1 ? "=" : "+");
-                sum += results[i];
-            }
+            }          
 
-            Console.WriteLine("{0:N1}\n", sum);
             Console.ReadLine();
         } 
 
-        private static Double DoComputation(double start)
-        {
-            Double sum = 0;
-            for(var value=start; value<=start+10;value+=0.1)
-            {
-                sum += value;
-            }
-            return sum;
-        }
+        
+    }
+
+    class CustomData
+    {
+        public long CreationTime;
+        public int Name;
+        public int ThreadNum;
     }
 }
