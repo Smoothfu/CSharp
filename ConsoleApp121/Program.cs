@@ -11,18 +11,35 @@ namespace ConsoleApp121
     {
         static void Main(string[] args)
         {
-            Thread.CurrentThread.Name = "Main";
-
-            //Better:Create and start the task in one operation.
-            Task taskA = Task.Factory.StartNew(() =>
+            Task<Double>[] taskArray =
             {
-                Console.WriteLine("Hello from taskA!\n");
-            });
+            Task<Double>.Factory.StartNew(()=>DoComputation(1.0)),
+            Task<Double>.Factory.StartNew(()=>DoComputation(100.0)),
+            Task<Double>.Factory.StartNew(()=>DoComputation(1000.0))
+            };
 
-            //Output a message from the calling thread.
-            Console.WriteLine("Hello from thread '{0}'.\n", Thread.CurrentThread.Name);
-            taskA.Wait();
+
+            var results = new Double[taskArray.Length];
+            double sum = 0;
+            for(int i=0;i<taskArray.Length;i++)
+            {
+                results[i] = taskArray[i].Result;
+                Console.WriteLine("{0:N1} {1}\n", results[i], i == taskArray.Length - 1 ? "=" : "+");
+                sum += results[i];
+            }
+
+            Console.WriteLine("{0:N1}\n", sum);
             Console.ReadLine();
         } 
+
+        private static Double DoComputation(double start)
+        {
+            Double sum = 0;
+            for(var value=start; value<=start+10;value+=0.1)
+            {
+                sum += value;
+            }
+            return sum;
+        }
     }
 }
