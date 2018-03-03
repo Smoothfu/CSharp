@@ -17,14 +17,28 @@ namespace ConsoleApp121
             {
                 taskArray[i] = Task.Factory.StartNew((Object obj) =>
                   {
-                      var data = new CustomData() { Name = i, CreationTime = DateTime.Now.Ticks };
+                      CustomData data = obj as CustomData;
+                      if(data==null)
+                      {
+                          return;
+                      }
                       data.ThreadNum = Thread.CurrentThread.ManagedThreadId;
-                      Console.WriteLine("Task #{0} created at {1} on thread #{2}.\n", data.Name, data.CreationTime, data.ThreadNum);
-                  }, i);
+                  },
+                  new CustomData() { Name = i, CreationTime = DateTime.Now.Ticks });
 
                 taskArray[i].Wait();
                 Console.WriteLine("The {0} task has been completed!\n", taskArray[i].Id);
+            }
 
+            Task.WaitAll(taskArray);
+
+            foreach(var task in taskArray)
+            {
+                var data = task.AsyncState as CustomData;
+                if(data!=null)
+                {
+                    Console.WriteLine("Task #{0} created at {1},ran on thread #{2}\n", data.Name, data.CreationTime, data.ThreadNum);
+                }
             }
 
             Task.WaitAll(taskArray);
