@@ -25,7 +25,9 @@ namespace ConsoleApp121
                 taskArray[i].Wait();
                 Console.WriteLine("The {0} task has been completed!\n", taskArray[i].Id);
 
-            }          
+            }
+
+            Task.WaitAll(taskArray);
 
             Console.ReadLine();
         } 
