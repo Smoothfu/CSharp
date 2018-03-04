@@ -4,43 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.Remoting.Contexts;
 
 namespace ConsoleApp122
 {
+    //A C# delegate type.
+    public delegate int BinaryOp(int x, int y);
     class Program
     {
         static void Main(string[] args)
         {
-            ExtractAppDomainHostingThread();
+            Console.WriteLine("*****Synch Delegate Review*****\n");
+
+            //Print ou the ID of the executing thread.
+            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Invoke Add(0 in a synchronous manner.
+            BinaryOp bo = new BinaryOp(Add);
+
+            //Could also write bo.Invoke(10,10);
+
+            int answer = bo(10, 10);
+
+            //These lines will not execute unitil the Add(0 method has completed.
+            Console.WriteLine("Doing more work in Main()!\n");
+
+            Console.WriteLine("10+10 is {0}\n", answer);
+
             Console.ReadLine();
-        }
-
-        static void ExtractExecutingThread()
+        }         
+         
+        static int Add(int x,int y)
         {
-            //Get the thread currently executing this method.
+            //Print out the ID of the executing thread.
+            Console.WriteLine("Add() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
 
-            Thread currentThread = Thread.CurrentThread;
-            Console.WriteLine("Id: {0}\n", currentThread.ManagedThreadId);
-            Console.WriteLine("CurrentCulture :{0}\n",currentThread.CurrentCulture);
-            Console.WriteLine("CurrentUICulture:{0}\n", currentThread.CurrentUICulture);
-            Console.WriteLine("IsAlive:{0}\n",currentThread.IsAlive);
-            Console.WriteLine("IsBackground:{0}\n",currentThread.IsBackground);
-            Console.WriteLine("IsThreadPoolThread: {0}\n",currentThread.IsThreadPoolThread);
-            Console.WriteLine("Name: {0}\n",currentThread.Name);
-            Console.WriteLine("Priority:{0}\n",currentThread.Priority);
-            Console.WriteLine("ThreadState:{0}\n", currentThread.ThreadState);
-        }
-
-        static void ExtractAppDomainHostingThread()
-        {
-            //Obtain the AppDomain hosting the current thread.
-            AppDomain ad = Thread.GetDomain();
-            Console.WriteLine("ApplicationIdentity: {0}\n",ad.ApplicationIdentity);
-            Console.WriteLine("BaseDirectory:{0}\n", ad.BaseDirectory);
-            Console.WriteLine("FriendlyName:{0}\n", ad.FriendlyName);
-            Console.WriteLine("Id:{0}\n", ad.Id);
-            Console.WriteLine("IsFullyTrusted:{0}\n", ad.IsFullyTrusted);  
-            Console.WriteLine("RelativeSearchPath:{0}\n", ad.RelativeSearchPath);
+            //Pause to simulate a lengthy operation.
+            Thread.Sleep(5000);
+            return x + y;
         }
     }
 }
