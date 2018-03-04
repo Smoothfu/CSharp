@@ -14,16 +14,21 @@ namespace ConsoleApp122
     delegate int SomeDelegate(int x);
     class Program
     {
+        private static bool isDone = false;
         static void Main(string[] args)
         {
-            //Create delegate instance
-            SomeDelegate sd = SquareNumber;
+            Console.WriteLine("*****AsyncCallbackDelegate Example*****\n");
+            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            Console.WriteLine("Before SquareNumber Method Invoke!\n");
-            IAsyncResult asyncResult = sd.BeginInvoke(10, null, null);
-            Console.WriteLine("Back to Main method!\n");
-            int result = sd.EndInvoke(asyncResult);
-            Console.WriteLine(result);
+            BinaryOp bo = new BinaryOp(Add);
+            IAsyncResult iftAR = bo.BeginInvoke(10, 10, new AsyncCallback(AddComplete), null);
+
+            //Assume other work is performed here...
+            while(!isDone)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("Now is {0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+            }
               
             Console.ReadLine();
         }         
@@ -36,6 +41,13 @@ namespace ConsoleApp122
             Thread.Sleep(1000);
 
             return x + y;
+        }
+
+        static void AddComplete(IAsyncResult itfAR)
+        {
+            Console.WriteLine("AddComplete() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("Your addition is complete!\n");
+            isDone = true;
         }
 
         static int SquareNumber(int a)
