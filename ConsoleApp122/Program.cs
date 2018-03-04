@@ -18,18 +18,27 @@ namespace ConsoleApp122
         private static bool isDone = false;
         static void Main(string[] args)
         {
-            Console.WriteLine("*****AsyncCallbackDelegate Example*****\n");
-            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            BinaryOp bo = new BinaryOp(Add);
-            IAsyncResult iftAR = bo.BeginInvoke(10, 10, new AsyncCallback(AddComplete), "Main() thanks you for adding these numbers.!\n");
+            Console.WriteLine("*****Primary Thread stats*****\n");
 
-            //Assume other work is performed here...
-            while(!isDone)
-            {
-                Thread.Sleep(1000);
-                Console.WriteLine("Now is {0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
-            }
+            //Obtain and name the current thread.
+            Thread primaryThread = Thread.CurrentThread;
+            primaryThread.Name = "ThePrimaryThread";
+
+            //Show details of hosting AppDomain/Context.
+
+            Console.WriteLine("Name of current AppDomain:{0}\n", Thread.GetDomain().FriendlyName);
+
+            Console.WriteLine("ID of current Context:{0}\n", Thread.CurrentContext.ContextID);
+
+            //Print out some stats about this thread.
+            Console.WriteLine("Thread name:{0}\n", primaryThread.Name);
+
+            Console.WriteLine("Has thread started?:{0}", primaryThread.IsAlive);
+
+            Console.WriteLine("Priority Level:{0}\n", primaryThread.Priority);
+
+            Console.WriteLine("Thread State:{0}", primaryThread.ThreadState);
               
             Console.ReadLine();
         }         
