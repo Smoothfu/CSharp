@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Messaging;
+using System.Windows.Forms;
 
 namespace ConsoleApp122
 {
@@ -19,27 +20,42 @@ namespace ConsoleApp122
         static void Main(string[] args)
         {
 
-            Console.WriteLine("*****Primary Thread stats*****\n");
+            Console.WriteLine("*****The Amazing Thread App*****\n");
+            Console.WriteLine("Do you want [1] or [2] threads?");
+            string threadCount = Console.ReadLine();
 
-            //Obtain and name the current thread.
+            //Name the current thread.
             Thread primaryThread = Thread.CurrentThread;
-            primaryThread.Name = "ThePrimaryThread";
+            primaryThread.Name = "Primary";
 
-            //Show details of hosting AppDomain/Context.
+            //Display Thread info.
+            Console.WriteLine("-> {0} is executing Main()!\n",Thread.CurrentThread.Name);
 
-            Console.WriteLine("Name of current AppDomain:{0}\n", Thread.GetDomain().FriendlyName);
+            //Make worker class.
+            Printer p = new Printer();
 
-            Console.WriteLine("ID of current Context:{0}\n", Thread.CurrentContext.ContextID);
+            switch(threadCount)
+            {
+                case "2":
+                    //Now make the thread.
+                    Thread backgroundThread = new Thread(new ThreadStart(p.PrintNumbers));
+                    backgroundThread.Name = "Secondary";
+                    backgroundThread.Start();
+                    break;
 
-            //Print out some stats about this thread.
-            Console.WriteLine("Thread name:{0}\n", primaryThread.Name);
+                case "1":
+                    p.PrintNumbers();
+                    break;
 
-            Console.WriteLine("Has thread started?:{0}", primaryThread.IsAlive);
+                default:
+                    Console.WriteLine("I don't know what you want ... you get 1 thread.\n");
+                    goto case "1";
+            }
 
-            Console.WriteLine("Priority Level:{0}\n", primaryThread.Priority);
+            //Do some additional work.
 
-            Console.WriteLine("Thread State:{0}", primaryThread.ThreadState);
-              
+            MessageBox.Show("I'm busy!", "Work on main thread...");
+
             Console.ReadLine();
         }         
          
@@ -75,6 +91,27 @@ namespace ConsoleApp122
             Console.WriteLine("SquareNumber Invoked.Processsing...");
             Thread.Sleep(2000);
             return a * a;
+        }
+    }
+
+
+    public class Printer
+    {
+        public void PrintNumbers()
+        {
+            //Display Thread info.
+            Console.WriteLine("- >{0} is executing PrintNumbers()! \n",Thread.CurrentThread.Name);
+
+
+            //Print out numbers.
+            Console.WriteLine("Your numbers:\n");
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine(i);
+                Thread.Sleep(2000);
+            }
+
+            Console.WriteLine();
         }
     }
 }
