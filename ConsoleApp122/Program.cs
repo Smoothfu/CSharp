@@ -19,11 +19,12 @@ namespace ConsoleApp122
             //Create delegate instance
             SomeDelegate sd = SquareNumber;
 
-            //Invoke delegate.
-            int result = sd(10);
+            Console.WriteLine("Before SquareNumber Method Invoke!\n");
+            IAsyncResult asyncResult = sd.BeginInvoke(10, null, null);
             Console.WriteLine("Back to Main method!\n");
+            int result = sd.EndInvoke(asyncResult);
             Console.WriteLine(result);
- 
+              
             Console.ReadLine();
         }         
          
