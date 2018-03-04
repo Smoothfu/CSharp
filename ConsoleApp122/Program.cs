@@ -19,16 +19,13 @@ namespace ConsoleApp122
         private static AutoResetEvent waitHandler = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Adding with Thread objects******\n");
-            Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("*****Background Threads*****\n");
+            Printer p = new Printer();
+            Thread backgroundThread = new Thread(new ThreadStart(p.PrintNumbers));
 
-            AddParams ap = new AddParams(10, 10);
-            Thread t = new Thread(new ParameterizedThreadStart(AddParams.Add));
-            t.Start(ap);
-
-            //Wait here until you are notified.
-            waitHandler.WaitOne();
-            Console.WriteLine("Other thread is done!");
+            //This is now a background thread.
+            backgroundThread.IsBackground = true;
+            backgroundThread.Start();
             Console.ReadLine();
         }
 
@@ -56,6 +53,20 @@ namespace ConsoleApp122
 
                 waitHandler.Set();
                 Console.WriteLine("The AddParam thread is over!\n");
+            }
+        }
+    }
+
+    public class Printer
+    {
+        public void PrintNumbers()
+        {
+            Thread printThread = Thread.CurrentThread;
+            Console.WriteLine("The printer thread id is :{0}\n", printThread.ManagedThreadId);
+
+            for(int i=0;i<10000000;i++)
+            {
+                Console.WriteLine("i is {0} and now is :{1}\n", i, DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
             }
         }
     }
