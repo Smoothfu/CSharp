@@ -24,8 +24,12 @@ namespace ConsoleApp122
             BinaryOp bo = new BinaryOp(Add);
             IAsyncResult iftAR = bo.BeginInvoke(10, 10, null, null);
 
-            //Do other wokr on primary thread...
-            Console.WriteLine("Doing more work in Main()!\n");
+           
+            //This message will keep printing until the Add() method is finished.
+            while(!iftAR.IsCompleted)
+            {
+                Console.WriteLine("Now is :{0}", DateTime.Now.ToString("yyyy-MM-dd:hh-mm-ss:fff"));
+            }
 
             //Obtain the result of the Add() method when ready.
             int answer = bo.EndInvoke(iftAR);
@@ -40,7 +44,7 @@ namespace ConsoleApp122
             //Print out the ID of the executing thread.
             Console.WriteLine("Add() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
 
-           
+            Thread.Sleep(1000);
 
             return x + y;
         }
