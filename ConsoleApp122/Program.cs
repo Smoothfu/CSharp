@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Runtime.Remoting.Contexts;
+using System.Runtime.Remoting.Messaging;
 
 namespace ConsoleApp122
 {
@@ -47,6 +48,11 @@ namespace ConsoleApp122
         {
             Console.WriteLine("AddComplete() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("Your addition is complete!\n");
+
+            //Now get the result.
+            AsyncResult ar = (AsyncResult)itfAR;
+            BinaryOp bo = (BinaryOp)ar.AsyncDelegate;
+            Console.WriteLine("10+10 is {0}.\n", bo.EndInvoke(itfAR));
             isDone = true;
         }
 
