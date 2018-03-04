@@ -70,15 +70,21 @@ namespace ConsoleApp122
 
     public class Printer
     {
+        //Lock token.
+        private object threadLock = new object();
         public void PrintNumbers()
         {
-            Thread printThread = Thread.CurrentThread;
-            Console.WriteLine("The printer thread id is :{0}\n", printThread.ManagedThreadId);
-
-            for(int i=0;i<10;i++)
+            //use the lock token
+            lock(threadLock)
             {
-                Console.WriteLine("i is {0} and now is :{1}\n", i, DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
-            }
+                Thread printThread = Thread.CurrentThread;
+                Console.WriteLine("The printer thread id is :{0}\n", printThread.ManagedThreadId);
+
+                for (int i = 0; i < 10; i++)
+                {
+                    Console.WriteLine("i is {0} and now is :{1}\n", i, DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+                }
+            }            
         }
     }
 
