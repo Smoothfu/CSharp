@@ -10,32 +10,20 @@ namespace ConsoleApp122
 {
     //A C# delegate type.
     public delegate int BinaryOp(int x, int y);
+
+    delegate int SomeDelegate(int x);
     class Program
     {
         static void Main(string[] args)
         {
+            //Create delegate instance
+            SomeDelegate sd = SquareNumber;
 
-            Console.WriteLine("*****Async Delegate Invocation*****\n");
-
-            //Print out the ID of the executing thread.
-            Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
-
-            //Invoke Add() on a secondary thread.
-            BinaryOp bo = new BinaryOp(Add);
-            IAsyncResult iftAR = bo.BeginInvoke(10, 10, null, null);
-
-           
-            //This message will keep printing until the Add() method is finished.
-            while(!iftAR.AsyncWaitHandle.WaitOne(1000,true))
-            {
-                Console.WriteLine("Now is :{0}", DateTime.Now.ToString("yyyy-MM-dd:hh-mm-ss:fff"));
-            }
-
-            //Obtain the result of the Add() method when ready.
-            int answer = bo.EndInvoke(iftAR);
-
-            Console.WriteLine("10+10 is {0}\n", answer);
-
+            //Invoke delegate.
+            int result = sd(10);
+            Console.WriteLine("Back to Main method!\n");
+            Console.WriteLine(result);
+ 
             Console.ReadLine();
         }         
          
@@ -47,6 +35,13 @@ namespace ConsoleApp122
             Thread.Sleep(1000);
 
             return x + y;
+        }
+
+        static int SquareNumber(int a)
+        {
+            Console.WriteLine("SquareNumber Invoked.Processsing...");
+            Thread.Sleep(2000);
+            return a * a;
         }
     }
 }
