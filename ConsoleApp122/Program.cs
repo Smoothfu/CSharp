@@ -11,7 +11,7 @@ namespace ConsoleApp122
     {
         static void Main(string[] args)
         {
-            ExtractExecutingThread();
+            ExtractAppDomainHostingThread();
             Console.ReadLine();
         }
 
@@ -29,6 +29,18 @@ namespace ConsoleApp122
             Console.WriteLine("Name: {0}\n",currentThread.Name);
             Console.WriteLine("Priority:{0}\n",currentThread.Priority);
             Console.WriteLine("ThreadState:{0}\n", currentThread.ThreadState);
+        }
+
+        static void ExtractAppDomainHostingThread()
+        {
+            //Obtain the AppDomain hosting the current thread.
+            AppDomain ad = Thread.GetDomain();
+            Console.WriteLine("ApplicationIdentity: {0}\n",ad.ApplicationIdentity);
+            Console.WriteLine("BaseDirectory:{0}\n", ad.BaseDirectory);
+            Console.WriteLine("FriendlyName:{0}\n", ad.FriendlyName);
+            Console.WriteLine("Id:{0}\n", ad.Id);
+            Console.WriteLine("IsFullyTrusted:{0}\n", ad.IsFullyTrusted);  
+            Console.WriteLine("RelativeSearchPath:{0}\n", ad.RelativeSearchPath);
         }
     }
 }
