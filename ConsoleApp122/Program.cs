@@ -26,7 +26,7 @@ namespace ConsoleApp122
 
            
             //This message will keep printing until the Add() method is finished.
-            while(!iftAR.IsCompleted)
+            while(!iftAR.AsyncWaitHandle.WaitOne(1000,true))
             {
                 Console.WriteLine("Now is :{0}", DateTime.Now.ToString("yyyy-MM-dd:hh-mm-ss:fff"));
             }
