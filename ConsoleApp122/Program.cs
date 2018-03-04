@@ -14,20 +14,21 @@ namespace ConsoleApp122
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synch Delegate Review*****\n");
 
-            //Print ou the ID of the executing thread.
-            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("*****Async Delegate Invocation*****\n");
 
-            //Invoke Add(0 in a synchronous manner.
+            //Print out the ID of the executing thread.
+            Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Invoke Add() on a secondary thread.
             BinaryOp bo = new BinaryOp(Add);
+            IAsyncResult iftAR = bo.BeginInvoke(10, 10, null, null);
 
-            //Could also write bo.Invoke(10,10);
-
-            int answer = bo(10, 10);
-
-            //These lines will not execute unitil the Add(0 method has completed.
+            //Do other wokr on primary thread...
             Console.WriteLine("Doing more work in Main()!\n");
+
+            //Obtain the result of the Add() method when ready.
+            int answer = bo.EndInvoke(iftAR);
 
             Console.WriteLine("10+10 is {0}\n", answer);
 
@@ -39,8 +40,8 @@ namespace ConsoleApp122
             //Print out the ID of the executing thread.
             Console.WriteLine("Add() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
 
-            //Pause to simulate a lengthy operation.
-            Thread.Sleep(5000);
+           
+
             return x + y;
         }
     }
