@@ -33,15 +33,24 @@ namespace ConsoleApp123
 
     public class Printer
     {
+        //Lock token.
+
+        private object threadLock = new object();
+
         public void PrintNumbers()
         {
-            for(int i=0;i<10;i++)
+            //use the lock token.
+            lock(threadLock)
             {
-                //put thread to sleep for a random amount of time.
-                Random rnd = new Random();
-                Thread.Sleep(1000 * rnd.Next(5));
-                Console.Write(i+"\t");
+                for (int i = 0; i < 10; i++)
+                {
+                    //put thread to sleep for a random amount of time.
+                    Random rnd = new Random();
+                    
+                    Console.Write(i + "\t");
+                }
             }
+           
             Console.WriteLine();
         }
     }
