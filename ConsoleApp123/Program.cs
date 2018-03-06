@@ -39,17 +39,24 @@ namespace ConsoleApp123
 
         public void PrintNumbers()
         {
-            //use the lock token.
-            lock(threadLock)
+            Monitor.Enter(threadLock);
+            try
             {
+                //Display Thread info.
+                Console.WriteLine("\n\n-> {0} is executing PrintNumbers()!\n", Thread.CurrentThread.Name);
+
+                //Print out numbers.
                 for (int i = 0; i < 10; i++)
                 {
-                    //put thread to sleep for a random amount of time.
-                    Random rnd = new Random();
-                    
                     Console.Write(i + "\t");
                 }
             }
+
+            finally
+            {
+                Monitor.Exit(threadLock);
+            }
+            
            
             Console.WriteLine();
         }
