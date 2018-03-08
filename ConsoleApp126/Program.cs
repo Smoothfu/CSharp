@@ -11,10 +11,24 @@ namespace ConsoleApp126
     {
         static void Main(string[] args)
         {
-            Thread th = Thread.CurrentThread;
-            th.Name = "MainThread";
-            Console.WriteLine("Thread Priority:{0}\n", th.Priority);
-            Console.WriteLine("This is {0}\n", th.Name);
+            Thread th = new Thread(() =>
+              {
+                  AddMethod(100, 1000000, 10000000);
+              });
+            Console.WriteLine("Now is:{0},ThreadState:{1}\n", DateTime.Now.ToString("yyyy-MM-dd:hh-mm-ss:fff"), th.ThreadState);
+            th.Start();
+            Console.WriteLine("Now is:{0},ThreadState:{1}\n", DateTime.Now.ToString("yyyy-MM-dd:hh-mm-ss:fff"), th.ThreadState);
+
+            while(!(th.ThreadState==ThreadState.Stopped))
+            {
+                Console.WriteLine("Now is:{0},ThreadState:{1}\n", DateTime.Now.ToString("yyyy-MM-dd:hh-mm-ss:fff"), th.ThreadState);
+            }
+
+            if(th.ThreadState == ThreadState.Stopped)
+            {
+                Console.WriteLine("Now is:{0},ThreadState:{1}\n", DateTime.Now.ToString("yyyy-MM-dd:hh-mm-ss:fff"), th.ThreadState);
+
+            }
             Console.ReadLine();
         }
 
