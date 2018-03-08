@@ -13,7 +13,7 @@ namespace ConsoleApp126
         {
             Thread th = Thread.CurrentThread;
             th.Name = "MainThread";
-
+            Console.WriteLine("Thread Priority:{0}\n", th.Priority);
             Console.WriteLine("This is {0}\n", th.Name);
             Console.ReadLine();
         }
