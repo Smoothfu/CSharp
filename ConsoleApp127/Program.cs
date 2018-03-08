@@ -16,6 +16,16 @@ namespace ConsoleApp127
 
             Thread childThread = new Thread(childRef);
             childThread.Start();
+
+            Console.WriteLine("Main method before sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+            //stop the main thread for some time.
+            Thread.Sleep(2000);
+            Console.WriteLine("Main method after sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+
+            //now abort the child.
+            Console.WriteLine("In Main:Aborting the Child thread!\n");
+            childThread.Abort();
+
             Console.ReadLine();
         }
 
@@ -29,16 +39,29 @@ namespace ConsoleApp127
 
         static void CallToChildThread()
         {
-            Console.WriteLine("Child thread starts!\n");
-            Console.WriteLine("Before sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+            try
+            {
+                Console.WriteLine("Child thread starts!\n");                
 
-            //the thread is paused for 5000 milliseconds
-            int sleepFor = 5000;
-
-            Console.WriteLine("Child Thread Paused for {0} seconds!\n", sleepFor / 1000);
-            Thread.Sleep(sleepFor);
-            Console.WriteLine("After sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
-            Console.WriteLine("Child thread resumes!\n");
+                //do some work,like counting to 10.
+                for(int counter=0;counter<=10;counter++)
+                {
+                    Console.WriteLine("Before sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+                    Thread.Sleep(500);
+                    Console.WriteLine("The counter is {0} and after sleep is {1}\n", counter, DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+                }
+                Console.WriteLine("Child Thread Completed!\n");                
+                 
+            }
+            catch(ThreadAbortException ex)
+            {
+                Console.WriteLine("Thread Abort Exception!\n");
+            }
+            finally
+            {
+                Console.WriteLine("Couldn't catch the Thread Exception!\n");
+            }
+            
         }
     }
 }
