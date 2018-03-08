@@ -13,7 +13,19 @@ namespace ConsoleApp126
         {
             Person p = new Person(1, "Fred");
             Thread pThread = new Thread(new ThreadStart(p.DescribePerson));
+            Console.WriteLine(pThread.ThreadState + "\n");
             pThread.Start();
+            Console.WriteLine(pThread.ThreadState+"\n");
+
+            while(!(pThread.ThreadState==ThreadState.Stopped))
+            {
+                Console.WriteLine("Now is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+            }
+
+            if(pThread.ThreadState==ThreadState.Stopped)
+            {
+                Console.WriteLine("Now The thread finished,it's {0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+            }
             Console.ReadLine();
         }
 
