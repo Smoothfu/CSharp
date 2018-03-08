@@ -11,57 +11,79 @@ namespace ConsoleApp127
     {
         static void Main(string[] args)
         {
-            ThreadStart childRef = new ThreadStart(CallToChildThread);
-            Console.WriteLine("In main:Creating the child thread!\n");
+            Thread[] threads = new Thread[10];
+            Account acc = new Account(1000);
 
-            Thread childThread = new Thread(childRef);
-            childThread.Start();
+            for(int i=0;i<10;i++)
+            {
+                Thread t = new Thread(new ThreadStart(acc.DoTransactions));
+                threads[i] = t;
+            }
 
-            Console.WriteLine("Main method before sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
-            //stop the main thread for some time.
-            Thread.Sleep(2000);
-            Console.WriteLine("Main method after sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+            for(int i=0;i<10;i++)
+            {
+                threads[i].Start();
+            }
 
-            //now abort the child.
-            Console.WriteLine("In Main:Aborting the Child thread!\n");
-            childThread.Abort();
-
+            //block main thread until all other threads have ran to completion.
+            foreach(var t in threads)
+            {
+                t.Join();
+            }
             Console.ReadLine();
         }
-
-        static void AddMethod(int x,int y,int z)
+        
+        public static void RunMe()
         {
-            Thread addThread = Thread.CurrentThread;
-            Console.WriteLine("The addThread's ManagedThreadId :{0}\n", addThread.ManagedThreadId);
-            Console.WriteLine("{0}+{1}+{2}={3}\n", x, y, z, x + y + z);
-            Console.WriteLine();
+            Console.WriteLine("RunMe called!\n");
+        }        
+        
+    }
+
+    class Account
+    {
+        private object thisLock = new object();
+        int balance;
+
+        Random rnd = new Random();
+
+        public Account(int initial)
+        {
+            balance = initial;
         }
 
-        static void CallToChildThread()
+        int Withdraw(int amount)
         {
-            try
+            //This condition never is true unless the lock statement is copleted out.
+            if(balance<0)
             {
-                Console.WriteLine("Child thread starts!\n");                
+                throw new Exception("Negative Balance!\n");
+            }
 
-                //do some work,like counting to 10.
-                for(int counter=0;counter<=10;counter++)
+            //Comment out the next line to see the effect of leaving out the lock keyword.
+            lock(thisLock)
+            {
+                if(balance>=amount)
                 {
-                    Console.WriteLine("Before sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
-                    Thread.Sleep(500);
-                    Console.WriteLine("The counter is {0} and after sleep is {1}\n", counter, DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+                    Console.WriteLine("Balance before Withdrawl: {0}\n", balance);
+                    Console.WriteLine("Amount to Widthdraw: {0}\n", amount);
+                    balance = balance - amount;
+                    Console.WriteLine("Balance after Widthdrawl: {0}\n", balance);
+                    return amount;
                 }
-                Console.WriteLine("Child Thread Completed!\n");                
-                 
+                else
+                {
+                    return 0;
+                }
             }
-            catch(ThreadAbortException ex)
+        }
+
+        public void DoTransactions()
+        {
+            for(int i=0;i<100;i++)
             {
-                Console.WriteLine("Thread Abort Exception!\n");
+                Withdraw(rnd.Next(1, 100));
             }
-            finally
-            {
-                Console.WriteLine("Couldn't catch the Thread Exception!\n");
-            }
-            
         }
     }
 }
