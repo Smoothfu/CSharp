@@ -11,14 +11,10 @@ namespace ConsoleApp127
     {
         static void Main(string[] args)
         {
-            Thread mainThread = Thread.CurrentThread;
-            Console.WriteLine("The main thread ManagedThreadId:{0}\n", mainThread.ManagedThreadId);
-
-            Thread newThread = new Thread(() =>
-              {                  
-                  AddMethod(10000, 10000000, 1000000000);
-              });
-            newThread.Start();
+            ThreadStart childRef = new ThreadStart(CallToChildThread);
+            Console.WriteLine("In main:Creating the child thread!\n");
+            Thread childThread = new Thread(childRef);
+            childThread.Start();
             Console.ReadLine();
         }
 
@@ -28,6 +24,11 @@ namespace ConsoleApp127
             Console.WriteLine("The addThread's ManagedThreadId :{0}\n", addThread.ManagedThreadId);
             Console.WriteLine("{0}+{1}+{2}={3}\n", x, y, z, x + y + z);
             Console.WriteLine();
+        }
+
+        static void CallToChildThread()
+        {
+            Console.WriteLine("Child thread starts!\n");
         }
     }
 }
