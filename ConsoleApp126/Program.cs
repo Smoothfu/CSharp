@@ -11,12 +11,9 @@ namespace ConsoleApp126
     {
         static void Main(string[] args)
         {
-            int x = 100, y = 10000, z = 10000000;
-            Thread thread = new Thread(() =>
-              {
-                  AddMethod(x, y, z);
-              });
-            thread.Start();
+            Person p = new Person(1, "Fred");
+            Thread pThread = new Thread(new ThreadStart(p.DescribePerson));
+            pThread.Start();
             Console.ReadLine();
         }
 
@@ -26,6 +23,28 @@ namespace ConsoleApp126
             Console.WriteLine("Thread Id:{0}\n", addThread.ManagedThreadId);
 
             Console.WriteLine("{0}+{1}+{2}={3}\n", x, y, z, x + y + z);
+        }
+    }
+
+    public class Person
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public Person(int pId,string pName)
+        {
+            Id = pId;
+            Name = pName;
+        }
+
+        public void DescribePerson()
+        {
+            Console.WriteLine("Name:{0},Id:{1}\n", Name, Id);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("The person's name is :{0},and Id is:{1}\n", Name, Id);
         }
     }
 }
