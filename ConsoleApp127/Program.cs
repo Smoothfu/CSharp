@@ -13,6 +13,7 @@ namespace ConsoleApp127
         {
             ThreadStart childRef = new ThreadStart(CallToChildThread);
             Console.WriteLine("In main:Creating the child thread!\n");
+
             Thread childThread = new Thread(childRef);
             childThread.Start();
             Console.ReadLine();
@@ -29,6 +30,15 @@ namespace ConsoleApp127
         static void CallToChildThread()
         {
             Console.WriteLine("Child thread starts!\n");
+            Console.WriteLine("Before sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+
+            //the thread is paused for 5000 milliseconds
+            int sleepFor = 5000;
+
+            Console.WriteLine("Child Thread Paused for {0} seconds!\n", sleepFor / 1000);
+            Thread.Sleep(sleepFor);
+            Console.WriteLine("After sleep is :{0}\n", DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
+            Console.WriteLine("Child thread resumes!\n");
         }
     }
 }
