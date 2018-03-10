@@ -10,7 +10,7 @@
         <StackPanel Orientation="Vertical">
             <Button Width="300" Height="100" Content="Load Images" x:Name="loadImg" Click="loadImg_Click" BorderBrush="Yellow" BorderThickness="5"/>
             <TextBox x:Name="txt" Width="1300" Height="500" BorderBrush="Black" BorderThickness="10"/>
-
+            <Button Width="300" Height="100" Content="Cancel Action" x:Name="cancelBtn" Click="cancelBtn_Click" BorderBrush="Black" BorderThickness="5"/>
         </StackPanel>
        </Grid>
 </Window>
