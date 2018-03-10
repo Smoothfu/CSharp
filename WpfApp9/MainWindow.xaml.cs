@@ -30,7 +30,11 @@ namespace WpfApp9
 
         private void loadImg_Click(object sender, RoutedEventArgs e)
         {
-            ProcessFiles();
+            //Start a new "task" to process the files.
+            Task.Factory.StartNew(() =>
+            {
+                ProcessFiles();
+            });
         }
 
         private void ProcessFiles()
@@ -71,12 +75,12 @@ namespace WpfApp9
                     bp.Save(System.IO.Path.Combine(newDir, fileName));
                 }
 
-                this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(()=>
+                this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(() =>
                 {
                     sb.Append(string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId));
                     this.txt.Text = sb.ToString();
-                }));
-            });
+                })); 
+            });         
 
         }
     }
