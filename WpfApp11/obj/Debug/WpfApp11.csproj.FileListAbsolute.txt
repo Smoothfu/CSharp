@@ -1,0 +1,15 @@
+D:\C\WpfApp11\WpfApp11\bin\Debug\WpfApp11.exe.config
+D:\C\WpfApp11\WpfApp11\bin\Debug\WpfApp11.exe
+D:\C\WpfApp11\WpfApp11\bin\Debug\WpfApp11.pdb
+D:\C\WpfApp11\WpfApp11\obj\Debug\WpfApp11.csprojResolveAssemblyReference.cache
+D:\C\WpfApp11\WpfApp11\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp11\WpfApp11\obj\Debug\App.g.cs
+D:\C\WpfApp11\WpfApp11\obj\Debug\WpfApp11_MarkupCompile.cache
+D:\C\WpfApp11\WpfApp11\obj\Debug\WpfApp11_MarkupCompile.lref
+D:\C\WpfApp11\WpfApp11\obj\Debug\MainWindow.baml
+D:\C\WpfApp11\WpfApp11\obj\Debug\WpfApp11.g.resources
+D:\C\WpfApp11\WpfApp11\obj\Debug\WpfApp11.Properties.Resources.resources
+D:\C\WpfApp11\WpfApp11\obj\Debug\WpfApp11.csproj.GenerateResource.Cache
+D:\C\WpfApp11\WpfApp11\obj\Debug\WpfApp11.csproj.CoreCompileInputs.cache
+D:\C\WpfApp11\WpfApp11\obj\Debug\WpfApp11.exe
+D:\C\WpfApp11\WpfApp11\obj\Debug\WpfApp11.pdb
