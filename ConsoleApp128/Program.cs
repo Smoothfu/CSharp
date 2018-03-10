@@ -13,14 +13,22 @@ namespace ConsoleApp128
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Background Threads*****\n");
+            Console.WriteLine("*****Synchronizing Threads*****\n");
             Printer p = new Printer();
-            Thread bgThread = new Thread(new ThreadStart(p.PrintNumbers));
 
-            //This is now a background thread.
-            bgThread.IsBackground = true;
-            bgThread.Start();
-             
+            //Make 10 threads that are all pointing to the same method on the same object.
+            Thread[] threads = new Thread[10];
+            for(int i=0;i<10;i++)
+            {
+                threads[i] = new Thread(new ThreadStart(p.PrintNumbers));
+                threads[i].Name = string.Format("Worker thread #{0}", i);
+            }
+
+            //Now start each one.
+            foreach(Thread t in threads)
+            {
+                t.Start();
+            }
             Console.ReadLine();
         }
 
@@ -53,6 +61,10 @@ namespace ConsoleApp128
 
             for(int i=0;i<10;i++)
             {
+                //Put thread to sleep for a random amount of time.
+                Random rnd = new Random();
+                Thread.Sleep(1000 * rnd.Next(5));
+                Console.WriteLine("i is {0},now is :{1}",i,DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
                 Console.WriteLine("{0}\n", i);
                 Thread.Sleep(2000);
             }
