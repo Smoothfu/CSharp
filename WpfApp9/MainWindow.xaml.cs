@@ -42,23 +42,41 @@ namespace WpfApp9
             Directory.CreateDirectory(newDir);
 
 
-            //Process the image data in a bloacking manner.
-            foreach(string currentFile in files)
+            ////Process the image data in a bloacking manner.
+            //foreach(string currentFile in files)
+            //{
+            //    string fileName = System.IO.Path.GetFileName(currentFile);
+
+            //    using (Bitmap bitmap = new Bitmap(currentFile))
+            //    {
+            //        bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            //        bitmap.Save(System.IO.Path.Combine(newDir, fileName));
+
+            //        //Print out the ID of the thread processing the current image.
+
+            //        sb.Append(string.Format("Processing {0} on thread {1}\n.", fileName, Thread.CurrentThread.ManagedThreadId));
+            //      }
+
+            //    txt.Text = sb.ToString();
+            //}
+
+
+            //Process the image data in a parallel manner!
+            Parallel.ForEach(files, x =>
             {
-                string fileName = System.IO.Path.GetFileName(currentFile);
-
-                using (Bitmap bitmap = new Bitmap(currentFile))
+                string fileName = System.IO.Path.GetFileName(x);
+                using (Bitmap bp = new Bitmap(x))
                 {
-                    bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                    bitmap.Save(System.IO.Path.Combine(newDir, fileName));
+                    bp.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    bp.Save(System.IO.Path.Combine(newDir, fileName));
+                }
 
-                    //Print out the ID of the thread processing the current image.
-                   
-                    sb.Append(string.Format("Processing {0} on thread {1}\n.", fileName, Thread.CurrentThread.ManagedThreadId));
-                  }
-
-                txt.Text = sb.ToString();
-            }
+                this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(()=>
+                {
+                    sb.Append(string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId));
+                    this.txt.Text = sb.ToString();
+                }));
+            });
 
         }
     }
