@@ -51,23 +51,26 @@ namespace ConsoleApp128
 
     public class Printer
     {
+        //Lock token
+        private object threadLock = new object();
         public void PrintNumbers()
         {
-            //Display Thread info.
-            Console.WriteLine("->{0} is executing PrintNumbers()\n", Thread.CurrentThread.Name);
-
-            //Print out numbers.
-            Console.WriteLine("Your numbers: ");
-
-            for(int i=0;i<10;i++)
+            //Use the lock token.
+            lock(threadLock)
             {
-                //Put thread to sleep for a random amount of time.
-                Random rnd = new Random();
-                Thread.Sleep(1000 * rnd.Next(5));
-                Console.WriteLine("i is {0},now is :{1}",i,DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff"));
-                Console.WriteLine("{0}\n", i);
-                Thread.Sleep(2000);
+                //Display Thread info.
+                Console.WriteLine("\n\n\n->{0} is executing PrintNumbers()\n", Thread.CurrentThread.Name);
+
+                //Print out numbers.
+                Console.WriteLine("Your numbers: ");
+
+                for (int i = 0; i < 10; i++)
+                {
+                    //Put thread to sleep for a random amount of time.
+                    Console.WriteLine("i is {0},now is :{1}", i, DateTime.Now.ToString("yyyy-MM-dd:HH-mm-ss:fff")); 
+                }
             }
+           
             Console.WriteLine();
         }
     }
