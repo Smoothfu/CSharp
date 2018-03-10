@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfApp10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp10"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="525">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBox x:Name="tbx" TextWrapping="Wrap" Width="1500" Height="300"/>
+            <Button x:Name="download" Content="Download" BorderBrush="Black" BorderThickness="5" Click="download_Click" Width="1000" Height="100"/>
+            <Button x:Name="GetStats" Content="GetStats" BorderBrush="Yellow" BorderThickness="5" Click="GetStats_Click" Width="1000" Height="100"/>
+        </StackPanel> 
+    </Grid>
+</Window>
