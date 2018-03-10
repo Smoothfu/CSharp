@@ -21,6 +21,7 @@ namespace WpfApp11
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CancellationTokenSource cancelToken = new CancellationTokenSource();
         public MainWindow()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace WpfApp11
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            cancelToken.Cancel();
         }
 
         private void ProcessIntData()
