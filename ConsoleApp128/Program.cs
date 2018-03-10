@@ -10,6 +10,7 @@ namespace ConsoleApp128
 {
     class Program
     {
+        private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
 
@@ -21,8 +22,10 @@ namespace ConsoleApp128
             Thread thread = new Thread(new ParameterizedThreadStart(Add));
             thread.Start(ap);
 
-            //Force a wait to let other thread finish.
-            Thread.Sleep(5);
+
+            //Wait here until you are notified!
+            waitHandle.WaitOne();
+            Console.WriteLine("Other thread is done!\n");
 
             Console.ReadLine();
         }
