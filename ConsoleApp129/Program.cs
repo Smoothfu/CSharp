@@ -19,7 +19,7 @@ namespace ConsoleApp129
 
             int num1 = 10;
             int num2 = 100;
-            int result = Interlocked.Increment(ref num1);
+            int result = Interlocked.Decrement(ref num1);
             Console.WriteLine("num1:{0}\n", num1);
             Console.WriteLine("result: {0}\n", result);
             Console.ReadLine();
