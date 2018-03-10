@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.Remoting.Contexts;
 
 namespace ConsoleApp130
 {
@@ -69,6 +70,19 @@ namespace ConsoleApp130
         ~Program()
         {
             mut.Dispose();
+        }
+    }
+
+    //All methods of Printer are now thread safe!
+    [Synchronization]
+    public class Printer:ContextBoundObject
+    {
+        public void PrintNumbers()
+        {
+            for(int i=0;i<100;i++)
+            {
+                Console.WriteLine("I is {0},and now is {1}\n", i, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+            }
         }
     }
 }
