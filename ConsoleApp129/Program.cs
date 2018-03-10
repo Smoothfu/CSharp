@@ -19,10 +19,10 @@ namespace ConsoleApp129
 
             int num1 = 10;
             int num2 = 100;
-            int result = Interlocked.CompareExchange(ref num1, num2, 10);
-            Console.WriteLine("num1: {0}\n", num1);
-            Console.WriteLine("num2: {0}\n", num2);
-            Console.WriteLine("result: {0}\n",result);
+            int result = Interlocked.Exchange(ref num1, num2);
+            Console.WriteLine("num1:{0}\n", num1);
+            Console.WriteLine("num2:{0}\n", num2);
+            Console.WriteLine("result: {0}\n", result);
             Console.ReadLine();
         }
 
