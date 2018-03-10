@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp10"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="525">
+        Title="MainWindow" Height="760" Width="525">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBox x:Name="tbx" TextWrapping="Wrap" Width="1500" Height="300"/>
-            <Button x:Name="download" Content="Download" BorderBrush="Black" BorderThickness="5" Click="download_Click" Width="1000" Height="100"/>
-            <Button x:Name="GetStats" Content="GetStats" BorderBrush="Yellow" BorderThickness="5" Click="GetStats_Click" Width="1000" Height="100"/>
-        </StackPanel> 
+        <Grid.RowDefinitions>
+                        <RowDefinition  />
+                        <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.Row="0" x:Name="tbx" TextWrapping="Wrap" Width="Auto" Grid.Column="0" Grid.ColumnSpan="3"/>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="download" Content="Download" BorderBrush="Black" BorderThickness="5" Click="download_Click" Width="150"  VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Button Grid.Row="1" Grid.Column="2" x:Name="GetStats" Content="GetStats" BorderBrush="Yellow" BorderThickness="5" Click="GetStats_Click" Width="150"   VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

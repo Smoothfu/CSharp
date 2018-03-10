@@ -67,19 +67,33 @@ private void btnGetStats_Click(object sender, EventArgs e)
             }, StringSplitOptions.RemoveEmptyEntries);
 
             //Now,find the ten most common words.
-            string[] tenMostCommon = FindTenMostCommon(words);
+            string[] tenMostCommon = null;
 
 
             //Get the longest word.
-            string longestWord = FindLongestWord(words);
+            string longestWord = string.Empty;
 
             //Now that all tasks are complete,build a string to show all stats in a message box.
             StringBuilder bookStats = new StringBuilder("Ten most Common Words are: \n");
-            foreach(string s in tenMostCommon)
-            {
-                bookStats.AppendLine(s);
-            }
 
+            Parallel.Invoke(() =>
+            {
+                //Now,find the ten most common words.
+                tenMostCommon = FindTenMostCommon(words);
+                StringBuilder sb = new StringBuilder();
+                Parallel.ForEach(tenMostCommon, x =>
+                {
+                    sb.AppendLine(x);
+                });
+                MessageBox.Show(sb.ToString());
+            },
+
+            () =>
+            {
+                //Get the longest word.
+                longestWord = FindLongestWord(words);
+            });
+            
             bookStats.AppendFormat("Longest word is :{0}\n", longestWord);
             bookStats.AppendLine();
             MessageBox.Show(bookStats.ToString(), "Book Info");
