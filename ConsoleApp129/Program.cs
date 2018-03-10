@@ -17,19 +17,12 @@ namespace ConsoleApp129
         static void Main(string[] args)
         {
 
-            Thread myThread;
-            Random rnd = new Random();
-
-            for(int i=0;i<numThreads;i++)
-            {
-                myThread = new Thread(new ThreadStart(MyThreadProc));
-                myThread.Name = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-
-                //wait a random amount of time before starting next thread.
-                Thread.Sleep(rnd.Next(0, 1000));
-                myThread.Start();
-            }
-
+            int num1 = 10;
+            int num2 = 100;
+            int result = Interlocked.CompareExchange(ref num1, num2, 10);
+            Console.WriteLine("num1: {0}\n", num1);
+            Console.WriteLine("num2: {0}\n", num2);
+            Console.WriteLine("result: {0}\n",result);
             Console.ReadLine();
         }
 
