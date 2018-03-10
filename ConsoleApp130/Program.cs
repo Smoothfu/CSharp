@@ -24,7 +24,7 @@ namespace ConsoleApp130
             //Establish timer settings.
             Timer t = new Timer(
                 timerCallback, //The TimerCallback delegate object.
-                null,           //Any info to pass into the called method
+                "Hello From Main",           //Any info to pass into the called method
                 0,              //Amount of time to wait before starting.
                 1);          //Interval of time between calls in milliseconds.
 
@@ -85,7 +85,7 @@ namespace ConsoleApp130
 
         static void PrintTime(object state)
         {
-            Console.WriteLine("Now is {0}\n", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+            Console.WriteLine("Now is {0}, Param is :{1}\n", DateTime.Now.ToString("yyyyMMddHHmmssfff"),state.ToString());
         }
     }
 
