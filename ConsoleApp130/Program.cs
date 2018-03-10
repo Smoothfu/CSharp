@@ -16,19 +16,20 @@ namespace ConsoleApp130
         private const int numThreads = 3;
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Working with Timer type*****\n");
+            Console.WriteLine("*****Fun with the CLR Thread Pool*****\n");
+            Console.WriteLine("Main thread started. ThreadID={0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            //Create the delegate for the Timer type.
-            TimerCallback timerCallback = new TimerCallback(PrintTime);
+            Printer p = new Printer();
+            WaitCallback workItem = new WaitCallback(PrintTheNumbers);
 
-            //Establish timer settings.
-            Timer t = new Timer(
-                timerCallback, //The TimerCallback delegate object.
-                "Hello From Main",           //Any info to pass into the called method
-                0,              //Amount of time to wait before starting.
-                1);          //Interval of time between calls in milliseconds.
 
-            Console.WriteLine("Hit key to terminate...");
+            //Queue the method ten times
+            for(int i=0;i<10;i++)
+            {
+                ThreadPool.QueueUserWorkItem(workItem, p);
+            }
+
+            Console.WriteLine("All tasks queued!\n");
             Console.ReadLine();
         }
 
@@ -87,18 +88,26 @@ namespace ConsoleApp130
         {
             Console.WriteLine("Now is {0}, Param is :{1}\n", DateTime.Now.ToString("yyyyMMddHHmmssfff"),state.ToString());
         }
-    }
 
-    //All methods of Printer are now thread safe!
-    [Synchronization]
-    public class Printer:ContextBoundObject
+        static void PrintTheNumbers(object state)
+        {
+            Printer task = (Printer)state;
+            task.PrintNumbers();
+        }
+    }
+    
+    public class Printer 
     {
+        private static object lockObj = new object();
         public void PrintNumbers()
         {
-            for(int i=0;i<100;i++)
+            lock(lockObj)
             {
-                Console.WriteLine("I is {0},and now is {1}\n", i, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-            }
+                for (int i = 0; i < 100; i++)
+                {
+                    Console.WriteLine("I is {0},and now is {1}\n", i, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+                }
+            }            
         }
     }
 }
