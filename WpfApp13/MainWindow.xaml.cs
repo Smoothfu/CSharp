@@ -47,5 +47,26 @@ namespace WpfApp13
                 Thread.Sleep(4000);
             });
         }
+
+        private async void btnMultiAwait_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                Thread.Sleep(2000);
+            });
+            MessageBox.Show("Done with first task!");
+
+            await Task.Run(() =>
+            {
+                Thread.Sleep(2000);
+            });
+            MessageBox.Show("Done with second task!");
+
+            await Task.Run(() =>
+            {
+                Thread.Sleep(2000);
+            });
+            MessageBox.Show("Done with third task!");
+        }
     }
 }

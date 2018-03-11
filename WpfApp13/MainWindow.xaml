@@ -9,7 +9,8 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBox x:Name="tbx" BorderBrush="Black" BorderThickness="5"/>
-            <Button Content="Call Method" x:Name="btnCall" BorderBrush="Silver" BorderThickness="5" Click="btnCall_Click"/> 
+            <Button Content="Call Method" x:Name="btnCall" BorderBrush="Silver" BorderThickness="5" Click="btnCall_Click"/>
+            <Button Content="Multi Await" x:Name="btnMultiAwait" BorderBrush="Red" BorderThickness="5" Click="btnMultiAwait_Click"/>
         </StackPanel>
     </Grid>
 </Window>
