@@ -28,7 +28,8 @@ namespace WpfApp13
 
         private async void btnCall_Click(object sender, RoutedEventArgs e)
         {
-            this.tbx.Text =  await DoWork();
+            await MethodReturningVoidAsync();
+            MessageBox.Show("Done!");
         }
         private async Task<string> DoWork()
         {
@@ -37,6 +38,14 @@ namespace WpfApp13
                 Thread.Sleep(10000);
                 return "Done with work!";
             });           
+        }
+
+        private async Task MethodReturningVoidAsync()
+        {
+            await Task.Run(() =>
+            {
+                Thread.Sleep(4000);
+            });
         }
     }
 }
