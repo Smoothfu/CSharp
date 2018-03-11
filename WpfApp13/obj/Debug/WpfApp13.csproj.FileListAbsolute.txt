@@ -12,3 +12,4 @@ D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.csproj.GenerateResource.Cache
 D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.csproj.CoreCompileInputs.cache
 D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.exe
 D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.pdb
+D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.csprojResolveAssemblyReference.cache

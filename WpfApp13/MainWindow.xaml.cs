@@ -30,11 +30,11 @@ namespace WpfApp13
         {
             this.tbx.Text =  await DoWork();
         }
-        private Task<string> DoWork()
+        private async Task<string> DoWork()
         {
-            return Task.Run(() =>
+            return await Task.Run(() =>
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(10000);
                 return "Done with work!";
             });           
         }
