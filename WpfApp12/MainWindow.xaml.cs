@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,7 @@ namespace WpfApp12
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CancellationTokenSource cancelToken = new CancellationTokenSource();
         public MainWindow()
         {
             InitializeComponent();
@@ -41,9 +43,26 @@ namespace WpfApp12
             int[] source = Enumerable.Range(0, 100000000).ToArray();
 
             //Find the numbers where num%3==0 is true,returned in descending order.
-            int[] modThreeIsZero = (from num in source.AsParallel() where num % 3 == 0 orderby num descending select num).ToArray();
+            int[] modThreeIsZero = null;
+            try
+            {
+                modThreeIsZero = (from num in source.AsParallel().WithCancellation(cancelToken.Token) where num % 3 == 0 orderby num descending select num).ToArray();
 
-            MessageBox.Show(string.Format("Found {0} numbers that match query!\n", modThreeIsZero.Count()));
+                MessageBox.Show(string.Format("Found {0} numbers that match query!\n", modThreeIsZero.Count()));
+            }
+
+            catch(OperationCanceledException ex)
+            {
+                this.Dispatcher.Invoke((Action)delegate
+                {
+                    MessageBox.Show(ex.Message);
+                });
+            }
+        }
+
+        private void cancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            cancelToken.Cancel();
         }
     }
 }

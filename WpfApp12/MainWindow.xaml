@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="processBtn" Content="Process Data" Click="processBtn_Click" Width="500" Height="150" BorderBrush="Black" BorderThickness="10"/>
-    </Grid>
+
+        <StackPanel Orientation="Horizontal"> 
+            <Button x:Name="processBtn" Content="Process Data" Click="processBtn_Click" Width="500" Height="150" BorderBrush="Black" BorderThickness="10"/>
+            <Button x:Name="cancelBtn" Content="Cancel Process" Click="cancelBtn_Click" Width="500" Height="150" BorderBrush="Red" BorderThickness="10"/>
+
+        </StackPanel>
+       </Grid>
 </Window>
