@@ -1,0 +1,14 @@
+D:\C\WpfApp13\WpfApp13\bin\Debug\WpfApp13.exe.config
+D:\C\WpfApp13\WpfApp13\bin\Debug\WpfApp13.exe
+D:\C\WpfApp13\WpfApp13\bin\Debug\WpfApp13.pdb
+D:\C\WpfApp13\WpfApp13\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp13\WpfApp13\obj\Debug\App.g.cs
+D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13_MarkupCompile.cache
+D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13_MarkupCompile.lref
+D:\C\WpfApp13\WpfApp13\obj\Debug\MainWindow.baml
+D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.g.resources
+D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.Properties.Resources.resources
+D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.csproj.GenerateResource.Cache
+D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.csproj.CoreCompileInputs.cache
+D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.exe
+D:\C\WpfApp13\WpfApp13\obj\Debug\WpfApp13.pdb
