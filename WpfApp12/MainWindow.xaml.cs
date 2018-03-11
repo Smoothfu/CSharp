@@ -41,7 +41,7 @@ namespace WpfApp12
             int[] source = Enumerable.Range(0, 100000000).ToArray();
 
             //Find the numbers where num%3==0 is true,returned in descending order.
-            int[] modThreeIsZero = (from num in source where num % 3 == 0 orderby num descending select num).ToArray();
+            int[] modThreeIsZero = (from num in source.AsParallel() where num % 3 == 0 orderby num descending select num).ToArray();
 
             MessageBox.Show(string.Format("Found {0} numbers that match query!\n", modThreeIsZero.Count()));
         }
