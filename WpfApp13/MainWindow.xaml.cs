@@ -26,14 +26,17 @@ namespace WpfApp13
             InitializeComponent();
         }
 
-        private void btnCall_Click(object sender, RoutedEventArgs e)
+        private async void btnCall_Click(object sender, RoutedEventArgs e)
         {
-            this.tbx.Text = DoWork();
+            this.tbx.Text =  await DoWork();
         }
-        private string DoWork()
+        private Task<string> DoWork()
         {
-            Thread.Sleep(1000);
-            return "Done with work!";
+            return Task.Run(() =>
+            {
+                Thread.Sleep(1000);
+                return "Done with work!";
+            });           
         }
     }
 }
