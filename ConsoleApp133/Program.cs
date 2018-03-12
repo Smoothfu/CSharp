@@ -9,19 +9,21 @@ namespace ConsoleApp133
 {
     class Program
     {
-        private static CancellationTokenSource cts = new CancellationTokenSource();
+        static Random rnd = new Random();
         static void Main(string[] args)
         {
-            Task task = Task.Factory.StartNew(() =>
+            //Wait on a single task with no timeout specified.
+            Task task = Task.Run(() => Thread.Sleep(2000));
+            Console.WriteLine("Task Status:{0}\n", task.Status);
+            try
             {
-                //Just loop.
-                int ctr = 0;
-                for (ctr = 0; ctr <= 1000000000; ctr++)
-                {
-
-                }
-                Console.WriteLine("Finished {0} loop iterations!\n", ctr);
-            });
+                task.Wait();
+                Console.WriteLine("In try block,the task Status:{0}\n", task.Status);
+            }
+            catch(AggregateException ae)
+            {
+                Console.WriteLine(ae.Message);
+            }
 
             Console.WriteLine("Task Status:{0}\n", task.Status);
             //task.Start();
