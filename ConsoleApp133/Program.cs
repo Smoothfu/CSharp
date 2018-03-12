@@ -9,14 +9,17 @@ namespace ConsoleApp133
 {
     class Program
     {
+        private static CancellationTokenSource cts = new CancellationTokenSource();
         static void Main(string[] args)
         {
+            var ctsToken = cts.Token;
+            cts.Cancel();
             int x = 1000000, y = 23207890;
             Task task = new Task(() =>
               {
                   Add(x, y);
 
-              });
+              }, ctsToken);
 
             Console.WriteLine("Task Status:{0}\n", task.Status);
             task.Start();
