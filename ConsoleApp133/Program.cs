@@ -12,86 +12,47 @@ namespace ConsoleApp133
         static Random rnd = new Random();
         static void Main(string[] args)
         {
-            //Create a cancellation token and cancel it.
-            var source1 = new CancellationTokenSource();
-            var token1 = source1.Token;
-            source1.Cancel();
+            Action<object> action = (object obj) =>
+              {
+                  Console.WriteLine("Task={0},obj={1},Thread={2}\n", Task.CurrentId, obj, Thread.CurrentThread.ManagedThreadId);
 
-            //Create a cancellation token for later cancellation.
+              };
 
-            var source2 = new CancellationTokenSource();
-            var token2 = source2.Token;
+            //Create a task but do not start it.
+            Task t1 = new Task(action, "alpha");
 
-            //create a series of tasks that will complete,be cancelled,timeout,or thrown an exception.
-            Task[] tasks = new Task[12];
-            for(int i=0;i<12;i++)
+            //Construct a started task.
+            Task t2 = Task.Factory.StartNew(action, "beta");
+
+            //Block the main thread to demonstrate that t2 is executing.
+            t2.Wait();
+
+            //Launch t1
+            t1.Start();
+            Console.WriteLine("t1 has been launched.(Main Thread={0})\n", Thread.CurrentThread.ManagedThreadId);
+
+            //wait for the task to finish.
+            t1.Wait();
+
+            //construct a started task using Task.Run.
+
+            string taskData = "delta";
+
+            Task t3 = Task.Run(() =>
             {
-                switch(i%4)
-                {
-                    //Task should run to completion.
-                    case 0:
-                        tasks[i] = Task.Run(() => Thread.Sleep(2000));
-                        break;
+                Console.WriteLine("Task={0},Obj={1},Thread={2}\n", Task.CurrentId, taskData, Thread.CurrentThread.ManagedThreadId);
+            });
 
-                    //Task should be set to canceled state.
-                    case 1:
-                        tasks[i] = Task.Run(() => Thread.Sleep(2000),token1);
-                        break;
+            //wait for the task to finish
+            t3.Wait();
 
-                    case 2:
-                        //Task should throw an exception.
-                        tasks[i] = Task.Run(() =>
-                        {
-                            throw new NotSupportedException();
-                        });
-                        break;
+            //Construct an unstarted task.
+            Task t4 = new Task(action, "gamma");
 
-                    case 3:
-                        //Task should examine cancellation token.
-                        tasks[i] = Task.Run(() =>
-                        {
-                            Thread.Sleep(2000);
-                            if (token2.IsCancellationRequested)
-                            {
-                                token2.ThrowIfCancellationRequested();
 
-                            }
-                            Thread.Sleep(500);
-                        }, token2);
-                        break; 
-
-                }
-            }
-
-            Thread.Sleep(250);
-            source2.Cancel();
-
-            try
-            {
-                Task.WaitAll(tasks);
-            }
-            catch(AggregateException ae)
-            {
-                Console.WriteLine("One or more exceptions occured:\n");
-                foreach(var ex in ae.InnerExceptions)
-                {
-                    Console.WriteLine("{0}:{1}\n", ex.GetType().Name, ex.Message);
-                }
-            }
-
-            Console.WriteLine("\nStatus of tasks:\n");
-            foreach(var t in tasks)
-            {
-                Console.WriteLine("Task #{0}:{1}\n", t.Id, t.Status);
-                if(t.Exception!=null)
-                {
-                    foreach(var ex in t.Exception.InnerExceptions)
-                    {
-                        Console.WriteLine("{0}:{1}\n", ex.GetType().Name, ex.Message);
-                    }
-                }
-            }
-
+            //Run it synchronously.
+            t4.RunSynchronously();
+            t4.Wait();
             Console.ReadLine();
         }
 
