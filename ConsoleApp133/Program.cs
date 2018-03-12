@@ -12,18 +12,21 @@ namespace ConsoleApp133
         private static CancellationTokenSource cts = new CancellationTokenSource();
         static void Main(string[] args)
         {
-            var ctsToken = cts.Token;
-            cts.Cancel();
-            int x = 1000000, y = 23207890;
-            Task task = new Task(() =>
-              {
-                  Add(x, y);
 
-              }, ctsToken);
+            Task task = Task.Run(() =>
+            {
+                //Just loop
+                int ctr = 0;
+                for (ctr = 0; ctr <= 1000000000; ctr++)
+                {
+
+                }
+                Console.WriteLine("Finished {0} loop iterations!\n", ctr);
+            });
 
             Console.WriteLine("Task Status:{0}\n", task.Status);
-            task.Start();
-            Console.WriteLine("Task Status:{0}\n", task.Status);
+            //task.Start();
+            //Console.WriteLine("Task Status:{0}\n", task.Status);
             task.Wait();
             Console.WriteLine("Task Status:{0}\n", task.Status);
             Console.ReadLine();
