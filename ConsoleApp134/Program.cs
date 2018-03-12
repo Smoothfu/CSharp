@@ -13,8 +13,9 @@ namespace ConsoleApp134
         {
             Thread.CurrentThread.Name = "Main";
 
-            //Define and run the task.
-            Task taskA = Task.Run(() => Console.WriteLine("Hello from taskA!\n"));
+            //Better:Create and start the task in one operation,
+            Task taskA = Task.Factory.StartNew(() => Console.WriteLine("Hello from taskA!\n"));
+
             Console.WriteLine("Status: {0},\n", taskA.Status);
             //Output a message from the calling thread.
             Console.WriteLine("Hello from thread '{0}.\n", Thread.CurrentThread.Name);
