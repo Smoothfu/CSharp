@@ -12,19 +12,24 @@ namespace ConsoleApp133
         static Random rnd = new Random();
         static void Main(string[] args)
         {
-            //Wait on a single task with no timeout specified.
+
+            //Wait on a single task with a timeout specified.
             Task task = Task.Run(() => Thread.Sleep(2000));
-            Console.WriteLine("Task Status:{0}\n", task.Status);
             try
             {
-                task.Wait();
-                Console.WriteLine("In try block,the task Status:{0}\n", task.Status);
-            }
-            catch(AggregateException ae)
-            {
-                Console.WriteLine(ae.Message);
+                task.Wait(1000);
+                bool isCompleted = task.IsCompleted;
+                Console.WriteLine("task completed:{0},status:{1}\n", isCompleted, task.Status);
+                if(!isCompleted)
+                {
+                    Console.WriteLine("Timed out before task A completed!\n");
+                }
             }
 
+            catch(AggregateException ae)
+            {
+                Console.WriteLine("Exception in task!\n");
+            }
             Console.WriteLine("Task Status:{0}\n", task.Status);
             //task.Start();
             //Console.WriteLine("Task Status:{0}\n", task.Status);
