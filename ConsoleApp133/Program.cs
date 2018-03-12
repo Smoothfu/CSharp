@@ -12,29 +12,25 @@ namespace ConsoleApp133
         static Random rnd = new Random();
         static void Main(string[] args)
         {
-            var tasks = new Task[3];
-            var rnd = new Random();
+            var tasks = new Task[10]; 
 
-            for(int ctr=0;ctr<=2;ctr++)
+            for(int ctr=0;ctr<10;ctr++)
             {
                 tasks[ctr] = Task.Run(() => Thread.Sleep(rnd.Next(500, 3000)));
-
             }
 
             try
             {
-                int index = Task.WaitAny(tasks);
-                Console.WriteLine("Task #{0} completed first.\n", tasks[index].Id);
-                Console.WriteLine("Status of all tasks:\n");
-                foreach(var t in tasks)
-                {
-                    Console.WriteLine("Task #{0}:{1}\n", t.Id, t.Status);
-                }
+                Task.WaitAll(tasks);
             }
 
             catch(AggregateException ae)
             {
-                Console.WriteLine(ae.Message);
+                Console.WriteLine("One or more exceptions occured:\n");
+                foreach(var ex in ae.Flatten().InnerExceptions)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
  
             Console.ReadLine();
