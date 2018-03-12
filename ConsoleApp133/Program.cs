@@ -12,10 +12,9 @@ namespace ConsoleApp133
         private static CancellationTokenSource cts = new CancellationTokenSource();
         static void Main(string[] args)
         {
-
-            Task task = Task.Run(() =>
+            Task task = Task.Factory.StartNew(() =>
             {
-                //Just loop
+                //Just loop.
                 int ctr = 0;
                 for (ctr = 0; ctr <= 1000000000; ctr++)
                 {
