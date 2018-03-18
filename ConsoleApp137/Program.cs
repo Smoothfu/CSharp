@@ -11,7 +11,7 @@ namespace ConsoleApp137
     {
         static void Main(string[] args)
         {
-            ModifyAppCreateDirectory();
+            FunWithDirectoryType();
             Console.ReadLine();
         }
 
@@ -76,6 +76,34 @@ namespace ConsoleApp137
 
             //print path.FullName
             Console.WriteLine("New Folder is:{0}\n", myDataFolder.FullName);
+        }
+
+        static void FunWithDirectoryType()
+        {
+            //List all drives on current computer.
+            string[] drives = Directory.GetLogicalDrives();
+            Console.WriteLine("Here are your drives: ");
+            foreach(string str in drives)
+            {
+                Console.WriteLine("--> {0}\n", str);
+            }
+
+            //Delete what was created.
+            Console.WriteLine("Press Enter to delete directories\n");
+            Console.ReadLine();
+            try
+            {
+                
+
+                //The second parameter specifies whether you wish you destory any subdirectories.
+                Directory.Delete(@"D:\C\ConsoleApp137\ConsoleApp137\bin\Debug\20180318", true);
+
+            }
+
+            catch(IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
