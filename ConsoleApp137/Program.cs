@@ -11,7 +11,7 @@ namespace ConsoleApp137
     {
         static void Main(string[] args)
         {
-            DisplayImageFiles();
+            ModifyAppDirectory();
             Console.ReadLine();
         }
 
@@ -49,6 +49,19 @@ namespace ConsoleApp137
                 Console.WriteLine("Attributes:{0}\n", fi.Attributes);
                 Console.WriteLine("******************************\n");
             }
+        }
+
+        static void ModifyAppDirectory()
+        {
+            DirectoryInfo dir = new DirectoryInfo(@"D:\ABCD");
+
+            //Create \ABCD off application directory.
+
+            dir.CreateSubdirectory("MyFolder");
+
+            //Create \ABCD\SubFoler off application directory.
+            dir.CreateSubdirectory(@"MyFoler\ABCDE");
+
         }
     }
 }
