@@ -11,7 +11,7 @@ namespace ConsoleApp137
     {
         static void Main(string[] args)
         {
-            WorkWithDriveInfo();
+            FileInfoCreateMethod();
             Console.ReadLine();
         }
 
@@ -129,6 +129,27 @@ namespace ConsoleApp137
 
                 Console.WriteLine("\n\n\n");
             }
+        }
+
+        static void FileInfoCreateMethod()
+        {
+            //Make a new file on the c drive.
+            FileInfo fi = new FileInfo(@".\test.txt");
+
+            using (StreamWriter sw = fi.AppendText())
+            {
+                sw.WriteLine("The wonderful world,make every second count and make a difference");               
+            }
+
+            using (StreamReader sr = fi.OpenText())
+            {
+                string str = "";
+                while ((str = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(str);
+                }
+            }
+
         }
     }
 }
