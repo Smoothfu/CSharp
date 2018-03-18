@@ -11,10 +11,21 @@ namespace ConsoleApp137
     {
         static void Main(string[] args)
         {
-            //Bind to the current working directory.
-            DirectoryInfo dir = new DirectoryInfo(".");
-            Console.WriteLine(dir.FullName);
+            ShowWindowsDirectoryInfo();
             Console.ReadLine();
+        }
+
+        static void ShowWindowsDirectoryInfo()
+        {
+            //Dump directory information.
+            DirectoryInfo dir = new DirectoryInfo(@"C:\Windows");
+            Console.WriteLine("*****Directory Info*****\n");
+            Console.WriteLine("FullName:{0}\n", dir.FullName);
+            Console.WriteLine("Name:{0}\n", dir.Name);
+            Console.WriteLine("Parent:{0}\n", dir.Parent);
+            Console.WriteLine("Creation:{0}\n", dir.CreationTime);
+            Console.WriteLine("Root:{0}\n", dir.Root);
+            Console.WriteLine("******************************\n");
         }
     }
 }
