@@ -11,7 +11,7 @@ namespace ConsoleApp137
     {
         static void Main(string[] args)
         {
-            FileAppenAllTextReadAllTExt();
+            FileWriteAllTextReadAllText();
             Console.ReadLine();
         }
 
@@ -192,6 +192,17 @@ namespace ConsoleApp137
 
 
             //This text is always added,making the file longer over time
+            string readText = File.ReadAllText(path);
+            Console.WriteLine(readText);
+        }
+
+        static void FileWriteAllTextReadAllText()
+        {
+            FileInfo fi = new FileInfo(@".\FileWriteAllText.txt");
+            string path = fi.FullName;
+            string writeText = "This is a wonderful and fair world. Cherish the current moment,make every second count and make a differnce!\n";
+            File.AppendAllText(path, writeText);
+            File.WriteAllText(path, writeText);
             string readText = File.ReadAllText(path);
             Console.WriteLine(readText);
         }
