@@ -11,7 +11,7 @@ namespace ConsoleApp137
     {
         static void Main(string[] args)
         {
-            ModifyAppDirectory();
+            ModifyAppCreateDirectory();
             Console.ReadLine();
         }
 
@@ -62,6 +62,20 @@ namespace ConsoleApp137
             //Create \ABCD\SubFoler off application directory.
             dir.CreateSubdirectory(@"MyFoler\ABCDE");
 
+        }
+
+        static void ModifyAppCreateDirectory()
+        {
+            DirectoryInfo dir = new DirectoryInfo(".");
+
+            //Create \MyFolder off initial directory.
+            dir.CreateSubdirectory("20180318");
+
+            //Capture returned DirectoryInfo object.
+            DirectoryInfo myDataFolder = dir.CreateSubdirectory(@"20180318\data");
+
+            //print path.FullName
+            Console.WriteLine("New Folder is:{0}\n", myDataFolder.FullName);
         }
     }
 }
