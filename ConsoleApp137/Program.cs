@@ -11,7 +11,7 @@ namespace ConsoleApp137
     {
         static void Main(string[] args)
         {
-            FileInfoCreateMethod();
+            FileAppenAllTextReadAllTExt();
             Console.ReadLine();
         }
 
@@ -150,6 +150,50 @@ namespace ConsoleApp137
                 }
             }
 
+        }
+
+        static void FIleInfoOpenTextMethod()
+        {
+            FileInfo fi = new FileInfo(@".\FileInfo.txt");
+
+            //Check for existing file.
+            //Create the file
+            using (FileStream fs = fi.Create())
+            {
+                Byte[] info = new UTF8Encoding(true).GetBytes("This a wonderful and fair world,everything depend on myself,make every second count and make a difference!\n");
+
+                //Add some information to the file.
+                fs.Write(info, 0, info.Length);
+                fs.Close();
+            }
+
+            //Open the stream and read it back.
+            using (StreamReader sr = fi.OpenText())
+            {
+                string str = "";
+                while((str=sr.ReadLine())!=null)
+                {
+                    Console.WriteLine(str);
+                    System.Diagnostics.Debug.WriteLine(str);
+                }
+            }
+        }
+
+        static void FileAppenAllTextReadAllTExt()
+        {
+            FileInfo fi = new FileInfo(@".\FileInfoAppenAllText");
+            string path = fi.FullName;
+
+            //This text is added only once to the file.
+
+            //Create a file to write to.
+            string newText = "This is a wonderful and fair world,everything depend on myself,make every second count and make a difference!\n";
+            File.AppendAllText(path, newText);
+
+
+            //This text is always added,making the file longer over time
+            string readText = File.ReadAllText(path);
+            Console.WriteLine(readText);
         }
     }
 }
