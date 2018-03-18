@@ -11,7 +11,7 @@ namespace ConsoleApp137
     {
         static void Main(string[] args)
         {
-            FunWithDirectoryType();
+            WorkWithDriveInfo();
             Console.ReadLine();
         }
 
@@ -103,6 +103,31 @@ namespace ConsoleApp137
             catch(IOException ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void WorkWithDriveInfo()
+        {
+            Console.WriteLine("*****Fun with DriveInfo*****\n");
+
+            //Get info regarding all drives.
+            DriveInfo[] drives = DriveInfo.GetDrives();
+
+            //Now print drive stats.
+            foreach(DriveInfo di in drives)
+            {
+                Console.WriteLine("Name: {0}\n", di.Name);
+                Console.WriteLine("Type: {0}\n", di.DriveType);
+
+                //Check to see whether the drive is mounted.
+                if(di.IsReady)
+                {
+                    Console.WriteLine("Free space:{0}\n", di.TotalFreeSpace);
+                    Console.WriteLine("Format:{0}\n", di.DriveFormat);
+                    Console.WriteLine("Label:{0}\n", di.VolumeLabel);
+                }
+
+                Console.WriteLine("\n\n\n");
             }
         }
     }
