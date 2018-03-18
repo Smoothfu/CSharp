@@ -1,0 +1,6 @@
+D:\C\ConsoleApp138\ConsoleApp138\bin\Debug\ConsoleApp138.exe.config
+D:\C\ConsoleApp138\ConsoleApp138\bin\Debug\ConsoleApp138.exe
+D:\C\ConsoleApp138\ConsoleApp138\bin\Debug\ConsoleApp138.pdb
+D:\C\ConsoleApp138\ConsoleApp138\obj\Debug\ConsoleApp138.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp138\ConsoleApp138\obj\Debug\ConsoleApp138.exe
+D:\C\ConsoleApp138\ConsoleApp138\obj\Debug\ConsoleApp138.pdb
