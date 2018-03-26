@@ -11,40 +11,20 @@ namespace ConsoleApp145
     {
         static void Main(string[] args)
         {
-            Task<Int32> task = new Task<Int32>(x => Sum((Int32)x), 100);
+            Task<string> task = new Task<string>(x => PrintMessage((string)x),"Wonderful and fair");
+
             task.Start();
-            Console.WriteLine("Now the status: {0}\n", task.Status);
-
             task.Wait();
-
-            //Get the result the Result property internally calls wait.
-            Console.WriteLine("The sum is : " + task.Result);
+            string result = task.Result;
+            Console.WriteLine(result);
             
             Console.ReadLine();
-        }
+        } 
 
-        static void Add(int x,int y,int z)
+        private static string PrintMessage(string msg)
         {
-            Console.WriteLine("{0}+{1}+{2}={3}\n", x, y, z, x + y + z);
-        }
-
-        private static void PrintMessage()
-        {
-            Console.WriteLine("The world is fair!\n");
-        }
-
-        private static Int32 Sum(Int32 n)
-        {
-            Int32 sum = 0;
-            for(int i=0;i<n;i++)
-            {
-                checked
-                {
-                    sum += n;
-                }                
-            }
-
-            return sum;
+            string str=string.Format("The msg is {0}, and now is {1}\n", msg, DateTime.Now.ToString("yyyyMMdd:HHmmssfff"));
+            return str;
         }
     }
 }
