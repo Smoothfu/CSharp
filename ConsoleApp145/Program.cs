@@ -12,10 +12,11 @@ namespace ConsoleApp145
         static void Main(string[] args)
         {
             int x = 100, y = 200, z = 300;
-            Task.Run(new Action(()=>
-            {
-                Add(x, y, z);
-            }));
+            Task addTask = new Task(new Action(() =>
+              {
+                  Add(x, y, z);
+              }));
+            addTask.RunSynchronously();
             Console.ReadLine();
         }
 
