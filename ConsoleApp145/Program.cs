@@ -11,24 +11,12 @@ namespace ConsoleApp145
     {
         static void Main(string[] args)
         {
-            CancellationTokenSource cts = new CancellationTokenSource();
-            Task<int> task = new Task<int>(() => Sum(cts.Token, 10000), cts.Token);
-            task.Start();
+            Task<string> strTask = new Task<string>(x => PrintMessage((string)x), "The world is wonderful and fair!");
+            strTask.Start();
+            strTask.Wait();
+            Console.WriteLine("Status: {0}\n", strTask.Status);
 
-            Thread.Sleep(5000);
-            cts.Cancel();
-
-            try
-            {
-                //If the task got canceled,Result will throw an AggregateException.
-                Console.WriteLine("The sum is :" + task.Result);
-            }
-            catch(AggregateException ae)
-            {
-                ae.Handle(x => x is OperationCanceledException);
-                Console.WriteLine("Sum was cancelled!\n");
-            }
-            
+            Console.WriteLine("The result is :{0}\n", strTask.Result);
             Console.ReadLine();
         } 
 
@@ -44,10 +32,13 @@ namespace ConsoleApp145
                     sum += n;
                 }
             }
-
             return sum;
-        }
+        }        
 
-        
+        private static string PrintMessage(string msg)
+        {
+            string str = string.Format("The msg is {0},and now is {1}\n", msg, DateTime.Now.ToString("yyyyMMddhhmmssfff"));
+            return str;
+        }
     }
 }
