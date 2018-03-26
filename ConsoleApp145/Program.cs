@@ -11,26 +11,14 @@ namespace ConsoleApp145
     {
         static void Main(string[] args)
         {
-            //Use an Action delegate and named method
-            Task task1 = new Task(new Action(PrintMessage));
+            Task<Int32> task = new Task<Int32>(x => Sum((Int32)x), 100);
+            task.Start();
+            Console.WriteLine("Now the status: {0}\n", task.Status);
 
-            //Uase an anonymous delegate.
-            Task task2 = new Task(delegate { PrintMessage(); });
+            task.Wait();
 
-            //Use a lambda expression and a named method
-            Task task3 = new Task(() => PrintMessage());
-
-            //Use a Lambda expression and an anonymous method;.
-            Task task4 = new Task(() =>
-              {
-                  PrintMessage();
-              });
-
-            task1.Start();
-            task2.Start();
-            task3.Start();
-            task4.Start();
-            Console.WriteLine("Main method complete.Press <Enter> to finish.");
+            //Get the result the Result property internally calls wait.
+            Console.WriteLine("The sum is : " + task.Result);
             
             Console.ReadLine();
         }
@@ -43,6 +31,20 @@ namespace ConsoleApp145
         private static void PrintMessage()
         {
             Console.WriteLine("The world is fair!\n");
+        }
+
+        private static Int32 Sum(Int32 n)
+        {
+            Int32 sum = 0;
+            for(int i=0;i<n;i++)
+            {
+                checked
+                {
+                    sum += n;
+                }                
+            }
+
+            return sum;
         }
     }
 }
