@@ -20,6 +20,13 @@ namespace ConsoleApp146
                 stringWriter.WriteLine("Don't forget Mother's Day this year...\n");
                 //Get a copy of the contents stored in a string and dump to console.
                 Console.WriteLine("Contents of StringWriter:\n{0}", stringWriter);
+
+                //Get the internal StringBuilder.
+                StringBuilder stringBuilder = stringWriter.GetStringBuilder();
+                stringBuilder.Insert(0, "Hey!!!");
+                Console.WriteLine("->{0}\n", stringBuilder.ToString());
+                stringBuilder.Remove(0, "Hey!!".Length);
+                Console.WriteLine("->{0}\n", stringBuilder.ToString());
             }
 
             Console.ReadLine();
