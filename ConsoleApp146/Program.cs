@@ -12,21 +12,17 @@ namespace ConsoleApp146
     {
         static void Main(string[] args)
         {
-            DirectoryInfo dir = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));             
-            
-            string fullPath = dir.FullName + DateTime.Now.ToString("yyyyMMddHHmmssfff") + "2.txt";
-            FileInfo fi = new FileInfo(fullPath);
+            Console.WriteLine("******Fun with StringWriter/StringReader******\n");
 
-            DateTime dtNow = DateTime.Now;
-            DateTime dtNew = dtNow.AddSeconds(10);
-
-            while(DateTime.Now.Subtract(dtNew).Seconds<0)
+            //Create a StringWriter and emit character data to memory.
+            using (StringWriter stringWriter = new StringWriter())
             {
-                string msg = "Now is " + DateTime.Now.ToString("yyyyMMddHHmmssfff");
-                File.AppendAllText(fullPath, msg + Environment.NewLine);
+                stringWriter.WriteLine("Don't forget Mother's Day this year...\n");
+                //Get a copy of the contents stored in a string and dump to console.
+                Console.WriteLine("Contents of StringWriter:\n{0}", stringWriter);
             }
 
-            Console.ReadLine();           
+            Console.ReadLine();
         }
     }
 }
