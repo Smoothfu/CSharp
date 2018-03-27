@@ -14,7 +14,7 @@ namespace ConsoleApp146
         {
             DirectoryInfo dir = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));             
             
-            string fullPath = dir.FullName + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
+            string fullPath = dir.FullName + DateTime.Now.ToString("yyyyMMddHHmmssfff") + "2.txt";
             FileInfo fi = new FileInfo(fullPath);
 
             DateTime dtNow = DateTime.Now;
@@ -22,11 +22,8 @@ namespace ConsoleApp146
 
             while(DateTime.Now.Subtract(dtNew).Seconds<0)
             {
-                using (StreamWriter sw = fi.AppendText())
-                {
-                    string msg = "Now is " + DateTime.Now.ToString("yyyyMMddHHmmssfff");
-                    sw.WriteLine(msg + Environment.NewLine);
-                }
+                string msg = "Now is " + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                File.AppendAllText(fullPath, msg + Environment.NewLine);
             }
 
             Console.ReadLine();           
