@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConsoleApp147
 {
@@ -11,44 +12,20 @@ namespace ConsoleApp147
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("******The Amazing File Watcher App******\n");
+            UserPrefs userData = new UserPrefs();
+            userData.WindowColor = "Yello";
+            userData.FontSize = 50;
 
-            //Establish the path to the directory to watch.
-            FileSystemWatcher watcher = new FileSystemWatcher();
+            //The BinaryFormatter persists state data in a binary format.
+            //You would need to import System.Runtime.Serialization.Formatters.Binary.
+            //to gain access to BinaryFormatter.
 
-            try
+            BinaryFormatter binFormat = new BinaryFormatter();
+
+            //Store object in a local file.
+            using (Stream fStream = new FileStream("user.dat", FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                watcher.Path = @"C:\Users\Fred\Downloads\金庸作品集世纪新修版【TXT】";
-            }
-            catch(ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-                return; 
-            }
-
-            //Set up the things to be on the lookout for.
-            watcher.NotifyFilter = NotifyFilters.LastAccess
-                | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-
-            //Only watch text files
-
-            watcher.Filter = "*.txt";
-
-            //Add event handlers.
-            watcher.Changed += new FileSystemEventHandler(OnChanged);
-            watcher.Created += new FileSystemEventHandler(OnChanged);
-            watcher.Deleted += new FileSystemEventHandler(OnChanged);
-            watcher.Renamed += new RenamedEventHandler(OnRenamed);
-
-
-            //Begin watching the directory.
-            watcher.EnableRaisingEvents = true;
-
-            //Wait for the user to quit the program.
-            Console.WriteLine(@"Press 'q' to quit app.\n");
-            while(Console.Read()!='q')
-            {
-                ;
+                binFormat.Serialize(fStream, userData);
             }
             Console.ReadLine();
         }
@@ -64,5 +41,12 @@ namespace ConsoleApp147
             //Specify what is done when a file is changed,created,or deleted.
             Console.WriteLine("File:{0} {1}!", e.FullPath, e.ChangeType);
         }
+    }
+
+    [Serializable]
+    public class UserPrefs
+    {
+        public string WindowColor;
+        public int FontSize;
     }
 }
