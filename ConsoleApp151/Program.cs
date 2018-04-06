@@ -12,11 +12,11 @@ namespace ConsoleApp151
         static void Main(string[] args)
         {
             int x = 100, y = 200, z = 300;
-            Thread addThread = new Thread(() =>
-              {
-                  Add(x, y, z);
-              });
-            addThread.Start();
+            Task.Factory.StartNew(() =>
+            {
+                Add(x, y, z);
+            });
+             
             Console.ReadLine();
         }
 
