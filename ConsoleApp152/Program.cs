@@ -23,53 +23,28 @@ namespace ConsoleApp152
     {
         static void Main(string[] args)
         {
-            WriteLine("*****Fun with Data Provider Factories*****\n");
+            WriteLine("*****Fun with Data Readers*****\n");
 
-            //Get connection string/provider from *.config.
-            string dataProvider = ConfigurationManager.AppSettings["provider"];
-            string connectionString = ConfigurationManager.ConnectionStrings["MyDbSqlProvider"].ConnectionString;
-
-            //Get the factory provider.
-            DbProviderFactory factory = DbProviderFactories.GetFactory(dataProvider);
-            
-            //Now get the connection object.
-            using (DbConnection connection = factory.CreateConnection())
+            //Create and open a connection.
+            using (SqlConnection connection = new SqlConnection())
             {
-                if(connection==null)
-                {
-                    ShowError("Command");
-                    return;
-                }
-
-                WriteLine($"Your connection object is a:{connection.GetType().Name}");
-                connection.ConnectionString = connectionString;
+                connection.ConnectionString = @"Data Source=localhost;Integrated Security=SSPI;Initial Catalog=MyDb";
                 connection.Open();
 
-                //Make command object.
-                DbCommand command = factory.CreateCommand();
-                if(command==null)
+                //Create a SQL command object.
+                string sql = "select * from mt";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+
+                //Obtain a data reader a la ExecuteReader().
+                using (SqlDataReader sqlDataReader = cmd.ExecuteReader())
                 {
-                    ShowError("Command");
-                    return;
-                }
-
-                WriteLine($"Your command object is a :{command.GetType().Name}");
-                command.Connection = connection;
-                command.CommandText = "select * from mt";
-
-                //Print out data with data reader.
-                using (DbDataReader dataReader = command.ExecuteReader())
-                {
-                    WriteLine($"Your data reader object is a:{dataProvider.GetType().Name}");
-
-                    WriteLine("\n*****Current mt*****");
-                    while(dataReader.Read())
+                    //Loop over the results.
+                    while (sqlDataReader.Read())
                     {
-                        WriteLine($"->Car #{dataReader["CarId"]} is a {dataReader["Make"]}.");
+                        WriteLine($"->Make:{sqlDataReader["Make"]},PetName:{sqlDataReader["PetName"]},Color:{sqlDataReader["Color"]}.");
                     }
                 }
             }
-
             ReadLine();
         }
 
