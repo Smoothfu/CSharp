@@ -22,16 +22,26 @@ namespace ConsoleApp152
 
             //Assume you really obtained the connectionString value from a*.config file.
             string connectionString = @"Data Source=Fred;Integrated Security=SSPI;Initial Catalog=mydb";
-            SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder(connectionString);
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            //Create command object via ctor args.
+            string sql = "select * from mt";
+            SqlCommand cmd = new SqlCommand(sql,conn);
 
-            //change timeout value.
-            connectionStringBuilder.ConnectTimeout = 5;
-            using (SqlConnection con = new SqlConnection())
+            //Create another command object via properties.
+            cmd.ExecuteNonQuery();
+            using (SqlDataReader sdr = cmd.ExecuteReader())
             {
-                con.ConnectionString = connectionStringBuilder.ConnectionString;
-                ShowConnectionStatus(con);
+                while(sdr.Read())
+                {
+                    Console.WriteLine("CarId:{0},Make:{1}, Color:{2},PetName:{3}\n", sdr[0], sdr[1],sdr[2],sdr[3]);
+                }
             }
-                ReadLine();
+
+
+            Console.ReadLine();
+
+
         }
 
 
