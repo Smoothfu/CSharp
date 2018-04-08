@@ -19,24 +19,19 @@ namespace ConsoleApp152
         {
             WriteLine("*****Fun with Data Readers*****\n");
 
-            //Create a connection string via the builder object.
-            var cnStringBuilder = new SqlConnectionStringBuilder
-            {
-                InitialCatalog = "MyDb",
-                DataSource = @"Fred",
-                ConnectTimeout = 30,
-                IntegratedSecurity = true
-            };
 
+            //Assume you really obtained the connectionString value from a*.config file.
+            string connectionString = @"Data Source=Fred;Integrated Security=SSPI;Initial Catalog=mydb";
+            SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder(connectionString);
 
-            using (SqlConnection conn = new SqlConnection())
+            //change timeout value.
+            connectionStringBuilder.ConnectTimeout = 5;
+            using (SqlConnection con = new SqlConnection())
             {
-                conn.ConnectionString = cnStringBuilder.ConnectionString;
-                conn.Open();
-                ShowConnectionStatus(conn);
+                con.ConnectionString = connectionStringBuilder.ConnectionString;
+                ShowConnectionStatus(con);
             }
-
-            ReadLine();
+                ReadLine();
         }
 
 
