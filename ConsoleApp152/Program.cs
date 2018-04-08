@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.Odbc;
 using System.Data.OleDb;
+using static System.Console;
 
 namespace ConsoleApp152
 {
@@ -25,10 +26,10 @@ namespace ConsoleApp152
             //Get a specific connection.
             IDbConnection myConnection = GetConnection(DataProviders.SqlServer);
 
-            Console.WriteLine($"Your connection is a {myConnection.GetType().Name}");
+            WriteLine($"Your connection is a {myConnection.GetType().Name}");
 
             //Open,use and close connection.
-            Console.ReadLine();
+           ReadLine();
         }
 
         //This method returns a specific connection object based on the value 
