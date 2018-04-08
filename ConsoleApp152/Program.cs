@@ -20,12 +20,12 @@ namespace ConsoleApp152
             WriteLine("*****Fun with Data Readers*****\n");
             using (SqlConnection con = new SqlConnection())
             {
-                con.ConnectionString = "Data Source=localhost;Initial Catalog=mydb;Integrated Security=SSPI;Connect timeout=30";
+                con.ConnectionString = @"Data Source=Fred;Initial Catalog=mydb;Integrated Security=SSPI;Connect timeout=30";
                 con.Open();
                 ShowConnectionStatus(con);
             }
 
-                ReadLine();
+            ReadLine();
         }
 
 
