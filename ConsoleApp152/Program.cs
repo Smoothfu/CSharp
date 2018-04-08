@@ -12,68 +12,32 @@ using System.Configuration;
 using System.Data.Common;
 
 namespace ConsoleApp152
-{
-
-    //A list of possible providers.
-    enum DataProviders
-    {
-        SqlServer,OleDb,Odbc,None
-    }
+{ 
     class Program
     {
         static void Main(string[] args)
         {
             WriteLine("*****Fun with Data Readers*****\n");
-
-            //Create and open a connection.
-            using (SqlConnection connection = new SqlConnection())
+            using (SqlConnection con = new SqlConnection())
             {
-                connection.ConnectionString = @"Data Source=localhost;Integrated Security=SSPI;Initial Catalog=MyDb";
-                connection.Open();
-
-                //Create a SQL command object.
-                string sql = "select * from mt";
-                SqlCommand cmd = new SqlCommand(sql, connection);
-
-                //Obtain a data reader a la ExecuteReader().
-                using (SqlDataReader sqlDataReader = cmd.ExecuteReader())
-                {
-                    //Loop over the results.
-                    while (sqlDataReader.Read())
-                    {
-                        WriteLine($"->Make:{sqlDataReader["Make"]},PetName:{sqlDataReader["PetName"]},Color:{sqlDataReader["Color"]}.");
-                    }
-                }
-            }
-            ReadLine();
-        }
-
-        //This method returns a specific connection object based on the value 
-        //of a DataProvider enum.
-        static IDbConnection GetConnection(DataProviders dataProvider)
-        {
-            IDbConnection connection = null;
-
-            switch (dataProvider)
-            {
-                case DataProviders.SqlServer:
-                    connection = new SqlConnection();
-                    break;
-                case DataProviders.OleDb:
-                    connection = new OleDbConnection();
-                    break;
-                case DataProviders.Odbc:
-                    connection = new OdbcConnection();
-                    break;
+                con.ConnectionString = "Data Source=localhost;Initial Catalog=mydb;Integrated Security=SSPI;Connect timeout=30";
+                con.Open();
+                ShowConnectionStatus(con);
             }
 
-            return connection;
+                ReadLine();
         }
 
-        private static void ShowError(string objectName)
+
+        static void ShowConnectionStatus(SqlConnection connection)
         {
-            WriteLine($"There was an issue creating the {objectName}");
-            ReadLine();
+            //Show various stats about the current connection object.
+            WriteLine("*****Info about your connection*****\n");
+            WriteLine($"Database location:{connection.DataSource}");
+            WriteLine($"Database name:{connection.Database}");
+            WriteLine($"Timeout:{connection.ConnectionTimeout}");
+            WriteLine($"Connection State:{connection.State}");
         }
+        
     }
 }
