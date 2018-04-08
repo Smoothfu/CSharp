@@ -27,7 +27,7 @@ namespace ConsoleApp152
 
             //Get connection string/provider from *.config.
             string dataProvider = ConfigurationManager.AppSettings["provider"];
-            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            string connectionString = ConfigurationManager.ConnectionStrings["MyDbSqlProvider"].ConnectionString;
 
             //Get the factory provider.
             DbProviderFactory factory = DbProviderFactories.GetFactory(dataProvider);
