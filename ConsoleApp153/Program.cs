@@ -10,20 +10,15 @@ namespace ConsoleApp153
     class Program
     {
         static DateTime dt = DateTime.Now;
-        static DateTime dtNew = dt.AddSeconds(60);
+        static DateTime dtNew = dt.AddSeconds(10);
         static int x = 1000, y = 1000;
+        static int count = 0;
        
         static void Main(string[] args)
         {
-            Task.Run(() =>
-            {
-                //simulate processing.
-                while (DateTime.Now.Subtract(dtNew).Seconds < 0)
-                {
-                    AddMethod(ref x, ref y);
-                }
-            }).ContinueWith(x => System.Windows.Forms.MessageBox.Show("Done!"));          
-            
+
+            var task = Task.Run(() => 10000000).ContinueWith(x => x.Result * 10);
+            Console.WriteLine(task.Result);
 
             Console.ReadLine();            
         }
