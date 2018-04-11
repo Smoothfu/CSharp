@@ -12,14 +12,18 @@ namespace ConsoleApp154
     {
         static int x = 1000, y = 10000;
         static DateTime dt = DateTime.Now;
-        static DateTime dtNew = dt.AddSeconds(10);
+        static DateTime dtNew = dt.AddSeconds(30);
 
         static void Main(string[] args)
         {
-            while(DateTime.Now.Subtract(dtNew).Seconds<0)
+            Task.Run(() =>
             {
-                AddMethod(ref x, ref y);
-            }
+                while (DateTime.Now.Subtract(dtNew).Seconds < 0)
+                {
+                    AddMethod(ref x, ref y);
+                }
+            });
+            
             Console.ReadLine();
         }
 
