@@ -12,11 +12,8 @@ namespace ConsoleApp155
         static int x = 10000000, y = 10000000;
         static void Main(string[] args)
         {
-            Thread thread = new Thread(() =>
-              {
-                  AddMethod(ref x, ref y);
-              });
-
+            ThreadStart threadStart = new ThreadStart(()=>AddMethod(ref x, ref y));
+            Thread thread = new Thread(threadStart);
             thread.Start();
             Console.ReadLine();
         }
