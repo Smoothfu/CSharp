@@ -12,7 +12,7 @@ namespace ConsoleApp155
         static int x = 10000000, y = 10000000;
         static void Main(string[] args)
         {
-            Task.Run(() =>
+            Task.Factory.StartNew(() =>
             {
                 AddMethod(ref x, ref y);
             });
