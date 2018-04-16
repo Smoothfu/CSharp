@@ -9,13 +9,13 @@ namespace ConsoleApp155
 {
     class Program
     {
-        static int x = 10000000, y = 10000000;
+        static int x = 100000, y = 200000000;
+        delegate void AddDel(ref int x, ref int y);
         static void Main(string[] args)
         {
-            Task.Factory.StartNew(() =>
-            {
-                AddMethod(ref x, ref y);
-            });
+            AddDel addDel = new AddDel(AddMethod);
+            addDel(ref x, ref y);
+            
             Console.ReadLine();
         }
 
