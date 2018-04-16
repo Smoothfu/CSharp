@@ -13,8 +13,10 @@ namespace ConsoleApp155
         delegate void AddDel(ref int x, ref int y);
         static void Main(string[] args)
         {
-            AddDel addDel = new AddDel(AddMethod);
-            addDel(ref x, ref y);
+            Task.Run(() =>
+            {
+                ExtractExecutingThread();
+            });
             
             Console.ReadLine();
         }
@@ -25,6 +27,21 @@ namespace ConsoleApp155
             x = x + 1000;
             y = y + 1000;
             Console.WriteLine("Now x is {0},y is {1}", x, y);
+        }
+
+        static void ExtractExecutingThread()
+        {
+            //Get the thread currently executing this method.
+            Thread currentThread = Thread.CurrentThread;
+            Console.WriteLine("ManagedThreadId:{0}\n",currentThread.ManagedThreadId);
+            Console.WriteLine("Name:{0}\n",currentThread.Name);
+            Console.WriteLine("Priority:{0}\n", currentThread.Priority);
+            Console.WriteLine("ThreadState:{0}\n", currentThread.ThreadState);
+            Console.WriteLine("CurrentCulture:{0}\n",currentThread.CurrentCulture);
+            Console.WriteLine("CurrentUICulture:{0}\n",currentThread.CurrentUICulture);
+            Console.WriteLine("IsAlive:{0}\n",currentThread.IsAlive);
+            Console.WriteLine("IsBackground:{0}\n", currentThread.IsBackground);
+            Console.WriteLine("IsThreadPoolThread:{0}\n", currentThread.IsThreadPoolThread); 
         }
     }
 }
