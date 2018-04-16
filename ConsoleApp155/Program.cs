@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.Remoting.Contexts;
 
 namespace ConsoleApp155
 {
@@ -15,7 +16,7 @@ namespace ConsoleApp155
         {
             Task.Run(() =>
             {
-                ExtractAppDomainHostingThread();
+                ExtractCurrentThreadContext();
             });
             
             Console.ReadLine();
@@ -58,6 +59,14 @@ namespace ConsoleApp155
             Console.WriteLine("IsHomogenous:{0}\n", ad.IsHomogenous);
             Console.WriteLine("RelativeSearchPath:{0}\n", ad.RelativeSearchPath);
             Console.WriteLine("SetupInformation:{0}\n",ad.SetupInformation);
+        }
+
+        static void ExtractCurrentThreadContext()
+        {
+            //Obtain the context under which the current is operating.
+            Context ctx = Thread.CurrentContext;
+            Console.WriteLine("ContextID:{0}\n",ctx.ContextID);
+            Console.WriteLine("ContextProperties:{0}\n",ctx.ContextProperties);
         }
         
     }
