@@ -15,7 +15,7 @@ namespace ConsoleApp155
         {
             Task.Run(() =>
             {
-                ExtractExecutingThread();
+                ExtractAppDomainHostingThread();
             });
             
             Console.ReadLine();
@@ -43,5 +43,22 @@ namespace ConsoleApp155
             Console.WriteLine("IsBackground:{0}\n", currentThread.IsBackground);
             Console.WriteLine("IsThreadPoolThread:{0}\n", currentThread.IsThreadPoolThread); 
         }
+
+        static void ExtractAppDomainHostingThread()
+        {
+            //Obtain the AppDomain hosting the current thread.
+            AppDomain ad = Thread.GetDomain();
+            Console.WriteLine("BaseDirectory:{0}\n", ad.BaseDirectory);
+            Console.WriteLine("DomainManager:{0}\n", ad.DomainManager);
+            Console.WriteLine("DynamicDirectory:{0}\n", ad.DynamicDirectory);
+            Console.WriteLine("Evidence:{0}\n", ad.Evidence);
+            Console.WriteLine("FriendlyName:{0}\n", ad.FriendlyName);
+            Console.WriteLine("Id:{0}\n", ad.Id);
+            Console.WriteLine("IsFullyTrusted:{0}\n", ad.IsFullyTrusted);
+            Console.WriteLine("IsHomogenous:{0}\n", ad.IsHomogenous);
+            Console.WriteLine("RelativeSearchPath:{0}\n", ad.RelativeSearchPath);
+            Console.WriteLine("SetupInformation:{0}\n",ad.SetupInformation);
+        }
+        
     }
 }
