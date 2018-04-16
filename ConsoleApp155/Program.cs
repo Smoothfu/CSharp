@@ -8,17 +8,27 @@ using System.Runtime.Remoting.Contexts;
 
 namespace ConsoleApp155
 {
+    public delegate int BinaryOp(int x, int y);
     class Program
     {
         static int x = 100000, y = 200000000;
         delegate void AddDel(ref int x, ref int y);
         static void Main(string[] args)
         {
-            Task.Run(() =>
-            {
-                ExtractCurrentThreadContext();
-            });
-            
+            Console.WriteLine("*****Synch Delegate Review*****\n");
+
+            //Print out the ID of the executing thread.
+            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Invoke Add() in a synchronous manner.
+            BinaryOp bo = new BinaryOp(Add);
+
+            //Could also write bo.Invoke(10,10);
+            int answer = bo(100, 100);
+
+            //These lines will not execute until the Add() method has completed.
+            Console.WriteLine("Doing more work in Main()!");
+            Console.WriteLine("Answer:{0}\n", answer);
             Console.ReadLine();
         }
 
@@ -67,6 +77,16 @@ namespace ConsoleApp155
             Context ctx = Thread.CurrentContext;
             Console.WriteLine("ContextID:{0}\n",ctx.ContextID);
             Console.WriteLine("ContextProperties:{0}\n",ctx.ContextProperties);
+        }
+
+        static int Add(int x,int y)
+        {
+            //Print out the ID of the executing thread.
+            Console.WriteLine("Add() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Pause to simulate a lengthy operation.
+            Thread.Sleep(5000);
+            return x + y;
         }
         
     }
