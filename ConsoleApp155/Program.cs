@@ -25,7 +25,7 @@ namespace ConsoleApp155
             IAsyncResult asyncResult = bo.BeginInvoke(10, 10, null, null);
 
             //This message will keep printing until the Add() method is finished.
-            while(!asyncResult.IsCompleted)
+            while(!asyncResult.AsyncWaitHandle.WaitOne(1000,true))
             {
                 Console.WriteLine("Now is {0}\n", DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
 
