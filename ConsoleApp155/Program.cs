@@ -24,8 +24,12 @@ namespace ConsoleApp155
             BinaryOp bo = new BinaryOp(Add);
             IAsyncResult asyncResult = bo.BeginInvoke(10, 10, null, null);
 
-            //Do other work on primary thread...
-            Console.WriteLine("Doing more work in Main()!\n");
+            //This message will keep printing until the Add() method is finished.
+            while(!asyncResult.IsCompleted)
+            {
+                Console.WriteLine("Now is {0}\n", DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
+
+            }
 
 
             //Obtain the result of the Add() method when ready.
