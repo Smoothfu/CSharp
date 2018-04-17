@@ -17,40 +17,13 @@ namespace ConsoleApp155
         static int x = 100000, y = 100000;
         static void Main(string[] args)
         {
-            Console.WriteLine("*****The Amazing Thread App*****\n");
-            Console.WriteLine("Do you want [1] or [2] threads?\n");
-            string threadCount = Console.ReadLine();
+            Console.WriteLine("*****Adding with thread objects*****\n");
+            Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            //Name the current thread.
-            Thread primaryThread = Thread.CurrentThread;
-            primaryThread.Name = "Primary";
-
-            //Display Thread info.
-            Console.WriteLine("->{0} is executing Main()!\n", Thread.CurrentThread.Name);
-
-            //Make worker class.
-            Printer printerObj = new Printer();
-            switch(threadCount)
-            {
-                case "2":
-                    //Now make the thread.
-                    Thread backgroundThread = new Thread(new ThreadStart(printerObj.PrintNumbers));
-                    backgroundThread.Name = "Secondary";
-                    backgroundThread.Start();
-                    break;
-
-                case "1":
-                    printerObj.PrintNumbers();
-                    break;
-
-                default:
-                    Console.WriteLine("I don't know what you want...you get 1 thread.");
-                    goto case "1";
-            }
-
-            //Do some additional work.
-            MessageBox.Show("I'm  busy!", "Work on main thread...");
-             
+            //Make an AddParams object to pass to the secondary thread.
+            AddParams ap = new AddParams(100, 100);
+            Thread thread = new Thread(new ParameterizedThreadStart(Add));
+            thread.Start(ap);
             Console.ReadLine();
         }
 
@@ -125,7 +98,18 @@ namespace ConsoleApp155
             string msg = (string)asyncResult.AsyncState;
             Console.WriteLine(msg);
             isDone = true;
-        }        
+        }
+
+        static void Add(object data)
+        {
+            if (data is AddParams)
+            {
+                Console.WriteLine("ID of thread in Add():{0}\n", Thread.CurrentThread.ManagedThreadId);
+
+                AddParams ap = (AddParams)data;
+                Console.WriteLine("{0}+{1}={2}\n", ap.a, ap.b, ap.a + ap.b);
+            }
+        }
     }
 
     public class Printer
@@ -144,5 +128,17 @@ namespace ConsoleApp155
             }
             Console.WriteLine();
         }
+    }
+
+    class AddParams
+    {
+        public int a, b;
+        public AddParams(int numb1,int numb2)
+        {
+            a = numb1;
+            b = numb2;
+        }
+
+       
     }
 }
