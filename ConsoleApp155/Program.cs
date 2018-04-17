@@ -15,20 +15,23 @@ namespace ConsoleApp155
         delegate void AddDel(ref int x, ref int y);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synch Delegate Review*****\n");
+            Console.WriteLine("*****Async Delegate Invocation*****");
 
             //Print out the ID of the executing thread.
-            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
 
-            //Invoke Add() in a synchronous manner.
+            //Invoke Add() on a secondary thread.
             BinaryOp bo = new BinaryOp(Add);
+            IAsyncResult asyncResult = bo.BeginInvoke(10, 10, null, null);
 
-            //Could also write bo.Invoke(10,10);
-            int answer = bo(100, 100);
+            //Do other work on primary thread...
+            Console.WriteLine("Doing more work in Main()!\n");
 
-            //These lines will not execute until the Add() method has completed.
-            Console.WriteLine("Doing more work in Main()!");
-            Console.WriteLine("Answer:{0}\n", answer);
+
+            //Obtain the result of the Add() method when ready.
+            int answer = bo.EndInvoke(asyncResult);
+
+            Console.WriteLine("10+10 is {0}\n", answer);
             Console.ReadLine();
         }
 
@@ -85,7 +88,7 @@ namespace ConsoleApp155
             Console.WriteLine("Add() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
 
             //Pause to simulate a lengthy operation.
-            Thread.Sleep(5000);
+            Thread.Sleep(1000);
             return x + y;
         }
         
