@@ -13,25 +13,16 @@ namespace ConsoleApp155
     class Program
     {
         private static bool isDone = false;
-
+        static int x = 100000, y = 100000;
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Primary Thread stats*****\n");
+            ThreadStart threadStart = new ThreadStart(()=>
+            {
+                AddMethod(ref x, ref y);
+            });
 
-            //Obtain and name the current thread.
-            Thread primaryThread = Thread.CurrentThread;
-            primaryThread.Name = "ThePrimaryThread";
-
-            //Show details of hosting AppDomain/Context.
-            Console.WriteLine("Name of current AppDomain:{0}\n", Thread.GetDomain().FriendlyName);
-
-            Console.WriteLine("ID of current Context:{0}\n", Thread.CurrentContext.ContextID);
-
-            //Print out some stats about this thread.
-            Console.WriteLine("Thread Name:{0}\n", primaryThread.Name);
-            Console.WriteLine("Has thread started?:{0}\n", primaryThread.IsAlive);
-            Console.WriteLine("Priority Level:{0}\n", primaryThread.Priority);
-            Console.WriteLine("Thread State:{0}\n", primaryThread.ThreadState);
+            Thread thread = new Thread(threadStart);
+            thread.Start();
              
             Console.ReadLine();
         }
