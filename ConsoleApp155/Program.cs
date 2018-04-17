@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Messaging;
+using System.Windows.Forms;
 
 namespace ConsoleApp155
 {
@@ -16,13 +17,39 @@ namespace ConsoleApp155
         static int x = 100000, y = 100000;
         static void Main(string[] args)
         {
-            ThreadStart threadStart = new ThreadStart(()=>
-            {
-                AddMethod(ref x, ref y);
-            });
+            Console.WriteLine("*****The Amazing Thread App*****\n");
+            Console.WriteLine("Do you want [1] or [2] threads?\n");
+            string threadCount = Console.ReadLine();
 
-            Thread thread = new Thread(threadStart);
-            thread.Start();
+            //Name the current thread.
+            Thread primaryThread = Thread.CurrentThread;
+            primaryThread.Name = "Primary";
+
+            //Display Thread info.
+            Console.WriteLine("->{0} is executing Main()!\n", Thread.CurrentThread.Name);
+
+            //Make worker class.
+            Printer printerObj = new Printer();
+            switch(threadCount)
+            {
+                case "2":
+                    //Now make the thread.
+                    Thread backgroundThread = new Thread(new ThreadStart(printerObj.PrintNumbers));
+                    backgroundThread.Name = "Secondary";
+                    backgroundThread.Start();
+                    break;
+
+                case "1":
+                    printerObj.PrintNumbers();
+                    break;
+
+                default:
+                    Console.WriteLine("I don't know what you want...you get 1 thread.");
+                    goto case "1";
+            }
+
+            //Do some additional work.
+            MessageBox.Show("I'm  busy!", "Work on main thread...");
              
             Console.ReadLine();
         }
@@ -99,5 +126,23 @@ namespace ConsoleApp155
             Console.WriteLine(msg);
             isDone = true;
         }        
+    }
+
+    public class Printer
+    {
+        public void PrintNumbers()
+        {
+            //Display Thread info.
+            Console.WriteLine("->{0} is executing PrintNumbers()\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Print out numbers.
+            Console.WriteLine("Your numbers:\n");
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine("{0}\n", i);
+                Thread.Sleep(2000);
+            }
+            Console.WriteLine();
+        }
     }
 }
