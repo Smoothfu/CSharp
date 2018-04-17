@@ -16,18 +16,22 @@ namespace ConsoleApp155
 
         static void Main(string[] args)
         {
-            Console.WriteLine("*****AsyncCallbackDelegate Example*****\n");
-            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("*****Primary Thread stats*****\n");
 
-            BinaryOp bo = new BinaryOp(Add);
-            IAsyncResult asyncResult = bo.BeginInvoke(10, 10, new AsyncCallback(AddComplete), "Main() thanks you for adding these numbers.\n");
+            //Obtain and name the current thread.
+            Thread primaryThread = Thread.CurrentThread;
+            primaryThread.Name = "ThePrimaryThread";
 
-            //Assume other work is performed here...
-            while(!isDone)
-            {
-                Thread.Sleep(1000);
-                Console.WriteLine("Working....");
-            }
+            //Show details of hosting AppDomain/Context.
+            Console.WriteLine("Name of current AppDomain:{0}\n", Thread.GetDomain().FriendlyName);
+
+            Console.WriteLine("ID of current Context:{0}\n", Thread.CurrentContext.ContextID);
+
+            //Print out some stats about this thread.
+            Console.WriteLine("Thread Name:{0}\n", primaryThread.Name);
+            Console.WriteLine("Has thread started?:{0}\n", primaryThread.IsAlive);
+            Console.WriteLine("Priority Level:{0}\n", primaryThread.Priority);
+            Console.WriteLine("Thread State:{0}\n", primaryThread.ThreadState);
              
             Console.ReadLine();
         }
