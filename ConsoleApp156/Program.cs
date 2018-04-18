@@ -17,7 +17,14 @@ namespace ConsoleApp156
             Thread bgThread = new Thread(new ThreadStart(objPrinter.PrintNumbers));
 
             //This is now a background thread.
+            bgThread.IsBackground = true;
             bgThread.Start();
+            bgThread.Join();
+
+            if(bgThread.ThreadState==ThreadState.Stopped)
+            {
+                Console.WriteLine("Finished!\n");
+            }
             Console.ReadLine();
         }
 
@@ -54,6 +61,7 @@ namespace ConsoleApp156
             {
                 Console.WriteLine("Now i is {0} and time is {1}\n", i, DateTime.Now.ToString("yyyyMMdd:HHmmssfff"));
             }
+            
         }
     }
 }
