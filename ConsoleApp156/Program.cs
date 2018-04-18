@@ -15,8 +15,8 @@ namespace ConsoleApp156
         private static int newValue;
         static void Main(string[] args)
         {
-            AddOne();
-            Console.WriteLine(newValue);
+            SafeAssignment();
+            Console.WriteLine(interval);
             Console.ReadLine();
         }
 
@@ -37,6 +37,11 @@ namespace ConsoleApp156
         public static void AddOne()
         {
             newValue = Interlocked.Increment(ref interval);
+        }
+
+        public static void SafeAssignment()
+        {
+            Interlocked.Exchange(ref interval, 83);
         }
 
     }
