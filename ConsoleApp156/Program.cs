@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.Remoting.Contexts;
 
 namespace ConsoleApp156
 {
@@ -15,8 +16,17 @@ namespace ConsoleApp156
         private static int newValue;
         static void Main(string[] args)
         {
-            CompareAndExchange();
-            Console.WriteLine(interval);
+            Printer objPrinter = new Printer();
+            Thread[] allThreads = new Thread[10];
+            for(int i=0;i<10;i++)
+            {
+                allThreads[i] = new Thread(new ThreadStart(objPrinter.PrintNumbers));
+            }
+
+            for(int j=0;j<10;j++)
+            {
+                allThreads[j].Start();
+            }
             Console.ReadLine();
         }
 
@@ -63,27 +73,21 @@ namespace ConsoleApp156
         }
     }
 
-    public class Printer
+    //All methods of printer are now thread safe!
+    [Synchronization]
+    public class Printer:ContextBoundObject
     {
         //lock token.
         private object threadLock = new object();
         public void PrintNumbers()
         {
-            Monitor.Enter(threadLock);
-            try
+            for (int i = 0; i < 10; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    //Put thread to sleep for a random amount of time. 
-                    Random rnd = new Random();
-                    Thread.Sleep(1000 * rnd.Next(3));
-                    Console.WriteLine("Now i is {0} and time is {1},Id:{2}\n", i, DateTime.Now.ToString("yyyyMMdd:HHmmssfff"), Thread.CurrentThread.ManagedThreadId);
-                }
+                //Put thread to sleep for a random amount of time. 
+                Random rnd = new Random();
+                Thread.Sleep(1000 * rnd.Next(3));
+                Console.WriteLine("Now i is {0} and time is {1},Id:{2}\n", i, DateTime.Now.ToString("yyyyMMdd:HHmmssfff"), Thread.CurrentThread.ManagedThreadId);
             }
-            finally
-            {
-                Monitor.Exit(threadLock);
-            }
-        }       
+        }     
     }
 }
