@@ -11,11 +11,11 @@ namespace ConsoleApp156
     {
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         private static object interlockedObj = new object();
-        private static int interval = 0;
+        private static int interval = 83;
         private static int newValue;
         static void Main(string[] args)
         {
-            SafeAssignment();
+            CompareAndExchange();
             Console.WriteLine(interval);
             Console.ReadLine();
         }
@@ -42,6 +42,13 @@ namespace ConsoleApp156
         public static void SafeAssignment()
         {
             Interlocked.Exchange(ref interval, 83);
+        }
+
+
+        public static void CompareAndExchange()
+        {
+            //If the value of interval is currently 83,change i to 99.
+            Interlocked.CompareExchange(ref interval, 99, 83);
         }
 
     }
