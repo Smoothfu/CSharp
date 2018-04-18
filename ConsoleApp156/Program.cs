@@ -12,18 +12,22 @@ namespace ConsoleApp156
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Background Threads*****\n");
+            Console.WriteLine("*****Synchronizing Threads*****\n");
             Printer objPrinter = new Printer();
-            Thread bgThread = new Thread(new ThreadStart(objPrinter.PrintNumbers));
 
-            //This is now a background thread.
-            bgThread.IsBackground = true;
-            bgThread.Start();
-            bgThread.Join();
+            //Make 10 threads that are all pointing to the same method on the same object.
+            Thread[] allThreads = new Thread[10];
 
-            if(bgThread.ThreadState==ThreadState.Stopped)
+            for(int i=0;i<10;i++)
             {
-                Console.WriteLine("Finished!\n");
+                allThreads[i] = new Thread(new ThreadStart(objPrinter.PrintNumbers));
+                allThreads[i].Name = string.Format("Worker thread #{0}\n", i);
+            }
+
+            //Now start each one.
+            foreach(var thread in allThreads)
+            {
+                thread.Start();
             }
             Console.ReadLine();
         }
@@ -59,10 +63,10 @@ namespace ConsoleApp156
         {
             for(int i=0;i<10;i++)
             {
-                //Put thread to sleep for a random amount of time.
+                //Put thread to sleep for a random amount of time. 
                 Random rnd = new Random();
                 Thread.Sleep(1000 * rnd.Next(5));                
-                Console.WriteLine("Now i is {0} and time is {1}\n", i, DateTime.Now.ToString("yyyyMMdd:HHmmssfff"));
+                Console.WriteLine("Now i is {0} and time is {1},Id:{2}\n", i, DateTime.Now.ToString("yyyyMMdd:HHmmssfff"), Thread.CurrentThread.ManagedThreadId);
             }
             
         }
