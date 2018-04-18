@@ -57,8 +57,11 @@ namespace ConsoleApp156
     {
         public void PrintNumbers()
         {
-            for(int i=0;i<1000;i++)
+            for(int i=0;i<10;i++)
             {
+                //Put thread to sleep for a random amount of time.
+                Random rnd = new Random();
+                Thread.Sleep(1000 * rnd.Next(5));                
                 Console.WriteLine("Now i is {0} and time is {1}\n", i, DateTime.Now.ToString("yyyyMMdd:HHmmssfff"));
             }
             
