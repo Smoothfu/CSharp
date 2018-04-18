@@ -63,18 +63,22 @@ namespace ConsoleApp156
         private object threadLock = new object();
         public void PrintNumbers()
         {
-            //use the lock token.
-            lock(threadLock)
+            Monitor.Enter(threadLock);
+            try
             {
                 for (int i = 0; i < 10; i++)
                 {
                     //Put thread to sleep for a random amount of time. 
                     Random rnd = new Random();
-                    Thread.Sleep(1000 * rnd.Next(5));
+                    Thread.Sleep(1000 * rnd.Next(3));
                     Console.WriteLine("Now i is {0} and time is {1},Id:{2}\n", i, DateTime.Now.ToString("yyyyMMdd:HHmmssfff"), Thread.CurrentThread.ManagedThreadId);
                 }
-            }           
-            
+            }
+            finally
+            {
+                Monitor.Exit(threadLock);
+            }
+
         }
     }
 }
