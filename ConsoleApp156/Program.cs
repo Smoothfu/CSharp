@@ -10,25 +10,13 @@ namespace ConsoleApp156
     class Program
     {
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
+        private static object interlockedObj = new object();
+        private static int interval = 0;
+        private static int newValue;
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synchronizing Threads*****\n");
-            Printer objPrinter = new Printer();
-
-            //Make 10 threads that are all pointing to the same method on the same object.
-            Thread[] allThreads = new Thread[10];
-
-            for(int i=0;i<10;i++)
-            {
-                allThreads[i] = new Thread(new ThreadStart(objPrinter.PrintNumbers));
-                allThreads[i].Name = string.Format("Worker thread #{0}\n", i);
-            }
-
-            //Now start each one.
-            foreach(var thread in allThreads)
-            {
-                thread.Start();
-            }
+            AddOne();
+            Console.WriteLine(newValue);
             Console.ReadLine();
         }
 
@@ -45,6 +33,12 @@ namespace ConsoleApp156
                 waitHandle.Set();
             }
         }
+
+        public static void AddOne()
+        {
+            newValue = Interlocked.Increment(ref interval);
+        }
+
     }
 
     class AddParams
@@ -78,7 +72,6 @@ namespace ConsoleApp156
             {
                 Monitor.Exit(threadLock);
             }
-
-        }
+        }       
     }
 }
