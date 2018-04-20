@@ -9,6 +9,7 @@ namespace ConsoleApp157
 {
     class Program
     {
+        private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
             Console.WriteLine("*****Adding with Thread objects*****\n");
@@ -18,6 +19,10 @@ namespace ConsoleApp157
             AddParams ap = new AddParams(10, 10);
             Thread thread = new Thread(new ParameterizedThreadStart(Add));
             thread.Start(ap);
+
+            //Wait here until you are notified.
+            waitHandle.WaitOne();
+            Console.WriteLine("Other thread is done!");
             Console.ReadLine();
         }
 
@@ -29,6 +34,9 @@ namespace ConsoleApp157
                 Console.WriteLine("ID of thread in Add():{0}\n", Thread.CurrentThread.ManagedThreadId);
                 Console.WriteLine("{0}+{1}={2}\n", ap.a, ap.b, ap.a + ap.b);
             }
+
+            //Tell other thread we are done.
+            waitHandle.Set();
         }
     }
 
