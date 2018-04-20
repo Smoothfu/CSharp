@@ -12,17 +12,13 @@ namespace ConsoleApp157
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Adding with Thread objects*****\n");
-            Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("***** Background Threads *****\n");
+            Printer p = new Printer();
+            Thread bgThread = new Thread(new ThreadStart(p.PrintNumbers));
 
-            //Make an AddParams object to pass to the secondary thread.
-            AddParams ap = new AddParams(10, 10);
-            Thread thread = new Thread(new ParameterizedThreadStart(Add));
-            thread.Start(ap);
-
-            //Wait here until you are notified.
-            waitHandle.WaitOne();
-            Console.WriteLine("Other thread is done!");
+            //This is now a background thread.
+            bgThread.IsBackground = true;
+            bgThread.Start();
             Console.ReadLine();
         }
 
@@ -48,6 +44,17 @@ namespace ConsoleApp157
         {
             a = numb1;
             b = numb2;
+        }
+    }
+
+    class Printer
+    {
+        public void PrintNumbers()
+        {
+            for(int i=0;i<1000;i++)
+            {
+                Console.WriteLine("The i is {0},and now is {1}\n", i, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+            }
         }
     }
 }
