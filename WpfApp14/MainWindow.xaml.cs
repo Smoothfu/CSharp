@@ -42,8 +42,8 @@ namespace WpfApp14
             string newDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+@"\ModifiedFile";
             Directory.CreateDirectory(newDir);
 
-            //Process the image data in a blocking manner.
-            foreach(string currentFile in allFiles)
+            //Process the image data in a parallel manner!
+            Parallel.ForEach(allFiles, currentFile =>
             {
                 string fileName = System.IO.Path.GetFileName(currentFile);
 
@@ -53,9 +53,26 @@ namespace WpfApp14
                     bp.Save(System.IO.Path.Combine(newDir, fileName));
 
                     //Print out the ID of the thread processing the current image.
-                    this.tbx.Text = string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+                    this.Dispatcher.Invoke(()=>
+                    {
+                        this.tbx.Text = string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+                    }); 
                 }
-            }            
+            });
+            ////Process the image data in a blocking manner.
+            //foreach(string currentFile in allFiles)
+            //{
+            //    string fileName = System.IO.Path.GetFileName(currentFile);
+
+            //    using (Bitmap bp = new Bitmap(currentFile))
+            //    {
+            //        bp.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            //        bp.Save(System.IO.Path.Combine(newDir, fileName));
+
+            //        //Print out the ID of the thread processing the current image.
+            //        this.tbx.Text = string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+            //    }
+            //}            
         }
     }
 }
