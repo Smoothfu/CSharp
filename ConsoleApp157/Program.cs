@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using System.Runtime.Remoting.Contexts;
+using System.Runtime.Remoting.Contexts; 
 
 namespace ConsoleApp157
 {
@@ -13,25 +13,21 @@ namespace ConsoleApp157
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synchronizing Threads*****\n");
+            Console.WriteLine("*****Working with Timer type*****\n");
 
-            Printer p = new Printer();
+            //Create the delegate for the Timer type.
+            TimerCallback timerCallback = new TimerCallback(PrintTime);
 
-            //Make 10 threads that are all pointing to the same method on the same object.
-            Thread[] allThreads = new Thread[10];
-
-            for(int i=0;i<10;i++)
-            {
-                allThreads[i] = new Thread(new ThreadStart(p.PrintNumbers));
-                allThreads[i].Name = string.Format("Worker thread #{0}", i);
-            }
-
-            //Now start each one.
-            foreach(Thread thread in allThreads)
-            {
-                thread.Start();
-            }
+            //Establish timer settings.
+            Timer timer = new Timer(timerCallback, null, 0, 1000);
+            Console.WriteLine("Hit key to terminate!\n");
+           
             Console.ReadLine();
+        }
+
+        static void PrintTime(object state)
+        {
+            Console.WriteLine("Time is :{0}\n", DateTime.Now.ToLongTimeString());
         }
 
         static void Add(object data)
