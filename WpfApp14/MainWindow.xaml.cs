@@ -118,10 +118,23 @@ namespace WpfApp14
             string[] words = theEBook.Text.Split(new Char[] {' ','\u000A',',','.',';','-','?','/'},StringSplitOptions.RemoveEmptyEntries);
 
             //Now,find the ten most common words.
-            string[] tenMostCommon =FindTenMostCommon(words);
+            string[] tenMostCommon = null;
 
             //Get the longest word.
-            string longestWord = FindLongestWord(words);
+            string longestWord = string.Empty;
+
+            Parallel.Invoke(() =>
+            {
+                //Now,find the ten most common words.
+                tenMostCommon = FindTenMostCommon(words);
+            },
+
+            () =>
+            {
+                //Get the longest word.
+                longestWord = FindLongestWord(words);
+            }
+            );
 
             //Now that all tasks are complete,build a string to show all stats in a message box.
             StringBuilder bookStats = new StringBuilder("Ten most common words are:\n");
