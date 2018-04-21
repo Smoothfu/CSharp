@@ -19,6 +19,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="tbx" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
-        <Button x:Name="btn" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Click="btn_Click" Content="Move Pictures"/>
+        <TextBox x:Name="theEBook" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="txtBook" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+        <!--<Button x:Name="btn" Grid.Row="3" Grid.Column="0"   Click="btn_Click" Content="Move Pictures" FontSize="30"/>
+        <Button x:Name="cancel" Grid.Row="3"  Grid.Column="1"  Click="cancel_Click" Content="Cancel" FontSize="30"/>-->
+        
+        <Button x:Name="download" Grid.Row="3" Grid.Column="0" Click="download_Click" Content="Download" FontSize="30"/>
+        <Button x:Name="getStats" Grid.Row="3" Grid.Column="1" Click="getStats_Click" Content="Get Status" FontSize="30"/>
     </Grid>
 </Window>
