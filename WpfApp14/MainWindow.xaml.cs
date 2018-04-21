@@ -31,7 +31,12 @@ namespace WpfApp14
 
         private void btn_Click(object sender, RoutedEventArgs e)
         {
-            ProcessFiles();
+
+            //Start a new "task" to process the files.
+            Task.Factory.StartNew(() =>
+            {
+                ProcessFiles();
+            });           
         }
 
         private void ProcessFiles()
@@ -55,7 +60,7 @@ namespace WpfApp14
                     //Print out the ID of the thread processing the current image.
                     this.Dispatcher.Invoke(()=>
                     {
-                        this.tbx.Text = string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+                        this.tbx.Text += string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId)+Environment.NewLine;
                     }); 
                 }
             });
