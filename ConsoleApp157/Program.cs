@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.Remoting.Contexts;
 
 namespace ConsoleApp157
 {
@@ -58,7 +59,8 @@ namespace ConsoleApp157
         }
     }
 
-    class Printer
+    [Synchronization]
+    class Printer:ContextBoundObject
     {
         public void PrintNumbers()
         {
