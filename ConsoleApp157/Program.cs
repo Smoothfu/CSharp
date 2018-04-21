@@ -13,34 +13,36 @@ namespace ConsoleApp157
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Working with Timer type*****\n");
 
-            //Create the delegate for the Timer type.
-            TimerCallback timerCallback = new TimerCallback(PrintTime);
+            Console.WriteLine("*****Fun with the CLR Thread Pool*****\n");
 
-            //Establish timer settings.
-            Timer timer = new Timer(timerCallback, null, 0, 1000);
-            Console.WriteLine("Hit key to terminate!\n");
-           
+            Console.WriteLine("Main thread started.ThreadID={0}\n", Thread.CurrentThread.ManagedThreadId);
+
+            Printer p = new Printer();
+            WaitCallback workItem = new WaitCallback(PrintTheNumbers);
+
+            //Queue the method ten times.
+            for(int i=0;i<10;i++)
+            {
+                ThreadPool.QueueUserWorkItem(workItem, p);
+            }
+
+            Console.WriteLine("All tasks queued!\n");
             Console.ReadLine();
         }
 
         static void PrintTime(object state)
         {
-            Console.WriteLine("Time is :{0}\n", DateTime.Now.ToLongTimeString());
+            Console.WriteLine("Time is :{0},Param is:{1}\n", DateTime.Now.ToLongTimeString(),state.ToString());
         }
 
-        static void Add(object data)
+        static void PrintTheNumbers(object state)
         {
-            var ap = data as AddParams;
-            if(ap!=null)
+            Printer task = state as Printer;
+            if(task!=null)
             {
-                Console.WriteLine("ID of thread in Add():{0}\n", Thread.CurrentThread.ManagedThreadId);
-                Console.WriteLine("{0}+{1}={2}\n", ap.a, ap.b, ap.a + ap.b);
+                task.PrintNumbers();
             }
-
-            //Tell other thread we are done.
-            waitHandle.Set();
         }
     }
 
