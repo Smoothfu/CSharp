@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
+using System.IO;
 
 namespace ConsoleApp159
 {
@@ -13,7 +14,9 @@ namespace ConsoleApp159
     {
      static void Main(string[] args)
         {
-            AddAsync();
+            //Bind to the current working directory.
+            DirectoryInfo dir = new DirectoryInfo(".\\NewFile");
+            Console.WriteLine(dir.FullName);
             Console.ReadLine();
         }
 
