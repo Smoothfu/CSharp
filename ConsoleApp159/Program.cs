@@ -15,7 +15,8 @@ namespace ConsoleApp159
      static void Main(string[] args)
         {
             //Bind to the current working directory.
-            DirectoryInfo dir = new DirectoryInfo(".\\NewFile");
+            DirectoryInfo dir = new DirectoryInfo(@"d\c\ConsoleApp159New\NewFile");
+            dir.Create();
             Console.WriteLine(dir.FullName);
             Console.ReadLine();
         }
