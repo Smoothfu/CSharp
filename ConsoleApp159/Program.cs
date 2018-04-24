@@ -12,13 +12,45 @@ namespace ConsoleApp159
 {
     class Program
     {
-     static void Main(string[] args)
+        static List<string> namesList = new List<string>();
+        static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with DirectoryInfo*****\n");
-            ShowWindowDirectoryInfo();
+            DirectoryInfo dir = new DirectoryInfo(@"D:\C\ConsoleApp159");
+            ProcessDirectory(dir.FullName);
+            Console.WriteLine("There are totally {0} files in the directory!\n", namesList.Count());
             Console.ReadLine();
         }
 
+        //Process all files in the directory passed in,recurse on any directories that are found and process the files they contain.
+
+        public static void ProcessDirectory(string targetDirectory)
+        {
+            //Process the list of files found in the directory,
+            string[] allfiles = Directory.GetFiles(targetDirectory);
+
+            foreach(string fileName in allfiles)
+            {
+                DisplayAllFilesInSpecifiedPath(fileName);
+            }
+
+            //Recurse into subdirecyories of this directory.
+            string[] subDirectories = Directory.GetDirectories(targetDirectory);
+            foreach(string subDir in subDirectories)
+            {
+                ProcessDirectory(subDir);
+            }
+        }
+
+
+        static void DisplayAllFilesInSpecifiedPath(string path)
+        {
+
+            Console.WriteLine("*******************************************\n");
+            Console.WriteLine("{0}\n", path);
+            namesList.Add(path);
+            Console.WriteLine("***********************************************\n");
+
+        }
         static void ShowWindowDirectoryInfo()
         {
             //Dump directory information.
