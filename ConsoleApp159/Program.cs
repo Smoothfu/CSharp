@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 
 namespace ConsoleApp159
 {
@@ -12,8 +13,7 @@ namespace ConsoleApp159
     {
      static void Main(string[] args)
         {
-           Task<int> str = AccessTheWebAsync();
-            Console.WriteLine(str.Result);
+            AddAsync();
             Console.ReadLine();
         }
 
@@ -30,6 +30,41 @@ namespace ConsoleApp159
 
             string urlContents = await getStringTask;
             return urlContents.Length;
+        }
+
+        static async Task Sum(object data)
+        {
+            await Task.Run(() =>
+            {
+                var addParam = data as AddParams;
+                if(addParam!=null)
+                {
+                    Console.WriteLine("Sum method ID of thread in Add():{0}\n", Thread.CurrentThread.ManagedThreadId);
+                    Console.WriteLine("{0}+{1}={2}\n", addParam.A, addParam.B, addParam.A + addParam.B);
+                }
+            });
+        }
+
+        private static async Task AddAsync()
+        {
+            Console.WriteLine("*****Adding with Thread objects*****\n");
+            Console.WriteLine("AddAsync method ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
+
+            AddParams ap = new AddParams(1000000, 100000000);
+            await Sum(ap);
+            Console.WriteLine("Other thread is done!\n");
+        }
+    }
+
+    public class AddParams
+    {
+        public int A { get; set; }
+        public int B { get; set; }
+
+        public AddParams(int a,int b)
+        {
+            A = a;
+            B = b;
         }
     }
 }
