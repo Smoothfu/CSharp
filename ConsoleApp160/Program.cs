@@ -11,7 +11,8 @@ namespace ConsoleApp160
     {
         static void Main(string[] args)
         {
-            DirectoryInfo dir = new DirectoryInfo(".");
+            DirectoryInfo dir = new DirectoryInfo(@"D:\C\ConsoleApp160\ConsoleAppNew");
+            dir.Create();
             Console.WriteLine(dir.FullName);
             Console.WriteLine(dir.CreationTime);
             Console.WriteLine(dir.LastAccessTime);
