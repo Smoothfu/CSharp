@@ -14,7 +14,9 @@ namespace ConsoleApp160
         static List<string> allFileDirectories = new List<string>();
         static void Main(string[] args)
         {
-            string path = @"D:\C\ConsoleApp160";
+            string fullPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string[] allDirs = fullPath.Split(new string[] { "\\" },StringSplitOptions.None);
+            string path =allDirs[0]+"\\" + allDirs[1]+"\\" + allDirs[2] + "\\";
             ProcessDir(path);
 
             Console.WriteLine("\n\n\n\n\n");
