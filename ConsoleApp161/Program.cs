@@ -19,17 +19,9 @@ namespace ConsoleApp161
             string parentPath = allPathes[0] + "\\" + allPathes[1] + "\\" + allPathes[2];
             DirectoryInfo dir = new DirectoryInfo(parentPath);
             ProcessDir(dir);
-            Console.WriteLine("There are totally {0} files in the {1} directory!\n", allFilesList.Count, dir.FullName);
-            allFilesList.ForEach(x =>
-            {
-                Console.WriteLine(x);
-            });
 
-            Console.WriteLine("\n\n\n\nThere are totally {0} directories in the {1} directory!\n",allDirsList.Count, dir.FullName);
-            allDirsList.ForEach(x =>
-            {
-                Console.WriteLine(x);
-            });
+            DirectoryInfo subDir = dir.CreateSubdirectory("SubDir");
+            Console.WriteLine(subDir.FullName);
             Console.ReadLine();
         }
 
