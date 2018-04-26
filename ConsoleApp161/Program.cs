@@ -16,11 +16,11 @@ namespace ConsoleApp161
         {
             string fullPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string[] allPathes = fullPath.Split(new string[] { "\\" }, StringSplitOptions.None);
-            string parentPath = allPathes[0] + "\\" + allPathes[1] + "\\" + allPathes[2];
+            string parentPath = allPathes[0] + "\\" + allPathes[1] + "\\" + allPathes[2]+"\\"+allPathes[2]+"\\"+allPathes[1]+"\\"+allPathes[2];
             DirectoryInfo dir = new DirectoryInfo(parentPath);
-            ProcessDir(dir);
+           
 
-            DirectoryInfo subDir = dir.CreateSubdirectory("SubDir");
+            DirectoryInfo subDir = dir.CreateSubdirectory("SubDir\\sub",new System.Security.AccessControl.DirectorySecurity());
             Console.WriteLine(subDir.FullName);
             Console.ReadLine();
         }
