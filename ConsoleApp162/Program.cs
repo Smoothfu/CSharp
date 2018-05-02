@@ -15,15 +15,14 @@ namespace ConsoleApp162
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             string filePath = path + "\\NewText.txt";
-            //Make a new file on the file
+
+            //Defining a using scope for file I/O type is ideal.
             FileInfo fi = new FileInfo(filePath);
-            FileStream fs = fi.Create();
 
-            //Use the FileStream object...
-            //Close down file stream.
-            fs.Close();
-            Console.ReadLine();
-
+            using (FileStream fs = fi.Create())
+            {
+                //Use the FileStream object...
+            }
         }
     }
 }
