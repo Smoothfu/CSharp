@@ -16,47 +16,18 @@ namespace ConsoleApp162
 
             string filePath = path + "\\NewText3.txt";
 
+            Console.WriteLine("*****Simple I/O with the File Type*****\n");
+            string[] allStrings = { "This world is fair", "Everything depend on myself","Cherish the present moment","Make every second count","Make a difference"};
 
-            //Obtain FileStream object via File.Create().
-            using (FileStream fs = File.Create(filePath))
+            //Write out all data to file on C drive.
+            File.WriteAllLines(filePath, allStrings);
+
+            //Read it all back and print out.
+            foreach(string str in File.ReadAllLines(filePath))
             {
-
+                Console.WriteLine(str);
             }
-
-            //Obtain FileStream object via File.Open().
-            using (FileStream fs2 = File.Open(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
-            {
-
-            }
-
-            //Get a FileStream object with read-only permissions.
-            using (FileStream readOnlyStream = File.OpenRead(filePath))
-            {
-
-            }
-
-            //Get a FileStream object with write-only permissions.
-            using (FileStream writeOnlyStream = File.OpenWrite(filePath))
-            {
-
-            }
-
-            //Get a StreamReader object.
-            using (StreamReader streamReader = File.OpenText(filePath))
-            {
-
-            }
-
-            //Get some StreamWriters.
-            using (StreamWriter streamWriter = File.CreateText(filePath))
-            {
-
-            }
-
-            using (StreamWriter streamWriter = File.AppendText(filePath))
-            {
-
-            }
+            Console.ReadLine();             
         }
 
         static byte[] GetBytes(string str)
