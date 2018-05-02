@@ -16,15 +16,15 @@ namespace ConsoleApp162
 
             string filePath = path + "\\NewText.txt";
 
-            //Get a FileStream object with read-only permissions.
+            //Now get a FileStream object with write-only permissions.
+
             FileInfo fi = new FileInfo(filePath);
 
-            using (FileStream readOnlyStream = fi.OpenRead())
+            using (FileStream writeOnlyStream = fi.OpenWrite())
             {
-                //Use the FileStream object...
-            }
 
-             
+            }      
+  
         }
 
         static byte[] GetBytes(string str)
