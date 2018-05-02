@@ -16,12 +16,14 @@ namespace ConsoleApp162
 
             string filePath = path + "\\NewText.txt";
 
+            //Get a FileStream object with read-only permissions.
             FileInfo fi = new FileInfo(filePath);
 
-            using (FileStream fs = fi.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+            using (FileStream readOnlyStream = fi.OpenRead())
             {
-                
+                //Use the FileStream object...
             }
+
              
         }
 
