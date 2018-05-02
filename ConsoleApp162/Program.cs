@@ -16,13 +16,47 @@ namespace ConsoleApp162
 
             string filePath = path + "\\NewText3.txt";
 
-            FileInfo fi = new FileInfo(filePath);
 
-            using(StreamWriter streamWriterAppend=fi.AppendText())
+            //Obtain FileStream object via File.Create().
+            using (FileStream fs = File.Create(filePath))
             {
-                //Use the StreamWriter object...
+
             }
-  
+
+            //Obtain FileStream object via File.Open().
+            using (FileStream fs2 = File.Open(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+            {
+
+            }
+
+            //Get a FileStream object with read-only permissions.
+            using (FileStream readOnlyStream = File.OpenRead(filePath))
+            {
+
+            }
+
+            //Get a FileStream object with write-only permissions.
+            using (FileStream writeOnlyStream = File.OpenWrite(filePath))
+            {
+
+            }
+
+            //Get a StreamReader object.
+            using (StreamReader streamReader = File.OpenText(filePath))
+            {
+
+            }
+
+            //Get some StreamWriters.
+            using (StreamWriter streamWriter = File.CreateText(filePath))
+            {
+
+            }
+
+            using (StreamWriter streamWriter = File.AppendText(filePath))
+            {
+
+            }
         }
 
         static byte[] GetBytes(string str)
