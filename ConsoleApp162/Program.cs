@@ -13,31 +13,21 @@ namespace ConsoleApp162
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("*****Fun with StringWriter/StringReader*****\n");
 
-            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string filePath = path + "\\NewText7.txt";
-
-            FileInfo fi = new FileInfo(filePath);
-
-            using (StreamWriter streamWriter = fi.CreateText())
+            //Create a StringWriter and emit character data to memory.
+            using (StringWriter stringWriter = new StringWriter())
             {
-                if (streamWriter != null)
-                {
-                    streamWriter.WriteLine("The world is fair and wonderful!" + Environment.NewLine);
-                    streamWriter.WriteLine("Cherish the present moment and make every second count!" + Environment.NewLine);
-                    streamWriter.WriteLine("Make a difference!\n");
-                }
+                stringWriter.WriteLine("The world is fair and wonderful!\n");
+                stringWriter.WriteLine("Everything depend on myself!\n");
+                stringWriter.WriteLine("Cherish the present moment and make every second count!\n");
+                stringWriter.WriteLine("Make a difference!\n");
+                Console.WriteLine("Contents of StringWriter:\n{0}", stringWriter);
             }
 
-            using (StreamReader streamReader = File.OpenText(filePath))
-            {
-                string str;
-                while ((str = streamReader.ReadLine()) != null)
-                {
-                    Console.WriteLine(str);
-                }
-            }
-            Console.ReadLine();
+            //Get a copy of the contents and dump to console.
+           
+                Console.ReadLine();
         }
 
         static byte[] GetBytes(string str)
