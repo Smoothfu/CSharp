@@ -28,8 +28,19 @@ namespace ConsoleApp162
             }
 
 
+            //Now read data from file.
+            Console.WriteLine("Here are your thoughts:\n");
 
-                Console.ReadLine();
+            using (StreamReader streamReader = File.OpenText(filePath))
+            {
+                string input = null;
+                while ((input = streamReader.ReadLine()) != null)
+                {
+                    Console.WriteLine(input);
+                }
+            }
+
+            Console.ReadLine();
         }
 
         static byte[] GetBytes(string str)
