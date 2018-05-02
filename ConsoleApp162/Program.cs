@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
+using System.Net.Sockets;
 
 namespace ConsoleApp162
 {
@@ -12,41 +13,23 @@ namespace ConsoleApp162
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with FileStreams*****\n");
+            Console.WriteLine("*****Fun with StreamWriter/ StreamReader *****\n");
+
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            string filePath = path + "\\NewText3.dat";
+            string filePath = path + "\\NewText4.dat";
 
-            //Obtain a FileStream object.
-            using (FileStream fs = File.Open(filePath, FileMode.Create))
+            //Get a StreamWriter and write string data.
+            using (StreamWriter writer = File.CreateText(filePath))
             {
-                //Encode a string as an array of bytes.
-                string msg = @"This world is wonderful and fair.Everything depend on myself Cherish the present moment.Make vert second count.Make a difference!";
-
-                byte[] msgAsByteArray = Encoding.Default.GetBytes(msg);
-
-                //Write byte[] to file.
-                fs.Write(msgAsByteArray, 0, msgAsByteArray.Length);
-
-                //Reset internal position of stream.
-                fs.Position = 0;
-
-                //Read the types from file and display to console.
-                Console.WriteLine("Your message as an array of bytes: ");
-                byte[] bytesFromFile = new byte[msgAsByteArray.Length];
-                for (int i = 0; i < msgAsByteArray.Length; i++)
-                {
-                    bytesFromFile[i] = (byte)fs.ReadByte();
-                    Console.WriteLine(bytesFromFile[i]);
-                }
-
-                //Display decoded messages.
-                Console.WriteLine("\nDecoded Message:\n");
-                Console.WriteLine(Encoding.Default.GetString(bytesFromFile));
+                writer.WriteLine("The world is fair and wonderful" + Environment.NewLine);
+                writer.WriteLine("Cherish the present moment and make every second count" + Environment.NewLine);
+                writer.WriteLine("Make a difference" + Environment.NewLine);
             }
 
 
-            Console.ReadLine();
+
+                Console.ReadLine();
         }
 
         static byte[] GetBytes(string str)
