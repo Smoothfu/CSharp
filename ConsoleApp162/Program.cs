@@ -16,17 +16,13 @@ namespace ConsoleApp162
 
             string filePath = path + "\\NewText.txt";
 
-            //Defining a using scope for file I/O type is ideal.
             FileInfo fi = new FileInfo(filePath);
 
-            string str = "This world is fair and everything depend on myself!\n";
-            char[] allBytes = str.ToCharArray();
-
-            using (FileStream fs = fi.Create())
+            using (FileStream fs = fi.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
             {
-                //Use the FileStream object...
-                fs.Write(GetBytes(str),0,str.Length*2);                
+                
             }
+             
         }
 
         static byte[] GetBytes(string str)
