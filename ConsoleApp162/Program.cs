@@ -13,33 +13,30 @@ namespace ConsoleApp162
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with StreamWriter/ StreamReader *****\n");
 
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string filePath = path + "\\NewText7.txt";
 
-            string filePath = path + "\\NewText4.dat";
+            FileInfo fi = new FileInfo(filePath);
 
-            //Get a StreamWriter and write string data.
-            using (StreamWriter writer = File.CreateText(filePath))
+            using (StreamWriter streamWriter = fi.CreateText())
             {
-                writer.WriteLine("The world is fair and wonderful" + Environment.NewLine);
-                writer.WriteLine("Cherish the present moment and make every second count" + Environment.NewLine);
-                writer.WriteLine("Make a difference" + Environment.NewLine);
-            }
-
-
-            //Now read data from file.
-            Console.WriteLine("Here are your thoughts:\n");
-
-            using (StreamReader streamReader = File.OpenText(filePath))
-            {
-                string input = null;
-                while ((input = streamReader.ReadLine()) != null)
+                if (streamWriter != null)
                 {
-                    Console.WriteLine(input);
+                    streamWriter.WriteLine("The world is fair and wonderful!" + Environment.NewLine);
+                    streamWriter.WriteLine("Cherish the present moment and make every second count!" + Environment.NewLine);
+                    streamWriter.WriteLine("Make a difference!\n");
                 }
             }
 
+            using (StreamReader streamReader = File.OpenText(filePath))
+            {
+                string str;
+                while ((str = streamReader.ReadLine()) != null)
+                {
+                    Console.WriteLine(str);
+                }
+            }
             Console.ReadLine();
         }
 
