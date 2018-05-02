@@ -20,10 +20,10 @@ namespace ConsoleApp162
 
             FileInfo fi = new FileInfo(filePath);
 
-            using (FileStream writeOnlyStream = fi.OpenWrite())
+            using(StreamReader streamReader=fi.OpenText())
             {
-
-            }      
+                //Use the StreamReader object...
+            }
   
         }
 
