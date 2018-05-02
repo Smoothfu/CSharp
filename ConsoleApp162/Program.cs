@@ -23,16 +23,20 @@ namespace ConsoleApp162
                 stringWriter.WriteLine("Cherish the present moment and make every second count!\n");
                 stringWriter.WriteLine("Make a difference!\n");
 
+                //Read data from the StringWriter.
+                using (StringReader stringReader = new StringReader(stringWriter.ToString()))
+                {
+                    string input = null;
+                    while((input=stringReader.ReadLine())!=null)
+                    {
+                        Console.WriteLine(input);
+                    }
+                }
 
-                //Get the internal StringBuilder
-                StringBuilder stringBuilder = stringWriter.GetStringBuilder();
-                stringBuilder.Insert(0, "My Motto!\n\n");
-                Console.WriteLine("-> {0}\n", stringBuilder.ToString());
-                stringBuilder.Remove(0, "My ".Length);
-                Console.WriteLine("-> {0}\n", stringBuilder.ToString());
+                 
             }
 
-            //Get a copy of the contents and dump to console.
+            
            
                 Console.ReadLine();
         }
