@@ -14,15 +14,13 @@ namespace ConsoleApp162
         {
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            string filePath = path + "\\NewText.txt";
-
-            //Now get a FileStream object with write-only permissions.
+            string filePath = path + "\\NewText2.txt";
 
             FileInfo fi = new FileInfo(filePath);
 
-            using(StreamReader streamReader=fi.OpenText())
+            using (StreamWriter streamWriter = fi.CreateText())
             {
-                //Use the StreamReader object...
+                //Use the StreamWriter object...
             }
   
         }
