@@ -12,22 +12,41 @@ namespace ConsoleApp162
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("*****Fun with FileStreams*****\n");
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            string filePath = path + "\\NewText3.txt";
+            string filePath = path + "\\NewText3.dat";
 
-            Console.WriteLine("*****Simple I/O with the File Type*****\n");
-            string[] allStrings = { "This world is fair", "Everything depend on myself","Cherish the present moment","Make every second count","Make a difference"};
-
-            //Write out all data to file on C drive.
-            File.WriteAllLines(filePath, allStrings);
-
-            //Read it all back and print out.
-            foreach(string str in File.ReadAllLines(filePath))
+            //Obtain a FileStream object.
+            using (FileStream fs = File.Open(filePath, FileMode.Create))
             {
-                Console.WriteLine(str);
+                //Encode a string as an array of bytes.
+                string msg = @"This world is wonderful and fair.Everything depend on myself Cherish the present moment.Make vert second count.Make a difference!";
+
+                byte[] msgAsByteArray = Encoding.Default.GetBytes(msg);
+
+                //Write byte[] to file.
+                fs.Write(msgAsByteArray, 0, msgAsByteArray.Length);
+
+                //Reset internal position of stream.
+                fs.Position = 0;
+
+                //Read the types from file and display to console.
+                Console.WriteLine("Your message as an array of bytes: ");
+                byte[] bytesFromFile = new byte[msgAsByteArray.Length];
+                for (int i = 0; i < msgAsByteArray.Length; i++)
+                {
+                    bytesFromFile[i] = (byte)fs.ReadByte();
+                    Console.WriteLine(bytesFromFile[i]);
+                }
+
+                //Display decoded messages.
+                Console.WriteLine("\nDecoded Message:\n");
+                Console.WriteLine(Encoding.Default.GetString(bytesFromFile));
             }
-            Console.ReadLine();             
+
+
+            Console.ReadLine();
         }
 
         static byte[] GetBytes(string str)
