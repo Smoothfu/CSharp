@@ -22,7 +22,14 @@ namespace ConsoleApp162
                 stringWriter.WriteLine("Everything depend on myself!\n");
                 stringWriter.WriteLine("Cherish the present moment and make every second count!\n");
                 stringWriter.WriteLine("Make a difference!\n");
-                Console.WriteLine("Contents of StringWriter:\n{0}", stringWriter);
+
+
+                //Get the internal StringBuilder
+                StringBuilder stringBuilder = stringWriter.GetStringBuilder();
+                stringBuilder.Insert(0, "My Motto!\n\n");
+                Console.WriteLine("-> {0}\n", stringBuilder.ToString());
+                stringBuilder.Remove(0, "My ".Length);
+                Console.WriteLine("-> {0}\n", stringBuilder.ToString());
             }
 
             //Get a copy of the contents and dump to console.
