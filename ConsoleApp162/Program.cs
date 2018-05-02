@@ -14,11 +14,11 @@ namespace ConsoleApp162
         {
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            string filePath = path + "\\NewText2.txt";
+            string filePath = path + "\\NewText3.txt";
 
             FileInfo fi = new FileInfo(filePath);
 
-            using (StreamWriter streamWriter = fi.CreateText())
+            using(StreamWriter streamWriterAppend=fi.AppendText())
             {
                 //Use the StreamWriter object...
             }
