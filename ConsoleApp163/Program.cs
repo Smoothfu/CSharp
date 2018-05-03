@@ -11,20 +11,14 @@ namespace ConsoleApp163
     {
         static void Main(string[] args)
         {
-            //Get a FileStream object with read-only permissions.
-            FileInfo fi = new FileInfo("NewFile.dat");
-            using (FileStream readOnlyStream = fi.OpenRead())
+            //Get a StreamReader object.
+            FileInfo fi = new FileInfo("NewFile2.txt");
+            
+            using (StreamReader streamReader = fi.OpenText())
             {
 
             }
-
-            //Now get a FileStream object with write-only permissions.
-            FileInfo fi2 = new FileInfo("NewFile2.dat");
-            using (FileStream writeOnlyStream = fi2.OpenWrite())
-            {
-
-            }
-
+            Console.ReadLine();
         }
     }
 }
