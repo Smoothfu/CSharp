@@ -11,10 +11,14 @@ namespace ConsoleApp163
     {
         static void Main(string[] args)
         {
-            //Get a StreamReader object.
-            FileInfo fi = new FileInfo("NewFile2.txt");
-            
-            using (StreamReader streamReader = fi.OpenText())
+            FileInfo fi6 = new FileInfo("FileInfo6.txt");
+            using (StreamWriter streamWriter = fi6.CreateText())
+            {
+
+            }
+
+            FileInfo fi7 = new FileInfo("FileInfo7.txt");
+            using (StreamWriter streamWriter = fi7.AppendText())
             {
 
             }
