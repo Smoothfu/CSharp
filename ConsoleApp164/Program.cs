@@ -17,6 +17,12 @@ namespace ConsoleApp164
             AsyncCallback asyncCallback = new AsyncCallback(AddComplete);
 
             IAsyncResult asyncResult = addDel.BeginInvoke(10, 10,10, new AsyncCallback(AddComplete), "This is the delegate BeginInvoke!\n");
+
+            while(!asyncResult.IsCompleted)
+            {
+                Console.WriteLine("Now is :{0}\n", DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
+            }
+
             int answer = addDel.EndInvoke(asyncResult);
             string msgResult = asyncResult.AsyncState.ToString();
             Console.WriteLine("The final result is :{0}\n", answer);
