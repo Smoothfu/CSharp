@@ -70,7 +70,8 @@ namespace ConsoleApp165
         public void PrintNumbers()
         {
             //Use the lock token.
-            lock(lockObj)
+            Monitor.Enter(lockObj);
+            try            
             {
                 Console.WriteLine("The Thread Id of PrintNumbers is {0}\n", Thread.CurrentThread.ManagedThreadId);
 
@@ -83,7 +84,12 @@ namespace ConsoleApp165
                 }
 
                 Console.WriteLine("\n\n\n\n\n");
-            }           
+            }   
+            
+            finally
+            {
+                Monitor.Exit(lockObj);
+            }
         }
     }
 }
