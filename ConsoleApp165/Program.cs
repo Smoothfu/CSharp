@@ -65,19 +65,25 @@ namespace ConsoleApp165
 
     public class Printer
     {
+        //Lock token.
+        private object lockObj = new object();
         public void PrintNumbers()
         {
-            Console.WriteLine("The Thread Id of PrintNumbers is {0}\n", Thread.CurrentThread.ManagedThreadId);
-
-            for (int i = 0; i < 10;i++)
+            //Use the lock token.
+            lock(lockObj)
             {
-                //Put thread to sleep for a random amount of time.
-                Random rnd = new Random();
-                Thread.Sleep(1000 * rnd.Next(5));
-                Console.Write("{0}\t",i);
-            }
+                Console.WriteLine("The Thread Id of PrintNumbers is {0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            Console.WriteLine("\n\n\n\n\n");
+                for (int i = 0; i < 10; i++)
+                {
+                    //Put thread to sleep for a random amount of time.
+                    Random rnd = new Random();
+                    Thread.Sleep( rnd.Next(5));
+                    Console.Write("{0}\t", i);
+                }
+
+                Console.WriteLine("\n\n\n\n\n");
+            }           
         }
     }
 }
