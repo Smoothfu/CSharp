@@ -12,21 +12,24 @@ namespace ConsoleApp165
         private static AutoResetEvent waitHandler = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Adding with Thread objects*****\n");
-            Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("*****Synchronizing Threads*****\n");
 
-            Thread thread = new Thread(() =>
-              {
-                  Add(10,10);
-              });
+            Printer p = new Printer();
 
-            thread.IsBackground = true;
-           
-            thread.Start();
+            //Make 10 threads that are all pointing to the same method on the same object.
+            Thread[] allThreads = new Thread[10];
 
-            //Wait here until you are notified.
-            waitHandler.WaitOne();
-            Console.WriteLine("Other thread is done!\n");
+            for(int i=0;i<10;i++)
+            {
+                allThreads[i] = new Thread(new ThreadStart(p.PrintNumbers));
+                allThreads[i].Name = string.Format("Worker thread #{0}\n", i);
+            }
+
+            //Now start each one.
+            foreach(Thread thread in allThreads)
+            {
+                thread.Start();
+            }
             Console.ReadLine();
         }
 
@@ -57,6 +60,24 @@ namespace ConsoleApp165
         {
             a = numb1;
             b = numb2;
+        }
+    }
+
+    public class Printer
+    {
+        public void PrintNumbers()
+        {
+            Console.WriteLine("The Thread Id of PrintNumbers is {0}\n", Thread.CurrentThread.ManagedThreadId);
+
+            for (int i = 0; i < 10;i++)
+            {
+                //Put thread to sleep for a random amount of time.
+                Random rnd = new Random();
+                Thread.Sleep(1000 * rnd.Next(5));
+                Console.Write("{0}\t",i);
+            }
+
+            Console.WriteLine("\n\n\n\n\n");
         }
     }
 }
