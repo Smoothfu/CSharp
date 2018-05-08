@@ -20,6 +20,7 @@ namespace ConsoleApp165
                   Add(10,10);
               });
 
+            thread.IsBackground = true;
            
             thread.Start();
 
