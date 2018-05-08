@@ -14,13 +14,20 @@ namespace ConsoleApp165
             Console.WriteLine("*****Adding with Thread objects*****\n");
             Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            //Make an AddParams object to pass to the secondary thread.
-            AddParams ap = new AddParams(10, 10);
-            Thread thread = new Thread(new ParameterizedThreadStart(AddMethod));
-            thread.Start(ap);
+            Thread thread = new Thread(() =>
+              {
+                  Add(10,10);
+              });
+            thread.Start();
             Console.ReadLine();
         }
 
+
+        static void Add(int x,int y)
+        {
+            Console.WriteLine("The Add thread Id is :{0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+        }
         static void AddMethod(object data)
         {
             var objAddParams = data as AddParams;
