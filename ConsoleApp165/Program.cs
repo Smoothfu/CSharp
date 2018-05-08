@@ -9,87 +9,65 @@ namespace ConsoleApp165
 {
     class Program
     {
-        private static AutoResetEvent waitHandler = new AutoResetEvent(false);
+
+        //0 for false,1 for true.
+        private static int usingResource = 0;
+        private const int numThreadIterations = 5;
+        private const int numThreads = 10;
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synchronizing Threads*****\n");
+            Thread myThread;
+            Random rnd = new Random();
 
-            Printer p = new Printer();
-
-            //Make 10 threads that are all pointing to the same method on the same object.
-            Thread[] allThreads = new Thread[10];
-
-            for(int i=0;i<10;i++)
+            for(int i = 0; i < numThreads; i++)
             {
-                allThreads[i] = new Thread(new ThreadStart(p.PrintNumbers));
-                allThreads[i].Name = string.Format("Worker thread #{0}\n", i);
-            }
+                myThread = new Thread(new ThreadStart(MyThreadProc));
+                myThread.Name = string.Format("Thread{0}\n", i + 1);
 
-            //Now start each one.
-            foreach(Thread thread in allThreads)
-            {
-                thread.Start();
+                //Wait a random amount of time before starting next thread.
+                Thread.Sleep(rnd.Next(0, 1000));
+                myThread.Start();
             }
             Console.ReadLine();
         }
 
-
-        static void Add(int x,int y)
+        private static void MyThreadProc()
         {
-            Console.WriteLine("The Add thread Id is :{0}\n", Thread.CurrentThread.ManagedThreadId);
-            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
-            //Tell other thread we are done.
-            waitHandler.Set();
-        }
-        static void AddMethod(object data)
-        {
-            var objAddParams = data as AddParams;
-            if (objAddParams != null)
+            for(int i=0;i<numThreadIterations;i++)
             {
-                Console.WriteLine("ID of thread in Add():{0}\n", Thread.CurrentThread.ManagedThreadId);
-                Console.WriteLine("{0}+{1}={2}\n", objAddParams.a, objAddParams.b, objAddParams.a + objAddParams.b);
+                UseResource();
+
+                //Wait 1 second before next attempt.
+                Thread.Sleep(1000);
             }
         }
-    }
 
-    class AddParams
-    {
-        public int a, b;
-
-        public AddParams(int numb1,int numb2)
+        //A simple method tha denies reentrancy.
+        static bool UseResource()
         {
-            a = numb1;
-            b = numb2;
-        }
-    }
-
-    public class Printer
-    {
-        //Lock token.
-        private object lockObj = new object();
-        public void PrintNumbers()
-        {
-            //Use the lock token.
-            Monitor.Enter(lockObj);
-            try            
+            //0 indicates that the method is not in use.
+            if(0==Interlocked.Exchange(ref usingResource,1))
             {
-                Console.WriteLine("The Thread Id of PrintNumbers is {0}\n", Thread.CurrentThread.ManagedThreadId);
+                Console.WriteLine("{0} acquired the lock!\n", Thread.CurrentThread.Name);
 
-                for (int i = 0; i < 10; i++)
-                {
-                    //Put thread to sleep for a random amount of time.
-                    Random rnd = new Random();
-                    Thread.Sleep( rnd.Next(5));
-                    Console.Write("{0}\t", i);
-                }
+                //Code to access a resource that is not thread safe would go here.
+                //simulate some work.
+                Thread.Sleep(500);
 
-                Console.WriteLine("\n\n\n\n\n");
-            }   
-            
-            finally
+                Console.WriteLine("{0} exiting lock\n", Thread.CurrentThread.Name);
+
+                //Release the lock.
+                Interlocked.Exchange(ref usingResource, 0);
+                return true;
+            }
+            else
             {
-                Monitor.Exit(lockObj);
+                Console.WriteLine(" {0} was denied the lock!\n", Thread.CurrentThread.Name);
+                return false;
             }
         }
+       
     }
+
+   
 }
