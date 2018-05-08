@@ -9,6 +9,7 @@ namespace ConsoleApp165
 {
     class Program
     {
+        private static AutoResetEvent waitHandler = new AutoResetEvent(false);
         static void Main(string[] args)
         {
             Console.WriteLine("*****Adding with Thread objects*****\n");
@@ -18,7 +19,13 @@ namespace ConsoleApp165
               {
                   Add(10,10);
               });
+
+           
             thread.Start();
+
+            //Wait here until you are notified.
+            waitHandler.WaitOne();
+            Console.WriteLine("Other thread is done!\n");
             Console.ReadLine();
         }
 
@@ -27,6 +34,8 @@ namespace ConsoleApp165
         {
             Console.WriteLine("The Add thread Id is :{0}\n", Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+            //Tell other thread we are done.
+            waitHandler.Set();
         }
         static void AddMethod(object data)
         {
