@@ -14,14 +14,11 @@ namespace ConsoleApp166
         {
             Console.WriteLine("*****Adding with Thread objects*****\n");
             Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
-            AddParams objAddParams = new AddParams(10, 10);
-            Thread thread = new Thread(new ParameterizedThreadStart(Add));
-            thread.Start(objAddParams);
 
+            ThreadStart ts = new ThreadStart(VoidMethod);
+            Thread thread = new Thread(ts);
+            thread.Start();
 
-            //Wait here until you are notified.
-            waitHandler.WaitOne();
-            Console.WriteLine("Other thread is safe!\n");
             Console.ReadLine();
         }
 
@@ -33,9 +30,22 @@ namespace ConsoleApp166
                 Console.WriteLine("ID of thread in Add() :{0}\n", Thread.CurrentThread.ManagedThreadId);
                 Console.WriteLine("{0}+{1}={2}\n", obj.a, obj.b, obj.a + obj.b);
 
+                Thread.Sleep(5000);
                 //Tell other thread we are done,
                 waitHandler.Set();
             }
+        }
+
+        static void AddMethod(int x,int y,int z)
+        {
+            Console.WriteLine("The AddMethod thread id is :{0}\n", Thread.CurrentThread.ManagedThreadId);
+            Thread.Sleep(5000);
+            Console.WriteLine("{0}+{1}+{2}={3}\n", x, y, z, x + y + z);
+        }
+
+        static void VoidMethod()
+        {
+            Console.WriteLine("The VoidMethod thread id is :{0}\n", Thread.CurrentThread.ManagedThreadId);
         }
     }
 
