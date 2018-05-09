@@ -12,41 +12,26 @@ namespace ConsoleApp166
         private static AutoResetEvent waitHandler = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Adding with Thread objects*****\n");
-            Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("*****Synchronizing Threads*****\n");
 
-            ThreadStart ts = new ThreadStart(VoidMethod);
-            Thread thread = new Thread(ts);
-            thread.Start();
+            Printer p = new Printer();
 
-            Console.ReadLine();
-        }
+            //Make 10 threads that are all pointing to the same method on the same object.
+            Thread[] allThreads = new Thread[10];
 
-        static void Add(object data)
-        {
-            var obj = data as AddParams;
-            if(obj!=null)
+            for(int i=0;i<10;i++)
             {
-                Console.WriteLine("ID of thread in Add() :{0}\n", Thread.CurrentThread.ManagedThreadId);
-                Console.WriteLine("{0}+{1}={2}\n", obj.a, obj.b, obj.a + obj.b);
-
-                Thread.Sleep(5000);
-                //Tell other thread we are done,
-                waitHandler.Set();
+                allThreads[i] = new Thread(new ThreadStart(p.PrintNumbers));
+                allThreads[i].Name = string.Format("Worker thread #{0}\n", i);
             }
-        }
 
-        static void AddMethod(int x,int y,int z)
-        {
-            Console.WriteLine("The AddMethod thread id is :{0}\n", Thread.CurrentThread.ManagedThreadId);
-            Thread.Sleep(5000);
-            Console.WriteLine("{0}+{1}+{2}={3}\n", x, y, z, x + y + z);
-        }
-
-        static void VoidMethod()
-        {
-            Console.WriteLine("The VoidMethod thread id is :{0}\n", Thread.CurrentThread.ManagedThreadId);
-        }
+            //Now start each one.
+            foreach(Thread thread in allThreads)
+            {
+                thread.Start();
+            }
+            Console.ReadLine();
+        }        
     }
 
     class AddParams
@@ -56,6 +41,29 @@ namespace ConsoleApp166
         {
             a = num1;
             b = num2;
+        }
+    }
+
+    public class Printer
+    {
+
+        //Lock token.
+        private object threadLock = new object();
+        public void PrintNumbers()
+        {
+            //Use the lock token.
+            lock(threadLock)
+            {
+                Console.WriteLine("The PrintNumbers thread id is {0}\n", Thread.CurrentThread.ManagedThreadId);
+                for (int i = 0; i < 10; i++)
+                {
+                    //Put thread to sleep for a random amount of time.
+                    Random rnd = new Random();
+                    Thread.Sleep(rnd.Next(5));
+                    Console.Write("{0}\t", i);
+                }
+                Console.WriteLine("\n\n\n\n\n");
+            }            
         }
     }
 }
