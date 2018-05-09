@@ -51,9 +51,10 @@ namespace ConsoleApp166
         private object threadLock = new object();
         public void PrintNumbers()
         {
-            //Use the lock token.
-            lock(threadLock)
+            Monitor.Enter(threadLock);
+            try
             {
+                //Display Thread info.
                 Console.WriteLine("The PrintNumbers thread id is {0}\n", Thread.CurrentThread.ManagedThreadId);
                 for (int i = 0; i < 10; i++)
                 {
@@ -63,7 +64,12 @@ namespace ConsoleApp166
                     Console.Write("{0}\t", i);
                 }
                 Console.WriteLine("\n\n\n\n\n");
-            }            
+            }
+             
+            finally
+            {
+                Monitor.Exit(threadLock);
+            }
         }
     }
 }
