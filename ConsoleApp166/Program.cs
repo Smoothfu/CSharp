@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.Remoting.Contexts;
 
 namespace ConsoleApp166
 {
@@ -44,16 +45,16 @@ namespace ConsoleApp166
         }
     }
 
-    public class Printer
+    //All methods of Printer are now thread safe!
+    [Synchronization]
+    public class Printer:ContextBoundObject
     {
 
         //Lock token.
         private object threadLock = new object();
         public void PrintNumbers()
         {
-            Monitor.Enter(threadLock);
-            try
-            {
+            
                 //Display Thread info.
                 Console.WriteLine("The PrintNumbers thread id is {0}\n", Thread.CurrentThread.ManagedThreadId);
                 for (int i = 0; i < 10; i++)
@@ -64,12 +65,7 @@ namespace ConsoleApp166
                     Console.Write("{0}\t", i);
                 }
                 Console.WriteLine("\n\n\n\n\n");
-            }
-             
-            finally
-            {
-                Monitor.Exit(threadLock);
-            }
+            
         }
     }
 }
