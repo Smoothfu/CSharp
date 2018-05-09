@@ -19,7 +19,7 @@ namespace ConsoleApp166
             TimerCallback timeCB = new TimerCallback(PrintTime);
 
             //Establish timer settings.
-            Timer timer = new Timer(timeCB, null, 0, 1000);
+            Timer timer = new Timer(timeCB, "Hello from Main", 0, 1000);
             Console.WriteLine("Hit key to termimate...\n");
            
             Console.ReadLine();
@@ -27,7 +27,7 @@ namespace ConsoleApp166
         
         static void PrintTime(Object state)
         {
-            Console.WriteLine("Time is {0}\n", DateTime.Now.ToString());
+            Console.WriteLine("Time is {0},Param is {1}\n", DateTime.Now.ToString(), state.ToString()); 
         }
     }
      
