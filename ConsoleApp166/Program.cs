@@ -30,17 +30,15 @@ namespace ConsoleApp166
             Console.WriteLine("All tasks queued"); 
            
             Console.ReadLine();
-        }   
+        }  
         
-        static void PrintTime(Object state)
-        {
-            Console.WriteLine("Time is {0},Param is {1}\n", DateTime.Now.ToString(), state.ToString()); 
-        }
-
         static void PrintTheNumbers(object state)
         {
-            Printer task = (Printer)state;
-            task.PrintNumbers();
+            Printer task = state as Printer;
+            if(task!=null)
+            {
+                task.PrintNumbers();
+            }           
         }
     }
      
