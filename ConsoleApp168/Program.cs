@@ -7,6 +7,8 @@ using System.Data.Common;
 using static System.Console;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Data;
+
 
 namespace ConsoleApp168
 {
@@ -14,78 +16,29 @@ namespace ConsoleApp168
     {
         static void Main(string[] args)
         {
-            WriteLine("*****Fun with Data Provider Factories*****\n");
+            WriteLine("*****Fun with Data Readers*****\n");
 
-            //Get Connection string/provider from *.config.
-            string dataProvider = ConfigurationManager.AppSettings["oleDbProvider"];
-            string connectionString =ConfigurationManager.ConnectionStrings["AutoLolOleDbProvider"].ConnectionString;
-
-            //Get the factory provider.
-            DbProviderFactory factory = DbProviderFactories.GetFactory(dataProvider);
-
-            //Now get the connection object.
-            using (DbConnection connection = factory.CreateConnection())
+            //Create and open a connection.
+            using (SqlConnection connection = new SqlConnection())
             {
-                if (connection == null)
-                {
-                    ShowError("Connection");
-                    return;
-                }
-
-                WriteLine($"Your connection object is {{0}}\n",connection.GetType().Name);
-                connection.ConnectionString = connectionString;
+                connection.ConnectionString = @"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLol";
                 connection.Open();
 
-                var sqlConn = connection as SqlConnection;
-                if (sqlConn != null)
+                //Create a SQL command object.
+                string sql = "Select * from iventory";
+                SqlCommand sqlCmd = new SqlCommand(sql, connection);
+
+                //Obtain a data reader a ExecuteReader();
+                using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
                 {
-                    //Print out which version of SQL Server is used.
-                    WriteLine($"ServerVersion is {sqlConn.ServerVersion}");
-                    WriteLine($"AccessToken is {sqlConn.AccessToken}");
-                    WriteLine($"ClientConnectionId is {sqlConn.ClientConnectionId}");
-                    WriteLine($"ConnectionString is {sqlConn.ConnectionString}");                 
-                    WriteLine($"ConnectionTimeout is {sqlConn.ConnectionTimeout}");
-                    WriteLine($"Container is {sqlConn.Container}");
-                    WriteLine($"Credential is {sqlConn.Credential}");
-                    WriteLine($"Database is {sqlConn.Database}");
-                    WriteLine($"DataSource is {sqlConn.DataSource}");
-                    WriteLine($"FireInfoMessageEventOnUserErrors is {sqlConn.FireInfoMessageEventOnUserErrors}");
-                    WriteLine($"GetHashCode() is {sqlConn.GetHashCode()}");
-                    WriteLine($"PacketSize is {sqlConn.PacketSize}");
-                    WriteLine($"ServerVersion is {sqlConn.ServerVersion}");
-                    WriteLine($"Site is {sqlConn.Site}");
-                    WriteLine($"State is {sqlConn.State}");
-                    WriteLine($"StatisticsEnabled is {sqlConn.StatisticsEnabled}");
-                    WriteLine($"WorkstationId is {sqlConn.WorkstationId}");                    
-                }               
-
-                //Make command object.
-                DbCommand dbCommand = factory.CreateCommand();
-
-                if(dbCommand==null)
-                {
-                    ShowError("Command");
-                    return;
-                }
-
-                WriteLine($"Your command object is {{0}}\n",dbCommand.GetType().Name);
-                dbCommand.Connection = connection;
-                dbCommand.CommandText = "select * from iventory";
-
-                //Print out data with data reader.
-                using (DbDataReader dataReader = dbCommand.ExecuteReader())
-                {
-                    WriteLine($"Your data reader object is  {{0}}\n",dataReader.GetType().Name);
-
-                    WriteLine("\n*****Current Iventory*****\n");
-                    while(dataReader.Read())
+                    //Loop over the results.
+                    while(sqlDataReader.Read())
                     {
-                        WriteLine($"-> Car #{dataReader["CarId"]} is a {dataReader["Make"]}.");
+                        WriteLine($"->Make: {sqlDataReader["Make"]},PetName:{sqlDataReader["PetName"]},Color:{sqlDataReader["Color"]}.");
                     }
                 }
             }
-
-            ReadLine();
+                ReadLine();
         }
 
         private static void ShowError(string objectName)
