@@ -31,7 +31,7 @@ namespace ConsoleApp168
                     return;
                 }
 
-                WriteLine($"Your connection object is a:{connection.GetType().Name}");
+                WriteLine($"Your connection object is {{0}}\n",connection.GetType().Name);
                 connection.ConnectionString = connectionString;
                 connection.Open();
 
@@ -44,14 +44,14 @@ namespace ConsoleApp168
                     return;
                 }
 
-                WriteLine($"Your command object is a:{dbCommand.GetType().Name}");
+                WriteLine($"Your command object is {{0}}\n",dbCommand.GetType().Name);
                 dbCommand.Connection = connection;
                 dbCommand.CommandText = "select * from iventory";
 
                 //Print out data with data reader.
                 using (DbDataReader dataReader = dbCommand.ExecuteReader())
                 {
-                    WriteLine($"Your data reader object is a: {dataReader.GetType().Name}");
+                    WriteLine($"Your data reader object is  {{0}}\n",dataReader.GetType().Name);
 
                     WriteLine("\n*****Current Iventory*****\n");
                     while(dataReader.Read())
