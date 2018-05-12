@@ -25,7 +25,7 @@ namespace ConsoleApp168
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
             //Create command object via ctor args.
-            string sql = "select * from iventory";
+            string sql = "select * from iventory;select * from Customers;select * from Orders";
             SqlCommand sqlCmd = new SqlCommand(sql, conn);
 
             //Create another command object via properties.
@@ -36,18 +36,18 @@ namespace ConsoleApp168
             //Obtain a data reader via ExecuteReader()
             using (SqlDataReader myDataReader = sqlCmd.ExecuteReader())
             {
-                //Loop over the results
-                while (myDataReader.Read())
+                do
                 {
-                    //WriteLine($"->Make:{ myDataReader["Make"]}, PetName:{myDataReader["PetName"]}, Color:{myDataReader["Color"]}.");
-
-                    WriteLine("*****Record*****\n");
-                    for(int i=0;i<myDataReader.FieldCount;i++)
+                    while (myDataReader.Read())
                     {
-                        WriteLine($"{myDataReader.GetName(i)}={myDataReader.GetValue(i)}");
+                        WriteLine("*****Record*****\n");
+                        for (int i = 0; i < myDataReader.FieldCount; i++)
+                        {
+                            WriteLine($"{myDataReader.GetName(i)}={myDataReader.GetValue(i)}");
+                        }
+                        WriteLine();
                     }
-                    WriteLine();
-                }
+                } while (myDataReader.NextResult());                             
             }
 
             ReadLine();
