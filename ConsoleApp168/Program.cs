@@ -16,35 +16,32 @@ namespace ConsoleApp168
     {
         static void Main(string[] args)
         {
-            WriteLine("*****Fun with Data Readers*****\n");
 
-            //Create and open a connection.
+            WriteLine("*****Fun with Data Readers*****\n");
             using (SqlConnection connection = new SqlConnection())
             {
-                connection.ConnectionString = @"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLol";
+                connection.ConnectionString = @"Data Source=FRED\SQLEXPRESS;Initial Catalog=AutoLol;Integrated Security=SSPI;Connect Timeout=30";
                 connection.Open();
 
-                //Create a SQL command object.
-                string sql = "Select * from iventory";
-                SqlCommand sqlCmd = new SqlCommand(sql, connection);
-
-                //Obtain a data reader a ExecuteReader();
-                using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
-                {
-                    //Loop over the results.
-                    while(sqlDataReader.Read())
-                    {
-                        WriteLine($"->Make: {sqlDataReader["Make"]},PetName:{sqlDataReader["PetName"]},Color:{sqlDataReader["Color"]}.");
-                    }
-                }
+                ShowConnectionStatus(connection);
             }
-                ReadLine();
+            ReadLine();
         }
 
         private static void ShowError(string objectName)
         {
             WriteLine($"There was an issue creating the {objectName}");
             ReadLine();
+        }
+
+        static void ShowConnectionStatus(SqlConnection connection)
+        {
+            //Show various stats about current connection object.
+            WriteLine($"*****Info about your connection*****\n");
+            WriteLine($"Database location:{connection.DataSource} \n");
+            WriteLine($"Database name: {connection.Database} \n");
+            WriteLine($"Timeout: {connection.ConnectionTimeout} \n");
+            WriteLine($"Connection State: {connection.State} \n");
         }
     }
 }
