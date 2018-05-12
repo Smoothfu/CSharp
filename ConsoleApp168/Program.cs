@@ -17,8 +17,8 @@ namespace ConsoleApp168
             WriteLine("*****Fun with Data Provider Factories*****\n");
 
             //Get Connection string/provider from *.config.
-            string dataProvider = ConfigurationManager.AppSettings["provider"];
-            string connectionString =ConfigurationManager.ConnectionStrings["AutoLolSqlProvider"].ConnectionString;
+            string dataProvider = ConfigurationManager.AppSettings["oleDbProvider"];
+            string connectionString =ConfigurationManager.ConnectionStrings["AutoLolOleDbProvider"].ConnectionString;
 
             //Get the factory provider.
             DbProviderFactory factory = DbProviderFactories.GetFactory(dataProvider);
