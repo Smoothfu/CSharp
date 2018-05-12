@@ -39,7 +39,14 @@ namespace ConsoleApp168
                 //Loop over the results
                 while (myDataReader.Read())
                 {
-                    WriteLine($"->Make:{ myDataReader["Make"]}, PetName:{myDataReader["PetName"]}, Color:{myDataReader["Color"]}.");
+                    //WriteLine($"->Make:{ myDataReader["Make"]}, PetName:{myDataReader["PetName"]}, Color:{myDataReader["Color"]}.");
+
+                    WriteLine("*****Record*****\n");
+                    for(int i=0;i<myDataReader.FieldCount;i++)
+                    {
+                        WriteLine($"{myDataReader.GetName(i)}={myDataReader.GetValue(i)}");
+                    }
+                    WriteLine();
                 }
             }
 
