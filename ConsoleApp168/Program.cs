@@ -16,15 +16,24 @@ namespace ConsoleApp168
     {
         static void Main(string[] args)
         {
-
             WriteLine("*****Fun with Data Readers*****\n");
+
+            //Create a connection string via the builder object.
+            var cnStringBuilder = new SqlConnectionStringBuilder
+            {
+                InitialCatalog = "AutoLol",
+                DataSource= @"FRED\SQLEXPRESS",
+                ConnectTimeout=30,
+                IntegratedSecurity=true
+            };
+
             using (SqlConnection connection = new SqlConnection())
             {
-                connection.ConnectionString = @"Data Source=FRED\SQLEXPRESS;Initial Catalog=AutoLol;Integrated Security=SSPI;Connect Timeout=30";
+                connection.ConnectionString = cnStringBuilder.ConnectionString;
                 connection.Open();
-
                 ShowConnectionStatus(connection);
             }
+
             ReadLine();
         }
 
