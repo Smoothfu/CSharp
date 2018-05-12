@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Common;
+using static System.Console;
+using System.Configuration;
 
 namespace ConsoleApp168
 {
@@ -11,11 +13,61 @@ namespace ConsoleApp168
     {
         static void Main(string[] args)
         {
-            //Get the factory for the SQL data provider.
-            DbProviderFactory sqlFactory = DbProviderFactories.GetFactory("System.Data.SqlClient");
-            Console.WriteLine(sqlFactory.CanCreateDataSourceEnumerator);
-            Console.WriteLine(sqlFactory.ToString());
-            Console.ReadLine();
+            WriteLine("*****Fun with Data Provider Factories*****\n");
+
+            //Get Connection string/provider from *.config.
+            string dataProvider = ConfigurationManager.AppSettings["provider"];
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+
+            //Get the factory provider.
+            DbProviderFactory factory = DbProviderFactories.GetFactory(dataProvider);
+
+            //Now get the connection object.
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                if (connection == null)
+                {
+                    ShowError("Connection");
+                    return;
+                }
+
+                WriteLine($"Your connection object is a:{connection.GetType().Name}");
+                connection.ConnectionString = connectionString;
+                connection.Open();
+
+                //Make command object.
+                DbCommand dbCommand = factory.CreateCommand();
+
+                if(dbCommand==null)
+                {
+                    ShowError("Command");
+                    return;
+                }
+
+                WriteLine($"Your command object is a:{dbCommand.GetType().Name}");
+                dbCommand.Connection = connection;
+                dbCommand.CommandText = "select * from iventory";
+
+                //Print out data with data reader.
+                using (DbDataReader dataReader = dbCommand.ExecuteReader())
+                {
+                    WriteLine($"Your data reader object is a: {dataReader.GetType().Name}");
+
+                    WriteLine("\n*****Current Iventory*****\n");
+                    while(dataReader.Read())
+                    {
+                        WriteLine($"-> Car #{dataReader["CarId"]} is a {dataReader["Make"]}.");
+                    }
+                }
+            }
+
+            ReadLine();
+        }
+
+        private static void ShowError(string objectName)
+        {
+            WriteLine($"There was an issue creating the {objectName}");
+            ReadLine();
         }
     }
 }
