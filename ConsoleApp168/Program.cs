@@ -23,6 +23,7 @@ namespace ConsoleApp168
             string connectionString = @"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLol";
 
             SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
             //Create command object via ctor args.
             string sql = "select * from iventory";
             SqlCommand sqlCmd = new SqlCommand(sql, conn);
@@ -31,7 +32,17 @@ namespace ConsoleApp168
             SqlCommand testCmd = new SqlCommand();
             testCmd.Connection = conn;
             testCmd.CommandText = sql;
-             
+
+            //Obtain a data reader via ExecuteReader()
+            using (SqlDataReader myDataReader = sqlCmd.ExecuteReader())
+            {
+                //Loop over the results
+                while (myDataReader.Read())
+                {
+                    WriteLine($"->Make:{ myDataReader["Make"]}, PetName:{myDataReader["PetName"]}, Color:{myDataReader["Color"]}.");
+                }
+            }
+
             ReadLine();
         }
 
