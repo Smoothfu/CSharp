@@ -28,4 +28,14 @@
  (6,3)
 
 
- select * from dbo.Orders
+alter table [dbo].[orders] 
+
+add  FOREIGN KEY ([CarId])
+
+
+REFERENCES [IVentory]([CarId])
+
+alter table [dbo].[orders]
+add foreign key([CustId])
+REFERENCES [Customers]([CustId])
+
