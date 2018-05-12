@@ -22,18 +22,16 @@ namespace ConsoleApp168
             //Assume you really obtained the connectionString value from a *.config file.
             string connectionString = @"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLol";
 
-            SqlConnectionStringBuilder cnsStringBuilder = new SqlConnectionStringBuilder(connectionString);
+            SqlConnection conn = new SqlConnection(connectionString);
+            //Create command object via ctor args.
+            string sql = "select * from iventory";
+            SqlCommand sqlCmd = new SqlCommand(sql, conn);
 
-            //Change timeout value/
-            cnsStringBuilder.ConnectTimeout = 5;
+            //Create another command object via properties.
+            SqlCommand testCmd = new SqlCommand();
+            testCmd.Connection = conn;
+            testCmd.CommandText = sql;
              
-            using (SqlConnection connection = new SqlConnection())
-            {
-                connection.ConnectionString = cnsStringBuilder.ConnectionString;
-                connection.Open();
-                ShowConnectionStatus(connection);
-            }
-
             ReadLine();
         }
 
