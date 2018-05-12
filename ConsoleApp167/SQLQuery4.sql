@@ -39,3 +39,5 @@ alter table [dbo].[orders]
 add foreign key([CustId])
 REFERENCES [Customers]([CustId])
 
+select 
+

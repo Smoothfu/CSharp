@@ -22,31 +22,25 @@ namespace ConsoleApp167
     {
         static void Main(string[] args)
         {
-            WriteLine("*****Very Simple Connection Factory*****\n");
+            string connectionString = @"server=FRED\SQLEXPRESS;database=AutoLol;integrated security=true";
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
 
-            //Read the provider key.
-            string dataProviderString = ConfigurationManager.AppSettings["provider"];
-
-            //Transfrom string to enum.
-
-            DataProvider dataProvider = DataProvider.None;
-
-            if(Enum.IsDefined(typeof(DataProvider),dataProviderString))
+            if(conn.State==ConnectionState.Open)
             {
-                dataProvider = (DataProvider)Enum.Parse(typeof(DataProvider), dataProviderString);
+                string sql = "select orderid,custid,carid from orders";
+                SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
+                DataSet ds = new DataSet();
+                sda.Fill(ds);
+                if(ds.Tables[0].Rows.Count>0)
+                {
+                    for(int i=0;i<ds.Tables[0].Rows.Count;i++)
+                    {
+                        Console.WriteLine("orderId:{0},CustId:{1},CarId:{2}\n", ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][1], ds.Tables[0].Rows[i][2]);
+                    }
+                }
             }
 
-            else
-            {
-                WriteLine("Sorry,no providers exist!");
-                ReadLine();
-                return;
-            }
-            //Get a specific connection.
-            IDbConnection conn = GetConnection(DataProvider.SqlServer);
-            WriteLine($"Your connection is a {conn.GetType().Name}");
-
-            //Open use and close connection.
             ReadLine();
         }
 
