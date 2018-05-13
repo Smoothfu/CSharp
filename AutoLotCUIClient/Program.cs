@@ -51,7 +51,8 @@ namespace AutoLotCUIClient
                             break;
 
                         case "L":
-                            ListIventory(iVDAL);
+                            //ListIventory(iVDAL);
+                            ListIventoryViaList(iVDAL);
                             break;
 
                         case "S":
@@ -128,7 +129,7 @@ namespace AutoLotCUIClient
         {
             //Get the list of iventory.
             List<NewCar> carList= ivDAL.GetAllIventoryAsList();
-            WriteLine("CarId:\tMake:\tColor:\tPetName:");
+            WriteLine("CarId \tMake \tColor \tPetName ");
 
             foreach(NewCar car in carList)
             {
