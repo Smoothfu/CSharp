@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using ConnectedLayer.Models;
+using static System.Console;
 
 
 namespace ConnectedLayer
@@ -213,6 +214,70 @@ namespace ConnectedLayer
                 carPetName = (string)command.Parameters["@petName"].Value;
             }
             return carPetName;
+        }
+        
+        //A new member of the IventoryDAL class.
+        public void ProcessCreditRisk(bool throwEx,int custId)
+        {
+            //First,look up current name based on customer ID.
+            string fName = string.Empty, lName=string.Empty;
+            string sql = $"select * from Customers where CustId={custId}";
+            SqlCommand sqlCmd = new SqlCommand(sql, _sqlConnection);
+            using (var dataReader = sqlCmd.ExecuteReader())
+            {
+                if(dataReader.HasRows)
+                {
+                    while(dataReader.Read())
+                    {
+                        fName = dataReader.GetString(1);
+                        lName = dataReader.GetString(2);
+                    }                          
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            //Create command objects that represent each step of the operation.
+            string removeSql = $"delete from Customers where CustID={custId}";
+            SqlCommand removeCmd = new SqlCommand(removeSql, _sqlConnection);
+
+            string insertSql = "Insert into creditrisks (firstName,lastname) values ('"+fName+"','"+lName+"')";
+            SqlCommand insertCmd = new SqlCommand(insertSql, _sqlConnection);
+
+            //We will get this from the connection object.
+            SqlTransaction tx = null;
+            try
+            {
+                tx = _sqlConnection.BeginTransaction();
+
+                //Enlist the commands into this transaction.
+                insertCmd.Transaction = tx;
+                removeCmd.Transaction = tx;
+
+                //Execute the commands.
+                insertCmd.ExecuteNonQuery();
+                removeCmd.ExecuteNonQuery();
+
+                //Simulate error.
+                if(throwEx)
+                {
+                    throw new Exception("Sorry! Database error! Tx failed...");
+                }
+
+                //Commit it!
+                tx.Commit();
+            }
+
+            catch(Exception ex)
+            {
+                WriteLine(ex.Message);
+
+                //Any error will roll back transaction.
+                //Using the new conditional access operator to check for null.
+                tx?.Rollback();
+            }
         }
     }
 }

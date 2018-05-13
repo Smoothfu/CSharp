@@ -10,3 +10,8 @@ CREATE TABLE [dbo].[CreditRisks] (
     [LastName]  NVARCHAR (50) NULL,
     PRIMARY KEY CLUSTERED ([CustId] ASC)
 );
+
+insert into CreditRisks(FirstName,LastName)
+values('Homer','Simpson')
+
+select * from CreditRisks

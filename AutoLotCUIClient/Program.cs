@@ -15,74 +15,27 @@ namespace AutoLotCUIClient
     {
         static void Main(string[] args)
         {
-            WriteLine("*****The AutoLol Console UI*****\n");
+            WriteLine("*****Simple Transaction Example*****\n");
 
-            //Get connection string from App.config
-            string connectionString = ConfigurationManager.ConnectionStrings["AutoLolSqlProvider"].ConnectionString;
-            bool userDone = false;
-            string userCommand = "";
+            //A simple way to allow the tx to succeed or not.
+            bool throwEx = true;
 
-            //Create our IventoryDAL object.
-            IventoryDAL iVDAL = new IventoryDAL();
-            iVDAL.OpenConnection(connectionString);
+            Write("Do you want to throw an exception (Y or N): ");
 
-            //Keep asking for input until user presses the Q key.
-            try
+            var userAnswer = ReadLine();
+
+            if(userAnswer?.ToLower()=="n")
             {
-                ShowInstructions();
-                do
-                {
-                    Write("\nPlease enter your command:");
-                    userCommand = ReadLine();
-
-                    WriteLine();
-                    switch (userCommand?.ToUpper() ?? "")
-                    {
-                        case "I":
-                            InsertNewCar(iVDAL);
-                            break;
-
-                        case "U":
-                            UpdateCarPetName(iVDAL);
-                            break;
-
-                        case "D":
-                            DeleteCar(iVDAL);
-                            break;
-
-                        case "L":
-                            //ListIventory(iVDAL);
-                            ListIventoryViaList(iVDAL);
-                            break;
-
-                        case "S":
-                            ShowInstructions();
-                            break;
-
-                        case "P":
-                            LookUpPetName(iVDAL);
-                            break;
-
-                        case "Q":
-                            userDone = true;
-                            break;
-
-                        default:
-                            WriteLine("Bad data!Try again!");
-                            break;
-                    }
-                } while (!userDone);
+                throwEx = false;
             }
 
-            catch(Exception ex)
-            {
-                WriteLine(ex.Message);
-            }
+            var dal = new IventoryDAL();
+            dal.OpenConnection(@"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLol");
 
-            finally
-            {
-                iVDAL.CloseConnection();
-            }
+            //Process customer 5 -enter the id for Homer Simpson in the next line
+            dal.ProcessCreditRisk(throwEx, 8);
+            WriteLine("Check CreditRisk table for results!\n");
+            ReadLine();
         }
 
         private static void ShowInstructions()
