@@ -33,7 +33,7 @@ namespace AutoLotCUIClient
             dal.OpenConnection(@"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLol");
 
             //Process customer 5 -enter the id for Homer Simpson in the next line
-            dal.ProcessCreditRisk(throwEx, 9);
+            dal.ProcessCreditRisk(throwEx, 7);
             WriteLine("Check CreditRisk table for results!\n");
             ReadLine();
         }
