@@ -37,7 +37,12 @@ namespace ConsoleApp169
                 SqlDataReader sqldataReader = sqlCmd.ExecuteReader();
                 while(sqldataReader.Read())
                 {
-                    Console.WriteLine(sqldataReader[0] + "\t" + sqldataReader[1] + "\t" + sqldataReader[2] + "\t" + sqldataReader[3]);
+                    WriteLine("*****Record*****\n");
+                    for(int i=0;i<sqldataReader.FieldCount;i++)
+                    {
+                        WriteLine($"{sqldataReader.GetName(i)}={ sqldataReader.GetValue(i)}");
+                    }
+                    WriteLine("\n\n\n");
                 }
 
                 //Create another command object via properties.
