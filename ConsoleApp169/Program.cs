@@ -31,19 +31,23 @@ namespace ConsoleApp169
             {
                 conn.Open();
                 //Create command object via ctor args.
-                string selectSQL = "select * from inventory";
+                string selectSQL = "select * from inventory; select * from Customers";
                 SqlCommand sqlCmd = new SqlCommand(selectSQL, conn);
 
                 SqlDataReader sqldataReader = sqlCmd.ExecuteReader();
-                while(sqldataReader.Read())
+
+                do
                 {
-                    WriteLine("*****Record*****\n");
-                    for(int i=0;i<sqldataReader.FieldCount;i++)
+                    while (sqldataReader.Read())
                     {
-                        WriteLine($"{sqldataReader.GetName(i)}={ sqldataReader.GetValue(i)}");
+                        WriteLine("****Record*****\n");
+                        for (int i = 0; i < sqldataReader.FieldCount; i++)
+                        {
+                            WriteLine($"{sqldataReader.GetName(i)}={sqldataReader.GetValue(i)}");
+                        }
+                        WriteLine("\n\n\n\n\n");
                     }
-                    WriteLine("\n\n\n");
-                }
+                } while (sqldataReader.NextResult());
 
                 //Create another command object via properties.
                 SqlCommand testCmd = new SqlCommand();
