@@ -41,7 +41,7 @@ namespace ConnectedLayer
         public void InsertAuto(NewCar car)
         {
             //Format and execute SQL statement.
-            string sql = "Insert into iventory " + "(Make,Color,PetName,Founder) Values" + $"('{car.Make}',{car.Color},{car.PetName},{car.Founder})";
+            string sql = "Insert into iventory " + "(Make,Color,PetName,Founder) Values" + $"('{car.Make}','{car.Color}','{car.PetName}','{car.Founder}')";
 
             //Execute using our connection.
             using (SqlCommand command = new SqlCommand(sql, _sqlConnection))

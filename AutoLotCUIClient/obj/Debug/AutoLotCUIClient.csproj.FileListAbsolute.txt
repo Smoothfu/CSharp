@@ -1,0 +1,11 @@
+D:\C\ClassLibrary1\AutoLotCUIClient\bin\Debug\AutoLotCUIClient.exe.config
+D:\C\ClassLibrary1\AutoLotCUIClient\bin\Debug\AutoLotCUIClient.exe
+D:\C\ClassLibrary1\AutoLotCUIClient\bin\Debug\AutoLotCUIClient.pdb
+D:\C\ClassLibrary1\AutoLotCUIClient\bin\Debug\ClassLibrary1.dll
+D:\C\ClassLibrary1\AutoLotCUIClient\bin\Debug\ConnectedLayer.dll
+D:\C\ClassLibrary1\AutoLotCUIClient\bin\Debug\ClassLibrary1.pdb
+D:\C\ClassLibrary1\AutoLotCUIClient\bin\Debug\ConnectedLayer.pdb
+D:\C\ClassLibrary1\AutoLotCUIClient\obj\Debug\AutoLotCUIClient.csprojResolveAssemblyReference.cache
+D:\C\ClassLibrary1\AutoLotCUIClient\obj\Debug\AutoLotCUIClient.csproj.CoreCompileInputs.cache
+D:\C\ClassLibrary1\AutoLotCUIClient\obj\Debug\AutoLotCUIClient.exe
+D:\C\ClassLibrary1\AutoLotCUIClient\obj\Debug\AutoLotCUIClient.pdb
