@@ -22,49 +22,29 @@ namespace ConsoleApp169
     {
         static void Main(string[] args)
         {
-            WriteLine("*****Fun with Data Provider Factories*****\n");
+            WriteLine("*****Fun with Data Readers*****\n");
 
-            //Get connection string/provider from *.config.
-            string dataProvider = ConfigurationManager.AppSettings["SqlProvider"];
-            string connectionString = ConfigurationManager.ConnectionStrings["AutoLotSqlProvider"].ConnectionString;
-
-            //Get the factory provider.
-            DbProviderFactory factory = DbProviderFactories.GetFactory(dataProvider);
-
-            //Now get the connection object.
-            using (DbConnection connection = factory.CreateConnection())
+            //Create and open a connection.
+            using (SqlConnection connection = new SqlConnection())
             {
-                if (connection == null)
-                {
-                    ShowError("Connection");
-                    return;
-                }
-
-                WriteLine($"Your connection object is a: {connection.GetType().Name}");
-                connection.ConnectionString = connectionString;
+                connection.ConnectionString = @"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLot";
                 connection.Open();
 
-                //Make command object.
-                DbCommand command = factory.CreateCommand();
-                if (command == null)
-                {
-                    ShowError("Command");
-                    return;
-                }
+                //Create a SQL command object.
+                string selectSQL = "select *from inventory";
+                SqlCommand sqlCmd = new SqlCommand(selectSQL, connection);
 
-                WriteLine($"Your command object is a :{command.GetType().Name}");
-                command.Connection = connection;
-                command.CommandText = "select * from inventory";
-
-                //Print out data with data reader.
-                using (DbDataReader dataReader = command.ExecuteReader())
+                //Obtain a data reader via ExecuteReader().
+                using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
                 {
-                    WriteLine($"Your data reader object is a:{dataReader.GetType().Name}");
-                    while (dataReader.Read())
+
+                    //Loop over the results.
+                    while (sqlDataReader.Read())
                     {
-                        WriteLine($"->Car  {dataReader[1]} is a {dataReader[2]}.");
+                        WriteLine($"-> Make:{sqlDataReader[1]}, PetName:{sqlDataReader[3]},Color:{sqlDataReader[2]}.");
                     }
                 }
+
             }
 
             ReadLine();
