@@ -50,10 +50,10 @@ namespace ConnectedLayer
             }               
         }
 
-        public void DeleteCar(int id)
+        public void DeleteCar(int carId)
         {
             //Delete the car with the specified CarId
-            string sql = "Delete from iventory where CarId='{id}'";
+            string sql = $"Delete from iventory where CarId={carId}";
             using (SqlCommand command = new SqlCommand(sql, _sqlConnection))
             {
                 try

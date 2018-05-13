@@ -3,4 +3,3 @@ D:\C\ClassLibrary1\ConnectedLayer\bin\Debug\ConnectedLayer.pdb
 D:\C\ClassLibrary1\ConnectedLayer\obj\Debug\ConnectedLayer.csproj.CoreCompileInputs.cache
 D:\C\ClassLibrary1\ConnectedLayer\obj\Debug\ConnectedLayer.dll
 D:\C\ClassLibrary1\ConnectedLayer\obj\Debug\ConnectedLayer.pdb
-D:\C\ClassLibrary1\ConnectedLayer\obj\Debug\ConnectedLayer.csprojResolveAssemblyReference.cache
