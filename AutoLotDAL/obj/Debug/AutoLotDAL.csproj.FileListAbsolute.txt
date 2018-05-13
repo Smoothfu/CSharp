@@ -1,0 +1,5 @@
+D:\C\AutoLotDAL\AutoLotDAL\bin\Debug\AutoLotDAL.dll
+D:\C\AutoLotDAL\AutoLotDAL\bin\Debug\AutoLotDAL.pdb
+D:\C\AutoLotDAL\AutoLotDAL\obj\Debug\AutoLotDAL.csproj.CoreCompileInputs.cache
+D:\C\AutoLotDAL\AutoLotDAL\obj\Debug\AutoLotDAL.dll
+D:\C\AutoLotDAL\AutoLotDAL\obj\Debug\AutoLotDAL.pdb
