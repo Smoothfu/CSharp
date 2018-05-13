@@ -27,8 +27,10 @@ namespace ConsoleApp169
             //Create and open a connection.
             using (SqlConnection connection = new SqlConnection())
             {
-                connection.ConnectionString = @"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLot";
+                connection.ConnectionString = @"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLot;Connect Timeout=30";
                 connection.Open();
+
+                ShowConnectionStatus(connection);
 
                 //Create a SQL command object.
                 string selectSQL = "select *from inventory";
@@ -50,6 +52,16 @@ namespace ConsoleApp169
             ReadLine();
         }
 
+
+        static void ShowConnectionStatus(SqlConnection connection)
+        {
+            //Show various stats about current connection object.
+            WriteLine("*****Info about your connection******\n");
+            WriteLine($"Database location: {connection.DataSource}.\n");
+            WriteLine($"Database name :{connection.Database}.\n");
+            WriteLine($"Timeout: {connection.ConnectionTimeout}.\n");
+            WriteLine($"Connection state: {connection.State}.\n");
+        }
         private static void ShowError(string objectName)
         {
             WriteLine($"There was an issue creating the {objectName}");
