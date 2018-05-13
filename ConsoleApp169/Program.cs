@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.Odbc;
 using System.Data.OleDb;
+using System.Configuration;
 
 
 namespace ConsoleApp169
@@ -23,9 +24,26 @@ namespace ConsoleApp169
         {
             WriteLine("*****Very Simple Connection Factory*****\n");
 
+            //Read the provider key.
+            string dataProviderString = ConfigurationManager.AppSettings["provider"];
+
+            //Transform string to enum.
+            DataProvider dataProvider = DataProvider.None;
+
+            if(Enum.IsDefined(typeof(DataProvider),dataProviderString))
+            {
+                dataProvider = (DataProvider)Enum.Parse(typeof(DataProvider), dataProviderString);
+            }
+            else
+            {
+                WriteLine("Sorry,no provider exist!");
+                ReadLine();
+                return;
+            }
+
             //Get a specific connection.
-            IDbConnection conn = GetConnection(DataProvider.SqlServer);
-            WriteLine($"Your connection is a {conn.GetType().Name}");
+            IDbConnection conn = GetConnection(dataProvider);
+            WriteLine($"Your connection is a {conn?.GetType().Name ?? "unrecognized type"}");
 
             //Open,use and close connection...
             ReadLine();
