@@ -243,7 +243,7 @@ namespace ConnectedLayer
             string removeSql = $"delete from Customers where CustID={custId}";
             SqlCommand removeCmd = new SqlCommand(removeSql, _sqlConnection);
 
-            string insertSql = "Insert into creditrisks (firstName,lastname) values ('"+fName+"','"+lName+"')";
+            string insertSql = $"Insert into creditrisks (firstName,lastname) values ('{fName}','{lName}')";
             SqlCommand insertCmd = new SqlCommand(insertSql, _sqlConnection);
 
             //We will get this from the connection object.
