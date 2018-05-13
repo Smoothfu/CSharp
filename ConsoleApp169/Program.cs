@@ -26,7 +26,7 @@ namespace ConsoleApp169
 
             //Get connection string/provider from *.config.
             string dataProvider = ConfigurationManager.AppSettings["provider"];
-            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            string connectionString = ConfigurationManager.AppSettings["cnStr"];
 
             //Get the factory provider.
             DbProviderFactory factory = DbProviderFactories.GetFactory(dataProvider);
@@ -62,7 +62,7 @@ namespace ConsoleApp169
                     WriteLine($"Your data reader object is a:{dataReader.GetType().Name}");
                     while (dataReader.Read())
                     {
-                        WriteLine($"->Car #{dataReader[1]} is a {dataReader[2]}.");
+                        WriteLine($"->Car  {dataReader[1]} is a {dataReader[2]}.");
                     }
                 }
             }

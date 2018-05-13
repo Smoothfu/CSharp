@@ -1,0 +1,1 @@
+﻿select column_name from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='orders' order by COLUMN_NAME
