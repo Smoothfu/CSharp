@@ -24,32 +24,23 @@ namespace ConsoleApp169
         {
             WriteLine("*****Fun with Data Readers*****\n");
 
-            //Create and open a connection.
+            //Create a connection string via the builder object.
+            var cnStringBuilder = new SqlConnectionStringBuilder
+            {
+                InitialCatalog = "AutoLot",
+                DataSource = @"FRED\SQLEXPRESS",
+                ConnectTimeout = 30,
+                IntegratedSecurity = true
+            };
+
             using (SqlConnection connection = new SqlConnection())
             {
-                connection.ConnectionString = @"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLot;Connect Timeout=30";
+                connection.ConnectionString = cnStringBuilder.ConnectionString;
                 connection.Open();
-
                 ShowConnectionStatus(connection);
-
-                //Create a SQL command object.
-                string selectSQL = "select *from inventory";
-                SqlCommand sqlCmd = new SqlCommand(selectSQL, connection);
-
-                //Obtain a data reader via ExecuteReader().
-                using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
-                {
-
-                    //Loop over the results.
-                    while (sqlDataReader.Read())
-                    {
-                        WriteLine($"-> Make:{sqlDataReader[1]}, PetName:{sqlDataReader[3]},Color:{sqlDataReader[2]}.");
-                    }
-                }
-
             }
 
-            ReadLine();
+                ReadLine();
         }
 
 
