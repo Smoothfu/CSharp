@@ -24,26 +24,31 @@ namespace ConsoleApp169
         {
             WriteLine("*****Fun with Data Readers*****\n");
 
-            //Create a connection string via the builder object.
-            var cnStringBuilder = new SqlConnectionStringBuilder
-            {
-                InitialCatalog = "AutoLot",
-                DataSource = @"FRED\SQLEXPRESS",
-                ConnectTimeout = 30,
-                IntegratedSecurity = true
-            };
+            //Assume you readlly obtained the connectionString value from a *.config file.
+            string connectionString = @"Data Source=FRED\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=AutoLot";
 
-            using (SqlConnection connection = new SqlConnection())
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                connection.ConnectionString = cnStringBuilder.ConnectionString;
-                connection.Open();
-                ShowConnectionStatus(connection);
+                conn.Open();
+                //Create command object via ctor args.
+                string selectSQL = "select * from inventory";
+                SqlCommand sqlCmd = new SqlCommand(selectSQL, conn);
+
+                SqlDataReader sqldataReader = sqlCmd.ExecuteReader();
+                while(sqldataReader.Read())
+                {
+                    Console.WriteLine(sqldataReader[0] + "\t" + sqldataReader[1] + "\t" + sqldataReader[2] + "\t" + sqldataReader[3]);
+                }
+
+                //Create another command object via properties.
+                SqlCommand testCmd = new SqlCommand();
+                testCmd.Connection = conn;
+                testCmd.CommandText = selectSQL;
             }
 
-                ReadLine();
-        }
-
-
+            Console.ReadLine();
+        }       
+        
         static void ShowConnectionStatus(SqlConnection connection)
         {
             //Show various stats about current connection object.
