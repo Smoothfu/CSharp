@@ -62,7 +62,7 @@ namespace ConsoleApp169
                     WriteLine($"Your data reader object is a:{dataReader.GetType().Name}");
                     while (dataReader.Read())
                     {
-                        WriteLine($"->Car #{dataReader["CarId"]} is a {dataReader["Make"]}.");
+                        WriteLine($"->Car #{dataReader[1]} is a {dataReader[2]}.");
                     }
                 }
             }
