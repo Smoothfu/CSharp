@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using static System.Console;
 
 namespace ConsoleApp170
 {
@@ -23,16 +24,20 @@ namespace ConsoleApp170
 
             if (conn.State == ConnectionState.Open)
             {
-                string selectSql = "select * from AdventureWorks2014.Sales.Store;select * from AdventureWorks2014.Sales.Customer;select * from AdventureWorks2014.Sales.Currency";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSql, conn);
-                DataSet ds = new DataSet();
-                sqlDataAdapter.Fill(ds);
-                if (ds != null)
-                {
-                    GetTableColumnsName(ds);
-                }          
+                WriteLine("*****Fun with DataSets*****\n");
+
+                //Create the DataSet object and add a few properties.
+                var carsInventoryDS = new DataSet("Car Inventory");
+
+                carsInventoryDS.ExtendedProperties["TimeStamp"] = DateTime.Now;
+                carsInventoryDS.ExtendedProperties["DataSetID"] = Guid.NewGuid();
+                carsInventoryDS.ExtendedProperties["Company"] = "This is a honored-brand company!";
+
+                FillDataSet(carsInventoryDS);
+                ManipulateDataRowState();
+
             }
-            
+
             Console.ReadLine();
         }
 
@@ -73,6 +78,82 @@ namespace ConsoleApp170
                     Console.WriteLine(x);
                 });
             }
+        }
+
+        static void FillDataSet(DataSet ds)
+        {
+            //Create data columns that map to the "real" columns in the Inventory table of the AutoLot database.
+            var carIDColumn = new DataColumn("CarID", typeof(int))
+            {
+                Caption = "Car ID",
+                ReadOnly = true,
+                AllowDBNull = false,
+                Unique = true,
+                AutoIncrement=true,
+                AutoIncrementSeed=1,
+                AutoIncrementStep=1
+            };
+
+            var carMakeColumn = new DataColumn("Make", typeof(string));
+            var carColorColumn = new DataColumn("Color", typeof(string));
+            var carPetNameColumn = new DataColumn("PetName", typeof(string))
+            {
+                Caption = "Pet Name"
+            };
+
+            //Now add DataColumns to a DataTable.
+            var inventoryTable = new DataTable("Inventory");
+            inventoryTable.Columns.AddRange(new[]
+            {
+                carIDColumn,carMakeColumn,carColorColumn,carPetNameColumn
+            });
+
+
+            //Now add some rows to the Inventory Table.
+            DataRow carRow = inventoryTable.NewRow();
+            carRow["Make"] = "BENZ Mercedenz";
+            carRow["Color"] = "BlackBlack";
+            carRow["PetName"] = "BENZAMG65";
+            inventoryTable.Rows.Add(carRow);
+
+            carRow = inventoryTable.NewRow();
+            //Column 0 is the AutoIncrement ID field, so start at 1.
+            carRow[1] = "Auqi";
+            carRow[2] = "Blue";
+            carRow[3] = "Auqi Blue";
+            inventoryTable.Rows.Add(carRow);
+        }
+
+        private static void ManipulateDataRowState()
+        {
+            //Create a temp DataTable for testing.
+            var temp = new DataTable("Temp");
+            temp.Columns.Add(new DataColumn("TempColumn", typeof(int)));
+
+            //RowState=Detached.
+            var row = temp.NewRow();
+            WriteLine($"After calling NewRow(): {row.RowState}");
+
+            //RowState=Added.
+            temp.Rows.Add(row);
+            WriteLine($"After calling Rows.Add():{row.RowState}");
+
+            //RowState=Added.
+            row["TempColumn"] = 10;
+            WriteLine($"After first assignment:{row.RowState}");
+
+            //RowState=Unchanged.
+            temp.AcceptChanges();
+            WriteLine($"After calling AcceptChanges:{row.RowState}");
+
+            //RowState=Modified.
+            row["TempColumn"] = 11;
+            WriteLine($"After first assignment:{row.RowState}");
+
+            //RowState=Deleted.
+            temp.Rows[0].Delete();
+            WriteLine($"After calling Delete:{row.RowState}");
+
         }
     }
 }
