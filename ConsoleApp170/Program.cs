@@ -22,31 +22,39 @@ namespace ConsoleApp170
             if(conn.State==ConnectionState.Open)
             {
                 string selectSql = "select * from AdventureWorks2014.Sales.Store";
-                SqlCommand sqlCmd = new SqlCommand(selectSql, conn);
-                SqlDataReader sqlDataReader = sqlCmd.ExecuteReader();
-                while (sqlDataReader.Read())
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSql, conn);
+                DataSet ds = new DataSet();
+                sqlDataAdapter.Fill(ds);
+
+                if(ds.Tables[0].Rows.Count>0)
                 {
-                    rowsCount++;
-                    for(int i=0;i<sqlDataReader.FieldCount;i++)
+                    for(int i=0;i<ds.Tables[0].Rows.Count;i++)
                     {
-                        Console.WriteLine(sqlDataReader[i]);
-                        if(!columnList.Contains(sqlDataReader.GetName(i)))
+                        rowsCount++;
+                        for(int j=0;j<ds.Tables[0].Columns.Count;j++)
                         {
-                            columnList.Add(sqlDataReader.GetName(i));
+                            if(!columnList.Contains(ds.Tables[0].Columns[j].ColumnName))
+                            {
+                                columnList.Add(ds.Tables[0].Columns[j].ColumnName);
+                            }
+                            
+                            Console.WriteLine("{0,-20} {1,-300}", ds.Tables[0].Columns[j].ColumnName,ds.Tables[0].Rows[i][j]);
                         }
-                        
-                    }
-                    Console.WriteLine("\n\n\n\n\n");
-                }
+                    }                     
+                }                
             }
 
              
-            Console.WriteLine("\n\nThere are {0} rows in the table,and every row has {1} columns,and the column name:\n\n", rowsCount,columnList.Count);
+            Console.WriteLine("\n\nThere are {0} rows in the table,and every row has {1} columns,and the column name:\n\n",rowsCount,columnList.Count);
 
-            columnList.ForEach(x =>
+            if(columnList!=null && columnList.Any())
             {
-                Console.WriteLine(x);
-            });
+                columnList.ForEach(x =>
+                {
+                    Console.WriteLine(x);
+                });
+            }
+            
             Console.ReadLine();
         }
     }
