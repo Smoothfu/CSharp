@@ -11,8 +11,10 @@ namespace ConsoleApp170
 {
     class Program
     {
-        static int rowsCount = 0;
-        static List<string> columnList = new List<string>();
+        static int tables0RowsCount = 0;
+        static int tables1RowsCount = 0;
+        static List<string> columnTables0List = new List<string>();
+        static List<string> columnTables1List = new List<string>();
         static void Main(string[] args)
         {
             string connString = ConfigurationManager.AppSettings["connString"].ToString();
@@ -21,7 +23,7 @@ namespace ConsoleApp170
 
             if(conn.State==ConnectionState.Open)
             {
-                string selectSql = "select * from AdventureWorks2014.Sales.Store";
+                string selectSql = "select * from AdventureWorks2014.Sales.Store;select * from AdventureWorks2014.Sales.Customer;select * from AdventureWorks2014.Sales.Currency";
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSql, conn);
                 DataSet ds = new DataSet();
                 sqlDataAdapter.Fill(ds);
@@ -30,31 +32,57 @@ namespace ConsoleApp170
                 {
                     for(int i=0;i<ds.Tables[0].Rows.Count;i++)
                     {
-                        rowsCount++;
+                        tables0RowsCount++;
                         for(int j=0;j<ds.Tables[0].Columns.Count;j++)
                         {
-                            if(!columnList.Contains(ds.Tables[0].Columns[j].ColumnName))
+                            if(!columnTables0List.Contains(ds.Tables[0].Columns[j].ColumnName))
                             {
-                                columnList.Add(ds.Tables[0].Columns[j].ColumnName);
+                                columnTables0List.Add(ds.Tables[0].Columns[j].ColumnName);
                             }
                             
                             Console.WriteLine("{0,-20} {1,-300}", ds.Tables[0].Columns[j].ColumnName,ds.Tables[0].Rows[i][j]);
                         }
                     }                     
-                }                
+                }
+                
+                if(ds.Tables[1].Rows.Count>0)
+                {
+                    for(int i=0;i<ds.Tables[1].Rows.Count;i++)
+                    {
+                        tables1RowsCount++;
+                        for(int j=0;j<ds.Tables[1].Columns.Count;j++)
+                        {
+                            if(!columnTables1List.Contains(ds.Tables[1].Columns[j].ColumnName))
+                            {
+                                columnTables1List.Add(ds.Tables[1].Columns[j].ColumnName);
+                            }
+                            Console.WriteLine("{0,-20}{1,-300}", ds.Tables[1].Columns[j].ColumnName, ds.Tables[1].Rows[i][j]);
+                        }
+                    }
+                }
             }
 
              
-            Console.WriteLine("\n\nThere are {0} rows in the table,and every row has {1} columns,and the column name:\n\n",rowsCount,columnList.Count);
+            Console.WriteLine("\n\nThere are {0} rows in the table,and every row has {1} columns,and the column name:\n\n",tables0RowsCount,columnTables0List.Count);
 
-            if(columnList!=null && columnList.Any())
+            if(columnTables0List!=null && columnTables0List.Any())
             {
-                columnList.ForEach(x =>
+                columnTables0List.ForEach(x =>
                 {
                     Console.WriteLine(x);
                 });
             }
+
+            Console.WriteLine("\n\n\nThere are {0} row in the table,and every row has {1} columns,and the column name:\n\n", tables1RowsCount, columnTables1List.Count);
             
+            if(columnTables1List!=null && columnTables1List.Any())
+            {
+                columnTables1List.ForEach(x =>
+                {
+                    Console.WriteLine(x);
+                });
+            }
+
             Console.ReadLine();
         }
     }
