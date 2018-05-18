@@ -12,6 +12,7 @@ namespace ConsoleApp170
     class Program
     {
         static int rowsCount = 0;
+        static List<string> columnList = new List<string>();
         static void Main(string[] args)
         {
             string connString = ConfigurationManager.AppSettings["connString"].ToString();
@@ -29,12 +30,23 @@ namespace ConsoleApp170
                     for(int i=0;i<sqlDataReader.FieldCount;i++)
                     {
                         Console.WriteLine(sqlDataReader[i]);
+                        if(!columnList.Contains(sqlDataReader.GetName(i)))
+                        {
+                            columnList.Add(sqlDataReader.GetName(i));
+                        }
+                        
                     }
                     Console.WriteLine("\n\n\n\n\n");
                 }
             }
 
-            Console.WriteLine("\n\nThere are {0} rows in the table", rowsCount);
+             
+            Console.WriteLine("\n\nThere are {0} rows in the table,and every row has {1} columns,and the column name:\n\n", rowsCount,columnList.Count);
+
+            columnList.ForEach(x =>
+            {
+                Console.WriteLine(x);
+            });
             Console.ReadLine();
         }
     }
