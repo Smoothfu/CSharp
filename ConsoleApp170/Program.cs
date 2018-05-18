@@ -8,6 +8,9 @@ using System.Data;
 using System.Data.SqlClient;
 using static System.Console;
 using System.Collections;
+using System.IO;
+using System.Runtime.Serialization.Formatters;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConsoleApp170
 {
@@ -36,9 +39,9 @@ namespace ConsoleApp170
 
                 FillDataSet(carsInventoryDS);
                  
-                PrintDataSet(carsInventoryDS);
+                //PrintDataSet(carsInventoryDS);
 
-                SaveAndLoadAsXml(carsInventoryDS);
+                SaveAndLoadAsBinary(carsInventoryDS);
 
             }
 
@@ -224,6 +227,26 @@ namespace ConsoleApp170
 
             //Load DataSet from XML file.
             ds.ReadXml("carsDataSet.xml");
+        }
+
+        static void SaveAndLoadAsBinary(DataSet ds)
+        {
+            //Set binary serialization flag.
+            ds.RemotingFormat = SerializationFormat.Binary;
+
+            //Save this DataSet as binary.
+            var fs = new FileStream("BinaryCars.bin", FileMode.Create);
+            var bFormat = new BinaryFormatter();
+            bFormat.Serialize(fs, ds);
+            fs.Close();
+
+            //Clear out DataSet.
+            ds.Clear();
+
+            //Load DataSet from binary file.
+            fs = new FileStream("BinaryCars.bin", FileMode.Open);
+            var data = (DataSet)bFormat.Deserialize(fs);
+
         }
     }
 }
