@@ -21,69 +21,58 @@ namespace ConsoleApp170
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
 
-            if(conn.State==ConnectionState.Open)
+            if (conn.State == ConnectionState.Open)
             {
                 string selectSql = "select * from AdventureWorks2014.Sales.Store;select * from AdventureWorks2014.Sales.Customer;select * from AdventureWorks2014.Sales.Currency";
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSql, conn);
                 DataSet ds = new DataSet();
                 sqlDataAdapter.Fill(ds);
+                if (ds != null)
+                {
+                    GetTableColumnsName(ds);
+                }          
+            }
+            
+            Console.ReadLine();
+        }
 
-                if(ds.Tables[0].Rows.Count>0)
+        private static void GetTableColumnsName(DataSet ds)
+        {
+            if(ds!=null && ds.Tables[0].Rows.Count>0)
+            {
+                for(int i=0;i<ds.Tables[0].Columns.Count;i++)
                 {
-                    for(int i=0;i<ds.Tables[0].Rows.Count;i++)
-                    {
-                        tables0RowsCount++;
-                        for(int j=0;j<ds.Tables[0].Columns.Count;j++)
-                        {
-                            if(!columnTables0List.Contains(ds.Tables[0].Columns[j].ColumnName))
-                            {
-                                columnTables0List.Add(ds.Tables[0].Columns[j].ColumnName);
-                            }
-                            
-                            Console.WriteLine("{0,-20} {1,-300}", ds.Tables[0].Columns[j].ColumnName,ds.Tables[0].Rows[i][j]);
-                        }
-                    }                     
-                }
-                
-                if(ds.Tables[1].Rows.Count>0)
-                {
-                    for(int i=0;i<ds.Tables[1].Rows.Count;i++)
-                    {
-                        tables1RowsCount++;
-                        for(int j=0;j<ds.Tables[1].Columns.Count;j++)
-                        {
-                            if(!columnTables1List.Contains(ds.Tables[1].Columns[j].ColumnName))
-                            {
-                                columnTables1List.Add(ds.Tables[1].Columns[j].ColumnName);
-                            }
-                            Console.WriteLine("{0,-20}{1,-300}", ds.Tables[1].Columns[j].ColumnName, ds.Tables[1].Rows[i][j]);
-                        }
-                    }
+                    columnTables0List.Add(ds.Tables[0].Columns[i].ColumnName);
                 }
             }
 
-             
-            Console.WriteLine("\n\nThere are {0} rows in the table,and every row has {1} columns,and the column name:\n\n",tables0RowsCount,columnTables0List.Count);
-
             if(columnTables0List!=null && columnTables0List.Any())
             {
+                Console.WriteLine("There are {0} columns  in ds.Tables[0],they are:\n",columnTables0List.Count);
                 columnTables0List.ForEach(x =>
                 {
                     Console.WriteLine(x);
                 });
+
+                Console.WriteLine("\n\n\n\n\n");
             }
 
-            Console.WriteLine("\n\n\nThere are {0} row in the table,and every row has {1} columns,and the column name:\n\n", tables1RowsCount, columnTables1List.Count);
-            
-            if(columnTables1List!=null && columnTables1List.Any())
+            if(ds!=null && ds.Tables[1].Rows.Count>0)
             {
+                for(int i=0;i<ds.Tables[1].Columns.Count;i++)
+                {
+                    columnTables1List.Add(ds.Tables[1].Columns[i].ColumnName);
+                }
+            }
+
+            if(columnTables1List!=null && columnTables1List.Count>0)
+            {
+                Console.WriteLine("There are {0} columns  in ds.Tables[1],they are:\n",columnTables1List.Count);
                 columnTables1List.ForEach(x =>
                 {
                     Console.WriteLine(x);
                 });
             }
-
-            Console.ReadLine();
         }
     }
 }
