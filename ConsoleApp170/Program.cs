@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using static System.Console;
+using System.Collections;
 
 namespace ConsoleApp170
 {
@@ -35,6 +36,7 @@ namespace ConsoleApp170
 
                 FillDataSet(carsInventoryDS);
                 ManipulateDataRowState();
+                PrintDataSet(carsInventoryDS);
 
             }
 
@@ -159,6 +161,43 @@ namespace ConsoleApp170
             temp.Rows[0].Delete();
             WriteLine($"After calling Delete:{row.RowState}");
 
+        }
+
+        static void PrintDataSet(DataSet ds)
+        {
+            //Print out the DataSet name and any extended properties.
+            WriteLine($"DataSet is named:{ds.DataSetName}");
+
+            foreach(DictionaryEntry de in ds.ExtendedProperties)
+            {
+                WriteLine($"Key={de.Key},Value={de.Value}");
+            }
+
+            WriteLine();
+
+            //Print out each table using rows and columns.
+            foreach(DataTable dt in ds.Tables)
+            {
+                WriteLine($"=>{dt.TableName} Table:");
+
+                //Print out the column names.
+                for(var curCol=0;curCol<dt.Columns.Count;curCol++)
+                {
+                    WriteLine($"{dt.Columns[curCol].ColumnName}\t");
+                }
+
+                WriteLine("\n----------------------------------------------------");
+
+                //Print the DataTable.
+                for(var curRow=0;curRow<dt.Rows.Count;curRow++)
+                {
+                    for(var curCol=0;curCol<dt.Columns.Count;curCol++)
+                    {
+                        WriteLine($"{dt.Rows[curRow][curCol]}\t");
+                    }
+                    WriteLine();
+                }
+            }
         }
     }
 }
