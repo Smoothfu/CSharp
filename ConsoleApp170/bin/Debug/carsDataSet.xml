@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<Car_x0020_Inventory>
+  <Inventory>
+    <CarID>1</CarID>
+    <Make>BENZ Mercedenz</Make>
+    <Color>BlackBlack</Color>
+    <PetName>BENZAMG65</PetName>
+  </Inventory>
+  <Inventory>
+    <CarID>2</CarID>
+    <Make>Auqi</Make>
+    <Color>Blue</Color>
+    <PetName>Auqi Blue</PetName>
+  </Inventory>
+</Car_x0020_Inventory>

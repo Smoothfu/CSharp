@@ -38,6 +38,8 @@ namespace ConsoleApp170
                  
                 PrintDataSet(carsInventoryDS);
 
+                SaveAndLoadAsXml(carsInventoryDS);
+
             }
 
             Console.ReadLine();
@@ -209,6 +211,19 @@ namespace ConsoleApp170
                 WriteLine();
             }
             dtReader.Close();
+        }
+
+        static void SaveAndLoadAsXml(DataSet ds)
+        {
+            //Save this DataSet as XML.
+            ds.WriteXml("carsDataSet.xml");
+            ds.WriteXmlSchema("carsDataSet.xsd");
+
+            //Clear out DataSet.
+            ds.Clear();
+
+            //Load DataSet from XML file.
+            ds.ReadXml("carsDataSet.xml");
         }
     }
 }
