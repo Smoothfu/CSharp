@@ -35,7 +35,7 @@ namespace ConsoleApp170
                 carsInventoryDS.ExtendedProperties["Company"] = "This is a honored-brand company!";
 
                 FillDataSet(carsInventoryDS);
-                ManipulateDataRowState();
+                 
                 PrintDataSet(carsInventoryDS);
 
             }
@@ -183,7 +183,7 @@ namespace ConsoleApp170
                 //Print out the column names.
                 for(var curCol=0;curCol<dt.Columns.Count;curCol++)
                 {
-                    WriteLine($"{dt.Columns[curCol].ColumnName}\t");
+                    Write($"{dt.Columns[curCol].ColumnName}\t");
                 }
 
                 WriteLine("\n----------------------------------------------------");
@@ -193,7 +193,7 @@ namespace ConsoleApp170
                 {
                     for(var curCol=0;curCol<dt.Columns.Count;curCol++)
                     {
-                        WriteLine($"{dt.Rows[curRow][curCol]}\t");
+                        Write($"{dt.Rows[curRow][curCol]}\t");
                     }
                     WriteLine();
                 }
