@@ -122,6 +122,11 @@ namespace ConsoleApp170
             carRow[2] = "Blue";
             carRow[3] = "Auqi Blue";
             inventoryTable.Rows.Add(carRow);
+
+            //Mark the primary key of this table.
+            inventoryTable.PrimaryKey = new[] { inventoryTable.Columns[0] };
+
+            ds.Tables.Add(inventoryTable);
         }
 
         private static void ManipulateDataRowState()
