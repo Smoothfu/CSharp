@@ -18,8 +18,7 @@ namespace ConsoleApp171
 
             Console.WriteLine("Reading data from cache!");
             obj.ReadData();
-            Console.ReadLine();
-            
+            Console.ReadLine();            
         }
 
         public void ReadData()
