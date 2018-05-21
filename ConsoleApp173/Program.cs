@@ -59,16 +59,26 @@ namespace ConsoleApp173
                 }
                 WriteLine("\n---------------------------------------------\n");
 
-                //Print the DataTable.
-                for(var curRow=0;curRow<dt.Rows.Count;curRow++)
-                {
-                    for (var curCol = 0; curCol < dt.Columns.Count;curCol++)
-                    {
-                        Write($"{dt.Rows[curRow][curCol]}\t");
-                    }
-                    WriteLine();
-                }
+                PrintTable(dt);
             }
+        }
+
+        static void PrintTable(DataTable dt)
+        {
+            //Get the DataTableReader type.
+            DataTableReader dtReader = dt.CreateDataReader();
+
+            //The DataTableReader works just like the DataReader.
+            while(dtReader.Read())
+            {
+                for(var i=0;i<dtReader.FieldCount;i++)
+                {
+                    Write($"{dtReader.GetValue(i).ToString().Trim()}\t");
+                }
+                WriteLine();
+
+            }
+            dtReader.Close();
         }
     }
 }
