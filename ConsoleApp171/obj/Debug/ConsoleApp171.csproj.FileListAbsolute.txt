@@ -1,0 +1,10 @@
+D:\C\ConsoleApp171\ConsoleApp171\bin\Debug\ConsoleApp171.exe.config
+D:\C\ConsoleApp171\ConsoleApp171\bin\Debug\ConsoleApp171.exe
+D:\C\ConsoleApp171\ConsoleApp171\bin\Debug\ConsoleApp171.pdb
+D:\C\ConsoleApp171\ConsoleApp171\bin\Debug\StackExchange.Redis.dll
+D:\C\ConsoleApp171\ConsoleApp171\bin\Debug\System.IO.Compression.dll
+D:\C\ConsoleApp171\ConsoleApp171\bin\Debug\StackExchange.Redis.xml
+D:\C\ConsoleApp171\ConsoleApp171\obj\Debug\ConsoleApp171.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp171\ConsoleApp171\obj\Debug\ConsoleApp171.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp171\ConsoleApp171\obj\Debug\ConsoleApp171.exe
+D:\C\ConsoleApp171\ConsoleApp171\obj\Debug\ConsoleApp171.pdb
