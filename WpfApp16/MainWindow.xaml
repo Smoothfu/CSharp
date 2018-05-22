@@ -41,7 +41,25 @@
                         <Button x:Name="btnView" Click="btnView_Click"  Grid.Column="1" Content="View"/>
                     </Grid>
                 </GroupBox>
-            </Grid>                                    
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Update the make BMW to BENZ">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnUpdate" Click="btnUpdate_Click" Content="Update" Grid.Column="1"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
         </StackPanel>        
     </Grid>
 </Window>

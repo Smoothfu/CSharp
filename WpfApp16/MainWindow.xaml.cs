@@ -128,6 +128,26 @@ namespace WpfApp16
             }
 
         }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            //Make sure user has not lost his or her mind.
+            if(MessageBoxResult.OK!=MessageBox.Show("Are you sure? BMWs is also ok!","Please Confirm!",MessageBoxButton.OK))
+            {
+                return; 
+            }
+            
+            foreach(Car car in listCars)
+            {
+                if(car.Make=="BMW")
+                {
+                    car.Make = "BENZ";
+                }
+            }
+
+            dg.ItemsSource = null;
+            dg.ItemsSource = listCars;
+        }
     }
 
     public class Car
