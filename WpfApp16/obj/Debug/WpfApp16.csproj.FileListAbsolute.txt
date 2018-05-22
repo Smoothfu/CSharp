@@ -1,0 +1,15 @@
+D:\C\WpfApp16\WpfApp16\bin\Debug\WpfApp16.exe.config
+D:\C\WpfApp16\WpfApp16\bin\Debug\WpfApp16.exe
+D:\C\WpfApp16\WpfApp16\bin\Debug\WpfApp16.pdb
+D:\C\WpfApp16\WpfApp16\obj\Debug\WpfApp16.csprojResolveAssemblyReference.cache
+D:\C\WpfApp16\WpfApp16\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp16\WpfApp16\obj\Debug\App.g.cs
+D:\C\WpfApp16\WpfApp16\obj\Debug\WpfApp16_MarkupCompile.cache
+D:\C\WpfApp16\WpfApp16\obj\Debug\WpfApp16_MarkupCompile.lref
+D:\C\WpfApp16\WpfApp16\obj\Debug\MainWindow.baml
+D:\C\WpfApp16\WpfApp16\obj\Debug\WpfApp16.g.resources
+D:\C\WpfApp16\WpfApp16\obj\Debug\WpfApp16.Properties.Resources.resources
+D:\C\WpfApp16\WpfApp16\obj\Debug\WpfApp16.csproj.GenerateResource.Cache
+D:\C\WpfApp16\WpfApp16\obj\Debug\WpfApp16.csproj.CoreCompileInputs.cache
+D:\C\WpfApp16\WpfApp16\obj\Debug\WpfApp16.exe
+D:\C\WpfApp16\WpfApp16\obj\Debug\WpfApp16.pdb
