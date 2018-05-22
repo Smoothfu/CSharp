@@ -1,7 +1,6 @@
-D:\C\ConsoleApp175\ConsoleApp175\bin\Debug\ConsoleApp175.exe.config
-D:\C\ConsoleApp175\ConsoleApp175\bin\Debug\ConsoleApp175.exe
 D:\C\ConsoleApp175\ConsoleApp175\bin\Debug\ConsoleApp175.pdb
-D:\C\ConsoleApp175\ConsoleApp175\obj\Debug\ConsoleApp175.csprojResolveAssemblyReference.cache
 D:\C\ConsoleApp175\ConsoleApp175\obj\Debug\ConsoleApp175.csproj.CoreCompileInputs.cache
-D:\C\ConsoleApp175\ConsoleApp175\obj\Debug\ConsoleApp175.exe
 D:\C\ConsoleApp175\ConsoleApp175\obj\Debug\ConsoleApp175.pdb
+D:\C\ConsoleApp175\ConsoleApp175\bin\Debug\ConsoleApp175.dll.config
+D:\C\ConsoleApp175\ConsoleApp175\bin\Debug\ConsoleApp175.dll
+D:\C\ConsoleApp175\ConsoleApp175\obj\Debug\ConsoleApp175.dll

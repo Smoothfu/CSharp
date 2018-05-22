@@ -1,0 +1,13 @@
+D:\C\ConsoleApp175\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\C\ConsoleApp175\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\C\ConsoleApp175\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\C\ConsoleApp175\WindowsFormsApp1\bin\Debug\ConsoleApp175.dll
+D:\C\ConsoleApp175\WindowsFormsApp1\bin\Debug\ConsoleApp175.pdb
+D:\C\ConsoleApp175\WindowsFormsApp1\bin\Debug\ConsoleApp175.dll.config
+D:\C\ConsoleApp175\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp175\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\C\ConsoleApp175\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\C\ConsoleApp175\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+D:\C\ConsoleApp175\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp175\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\C\ConsoleApp175\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
