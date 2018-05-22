@@ -148,6 +148,22 @@ namespace WpfApp16
             dg.ItemsSource = null;
             dg.ItemsSource = listCars;
         }
+
+        private void btnFilter_Click(object sender, RoutedEventArgs e)
+        {
+            //Make sure that only sure the make is BMW
+
+            if(MessageBoxResult.OK!=MessageBox.Show("Are you sure,only show the make is BMW","Make is BMW",MessageBoxButton.OK))
+            {
+                return;
+            }
+
+            var bmwCarList = from car in listCars
+                             where car.Make == "BMW"
+                             select car;
+            dg.ItemsSource = null;
+            dg.ItemsSource = bmwCarList;
+        }
     }
 
     public class Car
