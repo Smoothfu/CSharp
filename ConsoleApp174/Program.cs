@@ -8,6 +8,8 @@ using System.Data.SqlClient;
 using System.Configuration;
 using static System.Console;
 using System.Collections;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConsoleApp174
 {
@@ -32,6 +34,7 @@ namespace ConsoleApp174
             if(ds.Tables[0].Rows.Count>0)
             {
                 SaveAndLoadAsXml(ds);
+                SaveAndLoadAsBinary(ds);
                 PrintDataSet(ds);
             }
 
@@ -108,6 +111,26 @@ namespace ConsoleApp174
 
             //Load DataSet from XML file.
             ds.ReadXml("adventureworks.xml");
+        }
+
+        static void SaveAndLoadAsBinary(DataSet ds)
+        {
+            //Set binary serialization flag.
+            ds.RemotingFormat = SerializationFormat.Binary;
+
+
+            //Save this DataSet as binary.
+            var fs = new FileStream("BinaryDS.bin", FileMode.Create);
+            var bFormat = new BinaryFormatter();
+            bFormat.Serialize(fs, ds);
+            fs.Close();
+
+            //Clear out DataSet.
+            ds.Clear();
+
+            //Load DataSet from binary file.
+            fs = new FileStream("BinaryDS.bin", FileMode.Open);
+            var data = (DataSet)bFormat.Deserialize(fs);
         }
 
     }
