@@ -58,23 +58,43 @@ namespace ConsoleApp174
                 //Print out the column names.
                 for(var curCol=0;curCol<dt.Columns.Count;curCol++)
                 {
-                    Write("{0,-20}",$"{dt.Columns[curCol].ColumnName}\t");
+                    Write("{0,-50}",$"{dt.Columns[curCol].ColumnName}\t");
                 }
 
                 WriteLine("\n-----------------------------------------------");
 
-                //Print the DataTable.
-                for(var curRow=0;curRow<dt.Rows.Count;curRow++)
-                {
-                    for(var curCol = 0; curCol < dt.Columns.Count; curCol++)
-                    {
-                        Write("{0,-20}",$"{dt.Rows[curRow][curCol]}\t");
-                    }
-                    WriteLine();
-                }
+                ////Print the DataTable.
+                //for(var curRow=0;curRow<dt.Rows.Count;curRow++)
+                //{
+                //    for(var curCol = 0; curCol < dt.Columns.Count; curCol++)
+                //    {
+                //        Write("{0,-20}",$"{dt.Rows[curRow][curCol]}\t");
+                //    }
+                //    WriteLine();
+                //}
+
+                PrintTable(dt);
 
                 Console.WriteLine("\n\n\n\n\n\n\n");
             }
+        }
+
+        static void PrintTable(DataTable dt)
+        {
+            //Get the DataTableReader type.
+            DataTableReader dtReader = dt.CreateDataReader();
+
+            //The DataTableReader works just like the DataReader.
+            while(dtReader.Read())
+            {
+                for(int i=0;i<dtReader.FieldCount;i++)
+                {
+                    Write("{0,-50}", $"{dtReader.GetValue(i).ToString().Trim()}\t");
+                }
+                WriteLine();
+            }
+
+            dtReader.Close();
         }
 
     }
