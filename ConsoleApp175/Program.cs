@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
 using static System.Console;
+using System.Data.Common;
 
 namespace ConsoleApp175
 {
@@ -26,7 +27,16 @@ namespace ConsoleApp175
             SqlDataAdapter adapter = new SqlDataAdapter("select * from inventory", connString);
 
             //Fill our DataSet with a new table,named Inventory.
+            
+
+
+            //Now map DB column names to user-friendly names.
+            DataTableMapping tableMapping = adapter.TableMappings.Add("Invetory", "Current Inventory");
+            tableMapping.ColumnMappings.Add("CarId", "Car Id");
+            tableMapping.ColumnMappings.Add("PetName", "Name of Car");
             adapter.Fill(ds, "Inventory");
+
+
 
             //Display contens of DataSet.
             PrintDataSet(ds);
