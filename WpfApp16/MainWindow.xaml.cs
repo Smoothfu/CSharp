@@ -99,6 +99,35 @@ namespace WpfApp16
                 Console.WriteLine(ex.Message);
             }
         }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            //Build a filter based on user input
+            string specifiedMake = tbMake.Text;
+
+            //Find all rows matching the filter.
+            var matchedCars = from car
+                              in listCars
+                              where car.Make == specifiedMake
+                              select car;
+
+           if(!matchedCars.Any())
+            {
+                MessageBox.Show("Sorry,no cars...", "Selection error!");                 
+            }
+           else
+            {
+                string strMake = null;
+
+                matchedCars.ToList().ForEach(x =>
+                {
+                    strMake += x.PetName + "\n";
+                });
+
+                MessageBox.Show(strMake);
+            }
+
+        }
     }
 
     public class Car

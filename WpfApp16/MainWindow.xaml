@@ -10,19 +10,38 @@
         <StackPanel>
             <Label>Here is what we have in stock</Label>
             <DataGrid x:Name="dg"/>
-            <GroupBox Header="Enter ID of Car to Delete">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox x:Name="tbID" Grid.Column="0" />
-                    <Button x:Name="btnDelete" Click="btnDelete_Click" Grid.Column="1" Content="Delete"/>
-                </Grid>                    
-            </GroupBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Enter ID of Car to Delete" Grid.Column="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="tbID" Grid.Column="0" />
+                        <Button x:Name="btnDelete" Click="btnDelete_Click" Grid.Column="1" Content="Delete"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Enter Make to View" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="tbMake" Grid.Column="0" />
+                        <Button x:Name="btnView" Click="btnView_Click"  Grid.Column="1" Content="View"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>                                    
         </StackPanel>        
     </Grid>
 </Window>
