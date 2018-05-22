@@ -31,6 +31,7 @@ namespace ConsoleApp174
 
             if(ds.Tables[0].Rows.Count>0)
             {
+                SaveAndLoadAsXml(ds);
                 PrintDataSet(ds);
             }
 
@@ -93,8 +94,20 @@ namespace ConsoleApp174
                 }
                 WriteLine();
             }
-
             dtReader.Close();
+        }
+
+        static void SaveAndLoadAsXml(DataSet ds)
+        {
+            //Save this DataSet as XML.
+            ds.WriteXml("adventureworks.xml");
+            ds.WriteXmlSchema("adventureworks.xsd");
+
+            //Clear out DataSet.
+            ds.Clear();
+
+            //Load DataSet from XML file.
+            ds.ReadXml("adventureworks.xml");
         }
 
     }
