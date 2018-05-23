@@ -33,7 +33,7 @@ namespace ConsoleApp1
             table.Clear();
             adapter.Fill(table);
             PrintInventory(table);
-
+            CallStoredProc();
 
             Console.ReadLine();
         }
@@ -83,6 +83,23 @@ namespace ConsoleApp1
             catch(Exception ex)
             {
                 WriteLine(ex.Message);
+            }
+        }
+
+        public static void CallStoredProc()
+        {
+            try
+            {
+                var queriesTableAdapter = new WindowsFormsApp2.DataSets.AutoLotDataSetTableAdapters.QueriesTableAdapter();
+                Write("Enter ID of car to look up: \n");
+                string carID = ReadLine() ?? "0";
+                string carName = "";
+                queriesTableAdapter.GetPetName(int.Parse(carID), ref carName);
+                WriteLine($"CarID {carID} has the name of {carName}");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
