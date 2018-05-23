@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp2;
 using WindowsFormsApp2.AutoLotDataSetTableAdapters;
 using static System.Console;
+using ClassLibrary1;
 
 namespace ConsoleApp1
 {
@@ -23,17 +25,15 @@ namespace ConsoleApp1
 
             //Fill out DataSet with a new table,named Inventory.
             adapter.Fill(table);
-            PrintInventory(table);
+            PrintInventory(table);          
 
-
-            Console.WriteLine("\n\n\n\n\nNewly updated\n\n\n\n\n");
-
-            //Add rows,update and reprint
-            AddRecords(table, adapter);
-            table.Clear();
-            adapter.Fill(table);
+            
             PrintInventory(table);
             CallStoredProc();
+
+
+            Console.WriteLine("\n\n\n\nThis is the LINQ ");
+            LinqOverDataTable();
 
             Console.ReadLine();
         }
@@ -101,6 +101,50 @@ namespace ConsoleApp1
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        static void PrintDataWithDataTableReader(DataTable dt)
+        {
+            //Get the DataTableReader type.
+            DataTableReader dtReader = dt.CreateDataReader();
+            while(dtReader.Read())
+            {
+                for(int i=0;i<dtReader.FieldCount;i++)
+                {
+                    Write("{0,-30}", $"{dtReader.GetValue(i)}\t");
+                }
+
+                WriteLine("\n\n\n\n\n\n\n");
+            }
+            dtReader.Close();
+        }
+
+        static void AddRowWithTypedDataSet()
+        {
+            InventoryTableAdapter invAdapter = new InventoryTableAdapter();
+            AutoLotDataSet.InventoryDataTable inventoryDataTable = invAdapter.GetData();
+            inventoryDataTable.AddInventoryRow("FordExplorer", "Black", "FordKing");
+            invAdapter.Update(inventoryDataTable);
+        }
+
+        static void LinqOverDataTable()
+        {
+            WriteLine("*****LINQ over DataSet*****\n");
+
+            //Get a strongly typed DataTable containing the current Inventory of the AutoLot database.
+            AutoLotDataSet dal = new AutoLotDataSet();
+            InventoryTableAdapter tableAdapter = new InventoryTableAdapter();
+            AutoLotDataSet.InventoryDataTable data = tableAdapter.GetData();
+
+            //Invoke the methods that follow here!
+
+            var moreData = from c in data where (int)c["CarID"] > 5 select c;
+            foreach(var d in moreData)
+            {
+                Console.WriteLine(d.CarId + "\t" + d.Color + "\t" + d.Make + "\t" + d.PetName);
+            }
+            ReadLine();
+
         }
     }
 }
