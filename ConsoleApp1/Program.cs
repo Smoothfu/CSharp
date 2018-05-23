@@ -138,8 +138,7 @@ namespace ConsoleApp1
 
             //Invoke the methods that follow here!
 
-            PrintAllCarIDs(data);
-            ShowBlackCars(data);
+            BuildDataTableFromQuery(data);
             ReadLine();
         }
 
@@ -173,6 +172,26 @@ namespace ConsoleApp1
             foreach(var item in cars)
             {
                 WriteLine($"->CarID={item.ID} is {item.Make}");
+            }
+        }
+
+        static void BuildDataTableFromQuery(DataTable data)
+        {
+            var cars = from car in data.AsEnumerable()
+                       where car.Field<int>("CarID") > 5
+                       select car;
+
+            //Use this result set to build a new DataTable.
+            DataTable newTable = cars.CopyToDataTable();
+
+            //Print the DataTable.
+            for(int curRow=0;curRow<newTable.Rows.Count;curRow++)
+            {
+                for(int curCol=0;curCol<newTable.Columns.Count;curCol++)
+                {
+                    Write("{0,-30}",newTable.Rows[curRow][curCol].ToString().Trim());
+                }
+                WriteLine();
             }
         }
     }
