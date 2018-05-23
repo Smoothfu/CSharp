@@ -25,6 +25,16 @@ namespace ConsoleApp1
             adapter.Fill(table);
             PrintInventory(table);
 
+
+            Console.WriteLine("\n\n\n\n\nNewly updated\n\n\n\n\n");
+
+            //Add rows,update and reprint
+            AddRecords(table, adapter);
+            table.Clear();
+            adapter.Fill(table);
+            PrintInventory(table);
+
+
             Console.ReadLine();
         }
 
@@ -45,6 +55,34 @@ namespace ConsoleApp1
                     Write("{0,-30}", dt.Rows[curRow][curCol]);
                 }
                 WriteLine();
+            }
+        }
+
+        public static void AddRecords(AutoLotDataSet.InventoryDataTable table,InventoryTableAdapter adapter)
+        {
+            try
+            {
+                //Get a new strongly typed row from the table.
+                AutoLotDataSet.InventoryRow newRow = table.NewInventoryRow();
+
+                //Fill row with some sample data.
+                newRow.Color = "Purple";
+                newRow.Make = "BENZ";
+                newRow.PetName = "Saku";
+
+
+                //Insert the new row.
+                table.AddInventoryRow(newRow);
+
+                //Add one more row,using overloaded Add method.
+                table.AddInventoryRow("BENZCar", "Black", "BENZ Mercederz");
+
+                //update database.
+                adapter.Update(table);
+            }
+            catch(Exception ex)
+            {
+                WriteLine(ex.Message);
             }
         }
     }
