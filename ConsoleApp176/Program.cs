@@ -27,15 +27,19 @@ namespace ConsoleApp176
             //Inform adapter of the Select command text and connection.
             SqlDataAdapter adapter = new SqlDataAdapter(selectSQL, connectionString);
 
+           
+
+
+            //Now map DB column names to user-friendly names.
+            DataTableMapping tableMapping = adapter.TableMappings.Add("Inventory", "Currnt Inventory");
+            tableMapping.ColumnMappings.Add("CarId", "Car Id");
+            tableMapping.ColumnMappings.Add("PetName", "Name of Car");
+            //adapter.Fill(ds, "Inventory");
+
             //Fill our dataset with a new table named Inventory.
             adapter.Fill(ds, "Inventory");
 
             PrintDataSet(ds);
-
-
-            //Now map DB column names to user-friendly names.
-            //DataTableMapping tableMapping =
-
             Console.ReadLine();
         }
 
