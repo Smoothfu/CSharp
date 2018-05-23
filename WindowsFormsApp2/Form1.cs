@@ -23,5 +23,20 @@ namespace WindowsFormsApp2
             this.inventoryTableAdapter.Fill(this.autoLotDataSet.Inventory);
 
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Save changes with the Inventory table back to the database.
+                this.inventoryTableAdapter.Update(this.autoLotDataSet.Inventory);
+
+            }
+
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

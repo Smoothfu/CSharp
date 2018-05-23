@@ -9,3 +9,10 @@
         }
     }
 }
+
+namespace WindowsFormsApp2.AutoLotDataSetTableAdapters {
+    
+    
+    public partial class InventoryTableAdapter {
+    }
+}
