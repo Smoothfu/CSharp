@@ -138,13 +138,20 @@ namespace ConsoleApp1
 
             //Invoke the methods that follow here!
 
-            var moreData = from c in data where (int)c["CarID"] > 5 select c;
-            foreach(var d in moreData)
-            {
-                Console.WriteLine(d.CarId + "\t" + d.Color + "\t" + d.Make + "\t" + d.PetName);
-            }
+            PrintAllCarIDs(data);
             ReadLine();
+        }
 
+        static void PrintAllCarIDs(DataTable data)
+        {
+            //Get enumerable version of DataTable.
+            EnumerableRowCollection enumData = data.AsEnumerable();
+
+            //Print the car ID values.
+            foreach(DataRow dr in enumData)
+            {
+                WriteLine($"Car ID={dr["CarID"]}");
+            }
         }
     }
 }
