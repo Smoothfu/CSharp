@@ -139,6 +139,7 @@ namespace ConsoleApp1
             //Invoke the methods that follow here!
 
             PrintAllCarIDs(data);
+            ShowBlackCars(data);
             ReadLine();
         }
 
@@ -151,6 +152,27 @@ namespace ConsoleApp1
             foreach(DataRow dr in enumData)
             {
                 WriteLine($"Car ID={dr["CarID"]}");
+            }
+        }
+
+        static void ShowBlackCars(DataTable data)
+        {
+            //Project a new result set containing the ID/color for rows where color=Red.
+            var cars = from car in data.AsEnumerable()
+                       where
+(string)car["Color"] == "Black"
+                       select new
+                       {
+                           Id = (int)car["CarID"],
+                           Make = (string)car["Make"]
+                       };
+
+            WriteLine("\n\nHere are the black cars we have in stock :\n\n\n");
+
+
+            foreach(var item in cars)
+            {
+                WriteLine($"->CarID={item.Id} is {item.Make}");
             }
         }
     }
