@@ -92,5 +92,37 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string strOrderInfo = string.Empty;
+
+            //Get the customer ID in the text box.
+            int custID = int.Parse(textBox1.Text);
+
+            //Now based on custID,Get the correct row in Customers table.
+            var drsCust = _autoLotDs.Tables["Customers"].Select($"CustID={custID}");
+            strOrderInfo += $"Customer{drsCust[0]["CustID"]}:{ drsCust[0]["FirstName"].ToString().Trim()}{ drsCust[0]["LastName"].ToString().Trim()}\n";
+
+            //Navigate from customer table to order table.
+            var drsOrder = drsCust[0].GetChildRows(_autoLotDs.Relations["CustomerOrder"]);
+
+            //Loop through all orders for this customer.
+            foreach(DataRow order in drsOrder)
+            {
+                strOrderInfo += $"---\nOrder Number:{order["OrderID"]}\n";
+
+                //Get the car referenced by this order.
+                DataRow[] drsInv = order.GetParentRows(_autoLotDs.Relations["InventoryOrder"]);
+
+                //Get info for (SINGLE) car info for this order.
+                DataRow car = drsInv[0];
+                strOrderInfo += $"Make:{car["Make"]}\n";
+                strOrderInfo += $"Color:{car["Color"]}\n";
+                strOrderInfo += $"Pet Name:{car["PetName"]}\n";
+            }
+
+            MessageBox.Show(strOrderInfo, "Order Details");
+        }
     }
 }
