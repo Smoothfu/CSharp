@@ -163,8 +163,8 @@ namespace ConsoleApp1
 (string)car["Color"] == "Black"
                        select new
                        {
-                           Id = (int)car["CarID"],
-                           Make = (string)car["Make"]
+                           ID = car.Field<int>("CarID"),
+                           Make = car.Field<string>("Make")
                        };
 
             WriteLine("\n\nHere are the black cars we have in stock :\n\n\n");
@@ -172,7 +172,7 @@ namespace ConsoleApp1
 
             foreach(var item in cars)
             {
-                WriteLine($"->CarID={item.Id} is {item.Make}");
+                WriteLine($"->CarID={item.ID} is {item.Make}");
             }
         }
     }
