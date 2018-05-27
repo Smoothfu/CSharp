@@ -9,8 +9,8 @@ namespace ConsoleApp182
 {
     class Program
     {
-        static string queuePath=".\\Private$\\MQ";        
-        
+        static string queuePath=".\\Private$\\MQ";
+        static List<Person> PersonList = new List<Person>();
         static MessageQueue msgQueue = new MessageQueue(queuePath);
         static void Main(string[] args)
         {
@@ -28,23 +28,33 @@ namespace ConsoleApp182
 
         void SendQueue()
         {
-            Person person = new Person
-            {
-                PId = 1,
-                PName = "Fred"
-            };
+            PersonList.Add(new Person(1, "Fred"));
+            PersonList.Add(new Person(2, "Floomberg"));
+            PersonList.Add(new Person(3, "MichaelBloomberg"));
+            PersonList.Add(new Person(4, "BillGates"));
+            PersonList.Add(new Person(5, "ElonMusk"));
+            PersonList.Add(new Person(6, "JeffBezos"));
+            PersonList.Add(new Person(7, "LarryEllison"));
+            PersonList.Add(new Person(8, "LarryPage"));
+            PersonList.Add(new Person(9, "SergeyBrin"));
+            PersonList.Add(new Person(10, "MarkZuckerberg"));
 
-            msgQueue.Send(person, MessageQueueTransactionType.Automatic);
+            msgQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(List<Person>) });
+            msgQueue.Send(PersonList);
         }
 
         void ReceiveQueue()
         {
             Message msg = msgQueue.Receive();
-            Person p = msg.Body as Person;
-            if (p != null)
+            var personList = msg.Body as List<Person>;
+            if(personList!=null && personList.Any())
             {
-                Console.WriteLine("PId:{0},PName:{1}\n", p.PId, p.PName);
+                personList.ForEach(x =>
+                {
+                    Console.WriteLine(x.ToString());
+                });
             }
+             
         }
     }
 
@@ -52,5 +62,21 @@ namespace ConsoleApp182
     {
         public int PId { get; set; }
         public string PName { get; set; }
+
+        public Person(int pId,string pName)
+        {
+            PId = pId;
+            PName = pName;
+        }
+
+
+        public Person()
+        {
+
+        }
+        public override string ToString()
+        {
+            return string.Format("PId:{0},Name:{1}\n", PId, PName);
+        }
     }
 }
