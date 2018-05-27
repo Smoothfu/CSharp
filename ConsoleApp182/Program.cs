@@ -12,6 +12,7 @@ namespace ConsoleApp182
         static string queuePath=".\\Private$\\MQ";
         static List<Person> PersonList = new List<Person>();
         static MessageQueue msgQueue = new MessageQueue(queuePath);
+        static MessageQueue messageQueue;
         static void Main(string[] args)
         {
             Program obj = new Program();
@@ -21,6 +22,7 @@ namespace ConsoleApp182
                 MessageQueue.Create(queuePath);
             }
 
+            messageQueue = new MessageQueue(queuePath);
             obj.SendQueue();
             obj.ReceiveQueue();
             Console.ReadLine();
@@ -39,13 +41,13 @@ namespace ConsoleApp182
             PersonList.Add(new Person(9, "SergeyBrin"));
             PersonList.Add(new Person(10, "MarkZuckerberg"));
 
-            msgQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(List<Person>) });
-            msgQueue.Send(PersonList);
+            messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(List<Person>) });
+            messageQueue.Send(PersonList);
         }
 
         void ReceiveQueue()
         {
-            Message msg = msgQueue.Receive();
+            Message msg = messageQueue.Receive();
             var personList = msg.Body as List<Person>;
             if(personList!=null && personList.Any())
             {
@@ -53,8 +55,7 @@ namespace ConsoleApp182
                 {
                     Console.WriteLine(x.ToString());
                 });
-            }
-             
+            }             
         }
     }
 
