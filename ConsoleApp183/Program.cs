@@ -9,7 +9,7 @@ namespace ConsoleApp183
 {
     class Program
     {
-        static string queuePath = ".\\Private$\\myQueue";
+        static string queuePath = ".\\Private$\\mq";
         static void Main(string[] args)
         {
             if(!MessageQueue.Exists(queuePath))
@@ -50,10 +50,20 @@ namespace ConsoleApp183
         {
             MessageQueue labelQueue = new MessageQueue(queuePath);
             labelQueue.Purge();
-            labelQueue.Send("Queue by label");
+            for(int i=0;i<10;i++)
+            {
+                labelQueue.Send("Queue by label"+DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
+            }
 
-            Message msg = labelQueue.Receive();
-            Console.WriteLine(msg.Body.ToString());
+            Message[] allMessages = labelQueue.GetAllMessages();
+            if (allMessages != null && allMessages.Any())
+            {
+                foreach (Message msg in allMessages)
+                {
+                    Console.WriteLine(msg.Body.ToString());
+                }
+            }           
+            
 
         }
     }
