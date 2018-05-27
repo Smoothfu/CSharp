@@ -36,6 +36,12 @@ namespace ConsoleApp180
 
             //put message into queue
             queue.Send(msg);
+
+            Message receiveMsg = new Message();
+            receiveMsg = queue.Receive();
+            receiveMsg.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
+            string queueMsg = receiveMsg.Body.ToString();
+            Console.WriteLine(queueMsg);
         }        
     }
 }
