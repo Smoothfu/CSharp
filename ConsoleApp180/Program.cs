@@ -30,18 +30,41 @@ namespace ConsoleApp180
 
             //Create message
             Message msg = new Message();
-            msg.Body = "Cherish the present moment and make every second count";
+            Person p = new Person(1,"Fred");
 
-            msg.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
+            msg.Body = p;
+
+            //msg.Formatter = new XmlMessageFormatter(new Type[] { typeof(Person) });
 
             //put message into queue
             queue.Send(msg);
 
             Message receiveMsg = new Message();
             receiveMsg = queue.Receive();
-            receiveMsg.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
+            receiveMsg.Formatter = new XmlMessageFormatter(new Type[] { typeof(Person) });
             string queueMsg = receiveMsg.Body.ToString();
             Console.WriteLine(queueMsg);
         }        
+    }
+
+    public class Person
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public Person(int id,string name)
+        {
+            Id = id;
+            Name = name;
+        }
+        public Person()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Name:{0}\nId:{1}\n", Name, Id);
+        }
+
     }
 }
