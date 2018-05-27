@@ -10,13 +10,19 @@ namespace ConsoleApp183
     class Program
     {
         static string queuePath = ".\\Private$\\mq";
+        static string journalPath = ".\\Private$\\myMq";
         static void Main(string[] args)
         {
             if(!MessageQueue.Exists(queuePath))
             {
                 MessageQueue.Create(queuePath);
             }
-            SendByLabel();
+
+            if(!MessageQueue.Exists(journalPath))
+            {
+                MessageQueue.Create(journalPath);
+            }
+            MonitorComputerJournal();
             Console.ReadLine();
         }
 
@@ -65,6 +71,27 @@ namespace ConsoleApp183
             }           
             
 
+        }
+
+        //References computer journal queues.
+        static void MonitorComputerJournal()
+        {
+            MessageQueue computerQueue = new MessageQueue(journalPath,QueueAccessMode.SendAndReceive);
+            for(int i=0;i<10;i++)
+            {
+                computerQueue.Send("Queue by label" + DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
+            }
+
+            Message[] allMessages = computerQueue.GetAllMessages();
+
+            if(allMessages!=null && allMessages.Any())
+            {
+                foreach(Message msg in allMessages)
+                {
+                    Console.WriteLine(msg.Body.ToString());
+                }
+            }
+             
         }
     }
 }
