@@ -49,20 +49,12 @@ namespace ConsoleApp183
         static void SendByLabel()
         {
             MessageQueue labelQueue = new MessageQueue(queuePath);
+            labelQueue.Purge();
+            labelQueue.Send("Queue by label");
 
-            for(int i=0;i<1000;i++)
-            {
-                labelQueue.Send("Queue by label.Now is " + DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
-            }
+            Message msg = labelQueue.Receive();
+            Console.WriteLine(msg.Body.ToString());
 
-            Message[] allLabelMessages = labelQueue.GetAllMessages();
-            if(allLabelMessages!=null&& allLabelMessages.Any())
-            {
-               foreach(Message msg in allLabelMessages)
-                {
-                    Console.WriteLine(msg.Body.ToString());
-                }
-            }
         }
     }
 }
