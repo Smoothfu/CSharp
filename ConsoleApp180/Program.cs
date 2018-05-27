@@ -30,7 +30,7 @@ namespace ConsoleApp180
 
             //Create message
             Message msg = new Message();
-            msg.Body = "This is a fair world and everything depends on myself";
+            msg.Body = "Cherish the present moment and make every second count";
 
             msg.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
 
