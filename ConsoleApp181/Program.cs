@@ -12,7 +12,7 @@ namespace ConsoleApp181
         static string queuePath=@".\private$\myQueue";
         static void Main(string[] args)
         {
-            SendMessage();
+            ReceiveMessage();
             Console.ReadLine();
         }
 
