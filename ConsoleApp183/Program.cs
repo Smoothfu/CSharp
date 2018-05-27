@@ -4,13 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Messaging;
+using System.Threading;
 
 namespace ConsoleApp183
 {
     class Program
     {
         static string queuePath = ".\\Private$\\mq";
-        static string journalPath = ".\\Private$\\myMq";
+
+        //Define static class members.
+        static ManualResetEvent signal = new ManualResetEvent(false);
+        static int count = 0;
         static void Main(string[] args)
         {
             if(!MessageQueue.Exists(queuePath))
@@ -18,80 +22,47 @@ namespace ConsoleApp183
                 MessageQueue.Create(queuePath);
             }
 
-            if(!MessageQueue.Exists(journalPath))
-            {
-                MessageQueue.Create(journalPath);
-            }
-            MonitorComputerJournal();
+            MessageQueue msgQueue = new MessageQueue(queuePath);
+            msgQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
+
+            //Add an event handler for the ReceiveCompleted event.
+            msgQueue.ReceiveCompleted += MsgQueue_ReceiveCompleted;
+
+            //Begin the asynchronous receive operation.
+            msgQueue.BeginReceive();
+
+            signal.WaitOne();
+
+            //Do other work on the current thread.
+
+ 
             Console.ReadLine();
         }
 
-        //References public queues.
-        static void SendPublic()
+        private static void MsgQueue_ReceiveCompleted(object sender, ReceiveCompletedEventArgs e)
         {
-            MessageQueue myQueue = new MessageQueue(queuePath);
-            myQueue.Purge();
-            //for(int i=0;i<100;i++)
-            //{
-            //    myQueue.Send("Public queue by path name. Now is " + DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
-            //}
-            
-            myQueue.Formatter = new XmlMessageFormatter(new Type[] {typeof(string)});
-
-            Message[] allMessages = myQueue.GetAllMessages();
-
-            if(allMessages!=null && allMessages.Any())
+            try
             {
-                foreach(Message msg in allMessages)
+                //Connect to the queue.
+                MessageQueue mq = (MessageQueue)sender;
+
+                //End the asynchronous receive operation.
+                Message msg = mq.EndReceive(e.AsyncResult);
+                Console.WriteLine(msg.Body.ToString());
+
+                count += 1;
+                if(count==10)
                 {
-                    Console.WriteLine(msg.Body.ToString());
+                    signal.Set();
                 }
+
+                //Restart the asynchronous receive operation.
+                mq.BeginReceive();
             }
-            
-            return;
-        }
-
-        //References queues by label.
-        static void SendByLabel()
-        {
-            MessageQueue labelQueue = new MessageQueue(queuePath);
-            labelQueue.Purge();
-            for(int i=0;i<10;i++)
+            catch(MessageQueueException ex)
             {
-                labelQueue.Send("Queue by label"+DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
+                Console.WriteLine(ex.Message);
             }
-
-            Message[] allMessages = labelQueue.GetAllMessages();
-            if (allMessages != null && allMessages.Any())
-            {
-                foreach (Message msg in allMessages)
-                {
-                    Console.WriteLine(msg.Body.ToString());
-                }
-            }           
-            
-
-        }
-
-        //References computer journal queues.
-        static void MonitorComputerJournal()
-        {
-            MessageQueue computerQueue = new MessageQueue(journalPath,QueueAccessMode.SendAndReceive);
-            for(int i=0;i<10;i++)
-            {
-                computerQueue.Send("Queue by label" + DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
-            }
-
-            Message[] allMessages = computerQueue.GetAllMessages();
-
-            if(allMessages!=null && allMessages.Any())
-            {
-                foreach(Message msg in allMessages)
-                {
-                    Console.WriteLine(msg.Body.ToString());
-                }
-            }
-             
         }
     }
 }
