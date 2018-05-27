@@ -14,10 +14,8 @@ namespace ConsoleApp181
         {
             CreateQueue(queuePath);
             SendMessage();
-            ReceiveMessage();
-            ClearMessage();
-            SendMessage();
-            ReceiveMessage();
+            //ReceiveMessage();
+            GetAllMessages();
             Console.ReadLine();
         }
 
@@ -106,7 +104,7 @@ namespace ConsoleApp181
             for(int i=0;i<allMessages.Length;i++)
             {
                 allMessages[i].Formatter = formatter;
-                Console.WriteLine(allMessages[i].Body.ToString());
+                Console.WriteLine(allMessages[i].Body.ToString()+"Id "+allMessages[i].Id);
             }
         }
     }
