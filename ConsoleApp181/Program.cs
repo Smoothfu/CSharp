@@ -12,6 +12,11 @@ namespace ConsoleApp181
         static string queuePath=@".\private$\myQueue";
         static void Main(string[] args)
         {
+            CreateQueue(queuePath);
+            SendMessage();
+            ReceiveMessage();
+            ClearMessage();
+            SendMessage();
             ReceiveMessage();
             Console.ReadLine();
         }
@@ -43,7 +48,7 @@ namespace ConsoleApp181
                 //Connect to the local queue.
                 MessageQueue myQueue = new MessageQueue(queuePath);
                 Message msg = new Message();
-                msg.Body = "MessageQueue myQueue = new MessageQueue(queuePath);";
+                msg.Body = "Initializes a new instance of the System.Messaging.MessageQueue class that references the Message Queuing queue at the specified path.";
 
                 msg.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
 
