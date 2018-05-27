@@ -17,7 +17,6 @@ namespace ConsoleApp179
             Program obj = new Program();
             obj.SendMessageQueue();
             Console.ReadLine();
-
         }
 
         public void CreateMessageQueue()
@@ -37,9 +36,16 @@ namespace ConsoleApp179
         public void SendMessageQueue()
         {
             //设置消息队列路径
-            string path = ".\\private$\\test";
+            string path = ".\\private$\\mq";
 
             //创建指定路径下的消息队列对象
+            //判断路径是否存在
+            if (!MessageQueue.Exists(path))
+            {
+                //如果不存在就创建
+                MessageQueue.Create(path);
+            }
+
             MessageQueue messageQueue = new MessageQueue(path);
             messageQueue.Send("Send By Message Queue!");
 
@@ -49,8 +55,7 @@ namespace ConsoleApp179
             //获取Message内的内容
             string messgae = msg.Body.ToString();
 
-            MessageBox.Show(messgae);           
-             
+            MessageBox.Show(messgae);                     
         }
 
         //Reference public queues.
