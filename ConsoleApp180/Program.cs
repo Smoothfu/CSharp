@@ -50,6 +50,12 @@ namespace ConsoleApp180
             queue.Send(msg);
 
             var allMessages = queue.GetAllMessages();
+            var allQueues = MessageQueue.GetPrivateQueuesByMachine(Environment.MachineName);
+
+            foreach(var aq in allQueues)
+            {
+                Console.WriteLine(aq.CreateTime + "\t" + aq.Id + "\t"+aq.Path);
+            }
 
             Message receiveMsg = new Message();
             receiveMsg = queue.Receive();
