@@ -46,7 +46,7 @@ namespace ConsoleApp181
                 //Connect to the local queue.
                 MessageQueue myQueue = new MessageQueue(queuePath);
                 Message msg = new Message();
-                msg.Body = "Initializes a new instance of the System.Messaging.MessageQueue class that references the Message Queuing queue at the specified path.";
+                msg.Body = "Now is "+DateTime.Now.ToString("yyyyMMdd-HHmmssfff");
 
                 msg.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
 
@@ -98,14 +98,25 @@ namespace ConsoleApp181
         {
             //Connect to the local queue
             MessageQueue myQueue = new MessageQueue(queuePath);
+            Console.WriteLine("The Path of myQueue is " + myQueue.Path + "\n\n"); 
             Message[] allMessages = myQueue.GetAllMessages();
             XmlMessageFormatter formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
 
+            Console.WriteLine("The message in the Message Queue:\n");
             for(int i=0;i<allMessages.Length;i++)
             {
                 allMessages[i].Formatter = formatter;
-                Console.WriteLine(allMessages[i].Body.ToString()+"Id "+allMessages[i].Id);
+                Console.WriteLine(allMessages[i].Body.ToString()+" Id "+allMessages[i].Id);
             }
+
+            Console.WriteLine("\n\n\n\n\n\n\n\n");
+
+            var firstMsg = myQueue.Peek();
+            
+            firstMsg.Formatter = formatter;
+
+            Console.WriteLine("The first message is {0},and its id is {1}\n", firstMsg.Body.ToString(), firstMsg.Id);
+
         }
     }
 }
