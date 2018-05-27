@@ -28,7 +28,8 @@ namespace ConsoleApp180
                 new Person(3, "Michael Bloomberg")
             };
 
-            string mqPath = ".\\Private$\\MyQueue";
+            string mqPath = ".\\Private$\\MyQueue2";
+            MessageQueue.Delete(mqPath);
             if(!MessageQueue.Exists(mqPath))
             {
                 MessageQueue.Create(mqPath);
@@ -48,6 +49,8 @@ namespace ConsoleApp180
             //put message into queue
             queue.Send(msg);
 
+            var allMessages = queue.GetAllMessages();
+
             Message receiveMsg = new Message();
             receiveMsg = queue.Receive();
             receiveMsg.Formatter = new XmlMessageFormatter(new Type[] { typeof(List<Person>) });
@@ -59,12 +62,9 @@ namespace ConsoleApp180
                 {
                     Console.WriteLine(x.ToString());
                 });
-            }
-           
+            }          
             
-        }
-
-        
+        }        
     }
 
     public class Person
