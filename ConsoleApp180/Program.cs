@@ -24,12 +24,18 @@ namespace ConsoleApp180
             {
                 MessageQueue.Create(mqPath);
             }
-            MessageQueue mq = new MessageQueue(mqPath);
-            mq.Send("Private queue by path name!");
 
-            Message msg = mq.Receive();
-            string msgString = msg.Body.ToString();
-            Console.WriteLine(msgString);         
+            //Open queue.
+            MessageQueue queue = new MessageQueue(mqPath);
+
+            //Create message
+            Message msg = new Message();
+            msg.Body = "This is a fair world and everything depends on myself";
+
+            msg.Formatter = new XmlMessageFormatter(new Type[] { typeof(string) });
+
+            //put message into queue
+            queue.Send(msg);
         }        
     }
 }
