@@ -16,7 +16,7 @@ namespace ConsoleApp183
             {
                 MessageQueue.Create(queuePath);
             }
-            SendPublic();
+            SendByLabel();
             Console.ReadLine();
         }
 
@@ -24,10 +24,11 @@ namespace ConsoleApp183
         static void SendPublic()
         {
             MessageQueue myQueue = new MessageQueue(queuePath);
-            for(int i=0;i<100;i++)
-            {
-                myQueue.Send("Public queue by path name. Now is " + DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
-            }
+            myQueue.Purge();
+            //for(int i=0;i<100;i++)
+            //{
+            //    myQueue.Send("Public queue by path name. Now is " + DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
+            //}
             
             myQueue.Formatter = new XmlMessageFormatter(new Type[] {typeof(string)});
 
@@ -42,6 +43,26 @@ namespace ConsoleApp183
             }
             
             return;
+        }
+
+        //References queues by label.
+        static void SendByLabel()
+        {
+            MessageQueue labelQueue = new MessageQueue(queuePath);
+
+            for(int i=0;i<1000;i++)
+            {
+                labelQueue.Send("Queue by label.Now is " + DateTime.Now.ToString("yyyyMMdd-HHmmssfff"));
+            }
+
+            Message[] allLabelMessages = labelQueue.GetAllMessages();
+            if(allLabelMessages!=null&& allLabelMessages.Any())
+            {
+               foreach(Message msg in allLabelMessages)
+                {
+                    Console.WriteLine(msg.Body.ToString());
+                }
+            }
         }
     }
 }
