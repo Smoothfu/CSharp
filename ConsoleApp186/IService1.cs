@@ -16,5 +16,8 @@ namespace ConsoleApp186
 
         [OperationContract]
         string Add(int x, int y);
+
+        [OperationContract]
+        int AddMethod(int x, int y);
     }
 }

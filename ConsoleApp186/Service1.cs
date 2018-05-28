@@ -21,5 +21,10 @@ namespace ConsoleApp186
         {
             return string.Format("{0}+{1}={2}", x, y, x + y);
         }
+
+        public int AddMethod(int x, int y)
+        {
+            return x + y;
+        }
     }
 }
