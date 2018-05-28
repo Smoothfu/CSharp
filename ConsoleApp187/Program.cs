@@ -24,7 +24,7 @@ namespace ConsoleApp187
             Console.WriteLine("The {0} result is {1}\n", 100, res);
 
             string addResult=proxy.Add(10000, 100000);
-            Console.WriteLine(addResult);
+            Console.WriteLine(addResult+"\n");
 
             Task<int> intAddResult =proxy.AddMethodAsync(100000, 10000000);
 
