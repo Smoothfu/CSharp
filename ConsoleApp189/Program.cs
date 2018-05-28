@@ -13,7 +13,8 @@ namespace ConsoleApp189
     {
         static void Main(string[] args)
         {
-            int[] arr = paramsDemo();
+            int[] bar = { 2, 324, 43, 34 };
+            int[] arr = paramsDemo(bar);
             Console.WriteLine(arr.Length);
 
             foreach(int a in arr)
