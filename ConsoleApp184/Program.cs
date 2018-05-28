@@ -31,6 +31,7 @@ namespace ConsoleApp184
         {
             var cache = RedisConnectorHelper.Connection.GetDatabase();
             
+            
             for(int i=0;i<devicesCount;i++)
             {
                 var value = cache.StringGet($"Device_Status:{i}");
