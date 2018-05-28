@@ -14,7 +14,7 @@ namespace ConsoleApp184
 {
     class Program
     {
-        static int devicesCount = 100000;
+        static int devicesCount = 100;
         static void Main(string[] args)
         {
             var obj = new Program();
