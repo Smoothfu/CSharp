@@ -22,7 +22,7 @@ namespace ConsoleApp185
                 string selectSQL = "select * from AdventureWorks2014.sales.vStoreWithContacts;select * from AdventureWorks2014.Production.ProductCostHistory;select * from AdventureWorks2014.Sales.vStoreWithDemographics";
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSQL, conn);
                 DataSet ds = new DataSet("SqlDataAdapterDataSet");
-                sqlDataAdapter.Fill(ds);
+                int affectedRows=sqlDataAdapter.Fill(ds);
 
                 for(int i=0;i<ds.Tables.Count;i++)
                 {                   
@@ -47,6 +47,8 @@ namespace ConsoleApp185
                         Console.WriteLine("\n\n\n\n\n");
                     }
                 }
+
+                Console.WriteLine("\n\n\nThere are {0} rows added in the DataSet!\n", affectedRows);
             }
 
             conn.Close();
