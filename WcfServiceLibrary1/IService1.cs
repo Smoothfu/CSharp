@@ -22,6 +22,10 @@ namespace WcfServiceLibrary1
         [OperationContract]
 
         string AddMethod(int x, int y);
+
+        [OperationContract]
+
+        List<Inventory> GetAllInventory();
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

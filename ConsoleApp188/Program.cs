@@ -9,14 +9,20 @@ namespace ConsoleApp188
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
+            List<Inventory> inventoryList = new List<Inventory>();
             WcfServiceLibrary1.Service1 obj = new Service1();
-            string strResult = obj.GetData(10000000);
-            Console.WriteLine(strResult);
-            Console.WriteLine();
-            string addStringResult = obj.AddMethod(1000000, 100000);
-            Console.WriteLine(addStringResult);
+            inventoryList=obj.GetAllInventory();
+            if(inventoryList!=null && inventoryList.Any())
+            {
+                inventoryList.ForEach(x =>
+                {
+                    Console.WriteLine(x.ToString());
+                });
+            }
+
             Console.ReadLine();
         }
     }
