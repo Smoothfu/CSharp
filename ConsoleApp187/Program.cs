@@ -11,6 +11,7 @@ namespace ConsoleApp187
     {
         static void Main(string[] args)
         {
+            System.Diagnostics.Process.Start(@"D:\C\ConsoleApp186\ConsoleApp186\bin\Debug\ConsoleApp186.exe");
             MainAsync(null);
             Console.ReadLine();
         }
