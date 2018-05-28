@@ -21,7 +21,7 @@ namespace ConsoleApp185
             {
                 string selectSQL = "select * from AdventureWorks2014.sales.vStoreWithContacts;select * from AdventureWorks2014.Production.ProductCostHistory;select * from AdventureWorks2014.Sales.vStoreWithDemographics";
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSQL, conn);
-                DataSet ds = new DataSet();
+                DataSet ds = new DataSet("SqlDataAdapterDataSet");
                 sqlDataAdapter.Fill(ds);
 
                 for(int i=0;i<ds.Tables.Count;i++)
