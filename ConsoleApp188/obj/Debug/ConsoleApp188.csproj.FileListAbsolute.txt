@@ -1,0 +1,10 @@
+D:\C\ConsoleApp188\ConsoleApp188\bin\Debug\ConsoleApp188.exe.config
+D:\C\ConsoleApp188\ConsoleApp188\bin\Debug\ConsoleApp188.exe
+D:\C\ConsoleApp188\ConsoleApp188\bin\Debug\ConsoleApp188.pdb
+D:\C\ConsoleApp188\ConsoleApp188\obj\Debug\ConsoleApp188.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp188\ConsoleApp188\obj\Debug\ConsoleApp188.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp188\ConsoleApp188\obj\Debug\ConsoleApp188.exe
+D:\C\ConsoleApp188\ConsoleApp188\obj\Debug\ConsoleApp188.pdb
+D:\C\ConsoleApp188\ConsoleApp188\bin\Debug\WcfServiceLibrary1.dll
+D:\C\ConsoleApp188\ConsoleApp188\bin\Debug\WcfServiceLibrary1.pdb
+D:\C\ConsoleApp188\ConsoleApp188\bin\Debug\WcfServiceLibrary1.dll.config
