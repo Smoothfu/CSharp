@@ -11,7 +11,7 @@ namespace ConsoleApp191
     {
         static void Main(string[] args)
         {
-            WcfService1.Service1 obj = new Service1();
+            WcfService1.AddService obj = new AddService();
             string firstResult = obj.GetData(134324534);
             Console.WriteLine(firstResult);
 
