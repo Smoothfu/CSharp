@@ -158,7 +158,7 @@ namespace WpfApp1.ViewModel
                     var tempCollection = PersonDGList;
                     PersonDGList = null;
                     PersonDGList = new List<PersonDG>(tempCollection); 
-                }));
+                }),DispatcherPriority.Normal);
             }
             catch(Exception ex)
             {
