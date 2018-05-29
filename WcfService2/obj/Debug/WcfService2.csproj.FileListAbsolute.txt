@@ -1,0 +1,6 @@
+D:\C\WcfService2\WcfService2\bin\WcfService2.dll.config
+D:\C\WcfService2\WcfService2\bin\WcfService2.dll
+D:\C\WcfService2\WcfService2\bin\WcfService2.pdb
+D:\C\WcfService2\WcfService2\obj\Debug\WcfService2.csproj.CoreCompileInputs.cache
+D:\C\WcfService2\WcfService2\obj\Debug\WcfService2.dll
+D:\C\WcfService2\WcfService2\obj\Debug\WcfService2.pdb
