@@ -1,7 +1,17 @@
 D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\WpfApp1.exe.config
 D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\WpfApp1.exe
 D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\WpfApp1.pdb
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\CommonServiceLocator.dll
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\Prism.dll
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\Prism.Unity.Wpf.dll
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\Prism.Wpf.dll
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\System.Windows.Interactivity.dll
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\Unity.Abstractions.dll
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\Unity.Container.dll
 D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\WcfServiceLibrary1.dll
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\Prism.xml
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\Prism.Unity.Wpf.xml
+D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\Prism.Wpf.xml
 D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\WcfServiceLibrary1.pdb
 D:\C\WcfServiceLibrary1\WpfApp1\bin\Debug\WcfServiceLibrary1.dll.config
 D:\C\WcfServiceLibrary1\WpfApp1\obj\Debug\WpfApp1.csprojResolveAssemblyReference.cache

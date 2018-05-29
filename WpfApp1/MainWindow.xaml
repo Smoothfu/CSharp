@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid x:Name="dg" ItemsSource="{Binding PersonDGList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CanUserReorderColumns="True" CanUserSortColumns="True"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="dg" ItemsSource="{Binding PersonDGList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CanUserReorderColumns="True" CanUserSortColumns="True" SelectedItem="{Binding SelectedPersonDG}"/>
+        <Button Grid.Row="1" Grid.Column="0" Content="Update"  BorderBrush="Black" BorderThickness="5" x:Name="btnQuery" Command="{Binding QueryCommand}"/>
     </Grid>
 </Window>

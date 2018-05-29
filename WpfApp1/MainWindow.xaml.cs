@@ -25,11 +25,6 @@ namespace WpfApp1
         {
             InitializeComponent();
             this.DataContext = new PersonViewModel();
-        }
-
-        private void dg_CurrentCellChanged(object sender, EventArgs e)
-        {
-
-        }
+        }         
     }
 }
