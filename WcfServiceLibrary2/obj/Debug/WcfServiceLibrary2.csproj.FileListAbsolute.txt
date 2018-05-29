@@ -1,0 +1,6 @@
+D:\C\WcfServiceLibrary2\WcfServiceLibrary2\bin\Debug\WcfServiceLibrary2.dll.config
+D:\C\WcfServiceLibrary2\WcfServiceLibrary2\bin\Debug\WcfServiceLibrary2.dll
+D:\C\WcfServiceLibrary2\WcfServiceLibrary2\bin\Debug\WcfServiceLibrary2.pdb
+D:\C\WcfServiceLibrary2\WcfServiceLibrary2\obj\Debug\WcfServiceLibrary2.csproj.CoreCompileInputs.cache
+D:\C\WcfServiceLibrary2\WcfServiceLibrary2\obj\Debug\WcfServiceLibrary2.dll
+D:\C\WcfServiceLibrary2\WcfServiceLibrary2\obj\Debug\WcfServiceLibrary2.pdb
