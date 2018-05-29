@@ -12,9 +12,8 @@ namespace WpfApp1.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-            if(handler!=null)
+        {             
+            if(PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
