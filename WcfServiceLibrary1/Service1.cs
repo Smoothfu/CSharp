@@ -42,7 +42,7 @@ namespace WcfServiceLibrary1
 
             if(conn.State==ConnectionState.Open)
             {
-                string selectSQL = "select BusinessEntityID,PersonType,NameStyle,Title,FirstName,MiddleName,LastName,Suffix,EmailPromotion,AdditionalContactInfo,Demographics,rowguid,ModifiedDate from AdventureWorks2014.Person.Person";
+                string selectSQL = "select BusinessEntityID,PersonType,NameStyle,Title,FirstName,MiddleName,LastName,Suffix,EmailPromotion,AdditionalContactInfo,Demographics,rowguid,ModifiedDate from AdventureWorks2014.Person.Person where AdditionalContactInfo is not null";
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSQL, conn);
                 DataSet ds = new DataSet("AdventureWorks2014.Person.Person");
