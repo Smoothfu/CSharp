@@ -11,21 +11,23 @@ namespace WpfApp1.ViewModel
     public class PersonViewModel:BaseNotifyPropertyChanged
     {
         public PersonViewModel()
-        { 
-            _PersonDGList = new List<PersonDG>();            
-            
+        {
+            InitData();                     
+        }
+
+        private void InitData()
+        {
+            _PersonDGList = new List<PersonDG>();
+
             WcfServiceLibrary1.Service1 obj = new Service1();
             var serverPersonList = obj.GetPersonList();
             if (serverPersonList != null && serverPersonList.Any())
             {
                 serverPersonList.ForEach(x =>
                 {
-                    var personDGObj = ConvertFromServerPerson(x);
-                    PersonDGList.Add(personDGObj);
+                    PersonDGList.Add(ConvertFromServerPerson(x));
                 });
             }
-
-            var finalResult = PersonDGList;
         }
 
         private PersonDG ConvertFromServerPerson(Person serverPerson)
