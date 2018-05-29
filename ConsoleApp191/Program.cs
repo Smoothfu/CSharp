@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WcfService1;
- 
 
 namespace ConsoleApp191
 {
@@ -13,8 +12,11 @@ namespace ConsoleApp191
         static void Main(string[] args)
         {
             WcfService1.Service1 obj = new Service1();
-            string stringResult = obj.AddMethod(1323532, 34546456);
-            Console.WriteLine(stringResult);
+            string firstResult = obj.GetData(134324534);
+            Console.WriteLine(firstResult);
+
+            string secondResult = obj.AddMethod(45324, 345234534);
+            Console.WriteLine(secondResult);
             Console.ReadLine();
         }
     }
