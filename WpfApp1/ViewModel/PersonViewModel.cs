@@ -35,22 +35,22 @@ namespace WpfApp1.ViewModel
                 return null;
             }
 
-            var personDGClient = new PersonDG();
-            personDGClient.BusinessEntityID = serverPerson.BusinessEntityID;
-            personDGClient.PersonType = serverPerson.PersonType;
-            personDGClient.NameStyle = serverPerson.NameStyle;
-            personDGClient.Title = serverPerson.Title;
-            personDGClient.FirstName = serverPerson.FirstName;
-            personDGClient.MiddleName = serverPerson.MiddleName;
-            personDGClient.LastName = serverPerson.LastName;
-            personDGClient.Suffix = serverPerson.Suffix;
-            personDGClient.EmailPromotion = serverPerson.EmailPromotion;
-            personDGClient.AdditionalContactInfo = serverPerson.AdditionalContactInfo;
-            personDGClient.Demographics = serverPerson.Demographics;
-            personDGClient.RowGuid = serverPerson.RowGuid;
-            personDGClient.ModifiedDate = serverPerson.ModifiedDate;
-
-            return personDGClient;         
+            return new PersonDG()
+            {
+                BusinessEntityID = serverPerson.BusinessEntityID,
+                PersonType = serverPerson.PersonType,
+                NameStyle = serverPerson.NameStyle,
+                Title = serverPerson.Title,
+                FirstName = serverPerson.FirstName,
+                MiddleName = serverPerson.MiddleName,
+                LastName = serverPerson.LastName,
+                Suffix = serverPerson.Suffix,
+                EmailPromotion = serverPerson.EmailPromotion,
+                AdditionalContactInfo = serverPerson.AdditionalContactInfo,
+                Demographics = serverPerson.Demographics,
+                RowGuid = serverPerson.RowGuid,
+                ModifiedDate = serverPerson.ModifiedDate
+            };    
         }
 
         private List<PersonDG> _PersonDGList;
