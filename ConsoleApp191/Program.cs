@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WcfService1;
  
 
 namespace ConsoleApp191
@@ -11,9 +12,9 @@ namespace ConsoleApp191
     {
         static void Main(string[] args)
         {
-            ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
-            string strResult=client.AddMethod(1000000, 23462456);
-            Console.WriteLine(strResult);
+            WcfService1.Service1 obj = new Service1();
+            string stringResult = obj.AddMethod(1323532, 34546456);
+            Console.WriteLine(stringResult);
             Console.ReadLine();
         }
     }

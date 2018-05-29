@@ -4,3 +4,7 @@ D:\C\ConsoleApp191\ConsoleApp191\bin\Debug\ConsoleApp191.pdb
 D:\C\ConsoleApp191\ConsoleApp191\obj\Debug\ConsoleApp191.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp191\ConsoleApp191\obj\Debug\ConsoleApp191.exe
 D:\C\ConsoleApp191\ConsoleApp191\obj\Debug\ConsoleApp191.pdb
+D:\C\ConsoleApp191\ConsoleApp191\bin\Debug\WcfService1.dll
+D:\C\ConsoleApp191\ConsoleApp191\bin\Debug\WcfService1.pdb
+D:\C\ConsoleApp191\ConsoleApp191\bin\Debug\WcfService1.dll.config
+D:\C\ConsoleApp191\ConsoleApp191\obj\Debug\ConsoleApp191.csprojResolveAssemblyReference.cache
