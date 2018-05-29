@@ -147,18 +147,18 @@ namespace WpfApp1.ViewModel
         {
             try
             {
-                Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
+                Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
                 {
                     int index = PersonDGList.IndexOf(SelectedPersonDG);
-                    if(index>-1)
+                    if (index > -1)
                     {
                         PersonDGList.RemoveAt(index);
-                        PersonDGList.Insert(index, SelectedPersonDG);                        
+                        PersonDGList.Insert(index, SelectedPersonDG);
                     }
                     var tempCollection = PersonDGList;
                     PersonDGList = null;
-                    PersonDGList = new List<PersonDG>(tempCollection); 
-                }),DispatcherPriority.Normal);
+                    PersonDGList = new List<PersonDG>(tempCollection);
+                }),DispatcherPriority.Normal, null);               
             }
             catch(Exception ex)
             {
