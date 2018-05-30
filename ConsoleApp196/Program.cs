@@ -22,7 +22,8 @@ namespace ConsoleApp196
 
             //Invoke Add() on a secondary thread.
             AddDel del = new AddDel(AddReturn);
-            IAsyncResult iftAR = del.BeginInvoke(10, 10, null, null);
+            AsyncCallback callback = new AsyncCallback(BeginInvokeMethodFinished);
+            IAsyncResult iftAR = del.BeginInvoke(10, 10, callback, null);
 
             //Do other work on primary thread...
             Console.WriteLine("Doing more work in Main()!");
