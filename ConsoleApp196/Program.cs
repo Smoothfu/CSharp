@@ -25,6 +25,12 @@ namespace ConsoleApp196
             AsyncCallback callback = new AsyncCallback(BeginInvokeMethodFinished);
             IAsyncResult iftAR = del.BeginInvoke(10, 10, callback, null);
 
+            //This message will keep printing until the method is finished,
+            while (!iftAR.IsCompleted)
+            {
+                Console.WriteLine("Doing more work in Main()！\n");
+            }
+
             //Do other work on primary thread...
             Console.WriteLine("Doing more work in Main()!");
 
