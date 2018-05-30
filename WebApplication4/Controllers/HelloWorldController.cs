@@ -19,9 +19,9 @@ namespace WebApplication4.Controllers
             return "OK";
         }
 
-        public string Get(string id)
+        public string Get(string name)
         {
-            return "Get: " + id;
+            return "Get: " + name;
         }
 
         public string Post()
