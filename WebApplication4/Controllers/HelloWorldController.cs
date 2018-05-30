@@ -12,7 +12,31 @@ namespace WebApplication4.Controllers
         [HttpGet]
         public string SayHello()
         {
-            return "Hello World,this is the first WebAPI";
+            return "Cherish the present moment!";
+        }
+        public string Get()
+        {
+            return "OK";
+        }
+
+        public string Get(string id)
+        {
+            return "Get: " + id;
+        }
+
+        public string Post()
+        {
+            return "post";
+        }
+
+        public string Put()
+        {
+            return "Put";
+        }
+
+        public string Delete()
+        {
+            return "delete";
         }
     }
 }
