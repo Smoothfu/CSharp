@@ -12,7 +12,15 @@ namespace ConsoleApp196
     {
         static void Main(string[] args)
         {
-            ExtractCurrentThreadContext();
+            Thread thread = new Thread(() =>
+              {
+                  ExtractAppDomainHostingThread();
+                  Console.WriteLine("\n\n\n\n\n");
+                  ExtractCurrentThreadContext();
+                  Console.WriteLine("\n\n\n\n\n");
+                  ExtractExecutingThread();
+              });
+            thread.Start();
             Console.ReadLine();
         }
 
