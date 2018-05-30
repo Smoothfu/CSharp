@@ -14,12 +14,15 @@ namespace ConsoleApp196
         static void Main(string[] args)
         {
             BinaryOp op = new BinaryOp(AddMethod);
-            IAsyncResult asyncResult = op.BeginInvoke(11345134, 34253453, new AsyncCallback(BeginInvokeMethodFinished), null);
-            string finalResult = op.EndInvoke(asyncResult);
+            IAsyncResult asyncResult = op.BeginInvoke(11345134, 34253453, new AsyncCallback(BeginInvokeMethodFinished), "This is the state message");
+            string finalResult = op.Invoke(345345246, 34562456);
             Console.WriteLine(finalResult);
 
-            string stringResult = op.Invoke(24334534, 345234534);
-            Console.WriteLine(stringResult);
+            Console.WriteLine("\n\n\n\n\n");
+            string secondResult = op.EndInvoke(asyncResult);
+            Console.WriteLine("This is the state message:" + asyncResult.AsyncState.ToString());
+            Console.WriteLine(secondResult);
+          
             Console.ReadLine();
         }
 
