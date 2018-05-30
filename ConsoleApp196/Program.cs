@@ -10,10 +10,12 @@ namespace ConsoleApp196
 {
     class Program
     {
+        public delegate void  BinaryOp(int x, int y);
         static void Main(string[] args)
         {
-            Thread thread = new Thread(new ThreadStart(ExtractExecutingThread));
-            thread.Start();
+            BinaryOp op = new BinaryOp(Add);
+            op(1321245, 452346);
+
             Console.ReadLine();
         }
 
@@ -56,6 +58,11 @@ namespace ConsoleApp196
             Console.WriteLine(ad.IsFullyTrusted);
             Console.WriteLine(ad.IsHomogenous);
             Console.WriteLine();
+        }
+
+        static void Add(int x,int y)
+        {
+            Console.WriteLine("{0}+{1}={2}", x, y, x + y);
         }
     }
 }
