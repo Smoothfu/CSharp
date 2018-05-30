@@ -11,6 +11,8 @@ namespace ConsoleApp196
     class Program
     {
         public delegate string   BinaryOp(int x, int y);
+
+        public delegate int AddDel(int x, int y);
         static void Main(string[] args)
         {
             Console.WriteLine("*****Synch Delegate Review*****");
@@ -19,13 +21,12 @@ namespace ConsoleApp196
             Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
 
             //Invoke Add() in a synchronous manner.
-            BinaryOp op = new BinaryOp(AddMethod);
+            AddDel addDel = new AddDel(AddReturn);
 
-            //Could also write op.Invoke(100443,345234);
-            string answer = op.Invoke(24524655, 3452345);
+            int answer = addDel(2352346, 356345735);
 
-            //These lines will not execute until the AddMethod() has completed.
-            Console.WriteLine("Doing more work in Main()!\n");
+            //These lines will not execute until the AddReturn() method has completed.
+            Console.WriteLine("Doing more work in Main()!");
             Console.WriteLine(answer);
 
             Console.ReadLine();
@@ -85,6 +86,16 @@ namespace ConsoleApp196
         static void BeginInvokeMethodFinished(IAsyncResult ar)
         {
             Console.WriteLine("The BeginInvoke method has been completed!");
+        }
+
+        static int AddReturn(int x,int y)
+        {
+            //Print out the ID of the executing thread.
+            Console.WriteLine("AddReturn() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Pasuse to simulate a lengthy operation.
+            Thread.Sleep(5000);
+            return x + y;
         }
     }
 }
