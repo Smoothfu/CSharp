@@ -1,0 +1,17 @@
+D:\C\WebApplication4\WebApplication4\bin\WebApplication4.dll.config
+D:\C\WebApplication4\WebApplication4\bin\WebApplication4.dll
+D:\C\WebApplication4\WebApplication4\bin\WebApplication4.pdb
+D:\C\WebApplication4\WebApplication4\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\C\WebApplication4\WebApplication4\bin\Newtonsoft.Json.dll
+D:\C\WebApplication4\WebApplication4\bin\System.Net.Http.Formatting.dll
+D:\C\WebApplication4\WebApplication4\bin\System.Web.Http.dll
+D:\C\WebApplication4\WebApplication4\bin\System.Web.Http.WebHost.dll
+D:\C\WebApplication4\WebApplication4\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\C\WebApplication4\WebApplication4\bin\Newtonsoft.Json.xml
+D:\C\WebApplication4\WebApplication4\bin\System.Net.Http.Formatting.xml
+D:\C\WebApplication4\WebApplication4\bin\System.Web.Http.xml
+D:\C\WebApplication4\WebApplication4\bin\System.Web.Http.WebHost.xml
+D:\C\WebApplication4\WebApplication4\obj\Debug\WebApplication4.csprojResolveAssemblyReference.cache
+D:\C\WebApplication4\WebApplication4\obj\Debug\WebApplication4.csproj.CoreCompileInputs.cache
+D:\C\WebApplication4\WebApplication4\obj\Debug\WebApplication4.dll
+D:\C\WebApplication4\WebApplication4\obj\Debug\WebApplication4.pdb
