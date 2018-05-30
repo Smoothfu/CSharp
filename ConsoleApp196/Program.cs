@@ -10,12 +10,16 @@ namespace ConsoleApp196
 {
     class Program
     {
-        public delegate void  BinaryOp(int x, int y);
+        public delegate string   BinaryOp(int x, int y);
         static void Main(string[] args)
         {
-            BinaryOp op = new BinaryOp(Add);
-            op(1321245, 452346);
+            BinaryOp op = new BinaryOp(AddMethod);
+            IAsyncResult asyncResult = op.BeginInvoke(11345134, 34253453, new AsyncCallback(BeginInvokeMethodFinished), null);
+            string finalResult = op.EndInvoke(asyncResult);
+            Console.WriteLine(finalResult);
 
+            string stringResult = op.Invoke(24334534, 345234534);
+            Console.WriteLine(stringResult);
             Console.ReadLine();
         }
 
@@ -63,6 +67,16 @@ namespace ConsoleApp196
         static void Add(int x,int y)
         {
             Console.WriteLine("{0}+{1}={2}", x, y, x + y);
+        }
+
+        static string AddMethod(int x,int y)
+        {
+            return string.Format("{0}+{1}={2}", x, y, x + y);
+        }
+
+        static void BeginInvokeMethodFinished(IAsyncResult ar)
+        {
+            Console.WriteLine("The BeginInvoke method has been completed!");
         }
     }
 }
