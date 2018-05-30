@@ -1,0 +1,17 @@
+D:\C\ConsoleApp195\ProductsApp\bin\ProductsApp.dll.config
+D:\C\ConsoleApp195\ProductsApp\bin\ProductsApp.dll
+D:\C\ConsoleApp195\ProductsApp\bin\ProductsApp.pdb
+D:\C\ConsoleApp195\ProductsApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\C\ConsoleApp195\ProductsApp\bin\Newtonsoft.Json.dll
+D:\C\ConsoleApp195\ProductsApp\bin\System.Net.Http.Formatting.dll
+D:\C\ConsoleApp195\ProductsApp\bin\System.Web.Http.dll
+D:\C\ConsoleApp195\ProductsApp\bin\System.Web.Http.WebHost.dll
+D:\C\ConsoleApp195\ProductsApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\C\ConsoleApp195\ProductsApp\bin\Newtonsoft.Json.xml
+D:\C\ConsoleApp195\ProductsApp\bin\System.Net.Http.Formatting.xml
+D:\C\ConsoleApp195\ProductsApp\bin\System.Web.Http.xml
+D:\C\ConsoleApp195\ProductsApp\bin\System.Web.Http.WebHost.xml
+D:\C\ConsoleApp195\ProductsApp\obj\Debug\ProductsApp.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp195\ProductsApp\obj\Debug\ProductsApp.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp195\ProductsApp\obj\Debug\ProductsApp.dll
+D:\C\ConsoleApp195\ProductsApp\obj\Debug\ProductsApp.pdb
