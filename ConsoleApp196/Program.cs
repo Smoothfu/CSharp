@@ -15,18 +15,20 @@ namespace ConsoleApp196
         public delegate int AddDel(int x, int y);
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synch Delegate Review*****");
+            Console.WriteLine("*****Async Delegate Invocation*****");
 
             //Print out the ID of the executing thread.
-            Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("Main() invoked on thread {0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            //Invoke Add() in a synchronous manner.
-            AddDel addDel = new AddDel(AddReturn);
+            //Invoke Add() on a secondary thread.
+            AddDel del = new AddDel(AddReturn);
+            IAsyncResult iftAR = del.BeginInvoke(10, 10, null, null);
 
-            int answer = addDel(2352346, 356345735);
-
-            //These lines will not execute until the AddReturn() method has completed.
+            //Do other work on primary thread...
             Console.WriteLine("Doing more work in Main()!");
+
+            //Obatin the result of the Add() method when ready.
+            int answer = del.EndInvoke(iftAR);
             Console.WriteLine(answer);
 
             Console.ReadLine();
