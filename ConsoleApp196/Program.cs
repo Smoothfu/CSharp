@@ -13,16 +13,21 @@ namespace ConsoleApp196
         public delegate string   BinaryOp(int x, int y);
         static void Main(string[] args)
         {
-            BinaryOp op = new BinaryOp(AddMethod);
-            IAsyncResult asyncResult = op.BeginInvoke(11345134, 34253453, new AsyncCallback(BeginInvokeMethodFinished), "This is the state message");
-            string finalResult = op.Invoke(345345246, 34562456);
-            Console.WriteLine(finalResult);
+            Console.WriteLine("*****Synch Delegate Review*****");
 
-            Console.WriteLine("\n\n\n\n\n");
-            string secondResult = op.EndInvoke(asyncResult);
-            Console.WriteLine("This is the state message:" + asyncResult.AsyncState.ToString());
-            Console.WriteLine(secondResult);
-          
+            //Print out the ID of the executing thread.
+            Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Invoke Add() in a synchronous manner.
+            BinaryOp op = new BinaryOp(AddMethod);
+
+            //Could also write op.Invoke(100443,345234);
+            string answer = op.Invoke(24524655, 3452345);
+
+            //These lines will not execute until the AddMethod() has completed.
+            Console.WriteLine("Doing more work in Main()!\n");
+            Console.WriteLine(answer);
+
             Console.ReadLine();
         }
 
