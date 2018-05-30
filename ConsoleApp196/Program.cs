@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.Remoting.Contexts;
 
 namespace ConsoleApp196
 {
@@ -11,7 +12,7 @@ namespace ConsoleApp196
     {
         static void Main(string[] args)
         {
-            ExtractAppDomainHostingThread();
+            ExtractCurrentThreadContext();
             Console.ReadLine();
         }
 
@@ -29,6 +30,15 @@ namespace ConsoleApp196
             Console.WriteLine(ct.Name);
             Console.WriteLine(ct.Priority);
             Console.WriteLine(ct.ThreadState);             
+        }
+
+        static void ExtractCurrentThreadContext()
+        {
+            //Obtain the context under which the current thread is operating.
+            Context ctx = Thread.CurrentContext;
+            Console.WriteLine(ctx.ContextID);
+            Console.WriteLine(ctx.ContextProperties.FirstOrDefault());
+            Console.WriteLine(ctx.ToString());
         }
 
         static void ExtractAppDomainHostingThread()
