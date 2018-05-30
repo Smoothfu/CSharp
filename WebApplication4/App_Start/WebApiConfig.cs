@@ -14,6 +14,7 @@ namespace WebApplication4
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            //http://localhost:27280/api/helloworld/SayHello
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
