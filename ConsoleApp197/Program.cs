@@ -19,9 +19,9 @@ namespace ConsoleApp197
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter sda = new SqlDataAdapter();
-                DataTable dt = new DataTable();
+                DataSet ds = new DataSet();
                 try
-                {
+                {                    
                     cmd = new SqlCommand("spGetCustomerInfo", conn);
                     cmd.Parameters.Add(new SqlParameter("@MinCID", SqlDbType.Int, 0));
                     cmd.Parameters[0].Value = 0;
@@ -29,32 +29,31 @@ namespace ConsoleApp197
                     cmd.Parameters[1].Value = 10;
                     cmd.CommandType = CommandType.StoredProcedure;
                     sda.SelectCommand = cmd;
-                    sda.Fill(dt);
-                    if (dt.Rows.Count > 0)
+                    sda.Fill(ds); 
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
-                        for (int i = 0; i < dt.Columns.Count; i++)
+                        for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
                         {
-                            Console.Write("{0,-20}", dt.Columns[i].ColumnName);
+                            Console.Write("{0,-20}", ds.Tables[0].Columns[i].ColumnName);
                         }
 
                         Console.WriteLine("\n-----------------------------------------------------------------------------");
 
-                        for (int i = 0; i < dt.Rows.Count; i++)
+                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                         {
-                            for (int j = 0; j < dt.Columns.Count; j++)
+                            for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
                             {
-                                Console.Write("{0,-20}", dt.Rows[i][j].ToString());
+                                Console.Write("{0,-20}", ds.Tables[0].Rows[i][j].ToString());
                             }
                             Console.WriteLine();
                         }
-                    }
+                    }                     
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
             }
-
 
             Console.ReadLine();
         }
