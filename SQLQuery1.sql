@@ -1,54 +1,42 @@
-use AdventureWorks2014
-
-select * from sysobjects where xtype='u'
-
-select * from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='Sales'
-select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNs where table_name='store'
-select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.sales.Store
-
-if exists(select * from sysobjects where name='spGetStoreByBusinessEntityID')
-drop procedure spGetStoreByBusinessEntityID
-
-create procedure spGetStoreByBusinessEntityID
-@bEntityId int 
+if OBJECT_ID('Purchasing.uspVendorAllInfo', 'P') is not null
+drop procedure AdventureWorks2014.Purchasing.uspVendorAllInfo
+go
+create proc Purchasing.spuspVendorAllInfo
+with execute as caller
 as 
 set nocount on;
-select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.sales.Store where BusinessEntityID=@bEntityId 
+select v.Name as VName,p.Name as PName
+from AdventureWorks2014.Purchasing.Vendor v
+inner join AdventureWorks2014.Purchasing.ProductVendor pv
+on v.BusinessEntityID=pv.BusinessEntityID
+inner join AdventureWorks2014.Production.Product p
+on pv.ProductID=p.ProductID
+order by v.Name asc
+ 
+ exec Purchasing.spuspVendorAllInfo
 
-exec spGetStoreByBusinessEntityID @bEntityId='292'
+ alter proc Purchasing.spuspVendorAllInfo
+ @productName varchar(25)
+ as 
+ set nocount on;
+ select left(v.Name,25) as vendor,left(pp.Name,25) as 'Product Name',
 
-
-create procedure spGetStoreBySalesPersonID
-@sPersonID int
-as
-set nocount on;
-select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.sales.Store where SalesPersonID=@sPersonID
-
-exec spGetStoreBySalesPersonID @sPersonID ='276'
-
-
-create proc spGetStoreByBEIDAndSalesPersonID
-@bEID int,
-@sPID int
-as 
-set nocount on;
-select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.sales.Store where BusinessEntityID=@bEID and SalesPersonID=@sPID
-
-exec spGetStoreByBEIDAndSalesPersonID @beid='294', @sPID='276'
-
-
-create proc spGetStoreByGreaterBID
-@bEID int
-as 
-set nocount on;
-select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.sales.Store where BusinessEntityID>@bEID 
-
-exec spGetStoreByGreaterBID @beid='1000'
-
-
-create proc GetStoreByNameBeginWith
-@SName varchar(200) 
-as
-select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.sales.Store where Name like  @SName+'%'
-
-exec GetStoreByNameBeginWith @sName='Y'
+ 'Rating'= CASE v.CreditRating
+ When 1 then 'Superior'
+ When 2 then 'Excellent'
+ WHEN 3 then 'Above average'
+ WHEN 4 then 'Average'
+ WHEN 5 then 'Below Average'
+ else 'No rating'
+ end,
+ availibity=CASE v.activeflag
+ when 1 then 'yes'
+ else 'no'
+ end 
+ from AdventureWorks2014.Purchasing.Vendor v
+ inner join AdventureWorks2014.Purchasing.ProductVendor pv
+ on v.BusinessEntityID=pv.BusinessEntityID
+ inner join AdventureWorks2014.Production.Product as pp
+ on pv.ProductID=pp.ProductID
+ where pp.Name like @productName
+ order by v.Name asc;
