@@ -1,11 +1,12 @@
-select * from Inventory
-create proc spGetCarByColorandCarID
-@MinCId int,
-@MaxCId int,
-@CColor varchar(100)
-as
-select CarId,make,color,PetName from Inventory where CarId between @MinCId and @MaxCId and color=@CColor
+ use AdventureWorks2014
+ select * from INFORMATION_SCHEMA.TABLES where table_schema ='sales'
+ select * from AdventureWorks2014.sales.Store
 
-exec sp_rename 'spGetCarByColorandCarID','spGetCarByCarIDColor'
+ select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.Sales.Store
 
-exec spGetCarByCarIDColor 10,13,'Black'
+ create proc spGetStoreByIDName
+ @bEID int,
+ @Name varchar(100),
+ @SPID int
+ as
+  select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.Sales.Store where 
