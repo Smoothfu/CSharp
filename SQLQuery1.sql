@@ -36,3 +36,19 @@ select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWo
 
 exec spGetStoreByBEIDAndSalesPersonID @beid='294', @sPID='276'
 
+
+create proc spGetStoreByGreaterBID
+@bEID int
+as 
+set nocount on;
+select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.sales.Store where BusinessEntityID>@bEID 
+
+exec spGetStoreByGreaterBID @beid='1000'
+
+
+create proc GetStoreByNameBeginWith
+@SName varchar(200) 
+as
+select BusinessEntityID,Name,SalesPersonID,rowguid,ModifiedDate from AdventureWorks2014.sales.Store where Name like  @SName+'%'
+
+exec GetStoreByNameBeginWith @sName='Y'
