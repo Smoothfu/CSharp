@@ -12,14 +12,14 @@ namespace ConsoleApp198
     {
         static void Main(string[] args)
         {
-            string connString = @"Server=FRED\SQLEXPRESS;Database=AdventureWorks2014;Integrated Security=SSPI;";
-            SqlConnection conn = new SqlConnection(connString);
-            conn.Open();
+            string connString = @"Server=FRED\SQLEXPRESS;Database=AdventureWorks2014;Integrated Security=SSPI;";          
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataSet ds = new DataSet();
             using (SqlCommand cmd = new SqlCommand())
             {
+                SqlConnection conn = new SqlConnection(connString);
+                conn.Open();
                 cmd.CommandText = "spGetStoreByIDName";
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -31,22 +31,26 @@ namespace ConsoleApp198
                 sqlDataAdapter.Fill(ds);
                 if(ds.Tables[0]!=null && ds.Tables[0].Rows.Count>0)
                 {
-
                     Console.WriteLine("There are {0} rows in table!\n", ds.Tables[0].Rows.Count);
-                    for(int i=0;i<ds.Tables[0].Columns.Count;i++)
+
+                    if(ds.Tables[0].Rows.Count>0)
                     {
-                        Console.Write("{0,-15}", ds.Tables[0].Columns[i].ColumnName);
+                        Console.Write("{0,-10}", ds.Tables[0].Columns[0].ColumnName);
+                        Console.Write("{0,-40}", ds.Tables[0].Columns[1].ColumnName);
+                        Console.Write("{0,-10}", ds.Tables[0].Columns[2].ColumnName);
+                        Console.Write("{0,-40}", ds.Tables[0].Columns[3].ColumnName);
+                        Console.Write("{0,-40}", ds.Tables[0].Columns[4].ColumnName);
                     }
 
-                    Console.WriteLine("\n-------------------------------------------------------------------");
+                    Console.WriteLine("\n\n------------------------------------------------------------------------------------------------------------------------\n\n");
 
                     for(int i=0;i<ds.Tables[0].Rows.Count;i++)
                     {
-                        for(int j=0;j<ds.Tables[0].Columns.Count;j++)
-                        {
-                            Console.Write("{0,-15}", ds.Tables[0].Rows[i][j].ToString());
-                        }
-
+                        Console.Write("{0,-10}", ds.Tables[0].Rows[i][0].ToString());
+                        Console.Write("{0,-40}", ds.Tables[0].Rows[i][1].ToString());
+                        Console.Write("{0,-10}", ds.Tables[0].Rows[i][2].ToString());
+                        Console.Write("{0,-40}", ds.Tables[0].Rows[i][3].ToString());
+                        Console.Write("{0,-40}", ds.Tables[0].Rows[i][4].ToString());                       
                         Console.WriteLine();
                     }
                 }
