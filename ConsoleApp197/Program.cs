@@ -14,35 +14,26 @@ namespace ConsoleApp197
         static void Main(string[] args)
         {
             string sqlConnString = ConfigurationManager.AppSettings["sqlConnString"].ToString();
-            SqlConnection conn = new SqlConnection(sqlConnString);
-            conn.Open();
-
-            if(conn.State==ConnectionState.Open)
+            using (SqlConnection conn = new SqlConnection(sqlConnString))
             {
-                string selectSQL = "select * from AdventureWorks2014.sales.vStoreWithContacts;select * from AdventureWorks2014.Sales.Store";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSQL, conn);
-                DataSet ds = new DataSet();
-                sqlDataAdapter.Fill(ds);
-                if (ds.Tables[0]!=null)
+                using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    for(int i=0;i<ds.Tables.Count;i++)
-                    {
-                        for(int j=0;j<ds.Tables[i].Rows.Count;j++)
-                        {
-                            for(int k=0;k<ds.Tables[i].Columns.Count;k++)
-                            {
-                                Console.Write("{0,-20}", ds.Tables[i].Rows[j][k].ToString());
-                            }
-                        }
-                    }
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "sp_GetStoreByBusinessEntityID";
 
-                    Console.WriteLine("\n\n\n\n\n");
+                    SqlParameter[] parms = new SqlParameter[] { new SqlParameter("@bEntityID",SqlDbType.Int,10) };
+                    parms[0].Value = 292;
+                    cmd.Parameters.Add(parms[0]);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    conn.Close();
+
                 }
             }
 
-            conn.Close();
-            Console.WriteLine(conn.State);
-            Console.ReadLine();
+
+                Console.ReadLine();
         }
     }
 }
