@@ -9,20 +9,20 @@ namespace ConsoleApp200
 {
     class Program
     {
+        static int x = 36245645, y = 3453454;
         static void Main(string[] args)
         {
             Program obj = new Program();
-            Thread newThread = new Thread(() =>
-            {
-                obj.AddMethod(234523452, 345245624);
-            });
-            newThread.Start();
-            Console.WriteLine(newThread.ThreadState);
+            ThreadStart ts = obj.AddMethod;
+            Thread thread = new Thread(ts);
+            thread.Start();
+            Console.WriteLine(thread.ThreadState);
+            
             Console.ReadLine();
 
         }
 
-        private void AddMethod(int x,int y)
+        private void AddMethod()
         {
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
