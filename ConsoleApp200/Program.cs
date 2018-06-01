@@ -13,13 +13,9 @@ namespace ConsoleApp200
         static void Main(string[] args)
         {
             Person p = new Person(1, "Floomberg");
-            Thread thread = new Thread(() =>
-              {
-                  p.OutputPerson(p);
-              });
-
-            thread.Start();
-
+            ParameterizedThreadStart parameterizedThreadStart = new ParameterizedThreadStart(p.OutputPerson);
+            Thread thread = new Thread(parameterizedThreadStart);
+            thread.Start(p);
             Console.ReadLine();
         }
 
