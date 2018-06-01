@@ -13,7 +13,7 @@ namespace ConsoleApp200
         static void Main(string[] args)
         {
             Program obj = new Program();
-            ThreadStart ts = obj.AddMethod;
+            ThreadStart ts = AddMethod;
             Thread thread = new Thread(ts);
             thread.Start();
             Console.WriteLine(thread.ThreadState);
@@ -22,7 +22,7 @@ namespace ConsoleApp200
 
         }
 
-        private void AddMethod()
+        static void AddMethod()
         {
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
