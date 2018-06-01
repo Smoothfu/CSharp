@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <PID>1</PID>
+    <Name>Adjustable Race</Name>
+    <PNO>AR-5381</PNO>
+    <MakeFlag>false</MakeFlag>
+    <FGF>false</FGF>
+  </Table>
+  <Table>
+    <PID>2</PID>
+    <Name>Bearing Ball</Name>
+    <PNO>BA-8327</PNO>
+    <MakeFlag>false</MakeFlag>
+    <FGF>false</FGF>
+  </Table>
+  <Table>
+    <PID>3</PID>
+    <Name>BB Ball Bearing</Name>
+    <PNO>BE-2349</PNO>
+    <MakeFlag>true</MakeFlag>
+    <FGF>false</FGF>
+  </Table>
+  <Table>
+    <PID>4</PID>
+    <Name>Headset Ball Bearings</Name>
+    <PNO>BE-2908</PNO>
+    <MakeFlag>false</MakeFlag>
+    <FGF>false</FGF>
+  </Table>
+</NewDataSet>

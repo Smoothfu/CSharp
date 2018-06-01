@@ -33,8 +33,11 @@ namespace ConsoleApp201
                     sqlDataAdapter.SelectCommand = cmd;
                     sqlDataAdapter.Fill(ds);
 
+
                     if(ds!=null && ds.Tables!=null && ds.Tables[0].Rows.Count>0)
                     {
+
+                        ds.WriteXml(".\\dataset.xml");
                         //Column names
                         for(int i=0;i<ds.Tables[0].Columns.Count;i++)
                         {
