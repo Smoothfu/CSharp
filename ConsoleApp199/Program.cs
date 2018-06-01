@@ -55,10 +55,10 @@ namespace ConsoleApp199
             }
 
             conn.Close();
-            Console.WriteLine("\nAfter conn.Close(),the conn.State is:{0}\n", conn.State);
+            Console.WriteLine("\nAfter conn.Close(),the conn.State is {0}\n", conn.State);
 
             conn.Dispose();
-            Console.WriteLine("\nAfter conn.Dispose(),the conn.State is:{0}\n", conn.State);
+            Console.WriteLine("\nAfter conn.Dispose(),the conn.State is {0}\n", conn.State);
             Console.ReadLine();
         }
     }
