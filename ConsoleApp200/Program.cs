@@ -13,10 +13,12 @@ namespace ConsoleApp200
         static void Main(string[] args)
         {
             Person p = new Person(1, "Floomberg");
-            ParameterizedThreadStart parameterizedThreadStart = new ParameterizedThreadStart(p.OutputPerson);
-            Thread newThread = new Thread(parameterizedThreadStart);
-            newThread.Start(p);
-            Console.WriteLine("State {0}\n", newThread.ThreadState);
+            Thread thread = new Thread(() =>
+              {
+                  p.OutputPerson(p);
+              });
+
+            thread.Start();
 
             Console.ReadLine();
         }
