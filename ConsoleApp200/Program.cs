@@ -12,17 +12,17 @@ namespace ConsoleApp200
         static int x = 36245645, y = 3453454;
         static void Main(string[] args)
         {
-            Program obj = new Program();
-            ThreadStart ts = AddMethod;
-            Thread thread = new Thread(ts);
-            thread.Start();
-            Console.WriteLine(thread.ThreadState);
+            Thread newThread = new Thread(() =>
+              {
+                  AddMethod(x,y);
+              });
+            newThread.Start();
             
             Console.ReadLine();
 
         }
 
-        static void AddMethod()
+        static void AddMethod(int x,int y)
         {
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
