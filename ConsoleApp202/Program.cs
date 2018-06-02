@@ -14,9 +14,12 @@ namespace ConsoleApp202
         static void Main(string[] args)
         {
             Person personObj = new Person(1,"Floomberg");
-            ThreadStart ts = new ThreadStart(personObj.GetPersonInfo);
-            Thread thread = new Thread(ts);
+            Thread thread = new Thread(() =>
+              {
+                  personObj.GetPersonInfo();
+              });
             thread.Start();
+
             Console.ReadLine();
         }        
     }
