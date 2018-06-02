@@ -16,12 +16,21 @@ namespace ConsoleApp202
             Person personObj = new Person(1,"Floomberg");
             Thread thread = new Thread(() =>
               {
-                  personObj.GetPersonInfo();
+                  GetPersonInformation(personObj);
               });
             thread.Start();
 
             Console.ReadLine();
-        }        
+        } 
+        
+        static void GetPersonInformation(object obj)
+        {
+            var personObj = obj as Person;
+            if(personObj!=null)
+            {
+                Console.WriteLine("In GetPersonInformation(),PId:{0},PName:{1}\n", personObj.PId, personObj.PName);
+            }
+        }
     }
 
     public class Person
