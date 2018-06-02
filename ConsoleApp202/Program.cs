@@ -36,6 +36,8 @@ namespace ConsoleApp202
             //Do other work on primary thread...
             Console.WriteLine("Doing more work in Main()!\n");
 
+            Console.WriteLine(asyncResult.AsyncState.ToString());
+
             ////Obtain the result of the Add() method when ready.
             //int answer = addIntDel.EndInvoke(asyncResult);            
             
