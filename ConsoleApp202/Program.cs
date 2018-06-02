@@ -27,7 +27,7 @@ namespace ConsoleApp202
             IAsyncResult asyncResult = addIntDel.BeginInvoke(3241, 321423, new AsyncCallback(AddMethodCompleted), null);
 
             //The message will keep printing until the Add() method is finished.
-            while(!asyncResult.IsCompleted)
+            while(!asyncResult.AsyncWaitHandle.WaitOne(1000,true))
             {
                 Console.WriteLine("Now is {0}", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
             }
