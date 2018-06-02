@@ -14,9 +14,11 @@ namespace ConsoleApp202
     public delegate int AddIntDel(int x, int y);
     class Program
     {
+
+        private static bool isDone = false;
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synch Delegate Review*****");
+            Console.WriteLine("*****AsyncCallbackDelegate Example*****\n");
             
             //Print out the ID of the executing thread.
             Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
@@ -27,7 +29,7 @@ namespace ConsoleApp202
             IAsyncResult asyncResult = addIntDel.BeginInvoke(3241, 321423, new AsyncCallback(AddMethodCompleted), null);
 
             //The message will keep printing until the Add() method is finished.
-            while(!asyncResult.AsyncWaitHandle.WaitOne(1000,true))
+            while(!isDone)
             {
                 Console.WriteLine("Now is {0}", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
             }
@@ -46,6 +48,7 @@ namespace ConsoleApp202
         {
             Console.WriteLine("The AddMethodCompleted thread id is " + Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("The AddIntMethod has been completed!\n ");
+            isDone = true;
         }
         static void AddMethod(int x,int y)
         {
