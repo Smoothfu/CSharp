@@ -10,13 +10,21 @@ using System.Runtime.Remoting.Contexts;
 
 namespace ConsoleApp202
 {
+    public delegate void AddDel(int x, int y);
     class Program
     {
         static void Main(string[] args)
         {
-            ExtractCurrentThreadContext();
+            AddDel addDel = new AddDel(AddMethod);
+            addDel(23423, 3564564);
+
             Console.ReadLine();
         } 
+
+        static void AddMethod(int x,int y)
+        {
+            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+        }
         
        static void ExtractAppDomainHostingThread()
         {
