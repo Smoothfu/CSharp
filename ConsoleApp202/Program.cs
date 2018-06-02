@@ -40,6 +40,11 @@ namespace ConsoleApp202
         
         static int AddIntMethod(int x,int y)
         {
+            //Print out the ID of the executing thread 
+            Console.WriteLine("Add() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Pause to simulate a lengthy operation
+            Thread.Sleep(5000);
             return x + y;
         }
        static void ExtractAppDomainHostingThread()
