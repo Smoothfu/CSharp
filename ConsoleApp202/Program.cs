@@ -13,20 +13,29 @@ namespace ConsoleApp202
     {
         static void Main(string[] args)
         {
-            Person personObj = new Person(1,"Floomberg");
-            ParameterizedThreadStart parameterizedThread = new ParameterizedThreadStart(GetPersonInformation);
-            Thread thread = new Thread(parameterizedThread);
-            thread.Start(personObj);
+            ExtractAppDomainHostingThread();
             Console.ReadLine();
         } 
         
-        static void GetPersonInformation(object obj)
+       static void ExtractAppDomainHostingThread()
         {
-            var personObj = obj as Person;
-            if(personObj!=null)
-            {
-                Console.WriteLine("In GetPersonInformation(),PId:{0},PName:{1}\n", personObj.PId, personObj.PName);
-            }
+            //Obtain the AppDomain hosting the current thread.
+            AppDomain ad = Thread.GetDomain();
+            Console.WriteLine(ad.ApplicationIdentity);
+            Console.WriteLine(ad.ApplicationTrust);
+            Console.WriteLine(ad.BaseDirectory);
+            Console.WriteLine(ad.DomainManager);
+            Console.WriteLine(ad.Evidence);
+            Console.WriteLine(ad.FriendlyName);
+            Console.WriteLine(ad.Id);
+            Console.WriteLine(ad.IsFullyTrusted);
+            Console.WriteLine(ad.IsHomogenous);
+            Console.WriteLine(ad.PermissionSet);
+            Console.WriteLine(ad.RelativeSearchPath);
+            Console.WriteLine(ad.SetupInformation);
+            Console.WriteLine(ad.ShadowCopyFiles);
+            Console.WriteLine(ad.ToString());
+            Console.ReadLine();
         }
     }
 
