@@ -25,11 +25,13 @@ namespace ConsoleApp202
             AddIntDel addIntDel = new AddIntDel(AddIntMethod);
 
             IAsyncResult asyncResult = addIntDel.BeginInvoke(3241, 321423, new AsyncCallback(AddMethodCompleted), null);
-          
-            int answer = addIntDel.EndInvoke(asyncResult);
 
-            //These lines will not execute until the Add() method has completed.
+            //Do other work on primary thread...
             Console.WriteLine("Doing more work in Main()!\n");
+
+            //Obtain the result of the Add() method when ready.
+            int answer = addIntDel.EndInvoke(asyncResult);            
+            
             Console.WriteLine("The add result is " + answer);
             Console.ReadLine();
         } 
