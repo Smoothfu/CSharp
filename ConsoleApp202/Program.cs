@@ -24,8 +24,9 @@ namespace ConsoleApp202
             //Invoke AddIntMethod() in a synchronous manner.
             AddIntDel addIntDel = new AddIntDel(AddIntMethod);
 
-            //Could also write addIntDel.Invoke(10,10);
-            int answer = addIntDel(2452456, 53645634);
+            IAsyncResult asyncResult = addIntDel.BeginInvoke(3241, 321423, null, null);
+
+            int answer = addIntDel.EndInvoke(asyncResult);
 
             //These lines will not execute until the Add() method has completed.
             Console.WriteLine("Doing more work in Main()!\n");
