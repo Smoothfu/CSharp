@@ -11,13 +11,25 @@ using System.Runtime.Remoting.Contexts;
 namespace ConsoleApp202
 {
     public delegate void AddDel(int x, int y);
+    public delegate int AddIntDel(int x, int y);
     class Program
     {
         static void Main(string[] args)
         {
-            AddDel addDel = new AddDel(AddMethod);
-            addDel(23423, 3564564);
+            Console.WriteLine("*****Synch Delegate Review*****");
 
+            //Print out the ID of the executing thread.
+            Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
+
+            //Invoke AddIntMethod() in a synchronous manner.
+            AddIntDel addIntDel = new AddIntDel(AddIntMethod);
+
+            //Could also write addIntDel.Invoke(10,10);
+            int answer = addIntDel(2452456, 53645634);
+
+            //These lines will not execute until the Add() method has completed.
+            Console.WriteLine("Doing more work in Main()!\n");
+            Console.WriteLine("The add result is " + answer);
             Console.ReadLine();
         } 
 
@@ -26,6 +38,10 @@ namespace ConsoleApp202
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
         
+        static int AddIntMethod(int x,int y)
+        {
+            return x + y;
+        }
        static void ExtractAppDomainHostingThread()
         {
             //Obtain the AppDomain hosting the current thread.
