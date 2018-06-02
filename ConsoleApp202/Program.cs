@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Threading;
 using System.Runtime.Remoting.Contexts;
-
+using System.Runtime.Remoting.Messaging;
 
 namespace ConsoleApp202
 {
@@ -36,10 +36,10 @@ namespace ConsoleApp202
             //Do other work on primary thread...
             Console.WriteLine("Doing more work in Main()!\n");
 
-            //Obtain the result of the Add() method when ready.
-            int answer = addIntDel.EndInvoke(asyncResult);            
+            ////Obtain the result of the Add() method when ready.
+            //int answer = addIntDel.EndInvoke(asyncResult);            
             
-            Console.WriteLine("The add result is " + answer);
+            //Console.WriteLine("The add result is " + answer);
             Console.ReadLine();
         } 
 
@@ -48,6 +48,12 @@ namespace ConsoleApp202
         {
             Console.WriteLine("The AddMethodCompleted thread id is " + Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("The AddIntMethod has been completed!\n ");
+
+            //Now get the result.
+            AsyncResult ar = (AsyncResult)asyncResult;
+
+            AddIntDel addIDel = (AddIntDel)ar.AsyncDelegate;
+            Console.WriteLine(addIDel.EndInvoke(asyncResult));
             isDone = true;
         }
         static void AddMethod(int x,int y)
