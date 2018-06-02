@@ -17,15 +17,15 @@ namespace ConsoleApp202
         static void Main(string[] args)
         {
             Console.WriteLine("*****Synch Delegate Review*****");
-
+            
             //Print out the ID of the executing thread.
             Console.WriteLine("Main() invoked on thread {0}.\n", Thread.CurrentThread.ManagedThreadId);
 
             //Invoke AddIntMethod() in a synchronous manner.
             AddIntDel addIntDel = new AddIntDel(AddIntMethod);
 
-            IAsyncResult asyncResult = addIntDel.BeginInvoke(3241, 321423, null, null);
-
+            IAsyncResult asyncResult = addIntDel.BeginInvoke(3241, 321423, new AsyncCallback(AddMethodCompleted), null);
+          
             int answer = addIntDel.EndInvoke(asyncResult);
 
             //These lines will not execute until the Add() method has completed.
@@ -34,6 +34,12 @@ namespace ConsoleApp202
             Console.ReadLine();
         } 
 
+
+        static void AddMethodCompleted(IAsyncResult asyncResult)
+        {
+            Console.WriteLine("The AddMethodCompleted thread id is " + Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("The AddIntMethod has been completed!\n ");
+        }
         static void AddMethod(int x,int y)
         {
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
@@ -48,6 +54,9 @@ namespace ConsoleApp202
             Thread.Sleep(5000);
             return x + y;
         }
+
+
+        
        static void ExtractAppDomainHostingThread()
         {
             //Obtain the AppDomain hosting the current thread.
