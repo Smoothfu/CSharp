@@ -26,7 +26,7 @@ namespace ConsoleApp202
             //Invoke AddIntMethod() in a synchronous manner.
             AddIntDel addIntDel = new AddIntDel(AddIntMethod);
 
-            IAsyncResult asyncResult = addIntDel.BeginInvoke(3241, 321423, new AsyncCallback(AddMethodCompleted), null);
+            IAsyncResult asyncResult = addIntDel.BeginInvoke(3241, 321423, new AsyncCallback(AddMethodCompleted), "Main() thanks you for adding these numbers.");
 
             //The message will keep printing until the Add() method is finished.
             while(!isDone)
@@ -54,6 +54,10 @@ namespace ConsoleApp202
 
             AddIntDel addIDel = (AddIntDel)ar.AsyncDelegate;
             Console.WriteLine(addIDel.EndInvoke(asyncResult));
+
+            //Retrieve the informational object and cast it to string.
+            string msg = (string)asyncResult.AsyncState;
+            Console.WriteLine(msg);
             isDone = true;
         }
         static void AddMethod(int x,int y)
