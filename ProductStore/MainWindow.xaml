@@ -2,10 +2,19 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProductStore"
+        xmlns:common="clr-namespace:ProductStore.CommonClass"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="trueFalseEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="common:TrueFalseEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -26,6 +35,13 @@
                <Button Grid.Row="0" Grid.Column="3" Command="{Binding ShowProductCommand}" Content="Search"/>
             </Grid>
         </GroupBox>        
-        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ProductID" Binding="{Binding TPID}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding TName}"/>
+                <DataGridTextColumn Header="ProductNumber" Binding="{Binding TPNO}"/>
+                <DataGridComboBoxColumn Header="MakeFlag" SelectedItemBinding="{Binding TMF}" ItemsSource="{Binding Source={StaticResource trueFalseEnum}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
