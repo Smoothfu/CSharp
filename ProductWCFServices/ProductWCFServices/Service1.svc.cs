@@ -102,14 +102,11 @@ namespace ProductWCFServices
         }
 
         public List<SProduct> SaveProducts(List<SProduct> sProdList)
-        {
+        {    
             ds.Clear();
             if(sProdList!=null && sProdList.Any())
             {
-                sProdList.ForEach(x =>
-                {
-                    ds.Tables[0].Rows.Add(x);
-                });
+                ds.Tables[0].LoadDataRow(sProdList.ToArray(), true);
             }
 
             sqlDataAdapter.Update(ds);

@@ -9,8 +9,8 @@ namespace ProductStore.Model
 {
     public class TProduct : ProductChangeNotify
     {
-        private int _TPID;
-        public int TPID
+        private Int32 _TPID;
+        public Int32 TPID
         {
             get
             {
@@ -205,8 +205,8 @@ namespace ProductStore.Model
             }
         }
 
-        private int _TDTM;
-        public int TDTM
+        private Int32 _TDTM;
+        public Int32 TDTM
         {
             get
             {
@@ -261,8 +261,8 @@ namespace ProductStore.Model
             }
         }
 
-        private int _TPSID;
-        public int TPSID
+        private Int32 _TPSID;
+        public Int32 TPSID
         {
             get
             {
@@ -275,8 +275,8 @@ namespace ProductStore.Model
             }
         }
 
-        private int _TPMID;
-        public int TPMID
+        private Int32 _TPMID;
+        public Int32 TPMID
         {
             get
             {

@@ -7,7 +7,7 @@ namespace ProductWCFServices.Model
 {
     public class SProduct
     {
-        public int SPID { get; set; }
+        public Int32 SPID { get; set; }
         public string SName { get; set; }
         public string SPNO { get; set; }
         public bool SMF { get; set; }
@@ -21,12 +21,12 @@ namespace ProductWCFServices.Model
         public string SSUMC { get; set; }
         public string SWUMC { get; set; }
         public decimal SWeight { get; set; }
-        public int SDTM { get; set; }
+        public Int32 SDTM { get; set; }
         public string SPL { get; set;}
         public string SClass { get; set; }
         public string SStyle { get; set; }
-        public int SPSID { get; set; }
-        public int SPMID { get; set; }
+        public Int32 SPSID { get; set; }
+        public Int32 SPMID { get; set; }
         public DateTime? SSSD { get; set; }
         public DateTime? SSED { get; set; }
         public DateTime? SDD { get; set; }
