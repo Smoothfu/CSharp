@@ -129,7 +129,22 @@ namespace ProductStore.ViewModel
                         TSSL = x.SSSL,
                         TROP = x.SROP,
                         TSC = x.SSC,
-                        TLP = x.SLP
+                        TLP = x.SLP,
+                        TSize=x.SSize,
+                        TSUMC=x.SSUMC,
+                        TWUMC=x.SWUMC,
+                        TWeight=x.SWeight,
+                        TDTM=x.SDTM,
+                        TPL=x.SPL,
+                        TClass=x.SClass,
+                        TStyle=x.SStyle,
+                        TPSID=x.SPSID,
+                        TPMID=x.SPMID,
+                        TSSD=x.SSSD,
+                        TSED=x.SSED,
+                        TDD=x.SDD,
+                        TRG=x.SRG,
+                        TMD=x.SMD
                     });
                 });
             }
