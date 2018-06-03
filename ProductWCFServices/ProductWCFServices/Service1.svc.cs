@@ -46,8 +46,7 @@ namespace ProductWCFServices
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataSet ds = new DataSet();
             if(conn.State==ConnectionState.Open)
-            {
-                MessageBox.Show("Connected to the database successfully!");
+            {               
                 using (SqlCommand selectCmd = new SqlCommand())
                 {
                     selectCmd.CommandType = CommandType.StoredProcedure;
