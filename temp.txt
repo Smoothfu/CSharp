@@ -46,6 +46,9 @@ http://localhost:8919/Service1.svc
 
 private System.Nullable<System.DateTime> SDDField
 
+Nullable<DateTime> dt = null;
 SSSD=ds.Tables[0].Rows[i]["SSD"]== DBNull.Value? dt: (DateTime?)ds.Tables[0].Rows[i]["SSD"],
-
 <xs:element minOccurs="0" name="SSED" nillable="true" type="xs:dateTime" />
+
+
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\WcfTestClient.exe
