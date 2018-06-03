@@ -9,6 +9,10 @@ go
 create proc spGetProductByPID
 @PID int
 as
+if @PID=0
+select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP 
+from AdventureWorks2014.Production.Product 
+else
 select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP 
 from AdventureWorks2014.Production.Product where ProductID=@PID
  
@@ -20,6 +24,12 @@ as
 select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP 
 from AdventureWorks2014.Production.Product
 
+exec spGetProductByPID 1
+
 
 select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP 
 from AdventureWorks2014.Production.Product
+
+declare
+@PID int
+exec spGetProductByPID @PId=352

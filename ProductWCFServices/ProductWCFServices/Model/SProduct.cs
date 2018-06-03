@@ -16,7 +16,6 @@ namespace ProductWCFServices.Model
         public string SSSL { get; set; }
         public string SROP { get; set; }
         public string SSC { get; set; }
-        public string SLP { get; set; }
-      
+        public string SLP { get; set; }      
     }
 }
