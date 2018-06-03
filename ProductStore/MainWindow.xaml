@@ -10,13 +10,15 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition  Height="50"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <DataGrid Name="dg" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding ProductID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Grid.Row="1" Grid.Column="1" Command="{Binding ShowProductCommand}" Content="Search"/>
+        </Grid.RowDefinitions>        
+        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="0" Grid.Column="0" FontSize="30" Text="{Binding ProductID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding ShowProductCommand}" Content="Search"/>
+        </Grid>       
     </Grid>
 </Window>

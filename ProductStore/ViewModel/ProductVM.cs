@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Prism;
 using Prism.Commands;
-using ProductWCFService;
+using ProductStore.ServiceReference1;
 
 namespace ProductStore.ViewModel
 {
@@ -85,12 +85,16 @@ namespace ProductStore.ViewModel
 
         private void ShowProductCommandExecuted()
         {
+            List<SProduct> sProdList = new List<SProduct>();              
             try
             {
-                ProductWCFService.Service1 obj = new Service1();
-                ProductWCFService.Service1 productService = new Service1();
-                List<Product> serverProductList = productService.GetProductByPId(ProductID);
-                ProductCollection = new ObservableCollection<TProduct>(ConvertFromServerProduct(serverProductList));
+                ServiceReference1.Service1Client sClient = new Service1Client();
+                sProdList = sClient.GetSProductByPID(ProductID).ToList();
+                if(sProdList!=null && sProdList.Any())
+                {
+                    ProductCollection = new ObservableCollection<TProduct>(ConvertFromServerProduct(sProdList));
+                }
+                 
             }
             catch(Exception ex)
             {
@@ -106,7 +110,7 @@ namespace ProductStore.ViewModel
         #endregion
 
         #region methods
-        static List<TProduct> ConvertFromServerProduct(List<Product> productList)
+        static List<TProduct> ConvertFromServerProduct(List<SProduct> productList)
         {
             List<TProduct> TProdList = new List<TProduct>();
 
@@ -116,16 +120,16 @@ namespace ProductStore.ViewModel
                 {
                     TProdList.Add(new TProduct()
                     {
-                        TPID = x.PID,
-                        TName = x.Name,
-                        TPNO = x.PNO,
-                        TMF = x.MF,
-                        TFGF = x.FGF,
-                        TColor = x.Color,
-                        TSSL = x.SSL,
-                        TROP = x.ROP,
-                        TSC = x.SC,
-                        TLP = x.LP
+                        TPID = x.SPID,
+                        TName = x.SName,
+                        TPNO = x.SPNO,
+                        TMF = x.SMF,
+                        TFGF = x.SFGF,
+                        TColor = x.SColor,
+                        TSSL = x.SSSL,
+                        TROP = x.SROP,
+                        TSC = x.SSC,
+                        TLP = x.SLP
                     });
                 });
             }

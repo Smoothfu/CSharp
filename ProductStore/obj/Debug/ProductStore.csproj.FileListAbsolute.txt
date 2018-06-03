@@ -13,7 +13,6 @@ D:\C\ProductStore\ProductStore\obj\Debug\ProductStore.csproj.GenerateResource.Ca
 D:\C\ProductStore\ProductStore\obj\Debug\ProductStore.csproj.CoreCompileInputs.cache
 D:\C\ProductStore\ProductStore\obj\Debug\ProductStore.exe
 D:\C\ProductStore\ProductStore\obj\Debug\ProductStore.pdb
-D:\C\ProductStore\ProductStore\bin\Debug\ProductWCFService.dll
 D:\C\ProductStore\ProductStore\bin\Debug\ProductWCFService.pdb
 D:\C\ProductStore\ProductStore\bin\Debug\ProductWCFService.dll.config
 D:\C\ProductStore\ProductStore\bin\Debug\CommonServiceLocator.dll

@@ -1,6 +1,0 @@
-D:\C\ProductStore\ProductWCFService\bin\Debug\ProductWCFService.dll.config
-D:\C\ProductStore\ProductWCFService\bin\Debug\ProductWCFService.dll
-D:\C\ProductStore\ProductWCFService\bin\Debug\ProductWCFService.pdb
-D:\C\ProductStore\ProductWCFService\obj\Debug\ProductWCFService.csproj.CoreCompileInputs.cache
-D:\C\ProductStore\ProductWCFService\obj\Debug\ProductWCFService.dll
-D:\C\ProductStore\ProductWCFService\obj\Debug\ProductWCFService.pdb
