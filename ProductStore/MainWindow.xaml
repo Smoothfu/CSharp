@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProductStore"
         xmlns:common="clr-namespace:ProductStore.CommonClass"
+        xmlns:converter="clr-namespace:ProductStore.Converter"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
@@ -13,7 +14,9 @@
             <ObjectDataProvider.MethodParameters>
                 <x:Type Type="common:TrueFalseEnum"/>
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+        </ObjectDataProvider>        
+        <converter:TrueFalseConverter x:Key="trueFalseConverter"/>
+         
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -40,7 +43,7 @@
                 <DataGridTextColumn Header="ProductID" Binding="{Binding TPID}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding TName}"/>
                 <DataGridTextColumn Header="ProductNumber" Binding="{Binding TPNO}"/>
-                <DataGridComboBoxColumn Header="MakeFlag" SelectedItemBinding="{Binding TMF}" ItemsSource="{Binding Source={StaticResource trueFalseEnum}}"/>
+                <DataGridComboBoxColumn Header="MakeFlag" SelectedItemBinding="{Binding TMF}" ItemsSource="{Binding Source={StaticResource trueFalseEnum}}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -90,6 +90,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Converter\TrueFalseConverter.cs" />
     <Compile Include="Model\ProductChangeNotify.cs" />
     <Compile Include="ViewModel\ProductVM.cs" />
     <Page Include="MainWindow.xaml">
