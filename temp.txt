@@ -52,3 +52,5 @@ SSSD=ds.Tables[0].Rows[i]["SSD"]== DBNull.Value? dt: (DateTime?)ds.Tables[0].Row
 
 
 C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\WcfTestClient.exe
+
+DisplayMemberPath="{Binding TMF,Converter={StaticResource trueFalseConverter}}" />

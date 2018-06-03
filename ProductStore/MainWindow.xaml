@@ -37,13 +37,13 @@
                 </StackPanel>
                <Button Grid.Row="0" Grid.Column="3" Command="{Binding ShowProductCommand}" Content="Search"/>
             </Grid>
-        </GroupBox>        
-        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="True">
+        </GroupBox>
+        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ProductID" Binding="{Binding TPID}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding TName}"/>
                 <DataGridTextColumn Header="ProductNumber" Binding="{Binding TPNO}"/>
-                <DataGridComboBoxColumn Header="MakeFlag" SelectedItemBinding="{Binding TMF}" ItemsSource="{Binding Source={StaticResource trueFalseEnum}}" />
+                <DataGridComboBoxColumn Header="MakeFlag" SelectedItemBinding="{Binding TMF}" ItemsSource="{Binding Source={StaticResource trueFalseEnum},Converter={StaticResource trueFalseConverter}}" DisplayMemberPath="{Binding TMF}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
