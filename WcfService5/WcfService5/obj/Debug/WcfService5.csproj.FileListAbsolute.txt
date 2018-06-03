@@ -1,0 +1,6 @@
+D:\C\WcfService5\WcfService5\bin\WcfService5.dll.config
+D:\C\WcfService5\WcfService5\bin\WcfService5.dll
+D:\C\WcfService5\WcfService5\bin\WcfService5.pdb
+D:\C\WcfService5\WcfService5\obj\Debug\WcfService5.csproj.CoreCompileInputs.cache
+D:\C\WcfService5\WcfService5\obj\Debug\WcfService5.dll
+D:\C\WcfService5\WcfService5\obj\Debug\WcfService5.pdb
