@@ -35,15 +35,17 @@
                     <Label Content="Product Id" FontSize="20" />
                     <TextBox  ToolTip="Product Id" FontSize="30" Text="{Binding ProductID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="150" />
                 </StackPanel>
-               <Button Grid.Row="0" Grid.Column="3" Command="{Binding ShowProductCommand}" Content="Search"/>
+                <Button Grid.Row="0" Grid.Column="2" Command="{Binding SaveCommand}" Content="Save"/>
+                <Button Grid.Row="0" Grid.Column="3" Command="{Binding ShowProductCommand}" Content="Search"/>
             </Grid>
         </GroupBox>
-        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" >
+        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"
+                  SelectedItem="{Binding SelectedProduct}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ProductID" Binding="{Binding TPID}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding TName}"/>
                 <DataGridTextColumn Header="ProductNumber" Binding="{Binding TPNO}"/>
-                <DataGridComboBoxColumn Header="MakeFlag" SelectedItemBinding="{Binding TMF}" ItemsSource="{Binding Source={StaticResource trueFalseEnum},Converter={StaticResource trueFalseConverter}}" DisplayMemberPath="{Binding TMF}"/>
+                <DataGridTextColumn Header="MakeFlag" Binding="{Binding TMF}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

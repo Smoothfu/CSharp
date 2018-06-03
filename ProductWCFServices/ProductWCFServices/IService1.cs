@@ -23,6 +23,9 @@ namespace ProductWCFServices
         // TODO: Add your service operations here
         [OperationContract]
         List<SProduct> GetSProductByPID(int pID);
+
+        [OperationContract]
+        List<SProduct> SaveProducts(List<SProduct> sProductList);
     }
 
 

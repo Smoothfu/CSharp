@@ -524,6 +524,12 @@ namespace ProductStore.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSProductByPID", ReplyAction="http://tempuri.org/IService1/GetSProductByPIDResponse")]
         System.Threading.Tasks.Task<ProductStore.ServiceReference1.SProduct[]> GetSProductByPIDAsync(int pID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SaveProducts", ReplyAction="http://tempuri.org/IService1/SaveProductsResponse")]
+        ProductStore.ServiceReference1.SProduct[] SaveProducts(ProductStore.ServiceReference1.SProduct[] sProductList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SaveProducts", ReplyAction="http://tempuri.org/IService1/SaveProductsResponse")]
+        System.Threading.Tasks.Task<ProductStore.ServiceReference1.SProduct[]> SaveProductsAsync(ProductStore.ServiceReference1.SProduct[] sProductList);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -575,6 +581,14 @@ namespace ProductStore.ServiceReference1 {
         
         public System.Threading.Tasks.Task<ProductStore.ServiceReference1.SProduct[]> GetSProductByPIDAsync(int pID) {
             return base.Channel.GetSProductByPIDAsync(pID);
+        }
+        
+        public ProductStore.ServiceReference1.SProduct[] SaveProducts(ProductStore.ServiceReference1.SProduct[] sProductList) {
+            return base.Channel.SaveProducts(sProductList);
+        }
+        
+        public System.Threading.Tasks.Task<ProductStore.ServiceReference1.SProduct[]> SaveProductsAsync(ProductStore.ServiceReference1.SProduct[] sProductList) {
+            return base.Channel.SaveProductsAsync(sProductList);
         }
     }
 }

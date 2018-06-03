@@ -16,6 +16,10 @@ namespace ProductStore.ViewModel
 {
     public class ProductVM : ProductChangeNotify
     {
+        static ServiceReference1.Service1Client sClient = new Service1Client();
+        static List<SProduct> serverProductList = new List<SProduct>();
+        static List<TProduct> terminalProductList = new List<TProduct>();
+        static SProduct sp = new SProduct();
         public ProductVM()
         {
 
@@ -48,6 +52,20 @@ namespace ProductStore.ViewModel
             {
                 _ProductCollection = value;
                 NotifyPropertyChanged("ProductCollection");
+            }
+        }
+
+        private TProduct _SelectedProduct;
+        public TProduct SelectedProduct
+        {
+            get
+            {
+                return _SelectedProduct;
+            }
+            set
+            {
+                _SelectedProduct = value;
+                NotifyPropertyChanged("SelectedProduct");
             }
         }
 
@@ -88,7 +106,7 @@ namespace ProductStore.ViewModel
             List<SProduct> sProdList = new List<SProduct>();              
             try
             {
-                ServiceReference1.Service1Client sClient = new Service1Client();
+                
                 sProdList = sClient.GetSProductByPID(ProductID).ToList();
                 if(sProdList!=null && sProdList.Any())
                 {
@@ -105,6 +123,34 @@ namespace ProductStore.ViewModel
         private bool ShowProductCommandCanExecute()
         {
             return true;
+        }
+
+        private ICommand _SaveCommand;
+        public ICommand SaveCommand
+        {
+            get
+            {
+                if(_SaveCommand==null)
+                {
+                    _SaveCommand = new DelegateCommand(SaveCommandExecuted, SaveCommandCanExecute);
+                }
+                return _SaveCommand;
+            }
+        }
+
+        private bool SaveCommandCanExecute()
+        {
+            return true;
+        }
+
+        private void SaveCommandExecuted()
+        { 
+            List<SProduct> sendToServerProductList = ConvertToServerProduct(ProductCollection.ToList());
+            serverProductList.Clear();
+            serverProductList = sClient.SaveProducts(sendToServerProductList.ToArray()).ToList();
+
+            terminalProductList = ConvertFromServerProduct(serverProductList);
+            ProductCollection = new ObservableCollection<TProduct>(terminalProductList);
         }
 
         #endregion
@@ -151,6 +197,47 @@ namespace ProductStore.ViewModel
             return TProdList;
         }
 
+
+        static List<SProduct> ConvertToServerProduct(List<TProduct> tProductList)
+        {
+            serverProductList.Clear();
+            if(tProductList!=null && tProductList.Any())
+            {
+                tProductList.ForEach(x =>
+                {
+                    sp = new SProduct()
+                    {
+                        SPID = x.TPID,
+                        SName=x.TName,
+                        SPNO=x.TPNO,
+                        SMF=x.TMF,
+                        SFGF=x.TFGF,
+                        SColor=x.TColor,
+                        SSSL=x.TSSL,
+                        SROP=x.TROP,
+                        SSC=x.TSC,
+                        SLP=x.TLP,
+                        SSize=x.TSize,
+                        SSUMC=x.TSUMC,
+                        SWUMC=x.TWUMC,
+                        SWeight=x.TWeight,
+                        SDTM=x.TDTM,
+                        SPL=x.TPL,
+                        SClass=x.TClass,
+                        SStyle=x.TStyle,
+                        SPSID=x.TPSID,
+                        SPMID=x.TPMID,
+                        SSSD=x.TSSD,
+                        SSED=x.TSED,
+                        SDD=x.TDD,
+                        SRG=x.TRG,
+                        SMD=x.TMD
+                    };
+                    serverProductList.Add(sp);
+                });
+            }
+            return serverProductList;
+        }
         #endregion
     }
    

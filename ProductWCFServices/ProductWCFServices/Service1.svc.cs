@@ -17,6 +17,11 @@ namespace ProductWCFServices
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
+        static string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+        static SqlConnection conn = new SqlConnection(connString);
+        static List<SProduct> SProductList = new List<SProduct>();
+        static SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+        static DataSet ds = new DataSet();
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
@@ -36,16 +41,15 @@ namespace ProductWCFServices
         }
 
         public List<SProduct> GetSProductByPID(int pID)
-        {
-            List<SProduct> SProductList = new List<SProduct>();
-            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(connString);
+        {    
             SProduct sProd = new SProduct();
-            conn.Open();
+            if(conn.State!=ConnectionState.Open)
+            {
+                conn.Open();
+            }            
 
             Nullable<DateTime> dt = null;
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataSet ds = new DataSet();
+           
             if(conn.State==ConnectionState.Open)
             {               
                 using (SqlCommand selectCmd = new SqlCommand())
@@ -95,6 +99,23 @@ namespace ProductWCFServices
                 }
             }
             return SProductList;
+        }
+
+        public List<SProduct> SaveProducts(List<SProduct> sProdList)
+        {
+            ds.Clear();
+            if(sProdList!=null && sProdList.Any())
+            {
+                sProdList.ForEach(x =>
+                {
+                    ds.Tables[0].Rows.Add(x);
+                });
+            }
+
+            sqlDataAdapter.Update(ds);
+
+            var returnedNewServerList = GetSProductByPID(0);
+            return returnedNewServerList;
         }
     }
 }

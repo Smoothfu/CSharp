@@ -26,5 +26,9 @@ namespace ProductStore
             InitializeComponent();
             this.DataContext = new ProductVM();
         }
+
+        
+
+       
     }
 }

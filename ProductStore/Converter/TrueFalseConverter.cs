@@ -18,25 +18,25 @@ namespace ProductStore.Converter
                 return -1;
             }
 
-            if(value is TrueFalseEnum)
+            if(value is Boolean)
             {
-               if((TrueFalseEnum)value==TrueFalseEnum.True)
+               if((bool)value==true)
                 {
-                    return 1;
+                    return TrueFalseEnum.True;
                 }
                else
-                 if((TrueFalseEnum)value==TrueFalseEnum.False)
+                 if((bool)value==false)
                 {
-                    return 0;
+                    return TrueFalseEnum.False;
                 }
 
-               else if((TrueFalseEnum)value==TrueFalseEnum.Unknow)
+               else 
                 {
-                    return -1;
+                    return TrueFalseEnum.Unknow;
                 }
             }            
             
-            return -1;
+            return TrueFalseEnum.Unknow;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
