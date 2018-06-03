@@ -51,8 +51,8 @@ namespace ProductStore.Model
             }
         }
 
-        private string _TMF;
-        public string TMF
+        private bool _TMF;
+        public bool TMF
         {
             get
             {
@@ -65,8 +65,8 @@ namespace ProductStore.Model
             }
         }
 
-        private string _TFGF;
-        public string TFGF
+        private bool _TFGF;
+        public bool TFGF
         {
             get
             {
@@ -93,8 +93,8 @@ namespace ProductStore.Model
             }
         }
 
-        private string _TSSL;
-        public string TSSL
+        private Int16 _TSSL;
+        public Int16 TSSL
         {
             get
             {
@@ -107,8 +107,8 @@ namespace ProductStore.Model
             }
         }
 
-        private string _TROP;
-        public string TROP
+        private Int16 _TROP;
+        public Int16 TROP
         {
             get
             {
@@ -121,8 +121,8 @@ namespace ProductStore.Model
             }
         }
 
-        private string _TSC;
-        public string TSC
+        private decimal _TSC;
+        public decimal TSC
         {
             get
             {
@@ -135,8 +135,8 @@ namespace ProductStore.Model
             }
         }
 
-        private string _TLP;
-        public string TLP
+        private decimal _TLP;
+        public decimal TLP
         {
             get
             {
@@ -147,6 +147,217 @@ namespace ProductStore.Model
                 _TLP = value;
                 NotifyPropertyChanged("TLP");
             }
-        }       
+        }
+
+        private string _TSize;
+        public string TSize
+        {
+            get
+            {
+                return _TSize;
+            }
+            set
+            {
+                _TSize = value;
+                NotifyPropertyChanged("TSize");
+            }
+        }
+
+        private string _TSUMC;
+        public string TSUMC
+        {
+            get
+            {
+                return _TSUMC;
+            }
+            set
+            {
+                _TSUMC = value;
+                NotifyPropertyChanged("TSUMC");
+            }
+        }
+
+        private string _TWUMC;
+        public string TWUMC
+        {
+            get
+            {
+                return _TWUMC;
+            }
+            set
+            {
+                _TWUMC = value;
+                NotifyPropertyChanged("TWUMC");
+            }
+        }
+
+        private decimal _TWeight;
+        public decimal TWeight
+        {
+            get
+            {
+                return _TWeight;
+            }
+            set
+            {
+                _TWeight = value;
+                NotifyPropertyChanged("TWeight");
+            }
+        }
+
+        private int _TDTM;
+        public int TDTM
+        {
+            get
+            {
+                return _TDTM;
+            }
+            set
+            {
+                _TDTM = value;
+                NotifyPropertyChanged("TDTM");
+            }
+        }
+
+        private string _TPL;
+        public string TPL
+        {
+            get
+            {
+                return _TPL;
+            }
+            set
+            {
+                _TPL = value;
+                NotifyPropertyChanged("TPL");
+            }
+        }
+
+        private string _TClass;
+        public string TClass
+        {
+            get
+            {
+                return _TClass;
+            }
+            set
+            {
+                _TClass = value;
+                NotifyPropertyChanged("TClass");
+            }
+        }
+
+        public string _TStyle;
+        public string TStyle
+        {
+            get
+            {
+                return _TStyle;
+            }
+            set
+            {
+                _TStyle = value;
+                NotifyPropertyChanged("TStyle");
+            }
+        }
+
+        private int _TPSID;
+        public int TPSID
+        {
+            get
+            {
+                return _TPSID;
+            }
+            set
+            {
+                _TPSID = value;
+                NotifyPropertyChanged("TPSID");
+            }
+        }
+
+        private int _TPMID;
+        public int TPMID
+        {
+            get
+            {
+                return _TPMID;
+            }
+            set
+            {
+                _TPMID = value;
+                NotifyPropertyChanged("TPMID");
+            }
+        }
+
+        private DateTime _TSSD;
+        public DateTime TSSD
+        {
+            get
+            {
+                return _TSSD;
+            }
+            set
+            {
+                _TSSD = value;
+                NotifyPropertyChanged("TSSD");
+            }
+        }
+
+        private DateTime _TSED;
+        public DateTime TSED
+        {
+            get
+            {
+                return _TSED;
+            }
+            set
+            {
+                _TSED = value;
+                NotifyPropertyChanged("TSED");
+            }
+        }
+
+        private DateTime _TDD;
+        public DateTime TDD
+        {
+            get
+            {
+                return _TDD;
+            }
+            set
+            {
+                _TDD = value;
+                NotifyPropertyChanged("TDD");
+            }
+        }
+
+        private Guid _TRG;
+        public Guid TRG
+        {
+            get
+            {
+                return _TRG;
+            }
+            set
+            {
+                _TRG = value;
+                NotifyPropertyChanged("TRG");
+            }
+        }
+
+        private DateTime _TMD;
+        public DateTime TMD
+        {
+            get
+            {
+                return _TMD;
+            }
+            set
+            {
+                _TMD = value;
+                NotifyPropertyChanged("TMD");
+            }
+        }
+
     }
 }

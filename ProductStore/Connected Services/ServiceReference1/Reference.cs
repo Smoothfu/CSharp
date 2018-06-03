@@ -84,16 +84,28 @@ namespace ProductStore.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SClassField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SColorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SFGFField;
+        private System.DateTime SDDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SLPField;
+        private int SDTMField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SMFField;
+        private bool SFGFField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal SLPField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime SMDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SMFField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SNameField;
@@ -102,16 +114,49 @@ namespace ProductStore.ServiceReference1 {
         private int SPIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SPLField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SPMIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SPNOField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SROPField;
+        private int SPSIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SSCField;
+        private System.Guid SRGField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SSSLField;
+        private short SROPField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal SSCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime SSEDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime SSSDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short SSSLField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SSUMCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SStyleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SWUMCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal SWeightField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -120,6 +165,19 @@ namespace ProductStore.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SClass {
+            get {
+                return this.SClassField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SClassField, value) != true)) {
+                    this.SClassField = value;
+                    this.RaisePropertyChanged("SClass");
+                }
             }
         }
         
@@ -137,12 +195,38 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SFGF {
+        public System.DateTime SDD {
+            get {
+                return this.SDDField;
+            }
+            set {
+                if ((this.SDDField.Equals(value) != true)) {
+                    this.SDDField = value;
+                    this.RaisePropertyChanged("SDD");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SDTM {
+            get {
+                return this.SDTMField;
+            }
+            set {
+                if ((this.SDTMField.Equals(value) != true)) {
+                    this.SDTMField = value;
+                    this.RaisePropertyChanged("SDTM");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool SFGF {
             get {
                 return this.SFGFField;
             }
             set {
-                if ((object.ReferenceEquals(this.SFGFField, value) != true)) {
+                if ((this.SFGFField.Equals(value) != true)) {
                     this.SFGFField = value;
                     this.RaisePropertyChanged("SFGF");
                 }
@@ -150,12 +234,12 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SLP {
+        public decimal SLP {
             get {
                 return this.SLPField;
             }
             set {
-                if ((object.ReferenceEquals(this.SLPField, value) != true)) {
+                if ((this.SLPField.Equals(value) != true)) {
                     this.SLPField = value;
                     this.RaisePropertyChanged("SLP");
                 }
@@ -163,12 +247,25 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SMF {
+        public System.DateTime SMD {
+            get {
+                return this.SMDField;
+            }
+            set {
+                if ((this.SMDField.Equals(value) != true)) {
+                    this.SMDField = value;
+                    this.RaisePropertyChanged("SMD");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool SMF {
             get {
                 return this.SMFField;
             }
             set {
-                if ((object.ReferenceEquals(this.SMFField, value) != true)) {
+                if ((this.SMFField.Equals(value) != true)) {
                     this.SMFField = value;
                     this.RaisePropertyChanged("SMF");
                 }
@@ -202,6 +299,32 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SPL {
+            get {
+                return this.SPLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SPLField, value) != true)) {
+                    this.SPLField = value;
+                    this.RaisePropertyChanged("SPL");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SPMID {
+            get {
+                return this.SPMIDField;
+            }
+            set {
+                if ((this.SPMIDField.Equals(value) != true)) {
+                    this.SPMIDField = value;
+                    this.RaisePropertyChanged("SPMID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string SPNO {
             get {
                 return this.SPNOField;
@@ -215,12 +338,38 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SROP {
+        public int SPSID {
+            get {
+                return this.SPSIDField;
+            }
+            set {
+                if ((this.SPSIDField.Equals(value) != true)) {
+                    this.SPSIDField = value;
+                    this.RaisePropertyChanged("SPSID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SRG {
+            get {
+                return this.SRGField;
+            }
+            set {
+                if ((this.SRGField.Equals(value) != true)) {
+                    this.SRGField = value;
+                    this.RaisePropertyChanged("SRG");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short SROP {
             get {
                 return this.SROPField;
             }
             set {
-                if ((object.ReferenceEquals(this.SROPField, value) != true)) {
+                if ((this.SROPField.Equals(value) != true)) {
                     this.SROPField = value;
                     this.RaisePropertyChanged("SROP");
                 }
@@ -228,12 +377,12 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SSC {
+        public decimal SSC {
             get {
                 return this.SSCField;
             }
             set {
-                if ((object.ReferenceEquals(this.SSCField, value) != true)) {
+                if ((this.SSCField.Equals(value) != true)) {
                     this.SSCField = value;
                     this.RaisePropertyChanged("SSC");
                 }
@@ -241,14 +390,105 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SSSL {
+        public System.DateTime SSED {
+            get {
+                return this.SSEDField;
+            }
+            set {
+                if ((this.SSEDField.Equals(value) != true)) {
+                    this.SSEDField = value;
+                    this.RaisePropertyChanged("SSED");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime SSSD {
+            get {
+                return this.SSSDField;
+            }
+            set {
+                if ((this.SSSDField.Equals(value) != true)) {
+                    this.SSSDField = value;
+                    this.RaisePropertyChanged("SSSD");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short SSSL {
             get {
                 return this.SSSLField;
             }
             set {
-                if ((object.ReferenceEquals(this.SSSLField, value) != true)) {
+                if ((this.SSSLField.Equals(value) != true)) {
                     this.SSSLField = value;
                     this.RaisePropertyChanged("SSSL");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SSUMC {
+            get {
+                return this.SSUMCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SSUMCField, value) != true)) {
+                    this.SSUMCField = value;
+                    this.RaisePropertyChanged("SSUMC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SSize {
+            get {
+                return this.SSizeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SSizeField, value) != true)) {
+                    this.SSizeField = value;
+                    this.RaisePropertyChanged("SSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SStyle {
+            get {
+                return this.SStyleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SStyleField, value) != true)) {
+                    this.SStyleField = value;
+                    this.RaisePropertyChanged("SStyle");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SWUMC {
+            get {
+                return this.SWUMCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SWUMCField, value) != true)) {
+                    this.SWUMCField = value;
+                    this.RaisePropertyChanged("SWUMC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal SWeight {
+            get {
+                return this.SWeightField;
+            }
+            set {
+                if ((this.SWeightField.Equals(value) != true)) {
+                    this.SWeightField = value;
+                    this.RaisePropertyChanged("SWeight");
                 }
             }
         }

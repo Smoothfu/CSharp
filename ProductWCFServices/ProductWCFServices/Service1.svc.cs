@@ -63,16 +63,31 @@ namespace ProductWCFServices
                         {
                             sProd = new SProduct()
                             {
-                                SPID = (int)ds.Tables[0].Rows[i][0],
-                                SName = ds.Tables[0].Rows[i][1].ToString(),
-                                SPNO = ds.Tables[0].Rows[i][2].ToString(),
-                                SMF = ds.Tables[0].Rows[i][3].ToString(),
-                                SFGF = ds.Tables[0].Rows[i][4].ToString(),
-                                SColor = ds.Tables[0].Rows[i][5].ToString(),
-                                SSSL = ds.Tables[0].Rows[i][6].ToString(),
-                                SROP = ds.Tables[0].Rows[i][7].ToString(),
-                                SSC = ds.Tables[0].Rows[i][8].ToString(),
-                                SLP = ds.Tables[0].Rows[i][9].ToString()
+                                SPID = (int)ds.Tables[0].Rows[i]["pid"],
+                                SName = ds.Tables[0].Rows[i]["name"].ToString(),
+                                SPNO = ds.Tables[0].Rows[i]["pno"].ToString(),
+                                SMF = (bool)ds.Tables[0].Rows[i]["mf"],
+                                SFGF = (bool)ds.Tables[0].Rows[i]["FGF"],
+                                SColor = ds.Tables[0].Rows[i]["color"].ToString(),
+                                SSSL = (Int16)ds.Tables[0].Rows[i]["SSL"],
+                                SROP = (Int16)ds.Tables[0].Rows[i]["rop"],
+                                SSC = (decimal)ds.Tables[0].Rows[i]["SC"],
+                                SLP = (decimal)ds.Tables[0].Rows[i]["lp"],
+                                SSize = ds.Tables[0].Rows[i]["size"].ToString(),
+                                SSUMC = ds.Tables[0].Rows[i]["sumc"].ToString(),
+                                SWUMC = ds.Tables[0].Rows[i]["wumc"].ToString(),
+                                SWeight = (decimal)ds.Tables[0].Rows[i]["weight"],
+                                SDTM = (int)ds.Tables[0].Rows[i]["DTM"],
+                                SPL = ds.Tables[0].Rows[i]["pl"].ToString(),
+                                SClass = ds.Tables[0].Rows[i]["class"].ToString(),
+                                SStyle = ds.Tables[0].Rows[i]["style"].ToString(),
+                                SPSID=(int)ds.Tables[0].Rows[i]["psid"],
+                                SPMID=(int)ds.Tables[0].Rows[i]["pmid"],
+                                SSSD=(DateTime)ds.Tables[0].Rows[i]["SSD"],
+                                SSED=(DateTime)ds.Tables[0].Rows[i]["SED"],
+                                SDD=(DateTime)ds.Tables[0].Rows[i]["dd"],
+                                SRG=(Guid)ds.Tables[0].Rows[i]["rg"],
+                                SMD=(DateTime)ds.Tables[0].Rows[i]["md"]
                             };
                             SProductList.Add(sProd);
                         }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ProductWCFServices.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ProductWCFServices.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/ProductWCFServices.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ProductWCFServices.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8919/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ArrayOfSProduct">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SProduct" nillable="true" type="tns:SProduct" />
@@ -8,16 +9,31 @@
   <xs:element name="ArrayOfSProduct" nillable="true" type="tns:ArrayOfSProduct" />
   <xs:complexType name="SProduct">
     <xs:sequence>
+      <xs:element minOccurs="0" name="SClass" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SColor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SFGF" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SLP" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SMF" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SDD" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SDTM" type="xs:int" />
+      <xs:element minOccurs="0" name="SFGF" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SLP" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SMD" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SMF" type="xs:boolean" />
       <xs:element minOccurs="0" name="SName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SPID" type="xs:int" />
+      <xs:element minOccurs="0" name="SPL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SPMID" type="xs:int" />
       <xs:element minOccurs="0" name="SPNO" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SROP" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SSC" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SSSL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SPSID" type="xs:int" />
+      <xs:element minOccurs="0" name="SRG" type="ser:guid" />
+      <xs:element minOccurs="0" name="SROP" type="xs:short" />
+      <xs:element minOccurs="0" name="SSC" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SSED" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SSSD" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SSSL" type="xs:short" />
+      <xs:element minOccurs="0" name="SSUMC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SStyle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SWUMC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SWeight" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SProduct" nillable="true" type="tns:SProduct" />
