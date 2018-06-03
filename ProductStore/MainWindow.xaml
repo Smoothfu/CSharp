@@ -11,16 +11,21 @@
             <RowDefinition Height="50"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="0" Grid.Column="2" ToolTip="Product Id" FontSize="30" Text="{Binding ProductID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Grid.Row="0" Grid.Column="3" Command="{Binding ShowProductCommand}" Content="Search"/>
-        </Grid>
+        <GroupBox Grid.Row="0">
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <Label Content="Product Id" FontSize="20" />
+                    <TextBox  ToolTip="Product Id" FontSize="30" Text="{Binding ProductID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="150" />
+                </StackPanel>
+               <Button Grid.Row="0" Grid.Column="3" Command="{Binding ShowProductCommand}" Content="Search"/>
+            </Grid>
+        </GroupBox>        
         <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>
