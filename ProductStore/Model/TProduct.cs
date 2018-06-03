@@ -289,8 +289,8 @@ namespace ProductStore.Model
             }
         }
 
-        private DateTime _TSSD;
-        public DateTime TSSD
+        private DateTime? _TSSD;
+        public DateTime? TSSD
         {
             get
             {
@@ -303,8 +303,8 @@ namespace ProductStore.Model
             }
         }
 
-        private DateTime _TSED;
-        public DateTime TSED
+        private DateTime? _TSED;
+        public DateTime? TSED
         {
             get
             {
@@ -317,8 +317,8 @@ namespace ProductStore.Model
             }
         }
 
-        private DateTime _TDD;
-        public DateTime TDD
+        private DateTime? _TDD;
+        public DateTime? TDD
         {
             get
             {
@@ -345,8 +345,8 @@ namespace ProductStore.Model
             }
         }
 
-        private DateTime _TMD;
-        public DateTime TMD
+        private DateTime? _TMD;
+        public DateTime? TMD
         {
             get
             {

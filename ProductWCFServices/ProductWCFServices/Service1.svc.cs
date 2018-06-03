@@ -43,6 +43,7 @@ namespace ProductWCFServices
             SProduct sProd = new SProduct();
             conn.Open();
 
+            Nullable<DateTime> dt = null;
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataSet ds = new DataSet();
             if(conn.State==ConnectionState.Open)
@@ -82,11 +83,11 @@ namespace ProductWCFServices
                                 SStyle =string.IsNullOrEmpty(ds.Tables[0].Rows[i]["style"].ToString())? default(string) : ds.Tables[0].Rows[i]["style"].ToString(),
                                 SPSID=string.IsNullOrEmpty(ds.Tables[0].Rows[i]["psid"].ToString()) ? default(int) : (int)ds.Tables[0].Rows[i]["psid"],
                                 SPMID=string.IsNullOrEmpty(ds.Tables[0].Rows[i]["pmid"].ToString())?default(int):(int) ds.Tables[0].Rows[i]["pmid"], 
-                                SSSD=string.IsNullOrEmpty(ds.Tables[0].Rows[i]["SSD"].ToString())?default(DateTime): (DateTime)ds.Tables[0].Rows[i]["SSD"],
-                                SSED =string.IsNullOrEmpty(ds.Tables[0].Rows[i]["SED"].ToString())?default(DateTime):(DateTime)ds.Tables[0].Rows[i]["SED"],
-                                SDD=string.IsNullOrEmpty(ds.Tables[0].Rows[i]["dd"].ToString())?default(DateTime): (DateTime)ds.Tables[0].Rows[i]["dd"],
+                                SSSD=ds.Tables[0].Rows[i]["SSD"]== DBNull.Value? dt: (DateTime?)ds.Tables[0].Rows[i]["SSD"],
+                                SSED =ds.Tables[0].Rows[i]["SED"]==DBNull.Value? dt : (DateTime?)ds.Tables[0].Rows[i]["SED"],
+                                SDD=ds.Tables[0].Rows[i]["dd"]==DBNull.Value? dt : (DateTime?)ds.Tables[0].Rows[i]["dd"],
                                 SRG =string.IsNullOrEmpty(ds.Tables[0].Rows[i]["rg"].ToString())?default(Guid) : (Guid)ds.Tables[0].Rows[i]["rg"],
-                                SMD =string.IsNullOrEmpty(ds.Tables[0].Rows[i]["md"].ToString())?default(DateTime): (DateTime)ds.Tables[0].Rows[i]["md"]
+                                SMD = ds.Tables[0].Rows[i]["md"]==DBNull.Value? dt : (DateTime?)ds.Tables[0].Rows[i]["md"]
                             };
                             SProductList.Add(sProd);
                         }

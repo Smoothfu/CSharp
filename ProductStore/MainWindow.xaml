@@ -16,9 +16,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="0" Grid.Column="0" FontSize="30" Text="{Binding ProductID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Grid.Row="0" Grid.Column="1" Command="{Binding ShowProductCommand}" Content="Search"/>
-        </Grid>       
+            <TextBox Grid.Row="0" Grid.Column="2" ToolTip="Product Id" FontSize="30" Text="{Binding ProductID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Grid.Row="0" Grid.Column="3" Command="{Binding ShowProductCommand}" Content="Search"/>
+        </Grid>
     </Grid>
 </Window>

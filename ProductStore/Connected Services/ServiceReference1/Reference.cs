@@ -90,7 +90,7 @@ namespace ProductStore.ServiceReference1 {
         private string SColorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime SDDField;
+        private System.Nullable<System.DateTime> SDDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int SDTMField;
@@ -102,7 +102,7 @@ namespace ProductStore.ServiceReference1 {
         private decimal SLPField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime SMDField;
+        private System.Nullable<System.DateTime> SMDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool SMFField;
@@ -135,10 +135,10 @@ namespace ProductStore.ServiceReference1 {
         private decimal SSCField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime SSEDField;
+        private System.Nullable<System.DateTime> SSEDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime SSSDField;
+        private System.Nullable<System.DateTime> SSSDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private short SSSLField;
@@ -195,7 +195,7 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime SDD {
+        public System.Nullable<System.DateTime> SDD {
             get {
                 return this.SDDField;
             }
@@ -247,7 +247,7 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime SMD {
+        public System.Nullable<System.DateTime> SMD {
             get {
                 return this.SMDField;
             }
@@ -390,7 +390,7 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime SSED {
+        public System.Nullable<System.DateTime> SSED {
             get {
                 return this.SSEDField;
             }
@@ -403,7 +403,7 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime SSSD {
+        public System.Nullable<System.DateTime> SSSD {
             get {
                 return this.SSSDField;
             }
