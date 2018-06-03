@@ -144,10 +144,10 @@ namespace ProductStore.ViewModel
         }
 
         private void SaveCommandExecuted()
-        { 
-            List<SProduct> sendToServerProductList = ConvertToServerProduct(ProductCollection.ToList());
-            serverProductList.Clear();
-            serverProductList = sClient.SaveProducts(sendToServerProductList.ToArray()).ToList();
+        {
+            serverProductList = ConvertToServerProduct(ProductCollection.ToList());
+             
+            serverProductList = sClient.SaveProducts(serverProductList.ToArray()).ToList();
 
             terminalProductList = ConvertFromServerProduct(serverProductList);
             ProductCollection = new ObservableCollection<TProduct>(terminalProductList);
