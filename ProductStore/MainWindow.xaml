@@ -39,14 +39,14 @@
                 <Button Grid.Row="0" Grid.Column="3" Command="{Binding ShowProductCommand}" Content="Search"/>
             </Grid>
         </GroupBox>
-        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"
+        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="True"
                   SelectedItem="{Binding SelectedProduct}">
-            <DataGrid.Columns>
+            <!--<DataGrid.Columns>
                 <DataGridTextColumn Header="ProductID" Binding="{Binding TPID}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding TName}"/>
                 <DataGridTextColumn Header="ProductNumber" Binding="{Binding TPNO}"/>
                 <DataGridTextColumn Header="MakeFlag" Binding="{Binding TMF}"/>
-            </DataGrid.Columns>
+            </DataGrid.Columns>-->
         </DataGrid>
     </Grid>
 </Window>

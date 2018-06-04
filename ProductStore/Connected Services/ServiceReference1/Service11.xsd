@@ -15,7 +15,7 @@
       <xs:element minOccurs="0" name="SDTM" type="xs:int" />
       <xs:element minOccurs="0" name="SFGF" type="xs:boolean" />
       <xs:element minOccurs="0" name="SLP" type="xs:decimal" />
-      <xs:element minOccurs="0" name="SMD" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SMD" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SMF" type="xs:boolean" />
       <xs:element minOccurs="0" name="SName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SPID" type="xs:int" />
@@ -27,7 +27,7 @@
       <xs:element minOccurs="0" name="SROP" type="xs:short" />
       <xs:element minOccurs="0" name="SSC" type="xs:decimal" />
       <xs:element minOccurs="0" name="SSED" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="SSSD" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SSSD" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SSSL" type="xs:short" />
       <xs:element minOccurs="0" name="SSUMC" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SSize" nillable="true" type="xs:string" />

@@ -102,7 +102,7 @@ namespace ProductStore.ServiceReference1 {
         private decimal SLPField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> SMDField;
+        private System.DateTime SMDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool SMFField;
@@ -138,7 +138,7 @@ namespace ProductStore.ServiceReference1 {
         private System.Nullable<System.DateTime> SSEDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> SSSDField;
+        private System.DateTime SSSDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private short SSSLField;
@@ -247,7 +247,7 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> SMD {
+        public System.DateTime SMD {
             get {
                 return this.SMDField;
             }
@@ -403,7 +403,7 @@ namespace ProductStore.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> SSSD {
+        public System.DateTime SSSD {
             get {
                 return this.SSSDField;
             }

@@ -27,10 +27,10 @@ namespace ProductWCFServices.Model
         public string SStyle { get; set; }
         public Int32 SPSID { get; set; }
         public Int32 SPMID { get; set; }
-        public DateTime? SSSD { get; set; }
+        public DateTime SSSD { get; set; }
         public DateTime? SSED { get; set; }
         public DateTime? SDD { get; set; }
         public Guid SRG { get; set; }
-        public DateTime? SMD { get; set; }
+        public DateTime SMD { get; set; }
     }
 }

@@ -22,6 +22,11 @@ namespace ProductWCFServices
         static List<SProduct> SProductList = new List<SProduct>();
         static SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
         static DataSet ds = new DataSet();
+
+        public Service1()
+        {
+                        
+        }
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
@@ -87,11 +92,11 @@ namespace ProductWCFServices
                                 SStyle =string.IsNullOrEmpty(ds.Tables[0].Rows[i]["style"].ToString())? default(string) : ds.Tables[0].Rows[i]["style"].ToString(),
                                 SPSID=string.IsNullOrEmpty(ds.Tables[0].Rows[i]["psid"].ToString()) ? default(int) : (int)ds.Tables[0].Rows[i]["psid"],
                                 SPMID=string.IsNullOrEmpty(ds.Tables[0].Rows[i]["pmid"].ToString())?default(int):(int) ds.Tables[0].Rows[i]["pmid"], 
-                                SSSD=ds.Tables[0].Rows[i]["SSD"]== DBNull.Value? dt: (DateTime?)ds.Tables[0].Rows[i]["SSD"],
-                                SSED =ds.Tables[0].Rows[i]["SED"]==DBNull.Value? dt : (DateTime?)ds.Tables[0].Rows[i]["SED"],
+                                SSSD=(DateTime)ds.Tables[0].Rows[i]["SSD"],
+                                SSED =ds.Tables[0].Rows[i]["SED"]== DBNull.Value ? dt : (DateTime?)ds.Tables[0].Rows[i]["SED"],
                                 SDD=ds.Tables[0].Rows[i]["dd"]==DBNull.Value? dt : (DateTime?)ds.Tables[0].Rows[i]["dd"],
                                 SRG =string.IsNullOrEmpty(ds.Tables[0].Rows[i]["rg"].ToString())?default(Guid) : (Guid)ds.Tables[0].Rows[i]["rg"],
-                                SMD = ds.Tables[0].Rows[i]["md"]==DBNull.Value? dt : (DateTime?)ds.Tables[0].Rows[i]["md"]
+                                SMD = (DateTime)ds.Tables[0].Rows[i]["md"]
                             };
                             SProductList.Add(sProd);
                         }
@@ -102,12 +107,47 @@ namespace ProductWCFServices
         }
 
         public List<SProduct> SaveProducts(List<SProduct> sProdList)
-        {    
-            ds.Clear();
+        {   
+            if(sProdList==null ||!sProdList.Any())
+            {
+                MessageBox.Show("No items");
+                return null;
+            }
+            SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
+            
             if(sProdList!=null && sProdList.Any())
             {
-                ds.Tables[0].LoadDataRow(sProdList.ToArray(), true);
+                for(int i=0;i<sProdList.Count;i++)
+                {
+                    ds.Tables[0].Rows[i]["PID"] = sProdList[i].SPID;
+                    ds.Tables[0].Rows[i]["Name"] = sProdList[i].SName;
+                    ds.Tables[0].Rows[i]["PNO"] = sProdList[i].SPNO;
+                    ds.Tables[0].Rows[i]["MF"] = sProdList[i].SMF;
+                    ds.Tables[0].Rows[i]["FGF"] = sProdList[i].SFGF;
+                    ds.Tables[0].Rows[i]["Color"] = sProdList[i].SColor;
+                    ds.Tables[0].Rows[i]["SSL"] = sProdList[i].SSSL;
+                    ds.Tables[0].Rows[i]["ROP"] = sProdList[i].SROP;
+                    ds.Tables[0].Rows[i]["SC"] = sProdList[i].SSC;
+                    ds.Tables[0].Rows[i]["LP"] = sProdList[i].SLP;
+                    ds.Tables[0].Rows[i]["Size"] = sProdList[i].SSize;
+                    ds.Tables[0].Rows[i]["SUMC"] = sProdList[i].SSUMC;
+                    ds.Tables[0].Rows[i]["WUMC"] = sProdList[i].SWUMC;
+                    ds.Tables[0].Rows[i]["Weight"] = sProdList[i].SWeight;
+                    ds.Tables[0].Rows[i]["DTM"] = sProdList[i].SDTM;
+                    ds.Tables[0].Rows[i]["PL"] = sProdList[i].SPL;
+                    ds.Tables[0].Rows[i]["class"] = sProdList[i].SClass;
+                    ds.Tables[0].Rows[i]["style"] = sProdList[i].SStyle;
+                    ds.Tables[0].Rows[i]["PSID"] = sProdList[i].SPSID;
+                    ds.Tables[0].Rows[i]["PMID"] = sProdList[i].SPMID;
+                    ds.Tables[0].Rows[i]["SSD"] = sProdList[i].SSSD;
+                    ds.Tables[0].Rows[i]["SED"] = sProdList[i].SSED== null ? (object)DBNull.Value: sProdList[i].SSED;
+                    ds.Tables[0].Rows[i]["DD"] = sProdList[i].SDD==null?(object)DBNull.Value:sProdList[i].SDD;
+                    ds.Tables[0].Rows[i]["RG"] = sProdList[i].SRG;
+                    ds.Tables[0].Rows[i]["MD"] = sProdList[i].SMD;
+
+                }
             }
+            sqlDataAdapter.UpdateCommand = builder.GetUpdateCommand();
 
             sqlDataAdapter.Update(ds);
 

@@ -10,26 +10,38 @@ create proc spGetProductByPID
 @PID int
 as
 if @PID=0
-select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP 
-from AdventureWorks2014.Production.Product 
+select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP,
+Size,SizeUnitMeasureCode SUMC,WeightUnitMeasureCode WUMC,Weight,DaysToManufacture DTM,ProductLine PL,class,style,ProductSubcategoryID PSID,ProductModelID PMID,
+SellStartDate SSD,SellEndDate SED,DiscontinuedDate DD,rowguid RG,ModifiedDate MD
+from AdventureWorks2014.Production.Product
 else
-select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP 
+select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP,
+Size,SizeUnitMeasureCode SUMC,WeightUnitMeasureCode WUMC,Weight,DaysToManufacture DTM,ProductLine PL,class,style,ProductSubcategoryID PSID,ProductModelID PMID,
+SellStartDate SSD,SellEndDate SED,DiscontinuedDate DD,rowguid RG ,ModifiedDate MD
 from AdventureWorks2014.Production.Product where ProductID=@PID
  
-if OBJECT_ID('spGetAllProducts','p') is not null
-drop proc spGetAllProducts
-go
-create proc spGetAllProducts
-as
+ select  COLUMN_NAME,DATA_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='Product'
+  select count(*) from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='Product'
+
+
+
+
 select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP 
 from AdventureWorks2014.Production.Product
+
+
+select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP,
+Size,SizeUnitMeasureCode SUMC,WeightUnitMeasureCode WUMC,Weight,DaysToManufacture DTM,ProductLine PL,class,style,ProductSubcategoryID PSID,ProductModelID PMID,
+SellStartDate SSD,SellEndDate SED,DiscontinuedDate DD,rowguid RG,ModifiedDate MD
+from AdventureWorks2014.Production.Product where ProductID=1
 
 exec spGetProductByPID 1
 
+select COLUMN_NAME,DATA_TYPE  from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='product'
 
-select ProductID PID,Name,ProductNumber PNO,MakeFlag MF,FinishedGoodsFlag FGF,color,safetystocklevel SSL,ReorderPoint ROP,standardcost SC,ListPrice LP 
-from AdventureWorks2014.Production.Product
 
-declare
-@PID int
-exec spGetProductByPID @PId=352
+select * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='product'
+
+select * from INFORMATION_SCHEMA.CHECK_CONSTRAINTS where CONSTRAINT_NAME='CK_Product_Weight'
+
+EXEC sp_MSforeachtable @command1="ALTER TABLE ? NOCHECK CONSTRAINT ALL"
