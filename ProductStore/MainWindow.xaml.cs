@@ -32,17 +32,12 @@ namespace ProductStore
 
         private void dg_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            _ProVM.ProductCollection_CollectionChanged(sender, e);
+            _ProVM.SelectedProductChanged(sender, e);            
+        }
 
-            var changedProduct = sender as TProduct;
-            if(changedProduct!=null)
-            {
-                var changedIndex = _ProVM.ProductCollection.IndexOf(changedProduct);
-                if(changedIndex>-1)
-                {
-
-                }
-            }
+        private void dg_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            var newProductCollection = _ProVM.ProductCollection;
         }
     }
 }

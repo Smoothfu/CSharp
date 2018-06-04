@@ -22,6 +22,7 @@ namespace ProductWCFServices
         static List<SProduct> SProductList = new List<SProduct>();
         static SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
         static DataSet ds = new DataSet();
+        static SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
 
         public Service1()
         {
@@ -114,11 +115,10 @@ namespace ProductWCFServices
             {
                 MessageBox.Show("No items");
                 return null;
-            }
-            SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
+            }            
             
             if(sProdList!=null && sProdList.Any())
-            {
+            { 
                 for(int i=0;i<sProdList.Count;i++)
                 {
                     ds.Tables[0].Rows[i]["PID"] = sProdList[i].SPID;
@@ -146,7 +146,6 @@ namespace ProductWCFServices
                     ds.Tables[0].Rows[i]["DD"] = sProdList[i].SDD==null?(object)DBNull.Value:sProdList[i].SDD;
                     ds.Tables[0].Rows[i]["RG"] = sProdList[i].SRG;
                     ds.Tables[0].Rows[i]["MD"] = sProdList[i].SMD;
-
                 }
             }
             sqlDataAdapter.UpdateCommand = builder.GetUpdateCommand();
@@ -155,6 +154,51 @@ namespace ProductWCFServices
 
             var returnedNewServerList = GetSProductByPID(0);
             return returnedNewServerList;
+        }
+
+        public List<SProduct> UpdateSelectedProduct(SProduct selectedSProd)
+        {
+            if(selectedSProd==null)
+            {
+                MessageBox.Show("No updated items");
+                return null;
+            }
+
+            if (selectedSProd!=null)
+            {                
+                int i = 0;
+                ds.Tables[0].Rows[0]["PID"] = selectedSProd.SPID;
+                ds.Tables[0].Rows[0]["Name"] = selectedSProd.SName;
+                ds.Tables[0].Rows[i]["PNO"] = selectedSProd.SPNO;
+                ds.Tables[0].Rows[i]["MF"] = selectedSProd.SMF;
+                ds.Tables[0].Rows[i]["FGF"] = selectedSProd.SFGF;
+                ds.Tables[0].Rows[i]["Color"] = selectedSProd.SColor;
+                ds.Tables[0].Rows[i]["SSL"] = selectedSProd.SSSL;
+                ds.Tables[0].Rows[i]["ROP"] = selectedSProd.SROP;
+                ds.Tables[0].Rows[i]["SC"] = selectedSProd.SSC;
+                ds.Tables[0].Rows[i]["LP"] = selectedSProd.SLP;
+                ds.Tables[0].Rows[i]["Size"] = selectedSProd.SSize;
+                ds.Tables[0].Rows[i]["SUMC"] = selectedSProd.SSUMC;
+                ds.Tables[0].Rows[i]["WUMC"] = selectedSProd.SWUMC;
+                ds.Tables[0].Rows[i]["Weight"] = selectedSProd.SWeight;
+                ds.Tables[0].Rows[i]["DTM"] = selectedSProd.SDTM;
+                ds.Tables[0].Rows[i]["PL"] = selectedSProd.SPL;
+                ds.Tables[0].Rows[i]["class"] = selectedSProd.SClass;
+                ds.Tables[0].Rows[i]["style"] = selectedSProd.SStyle;
+                ds.Tables[0].Rows[i]["PSID"] = selectedSProd.SPSID;
+                ds.Tables[0].Rows[i]["PMID"] = selectedSProd.SPMID;
+                ds.Tables[0].Rows[i]["SSD"] = selectedSProd.SSSD;
+                ds.Tables[0].Rows[i]["SED"] = selectedSProd.SSED == null ? (object)DBNull.Value : selectedSProd.SSED;
+                ds.Tables[0].Rows[i]["DD"] = selectedSProd.SDD == null ? (object)DBNull.Value : selectedSProd.SDD;
+                ds.Tables[0].Rows[i]["RG"] = selectedSProd.SRG;
+                ds.Tables[0].Rows[i]["MD"] = selectedSProd.SMD;
+            }
+
+            sqlDataAdapter.UpdateCommand = builder.GetUpdateCommand();
+            sqlDataAdapter.Update(ds);
+
+            var singleUpdatedProd = GetSProductByPID(selectedSProd.SPID);
+            return singleUpdatedProd;
         }
     }
 }

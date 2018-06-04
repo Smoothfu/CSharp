@@ -26,6 +26,9 @@ namespace ProductWCFServices
 
         [OperationContract]
         List<SProduct> SaveProducts(List<SProduct> sProductList);
+
+        [OperationContract]
+        List<SProduct> UpdateSelectedProduct(SProduct selectedSProd);        
     }
 
 

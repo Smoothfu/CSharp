@@ -530,6 +530,12 @@ namespace ProductStore.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SaveProducts", ReplyAction="http://tempuri.org/IService1/SaveProductsResponse")]
         System.Threading.Tasks.Task<ProductStore.ServiceReference1.SProduct[]> SaveProductsAsync(ProductStore.ServiceReference1.SProduct[] sProductList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateSelectedProduct", ReplyAction="http://tempuri.org/IService1/UpdateSelectedProductResponse")]
+        ProductStore.ServiceReference1.SProduct[] UpdateSelectedProduct(ProductStore.ServiceReference1.SProduct selectedSProd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateSelectedProduct", ReplyAction="http://tempuri.org/IService1/UpdateSelectedProductResponse")]
+        System.Threading.Tasks.Task<ProductStore.ServiceReference1.SProduct[]> UpdateSelectedProductAsync(ProductStore.ServiceReference1.SProduct selectedSProd);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -589,6 +595,14 @@ namespace ProductStore.ServiceReference1 {
         
         public System.Threading.Tasks.Task<ProductStore.ServiceReference1.SProduct[]> SaveProductsAsync(ProductStore.ServiceReference1.SProduct[] sProductList) {
             return base.Channel.SaveProductsAsync(sProductList);
+        }
+        
+        public ProductStore.ServiceReference1.SProduct[] UpdateSelectedProduct(ProductStore.ServiceReference1.SProduct selectedSProd) {
+            return base.Channel.UpdateSelectedProduct(selectedSProd);
+        }
+        
+        public System.Threading.Tasks.Task<ProductStore.ServiceReference1.SProduct[]> UpdateSelectedProductAsync(ProductStore.ServiceReference1.SProduct selectedSProd) {
+            return base.Channel.UpdateSelectedProductAsync(selectedSProd);
         }
     }
 }

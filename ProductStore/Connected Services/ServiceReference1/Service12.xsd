@@ -58,4 +58,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateSelectedProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ProductWCFServices.Model" minOccurs="0" name="selectedSProd" nillable="true" type="q6:SProduct" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSelectedProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ProductWCFServices.Model" minOccurs="0" name="UpdateSelectedProductResult" nillable="true" type="q7:ArrayOfSProduct" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
