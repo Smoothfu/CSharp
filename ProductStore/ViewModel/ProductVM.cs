@@ -11,6 +11,8 @@ using System.Windows.Input;
 using Prism;
 using Prism.Commands;
 using ProductStore.ServiceReference1;
+using System.Collections.Specialized;
+using System.Windows.Controls;
 
 namespace ProductStore.ViewModel
 {
@@ -22,10 +24,40 @@ namespace ProductStore.ViewModel
         static SProduct sp = new SProduct();
         public ProductVM()
         {
-            ProductCollection.CollectionChanged += ProductCollection_CollectionChanged;
+            
+            ProductCollection.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(ProductionChangedMethod);
         }
 
-        private void ProductCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void ProductionChangedMethod(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if(e.Action==NotifyCollectionChangedAction.Add)
+            {
+
+            }
+
+            if(e.Action==NotifyCollectionChangedAction.Move)
+            {
+
+            }
+
+            if(e.Action==NotifyCollectionChangedAction.Remove)
+            {
+
+            }
+
+            if(e.Action==NotifyCollectionChangedAction.Replace)
+            {
+
+            }
+
+            if(e.Action==NotifyCollectionChangedAction.Reset)
+            {
+
+            }
+
+        }
+
+        public void ProductCollection_CollectionChanged(object sender, DataGridCellEditEndingEventArgs e)
         {
              
         }
@@ -74,6 +106,20 @@ namespace ProductStore.ViewModel
             }
         }
 
+
+        private TProduct _ChangedProductItem=new TProduct();
+        public TProduct ChangedProductItem
+        {
+            get
+            {
+                return _ChangedProductItem;
+            }
+            set
+            {
+                _ChangedProductItem = value;
+                NotifyPropertyChanged("ChangedProductItem");
+            }
+        }
         private int _ProductID;
         public int ProductID
         {

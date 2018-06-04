@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProductStore.ViewModel;
+using ProductStore.Model;
 
 namespace ProductStore
 {
@@ -21,10 +22,27 @@ namespace ProductStore
     /// </summary>
     public partial class MainWindow : Window
     {
+        static ProductVM _ProVM;
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new ProductVM();
-        }        
+            _ProVM = new ProductVM();
+            this.DataContext = _ProVM;
+        }
+
+        private void dg_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            _ProVM.ProductCollection_CollectionChanged(sender, e);
+
+            var changedProduct = sender as TProduct;
+            if(changedProduct!=null)
+            {
+                var changedIndex = _ProVM.ProductCollection.IndexOf(changedProduct);
+                if(changedIndex>-1)
+                {
+
+                }
+            }
+        }
     }
 }
