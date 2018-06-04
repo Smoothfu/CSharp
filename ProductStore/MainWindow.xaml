@@ -39,8 +39,8 @@
                 <Button Grid.Row="0" Grid.Column="3" Command="{Binding ShowProductCommand}" Content="Search"/>
             </Grid>
         </GroupBox>
-        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="True" RowEditEnding="dg_RowEditEnding"
-                  SelectedItem="{Binding SelectedProduct}">
+        <DataGrid Name="dg" BorderBrush="Yellow" BorderThickness="5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ProductCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="True"  RowEditEnding="dg_RowEditEnding"
+                  SelectedItem="{Binding SelectedProduct}" >
             <!--<DataGrid.Columns>
                 <DataGridTextColumn Header="ProductID" Binding="{Binding TPID}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding TName}"/>

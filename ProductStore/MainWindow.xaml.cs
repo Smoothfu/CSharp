@@ -27,8 +27,12 @@ namespace ProductStore
         {
             InitializeComponent();
             _ProVM = new ProductVM();
-            this.DataContext = _ProVM;
+            this.DataContext = _ProVM;          
         }
+
+       
+
+         
 
         private void dg_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
@@ -37,7 +41,7 @@ namespace ProductStore
 
         private void dg_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            var newProductCollection = _ProVM.ProductCollection;
+
         }
     }
 }
