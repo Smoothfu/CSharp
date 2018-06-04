@@ -59,14 +59,16 @@ namespace ProductWCFServices
             {               
                 using (SqlCommand selectCmd = new SqlCommand())
                 {
+                    ds.Clear();
                     selectCmd.CommandType = CommandType.StoredProcedure;
                     selectCmd.CommandText = "spGetProductByPID";
                     selectCmd.Connection = conn;
                     selectCmd.Parameters.Add(new SqlParameter("@PID", pID));
                     sqlDataAdapter.SelectCommand = selectCmd;
                     sqlDataAdapter.Fill(ds);
+                    SProductList.Clear();
 
-                    if(ds.Tables!=null && ds.Tables[0].Rows.Count>0)
+                    if (ds.Tables!=null && ds.Tables[0].Rows.Count>0)
                     {
                         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                         {

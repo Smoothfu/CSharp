@@ -22,7 +22,12 @@ namespace ProductStore.ViewModel
         static SProduct sp = new SProduct();
         public ProductVM()
         {
+            ProductCollection.CollectionChanged += ProductCollection_CollectionChanged;
+        }
 
+        private void ProductCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+             
         }
 
         #region properties
@@ -41,7 +46,7 @@ namespace ProductStore.ViewModel
             }
         }
 
-        private ObservableCollection<TProduct> _ProductCollection;
+        private ObservableCollection<TProduct> _ProductCollection=new ObservableCollection<TProduct>();
         public ObservableCollection<TProduct> ProductCollection
         {
             get
@@ -110,6 +115,7 @@ namespace ProductStore.ViewModel
                 sProdList = sClient.GetSProductByPID(ProductID).ToList();
                 if(sProdList!=null && sProdList.Any())
                 {
+                    ProductCollection.Clear();
                     ProductCollection = new ObservableCollection<TProduct>(ConvertFromServerProduct(sProdList));
                 }
                  

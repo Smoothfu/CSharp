@@ -23,4 +23,3 @@ D:\C\ProductStore\ProductStore\bin\Debug\Prism.xml
 D:\C\ProductStore\ProductStore\bin\Debug\Prism.Unity.Wpf.xml
 D:\C\ProductStore\ProductStore\bin\Debug\Prism.Wpf.xml
 D:\C\ProductStore\ProductStore\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\C\ProductStore\ProductStore\obj\Debug\ProductStore.csprojResolveAssemblyReference.cache
