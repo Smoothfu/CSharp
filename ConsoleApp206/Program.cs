@@ -25,16 +25,15 @@ namespace ConsoleApp206
                 new Student(3,"Bloomberg")
             };
 
-            var commonList = from u in universtyStudent
-                             from c in colleagueStudent
-                             where u.SId == c.SId && u.SName == c.SName
-                             select u;
-            foreach(var c in commonList)
+            var all = universtyStudent.Where(x => colleagueStudent.Any(y => x.SName==y.SName)).ToList();
+            
+            
+ 
+            foreach(var c in all)
             {
                 Console.WriteLine(c);
             }
-
-            var temp = commonList;
+            
             Console.ReadLine();
         }
     }
