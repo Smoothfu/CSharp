@@ -10,23 +10,11 @@ namespace ConsoleApp207
     {
         static void Main(string[] args)
         {
-            try
-            {
-                Task task = new Task(() =>
-                  {
-                      int a = 10;
-                      int[] arr = { 10, 5, 2, 0, 1 };
-                      foreach(var b in arr)
-                      {
-                          throw new NotImplementedException();                        
-                      }                       
-                  });
-                task.Start();
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            string str = "This is the first string";
+            string str2 = str;
+            str = "This is the updated string.";
+            Console.WriteLine(str);
+            Console.WriteLine(str2);
             Console.ReadLine();
         }
     }
