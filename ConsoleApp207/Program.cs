@@ -4,22 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Reflection;
 namespace ConsoleApp207
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Point A = new Point(100, 200);
-            Point B = new Point(300, 400);
-            Point C = A * B;
-            Console.WriteLine(C);
+            Type type = typeof(Point);
+            Console.WriteLine(type.Name);
+            Console.WriteLine(type.FullName);
+            Console.WriteLine(type.GUID);
+            FieldInfo[] fis = type.GetFields();
+            foreach(FieldInfo fi in fis)
+            {
+                Console.WriteLine(fi.Name);
+            }
+
+            MethodInfo[] mis = type.GetMethods();
+            foreach(MethodInfo mi in mis)
+            {
+                Console.WriteLine(mi.Name);
+            }
             Console.ReadLine();
         }
     }
 
   public class Point
     {
+        public int Age = 27;
+        public string Name = "WYQ";
         public int XCoord { get; set; }
         public int YCoord { get; set; }
         public Point(int xCoord,int yCoord)
