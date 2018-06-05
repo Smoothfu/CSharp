@@ -10,10 +10,23 @@ namespace ConsoleApp207
     {
         static void Main(string[] args)
         {
-            Point X = new Point(100, 200);
-            Point Y = new Point(300, 400);
-            Point Z = X + Y;
-            Console.WriteLine(Z.ToString());
+            try
+            {
+                Task task = new Task(() =>
+                  {
+                      int a = 10;
+                      int[] arr = { 10, 5, 2, 0, 1 };
+                      foreach(var b in arr)
+                      {
+                          throw new NotImplementedException();                        
+                      }                       
+                  });
+                task.Start();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Console.ReadLine();
         }
     }
