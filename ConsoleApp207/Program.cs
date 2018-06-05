@@ -11,19 +11,22 @@ namespace ConsoleApp207
     {
         static void Main(string[] args)
         {
-            Type type = typeof(Point);
-            MemberInfo[] mis = type.GetMembers();
-            foreach(MemberInfo mi in mis)
-            {
-                Console.WriteLine(mi.Name);
-            }
+            Point A = new Point(100, 200);
+            Point B = new Point(300, 400);
+            Point C = PointExtension.TwoPointsAdd(A, B);
+            Console.WriteLine(C);
             Console.ReadLine();
         }
     }
 
   public class Point
     {
-        public Point()
+        public Point(int x)
+        {
+
+        }
+
+        public Point(int x,int y,int z)
         {
 
         }
@@ -50,11 +53,19 @@ namespace ConsoleApp207
             return new Point(zXCoord, zYCoord);
         }
 
-        public static Point operator *(Point x,Point y)
+        
+
+
+              
+    }
+
+    public static class PointExtension
+    {
+        public static Point TwoPointsAdd(this Point x,Point y)
         {
-            int zXCoord = x.XCoord * y.XCoord;
-            int zYCoord = x.YCoord * y.YCoord;
-            return new Point(zXCoord, zYCoord);
+            return new Point(x.XCoord + y.XCoord, x.YCoord + y.YCoord);
         }
     }
+
+     
 }
