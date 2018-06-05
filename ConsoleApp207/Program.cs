@@ -12,11 +12,10 @@ namespace ConsoleApp207
         static void Main(string[] args)
         {
             Type type = typeof(Point);
-            PropertyInfo[] pis =type.GetProperties();
-            foreach
-                (PropertyInfo pi in pis)
+            MemberInfo[] mis = type.GetMembers();
+            foreach(MemberInfo mi in mis)
             {
-                Console.WriteLine(pi.Name);
+                Console.WriteLine(mi.Name);
             }
             Console.ReadLine();
         }
@@ -24,6 +23,10 @@ namespace ConsoleApp207
 
   public class Point
     {
+        public Point()
+        {
+
+        }
         public int Age = 27;
         public string Name = "WYQ";
         public int XCoord { get; set; }
