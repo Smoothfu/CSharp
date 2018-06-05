@@ -12,17 +12,8 @@ namespace ConsoleApp207
         static void Main(string[] args)
         {
             Type type = typeof(Point);
-            Console.WriteLine(type.Name);
-            Console.WriteLine(type.FullName);
-            Console.WriteLine(type.GUID);
-            FieldInfo[] fis = type.GetFields();
-            foreach(FieldInfo fi in fis)
-            {
-                Console.WriteLine(fi.Name);
-            }
-
-            MethodInfo[] mis = type.GetMethods();
-            foreach(MethodInfo mi in mis)
+            MemberInfo[] mis = type.GetMembers();
+            foreach(MemberInfo mi in mis)
             {
                 Console.WriteLine(mi.Name);
             }
