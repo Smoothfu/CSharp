@@ -12,7 +12,7 @@ namespace ConsoleApp207
         {
             Point A = new Point(100, 200);
             Point B = new Point(300, 400);
-            Point C = A - B;
+            Point C = A * B;
             Console.WriteLine(C);
             Console.ReadLine();
         }
@@ -38,6 +38,13 @@ namespace ConsoleApp207
             int zXCoord = x.XCoord - y.XCoord;
             int zYCoord = x.YCoord - y.YCoord;
 
+            return new Point(zXCoord, zYCoord);
+        }
+
+        public static Point operator *(Point x,Point y)
+        {
+            int zXCoord = x.XCoord * y.XCoord;
+            int zYCoord = x.YCoord * y.YCoord;
             return new Point(zXCoord, zYCoord);
         }
     }
