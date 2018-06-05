@@ -10,16 +10,15 @@ namespace ConsoleApp207
     {
         static void Main(string[] args)
         {
-            string str = "This is the first string";
-            string str2 = str;
-            str = "This is the updated string.";
-            Console.WriteLine(str);
-            Console.WriteLine(str2);
+            Point A = new Point(100, 200);
+            Point B = new Point(300, 400);
+            Point C = A - B;
+            Console.WriteLine(C);
             Console.ReadLine();
         }
     }
 
-    public class Point
+  public class Point
     {
         public int XCoord { get; set; }
         public int YCoord { get; set; }
@@ -29,18 +28,17 @@ namespace ConsoleApp207
             YCoord = yCoord;
         }
 
-       public static  Point operator +(Point X,Point Y)
-        {
-            int zXCoord = X.XCoord + Y.YCoord;
-            int zYCoord = X.YCoord + Y.YCoord;
-
-            Point Z = new Point(zXCoord, zYCoord);
-            return Z;
-        }
-
         public override string ToString()
         {
-            return string.Format("X:{0},Y:{1}\n", XCoord, YCoord);
+            return string.Format("X:{0},Y:{1}", XCoord, YCoord);
+        }
+
+        public static Point operator -(Point x,Point y)
+        {
+            int zXCoord = x.XCoord - y.XCoord;
+            int zYCoord = x.YCoord - y.YCoord;
+
+            return new Point(zXCoord, zYCoord);
         }
     }
 }
