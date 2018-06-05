@@ -12,10 +12,11 @@ namespace ConsoleApp207
         static void Main(string[] args)
         {
             Type type = typeof(Point);
-            MemberInfo[] mis = type.GetMembers();
-            foreach(MemberInfo mi in mis)
+            PropertyInfo[] pis =type.GetProperties();
+            foreach
+                (PropertyInfo pi in pis)
             {
-                Console.WriteLine(mi.Name);
+                Console.WriteLine(pi.Name);
             }
             Console.ReadLine();
         }
