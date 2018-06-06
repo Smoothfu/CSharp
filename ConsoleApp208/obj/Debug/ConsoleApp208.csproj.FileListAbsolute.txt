@@ -5,3 +5,6 @@ D:\C\ConsoleApp208\ConsoleApp208\obj\Debug\ConsoleApp208.csprojResolveAssemblyRe
 D:\C\ConsoleApp208\ConsoleApp208\obj\Debug\ConsoleApp208.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp208\ConsoleApp208\obj\Debug\ConsoleApp208.exe
 D:\C\ConsoleApp208\ConsoleApp208\obj\Debug\ConsoleApp208.pdb
+D:\C\ConsoleApp208\ConsoleApp208\bin\Debug\WcfServiceLibrary1.dll
+D:\C\ConsoleApp208\ConsoleApp208\bin\Debug\WcfServiceLibrary1.pdb
+D:\C\ConsoleApp208\ConsoleApp208\bin\Debug\WcfServiceLibrary1.dll.config
