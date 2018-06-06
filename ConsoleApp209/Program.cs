@@ -13,10 +13,15 @@ namespace ConsoleApp209
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("The Main Thread ManagedThreadId:{0}\n", Thread.CurrentThread.ManagedThreadId);
+
             Person p = new Person(1, "Floomberg");
             ParameterizedThreadStart pts = new ParameterizedThreadStart(GetPerson);
             Thread newThread = new Thread(pts);
             newThread.Start(p);
+            Console.WriteLine("Priority:{0}\n", newThread.Priority);
+            Console.WriteLine("ManagerId:{0}\n", newThread.ManagedThreadId);
+            Console.WriteLine("ThreadState:{0}\n", newThread.ThreadState);
             Console.ReadLine();           
         }
         static void GetDataFromDB()
