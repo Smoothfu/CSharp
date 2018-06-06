@@ -10,14 +10,12 @@ namespace ConsoleApp208
     {
         static void Main(string[] args)
         {
-            Point pointA = new Point(100000, 200000);
-            Console.WriteLine("pointA:{0}\n", pointA.ToString());
+            Task task = Task.Factory.StartNew(() =>
+            {
+                Point pointA = new Point(2452345, 234264576);
+                Console.WriteLine("pointA:{0}\n",pointA.ToString());
+            });
 
-            Point pointB = new Point(2453453, 24343423);
-            Console.WriteLine("pointB:{0}\n", pointB.ToString());
-
-            Point pointC = pointA + pointB;
-            Console.WriteLine("pointC:{0}\n",pointC);
             Console.ReadLine();
         }
     }
