@@ -13,9 +13,10 @@ namespace ConsoleApp209
     {
         static void Main(string[] args)
         {
-            ThreadStart ts = new ThreadStart(GetDataFromDB);
-            Thread newThread = new Thread(ts);
-            newThread.Start();
+            Person p = new Person(1, "Floomberg");
+            ParameterizedThreadStart pts = new ParameterizedThreadStart(GetPerson);
+            Thread newThread = new Thread(pts);
+            newThread.Start(p);
             Console.ReadLine();           
         }
         static void GetDataFromDB()
@@ -49,6 +50,32 @@ namespace ConsoleApp209
                     }
                 }
             }
+        }
+
+        static void GetPerson(object obj)
+        {
+            var objPerson = obj as Person;
+            if(objPerson!=null)
+            {
+                Console.WriteLine(objPerson.ToString());
+            }
+        }
+    }
+
+    public class Person
+    {
+        public int PId { get; set; }
+        public string PName { get; set; }
+
+        public Person(int pId,string pName)
+        {
+            PId = pId;
+            PName = pName;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("PId:{0},PName:{1}\n", PId, PName);
         }
     }
 }
