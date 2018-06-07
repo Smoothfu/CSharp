@@ -7,6 +7,8 @@ using System.Messaging;
 using System.IO;
 using System.Net.Sockets;
 using System.Net;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace ConsoleApp210
 {
@@ -14,21 +16,17 @@ namespace ConsoleApp210
     {
         static void Main(string[] args)
         {
-            string host;
-            int port = 80;
-
-            if(args.Length==0)
+            Process myProc = new Process();
+            try
             {
-                //If no server name is passed as argument to this program,use the current host name as the default
-                host = Dns.GetHostName();
-            }
-            else
-            {
-                host = args[0];
+                Process.Start("D:\\C\\ConsoleApp209\\ConsoleApp209\\bin\\Debug\\ConsoleApp209.exe");
+                Process.Start("Chrome.exe", "www.bing.com");
             }
 
-            string result = SocketSendReceive(host, port);
-            Console.WriteLine(result);
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Console.ReadLine();
         }
 
