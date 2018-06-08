@@ -10,8 +10,19 @@ namespace ConsoleApp213
     {
         static void Main(string[] args)
         {
-            int result = Fob(3);
-            Console.WriteLine(result);
+
+            Console.WriteLine("Press Enter  to stop!");
+
+            do
+            {
+                while (!Console.KeyAvailable)
+                {
+                    Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+
+                }
+            } while (Console.ReadKey(true).Key != ConsoleKey.Enter);
+
+            
             Console.ReadLine();
         }
 
