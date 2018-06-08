@@ -11,19 +11,22 @@ namespace ConsoleApp213
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Press Enter  to stop!");
+            PutEnterKeytoPause();
+
+            Console.ReadLine();
+        }
+
+        static void PutEnterKeytoPause()
+        {
+            Console.WriteLine("Press Enter to stop!\n");
 
             do
             {
                 while (!Console.KeyAvailable)
                 {
                     Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Enter);
-
-            
-            Console.ReadLine();
         }
 
         static void GetDistinctValues(int[] arr)
