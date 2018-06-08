@@ -10,7 +10,18 @@ namespace ConsoleApp213
     {
         static void Main(string[] args)
         {
-            int[] arr = { 12, 43, 43, 34, 4565, 355, 4654526, 5426456, 2456234 };
+            string str = "The world is fair and everything depend on myself!";
+            ConvertStringToCharArray(str);
+            Console.ReadLine();
+        }
+
+        static void GetDistinctValues(int[] arr)
+        {
+            if (arr == null || !arr.Any())
+            {
+                return;
+            }
+
             Console.WriteLine("There are {0} raw data in arr", arr.Length);
             arr.All(x =>
             {
@@ -24,7 +35,37 @@ namespace ConsoleApp213
             {
                 Console.WriteLine(x);
             });
-            Console.ReadLine();
         }
+
+        static void ConvertStringToCharArray(string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return;
+            }
+
+            char[] charArr = str.ToCharArray();
+
+            Console.WriteLine("There are {0} characters in the raw string\n\n", charArr.Length);
+            if (charArr == null || !charArr.Any())
+            {
+                return;
+            }
+            charArr.All(x =>
+            {
+                Console.Write(x);
+                return true;
+            });
+
+            var distinctValues = charArr.Distinct();
+            Console.WriteLine("\n\nThere are {0} distinct values.\n\n\n", distinctValues.Count());
+            distinctValues.All(x =>
+            {
+                Console.Write(x);
+                return true;
+            });
+        }
+
     }
 }
+
