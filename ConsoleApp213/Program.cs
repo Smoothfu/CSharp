@@ -10,8 +10,8 @@ namespace ConsoleApp213
     {
         static void Main(string[] args)
         {
-            string str = "The world is fair and everything depend on myself!";
-            ConvertStringToCharArray(str);
+            int result = Fob(3);
+            Console.WriteLine(result);
             Console.ReadLine();
         }
 
@@ -64,6 +64,20 @@ namespace ConsoleApp213
                 Console.Write(x);
                 return true;
             });
+        }
+
+        public static  int Fob(int n)
+        {
+            if(n<0)
+            {
+                return -1;
+            }
+            if(n==0 ||n==1)
+            {
+                return 1;
+            }
+
+            return Fob(n - 1) + Fob(n - 2);
         }
 
     }
