@@ -20,9 +20,16 @@ namespace WpfApp17
     /// </summary>
     public partial class MainWindow : Window
     {
+        public event EventHandler myEvent;
         public MainWindow()
         {
             InitializeComponent();
+            myEvent += MainWindow_myEvent;
+        }
+
+        private void MainWindow_myEvent(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show(e.ToString());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
