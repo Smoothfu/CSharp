@@ -39,7 +39,7 @@ namespace ConsoleApp216
             //Establish timer settings.
             Timer t = new Timer(
                 timeCB,     //The TimerCallback delegate object.
-                null,       //Any info to pass into the called method null for no info.
+                "Hello from main",       //Any info to pass into the called method null for no info.
                 0,          //Amount of time to wait before starting 
                 1000);      //Interval of time between calls in milliseconds.
 
@@ -47,9 +47,10 @@ namespace ConsoleApp216
             Console.ReadLine();
         }
 
+        
         static void PrintTime(object obj)
         {
-            Console.WriteLine("Time is :{0}\n", DateTime.Now.ToLongTimeString());
+            Console.WriteLine("Time is :{0},Param is :{1}\n", DateTime.Now.ToLongTimeString(),obj.ToString());
         }
 
         static void Add(int x,int y)
