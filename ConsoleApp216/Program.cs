@@ -13,48 +13,35 @@ namespace ConsoleApp216
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****The Amazing Thread App*****\n");
-            Console.WriteLine("Do you want [1] or [2] threads?");
-            string threadCount = Console.ReadLine();
+            Console.WriteLine("******Adding with thread objects*****");
+            Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            //Name the current thread.
-            Thread primaryThread = Thread.CurrentThread;
-            primaryThread.Name = "Primary";
+            //Make an AddParams object to pass to the secondary thread.
+            AddParams ap = new AddParams(1000, 2000);
+            Thread thread = new Thread(new ParameterizedThreadStart(Add));
 
+            thread.Start(ap);
 
-            //Display Thread info.
-            Console.WriteLine("->{0} is executing Main()!\n", Thread.CurrentThread.Name);
-
-            //Make worker class.
-            Printer p = new Printer();
-            switch(threadCount)
-            {
-                case "2":
-                    //Now make the thread.
-                    Thread backgroundThread = new Thread(new ThreadStart(p.PrintNumbers));
-                    backgroundThread.Name = "Secondary";
-                    backgroundThread.Start();
-                    break;
-
-                case "1":
-                    p.PrintNumbers();
-                    break;
-
-                default:
-                    Console.WriteLine("I don't know you want ... you get 1 thread.\n");
-                    goto case "1";
-            }
-
-            //Do some additional work.
-
-            MessageBox.Show("I'm busy!", "Work on main thread...");
-
+            //Force a wait to let other thread finish.
+            Thread.Sleep(5);
             Console.ReadLine();
         }
 
         static void Add(int x,int y)
         {
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+        }
+
+        static void Add(object data)
+        {
+            var addParam = data as AddParams;
+            if(addParam!=null)
+            {
+                Console.WriteLine("ID of thread in Add():{0}\n", Thread.CurrentThread.ManagedThreadId);
+
+                AddParams ap = (AddParams)data;
+                Console.WriteLine("{0}+{1}={2}\n", ap.a, ap.b, ap.a + ap.b);
+            }
         }
 
     }
@@ -74,6 +61,16 @@ namespace ConsoleApp216
             }
             Console.WriteLine();
 
+        }
+    }
+
+    class AddParams
+    {
+        public int a, b;
+        public AddParams(int numb1,int numb2)
+        {
+            a = numb1;
+            b = numb2;
         }
     }
 }
