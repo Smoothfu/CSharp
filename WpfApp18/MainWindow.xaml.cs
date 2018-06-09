@@ -29,7 +29,11 @@ namespace WpfApp18
 
         private void btn_Click(object sender, RoutedEventArgs e)
         {
-            ProcessFiles();
+            //Start a new task to process the files.
+            Task.Factory.StartNew(() =>
+            {
+                ProcessFiles();
+            });
         }
 
         private void ProcessFiles()
@@ -65,11 +69,13 @@ namespace WpfApp18
                  Dispatcher.BeginInvoke( new Action(() =>
                  {
                      tb.Text += string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+                    
                  }));
+
+                 
              });
 
-            string str = tb.Text;
-            System.Diagnostics.Debug.WriteLine(str);
+          
         }
     }
 }
