@@ -35,23 +35,41 @@ namespace WpfApp18
         private void ProcessFiles()
         {
             //Load up all *.jpg files,and make a new folder for the modified data.
-            string[] files = Directory.GetFiles(@"C:\Users\Fred\Pictures","*.jpg",SearchOption.AllDirectories);
+            string[] allFiles = Directory.GetFiles(@"C:\Users\Fred\Pictures","*.jpg",SearchOption.AllDirectories);
             string newDir = @"C:\ModifiedPictures";
             Directory.CreateDirectory(newDir);
 
-            //Process the image data in a blocking manner.
-            foreach(string cf in files)
-            {
-                string fileName = Path.GetFileName(cf);
-                using (Bitmap bm = new Bitmap(cf))
-                {
-                    bm.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                    bm.Save(Path.Combine(newDir, fileName));
+            ////Process the image data in a blocking manner.
+            //foreach(string cf in allFiles)
+            //{
+            //    string fileName = Path.GetFileName(cf);
+            //    using (Bitmap bm = new Bitmap(cf))
+            //    {
+            //        bm.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            //        bm.Save(Path.Combine(newDir, fileName));
 
-                    //Print out the ID of the thread processing teh current image.
-                    tb.Text += string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
-                }
-            }
+            //        //Print out the ID of the thread processing teh current image.
+            //        tb.Text += string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+            //    }
+            //}
+
+            //Process the image data in a parallel manner.
+            Parallel.ForEach(allFiles, x =>
+             {
+                 string fileName = Path.GetFileName(x);
+                 using (Bitmap bm = new Bitmap(x))
+                 {
+                     bm.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                     bm.Save(Path.Combine(newDir, fileName));                    
+                 }
+                 Dispatcher.BeginInvoke( new Action(() =>
+                 {
+                     tb.Text += string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+                 }));
+             });
+
+            string str = tb.Text;
+            System.Diagnostics.Debug.WriteLine(str);
         }
     }
 }
