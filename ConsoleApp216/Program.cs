@@ -12,25 +12,12 @@ namespace ConsoleApp216
     class Program
     {
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
+        private static int intVal = 100;
+        private static int newVal;
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Synchronizing Threads*****\n");
-            Printer p = new Printer();
-
-            //Make 10 threads that are all pointing to the same method on the same object.
-            Thread[] allThreads = new Thread[10];
-
-            for(int i=0;i<10;i++)
-            {
-                allThreads[i] = new Thread(new ThreadStart(p.PrintNumbers));
-                allThreads[i].Name = string.Format("Worker thread #{0}", i);
-            }
-
-            //Now start each one.
-            foreach(Thread t in allThreads)
-            {
-                t.Start();
-            }
+            AddOne();
+            Console.WriteLine(newVal);             
             Console.ReadLine();
         }
 
@@ -55,12 +42,18 @@ namespace ConsoleApp216
             waitHandle.Set();
         }
 
+        static void AddOne()
+        {
+            newVal = Interlocked.Increment(ref intVal);
+        }
+
     }
 
     public class Printer
     {
         //Lock token.
         private object threadLock = new object();
+        private static int intVal;
         public void PrintNumbers()
         {
             Monitor.Enter(threadLock);
@@ -85,8 +78,9 @@ namespace ConsoleApp216
             }
            
             Console.WriteLine();
-
         }
+
+       
     }
 
     class AddParams
