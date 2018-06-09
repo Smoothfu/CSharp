@@ -11,6 +11,7 @@ namespace ConsoleApp216
 {
     class Program
     {
+        private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
             Console.WriteLine("******Adding with thread objects*****");
@@ -22,8 +23,9 @@ namespace ConsoleApp216
 
             thread.Start(ap);
 
-            //Force a wait to let other thread finish.
-            Thread.Sleep(5);
+            //wait here until you are notified.
+            waitHandle.WaitOne();
+            Console.WriteLine("Other thread is done!\n");
             Console.ReadLine();
         }
 
@@ -42,6 +44,10 @@ namespace ConsoleApp216
                 AddParams ap = (AddParams)data;
                 Console.WriteLine("{0}+{1}={2}\n", ap.a, ap.b, ap.a + ap.b);
             }
+
+
+            //Tell other thread we are done.
+            waitHandle.Set();
         }
 
     }
