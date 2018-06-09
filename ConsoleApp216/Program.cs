@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using System.Windows.Forms;
 using System.Runtime.Remoting.Contexts;
 
 
@@ -17,20 +16,40 @@ namespace ConsoleApp216
         private static int newVal;
         static void Main(string[] args)
         {
-            Thread[] allThreads = new Thread[10];
-            Printer p = new Printer();
+            //Thread[] allThreads = new Thread[10];
+            //Printer p = new Printer();
 
-            for(int i=0;i<10;i++)
-            {
-                allThreads[i] = new Thread(p.PrintNumbers);
-            }
+            //for(int i=0;i<10;i++)
+            //{
+            //    allThreads[i] = new Thread(p.PrintNumbers);
+            //}
 
-            allThreads.All(x =>
-            {
-                x.Start();
-                return true;
-            });
+            //allThreads.All(x =>
+            //{
+            //    x.Start();
+            //    return true;
+            //});
+
+
+            Console.WriteLine("*****Working with Timer type*****\n");
+
+            //Create the delegate for the Timer type.
+            TimerCallback timeCB = new TimerCallback(PrintTime);
+
+            //Establish timer settings.
+            Timer t = new Timer(
+                timeCB,     //The TimerCallback delegate object.
+                null,       //Any info to pass into the called method null for no info.
+                0,          //Amount of time to wait before starting 
+                1000);      //Interval of time between calls in milliseconds.
+
+            Console.WriteLine("Hit key to terminate");
             Console.ReadLine();
+        }
+
+        static void PrintTime(object obj)
+        {
+            Console.WriteLine("Time is :{0}\n", DateTime.Now.ToLongTimeString());
         }
 
         static void Add(int x,int y)
