@@ -22,6 +22,7 @@ namespace WpfApp18
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CancellationTokenSource cancaelToken = new CancellationTokenSource();
         public MainWindow()
         {
             InitializeComponent();
@@ -38,44 +39,49 @@ namespace WpfApp18
 
         private void ProcessFiles()
         {
+
+            //Use ParallelOptions instance to store the CancellationToken.
+            ParallelOptions parpOpts = new ParallelOptions();
+            parpOpts.CancellationToken = cancaelToken.Token;
+            parpOpts.MaxDegreeOfParallelism = System.Environment.ProcessorCount;
+
             //Load up all *.jpg files,and make a new folder for the modified data.
             string[] allFiles = Directory.GetFiles(@"C:\Users\Fred\Pictures","*.jpg",SearchOption.AllDirectories);
             string newDir = @"C:\ModifiedPictures";
             Directory.CreateDirectory(newDir);
-
-            ////Process the image data in a blocking manner.
-            //foreach(string cf in allFiles)
-            //{
-            //    string fileName = Path.GetFileName(cf);
-            //    using (Bitmap bm = new Bitmap(cf))
-            //    {
-            //        bm.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            //        bm.Save(Path.Combine(newDir, fileName));
-
-            //        //Print out the ID of the thread processing teh current image.
-            //        tb.Text += string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
-            //    }
-            //}
-
-            //Process the image data in a parallel manner.
-            Parallel.ForEach(allFiles, x =>
-             {
-                 string fileName = Path.GetFileName(x);
-                 using (Bitmap bm = new Bitmap(x))
-                 {
-                     bm.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                     bm.Save(Path.Combine(newDir, fileName));                    
-                 }
-                 Dispatcher.BeginInvoke( new Action(() =>
-                 {
-                     tb.Text += string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
-                    
-                 }));
-
-                 
-             });
-
           
+            try
+            {
+                //Process the image data in a parallel manner!
+                Parallel.ForEach(allFiles,parpOpts, x =>
+                {
+                    parpOpts.CancellationToken.ThrowIfCancellationRequested();
+                    string fileName = Path.GetFileName(x);
+                    using (Bitmap bm = new Bitmap(x))
+                    {
+                        bm.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                        bm.Save(Path.Combine(newDir, fileName));
+                    }
+                    Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        tb.Text += string.Format("Processing {0} on thread {1}\n", fileName, Thread.CurrentThread.ManagedThreadId);
+
+                    }));
+                });
+            }
+            catch(OperationCanceledException ex)
+            {
+                this.Dispatcher.BeginInvoke(new Action(() => 
+                {
+                    tb.Text = ex.Message;
+                }));
+            }                     
+        }
+
+        private void cancel_Click(object sender, RoutedEventArgs e)
+        {
+            //This will be used to tell all the worker threads to stop!
+            cancaelToken.Cancel();
         }
     }
 }

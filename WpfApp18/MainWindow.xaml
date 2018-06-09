@@ -12,6 +12,14 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="tb" Grid.Row="0"/>
-        <Button x:Name="btn" Grid.Row="1" Click="btn_Click" Content="Move"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions> 
+            <Button x:Name="btn"  Grid.Column="0"  Click="btn_Click" Content="Move"/>
+            <Button x:Name="cancel" Grid.Column="1" Click="cancel_Click" Content="Cancel"/>
+        </Grid>
+       
     </Grid>
 </Window>
