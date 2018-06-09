@@ -14,18 +14,13 @@ namespace ConsoleApp216
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
         static void Main(string[] args)
         {
-            Console.WriteLine("******Adding with thread objects*****");
-            Console.WriteLine("ID of thread in Main():{0}\n", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("*****Background Threads*****\n");
+            Printer p = new Printer();
+            Thread bgThread = new Thread(new ThreadStart(p.PrintNumbers));
 
-            //Make an AddParams object to pass to the secondary thread.
-            AddParams ap = new AddParams(1000, 2000);
-            Thread thread = new Thread(new ParameterizedThreadStart(Add));
-
-            thread.Start(ap);
-
-            //wait here until you are notified.
-            waitHandle.WaitOne();
-            Console.WriteLine("Other thread is done!\n");
+            //This is now a background thread.
+            bgThread.IsBackground = true;
+            bgThread.Start();
             Console.ReadLine();
         }
 
