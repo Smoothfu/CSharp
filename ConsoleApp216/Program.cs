@@ -16,37 +16,32 @@ namespace ConsoleApp216
         private static int newVal;
         static void Main(string[] args)
         {
-            //Thread[] allThreads = new Thread[10];
-            //Printer p = new Printer();
+            Console.WriteLine("*****Fun with the CLR Thread Pool*****\n");
+            Console.WriteLine("Main thread started.ThreadID={0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            //for(int i=0;i<10;i++)
-            //{
-            //    allThreads[i] = new Thread(p.PrintNumbers);
-            //}
+            Printer p = new Printer();
 
-            //allThreads.All(x =>
-            //{
-            //    x.Start();
-            //    return true;
-            //});
+            WaitCallback workItem = new WaitCallback(PrintTheNumbers);
 
+            //Queue the method ten times
 
-            Console.WriteLine("*****Working with Timer type*****\n");
+            for(int i=0;i<10;i++)
+            {
+                ThreadPool.QueueUserWorkItem(workItem, p);
+            }
 
-            //Create the delegate for the Timer type.
-            TimerCallback timeCB = new TimerCallback(PrintTime);
-
-            //Establish timer settings.
-            Timer t = new Timer(
-                timeCB,     //The TimerCallback delegate object.
-                "Hello from main",       //Any info to pass into the called method null for no info.
-                0,          //Amount of time to wait before starting 
-                1000);      //Interval of time between calls in milliseconds.
-
-            Console.WriteLine("Hit key to terminate");
+            Console.WriteLine("All tasks queued!\n");
             Console.ReadLine();
         }
 
+        static void PrintTheNumbers(object state)
+        {
+            Printer task = state as Printer;
+            if(task!=null)
+            {
+                task.PrintNumbers();
+            }
+        }
         
         static void PrintTime(object obj)
         {
