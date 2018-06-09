@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Windows.Forms;
 
 
 namespace ConsoleApp216
@@ -12,22 +13,41 @@ namespace ConsoleApp216
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("******Primary Thread stats******\n");
+            Console.WriteLine("*****The Amazing Thread App*****\n");
+            Console.WriteLine("Do you want [1] or [2] threads?");
+            string threadCount = Console.ReadLine();
 
-            //Obtain and name the current thread.
+            //Name the current thread.
             Thread primaryThread = Thread.CurrentThread;
-            primaryThread.Name = "ThePrimaryThread";
+            primaryThread.Name = "Primary";
 
-            //Show details of hosting AppDomain/Context.
-            Console.WriteLine("Name of current AppDomain:{0}\n", Thread.GetDomain().FriendlyName);
-            Console.WriteLine("ID of current Context:{0}\n", Thread.CurrentContext.ContextID);
 
-            //Print out some stats about this thread.
-            Console.WriteLine("Thread Name:{0}\n", primaryThread.Name);
-            Console.WriteLine("Has thread started?:{0}\n", primaryThread.IsAlive);
-            Console.WriteLine("Priority Level:{0}\n", primaryThread.Priority);
-            Console.WriteLine("Thread State:{0}\n", primaryThread.ThreadState);
+            //Display Thread info.
+            Console.WriteLine("->{0} is executing Main()!\n", Thread.CurrentThread.Name);
 
+            //Make worker class.
+            Printer p = new Printer();
+            switch(threadCount)
+            {
+                case "2":
+                    //Now make the thread.
+                    Thread backgroundThread = new Thread(new ThreadStart(p.PrintNumbers));
+                    backgroundThread.Name = "Secondary";
+                    backgroundThread.Start();
+                    break;
+
+                case "1":
+                    p.PrintNumbers();
+                    break;
+
+                default:
+                    Console.WriteLine("I don't know you want ... you get 1 thread.\n");
+                    goto case "1";
+            }
+
+            //Do some additional work.
+
+            MessageBox.Show("I'm busy!", "Work on main thread...");
 
             Console.ReadLine();
         }
@@ -37,5 +57,23 @@ namespace ConsoleApp216
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
 
+    }
+
+    public class Printer
+    {
+        public void PrintNumbers()
+        {
+            //Display Thread Info
+            Console.WriteLine("->{0} is executing PrintNumbers()\n",Thread.CurrentThread.Name);
+
+            //Print out numbers
+            Console.Write("Your numbers:\n");
+            for(int i=0;i<10;i++)
+            {
+                Console.Write(i);
+            }
+            Console.WriteLine();
+
+        }
     }
 }
