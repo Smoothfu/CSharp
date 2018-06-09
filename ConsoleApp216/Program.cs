@@ -63,7 +63,8 @@ namespace ConsoleApp216
         private object threadLock = new object();
         public void PrintNumbers()
         {
-            lock(threadLock)
+            Monitor.Enter(threadLock);
+            try
             {
                 //Display Thread Info
                 Console.WriteLine("->{0} is executing PrintNumbers()\n", Thread.CurrentThread.Name);
@@ -77,6 +78,10 @@ namespace ConsoleApp216
                     Thread.Sleep(1000 * rnd.Next(5));
                     Console.Write("{0}\t", i);
                 }
+            }
+            finally
+            {
+                Monitor.Exit(threadLock);
             }
            
             Console.WriteLine();
