@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Runtime.Remoting.Contexts;
 
 
 namespace ConsoleApp216
@@ -16,8 +17,19 @@ namespace ConsoleApp216
         private static int newVal;
         static void Main(string[] args)
         {
-            AddOne();
-            Console.WriteLine(newVal);             
+            Thread[] allThreads = new Thread[10];
+            Printer p = new Printer();
+
+            for(int i=0;i<10;i++)
+            {
+                allThreads[i] = new Thread(p.PrintNumbers);
+            }
+
+            allThreads.All(x =>
+            {
+                x.Start();
+                return true;
+            });
             Console.ReadLine();
         }
 
@@ -49,16 +61,14 @@ namespace ConsoleApp216
 
     }
 
-    public class Printer
-    {
-        //Lock token.
-        private object threadLock = new object();
-        private static int intVal;
+    //All method of printer are now thread safe!
+
+    [Synchronization]
+    public class Printer:ContextBoundObject
+    {      
         public void PrintNumbers()
         {
-            Monitor.Enter(threadLock);
-            try
-            {
+          
                 //Display Thread Info
                 Console.WriteLine("->{0} is executing PrintNumbers()\n", Thread.CurrentThread.Name);
 
@@ -70,17 +80,10 @@ namespace ConsoleApp216
                     Random rnd = new Random();
                     Thread.Sleep(1000 * rnd.Next(5));
                     Console.Write("{0}\t", i);
-                }
-            }
-            finally
-            {
-                Monitor.Exit(threadLock);
-            }
+                }           
            
             Console.WriteLine();
-        }
-
-       
+        }       
     }
 
     class AddParams
