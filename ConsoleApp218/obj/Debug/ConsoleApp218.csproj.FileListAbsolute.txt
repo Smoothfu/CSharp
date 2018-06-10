@@ -1,0 +1,6 @@
+D:\C\ConsoleApp218\ConsoleApp218\bin\Debug\ConsoleApp218.exe.config
+D:\C\ConsoleApp218\ConsoleApp218\bin\Debug\ConsoleApp218.exe
+D:\C\ConsoleApp218\ConsoleApp218\bin\Debug\ConsoleApp218.pdb
+D:\C\ConsoleApp218\ConsoleApp218\obj\Debug\ConsoleApp218.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp218\ConsoleApp218\obj\Debug\ConsoleApp218.exe
+D:\C\ConsoleApp218\ConsoleApp218\obj\Debug\ConsoleApp218.pdb
