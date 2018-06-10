@@ -23,10 +23,26 @@ namespace WindowsFormsApp3
         //Download
         private void button1_Click(object sender, EventArgs e)
         {
-            WebClient wc = new WebClient();
-            wc.DownloadStringCompleted += Wc_DownloadStringCompleted;
-            //The project Gutenberg EBook of a Tale of two cities,by charles Dickens.
-            wc.DownloadStringAsync(new Uri("http://www.gutenberg.org/files/98/98-8.txt"));
+            //WebClient wc = new WebClient();
+            //wc.DownloadStringCompleted += Wc_DownloadStringCompleted;
+            ////The project Gutenberg EBook of a Tale of two cities,by charles Dickens.
+            //wc.DownloadStringAsync(new Uri("http://www.gutenberg.org/files/98/98-8.txt"));
+
+            //Start a new "task" to process the ints
+            Task.Factory.StartNew(() =>
+            {
+                ProcessIntData();
+            });
+        }
+
+        private void ProcessIntData()
+        {
+            //Get a very large array of integers.
+            int[] source = Enumerable.Range(1, 1000000).ToArray();
+
+            //Find the numbers where num%3==0 is true,return in descending order
+            int[] modThreeIsZero = (from num in source where num % 3 == 0 orderby num descending select num).ToArray();
+            MessageBox.Show(string.Format("Found {0} numbers that match query!\n", modThreeIsZero.Count()));
         }
 
         private void Wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
