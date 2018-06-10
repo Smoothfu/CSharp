@@ -11,7 +11,7 @@ namespace ConsoleApp220
     {
         static void Main(string[] args)
         {
-            ModifyAppDirectory();
+            FunWithDirectoryInfo();
             Console.ReadLine();
         }
 
@@ -69,9 +69,18 @@ namespace ConsoleApp220
             //Capture returned DirectoryInfo object.
             DirectoryInfo myDataFoler= dir.CreateSubdirectory(@"MyFolder2\Data");
             Console.WriteLine("New folder is :{0}\n", myDataFoler);
-
-
         }
          
+        static void FunWithDirectoryInfo()
+        {
+            //List all drives on current computer.
+            string[] drives = Directory.GetLogicalDrives();
+            Console.WriteLine("Here are your drives:\n");
+
+            foreach(string str in drives)
+            {
+                Console.WriteLine("-->{0}\n", str);
+            }
+        }
     }
 }
