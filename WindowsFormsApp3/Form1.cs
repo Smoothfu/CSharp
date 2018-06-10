@@ -15,6 +15,7 @@ namespace WindowsFormsApp3
     public partial class Form1 : Form
     {
         string theEBook = string.Empty;
+        private CancellationTokenSource cts = new CancellationTokenSource();
         public Form1()
         {
             InitializeComponent();
@@ -38,11 +39,25 @@ namespace WindowsFormsApp3
         private void ProcessIntData()
         {
             //Get a very large array of integers.
-            int[] source = Enumerable.Range(1, 1000000).ToArray();
+            int[] source = Enumerable.Range(1, 100000000).ToArray();
 
-            //Find the numbers where num%3==0 is true,return in descending order
-            int[] modThreeIsZero = (from num in source.AsParallel() where num % 3 == 0 orderby num descending select num).ToArray();
-            MessageBox.Show(string.Format("Found {0} numbers that match query!\n", modThreeIsZero.Count()));
+            //Find the numbers where num%3==0 is true,returned in descending order.
+            int[] modThreeIsZero = null;
+            try
+            {
+                modThreeIsZero = (from num in source.AsParallel().WithCancellation(cts.Token)
+                                  where num % 3 == 0 orderby num descending
+                                  select num).ToArray();
+                MessageBox.Show(string.Format("Found {0} numbers that match query!", modThreeIsZero.Count()));
+            }
+            catch(OperationCanceledException ex)
+            {
+                this.Invoke((Action)delegate
+                {
+                    MessageBox.Show(ex.Message);
+                });
+            }
+
         }
 
         private void Wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -54,36 +69,37 @@ namespace WindowsFormsApp3
         //Cancel
         private void button2_Click(object sender, EventArgs e)
         {
-            //Get the words from the e-book
-            string[] words = theEBook.Split(new char[] {' ','\u000A',',','.',';',':','-','?','/' },StringSplitOptions.RemoveEmptyEntries);
+            ////Get the words from the e-book
+            //string[] words = theEBook.Split(new char[] {' ','\u000A',',','.',';',':','-','?','/' },StringSplitOptions.RemoveEmptyEntries);
 
-            //Now find the ten most common words.
-            string[] tenMostCommon = null;
+            ////Now find the ten most common words.
+            //string[] tenMostCommon = null;
 
-            //Get the longest word.
-            string longestWord = string.Empty;
+            ////Get the longest word.
+            //string longestWord = string.Empty;
 
-            Parallel.Invoke(() =>
-            {
-                //Now,find the ten most common words.
-                tenMostCommon = FindTenMostCommon(words);
-            },
-            ()=>
-            {
-                //Get the longest word.
-                longestWord = FindLongestWord(words);
-            });
+            //Parallel.Invoke(() =>
+            //{
+            //    //Now,find the ten most common words.
+            //    tenMostCommon = FindTenMostCommon(words);
+            //},
+            //()=>
+            //{
+            //    //Get the longest word.
+            //    longestWord = FindLongestWord(words);
+            //});
 
-            //Now that all tasks are complete,build a string to show all stats in a message box.
-            StringBuilder bookStats = new StringBuilder("Ten Most Common Words are:\n");
-            foreach(string str in tenMostCommon)
-            {
-                bookStats.AppendLine(str);
-            }
+            ////Now that all tasks are complete,build a string to show all stats in a message box.
+            //StringBuilder bookStats = new StringBuilder("Ten Most Common Words are:\n");
+            //foreach(string str in tenMostCommon)
+            //{
+            //    bookStats.AppendLine(str);
+            //}
 
-            bookStats.AppendFormat("Longest word is :{0}\n", longestWord);
-            bookStats.AppendLine();
-            MessageBox.Show(bookStats.ToString(), "Book Inof");
+            //bookStats.AppendFormat("Longest word is :{0}\n", longestWord);
+            //bookStats.AppendLine();
+            //MessageBox.Show(bookStats.ToString(), "Book Inof");
+            cts.Cancel();
         }
 
         private string[] FindTenMostCommon(string[] words)
