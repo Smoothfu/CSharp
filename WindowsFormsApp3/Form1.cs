@@ -24,7 +24,7 @@ namespace WindowsFormsApp3
         //Download
         private async void button1_Click(object sender, EventArgs e)
         {
-            this.Text = DoWork();
+            this.Text = await DoWorkAsync();
         }
 
         private void ProcessIntData()
@@ -116,9 +116,9 @@ namespace WindowsFormsApp3
         }
 
         //See below for code walkthrough...
-        private Task<String> DoWork()
+        private async Task<String> DoWorkAsync()
         {
-            return Task.Run(() =>
+            return await Task.Run(() =>
             {
                 Thread.Sleep(10000);
                 return "Done with work!";
