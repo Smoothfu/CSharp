@@ -11,8 +11,7 @@ namespace ConsoleApp220
     {
         static void Main(string[] args)
         {
-            string path = @"D:\C\ConsoleApp219";
-            ShowWindowsDirectoryInfo(path); 
+            DisplayImageFiles();
             Console.ReadLine();
         }
 
@@ -33,6 +32,32 @@ namespace ConsoleApp220
             Console.WriteLine("Attributes:{0}", dir.Attributes);
             Console.WriteLine("Root:{0}\n", dir.Root);
             Console.WriteLine("************************************************************");
+        }
+
+        static void DisplayImageFiles()
+        {
+            DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Fred\Pictures");
+
+            //Get all files with *.jpg extension
+            FileInfo[] imageFiles = dir.GetFiles("*.jpg", SearchOption.AllDirectories);
+            if(imageFiles==null || !imageFiles.Any())
+            {
+                return;
+            }
+
+            Console.WriteLine("There are totally {0} *.jpg files\n", imageFiles.Length);
+
+            //Now print out info for each file.
+            foreach(FileInfo fi in imageFiles)
+            {
+                Console.WriteLine("******************************");
+                Console.WriteLine("File name:{0}\n", fi.Name);
+                Console.WriteLine("File Size:{0}\n", fi.Length);
+                Console.WriteLine("Creation:{0}\n", fi.CreationTime);
+                Console.WriteLine("Attributes:{0}\n", fi.Attributes);
+                Console.WriteLine("******************************");
+
+            }
         }
          
     }
