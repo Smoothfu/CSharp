@@ -81,6 +81,22 @@ namespace ConsoleApp220
             {
                 Console.WriteLine("-->{0}\n", str);
             }
+
+            //Delete what was created.
+            Console.WriteLine("Press Enter to delete directories!\n");
+            Console.WriteLine();
+
+            try
+            {
+                Directory.Delete(@"D:\C\ConsoleApp219\ConsoleApp219\obj\Debug",true);
+
+                //The second parameter specifies whether you wish to destory any subdirectories.
+                Directory.Delete(@"D:\C\ConsoleApp219\ConsoleApp219\bin", true);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
