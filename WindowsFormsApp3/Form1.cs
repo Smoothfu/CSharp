@@ -24,7 +24,7 @@ namespace WindowsFormsApp3
         //Download
         private async void button1_Click(object sender, EventArgs e)
         {
-            this.Text =await DoWork();
+            this.Text = DoWork();
         }
 
         private void ProcessIntData()
