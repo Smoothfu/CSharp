@@ -11,7 +11,7 @@ namespace ConsoleApp220
     {
         static void Main(string[] args)
         {
-            DisplayImageFiles();
+            ModifyAppDirectory();
             Console.ReadLine();
         }
 
@@ -56,8 +56,21 @@ namespace ConsoleApp220
                 Console.WriteLine("Creation:{0}\n", fi.CreationTime);
                 Console.WriteLine("Attributes:{0}\n", fi.Attributes);
                 Console.WriteLine("******************************");
-
             }
+        }
+
+        static void ModifyAppDirectory()
+        {
+            DirectoryInfo dir = new DirectoryInfo(".");
+
+            //Create myFolder off application directory.
+            dir.CreateSubdirectory("myFolder");
+
+            //Capture returned DirectoryInfo object.
+            DirectoryInfo myDataFoler= dir.CreateSubdirectory(@"MyFolder2\Data");
+            Console.WriteLine("New folder is :{0}\n", myDataFoler);
+
+
         }
          
     }
