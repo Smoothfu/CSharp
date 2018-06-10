@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ConsoleApp218
 {
@@ -11,8 +13,9 @@ namespace ConsoleApp218
         static int x = 3452345, y = 32545235;
         static void Main(string[] args)
         {
-            Task task = AddMethodXY(x, y);
-           
+            AsyncMethodswithMultipleAwaits();
+
+
             Console.ReadLine();
         }
 
@@ -40,6 +43,18 @@ namespace ConsoleApp218
             {
                 Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
             });
+        }
+
+        static async void AsyncMethodswithMultipleAwaits()
+        {
+            await Task.Run(() => { Thread.Sleep(2000); });
+            MessageBox.Show("Done with the first task!");
+
+            await Task.Run(() => { Thread.Sleep(2000); });
+            MessageBox.Show("Done with the second task!");
+
+            await Task.Run(() => { Thread.Sleep(2000); });
+            MessageBox.Show("Donw with third task!");
         }
     }
 }
