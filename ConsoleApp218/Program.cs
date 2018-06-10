@@ -8,9 +8,12 @@ namespace ConsoleApp218
 {
     class Program
     {
+        static int x = 3452345, y = 32545235;
         static void Main(string[] args)
         {
-            AddMethod();
+            Func<int> func = AddXY;
+            int finalResult = func.Invoke() ;
+            Console.WriteLine(finalResult);
             Console.ReadLine();
         }
 
@@ -25,6 +28,11 @@ namespace ConsoleApp218
                 return x + y;
             });
                 
+        }
+
+        static int AddXY()
+        {
+            return x + y;
         }
     }
 }
