@@ -24,7 +24,8 @@ namespace WindowsFormsApp3
         //Download
         private async void button1_Click(object sender, EventArgs e)
         {
-            this.Text = await DoWorkAsync();
+            await MethodReturningVoidAsync();
+            MessageBox.Show("Done!");
         }
 
         private void ProcessIntData()
@@ -122,6 +123,16 @@ namespace WindowsFormsApp3
             {
                 Thread.Sleep(10000);
                 return "Done with work!";
+            });
+        }
+
+        private async Task MethodReturningVoidAsync()
+        {
+            await Task.Run(() =>
+            {
+                string str=string.Format("Now is {0}\n", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+                MessageBox.Show(str);
+                Thread.Sleep(4000);
             });
         }
     }
