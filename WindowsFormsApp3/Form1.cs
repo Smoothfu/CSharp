@@ -22,18 +22,9 @@ namespace WindowsFormsApp3
         }
 
         //Download
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            //WebClient wc = new WebClient();
-            //wc.DownloadStringCompleted += Wc_DownloadStringCompleted;
-            ////The project Gutenberg EBook of a Tale of two cities,by charles Dickens.
-            //wc.DownloadStringAsync(new Uri("http://www.gutenberg.org/files/98/98-8.txt"));
-
-            //Start a new "task" to process the ints
-            Task.Factory.StartNew(() =>
-            {
-                ProcessIntData();
-            });
+            this.Text =await DoWork();
         }
 
         private void ProcessIntData()
@@ -122,6 +113,16 @@ namespace WindowsFormsApp3
         private string FindLongestWord(string[] words)
         {
             return (from w in words orderby w.Length descending select w).FirstOrDefault();
+        }
+
+        //See below for code walkthrough...
+        private Task<String> DoWork()
+        {
+            return Task.Run(() =>
+            {
+                Thread.Sleep(10000);
+                return "Done with work!";
+            });
         }
     }
 }
