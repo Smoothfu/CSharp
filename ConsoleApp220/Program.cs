@@ -12,24 +12,27 @@ namespace ConsoleApp220
         static void Main(string[] args)
         {
             string path = @"D:\C\ConsoleApp219";
-            List<string> allFiles = GetAllFiles(path);
-
-            if (allFiles != null && allFiles.Any())
-            {
-                Console.WriteLine("There are {0} files in the {1}\n\n\n", allFiles.Count(), path);
-                allFiles.All(x =>
-                {
-                    Console.WriteLine(x);
-                    return true;
-                });
-               
-            }
+            ShowWindowsDirectoryInfo(path); 
             Console.ReadLine();
         }
 
         public static List<string> GetAllFiles(string dir)
         {
             return Directory.GetFiles(dir, "*", SearchOption.AllDirectories).ToList();
+        }
+
+        static void ShowWindowsDirectoryInfo(string path)
+        {
+            //Dump directory information.
+            DirectoryInfo dir = new DirectoryInfo(path);
+            Console.WriteLine("*****Directory Info*****");
+            Console.WriteLine("FullName:{0}\n", dir.FullName);
+            Console.WriteLine("Name:{0}\n", dir.Name);
+            Console.WriteLine("Parent:{0}\n", dir.Parent);
+            Console.WriteLine("Creation:{0}\n", dir.CreationTime);
+            Console.WriteLine("Attributes:{0}", dir.Attributes);
+            Console.WriteLine("Root:{0}\n", dir.Root);
+            Console.WriteLine("************************************************************");
         }
          
     }
