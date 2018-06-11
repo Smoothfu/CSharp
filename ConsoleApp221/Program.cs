@@ -11,7 +11,7 @@ namespace ConsoleApp221
     {
         static void Main(string[] args)
         {
-            DisplayImagesFiles();
+            ModifyAppDirectory();
 
             Console.ReadLine();
         }
@@ -35,6 +35,25 @@ namespace ConsoleApp221
                 Console.WriteLine("Creation:{0}\n", fi.CreationTime);
                 Console.WriteLine("Attributes:{0}\n", fi.Attributes);
                 Console.WriteLine("**************************************************\n");            }
+        }
+
+        static void ModifyAppDirectory()
+        {
+            DirectoryInfo dir = new DirectoryInfo(".");
+
+            //Create \myFolder off application directory.
+            dir.CreateSubdirectory("mySub");
+
+            DirectoryInfo[] dirs = dir.GetDirectories("*", SearchOption.AllDirectories);
+            if(dirs!=null && dirs.Any())
+            {
+                Console.WriteLine("There are {0} directories in the path\n\n\n", dirs.Length);
+                dirs.All(x =>
+                {
+                    Console.WriteLine("{0},{1}",x.FullName,x.CreationTime); 
+                    return true;
+                });
+            }
         }
     }
 }
