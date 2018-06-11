@@ -27,14 +27,14 @@ namespace ConsoleApp221
             Console.WriteLine("Found {0} *.jpg files\n", imgFiles.Length);
 
             //Now print out info for each file.
-            foreach(FileInfo fi in imgFiles)
+            foreach (FileInfo fi in imgFiles)
             {
                 Console.WriteLine("************************************************");
                 Console.WriteLine("File name:{0}\n", fi.Name);
                 Console.WriteLine("File size:{0}\n", fi.Length);
                 Console.WriteLine("Creation:{0}\n", fi.CreationTime);
                 Console.WriteLine("Attributes:{0}\n", fi.Attributes);
-                Console.WriteLine("**************************************************\n");            }
+                Console.WriteLine("**************************************************\n"); }
         }
 
         static void ModifyAppDirectory()
@@ -45,12 +45,12 @@ namespace ConsoleApp221
             dir.CreateSubdirectory("mySub");
 
             DirectoryInfo[] dirs = dir.GetDirectories("*", SearchOption.AllDirectories);
-            if(dirs!=null && dirs.Any())
+            if (dirs != null && dirs.Any())
             {
                 Console.WriteLine("There are {0} directories in the path\n\n\n", dirs.Length);
                 dirs.All(x =>
                 {
-                    Console.WriteLine("{0},{1}",x.FullName,x.CreationTime); 
+                    Console.WriteLine("{0},{1}", x.FullName, x.CreationTime);
                     return true;
                 });
             }
@@ -73,12 +73,12 @@ namespace ConsoleApp221
             Console.ReadLine();
             try
             {
-                
+
 
                 //The second parameter specifies whether you wish to destory any subdirectories.
                 Directory.Delete(@"D:\C\ConsoleApp221\ConsoleApp221\bin\Debug\sub", true);
             }
-            catch(IOException ex)
+            catch (IOException ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -97,12 +97,13 @@ namespace ConsoleApp221
             Console.WriteLine("\tCount:{0}", mq.Count);
             Console.WriteLine("\tValues:");
 
-            foreach(var m in mq)
+            while(mq.Count>0)
             {
-                Console.WriteLine(m);
+                Console.WriteLine(mq.Dequeue());
             }
 
+
             Console.ReadLine();
-        }
+        } 
     }
 }
