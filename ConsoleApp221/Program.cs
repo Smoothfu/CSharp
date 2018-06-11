@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections;
+using System.Diagnostics;
 
 namespace ConsoleApp221
 {
@@ -12,7 +13,8 @@ namespace ConsoleApp221
     {
         static void Main(string[] args)
         {
-            InitStack();
+            Tree tr = CreateTree();
+            InOrder(tr);
             Console.ReadLine();
         }
 
@@ -118,5 +120,77 @@ namespace ConsoleApp221
                 Console.WriteLine(stk.Pop());
             }
         }
+
+        public static Tree CreateTree()
+        {
+            Tree tree = new Tree() { Value = "A" };
+            tree.Left = new Tree()
+            {
+                Value = "B",
+                Left = new Tree() { Value = "D", Left = new Tree() { Value = "G" } },
+                Right = new Tree() { Value = "E", Left = new Tree() { Value = "B" } }
+            };
+
+            tree.Right = new Tree() { Value = "C", Right = new Tree() { Value = "F" } };
+
+            return tree;
+        }
+
+        public static void PreOrder(Tree tree)
+        {
+            if(tree==null)
+            {
+                return;
+            }
+
+            System.Console.WriteLine(tree.Value);
+            PreOrder(tree.Left);
+            PreOrder(tree.Right);
+        }
+
+        public static void PreOrderNoRecursion(Tree tree)
+        {
+            if(tree==null)
+            {
+                return;
+            }
+
+            System.Collections.Generic.Stack<Tree> stk = new Stack<Tree>();
+
+            Tree node = tree;
+            while(node!=null || stk.Any())
+            {
+                if(node!=null)
+                {
+                    stk.Push(node);
+                    Console.WriteLine(node.Value);
+                    node = node.Left;
+                }
+                else
+                {
+                    var item = stk.Pop();
+                    node = item.Right;
+                }
+            }
+        }
+
+        public static void InOrder(Tree tree)
+        {
+            if(tree==null)
+            {
+                return;
+            }
+            InOrder(tree.Left);
+            Console.WriteLine(tree.Value);
+            InOrder(tree.Right);
+        }
+    }
+
+    [DebuggerDisplay("Value=(Value)")]
+    public class Tree
+    {
+        public string Value;
+        public Tree Left;
+        public Tree Right;
     }
 }
