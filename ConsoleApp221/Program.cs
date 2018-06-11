@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections;
 
 namespace ConsoleApp221
 {
@@ -11,8 +12,7 @@ namespace ConsoleApp221
     {
         static void Main(string[] args)
         {
-            FunWithDirectoryType();
-
+            InitQueue();
             Console.ReadLine();
         }
 
@@ -82,6 +82,27 @@ namespace ConsoleApp221
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        static void InitQueue()
+        {
+            //Creates and initializes a new queue.
+            Queue mq = new Queue();
+            mq.Enqueue("The world is fair");
+            mq.Enqueue("Everything depend on myself");
+            mq.Enqueue("Make every second count");
+
+            //Displays the properties and values of the Queue.
+            Console.WriteLine("mq:\n\n\n");
+            Console.WriteLine("\tCount:{0}", mq.Count);
+            Console.WriteLine("\tValues:");
+
+            foreach(var m in mq)
+            {
+                Console.WriteLine(m);
+            }
+
+            Console.ReadLine();
         }
     }
 }
