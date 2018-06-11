@@ -11,16 +11,14 @@ namespace ConsoleApp221
     {
         static void Main(string[] args)
         {
-          string[] allFiles=Directory.GetFiles(@"D:\C\ConsoleApp220","*",SearchOption.AllDirectories);
-          if(allFiles!=null && allFiles.Any())
-            {
-                Console.WriteLine("There are {0} totally files in the path\n\n\n", allFiles.Count());
-                allFiles.All(x =>
-                {
-                    Console.WriteLine(x);
-                    return true;
-                });
-            }
+            DirectoryInfo dir = new DirectoryInfo(".");
+            DirectoryInfo subDir = dir.CreateSubdirectory(@"sub\sub\subFile");
+            Console.WriteLine(subDir.FullName);
+            Console.WriteLine(subDir.CreationTime);
+            Console.WriteLine(subDir.Name);
+            Console.WriteLine(subDir.LastAccessTime);
+            Console.WriteLine(subDir.LastWriteTime);
+
             Console.ReadLine();
         }
     }
