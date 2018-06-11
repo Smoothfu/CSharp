@@ -11,7 +11,7 @@ namespace ConsoleApp221
     {
         static void Main(string[] args)
         {
-            ModifyAppDirectory();
+            FunWithDirectoryType();
 
             Console.ReadLine();
         }
@@ -54,6 +54,19 @@ namespace ConsoleApp221
                     return true;
                 });
             }
+        }
+
+        static void FunWithDirectoryType()
+        {
+            //List all drives on current computer.
+            string[] drives = Directory.GetLogicalDrives();
+            Console.WriteLine("Here are your drives:\n");
+
+            drives.All(x =>
+                {
+                    Console.WriteLine(x);
+                    return true;
+                });
         }
     }
 }
