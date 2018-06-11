@@ -12,17 +12,28 @@ namespace ConsoleApp221
         static void Main(string[] args)
         {
             DirectoryInfo dir = new DirectoryInfo(@"D:\C\ConsoleApp220");
-            DirectoryInfo [] allDirs= dir.GetDirectories("*",SearchOption.AllDirectories);
+            FileInfo [] fis=dir.GetFiles("*", SearchOption.AllDirectories);
 
-            if(allDirs!=null && allDirs.Any())
+            if(fis!=null && fis.Any())
             {
-                Console.WriteLine("There are {0} totally directories\n\n\n", allDirs.Count());
-                allDirs.All(x =>
+                Console.WriteLine("There are totally {0} files in the specified path!\n\n\n",fis.Count());
+                fis.All(x =>
                 {
+                    Console.WriteLine(x.Attributes);
+                    Console.WriteLine(x.CreationTime);
+                    Console.WriteLine(x.Directory);
+                    Console.WriteLine(x.DirectoryName);
                     Console.WriteLine(x.FullName);
+                    Console.WriteLine(x.LastAccessTime);
+                    Console.WriteLine(x.LastWriteTime);
+                    Console.WriteLine(x.Length);
+                    Console.WriteLine(x.Name);
+                    Console.WriteLine(x.ToString());
+                    Console.WriteLine("\n\n\n");
                     return true;
                 });
             }
+            
 
             Console.ReadLine();
         }
