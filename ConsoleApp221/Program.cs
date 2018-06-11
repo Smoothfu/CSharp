@@ -12,7 +12,7 @@ namespace ConsoleApp221
     {
         static void Main(string[] args)
         {
-            InitQueue();
+            InitStack();
             Console.ReadLine();
         }
 
@@ -105,5 +105,18 @@ namespace ConsoleApp221
 
             Console.ReadLine();
         } 
+
+        static void InitStack()
+        {
+            Stack stk = new Stack();
+            stk.Push("The world is fair");
+            stk.Push("Everything depend on myself");
+            stk.Push("Make every second count!");
+
+            while(stk.Count>0)
+            {
+                Console.WriteLine(stk.Pop());
+            }
+        }
     }
 }
