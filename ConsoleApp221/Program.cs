@@ -93,9 +93,9 @@ namespace ConsoleApp221
             mq.Enqueue("Make every second count");
 
             //Displays the properties and values of the Queue.
-            Console.WriteLine("mq:\n\n\n");
-            Console.WriteLine("\tCount:{0}", mq.Count);
-            Console.WriteLine("\tValues:");
+            Console.WriteLine("mq:");
+            Console.WriteLine("Count:{0}", mq.Count);
+            Console.WriteLine("Values:");
 
             while(mq.Count>0)
             {
