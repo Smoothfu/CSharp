@@ -11,13 +11,18 @@ namespace ConsoleApp221
     {
         static void Main(string[] args)
         {
-            DirectoryInfo dir = new DirectoryInfo(".");
-            DirectoryInfo subDir = dir.CreateSubdirectory(@"sub\sub\subFile");
-            Console.WriteLine(subDir.FullName);
-            Console.WriteLine(subDir.CreationTime);
-            Console.WriteLine(subDir.Name);
-            Console.WriteLine(subDir.LastAccessTime);
-            Console.WriteLine(subDir.LastWriteTime);
+            DirectoryInfo dir = new DirectoryInfo(@"D:\C\ConsoleApp220");
+            DirectoryInfo [] allDirs= dir.GetDirectories("*",SearchOption.AllDirectories);
+
+            if(allDirs!=null && allDirs.Any())
+            {
+                Console.WriteLine("There are {0} totally directories\n\n\n", allDirs.Count());
+                allDirs.All(x =>
+                {
+                    Console.WriteLine(x.FullName);
+                    return true;
+                });
+            }
 
             Console.ReadLine();
         }
