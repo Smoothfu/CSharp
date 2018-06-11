@@ -67,6 +67,21 @@ namespace ConsoleApp221
                     Console.WriteLine(x);
                     return true;
                 });
+
+            //Delete what was created.
+            Console.WriteLine("Press Enter to delete directories\n");
+            Console.ReadLine();
+            try
+            {
+                
+
+                //The second parameter specifies whether you wish to destory any subdirectories.
+                Directory.Delete(@"D:\C\ConsoleApp221\ConsoleApp221\bin\Debug\sub", true);
+            }
+            catch(IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
