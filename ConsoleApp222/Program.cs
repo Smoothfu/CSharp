@@ -11,66 +11,48 @@ using System.Threading;
 
 namespace ConsoleApp222
 {
-    public delegate void AddDel(int x, int y);
+    public delegate void TemperatureEventHandler(object sender, TemperatureEventArgs e);
     class Program
-    {
+    {   
         static void Main(string[] args)
         {
-            Console.WriteLine("The main ThreadManagerThreadId:{0}", Thread.CurrentThread.ManagedThreadId);
-
-            AddDel addDel = new AddDel(AddMethod);
-            addDel(10000, 1000000000);
+            Program obj = new Program();
+            obj.MonitorTemperature();
 
             Console.ReadLine();
         }
 
-        static void DescPerson(object obj)
+        public void MonitorTemperature()
         {
-            var objPerson = obj as Person;
-            if(objPerson!=null)
-            {
-                Console.WriteLine(objPerson.ToString());
-            }
+            TemperatureMonitor tempMon = new TemperatureMonitor(32);
+            tempMon.SetTemperature(33);
+            Console.WriteLine("Current temperature is {0} degrees Fahreheit.\n", tempMon.GetTemperature());
+            tempMon.SetTemperature(32);
+            Console.WriteLine("Current temperature is {0} degress Fahrenheit.\n", tempMon.GetTemperature());
+
+            //Add event handler dynamically using C# syntax.
+            tempMon.TemperatureThresholdEvent += this.TempMonitor;
+
+            tempMon.SetTemperature(33);
+            Console.WriteLine("Current temperature is {0} degrees Fahrenheit.\n", tempMon.GetTemperature());
+            tempMon.SetTemperature(34);
+            Console.WriteLine("Curremt temperature is {0} degrees Fahrenheit.\n", tempMon.GetTemperature());
+            tempMon.SetTemperature(32);
+            Console.WriteLine("Current temperature is {0} degrees Fahrenheit.\n", tempMon.GetTemperature());
+
+            //Remove event handler dynamically using c# syntax.
+            tempMon.TemperatureThresholdEvent -= this.TempMonitor;
+
+            tempMon.SetTemperature(31);
+            Console.WriteLine("Current temperature is {0} degrees Fahrenheit.\n", tempMon.GetTemperature());
+
+            tempMon.SetTemperature(35);
+            Console.WriteLine("Current temperature is {0} degress Fahrenheit.\n", tempMon.GetTemperature());
         }
 
-        static void AddMethod(int x,int y)
+        private void TempMonitor(object sender,TemperatureEventArgs e)
         {
-            Console.WriteLine("The ThreadId in AddMethod is {0}\n",Thread.CurrentThread.ManagedThreadId);
-            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
-        }
-
-        static void GetDataBySP()
-        {
-            Console.WriteLine("The thread Id in GetDataBySP() :{0}\n", Thread.CurrentThread.ManagedThreadId);
-            string sqlString = ConfigurationManager.AppSettings["connString"].ToString();
-            SqlConnection conn = new SqlConnection(sqlString);
-            conn.Open();
-
-            if (conn.State == ConnectionState.Open)
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = conn;
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "spGetSalesStoreByBID";
-                    cmd.Parameters.Add(new SqlParameter("@BID", 302));
-                    SqlDataAdapter sda = new SqlDataAdapter();
-                    sda.SelectCommand = cmd;
-                    DataSet ds = new DataSet();
-                    sda.Fill(ds);
-
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                        {
-                            for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
-                            {
-                                Console.Write("{0,-2} :{1}\t", ds.Tables[0].Columns[j].ColumnName, ds.Tables[0].Rows[i][j].ToString());
-                            }
-                        }
-                    }
-                }
-            }
+            Console.WriteLine("***The event has occured!Warning:Temperature is changing from {0} to {1}***\n", e.OldTemperature, e.NewTemperature);
         }
     }
 
@@ -88,6 +70,73 @@ namespace ConsoleApp222
         public override string ToString()
         {
             return string.Format("PId:{0},PName:{1}\n", PId, PName);
+        }
+    }
+
+    public class TemperatureEventArgs:EventArgs
+    {
+        private decimal oldTemp;
+        private decimal newTemp;
+
+        public decimal OldTemperature
+        {
+            get
+            {
+                return this.oldTemp;
+            }
+        }
+
+        public decimal NewTemperature
+        {
+            get
+            {
+                return this.newTemp;
+            }
+        }
+
+        public TemperatureEventArgs(decimal oldTemp,decimal newTemp)
+        {
+            this.oldTemp = oldTemp;
+            this.newTemp = newTemp;
+        }
+     
+    }
+
+    public class TemperatureMonitor
+    {
+        private decimal currentTemperature;
+        private decimal threshholdTemperature;
+
+        public event TemperatureEventHandler TemperatureThresholdEvent;
+        public event EventHandler myEvent;
+
+        public TemperatureMonitor(decimal threshHold)
+        {
+            this.threshholdTemperature = threshHold;
+        }
+
+        public void SetTemperature(decimal newTemperature)
+        {
+            if((this.currentTemperature>this.threshholdTemperature && newTemperature<=this.threshholdTemperature) ||
+                (this.currentTemperature<this.threshholdTemperature && newTemperature>=this.threshholdTemperature))
+            {
+                OnRaiseTemperatureEvent(newTemperature);
+            };
+            this.currentTemperature = newTemperature;
+        }
+
+        public decimal GetTemperature()
+        {
+            return this.currentTemperature;
+        }
+
+        protected virtual void OnRaiseTemperatureEvent(decimal newTemplate)
+        {
+            //Raise the event if it has subscribers.
+            if(TemperatureThresholdEvent!=null)
+            {
+                TemperatureThresholdEvent(this, new TemperatureEventArgs(this.currentTemperature, newTemplate));
+            }
         }
     }
 }
