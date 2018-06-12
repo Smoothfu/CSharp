@@ -11,18 +11,15 @@ using System.Threading;
 
 namespace ConsoleApp222
 {
+    public delegate void AddDel(int x, int y);
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("The main ThreadManagerThreadId:{0}", Thread.CurrentThread.ManagedThreadId);
 
-            Thread thread = new Thread(() =>
-              {
-                  Person p = new Person(1, "Fred");
-                  DescPerson(p);
-              });
-            thread.Start();
+            AddDel addDel = new AddDel(AddMethod);
+            addDel(10000, 1000000000);
 
             Console.ReadLine();
         }
@@ -34,6 +31,12 @@ namespace ConsoleApp222
             {
                 Console.WriteLine(objPerson.ToString());
             }
+        }
+
+        static void AddMethod(int x,int y)
+        {
+            Console.WriteLine("The ThreadId in AddMethod is {0}\n",Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
 
         static void GetDataBySP()
