@@ -7,16 +7,21 @@ using System.Threading.Tasks;
 namespace ConsoleApp223
 {
     public delegate void JudgeHandler(AdultPerson p,PersonEventArgs e);
+    public delegate void JudgeRichHandler(RichPerson rp, RichEventArgs e);
     class Program
-    {
-        
+    {        
         static void Main(string[] args)
         {
-            AdultPerson p = new AdultPerson(31, 1);
-            p.JudgeEvent += P_JudgeEvent1;
-            p.JudgeAdultPerson(p);
-             
+            RichPerson rp = new RichPerson(31, 4236245634756);
+            rp.JudgeRichEvent += Rp_JudgeRichEvent;
+            rp.JudgeRichPerson(rp);
+
             Console.ReadLine();
+        }
+
+        private static void Rp_JudgeRichEvent(RichPerson rp, RichEventArgs e)
+        {
+            Console.WriteLine("RichPerson's age :{0},money:{1},time is:{2}", e.RP.PAge, e.RP.PMoney,e.DT.ToString("yyyyMMddHHmmssfff"));
         }
 
         private static void P_JudgeEvent1(AdultPerson p, PersonEventArgs e)
@@ -73,5 +78,51 @@ namespace ConsoleApp223
             Dt = dt;
         }
          
+    }
+
+    public class RichPerson
+    {
+        public event JudgeRichHandler JudgeRichEvent;
+        public int PAge { get; set; }
+        public decimal PMoney { get; set; }
+
+        public RichPerson(int pAge,decimal pMoney)
+        {
+            PAge = pAge;
+            PMoney = pMoney;            
+        }
+
+        public void JudgeRichPerson(RichPerson rp)
+        {
+            if(rp.PMoney>10000000000)
+            {
+                OnJudgeRichEvent(rp);
+            }
+        }
+        public override string ToString()
+        {
+            return string.Format("Its age is {0},money is {1}\n", PAge, PMoney);
+        }
+
+        public virtual void OnJudgeRichEvent(RichPerson p)
+        {
+            if (JudgeRichEvent != null)
+            {
+                JudgeRichEvent(this, new RichEventArgs(p, DateTime.Now));
+            }
+        }
+
+
+    }
+
+    public class  RichEventArgs:EventArgs
+    {
+       public RichPerson RP { get; set; }
+       public   DateTime DT { get; set; }
+        public RichEventArgs(RichPerson rp,DateTime dt)
+        {
+            RP = rp;
+            DT = dt;
+        }
     }
 }
