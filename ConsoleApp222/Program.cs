@@ -26,7 +26,7 @@ namespace ConsoleApp222
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "spGetSalesStoreByBID";
-                    cmd.Parameters.Add(new SqlParameter("@BID", 300));
+                    cmd.Parameters.Add(new SqlParameter("@BID", 302));
                     SqlDataAdapter sda = new SqlDataAdapter();
                     sda.SelectCommand = cmd;
                     DataSet ds = new DataSet();
@@ -38,7 +38,7 @@ namespace ConsoleApp222
                         {
                             for(int j=0;j<ds.Tables[0].Columns.Count;j++)
                             {
-                                Console.Write("{0,-5} {1}\t",ds.Tables[0].Columns[j].ColumnName,ds.Tables[0].Rows[i][j].ToString());
+                                Console.Write("{0,-2} :{1}\t",ds.Tables[0].Columns[j].ColumnName,ds.Tables[0].Rows[i][j].ToString());
                             }
                         }
                     }
