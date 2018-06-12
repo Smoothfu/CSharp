@@ -1,0 +1,7 @@
+D:\C\WcfService7\WcfService7\bin\WcfService7.dll.config
+D:\C\WcfService7\WcfService7\bin\WcfService7.dll
+D:\C\WcfService7\WcfService7\bin\WcfService7.pdb
+D:\C\WcfService7\WcfService7\obj\Debug\WcfService7.csprojResolveAssemblyReference.cache
+D:\C\WcfService7\WcfService7\obj\Debug\WcfService7.csproj.CoreCompileInputs.cache
+D:\C\WcfService7\WcfService7\obj\Debug\WcfService7.dll
+D:\C\WcfService7\WcfService7\obj\Debug\WcfService7.pdb

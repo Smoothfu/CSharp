@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary2", "ClassLibra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{0B4D4EC8-D356-4512-973E-4E8B446A1122}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathWCFServiceLibrary", "MathWCFServiceLibrary\MathWCFServiceLibrary.csproj", "{1628C02B-89D8-42FD-9A0E-BB3C2CB2E5E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0B4D4EC8-D356-4512-973E-4E8B446A1122}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B4D4EC8-D356-4512-973E-4E8B446A1122}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B4D4EC8-D356-4512-973E-4E8B446A1122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1628C02B-89D8-42FD-9A0E-BB3C2CB2E5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1628C02B-89D8-42FD-9A0E-BB3C2CB2E5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1628C02B-89D8-42FD-9A0E-BB3C2CB2E5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1628C02B-89D8-42FD-9A0E-BB3C2CB2E5E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,6 @@
 D:\C\ClassLibrary2\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
 D:\C\ClassLibrary2\ConsoleApp1\bin\Debug\ConsoleApp1.exe
 D:\C\ClassLibrary2\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
-D:\C\ClassLibrary2\ConsoleApp1\bin\Debug\ClassLibrary2.dll
-D:\C\ClassLibrary2\ConsoleApp1\bin\Debug\ClassLibrary2.pdb
 D:\C\ClassLibrary2\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
 D:\C\ClassLibrary2\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
 D:\C\ClassLibrary2\ConsoleApp1\obj\Debug\ConsoleApp1.exe

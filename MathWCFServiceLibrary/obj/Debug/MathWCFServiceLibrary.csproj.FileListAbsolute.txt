@@ -1,0 +1,7 @@
+D:\C\ClassLibrary2\MathWCFServiceLibrary\bin\Debug\MathWCFServiceLibrary.dll.config
+D:\C\ClassLibrary2\MathWCFServiceLibrary\bin\Debug\MathWCFServiceLibrary.dll
+D:\C\ClassLibrary2\MathWCFServiceLibrary\bin\Debug\MathWCFServiceLibrary.pdb
+D:\C\ClassLibrary2\MathWCFServiceLibrary\obj\Debug\MathWCFServiceLibrary.csprojResolveAssemblyReference.cache
+D:\C\ClassLibrary2\MathWCFServiceLibrary\obj\Debug\MathWCFServiceLibrary.csproj.CoreCompileInputs.cache
+D:\C\ClassLibrary2\MathWCFServiceLibrary\obj\Debug\MathWCFServiceLibrary.dll
+D:\C\ClassLibrary2\MathWCFServiceLibrary\obj\Debug\MathWCFServiceLibrary.pdb
