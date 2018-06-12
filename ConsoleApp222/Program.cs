@@ -16,11 +16,21 @@ namespace ConsoleApp222
         static void Main(string[] args)
         {
             Console.WriteLine("The main ThreadManagerThreadId:{0}", Thread.CurrentThread.ManagedThreadId);
-            ThreadStart ts = new ThreadStart(GetDataBySP);
-            Thread thread = new Thread(ts);
-            thread.Start();
 
+            Person objP = new Person(1, "Fred");
+            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
+            Thread thread = new Thread(pts);
+            thread.Start(objP);
             Console.ReadLine();
+        }
+
+        static void DescPerson(object obj)
+        {
+            var objPerson = obj as Person;
+            if(objPerson!=null)
+            {
+                Console.WriteLine(objPerson.ToString());
+            }
         }
 
         static void GetDataBySP()
@@ -55,6 +65,23 @@ namespace ConsoleApp222
                     }
                 }
             }
+        }
+    }
+
+    public class Person
+    {
+        public int PId { get; set; }
+        public string PName { get; set; }
+
+        public Person(int pId,string pName)
+        {
+            PId = pId;
+            PName = pName;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("PId:{0},PName:{1}\n", PId, PName);
         }
     }
 }
