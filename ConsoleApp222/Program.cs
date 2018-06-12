@@ -17,10 +17,13 @@ namespace ConsoleApp222
         {
             Console.WriteLine("The main ThreadManagerThreadId:{0}", Thread.CurrentThread.ManagedThreadId);
 
-            Person objP = new Person(1, "Fred");
-            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
-            Thread thread = new Thread(pts);
-            thread.Start(objP);
+            Thread thread = new Thread(() =>
+              {
+                  Person p = new Person(1, "Fred");
+                  DescPerson(p);
+              });
+            thread.Start();
+
             Console.ReadLine();
         }
 
