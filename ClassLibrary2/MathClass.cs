@@ -10,22 +10,22 @@ namespace ClassLibrary2
     {
         public void AddMethod(int x,int y)
         {
-            Console.WriteLine("Add:{0}+{1}={2}\n", x, y, x + y);
+            Console.WriteLine("Add2:{0}+{1}={2}\n", x, y, x + y);
         }
 
         public void SubtractMethod(int x,int y)
         {
-            Console.WriteLine("Subtract:{0}-{1}={2}\n", x, y, x - y);
+            Console.WriteLine("Subtract2:{0}-{1}={2}\n", x, y, x - y);
         }
 
         public void MultiplyMethod(int x,int y)
         {
-            Console.WriteLine("Multiply:{0}*{1}={2}\n", x, y, x*y);
+            Console.WriteLine("Multiply2:{0}*{1}={2}\n", x, y, x*y);
         }
 
         public void DivideMethod(int x,int y)
         {
-            Console.WriteLine("Divide: {0}/{1}={2}", x, y, x/y);
+            Console.WriteLine("Divide2: {0}/{1}={2}", x, y, x/y);
         }
     }
 }
