@@ -16,10 +16,21 @@ namespace ConsoleApp222
     {   
         static void Main(string[] args)
         {
-            Program obj = new Program();
-            obj.MonitorTemperature();
-
+            Counter c = new Counter(new Random().Next(10));
+            c.ThresholdReached += C_ThresholdReached;
+            Console.WriteLine("press 'a' key to increase total!\n");
+            while (Console.ReadKey(true).KeyChar == 'a')
+            {
+                Console.WriteLine("adding one!\n");
+                c.Add(1);
+            }
             Console.ReadLine();
+        }
+
+        private static void C_ThresholdReached(object sender, ThresholdReachedEventArgs e)
+        {
+            Console.WriteLine("The threshold of {0} was reached at {1}.\n", e.Threshold, e.TimeReached);
+       
         }
 
         public void MonitorTemperature()
@@ -136,6 +147,45 @@ namespace ConsoleApp222
             if(TemperatureThresholdEvent!=null)
             {
                 TemperatureThresholdEvent(this, new TemperatureEventArgs(this.currentTemperature, newTemplate));
+            }
+        }
+    }
+
+    public class ThresholdReachedEventArgs:EventArgs
+    {
+        public int Threshold { get; set; }
+        public DateTime TimeReached { get; set; }
+    }
+
+    class Counter
+    {
+        public event EventHandler<ThresholdReachedEventArgs> ThresholdReached;
+        private int threshold;
+        private int total;
+
+        public Counter(int passedThreadshold)
+        {
+            threshold = passedThreadshold;
+        }
+
+        public void Add(int x)
+        {
+            total += x;
+            if(total>=threshold)
+            {
+                ThresholdReachedEventArgs args = new ThresholdReachedEventArgs();
+                args.Threshold = threshold;
+                args.TimeReached = DateTime.Now;
+                OnThresholdReached(args);
+            }
+        }
+
+        protected virtual void OnThresholdReached(ThresholdReachedEventArgs e)
+        {
+            EventHandler<ThresholdReachedEventArgs> handler = ThresholdReached;
+            if(handler!=null)
+            {
+                handler(this, e);
             }
         }
     }
