@@ -14,7 +14,7 @@ namespace WcfService7
     {
         public string AddMethod(int x, int y)
         {
-            return string.Format("AddMethod in WCF service Application:{0}+{1}={2}\n", x, y, x + y);
+            return string.Format("AddMethod2 in WCF service Application:{0}+{1}={2}\n", x, y, x + y);
         }
 
         public string GetData(int value)
@@ -37,7 +37,7 @@ namespace WcfService7
 
         public string MultiplyMethod(int x, int y)
         {
-            return string.Format("MultiplyMethod in WCF Service Application.{0}*{1}={2}\n", x, y, x * y);
+            return string.Format("MultiplyMethod2 in WCF Service Application.{0}*{1}={2}\n", x, y, x * y);
         }
     }
 }
