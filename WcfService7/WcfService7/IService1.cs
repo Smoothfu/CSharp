@@ -26,6 +26,10 @@ namespace WcfService7
 
         [OperationContract]
         string MultiplyMethod(int x, int y);
+
+        [OperationContract]
+        List<Store> GetAllStoresFromvStoreWithContacts();
+
     }
 
 

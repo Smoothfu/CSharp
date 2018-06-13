@@ -7,4 +7,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:complexType name="ArrayOfStore">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Store" nillable="true" type="tns:Store" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStore" nillable="true" type="tns:ArrayOfStore" />
+  <xs:complexType name="Store">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BID" type="xs:int" />
+      <xs:element minOccurs="0" name="CT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Store" nillable="true" type="tns:Store" />
 </xs:schema>

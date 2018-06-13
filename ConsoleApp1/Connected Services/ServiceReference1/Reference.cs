@@ -74,6 +74,147 @@ namespace ConsoleApp1.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Store", Namespace="http://schemas.datacontract.org/2004/07/WcfService7")]
+    [System.SerializableAttribute()]
+    public partial class Store : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CTField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BID {
+            get {
+                return this.BIDField;
+            }
+            set {
+                if ((this.BIDField.Equals(value) != true)) {
+                    this.BIDField = value;
+                    this.RaisePropertyChanged("BID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CT {
+            get {
+                return this.CTField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CTField, value) != true)) {
+                    this.CTField = value;
+                    this.RaisePropertyChanged("CT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FN {
+            get {
+                return this.FNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FNField, value) != true)) {
+                    this.FNField = value;
+                    this.RaisePropertyChanged("FN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LN {
+            get {
+                return this.LNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LNField, value) != true)) {
+                    this.LNField = value;
+                    this.RaisePropertyChanged("LN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MN {
+            get {
+                return this.MNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MNField, value) != true)) {
+                    this.MNField = value;
+                    this.RaisePropertyChanged("MN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -101,6 +242,12 @@ namespace ConsoleApp1.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/MultiplyMethod", ReplyAction="http://tempuri.org/IService1/MultiplyMethodResponse")]
         System.Threading.Tasks.Task<string> MultiplyMethodAsync(int x, int y);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllStoresFromvStoreWithContacts", ReplyAction="http://tempuri.org/IService1/GetAllStoresFromvStoreWithContactsResponse")]
+        ConsoleApp1.ServiceReference1.Store[] GetAllStoresFromvStoreWithContacts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllStoresFromvStoreWithContacts", ReplyAction="http://tempuri.org/IService1/GetAllStoresFromvStoreWithContactsResponse")]
+        System.Threading.Tasks.Task<ConsoleApp1.ServiceReference1.Store[]> GetAllStoresFromvStoreWithContactsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -160,6 +307,14 @@ namespace ConsoleApp1.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> MultiplyMethodAsync(int x, int y) {
             return base.Channel.MultiplyMethodAsync(x, y);
+        }
+        
+        public ConsoleApp1.ServiceReference1.Store[] GetAllStoresFromvStoreWithContacts() {
+            return base.Channel.GetAllStoresFromvStoreWithContacts();
+        }
+        
+        public System.Threading.Tasks.Task<ConsoleApp1.ServiceReference1.Store[]> GetAllStoresFromvStoreWithContactsAsync() {
+            return base.Channel.GetAllStoresFromvStoreWithContactsAsync();
         }
     }
 }
