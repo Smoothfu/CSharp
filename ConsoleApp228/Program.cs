@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace ConsoleApp228
 {
@@ -13,9 +14,20 @@ namespace ConsoleApp228
         static void Main(string[] args)
         {
             Person p = new Person(31, 1323452562465);
-            p.JudgeRichEvent += P_JudgeRichEvent;
-            p.JudgeRich(p);
+            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
+            Thread thread = new Thread(pts);
+            thread.Start(p);
+            
             Console.ReadLine();
+        }
+
+        static void DescPerson(object obj)
+        {
+            var person = obj as Person;
+            if(person!=null)
+            {
+                Console.WriteLine(person.ToString());
+            }
         }
 
         private static void P_JudgeRichEvent(object sender, RichPersonEventArgs e)
@@ -27,7 +39,11 @@ namespace ConsoleApp228
         {
             Console.WriteLine("The current person is adult and his age is " + e.EAge);
         }
+
+
     }
+
+    
 
     public class Person
     {
@@ -67,7 +83,7 @@ namespace ConsoleApp228
 
         public override string ToString()
         {
-            return string.Format("Age:{0},Name:{1}\n", Age, Name);
+            return string.Format("Age:{0},Name:{1},PMoney:{2}\n", Age, Name,RMoney);
         }
 
         public void JudgeAdult(Person p)
