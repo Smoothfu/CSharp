@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace ConsoleApp228
 {
@@ -14,11 +16,37 @@ namespace ConsoleApp228
         static int x = 2354345, y = 245643674;
         static void Main(string[] args)
         {
-            Person p = new Person(31, 1323452562465);
-            ThreadStart ts = new ThreadStart(Add);
-            Thread thread = new Thread(ts);
-            thread.Start();
-            
+            string connString = @"Server=FRED\SQLEXPRESS;Database=AdventureWorks2014;Integrated Security=SSPI;";
+            SqlConnection conn = new SqlConnection(connString);
+            conn.Open();
+
+            if(conn.State==ConnectionState.Open)
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "spGetVendorAddressByBEID";
+                    cmd.Parameters.Add(new SqlParameter("@BEID", 1492));
+                    SqlDataAdapter sda = new SqlDataAdapter();
+                    sda.SelectCommand = cmd;
+                    DataSet ds = new DataSet();
+                    sda.Fill(ds);
+
+                    if(ds.Tables[0].Rows.Count>0)
+                    {
+                        for(int i=0;i<ds.Tables[0].Rows.Count;i++)
+                        {
+                            for(int j=0;j<ds.Tables[0].Columns.Count;j++)
+                            {
+                                Console.WriteLine(ds.Tables[0].Rows[i][j].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+
+
             Console.ReadLine();
         }
 
