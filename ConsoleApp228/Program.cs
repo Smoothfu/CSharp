@@ -11,16 +11,22 @@ namespace ConsoleApp228
     public delegate void JudgeRichHandler(object sender, RichPersonEventArgs e);
     class Program
     {
+        static int x = 2354345, y = 245643674;
         static void Main(string[] args)
         {
             Person p = new Person(31, 1323452562465);
-            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
-            Thread thread = new Thread(pts);
-            thread.Start(p);
+            ThreadStart ts = new ThreadStart(Add);
+            Thread thread = new Thread(ts);
+            thread.Start();
             
             Console.ReadLine();
         }
 
+
+        static void Add()
+        {
+            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+        }
         static void DescPerson(object obj)
         {
             var person = obj as Person;
