@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ConsoleApp229
 {
@@ -14,19 +17,36 @@ namespace ConsoleApp229
         static void Main(string[] args)
         {
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
-            DirectoryInfo dir = new DirectoryInfo(".");
-            DirectoryInfo rootDir = dir.Parent.Parent.Parent;
-            FileInfo[] allFiles = rootDir.GetFiles("*", SearchOption.AllDirectories);
+            string conString = ConfigurationManager.ConnectionStrings["connString"].ToString();
+            SqlConnection conn = new SqlConnection(conString);
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spGetProductModelByPMID";
+                cmd.Parameters.Add(new SqlParameter("@PMID", 1));
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                sda.Fill(ds);
 
-            if(allFiles!=null && allFiles.Any())
-            {                
-                Parallel.ForEach(allFiles, x =>
+                if(ds.Tables[0].Rows.Count>0)
                 {
-                    Console.WriteLine(x.FullName);
-                });
-                Console.WriteLine("\n\nThere are totally {0} files in {1}\n", allFiles.Count(), rootDir.FullName);
+                    for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
+                    {
+                        Console.Write("{0,-30}", ds.Tables[0].Columns[j].ColumnName);
+                    }
+                    Console.WriteLine();
+                    for (int i=0;i<ds.Tables[0].Rows.Count;i++)
+                    {
+                        for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
+                        {
+                            Console.Write("{0,-30}", ds.Tables[0].Rows[i][j].ToString());
+                        }                           
+                    }
+                }
             }
-            Console.ReadLine();
+                Console.ReadLine();
         }
 
         private static void P_JudgeAdultEvent(object sender, PersonEventArgs e)
