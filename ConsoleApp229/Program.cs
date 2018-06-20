@@ -18,11 +18,18 @@ namespace ConsoleApp229
         {
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            Person p = new Person(31, "Floomberg");
-            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
-            Thread thread = new Thread(pts);
-            thread.Start(p);
-            Console.ReadLine();
+            FileInfo fi = new FileInfo(@".\myText.txt");
+            using (StreamWriter writer = fi.CreateText())
+            {
+                writer.WriteLine("This is a beautiful world!\n");
+            }
+
+            using (StreamReader reader = fi.OpenText())
+            {
+                string str = reader.ReadToEnd();
+                Console.WriteLine(str);
+            }
+                Console.ReadLine();
         }
 
         static void DescPerson(object obj)
