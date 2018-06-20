@@ -68,8 +68,6 @@ namespace ConsoleApp229
         {
             return string.Format("Age:{0},Name:{1}\n", Age, Name);
         }
-
-
     }
 
     public class PersonEventArgs:EventArgs
