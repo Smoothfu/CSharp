@@ -22,7 +22,7 @@ namespace ConsoleApp229
 
         private static void P_JudgeAdultEvent(object sender, PersonEventArgs e)
         {
-            Console.WriteLine("This is an adult and its age is "+e.PAge);
+            Console.WriteLine("This is an adult and its age is {0},now is {1}\n",e.PAge,e.Dt.ToString("yyyyMMMdddHHmmssfff"));
         }
 
         static void Add(int x,int y)
@@ -48,7 +48,7 @@ namespace ConsoleApp229
         {
             if(JudgeAdultEvent!=null)
             {
-                JudgeAdultEvent(this, new PersonEventArgs(Age));
+                JudgeAdultEvent(this, new PersonEventArgs(Age,DateTime.Now));
             }
         }
 
@@ -75,9 +75,11 @@ namespace ConsoleApp229
     public class PersonEventArgs:EventArgs
     {
         public int PAge { get; set; }
-        public PersonEventArgs(int pAge)
+        public DateTime Dt { get; set; }
+        public PersonEventArgs(int pAge,DateTime dt)
         {
             PAge = pAge;
+            Dt = dt;
         }        
     }
 }
