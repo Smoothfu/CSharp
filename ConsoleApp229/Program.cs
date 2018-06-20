@@ -19,16 +19,8 @@ namespace ConsoleApp229
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
 
             FileInfo fi = new FileInfo(@".\newText.txt");
-            using (StreamWriter swriter = fi.CreateText())
-            {
-                swriter.WriteLine("This world is beautiful and wonderful");
-            }
-
-            using (StreamReader reader = new StreamReader(fi.FullName)) 
-            {
-                string str =  reader.ReadToEnd();
-                Console.WriteLine(str);
-            }
+            string str = File.ReadAllText(fi.FullName);
+            Console.WriteLine(str);
 
 
             Console.ReadLine();
