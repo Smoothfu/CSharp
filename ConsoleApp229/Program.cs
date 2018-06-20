@@ -14,9 +14,18 @@ namespace ConsoleApp229
         static void Main(string[] args)
         {
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
-            Person p = new Person(31, "Floomberg");
-            p.JudgeAdultEvent += P_JudgeAdultEvent;
-            p.JudgePerson(p);
+            DirectoryInfo dir = new DirectoryInfo(".");
+            DirectoryInfo rootDir = dir.Parent.Parent.Parent;
+            FileInfo[] allFiles = rootDir.GetFiles("*", SearchOption.AllDirectories);
+
+            if(allFiles!=null && allFiles.Any())
+            {                
+                Parallel.ForEach(allFiles, x =>
+                {
+                    Console.WriteLine(x.FullName);
+                });
+                Console.WriteLine("\n\nThere are totally {0} files in {1}\n", allFiles.Count(), rootDir.FullName);
+            }
             Console.ReadLine();
         }
 
