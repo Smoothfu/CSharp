@@ -17,16 +17,19 @@ namespace ConsoleApp229
         static void Main(string[] args)
         {
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
-            
-            string[] allDrives=Environment.GetLogicalDrives();
-            if(allDrives!=null && allDrives.Any())
+
+            FileInfo fi = new FileInfo(@".\newText.txt");
+            using (StreamWriter swriter = fi.CreateText())
             {
-                Console.WriteLine("There are totally {0} drives in {1}\n", allDrives.Count(), Environment.MachineName);
-                Parallel.ForEach(allDrives, x =>
-                {
-                    Console.WriteLine(x);
-                });
+                swriter.WriteLine("This world is beautiful and wonderful");
             }
+
+            using (StreamReader reader = new StreamReader(fi.FullName)) 
+            {
+                string str =  reader.ReadToEnd();
+                Console.WriteLine(str);
+            }
+
 
             Console.ReadLine();
         }
