@@ -12,11 +12,11 @@ namespace ConsoleApp229
         static void Main(string[] args)
         {
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
-            Thread thread = new Thread(() =>
+            Task task = new Task(() =>
               {
                   Add(100, 200);
               });
-            thread.Start();
+            task.Start();
             Console.ReadLine();
         }
 
