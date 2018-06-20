@@ -19,7 +19,7 @@ namespace ConsoleApp229
             {
                 DirectoryInfo[] allDirss = parentDir.GetDirectories("*", SearchOption.AllDirectories);
                 var allDirs = from d in allDirss
-                              orderby d.CreationTime
+                              orderby d.CreationTime  descending
                               select d;
                 if(allDirs!=null && allDirs.Any())
                 {
