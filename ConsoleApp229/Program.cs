@@ -18,16 +18,34 @@ namespace ConsoleApp229
         {
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            FileInfo fi = new FileInfo(@".\myText.txt");
-            using (StreamWriter writer = fi.CreateText())
-            {
-                writer.WriteLine("This is a beautiful world!\n");
-            }
+            Console.WriteLine("*****Fun with FileStreams*****\n");
 
-            using (StreamReader reader = fi.OpenText())
+            //Obtain a FileStream object.
+            using (FileStream fs = File.Open(@".\myMessage.dat", FileMode.Create))
             {
-                string str = reader.ReadToEnd();
-                Console.WriteLine(str);
+                //Encode a string as an array of bytes.
+                string msg = "Hello";
+                byte[] msgAsByteArray = Encoding.Default.GetBytes(msg);
+
+                //Write byte[] to file.
+                fs.Write(msgAsByteArray, 0, msgAsByteArray.Length);
+
+                //Reset internal position of stream.
+                fs.Position = 0;
+
+                //Read the types from file and display to console.
+                Console.Write("Your message as an array of bytes: \n");
+                byte[] bytesFromFile = new byte[msgAsByteArray.Length];
+
+                for(int i=0;i<msgAsByteArray.Length;i++)
+                {
+                    bytesFromFile[i] = (byte)fs.ReadByte();
+                    Console.WriteLine(bytesFromFile[i]);
+                }
+
+                //Display decoded messages.
+                Console.WriteLine("\nDecoded Message:\n");
+                Console.WriteLine(Encoding.Default.GetString(bytesFromFile));
             }
                 Console.ReadLine();
         }
