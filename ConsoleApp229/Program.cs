@@ -18,26 +18,20 @@ namespace ConsoleApp229
         {
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
 
-            FileInfo fi = new FileInfo(@".\newText.txt");
-            string result = "The world is beautiful and wonderful.This is a fair world.Everything depend on myself";
-            File.WriteAllText(fi.FullName, result);
-            string str = File.ReadAllText(fi.FullName);
-            Console.WriteLine(str);
-
-
+            Person p = new Person(31, "Floomberg");
+            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
+            Thread thread = new Thread(pts);
+            thread.Start(p);
             Console.ReadLine();
         }
 
-        private static void P_JudgeAdultEvent(object sender, PersonEventArgs e)
+        static void DescPerson(object obj)
         {
-            Console.WriteLine("This is an adult and its age is {0},now is {1}\n",e.PAge,e.Dt.ToString("yyyyMMMdddHHmmssfff"));
-        }
-
-        static void Add(int x,int y)
-        {
-            Console.WriteLine("The ManagerThreadId in Add method is {0}\n", Thread.CurrentThread.ManagedThreadId);
-
-            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+            var person = obj as Person;
+            if(person!=null)
+            {
+                Console.WriteLine(person.ToString());
+            }
         }
     }
 
