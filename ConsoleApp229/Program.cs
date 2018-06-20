@@ -8,36 +8,21 @@ using System.IO;
 
 namespace ConsoleApp229
 {
+    public delegate void JudgeAdultHandler(object sender, PersonEventArgs e);
     class Program
-    {
+    {        
         static void Main(string[] args)
         {
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
-            DirectoryInfo dir = new DirectoryInfo(".");
-            DirectoryInfo parentDir = dir.Parent.Parent.Parent.Parent;
-            try
-            {
-                DirectoryInfo[] allDirss = parentDir.GetDirectories("*", SearchOption.AllDirectories);
-                var allDirs = from d in allDirss
-                              orderby d.CreationTime  descending
-                              select d;
-                if(allDirs!=null && allDirs.Any())
-                {
-                    allDirs.All(x =>
-                    {
-                        Console.WriteLine(x.FullName);
-                        return true;
-                    });
-                    Console.WriteLine("There are {0} directories in {1}", allDirs.Count(), parentDir.FullName);
-                }
-               
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }            
-
+            Person p = new Person(31, "Floomberg");
+            p.JudgeAdultEvent += P_JudgeAdultEvent;
+            p.JudgePerson(p);
             Console.ReadLine();
+        }
+
+        private static void P_JudgeAdultEvent(object sender, PersonEventArgs e)
+        {
+            Console.WriteLine("This is an adult and its age is "+e.PAge);
         }
 
         static void Add(int x,int y)
@@ -46,5 +31,53 @@ namespace ConsoleApp229
 
             Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
+    }
+
+    public class Person
+    {
+        public event JudgeAdultHandler JudgeAdultEvent;
+        public int Age { get; set; }
+        public string Name { get; set; }
+        public Person(int age,string name)
+        {
+            Age = age;
+            Name = name;
+        }
+
+        protected void RaiseJudgeAdultEvent()
+        {
+            if(JudgeAdultEvent!=null)
+            {
+                JudgeAdultEvent(this, new PersonEventArgs(Age));
+            }
+        }
+
+        internal void JudgePerson(object obj)
+        {
+            var p = obj as Person;
+            if (p != null)
+            {
+                if(p.Age>18)
+                {
+                    RaiseJudgeAdultEvent();
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Age:{0},Name:{1}\n", Age, Name);
+        }
+
+
+    }
+
+    public class PersonEventArgs:EventArgs
+    {
+        public int PAge { get; set; }
+        public PersonEventArgs(int pAge)
+        {
+            PAge = pAge;
+        }        
     }
 }
