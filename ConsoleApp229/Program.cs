@@ -13,40 +13,22 @@ namespace ConsoleApp229
 {
     public delegate void JudgeAdultHandler(object sender, PersonEventArgs e);
     class Program
-    {        
+    {
         static void Main(string[] args)
         {
             Console.WriteLine("The ManagedThreadId in Main method is {0}\n", Thread.CurrentThread.ManagedThreadId);
-            string conString = ConfigurationManager.ConnectionStrings["connString"].ToString();
-            SqlConnection conn = new SqlConnection(conString);
-            using (SqlCommand cmd = new SqlCommand())
+            
+            string[] allDrives=Environment.GetLogicalDrives();
+            if(allDrives!=null && allDrives.Any())
             {
-                cmd.Connection = conn;
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "spGetProductModelByPMID";
-                cmd.Parameters.Add(new SqlParameter("@PMID", 1));
-                SqlDataAdapter sda = new SqlDataAdapter();
-                sda.SelectCommand = cmd;
-                DataSet ds = new DataSet();
-                sda.Fill(ds);
-
-                if(ds.Tables[0].Rows.Count>0)
+                Console.WriteLine("There are totally {0} drives in {1}\n", allDrives.Count(), Environment.MachineName);
+                Parallel.ForEach(allDrives, x =>
                 {
-                    for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
-                    {
-                        Console.Write("{0,-30}", ds.Tables[0].Columns[j].ColumnName);
-                    }
-                    Console.WriteLine();
-                    for (int i=0;i<ds.Tables[0].Rows.Count;i++)
-                    {
-                        for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
-                        {
-                            Console.Write("{0,-30}", ds.Tables[0].Rows[i][j].ToString());
-                        }                           
-                    }
-                }
+                    Console.WriteLine(x);
+                });
             }
-                Console.ReadLine();
+
+            Console.ReadLine();
         }
 
         private static void P_JudgeAdultEvent(object sender, PersonEventArgs e)
