@@ -17,23 +17,25 @@ namespace ConsoleApp229
             DirectoryInfo parentDir = dir.Parent.Parent.Parent.Parent;
             try
             {
-                FileInfo[] allFiles = parentDir.GetFiles("*", SearchOption.AllDirectories);
-                if (allFiles != null && allFiles.Any())
+                DirectoryInfo[] allDirss = parentDir.GetDirectories("*", SearchOption.AllDirectories);
+                var allDirs = from d in allDirss
+                              orderby d.CreationTime
+                              select d;
+                if(allDirs!=null && allDirs.Any())
                 {
-                    Console.WriteLine("There are totally {0} files in the {1}", allFiles.Count(), parentDir.FullName);
-                    allFiles.All(x => {
+                    allDirs.All(x =>
+                    {
                         Console.WriteLine(x.FullName);
                         return true;
                     });
+                    Console.WriteLine("There are {0} directories in {1}", allDirs.Count(), parentDir.FullName);
                 }
-                Console.WriteLine("There are totally {0} files in the {1}", allFiles.Count(), parentDir.FullName);
+               
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-
-            
+            }            
 
             Console.ReadLine();
         }
