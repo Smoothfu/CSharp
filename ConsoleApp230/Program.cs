@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
 
 namespace ConsoleApp230
 {
@@ -15,11 +16,20 @@ namespace ConsoleApp230
             Console.WriteLine("The Main ManagedThreadId is {0}", Thread.CurrentThread.ManagedThreadId);
             Thread thread = new Thread(() =>
               {
-                  Person p = new Person(17, "Floomberg");
-                  p.JudgeAdultEvent += P_JudgeAdultEvent;
-                  p.JudgeAdult(p);
-              });
+                  DirectoryInfo dir = new DirectoryInfo(".");
+                  DirectoryInfo parentDir = dir.Parent.Parent.Parent;
 
+                  FileInfo[] allFIs = parentDir.GetFiles("*", SearchOption.AllDirectories);
+                  if(allFIs!=null && allFIs.Any())
+                  {
+                      Parallel.ForEach(allFIs, x =>
+                      {
+                          Console.WriteLine(x.FullName);
+                      });
+
+                      Console.WriteLine("There are totally {0} files in  {1}\n", allFIs.Count(), parentDir.FullName);
+                  }
+              });
             thread.Start();
             Console.ReadLine();
         }
@@ -37,8 +47,7 @@ namespace ConsoleApp230
             {
                 Console.WriteLine(p.ToString());
             }
-        }        
-
+        }       
     }
 
     public class Person
