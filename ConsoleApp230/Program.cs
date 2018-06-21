@@ -15,10 +15,9 @@ namespace ConsoleApp230
             Console.WriteLine("The Main ManagedThreadId is {0}", Thread.CurrentThread.ManagedThreadId);
             Thread thread = new Thread(() =>
               {
-                  Person p = new Person(31, "Floomberg");
+                  Person p = new Person(17, "Floomberg");
                   p.JudgeAdultEvent += P_JudgeAdultEvent;
                   p.JudgeAdult(p);
-
               });
 
             thread.Start();
@@ -54,8 +53,7 @@ namespace ConsoleApp230
         }
 
         public override string ToString()
-        {
-           
+        {           
             return string.Format("Age:{0},Name:{1}\n", Age, Name);
         }
 
