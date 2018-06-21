@@ -12,15 +12,22 @@ namespace ConsoleApp230
     {
         static void Main(string[] args)
         {
-            Person p = new Person(31, "Floomberg");
-            p.JudgeAdultEvent += P_JudgeAdultEvent;
-            p.JudgeAdult(p);
+            Console.WriteLine("The Main ManagedThreadId is {0}", Thread.CurrentThread.ManagedThreadId);
+            Thread thread = new Thread(() =>
+              {
+                  Person p = new Person(31, "Floomberg");
+                  p.JudgeAdultEvent += P_JudgeAdultEvent;
+                  p.JudgeAdult(p);
 
+              });
+
+            thread.Start();
             Console.ReadLine();
         }
 
         private static void P_JudgeAdultEvent(object sender, PersonEventArgs e)
         {
+            Console.WriteLine("The event binding responding method's managedthreadid is {0}\n", Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("This is an adult person,and his age is {0},its {1} now", e.Age, e.DT);
         }
 
@@ -31,9 +38,7 @@ namespace ConsoleApp230
             {
                 Console.WriteLine(p.ToString());
             }
-        }
-
-         
+        }        
 
     }
 
@@ -50,6 +55,7 @@ namespace ConsoleApp230
 
         public override string ToString()
         {
+           
             return string.Format("Age:{0},Name:{1}\n", Age, Name);
         }
 
@@ -63,7 +69,8 @@ namespace ConsoleApp230
 
         public void JudgeAdult(Person p)
         {
-            if(p.Age>18)
+            Console.WriteLine("The  JudgeAdult managedThreadId in Person class is {0}\n", Thread.CurrentThread.ManagedThreadId);
+            if (p.Age>18)
             {
                 RaiseJudgeAdultEvent();
             }
