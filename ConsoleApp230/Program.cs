@@ -29,6 +29,19 @@ namespace ConsoleApp230
 
                       Console.WriteLine("There are totally {0} files in  {1}\n", allFIs.Count(), parentDir.FullName);
                   }
+
+                  DirectoryInfo[] dirs = parentDir.GetDirectories("*",SearchOption.AllDirectories);
+
+                  if(dirs!=null && dirs.Any())
+                  {
+                      Parallel.ForEach(dirs, x =>
+                      {
+                          Console.WriteLine(x.FullName);
+                      });
+
+                      Console.WriteLine("There are {0} directories in {1}", dirs.Count(), parentDir);
+                  }
+
               });
             thread.Start();
             Console.ReadLine();
