@@ -7,16 +7,21 @@ using System.Threading;
 
 namespace ConsoleApp230
 {
+    public delegate void JudgeAdultHandler(object sender, PersonEventArgs e);
     class Program
     {
         static void Main(string[] args)
         {
             Person p = new Person(31, "Floomberg");
-            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
-            Thread thread = new Thread(pts);
-            thread.Start(p);          
+            p.JudgeAdultEvent += P_JudgeAdultEvent;
+            p.JudgeAdult(p);
 
             Console.ReadLine();
+        }
+
+        private static void P_JudgeAdultEvent(object sender, PersonEventArgs e)
+        {
+            Console.WriteLine("This is an adult person,and his age is {0},its {1} now", e.Age, e.DT);
         }
 
         static void DescPerson(object obj)
@@ -28,11 +33,13 @@ namespace ConsoleApp230
             }
         }
 
+         
 
     }
 
     public class Person
     {
+        public event JudgeAdultHandler JudgeAdultEvent;
         public int Age { get; set; }
         public string Name { get; set; }
         public Person(int age,string name)
@@ -44,6 +51,33 @@ namespace ConsoleApp230
         public override string ToString()
         {
             return string.Format("Age:{0},Name:{1}\n", Age, Name);
+        }
+
+        public virtual void RaiseJudgeAdultEvent()
+        {
+            if(JudgeAdultEvent!=null)
+            {
+                JudgeAdultEvent(this, new PersonEventArgs(Age, DateTime.Now));
+            }
+        }
+
+        public void JudgeAdult(Person p)
+        {
+            if(p.Age>18)
+            {
+                RaiseJudgeAdultEvent();
+            }
+        }
+    }
+
+    public class PersonEventArgs:EventArgs
+    {
+        public int Age { get; set; }
+        public DateTime DT { get; set; }
+        public PersonEventArgs(int age,DateTime dt)
+        {
+            Age = age;
+            DT = dt;
         }
     }
 }
