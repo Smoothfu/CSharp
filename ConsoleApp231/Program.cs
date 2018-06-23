@@ -11,17 +11,18 @@ namespace ConsoleApp231
     {
         static void Main(string[] args)
         {
-            Person a = new Person(31);
-            Person b = new Person(30);
-            Person c = a + b;
-            Console.WriteLine(c.Age);
-            Console.ReadLine();
-            
+            Thread thread = new Thread(() =>
+              {
+                  AddMethod(10, 20);
+              });
+
+            thread.Start();
+            Console.ReadLine();            
         }
 
         static void AddMethod(int x,int y)
         {
-
+            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
     }
 
