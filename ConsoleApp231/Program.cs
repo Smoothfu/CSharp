@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
 
 namespace ConsoleApp231
 {
@@ -11,11 +12,20 @@ namespace ConsoleApp231
     {
         static void Main(string[] args)
         {
-            Person p = new Person(31, "Fred");
-            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
-            Thread thread = new Thread(pts);
-            thread.Start(p);
-            Console.ReadLine();            
+            FileInfo fi = new FileInfo(@".\myTxt.txt");
+            using (StreamWriter sw = fi.AppendText())
+            {
+                string msg = "This world is beautiful!";
+                sw.WriteLine(msg);
+            }
+
+            using (StreamReader sr = fi.OpenText())
+            {
+                string str = sr.ReadToEnd();
+                Console.WriteLine(str);
+            }
+
+            Console.ReadLine();
         }
 
         public static void DescPerson(object obj)
