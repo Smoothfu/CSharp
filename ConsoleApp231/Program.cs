@@ -11,18 +11,20 @@ namespace ConsoleApp231
     {
         static void Main(string[] args)
         {
-            Thread thread = new Thread(() =>
-              {
-                  AddMethod(10, 20);
-              });
-
-            thread.Start();
+            Person p = new Person(31, "Fred");
+            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
+            Thread thread = new Thread(pts);
+            thread.Start(p);
             Console.ReadLine();            
         }
 
-        static void AddMethod(int x,int y)
+        public static void DescPerson(object obj)
         {
-            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+            var p = obj as Person;
+            if(p!=null)
+            {
+                Console.WriteLine("Age:{0}\n", p.Age);
+            }
         }
     }
 
