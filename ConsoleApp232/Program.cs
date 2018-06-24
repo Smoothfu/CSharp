@@ -12,7 +12,7 @@ namespace ConsoleApp232
     {
         static void Main(string[] args)
         {
-            StringWriterMethod();
+            StringWriterStringBuilder();
             Console.ReadLine();
         }
 
@@ -94,6 +94,22 @@ namespace ConsoleApp232
 
                 //Get a copy of the contents stored in a string and dump to console.
                 Console.WriteLine("Contents of StringWriter:\n{0}", writer);
+            }
+        }
+
+        static void StringWriterStringBuilder()
+        {
+            using (StringWriter writer = new StringWriter())
+            {
+                writer.WriteLine("Don't forget Mother's Day this year...");
+                Console.WriteLine("Contents of StringWriter:\n{0}", writer);
+
+                //Get the internal StringBuilder
+                StringBuilder sBuilder = writer.GetStringBuilder();
+                sBuilder.Insert(0, "Hey!!");
+                Console.WriteLine("->{0}\n", sBuilder.ToString());
+                sBuilder.Remove(0, "Hey!!".Length);
+                Console.WriteLine("-> {0}", sBuilder.ToString());
             }
         }
     }
