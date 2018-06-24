@@ -12,7 +12,7 @@ namespace ConsoleApp232
     {
         static void Main(string[] args)
         {
-            BinaryReaderMethod();
+            BinaryReaderWriterMethod();
             Console.ReadLine();
         }
 
@@ -156,6 +156,47 @@ namespace ConsoleApp232
 
             Console.WriteLine("Done!");
 
+        }
+
+        static void BinaryWriterReader()
+        {
+            Console.WriteLine("*****Fun with Binary Writers/Readers*****\n");
+
+            //Open a binary writer for a file.
+            FileInfo fi = new FileInfo("BinFile.data");
+            using (BinaryWriter bw = new BinaryWriter(fi.OpenWrite()))
+            {
+                //Print out the type of BaseStream.
+                //System.IO.FileStream in this case.
+                Console.WriteLine("Base stream is :{0}\n", bw.BaseStream);
+
+                //Create some data to save in the file.
+                double aDouble = 12345.67;
+                int anInt = 34567;
+                string aString = "A,B,C";
+
+                //Write the data.
+                bw.Write(aDouble);
+                bw.Write(anInt);
+                bw.Write(aString);
+            }
+
+            Console.WriteLine("Done!");
+        }
+
+        static void BinaryReaderWriterMethod()
+        {
+            FileInfo fi = new FileInfo("BinFile.dat");
+
+            //Read the binary data from the stream.
+            using (BinaryReader br = new BinaryReader(fi.OpenRead()))
+            {
+                Console.WriteLine(br.ReadDouble());
+                Console.WriteLine(br.ReadInt32());
+                Console.WriteLine(br.ReadString());
+            }
+
+            Console.ReadLine();
         }
     }
 }
