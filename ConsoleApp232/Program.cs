@@ -12,7 +12,7 @@ namespace ConsoleApp232
     {
         static void Main(string[] args)
         {
-            StringWriterStringBuilder();
+            StringWriterStringReader();
             Console.ReadLine();
         }
 
@@ -110,6 +110,25 @@ namespace ConsoleApp232
                 Console.WriteLine("->{0}\n", sBuilder.ToString());
                 sBuilder.Remove(0, "Hey!!".Length);
                 Console.WriteLine("-> {0}", sBuilder.ToString());
+            }
+        }
+
+        static void StringWriterStringReader()
+        {
+            using (StringWriter writer = new StringWriter())
+            {
+                writer.WriteLine("Don't forget Mother's Day this year...");
+                Console.WriteLine("Contents of StringWriter:\n{0}", writer);
+
+                //Read data from the StringWriter.
+                using (StringReader reader = new StringReader(writer.ToString()))
+                {
+                    string input = null;
+                    while ((input = reader.ReadLine())!=null)
+                    {
+                        Console.WriteLine(input);
+                    }
+                }
             }
         }
     }
