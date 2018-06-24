@@ -12,7 +12,7 @@ namespace ConsoleApp232
     {
         static void Main(string[] args)
         {
-            StreamWriterReader();
+            StreamReaderFileOpenText();
             Console.ReadLine();
         }
 
@@ -67,6 +67,20 @@ namespace ConsoleApp232
             }
             Console.WriteLine("Created file and wrote some thoughts...");
             
+        }
+
+        static void StreamReaderFileOpenText()
+        {
+            //Now read data from file.
+            Console.WriteLine("Here are your thoughts:\n");
+            using (StreamReader sr = File.OpenText(@".\reminders.txt"))
+            {
+                string input = null;
+                while((input=sr.ReadLine())!=null)
+                {
+                    Console.WriteLine(input);
+                }
+            }
         }
     }
 }
