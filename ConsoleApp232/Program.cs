@@ -12,7 +12,7 @@ namespace ConsoleApp232
     {
         static void Main(string[] args)
         {
-            StreamReaderFileOpenText();
+            StringWriterMethod();
             Console.ReadLine();
         }
 
@@ -57,7 +57,7 @@ namespace ConsoleApp232
             {
                 writer.WriteLine("Don't forget Mother's Day this year...");
                 writer.WriteLine("Don't forget Father's Day this year...");
-                for(int i=0;i<10;i++)
+                for (int i = 0; i < 10; i++)
                 {
                     writer.Write(i + " ");
                 }
@@ -66,7 +66,7 @@ namespace ConsoleApp232
                 writer.Write(writer.NewLine);
             }
             Console.WriteLine("Created file and wrote some thoughts...");
-            
+
         }
 
         static void StreamReaderFileOpenText()
@@ -76,10 +76,24 @@ namespace ConsoleApp232
             using (StreamReader sr = File.OpenText(@".\reminders.txt"))
             {
                 string input = null;
-                while((input=sr.ReadLine())!=null)
+                while ((input = sr.ReadLine()) != null)
                 {
                     Console.WriteLine(input);
                 }
+            }
+        }
+
+        static void StringWriterMethod()
+        {
+            Console.WriteLine("*****Fun with StringBuilder/StringReader*****\n");
+
+            //Create a StringWriter and emit character data  to memory
+            using (StringWriter writer = new StringWriter())
+            {
+                writer.WriteLine("Don't forget Mother's Day this year...");
+
+                //Get a copy of the contents stored in a string and dump to console.
+                Console.WriteLine("Contents of StringWriter:\n{0}", writer);
             }
         }
     }
