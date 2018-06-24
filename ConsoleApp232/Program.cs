@@ -12,6 +12,12 @@ namespace ConsoleApp232
     {
         static void Main(string[] args)
         {
+            StreamWriterReader();
+            Console.ReadLine();
+        }
+
+        static void EncodingDefaultGetStringGetBytes()
+        {
             Console.WriteLine("*****Fun with FileStreams*****\n");
 
             //Obtain a FileStream object.
@@ -30,7 +36,7 @@ namespace ConsoleApp232
                 //Read the types from file and display to console.
                 Console.WriteLine("\nYour message as an array of bytes: \n");
                 byte[] bytesFromFile = new byte[arrBytes.Length];
-                for(int i=0;i<arrBytes.Length;i++)
+                for (int i = 0; i < arrBytes.Length; i++)
                 {
                     bytesFromFile[i] = (byte)fs.ReadByte();
                     Console.Write(bytesFromFile[i]);
@@ -40,7 +46,27 @@ namespace ConsoleApp232
                 Console.WriteLine("\n\nDecoded Message:\n");
                 Console.WriteLine(Encoding.Default.GetString(bytesFromFile));
             }
-            Console.ReadLine();
+        }
+
+        static void StreamWriterReader()
+        {
+            Console.WriteLine("*****Fun with StreamWriter/StreamReader*****\n");
+
+            //Get a StreamWriter and write string data.
+            using (StreamWriter writer = File.CreateText(@".\reminders.txt"))
+            {
+                writer.WriteLine("Don't forget Mother's Day this year...");
+                writer.WriteLine("Don't forget Father's Day this year...");
+                for(int i=0;i<10;i++)
+                {
+                    writer.Write(i + " ");
+                }
+
+                //Insert a new line.
+                writer.Write(writer.NewLine);
+            }
+            Console.WriteLine("Created file and wrote some thoughts...");
+            
         }
     }
 }
