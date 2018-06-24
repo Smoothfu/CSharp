@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConsoleApp232
 {
@@ -12,7 +13,7 @@ namespace ConsoleApp232
     {
         static void Main(string[] args)
         {
-            BinaryReaderWriterMethod();
+            SerializationMethod();
             Console.ReadLine();
         }
 
@@ -198,5 +199,101 @@ namespace ConsoleApp232
 
             Console.ReadLine();
         }
+
+        static void FileSystemWatcherMethod()
+        {
+            Console.WriteLine("****The Amazing File Watcher App*****\n");
+            //Establish the path to the directory to watch.
+            FileSystemWatcher watcher = new FileSystemWatcher();
+            try
+            {
+                watcher.Path = @"C:\Users\Fred\Downloads";
+
+                string[] allFiles = Directory.GetFiles(watcher.Path.ToString(),"*.txt",SearchOption.AllDirectories);
+
+                if (allFiles != null && allFiles.Any())
+                {
+                    Console.WriteLine("There are {0} files in the specified path", allFiles.Count());
+                    Parallel.ForEach(allFiles, x =>
+                    {
+                        Console.WriteLine(x);
+                    });
+                }
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
+
+            //Set up the things to be on the lookout for.
+            watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+
+            //Only watch text files.
+            watcher.Filter = "*.txt";
+
+            //Add event handlers
+            watcher.Changed += Watcher_Changed;
+            watcher.Created += Watcher_Created;
+            watcher.Deleted += Watcher_Deleted;
+            watcher.Renamed += Watcher_Renamed;
+
+            //Begin watching the directory.
+            watcher.EnableRaisingEvents = true;
+
+            //Wait for the user to quit the program.
+            Console.WriteLine(@"Press 'q' to quit app.");
+            while(Console.Read()!='q')
+            {
+                ;
+            }
+        }
+
+        private static void Watcher_Renamed(object sender, RenamedEventArgs e)
+        {
+            //Specify what is done when a file is renamed.
+            Console.WriteLine("File :{0} renamed to {1}", e.OldFullPath, e.FullPath);
+        }
+
+        private static void Watcher_Deleted(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine("File:{0}", e.FullPath);
+        }
+
+        private static void Watcher_Created(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine("File:{0}\n", e.FullPath);
+        }
+
+        private static void Watcher_Changed(object sender, FileSystemEventArgs e)
+        {
+            //Specify what is done when a file is changed,created,or deleted.
+            Console.WriteLine("File:{0},{1}!", e.FullPath, e.ChangeType);
+        }
+
+        private static void SerializationMethod()
+        {
+            UserPrefs userData = new UserPrefs();
+            userData.WindowColor = "Yellow";
+            userData.FontSize = 50;
+
+            //The BinaryFormatter persists state data in a binary format.
+            //You would need to import System.Runtime.Serialization.Formatters.Binary to gain access to BinaryFormatter
+
+            BinaryFormatter binFormat = new BinaryFormatter();
+
+            //Store object in a local file.
+            using (Stream stream = new FileStream("user.dat", FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                binFormat.Serialize(stream, userData);
+            }
+        }
+    }
+
+    [Serializable]
+    public class UserPrefs
+    {
+        public string WindowColor;
+        public int FontSize;
     }
 }
