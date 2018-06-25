@@ -17,16 +17,36 @@ namespace ConsoleApp233
 
         static void DirectoryGetLogicalDrives()
         {
-            string[] allDrivess=Directory.GetLogicalDrives();
-            if(allDrivess!=null && allDrivess.Any())
-            {
-                Console.WriteLine("There are {0} dirves in the {1}\n", allDrivess.Count(), Environment.MachineName);
+            //Get info regarding all drives.
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
 
-                Parallel.ForEach(allDrivess, x =>
+            object lockObj = new object();
+
+
+            //Now print drive stats.
+            if (allDrives != null && allDrives.Any())
+            {
+                Console.WriteLine("There are {0} drives in {1}\n", allDrives.Count(), Environment.MachineName);
+
+                Parallel.ForEach(allDrives, x =>
                 {
-                    Console.WriteLine(x);
+                    lock (lockObj)
+                    {
+                        Console.WriteLine("Name:{0}\n", x.Name);
+                        Console.WriteLine("Type:{0}\n", x.DriveType);
+
+                            //check to see whether the drive is mounted.
+                        if (x.IsReady)
+                        {
+                            Console.WriteLine("Free space:{0}\n", x.TotalFreeSpace);
+                            Console.WriteLine("Format:{0}\n", x.DriveFormat);
+                            Console.WriteLine("Label:{0}\n", x.VolumeLabel);
+                        }
+                        Console.WriteLine("\n\n\n\n");
+                    }
                 });
-            } 
+            }
+
         }
     }
 }
