@@ -30,8 +30,7 @@ namespace ConsoleApp233
 
                 Parallel.ForEach(allDrives, x =>
                 {
-                    lock (lockObj)
-                    {
+                     
                         Console.WriteLine("Name:{0}\n", x.Name);
                         Console.WriteLine("Type:{0}\n", x.DriveType);
 
@@ -42,8 +41,8 @@ namespace ConsoleApp233
                             Console.WriteLine("Format:{0}\n", x.DriveFormat);
                             Console.WriteLine("Label:{0}\n", x.VolumeLabel);
                         }
-                        Console.WriteLine("\n\n\n\n");
-                    }
+                        Console.WriteLine("\n");
+                     
                 });
             }
 
