@@ -13,8 +13,8 @@ namespace ConsoleApp235
     {
         static void Main(string[] args)
         {
-            //string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
-            string connString = @"Server=192.168.92.1\SQLEXPRESS,1433;Database=AdventureWorks2014;Integrated Security=SSPI;Connect Timeout=30;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            //string connString = @"Server=FRED\SQLEXPRESS,1433;Database=AdventureWorks2014;Integrated Security=SSPI;";
             SqlConnection conn = new SqlConnection(connString);
            
             conn.Open();
