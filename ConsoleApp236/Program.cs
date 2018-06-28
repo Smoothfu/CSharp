@@ -10,41 +10,20 @@ using System.Configuration;
 namespace ConsoleApp236
 {
     public delegate void JudgeAdultHandler(object sender, PersonEventArgs e);
+    public delegate void AddHandler(int x, int y);
     class Program
     {
         static void Main(string[] args)
         {
-            string conString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(conString);
-            conn.Open();
-
-            if(conn.State==ConnectionState.Open)
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = conn;
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "spGetAllStores";
-                     
-                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                    sqlDataAdapter.SelectCommand = cmd;
-                    DataSet ds = new DataSet();
-                    sqlDataAdapter.Fill(ds);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        for(int i=0;i<ds.Tables[0].Rows.Count;i++)
-                        {
-                            for(int j=0;j<ds.Tables[0].Columns.Count;j++)
-                            {
-                                Console.Write(ds.Tables[0].Rows[i][j].ToString() + "\t");
-                            }
-                            Console.WriteLine();
-                        }
-                    }
-                }
-            }
+            AddHandler addHandler = new AddHandler(AddMethod);
+            addHandler(10, 10);
              
             Console.ReadLine();
+        }
+
+        static void AddMethod(int x,int y)
+        {
+            Console.WriteLine("{0}+{1}={2}", x, y, x + y);
         }
 
         private static void P_JudgeAdultEvent(object sender, PersonEventArgs e)
