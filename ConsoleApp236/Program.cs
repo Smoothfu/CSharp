@@ -19,7 +19,7 @@ namespace ConsoleApp236
         {
             DirectoryInfo dir = new DirectoryInfo(".");
             DirectoryInfo parentDir = dir.Parent.Parent.Parent;
-            FileInfo[] allFis=parentDir.GetFiles("*", SearchOption.AllDirectories);
+            DirectoryInfo[] allFis = parentDir.GetDirectories("*", SearchOption.AllDirectories);
             if (allFis != null && allFis.Any())
             {
                 Parallel.ForEach(allFis, x =>
