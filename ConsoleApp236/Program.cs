@@ -17,9 +17,10 @@ namespace ConsoleApp236
         static void Main(string[] args)
         {
             Person p = new Person(31, "Floomberg");
-            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
-            Thread thread = new Thread(pts);
-            thread.Start(p);
+            Task.Factory.StartNew(() =>
+            {
+                DescPerson(p);
+            });
              
             Console.ReadLine();
         }
