@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Threading;
 
 namespace ConsoleApp236
 {
@@ -15,10 +16,21 @@ namespace ConsoleApp236
     {
         static void Main(string[] args)
         {
-            AddHandler addHandler = new AddHandler(AddMethod);
-            addHandler(10, 10);
+            Person p = new Person(31, "Floomberg");
+            ParameterizedThreadStart pts = new ParameterizedThreadStart(DescPerson);
+            Thread thread = new Thread(pts);
+            thread.Start(p);
              
             Console.ReadLine();
+        }
+
+        static void DescPerson(object p)
+        {
+            var person = p as Person;
+            if(person!=null)
+            {
+                Console.WriteLine(person.ToString());
+            }
         }
 
         static void AddMethod(int x,int y)
@@ -57,6 +69,11 @@ namespace ConsoleApp236
             {
                 JudgeAdultEvent(this, new PersonEventArgs(Age, DateTime.Now));
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("This person's age :{0},Name:{1}\n", Age, Name);
         }
     }
 
