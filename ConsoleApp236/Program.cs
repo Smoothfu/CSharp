@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ConsoleApp236
 {
@@ -11,9 +14,36 @@ namespace ConsoleApp236
     {
         static void Main(string[] args)
         {
-            Person p = new Person(31, "Fred");
-            p.JudgeAdultEvent += P_JudgeAdultEvent;
-            p.JudgePersonAdult(p);
+            string conString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(conString);
+            conn.Open();
+
+            if(conn.State==ConnectionState.Open)
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "spGetStoreByBEID";
+                    cmd.Parameters.Add(new SqlParameter("@BEID", 292));
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                    sqlDataAdapter.SelectCommand = cmd;
+                    DataSet ds = new DataSet();
+                    sqlDataAdapter.Fill(ds);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        for(int i=0;i<ds.Tables[0].Rows.Count;i++)
+                        {
+                            for(int j=0;j<ds.Tables[0].Columns.Count;j++)
+                            {
+                                Console.Write(ds.Tables[0].Rows[i][j].ToString() + "\t");
+                            }
+                            Console.WriteLine();
+                        }
+                    }
+                }
+            }
+             
             Console.ReadLine();
         }
 
