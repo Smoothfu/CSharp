@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Threading;
+using System.IO;
 
 namespace ConsoleApp236
 {
@@ -16,12 +17,19 @@ namespace ConsoleApp236
     {
         static void Main(string[] args)
         {
-            Person p = new Person(31, "Floomberg");
-            Task.Factory.StartNew(() =>
+            DirectoryInfo dir = new DirectoryInfo(".");
+            DirectoryInfo parentDir = dir.Parent.Parent.Parent;
+            FileInfo[] allFis=parentDir.GetFiles("*", SearchOption.AllDirectories);
+            if (allFis != null && allFis.Any())
             {
-                DescPerson(p);
-            });
-             
+                Parallel.ForEach(allFis, x =>
+                {
+                    Console.WriteLine(x.FullName);
+                });
+            }
+
+
+            Console.WriteLine("\n\nThere are totally {0} files in {1}\n", allFis.Count(), parentDir.FullName);
             Console.ReadLine();
         }
 

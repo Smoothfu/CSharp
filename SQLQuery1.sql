@@ -26,4 +26,4 @@ go
 
 exec spGetStoreByBEID 292
 
-exec sp_helptext 'spGetStoreByBEID'
+exec sp_helptext 'spGetAllStores'
