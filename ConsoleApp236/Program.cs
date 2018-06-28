@@ -24,8 +24,8 @@ namespace ConsoleApp236
                 {
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "spGetStoreByBEID";
-                    cmd.Parameters.Add(new SqlParameter("@BEID", 292));
+                    cmd.CommandText = "spGetAllStores";
+                     
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
                     sqlDataAdapter.SelectCommand = cmd;
                     DataSet ds = new DataSet();
