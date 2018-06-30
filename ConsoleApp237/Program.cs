@@ -7,15 +7,19 @@ using System.Threading;
 
 namespace ConsoleApp237
 {
+    public delegate void AddHanler(int x, int y);
     class Program
     {
         static void Main(string[] args)
         {
-            Person p = new Person(31, "Floomberg");
-            ParameterizedThreadStart pts = new ParameterizedThreadStart(p.DescPerson);
-            Thread thread = new Thread(pts);
-            thread.Start(p);
+            AddHanler addDel = new AddHanler(AddMethod);
+            addDel(13435, 442563454);
             Console.ReadLine();
+        }
+
+        static void AddMethod(int x,int y)
+        {
+            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
         }
     }
 
