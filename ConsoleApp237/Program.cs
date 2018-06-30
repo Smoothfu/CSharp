@@ -7,19 +7,20 @@ using System.Threading;
 
 namespace ConsoleApp237
 {
-    public delegate void AddHanler(int x, int y);
+    public delegate void AddHandler(int x, AddEventArgs e);
     class Program
-    {
+    {         
         static void Main(string[] args)
         {
-            AddHanler addDel = new AddHanler(AddMethod);
-            addDel(13435, 442563454);
+            AddClass add = new AddClass(253452454, 425456345);
+            add.AddEvent += Add_AddEvent;
+            add.JudgeXGreter();
             Console.ReadLine();
         }
 
-        static void AddMethod(int x,int y)
+        private static void Add_AddEvent(int x, AddEventArgs e)
         {
-            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+            Console.WriteLine("Now x is :{0},time is :{1}\n", e.AX, e.Dt);
         }
     }
 
@@ -44,6 +45,47 @@ namespace ConsoleApp237
         public override string ToString()
         {
             return string.Format("Name:{0},Age:{1}",Name,Age);
+        }
+    }
+
+    public class AddClass
+    {
+        public event AddHandler AddEvent;
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public AddClass(int x,int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public void JudgeXGreter()
+        {
+            if(X>1000000)
+            {
+                OnRaiseAddEvent();
+            }
+        }
+
+        protected virtual void OnRaiseAddEvent()
+        {
+             if(AddEvent!=null)
+            {
+                AddEvent(X, new AddEventArgs(X,DateTime.Now));
+            }
+
+        }
+    }
+
+    public class AddEventArgs : EventArgs
+    {
+        public int AX { get; set; }
+        public DateTime Dt { get; set; }
+        public AddEventArgs(int aX,DateTime dt)
+        {
+            AX = aX;
+            Dt = dt;
         }
     }
 }
