@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
 
 namespace ConsoleApp237
 {
@@ -12,10 +13,35 @@ namespace ConsoleApp237
     {         
         static void Main(string[] args)
         {
-            AddClass add = new AddClass(253452454, 425456345);
-            add.AddEvent += Add_AddEvent;
-            add.JudgeXGreter();
-            Console.ReadLine();
+            Console.WriteLine("*****Fun with Binary Writers/Readers*****\n");
+
+            //Open a binary writer for a file.
+            FileInfo fi = new FileInfo("BinFile.dat");
+            using (BinaryWriter bw = new BinaryWriter(fi.OpenWrite()))
+            {
+                //Print out the type of BaseStream.
+                //System.IO.FileStream in this case.
+                Console.WriteLine("Base stream is :{0}\n", bw.BaseStream);
+
+                //Create some data to save in the file.
+                double aDouble = 1234.567;
+                int anInt = 345436654;
+                string aString = "This world is wonderful!";
+
+                //Write the data.
+                bw.Write(aDouble);
+                bw.Write(anInt);
+                bw.Write(aString);
+            }
+
+            using (BinaryReader br =new BinaryReader(fi.OpenRead()))
+            {
+                Console.WriteLine("Base stream is :{0}\n", br.BaseStream);
+                Console.WriteLine(br.ReadDouble());
+                Console.WriteLine(br.ReadInt32());
+                Console.WriteLine(br.ReadString());
+            }
+                Console.ReadLine();
         }
 
         private static void Add_AddEvent(int x, AddEventArgs e)
