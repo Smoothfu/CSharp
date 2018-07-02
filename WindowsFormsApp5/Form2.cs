@@ -46,10 +46,22 @@ namespace WindowsFormsApp5
                 textBox2.Focus();
                 this.Hide();
 
-                Form1 newForm = new Form1();
-                newForm.Owner = this;
-                newForm.ShowDialog();
-                Application.ExitThread();
+               
+                for(int i=0;i<Application.OpenForms.Count;i++)
+                {
+                    if(Application.OpenForms[i] is Form2)
+                    {
+                        ((Form2)(Application.OpenForms[i])).Close();
+                    }
+                }
+
+                for(int i=0;i<Application.OpenForms.Count;i++)
+                {
+                    if(Application.OpenForms[i] is Form1)
+                    {
+                        ((Form1)(Application.OpenForms[i])).Show();
+                    }
+                }
             }
         }
 
