@@ -12,9 +12,11 @@ namespace ConsoleApp239
         static void Main(string[] args)
         {
             Program obj = new Program();
-            ParameterizedThreadStart pts = new ParameterizedThreadStart(GetObjectHashCode);
-            Thread thread = new Thread(pts);
-            thread.Start(obj);
+            Thread thread = new Thread(() =>
+              {
+                  GetObjectHashCode(obj);
+              });
+            thread.Start();
             Console.ReadLine();
         }
 
