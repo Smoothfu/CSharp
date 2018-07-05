@@ -61,7 +61,7 @@ namespace ConsoleApp240
             rawPostObjectData += "\"accountType\":" + "\"2\""+ ",";
             rawPostObjectData += "\"accountCode\":" + "\"021215009281\"}";
             byte[] arrBytes = Encoding.ASCII.GetBytes(rawPostObjectData);
-            var base64PostObjectEncodeString = Convert.ToBase64String(arrBytes,Base64FormattingOptions.InsertLineBreaks);
+            var base64PostObjectEncodeString = Convert.ToBase64String(arrBytes,Base64FormattingOptions.None);
 
             MD5 md5 = MD5Encode(tokenKeyObj.ServerKey);            
             byte[] md5Result = md5.Hash;
