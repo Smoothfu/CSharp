@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
 
 namespace ConsoleApp240
 {
@@ -15,6 +16,7 @@ namespace ConsoleApp240
         static void Main(string[] args)
         {
             GetTokenAndKey();
+            GetInfoFromServer();
             Console.ReadLine();
         }
 
@@ -34,14 +36,8 @@ namespace ConsoleApp240
                     {
                         string result = reader.ReadToEnd();
                         string[] arr = result.Split(new string[] { ":", ",", ";", "{", "}" }, StringSplitOptions.RemoveEmptyEntries);
-                        tokenKeyObj.ServerToken = arr[1];
+                        tokenKeyObj.ServerToken = "Bearer "+arr[1];
                         tokenKeyObj.ServerKey = arr[3];
-                        //Console.WriteLine("\n\n\n\n\n");
-                        Console.WriteLine(result);
-                        Console.WriteLine("\n\n\n\n\n");
-                        Console.WriteLine(tokenKeyObj.ServerToken);
-                        Console.WriteLine("\n\n\n\n\n");
-                        Console.WriteLine(tokenKeyObj.ServerKey);
                     }
                 }
             }
@@ -50,6 +46,57 @@ namespace ConsoleApp240
                 Console.WriteLine(ex.Message);
             }
             
+        }
+
+        static void GetInfoFromServer()
+        {
+            string serverUrl = "http://crmtest.zjlhhs.com.cn/zex-crm-rest/member/query?access_token =" + tokenKeyObj.ServerToken;
+            HttpWebRequest postReq = (HttpWebRequest)HttpWebRequest.Create(serverUrl);
+            postReq.Method = "POST";
+            postReq.ContentType = "application/x-sign;charset=UTF-8";
+            var rawPostObjectData = "{\"timeStamp\":" +"\""+((DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds).ToString() +"\",";
+            rawPostObjectData += "\"tranTime\":"+"\"" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\",";
+            rawPostObjectData += "\"terminal\":" + "\" \"" + ",";
+            rawPostObjectData += "\"storeCode\":" + "\"3355\""+ ",";
+            rawPostObjectData += "\"accountType\":" + "\"2\""+ ",";
+            rawPostObjectData += "\"accountCode\":" + "\"021215009281\"}";
+            byte[] arrBytes = Encoding.ASCII.GetBytes(rawPostObjectData);
+            var base64PostObjectEncodeString = Convert.ToBase64String(arrBytes,Base64FormattingOptions.InsertLineBreaks);
+
+            MD5 md5 = MD5Encode(tokenKeyObj.ServerKey);            
+            byte[] md5Result = md5.Hash;
+            string md5String = "";
+            foreach(var md in md5Result)
+            {
+                md5String += md;
+            }
+            
+
+            var postData = "{\"sign\":\""+ md5String + "\","+"\"device\":"+"\"{}\","+"\"object\":"+"\""+base64PostObjectEncodeString+"\"}";
+
+            var postDataBytes = Encoding.ASCII.GetBytes(postData);
+            using (var stream = postReq.GetRequestStream())
+            {
+                stream.Write(postDataBytes, 0, postData.Length);
+            }
+
+            var response = (HttpWebResponse)postReq.GetResponse();
+            using (Stream   stream = response.GetResponseStream())
+            {
+                using (StreamReader streamReader = new StreamReader(stream))
+                {
+                    string result = streamReader.ReadToEnd();
+                    Console.WriteLine(result);
+                }
+            }
+        }
+            
+        static MD5 MD5Encode(string str)
+        {
+            MD5 md5 = MD5.Create();
+            byte[] data = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
+            return md5;
+
         }
     }
 
