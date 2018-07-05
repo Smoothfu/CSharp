@@ -33,8 +33,11 @@ namespace ConsoleApp240
                     string[] arr = result.Split(new string[] { ":",",",";","{","}" },StringSplitOptions.RemoveEmptyEntries);
                     tokenKeyObj.ServerToken = arr[1];
                     tokenKeyObj.ServerKey = arr[3];
+                    //Console.WriteLine("\n\n\n\n\n");
                     Console.WriteLine(result);
+                    Console.WriteLine("\n\n\n\n\n");
                     Console.WriteLine(tokenKeyObj.ServerToken);
+                    Console.WriteLine("\n\n\n\n\n");
                     Console.WriteLine(tokenKeyObj.ServerKey);
                 }
             }
