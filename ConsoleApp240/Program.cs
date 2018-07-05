@@ -24,23 +24,32 @@ namespace ConsoleApp240
             HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(loginUrl);
             req.Method = "GET";
             req.ContentType = "application/json;charset=UTF-8";
-            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-            using (Stream stream = res.GetResponseStream())
+            HttpWebResponse res;
+            try
             {
-                using (StreamReader reader = new StreamReader(stream))
+                res = (HttpWebResponse)req.GetResponse();
+                using (Stream stream = res.GetResponseStream())
                 {
-                    string result = reader.ReadToEnd();
-                    string[] arr = result.Split(new string[] { ":",",",";","{","}" },StringSplitOptions.RemoveEmptyEntries);
-                    tokenKeyObj.ServerToken = arr[1];
-                    tokenKeyObj.ServerKey = arr[3];
-                    //Console.WriteLine("\n\n\n\n\n");
-                    Console.WriteLine(result);
-                    Console.WriteLine("\n\n\n\n\n");
-                    Console.WriteLine(tokenKeyObj.ServerToken);
-                    Console.WriteLine("\n\n\n\n\n");
-                    Console.WriteLine(tokenKeyObj.ServerKey);
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string result = reader.ReadToEnd();
+                        string[] arr = result.Split(new string[] { ":", ",", ";", "{", "}" }, StringSplitOptions.RemoveEmptyEntries);
+                        tokenKeyObj.ServerToken = arr[1];
+                        tokenKeyObj.ServerKey = arr[3];
+                        //Console.WriteLine("\n\n\n\n\n");
+                        Console.WriteLine(result);
+                        Console.WriteLine("\n\n\n\n\n");
+                        Console.WriteLine(tokenKeyObj.ServerToken);
+                        Console.WriteLine("\n\n\n\n\n");
+                        Console.WriteLine(tokenKeyObj.ServerKey);
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
     }
 
