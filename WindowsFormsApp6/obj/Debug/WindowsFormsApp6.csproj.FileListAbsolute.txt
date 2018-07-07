@@ -7,3 +7,4 @@ D:\C\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.csproj.Generat
 D:\C\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.csproj.CoreCompileInputs.cache
 D:\C\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.exe
 D:\C\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.pdb
+D:\C\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.Form1.resources

@@ -16,5 +16,10 @@ namespace WindowsFormsApp6
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Today is Saturday", "This is caption", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+        }
     }
 }
