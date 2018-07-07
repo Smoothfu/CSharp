@@ -19,7 +19,22 @@ namespace WindowsFormsApp6
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Today is Saturday", "This is caption", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            DialogResult result=MessageBox.Show("Today is Saturday", "This is caption", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+
+            if(result==DialogResult.Yes)
+            {
+                MessageBox.Show("Yes");
+            }
+
+            if(result==DialogResult.No)
+            {
+                MessageBox.Show("No");
+            }
+
+            if(result==DialogResult.Cancel)
+            {
+                MessageBox.Show("Cancel");
+            }
         }
     }
 }
