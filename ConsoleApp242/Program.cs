@@ -18,16 +18,17 @@ namespace ConsoleApp242
         static void Main(string[] args)
         {
             Console.WriteLine("*****Fun with object Serialization*****\n");
+            LoadFromBinaryFile("CarData.dat");
 
-            //Make a JamesBondCar and set state.
-            JamesBondCar jbc = new JamesBondCar();
-            jbc.canFly = true;
-            jbc.canSubmerge = false;
-            jbc.theRadio.stationPresets = new double[] { 89.3, 105.1, 97.1 };
-            jbc.theRadio.hasTweeters = true;
+            ////Make a JamesBondCar and set state.
+            //JamesBondCar jbc = new JamesBondCar();
+            //jbc.canFly = true;
+            //jbc.canSubmerge = false;
+            //jbc.theRadio.stationPresets = new double[] { 89.3, 105.1, 97.1 };
+            //jbc.theRadio.hasTweeters = true;
 
-            //Now save the car to a specific file in a binary format.
-            SaveAsBinaryFormat(jbc, "CarData.dat");
+            ////Now save the car to a specific file in a binary format.
+            //SaveAsBinaryFormat(jbc, "CarData.dat");
             Console.ReadLine();
         }
 
@@ -41,6 +42,18 @@ namespace ConsoleApp242
                 binFormat.Serialize(fStream, objGraph);
             }
             Console.WriteLine("=>Saved car in binary format!");
+        }
+
+        static void LoadFromBinaryFile(string fileName)
+        {
+            BinaryFormatter binFormat = new BinaryFormatter();
+
+            //Read the JamesBondCar from the binary file.
+            using (Stream fStream = File.OpenRead(fileName))
+            {
+                JamesBondCar carFromDisk = (JamesBondCar)binFormat.Deserialize(fStream);
+                Console.WriteLine("Can this car fly?:{0}\n", carFromDisk.canFly);
+            }
         }
         static void AddMethod(int x,int y)
         {
