@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PersonXML.xml" />
+    <Content Include="XmlCarData.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,7 +29,7 @@ namespace ConsoleApp242
 
             //Now save the car to a specific file in a binary format.
             //SaveAsBinaryFormat(jbc, "CarData.dat"); 
-            SaveAsXmlFormat(jbc, "XmlCarData.xml");
+            SaveAsXmlFormat(jbc, "XmlCarDatanew.xml");
             Console.ReadLine();
         }
 
@@ -110,10 +110,12 @@ namespace ConsoleApp242
         public bool isHatchBack;
     }
 
-    [Serializable]
+    [Serializable,XmlRoot(Namespace ="http://www.MyCompany.com")]
     public class JamesBondCar : Car
     {
+        [XmlAttribute]
         public bool canFly;
+        [XmlAttribute]
         public bool canSubmerge;
     }
 
