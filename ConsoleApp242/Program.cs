@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace ConsoleApp242
 {
@@ -11,12 +15,19 @@ namespace ConsoleApp242
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("The managedThreadIs is :{0}\n", Thread.CurrentThread.ManagedThreadId);
-            Thread thread = new Thread(() =>
-              {
-                  AddMethod(235434, 456345645);
-              });
-            thread.Start();
+            UserPrefs userData = new UserPrefs();
+            userData.WindowColor = "Yellow";
+            userData.FontSize = 50;
+
+            //The BinaryFormatter persists state data in a binary format.
+            //You would need to import System.Runtime.Serialization.Formatters.Binary to gain access to BinaryFormatter.
+            BinaryFormatter binFormat = new BinaryFormatter();
+
+            //Store object in a local file.
+            using (Stream fStream = new FileStream("user.dat", FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                binFormat.Serialize(fStream, userData);
+            }
             Console.ReadLine();
         }
 
@@ -25,5 +36,12 @@ namespace ConsoleApp242
             Console.WriteLine("The managedthreadIs in AddMethod is :{0}\n", Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("{0}+{1}={2}", x, y, x + y);
         }
+    }
+
+    [Serializable]
+    public class UserPrefs
+    {
+        public string WindowColor;
+        public int FontSize;
     }
 }
