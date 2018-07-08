@@ -7,6 +7,7 @@ using System.Threading;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Formatters.Soap;
 using System.IO;
 
 namespace ConsoleApp242
