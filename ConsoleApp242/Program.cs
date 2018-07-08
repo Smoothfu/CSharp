@@ -29,7 +29,7 @@ namespace ConsoleApp242
 
             //Now save the car to a specific file in a binary format.
             //SaveAsBinaryFormat(jbc, "CarData.dat");
-            SaveAsSoapFormat(jbc, "soapCarData.dat");
+            SaveAsSoapFormat(jbc, "soapCarData.xml");
             Console.ReadLine();
         }
 
