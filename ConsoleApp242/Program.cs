@@ -28,8 +28,8 @@ namespace ConsoleApp242
             jbc.theRadio.hasTweeters = true;
 
             //Now save the car to a specific file in a binary format.
-            //SaveAsBinaryFormat(jbc, "CarData.dat");
-            SaveAsSoapFormat(jbc, "soapCarData.xml");
+            //SaveAsBinaryFormat(jbc, "CarData.dat"); 
+            SaveAsXmlFormat(jbc, "XmlCarData.xml");
             Console.ReadLine();
         }
 
@@ -69,6 +69,19 @@ namespace ConsoleApp242
                 soapFormat.Serialize(fStream, objGraph);
             }
             Console.WriteLine("=>Saved car in SOAP format!");
+        }
+
+        static void SaveAsXmlFormat(Object objGraph,string fileName)
+        {
+            //Save objects to a file and CarData.xml in XML format.
+            XmlSerializer xmlFormat = new XmlSerializer(typeof(JamesBondCar));
+            using (Stream fStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                xmlFormat.Serialize(fStream, objGraph);
+            }
+
+            Console.WriteLine("=>Saved car in XML format!");
+                 
         }
     }
 
