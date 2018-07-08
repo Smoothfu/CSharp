@@ -17,22 +17,31 @@ namespace ConsoleApp242
     {
         static void Main(string[] args)
         {
-            UserPrefs userData = new UserPrefs();
-            userData.WindowColor = "Yellow";
-            userData.FontSize = 50;
+            Console.WriteLine("*****Fun with object Serialization*****\n");
 
-            //The BinaryFormatter persists state data in a binary format.
-            //You would need to import System.Runtime.Serialization.Formatters.Binary to gain access to BinaryFormatter.
-            BinaryFormatter binFormat = new BinaryFormatter();
+            //Make a JamesBondCar and set state.
+            JamesBondCar jbc = new JamesBondCar();
+            jbc.canFly = true;
+            jbc.canSubmerge = false;
+            jbc.theRadio.stationPresets = new double[] { 89.3, 105.1, 97.1 };
+            jbc.theRadio.hasTweeters = true;
 
-            //Store object in a local file.
-            using (Stream fStream = new FileStream("user.dat", FileMode.Create, FileAccess.Write, FileShare.None))
-            {
-                binFormat.Serialize(fStream, userData);
-            }
+            //Now save the car to a specific file in a binary format.
+            SaveAsBinaryFormat(jbc, "CarData.dat");
             Console.ReadLine();
         }
 
+        static void SaveAsBinaryFormat(object objGraph,string fileName)
+        {
+            //Save object to a file named CarData.data in binary.
+
+            BinaryFormatter binFormat = new BinaryFormatter();
+            using (Stream fStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                binFormat.Serialize(fStream, objGraph);
+            }
+            Console.WriteLine("=>Saved car in binary format!");
+        }
         static void AddMethod(int x,int y)
         {
             Console.WriteLine("The managedthreadIs in AddMethod is :{0}\n", Thread.CurrentThread.ManagedThreadId);
