@@ -18,17 +18,18 @@ namespace ConsoleApp242
         static void Main(string[] args)
         {
             Console.WriteLine("*****Fun with object Serialization*****\n");
-            LoadFromBinaryFile("CarData.dat");
 
-            ////Make a JamesBondCar and set state.
-            //JamesBondCar jbc = new JamesBondCar();
-            //jbc.canFly = true;
-            //jbc.canSubmerge = false;
-            //jbc.theRadio.stationPresets = new double[] { 89.3, 105.1, 97.1 };
-            //jbc.theRadio.hasTweeters = true;
 
-            ////Now save the car to a specific file in a binary format.
+            //Make a JamesBondCar and set state.
+            JamesBondCar jbc = new JamesBondCar();
+            jbc.canFly = true;
+            jbc.canSubmerge = false;
+            jbc.theRadio.stationPresets = new double[] { 89.3, 105.1, 97.1 };
+            jbc.theRadio.hasTweeters = true;
+
+            //Now save the car to a specific file in a binary format.
             //SaveAsBinaryFormat(jbc, "CarData.dat");
+            SaveAsSoapFormat(jbc, "soapCarData.dat");
             Console.ReadLine();
         }
 
@@ -55,10 +56,19 @@ namespace ConsoleApp242
                 Console.WriteLine("Can this car fly?:{0}\n", carFromDisk.canFly);
             }
         }
-        static void AddMethod(int x,int y)
+         
+        //Be sure to import System.Runtime.Serialization.Formatters.Soap and reference System.Runtime.Serialization.Formatters.Soap.dll
+
+        static void SaveAsSoapFormat(object objGraph,string fileName)
         {
-            Console.WriteLine("The managedthreadIs in AddMethod is :{0}\n", Thread.CurrentThread.ManagedThreadId);
-            Console.WriteLine("{0}+{1}={2}", x, y, x + y);
+            //Save object to a file named CarData.soap in SOAP format.
+            SoapFormatter soapFormat = new SoapFormatter();
+
+            using (Stream fStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                soapFormat.Serialize(fStream, objGraph);
+            }
+            Console.WriteLine("=>Saved car in SOAP format!");
         }
     }
 
