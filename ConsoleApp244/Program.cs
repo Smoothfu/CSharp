@@ -7,6 +7,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 namespace ConsoleApp244
 {
@@ -33,6 +34,11 @@ namespace ConsoleApp244
                 Console.ReadLine();
         }
 
+
+        static void SerializeObjectGraph(IFormatter itFormat,Stream destStream,object graph)
+        {
+            itFormat.Serialize(destStream, graph);
+        }
         private static void OnRenamed(object sender, RenamedEventArgs e)
         {
 
