@@ -31,7 +31,16 @@ namespace ConsoleApp244
                 bw.Write(anInt);
                 bw.Write(aString);
             }
-            Console.WriteLine("Done");
+
+            //Read the binary data from the stream.
+            using (BinaryReader br = new BinaryReader(fi.OpenRead()))
+            {
+                Console.WriteLine(br.ReadDouble());
+                Console.WriteLine(br.ReadInt32());
+                Console.WriteLine(br.ReadString());
+
+            }
+                Console.WriteLine("Done");
             Console.ReadLine();
         }
     }
