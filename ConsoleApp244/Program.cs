@@ -55,4 +55,29 @@ namespace ConsoleApp244
         public string WindowColor;
         public int FontSize;
     }
+
+    [Serializable]
+    public class Radio
+    {
+        public bool hasTweeters;
+        public bool hasSubWoofers;
+        public double[] stationPresets;
+
+        [NonSerialized]
+        public string radioID = "XF-552RR6";
+    }
+
+    [Serializable]
+    public class Car
+    {
+        public Radio theRadio = new Radio();
+        public bool isHatchBack;
+    }
+
+    [Serializable]
+    public class JamesBondCar : Car
+    {
+        public bool canFly;
+        public bool canSubMerge;
+    }
 }
