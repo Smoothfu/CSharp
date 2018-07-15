@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConsoleApp244
 {
@@ -11,46 +12,23 @@ namespace ConsoleApp244
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****The Amazing File Watacher App*****\n");
+            UserPrefs userData = new UserPrefs();
+            userData.WindowColor = "Yellow";
+            userData.FontSize = 50;
 
-            //Establish the path to the directory to watch.
-            FileSystemWatcher watcher = new FileSystemWatcher();
+            //The BinaryWriter persists state data in a binary format.
+            //You would need to import System.Runtime.Serialization.Formatters.Binary 
+            //to gain access to BinaryFormatter.
 
-            try
+            BinaryFormatter binFormat = new BinaryFormatter();
+
+            //Store object in a local file.
+            using (Stream fStream = new FileStream("user.dat", FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                watcher.Path = @"C:\Users\Fred";
+                binFormat.Serialize(fStream, userData);
             }
-            catch(ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-                return;
-            }
-            //Set up the things to be on the lookout for.
-            watcher.NotifyFilter = NotifyFilters.LastAccess 
-                | NotifyFilters.LastWrite 
-                | NotifyFilters.FileName
-                | NotifyFilters.DirectoryName;
 
-
-            //Only watch text files.
-            watcher.Filter = "*.txt";
-
-            //Add event handlers.
-            watcher.Changed += new FileSystemEventHandler(OnChanged);             
-            watcher.Created+= new FileSystemEventHandler(OnChanged);
-            watcher.Deleted+= new FileSystemEventHandler(OnChanged);
-            watcher.Renamed += new RenamedEventHandler(OnRenamed);
-
-            //Begin watching the diretcory.
-            watcher.EnableRaisingEvents = true;
-
-            //Wait for the user to quit the program.
-            Console.WriteLine("Press 'q' to quit app.");
-            while(Console.Read()!='q')
-            {
-                ;
-            }
-            Console.ReadLine();
+                Console.ReadLine();
         }
 
         private static void OnRenamed(object sender, RenamedEventArgs e)
@@ -69,5 +47,12 @@ namespace ConsoleApp244
         }
 
      
+    }
+
+    [Serializable]
+    public class UserPrefs
+    {
+        public string WindowColor;
+        public int FontSize;
     }
 }
