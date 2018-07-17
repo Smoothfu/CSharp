@@ -1,0 +1,4 @@
+﻿珍惜时间You can use the BinaryFormatter type to illustrate how easy it is to persist an instance of the JamesBondCar
+to a physical file. Again, the two key methods of the BinaryFormatter type to be aware of are Serialize()
+and Deserialize().• Serialize(): Persists an object graph to a specified stream as a sequence of bytes
+• Deserialize(): Converts a persisted sequence of bytes to an object graph

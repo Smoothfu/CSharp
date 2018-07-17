@@ -15,22 +15,24 @@ namespace ConsoleApp245
     {
         static void Main(string[] args)
         {
-            string str = @"You can use the BinaryFormatter type to illustrate how easy it is to persist an instance of the JamesBondCar
+            string str = @"珍惜时间You can use the BinaryFormatter type to illustrate how easy it is to persist an instance of the JamesBondCar
 to a physical file. Again, the two key methods of the BinaryFormatter type to be aware of are Serialize()
 and Deserialize().• Serialize(): Persists an object graph to a specified stream as a sequence of bytes
 • Deserialize(): Converts a persisted sequence of bytes to an object graph";
-            FileInfo fi = new FileInfo(".\\mydat3.dat");
-          
-                using (StreamWriter writer = new StreamWriter(fi.FullName))
-                {
-                    writer.Write(str);
-                }
-                using (StreamReader streamReader = new StreamReader(fi.FullName))
-                {
-                    string result = streamReader.ReadToEnd();
-                    Console.WriteLine(result);
-                }
             
+            FileInfo fi = new FileInfo(".\\mydat9.dat");
+           
+            using (StreamWriter writer = new StreamWriter(fi.FullName,false,Encoding.UTF8))
+            {
+                writer.Write(str);
+            }
+
+            FileStream fStream = File.OpenRead(fi.FullName);
+            using (StreamReader streamReader = new StreamReader(fi.FullName, Encoding.UTF8)) 
+            {
+                string result = streamReader.ReadToEnd();
+                Console.WriteLine(result);
+            } 
             Console.ReadLine();
         }
 
