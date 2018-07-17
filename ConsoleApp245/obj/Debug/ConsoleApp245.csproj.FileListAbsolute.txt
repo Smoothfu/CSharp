@@ -1,0 +1,7 @@
+D:\C\ConsoleApp245\ConsoleApp245\bin\Debug\ConsoleApp245.exe.config
+D:\C\ConsoleApp245\ConsoleApp245\bin\Debug\ConsoleApp245.exe
+D:\C\ConsoleApp245\ConsoleApp245\bin\Debug\ConsoleApp245.pdb
+D:\C\ConsoleApp245\ConsoleApp245\obj\Debug\ConsoleApp245.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp245\ConsoleApp245\obj\Debug\ConsoleApp245.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp245\ConsoleApp245\obj\Debug\ConsoleApp245.exe
+D:\C\ConsoleApp245\ConsoleApp245\obj\Debug\ConsoleApp245.pdb
