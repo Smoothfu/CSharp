@@ -14,16 +14,8 @@ namespace ConsoleApp247
         static void Main(string[] args)
         {
             Console.WriteLine("*****A first look at Interfaces*****\n");
-
-            //All of these classes support the ICloneable interface.
-            string myStr = "Hello";
-            OperatingSystem linuxOs = new OperatingSystem(PlatformID.Unix, new Version());
-            System.Data.SqlClient.SqlConnection conn = new SqlConnection();
-
-            //Therefore,they can all be passed into a method taking ICloneable.
-            CloneMe(myStr);
-            CloneMe(linuxOs);
-            CloneMe(conn);
+            Console.WriteLine(byte.MaxValue);
+            Console.WriteLine(byte.MinValue);
             Console.ReadLine();
         }
 
