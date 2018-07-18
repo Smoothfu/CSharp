@@ -15,15 +15,12 @@ namespace ConsoleApp246
         static void Main(string[] args)
         {
             Console.WriteLine("*****Fun with Object Serialization*****\n");
-            string str = @"Assume you have created an instance of JamesBondCar, modified some state data, and want to
-persist your spy mobile into a *.dat file. Begin by creating the *.dat file itself. You can achieve this by
-creating an instance of the System.IO.FileStream type. At this point, you can create an instance of the
-BinaryFormatter and pass in the FileStream and object graph to persist. Consider the following
-Main() method:";
+            Car myCar = new Car("GE", "Huge");
 
             //Now save the car to a specfic file in a binary format.
-            SaveAsBinaryFormat(str, ".\\CarData.dat");
+            SaveAsBinaryFormat(myCar, ".\\CarData.dat");
 
+            LoadFromBinaryFile(".\\CarData.dat");
             Console.ReadLine();
 
         }
@@ -37,6 +34,30 @@ Main() method:";
                 binFormat.Serialize(fStream, objGraph);
             }
             Console.WriteLine("=>Saved in binary format!\n");
+        }
+
+        static void LoadFromBinaryFile(string fileName)
+        {
+            BinaryFormatter binFormat = new BinaryFormatter();
+            //Read the car from the binary file.
+            using(Stream fStream=File.OpenRead(fileName))
+            {
+                Car myC = (Car)binFormat.Deserialize(fStream);
+                Console.WriteLine(myC.Engine);
+            }
+        }
+    }
+
+    [Serializable]
+    public class Car
+    {
+        public string Engine { get; set; }
+        public string Power { get; set; }
+
+        public Car(string engine,string power)
+        {
+            Engine = engine;
+            Power = power;
         }
     }
 }
