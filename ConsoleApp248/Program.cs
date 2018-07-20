@@ -50,17 +50,17 @@ namespace ConsoleApp248
         static void Main(string[] args)
         {
             Program obj = new Program("This is the Main method in class Program!\n");
-            IPointy itfPt = null;
-            try
+            IPointy itfPt = obj as IPointy;
+            if(itfPt!=null)
             {
-                itfPt = (IPointy)obj;
-                Console.WriteLine(itfPt.IName);
+                Console.WriteLine("Points:{0}\n", itfPt.IName);
             }
-            catch(InvalidCastException ex )
+
+            else
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("OOPS!Not pointy...");
             }
-          
+            
             Console.ReadLine();
         }
 
