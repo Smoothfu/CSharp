@@ -4,23 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Drawing;
+using System.Windows.Markup;
+
 
 namespace ConsoleApp248
 {
-    interface IAdd
+    interface IPointy
     {
        void AddMethod(int x, int y, int z);
        string IName { get; set; }
 
         void SubtractMethod(int x, int y, int z);
     }
-    class Program:IAdd
+
+    interface IPointy2
+    {
+        int Points { get; }
+    }
+    class Program:IPointy, IPointy2
     {
         private string _mIName;
         public string IName {
         get { return _mIName; }
             set { _mIName = value; }
            }
+
+        public int Points
+        {
+            get
+            {
+                return 3;
+            }
+        }
 
         public Program(string name)
         {
@@ -37,6 +53,7 @@ namespace ConsoleApp248
                   obj.AddMethod(452346245, 3445346, 456345645);
                   Console.WriteLine(obj.IName);
                   obj.SubtractMethod(256245634, 0, 0);
+                  Console.WriteLine(obj.Points);
               });
             thread.Start();
             Console.ReadLine();
