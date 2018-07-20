@@ -43,19 +43,15 @@ namespace ConsoleApp248
             _mIName = name; 
         }
 
+        public Program()
+        {
+
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("The main ManagedThreadId is :{0}\n", Thread.CurrentThread.ManagedThreadId);
-            Program obj = new Program("Program Class");
-            Thread thread = new Thread(() =>
-              {
-                  AddMethod(1334, 4764567);
-                  obj.AddMethod(452346245, 3445346, 456345645);
-                  Console.WriteLine(obj.IName);
-                  obj.SubtractMethod(256245634, 0, 0);
-                  Console.WriteLine(obj.Points);
-              });
-            thread.Start();
+            IPointy point = new Program("This is the Program Main method");
+            Console.WriteLine(point.IName);
+          
             Console.ReadLine();
         }
 
