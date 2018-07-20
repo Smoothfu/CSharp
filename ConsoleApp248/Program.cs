@@ -50,17 +50,15 @@ namespace ConsoleApp248
         static void Main(string[] args)
         {
             Program obj = new Program("This is the Main method in class Program!\n");
-            IPointy itfPt = obj as IPointy;
-            if(itfPt!=null)
+             
+            if(obj is IPointy)
             {
-                Console.WriteLine("Points:{0}\n", itfPt.IName);
+                Console.WriteLine(obj.IName);
             }
-
             else
             {
-                Console.WriteLine("OOPS!Not pointy...");
+                Console.WriteLine("Obj is not IPointy");
             }
-            
             Console.ReadLine();
         }
 
