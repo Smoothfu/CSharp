@@ -70,14 +70,45 @@ namespace ConsoleApp249
     {
         static void Main(string[] args)
         {
-            //Iterate over an array of items/
-            int[] intArr = { 10, 20, 30, 40 };
-            Array.Sort(intArr);
-                foreach(int ia in intArr)
+            Console.WriteLine("*****Fun with IEnumerable/IEnumerator*****\n");
+            Population pops = new Population();
+            foreach(var p in pops.famousPersons)
             {
-                Console.WriteLine(ia);
+                Console.WriteLine("Name:{0},Age:{1}\n", p.Name, p.Age);
             }
             Console.ReadLine();
+        }
+    }
+
+    public class Population
+    {
+        public Person[] famousPersons = new Person[5];
+
+        //Fill with some Person objects upon startup.
+        public Population()
+        {
+            famousPersons[0] = new Person("Bill Gates", 63);
+            famousPersons[1] = new Person("Michael Blooberg", 76);
+            famousPersons[2] = new Person("Jeff Bezos", 54);
+            famousPersons[3] = new Person("Larry Ellison", 73);
+            famousPersons[4] = new Person("Floomberg", 31);
+            Array.Sort(famousPersons);
+        }
+    }
+    public class Person:IComparable
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public Person(string name,int age)
+        {
+            Name = name;
+            Age = age;
+        }
+
+        public int CompareTo(object obj)
+        {
+            var objAge = obj as Person;
+            return this.Age.CompareTo(objAge.Age);
         }
     }
 }
