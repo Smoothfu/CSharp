@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Collections;
 namespace ConsoleApp249
 {
    //Multiple inheritance for interface types is a-okay
@@ -72,7 +72,9 @@ namespace ConsoleApp249
         {
             Console.WriteLine("*****Fun with IEnumerable/IEnumerator*****\n");
             Population pops = new Population();
-            foreach(var p in pops.famousPersons)
+            
+            //Hand over each person in the collection
+            foreach(Person p in pops.famousPersons)
             {
                 Console.WriteLine("Name:{0},Age:{1}\n", p.Name, p.Age);
             }
@@ -80,7 +82,7 @@ namespace ConsoleApp249
         }
     }
 
-    public class Population
+    public class Population:IEnumerable
     {
         public Person[] famousPersons = new Person[5];
 
@@ -92,10 +94,15 @@ namespace ConsoleApp249
             famousPersons[2] = new Person("Jeff Bezos", 54);
             famousPersons[3] = new Person("Larry Ellison", 73);
             famousPersons[4] = new Person("Floomberg", 31);
-            Array.Sort(famousPersons);
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            //Return the array object's IEnumerator.
+            return famousPersons.GetEnumerator();
         }
     }
-    public class Person:IComparable
+    public class Person 
     {
         public string Name { get; set; }
         public int Age { get; set; }
@@ -103,12 +110,6 @@ namespace ConsoleApp249
         {
             Name = name;
             Age = age;
-        }
-
-        public int CompareTo(object obj)
-        {
-            var objAge = obj as Person;
-            return this.Age.CompareTo(objAge.Age);
         }
     }
 }
