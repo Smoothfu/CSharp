@@ -6,54 +6,88 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp249
 {
-   public interface IDrawable
+   //Multiple inheritance for interface types is a-okay
+   interface IDrawable
     {
         void Draw();
     }
 
-    public interface IAdvancedDraw:IDrawable
+    interface IPrintable
     {
-        void DrawInBoundingBox(int top, int left, int bottom, int right);
-        void DrawUpsideDown();
+        void Print();
+
+        //--note possible name clash here!
+        void Draw();
     }
 
-    public class BitmapImage : IAdvancedDraw
+    //Multiple interface inheritance ok.
+    interface IShape:IDrawable,IPrintable
+    {
+        int GetNumbersOfSides();
+    }
+
+    class Rectangle : IShape
     {
         public void Draw()
         {
             Console.WriteLine("Drawing...");
         }
 
-        public void DrawInBoundingBox(int top, int left, int bottom, int right)
+        public int GetNumbersOfSides()
         {
-            Console.WriteLine("Drawing in a box...");
+            return 4;
         }
 
-        public void DrawUpsideDown()
+        public void Print()
         {
-            Console.WriteLine("Drawing upside down!");
+            Console.WriteLine("Printing...");
         }
     }
 
+    class Square : IShape
+    {
+        void IDrawable.Draw()
+        {
+            Console.WriteLine("Draw to screen!");
+        }
+
+        void IPrintable.Draw()
+        {
+            Console.WriteLine("Draw to printer!");
+        }
+
+        int IShape.GetNumbersOfSides()
+        {
+            return 4;
+        }
+
+        void IPrintable.Print()
+        {
+            Console.WriteLine("IPrintable print.");
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Simply Interface Hierarchy****");
+            Rectangle rect = new Rectangle();
+            rect.Draw();
+            rect.Print();
 
-            //Call from object level/
-            BitmapImage myBitmap = new BitmapImage();
-            myBitmap.Draw();
-            myBitmap.DrawInBoundingBox(10, 10, 100, 150);
-            myBitmap.DrawUpsideDown();
+            Square square = new Square();
 
-            //Get IAdvancedDraw explicitly
-            IAdvancedDraw iAdvDraw = myBitmap as IAdvancedDraw;
-            if (iAdvDraw != null)
+            var IDrawableSquare = square as IDrawable;
+            if(IDrawableSquare!=null)
             {
-                iAdvDraw.DrawUpsideDown();
+                IDrawableSquare.Draw();
             }
 
+            var iPrinterSquare = square as IPrintable;
+            if (iPrinterSquare != null)
+            {
+                iPrinterSquare.Draw();
+                iPrinterSquare.Print();
+            }
             Console.ReadLine();
         }
     }
