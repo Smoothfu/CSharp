@@ -6,61 +6,52 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp249
 {
-    //Draw image to a form
-    public interface IDrawToForm
+   public interface IDrawable
     {
         void Draw();
     }
 
-    //Draw to buffer in memory
-    public interface IDrawToMemory
+    public interface IAdvancedDraw:IDrawable
     {
-        void Draw();
+        void DrawInBoundingBox(int top, int left, int bottom, int right);
+        void DrawUpsideDown();
     }
 
-    //Render to the printer
-    public interface IDrawToPrinter
+    public class BitmapImage : IAdvancedDraw
     {
-        void Draw();
+        public void Draw()
+        {
+            Console.WriteLine("Drawing...");
+        }
+
+        public void DrawInBoundingBox(int top, int left, int bottom, int right)
+        {
+            Console.WriteLine("Drawing in a box...");
+        }
+
+        public void DrawUpsideDown()
+        {
+            Console.WriteLine("Drawing upside down!");
+        }
     }
 
-    class OCtagon : IDrawToForm, IDrawToMemory, IDrawToPrinter
-    {
-        void IDrawToForm.Draw()
-        {
-            Console.WriteLine("Draw To Form");
-        }
-
-        void IDrawToMemory.Draw()
-        {
-            Console.WriteLine("Draw to Memory");
-        }
-
-        void IDrawToPrinter.Draw()
-        {
-            Console.WriteLine("Draw to Printer");
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with Interface Name clashes*****\n");
-            //All of these invocations call the same Draw() method!
-            OCtagon octObj = new OCtagon();
-            ((IDrawToForm)octObj).Draw();
-             
+            Console.WriteLine("*****Simply Interface Hierarchy****");
 
-            IDrawToPrinter iftPrinter = octObj as IDrawToPrinter;
-            if (iftPrinter != null)
-            {
-                iftPrinter.Draw();
-            }
+            //Call from object level/
+            BitmapImage myBitmap = new BitmapImage();
+            myBitmap.Draw();
+            myBitmap.DrawInBoundingBox(10, 10, 100, 150);
+            myBitmap.DrawUpsideDown();
 
-            IDrawToMemory itfMemory = octObj as IDrawToMemory;
-            if (itfMemory != null)
+            //Get IAdvancedDraw explicitly
+            IAdvancedDraw iAdvDraw = myBitmap as IAdvancedDraw;
+            if (iAdvDraw != null)
             {
-                itfMemory.Draw();
+                iAdvDraw.DrawUpsideDown();
             }
 
             Console.ReadLine();
