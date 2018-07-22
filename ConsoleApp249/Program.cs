@@ -48,11 +48,8 @@ namespace ConsoleApp249
             Console.WriteLine("*****Fun with Interface Name clashes*****\n");
             //All of these invocations call the same Draw() method!
             OCtagon octObj = new OCtagon();
-            IDrawToForm itfForm = octObj as IDrawToForm;
-            if (itfForm != null)
-            {
-                itfForm.Draw();
-            }
+            ((IDrawToForm)octObj).Draw();
+             
 
             IDrawToPrinter iftPrinter = octObj as IDrawToPrinter;
             if (iftPrinter != null)
