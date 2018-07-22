@@ -70,23 +70,13 @@ namespace ConsoleApp249
     {
         static void Main(string[] args)
         {
-            Rectangle rect = new Rectangle();
-            rect.Draw();
-            rect.Print();
 
-            Square square = new Square();
 
-            var IDrawableSquare = square as IDrawable;
-            if(IDrawableSquare!=null)
+            //Iterate over an array of items/
+            int[] intArr = { 10, 20, 30, 40 };
+            foreach(int ia in intArr)
             {
-                IDrawableSquare.Draw();
-            }
-
-            var iPrinterSquare = square as IPrintable;
-            if (iPrinterSquare != null)
-            {
-                iPrinterSquare.Draw();
-                iPrinterSquare.Print();
+                Console.WriteLine(ia);
             }
             Console.ReadLine();
         }
