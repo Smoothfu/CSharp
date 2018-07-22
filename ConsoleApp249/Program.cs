@@ -70,11 +70,10 @@ namespace ConsoleApp249
     {
         static void Main(string[] args)
         {
-
-
             //Iterate over an array of items/
             int[] intArr = { 10, 20, 30, 40 };
-            foreach(int ia in intArr)
+            Array.Sort(intArr);
+                foreach(int ia in intArr)
             {
                 Console.WriteLine(ia);
             }
