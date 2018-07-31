@@ -11,16 +11,9 @@ namespace ConsoleApp250
     {
         static void Main(string[] args)
         {
-            Process[] allProcesses= Process.GetProcesses();
-            if(allProcesses!=null && allProcesses.Any())
-            {
-              var sortedProcesses=   allProcesses.OrderBy(x => x.ProcessName);
-                sortedProcesses.All(x =>
-                {
-                    Console.WriteLine("ProcessName:{0},Id:{1}\n",x.ProcessName, x.Id);
-                    return true;
-                });
-            }
+            Process proc = Process.GetProcessById(5208);
+            Console.WriteLine("ProcessName:{0},Id:{1}\n", proc.ProcessName, proc.Id);
+           
             Console.ReadLine();
         }
     }
