@@ -15,9 +15,15 @@ namespace ConsoleApp250
             //Manually work with IEnumerator.
             Garage carLot = new Garage();
             IEnumerator enumerator = carLot.GetEnumerator();
-            enumerator.MoveNext();
-            Car myCar = (Car)enumerator.Current;
-            Console.WriteLine("Name:{0},Id:{1}\n", myCar.Name, myCar.Id);
+            while(enumerator.MoveNext())
+            {
+                Car myCar = enumerator.Current as Car;
+                if(myCar!=null)
+                {
+                    Console.WriteLine(myCar.ToString());
+                }
+            }
+            
            
             Console.ReadLine();
         }
@@ -31,6 +37,11 @@ namespace ConsoleApp250
         {
             Name = carName;
             Id = carId; 
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Name:{0},Id:{1}\n", Name, Id);
         }
     }
 
@@ -48,8 +59,10 @@ namespace ConsoleApp250
         }
         public IEnumerator GetEnumerator()
         {
-            //return the array objects IEnumerator
-            return carArray.GetEnumerator();
+            foreach(Car c in carArray)
+            {
+                yield return c;
+            }
         }
     }
 }
