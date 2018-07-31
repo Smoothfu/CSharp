@@ -59,10 +59,11 @@ namespace ConsoleApp250
         }
         public IEnumerator GetEnumerator()
         {
-            foreach(Car c in carArray)
-            {
-                yield return c;
-            }
+            yield return carArray[0];
+            yield return carArray[1];
+            yield return carArray[2];
+            yield return carArray[3];
+            yield return carArray[4];
         }
     }
 }
