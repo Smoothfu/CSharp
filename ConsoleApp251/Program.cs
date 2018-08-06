@@ -11,6 +11,59 @@ namespace ConsoleApp251
         void Draw();
     }
 
+    interface IPrintable
+    {
+        void Print();
+        void Draw();
+    }
+
+    //Multiple interface inheritance OK!
+    interface IShape : IDrawable, IPrintable
+    {
+        int GetNumbersOfSides();
+    }
+
+
+    class Rectangle : IShape
+    {
+        public void Draw()
+        {
+            Console.WriteLine("Drawing...");
+        }
+
+        public int GetNumbersOfSides()
+        {
+            return 4;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine("Printing...");
+        }
+    }
+
+    class Square : IShape
+    {
+        void IDrawable.Draw()
+        {
+            Console.WriteLine("Draw to screen");
+        }
+
+        void IPrintable.Draw()
+        {
+            Console.WriteLine("Draw to printer...");
+        }
+
+        int IShape.GetNumbersOfSides()
+        {
+            return 4;
+        }
+
+        void IPrintable.Print()
+        {
+            Console.WriteLine("Print to screen");
+        }
+    }
     public interface IAdvancedDraw:IDrawable
     {
         void DrawInBoundingBox(int top, int left, int bottom, int right);
@@ -40,18 +93,18 @@ namespace ConsoleApp251
         {
             Console.WriteLine("*****Simple Interface Hierarchy*****");
 
-            //call from object level
-            BitmapImage bm = new BitmapImage();
-            bm.Draw();
-            bm.DrawInBoundingBox(10, 10, 100, 150);
-            bm.DrawUpsideDown();
-
-
-            //Get IAdvancedDraw explicitly
-            IAdvancedDraw iAdvDraw = bm as IAdvancedDraw;
-            if(iAdvDraw!=null)
+            Square shape = new Square();
+            IPrintable ip = shape as IPrintable;
+            if(ip!=null)
             {
-                iAdvDraw.DrawUpsideDown();
+                ip.Draw();
+                ip.Print();
+            }
+
+            IDrawable idp = shape as IDrawable;
+            if(idp!=null)
+            {
+                idp.Draw();
             }
             Console.ReadLine();
         }
