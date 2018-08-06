@@ -11,55 +11,37 @@ namespace ConsoleApp251
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with IEnumerable/IEnumerator*****\n");
+            Console.WriteLine("******Fun with Object Cloning******\n");
 
-            Population pop = new Population();
-            
-            foreach(var p in pop)
-            {
-                var per = p as Person;
-                if(per!=null)
-                {
-                    Console.WriteLine("Name:{0},Age:{1}\n", per.Name, per.Age);
-                }
-            }
-            
+            Point p1 = new Point(50, 50);
+            Point p2 = p1;
+            //p2.X = 0;
+            Console.WriteLine(p1);
+            Console.WriteLine(p2);
             Console.ReadLine();
         }
     }
 
-    public class Person
+    //A class named Point.
+    public class Point
     {
-        public string Name { get; set; }
-        public int Age { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
 
-        public Person(string name,int age)
+        public Point(int xPos,int yPos)
         {
-            Name = name;
-            Age = age;
-        }
-    }
-
-    public class Population:IEnumerable
-    {
-        Person[] personArray = new Person[5];
-
-        //Fill with some persons upon startup.
-        public Population()
-        {
-            personArray[0] = new Person("Fred", 31);
-            personArray[1] = new Person("LJ", 30);
-            personArray[2] = new Person("ZFF", 31);
-            personArray[3] = new Person("MN", 23);
-            personArray[4] = new Person("ML", 23);
+            X = xPos;
+            Y = yPos;
         }
 
-        public IEnumerator GetEnumerator()
+        public Point()
         {
-            foreach(var p in personArray)
-            {
-                yield return p;
-            }
+
+        }
+
+        public override string ToString()
+        {
+            return string.Format("X={0},Y={1}", X, Y);
         }
     }
 }
