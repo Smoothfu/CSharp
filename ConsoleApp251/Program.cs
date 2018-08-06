@@ -91,20 +91,12 @@ namespace ConsoleApp251
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Simple Interface Hierarchy*****");
+            //Iterate over an array of items.
+            int[] myArrayOfInts = { 10, 20, 30, 40 };
 
-            Square shape = new Square();
-            IPrintable ip = shape as IPrintable;
-            if(ip!=null)
+            foreach(int i in myArrayOfInts)
             {
-                ip.Draw();
-                ip.Print();
-            }
-
-            IDrawable idp = shape as IDrawable;
-            if(idp!=null)
-            {
-                idp.Draw();
+                Console.WriteLine(i);
             }
             Console.ReadLine();
         }
