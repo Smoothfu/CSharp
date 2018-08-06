@@ -56,7 +56,10 @@ namespace ConsoleApp251
 
         public IEnumerator GetEnumerator()
         {
-            return personArray.GetEnumerator();
+            foreach(var p in personArray)
+            {
+                yield return p;
+            }
         }
     }
 }
