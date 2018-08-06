@@ -13,17 +13,21 @@ namespace ConsoleApp251
         {
             Console.WriteLine("******Fun with Object Cloning******\n");
 
-            Point p1 = new Point(50, 50);
-            Point p2 = p1;
-            //p2.X = 0;
-            Console.WriteLine(p1);
-            Console.WriteLine(p2);
+            //Notice Clone() returns a plain object type.
+            Point p3 = new Point(100, 100);
+            Point p4 = (Point)p3.Clone();
+
+            p4.X = 0;
+
+            //Print each object
+            Console.WriteLine(p3);
+            Console.WriteLine(p4);
             Console.ReadLine();
         }
     }
 
     //A class named Point.
-    public class Point
+    public class Point:ICloneable
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -42,6 +46,12 @@ namespace ConsoleApp251
         public override string ToString()
         {
             return string.Format("X={0},Y={1}", X, Y);
+        }
+
+        //Return a copy of the current object.
+        public object Clone()
+        {
+            return new Point(this.X, this.Y);
         }
     }
 }
