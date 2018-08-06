@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,99 +7,56 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp251
 {
-    public interface IDrawable
-    {
-        void Draw();
-    }
-
-    interface IPrintable
-    {
-        void Print();
-        void Draw();
-    }
-
-    //Multiple interface inheritance OK!
-    interface IShape : IDrawable, IPrintable
-    {
-        int GetNumbersOfSides();
-    }
-
-
-    class Rectangle : IShape
-    {
-        public void Draw()
-        {
-            Console.WriteLine("Drawing...");
-        }
-
-        public int GetNumbersOfSides()
-        {
-            return 4;
-        }
-
-        public void Print()
-        {
-            Console.WriteLine("Printing...");
-        }
-    }
-
-    class Square : IShape
-    {
-        void IDrawable.Draw()
-        {
-            Console.WriteLine("Draw to screen");
-        }
-
-        void IPrintable.Draw()
-        {
-            Console.WriteLine("Draw to printer...");
-        }
-
-        int IShape.GetNumbersOfSides()
-        {
-            return 4;
-        }
-
-        void IPrintable.Print()
-        {
-            Console.WriteLine("Print to screen");
-        }
-    }
-    public interface IAdvancedDraw:IDrawable
-    {
-        void DrawInBoundingBox(int top, int left, int bottom, int right);
-        void DrawUpsideDown();
-    }
-
-    public class BitmapImage : IAdvancedDraw
-    {
-        public void Draw()
-        {
-            Console.WriteLine("Drawing....");
-        }
-
-        public void DrawInBoundingBox(int top, int left, int bottom, int right)
-        {
-            Console.WriteLine("Drawing in a box...");
-        }
-
-        public void DrawUpsideDown()
-        {
-            Console.WriteLine("Drawing upside down");
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            //Iterate over an array of items.
-            int[] myArrayOfInts = { 10, 20, 30, 40 };
+            Console.WriteLine("*****Fun with IEnumerable/IEnumerator*****\n");
 
-            foreach(int i in myArrayOfInts)
+            Population pop = new Population();
+            
+            foreach(var p in pop)
             {
-                Console.WriteLine(i);
+                var per = p as Person;
+                if(per!=null)
+                {
+                    Console.WriteLine("Name:{0},Age:{1}\n", per.Name, per.Age);
+                }
             }
+            
             Console.ReadLine();
+        }
+    }
+
+    public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+
+        public Person(string name,int age)
+        {
+            Name = name;
+            Age = age;
+        }
+    }
+
+    public class Population:IEnumerable
+    {
+        Person[] personArray = new Person[5];
+
+        //Fill with some persons upon startup.
+        public Population()
+        {
+            personArray[0] = new Person("Fred", 31);
+            personArray[1] = new Person("LJ", 30);
+            personArray[2] = new Person("ZFF", 31);
+            personArray[3] = new Person("MN", 23);
+            personArray[4] = new Person("ML", 23);
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return personArray.GetEnumerator();
         }
     }
 }
