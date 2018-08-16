@@ -21,7 +21,27 @@ namespace ConsoleApp253
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
-                    MessageBox.Show("Connected");
+                    string selectSQL = "select * from INFORMATION_SCHEMA.TABLES where table_type='BASE TABLE'";
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = selectSQL;
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                        sqlDataAdapter.SelectCommand = cmd;
+                        DataSet ds = new DataSet();
+                        sqlDataAdapter.Fill(ds);
+                        if(ds.Tables[0].Rows.Count>0)
+                        {
+                            for(int i=0;i<ds.Tables[0].Rows.Count;i++)
+                            {
+                                for(int j=0;j<ds.Tables[0].Columns.Count;j++)
+                                {
+                                    Console.Write("{0:30}\t", ds.Tables[0].Rows[i][j].ToString());
+                                }
+                            }
+                        }
+                    }
                 }
             }
             Console.ReadLine();
