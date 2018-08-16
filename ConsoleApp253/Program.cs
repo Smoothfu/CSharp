@@ -37,8 +37,9 @@ namespace ConsoleApp253
                             {
                                 for(int j=0;j<ds.Tables[0].Columns.Count;j++)
                                 {
-                                    Console.Write("{0:30}\t", ds.Tables[0].Rows[i][j].ToString());
+                                    Console.Write("{0,-30}\t", ds.Tables[0].Rows[i][j].ToString());
                                 }
+                                Console.WriteLine();
                             }
                         }
                     }
