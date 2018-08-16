@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 
 namespace ConsoleApp253
@@ -15,37 +16,59 @@ namespace ConsoleApp253
     {
         static void Main(string[] args)
         {
-            string connString = ConfigurationManager.AppSettings["conString"].ToString();
-            using (SqlConnection conn = new SqlConnection(connString))
+            string source = "Hello World!";
+            using (MD5 md5Hash = MD5.Create())
             {
-                conn.Open();
-                if (conn.State == ConnectionState.Open)
+                string hash = GetMd5Hash(md5Hash, source);
+                Console.WriteLine("The MD5 hash of " + source + " is :" + hash + ".");
+                Console.WriteLine("Verify the hash...");
+                if (VerifyMd5Hash(md5Hash, source, hash))
                 {
-                    string selectSQL = "select * from AdventureWorks2014.Person.Password";
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        cmd.Connection = conn;
-                        cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = selectSQL;
-                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                        sqlDataAdapter.SelectCommand = cmd;
-                        DataSet ds = new DataSet();
-                        sqlDataAdapter.Fill(ds);
-                        if(ds.Tables[0].Rows.Count>0)
-                        {
-                            for(int i=0;i<ds.Tables[0].Rows.Count;i++)
-                            {
-                                for(int j=0;j<ds.Tables[0].Columns.Count;j++)
-                                {
-                                    Console.Write("{0,-30}\t", ds.Tables[0].Rows[i][j].ToString());
-                                }
-                                Console.WriteLine();
-                            }
-                        }
-                    }
+                    Console.WriteLine("The hashes are the same.");
+                }
+                else
+                {
+                    Console.WriteLine("The hashes are not same");
                 }
             }
-            Console.ReadLine();
+                Console.ReadLine();
+        }
+
+        static string GetMd5Hash(MD5 md5Hash,string input)
+        {
+            //Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            //Create a new StringBuilder to collect the bytes  and create a string.
+            StringBuilder stringBuilder = new StringBuilder();
+
+            //Loop through each byte of the hashed data and format each one as a hexadecimal string.
+            for(int i=0;i<data.Length;i++)
+            {
+                stringBuilder.Append(data[i].ToString("x2"));
+            }
+
+            //Return the hexadecimal string.
+            return stringBuilder.ToString();
+        }
+
+        //verify a hash against a string.
+        static bool VerifyMd5Hash(MD5 md5Hash,string input,string hash)
+        {
+            //Hash the input.
+            string hashOfInput = GetMd5Hash(md5Hash, input);
+
+            //Create a StringComparer an compare the hashes.
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            if (0 == comparer.Compare(hashOfInput, hash))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
