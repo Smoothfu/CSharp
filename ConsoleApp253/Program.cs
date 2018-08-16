@@ -21,7 +21,7 @@ namespace ConsoleApp253
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
-                    string selectSQL = "select * from INFORMATION_SCHEMA.TABLES where table_type='BASE TABLE'";
+                    string selectSQL = "select * from AdventureWorks2014.Person.Password";
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.Connection = conn;
