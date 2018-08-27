@@ -12,13 +12,24 @@ namespace ConsoleApp255
         static void Main(string[] args)
         {
 
-            Car mc = new Car("PRADO", 50);
-            for(int i=0;i<10;i++)
+            Console.WriteLine("*****Handling Multiple Exceptions*****\n");
+            Car mc = new Car("PRADO", 90);
+
+            try
             {
-                mc.Acclerate(10);
-                mc.CrankTunes(true);
+                //Trip Arg out of range exception.
+                mc.Acclerate(-10);
             }
-            Console.WriteLine("\n*****Out of exception logic*****\n");
+            catch(CarIsDeadException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            catch(ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+ 
             Console.ReadLine();
         }
 
@@ -100,6 +111,10 @@ namespace ConsoleApp255
         {
             try
             {
+                if(delta<0)
+                {
+                    throw new ArgumentOutOfRangeException("delta", "Speed must be greated than zero!");
+                }
                 if (carIsDead)
                 {
                     Console.WriteLine("{0} is out of order...", PetName);
