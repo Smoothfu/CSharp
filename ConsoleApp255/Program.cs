@@ -10,28 +10,27 @@ namespace ConsoleApp255
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Simple Exception Example*****");
-            Console.WriteLine("=>Creating a car and stepping on it!");
-            Car mc = new Car("PRADO", 20);
+            int result = Divide(10, 0);
+            Console.WriteLine(result);
+            Console.ReadLine();
+        }
 
-            //Speed up past the cars max speed to trigger the exception.
+        static int Divide(int x,int y)
+        {
+            int result;
             try
             {
-                for(int i=0;i<10;i++)
-                {
-                    mc.Acclerate(10);
-                }
+                result = x / y;
             }
             catch(Exception ex)
             {
-                Console.WriteLine("\n***Error!***");
-                Console.WriteLine("Method:{0}\n", ex.TargetSite);
-                Console.WriteLine("Message:{0}\n", ex.Message);
+                Console.WriteLine(ex.Message);
             }
-
-            //The error has been handled,processing continues with the next statement.
-            Console.WriteLine("\n*****Out of exception logic******");
-            Console.ReadLine();
+            finally
+            {
+                result = 10;
+            }
+            return result;
         }
     }
 
