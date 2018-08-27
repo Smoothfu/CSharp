@@ -12,24 +12,29 @@ namespace ConsoleApp255
         static void Main(string[] args)
         {
 
-            Console.WriteLine("*****Handling Multiple Exceptions*****\n");
+            Console.WriteLine("*****Handling Multiple*****\n");
             Car mc = new Car("PRADO", 90);
 
             try
             {
-                //Trip Arg out of range exception.
+                //Trigger an argument out of range exception.
                 mc.Acclerate(-10);
+            }
+            catch(Exception ex)
+            {
+                //Process all other exceptions?
+                Console.WriteLine(ex.Message);
             }
             catch(CarIsDeadException ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-            catch(ArgumentOutOfRangeException ex)
+           catch(ArgumentOutOfRangeException e)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(e.Message);
             }
- 
+                 
             Console.ReadLine();
         }
 
