@@ -148,6 +148,7 @@ namespace ConsoleApp255
         }
     }
 
+    [Serializable]
     public class CarIsDeadException:ApplicationException
     {
         private string messageDetails = string.Empty;
@@ -164,6 +165,22 @@ namespace ConsoleApp255
             messageDetails = message;
             CauseOfError = cause;
             ErrorTimeStamp = time;
+        }
+
+
+        public CarIsDeadException(string message):base(message)
+        {
+
+        }
+
+        public CarIsDeadException(string message,System.Exception inner):base(message,inner)
+        {
+
+        }
+
+        protected CarIsDeadException(System.Runtime.Serialization.SerializationInfo info,System.Runtime.Serialization.StreamingContext context):base(info,context)
+        {
+
         }
 
         //Override the Exception.Message property.
