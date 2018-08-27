@@ -13,12 +13,24 @@ namespace ConsoleApp255
             Console.WriteLine("*****Simple Exception Example*****");
             Console.WriteLine("=>Creating a car and stepping on it!");
             Car mc = new Car("PRADO", 20);
-            mc.CrankTunes(true);
-            
-            for(int i=0;i<10;i++)
+
+            //Speed up past the cars max speed to trigger the exception.
+            try
             {
-                mc.Acclerate(10);
+                for(int i=0;i<10;i++)
+                {
+                    mc.Acclerate(10);
+                }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine("\n***Error!***");
+                Console.WriteLine("Method:{0}\n", ex.TargetSite);
+                Console.WriteLine("Message:{0}\n", ex.Message);
+            }
+
+            //The error has been handled,processing continues with the next statement.
+            Console.WriteLine("\n*****Out of exception logic******");
             Console.ReadLine();
         }
     }
