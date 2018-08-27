@@ -19,12 +19,8 @@ namespace ConsoleApp255
             //TargetSite actually returns a MethodBase object.
             catch(Exception ex)
             {
-                Console.WriteLine("\n***Error!****");
-                Console.WriteLine("Member name:{0}\n", ex.TargetSite);
-                Console.WriteLine("Class defining member:{0}\n", ex.TargetSite.DeclaringType);
-                Console.WriteLine("Memeber type:{0}\n", ex.TargetSite.MemberType);
-                Console.WriteLine("Message:{0}\n", ex.Message);
-                Console.WriteLine("Source:{0}\n", ex.Source);
+                Console.WriteLine("\n***Error!****");               
+               
             }
 
             Console.WriteLine("\n*****Out of exception logic*****\n");
@@ -46,6 +42,7 @@ namespace ConsoleApp255
                 Console.WriteLine("Memeber type:{0}\n", ex.TargetSite.MemberType);
                 Console.WriteLine("Message:{0}\n", ex.Message);
                 Console.WriteLine("Source:{0}\n", ex.Source);
+                Console.WriteLine("HelpLink:{0}\n", ex.HelpLink);
             }
             finally
             {
