@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.IO;
 
 namespace ConsoleApp255
 {
@@ -20,9 +21,17 @@ namespace ConsoleApp255
             {
                 mc.Acclerate(90);
             }
-            catch
+            catch(CarIsDeadException ex)
             {
-                Console.WriteLine("Something bad happened...");
+                try
+                {
+                    FileStream fs = File.Open(@"C:\carErrors.txt", FileMode.Open);
+                }
+                catch(Exception e)
+                {
+                    //Throw an exception that records the new exception as well as the message of the first exception.
+                    throw new CarIsDeadException(ex.Message, e);
+                }
             }
             Console.ReadLine();
         }
