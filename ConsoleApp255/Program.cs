@@ -20,11 +20,7 @@ namespace ConsoleApp255
                 //Trigger an argument out of range exception.
                 mc.Acclerate(-10);
             }
-            catch(Exception ex)
-            {
-                //Process all other exceptions?
-                Console.WriteLine(ex.Message);
-            }
+            
             catch(CarIsDeadException ex)
             {
                 Console.WriteLine(ex.Message);
@@ -34,7 +30,12 @@ namespace ConsoleApp255
             {
                 Console.WriteLine(e.Message);
             }
-                 
+
+            catch (Exception ex)
+            {
+                //Process all other exceptions?
+                Console.WriteLine(ex.Message);
+            }
             Console.ReadLine();
         }
 
