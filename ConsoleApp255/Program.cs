@@ -14,24 +14,30 @@ namespace ConsoleApp255
         {
 
             Console.WriteLine("*****Handling Multiple Exceptions*****\n");
-
             Car mc = new Car("PRADO", 90);
-
+            mc.CrankTunes(true);
             try
             {
-                mc.Acclerate(90);
+                //Speed up car logic.
             }
             catch(CarIsDeadException ex)
             {
-                try
-                {
-                    FileStream fs = File.Open(@"C:\carErrors.txt", FileMode.Open);
-                }
-                catch(Exception e)
-                {
-                    //Throw an exception that records the new exception as well as the message of the first exception.
-                    throw new CarIsDeadException(ex.Message, e);
-                }
+                //Process CarIsDeadException.
+            }
+            catch(ArgumentOutOfRangeException ex)
+            {
+                //Process ArgumentOutOfRangeException.
+            }
+
+            catch(Exception ex)
+            {
+                //Process any other Exception.
+            }
+
+            finally
+            {
+                //This will always occur.Exception or not.
+                mc.CrankTunes(false);
             }
             Console.ReadLine();
         }
