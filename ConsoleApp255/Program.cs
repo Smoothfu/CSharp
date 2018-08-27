@@ -10,8 +10,24 @@ namespace ConsoleApp255
     {
         static void Main(string[] args)
         {
-            int result = Divide(10, 0);
-            Console.WriteLine(result);
+            try
+            {
+                int result = Divide(10, 0);
+
+            }
+
+            //TargetSite actually returns a MethodBase object.
+            catch(Exception ex)
+            {
+                Console.WriteLine("\n***Error!****");
+                Console.WriteLine("Member name:{0}\n", ex.TargetSite);
+                Console.WriteLine("Class defining member:{0}\n", ex.TargetSite.DeclaringType);
+                Console.WriteLine("Memeber type:{0}\n", ex.TargetSite.MemberType);
+                Console.WriteLine("Message:{0}\n", ex.Message);
+                Console.WriteLine("Source:{0}\n", ex.Source);
+            }
+
+            Console.WriteLine("\n*****Out of exception logic*****\n");
             Console.ReadLine();
         }
 
@@ -22,9 +38,14 @@ namespace ConsoleApp255
             {
                 result = x / y;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("\n***Error!****");
+                Console.WriteLine("Member name:{0}\n", ex.TargetSite);
+                Console.WriteLine("Class defining member:{0}\n", ex.TargetSite.DeclaringType);
+                Console.WriteLine("Memeber type:{0}\n", ex.TargetSite.MemberType);
+                Console.WriteLine("Message:{0}\n", ex.Message);
+                Console.WriteLine("Source:{0}\n", ex.Source);
             }
             finally
             {
