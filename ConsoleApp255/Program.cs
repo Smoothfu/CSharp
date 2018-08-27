@@ -113,12 +113,9 @@ namespace ConsoleApp255
                         Console.WriteLine("{0} has overheated!", PetName);
                         CurrentSpeed = 0;
                         //We need to call the HelpLink property,thus we need to create a local variable before throwing the exception object.
-                        Exception ex = new Exception(string.Format("{0} has overheated!\n", PetName));
+                        CarIsDeadException ex = new CarIsDeadException(string.Format("{0} has overheadted!\n", PetName),"You have a lead foot",DateTime.Now);
                         ex.HelpLink = "http://www.CarsRUs.com";
 
-                        //Stuff in custom data regarding the error.
-                        ex.Data.Add("TimeStamp", string.Format("The car exploded at {0}\n", DateTime.Now));
-                        ex.Data.Add("Cause", "You have a lead foot.");
                         throw ex;
                     }
                     else
@@ -148,6 +145,34 @@ namespace ConsoleApp255
                 }
             }
            
+        }
+    }
+
+    public class CarIsDeadException:ApplicationException
+    {
+        private string messageDetails = string.Empty;
+        public DateTime ErrorTimeStamp { get; set; }
+        public string CauseOfError { get; set; }
+
+        public CarIsDeadException()
+        {
+
+        }
+
+        public CarIsDeadException(string message,string cause,DateTime time)
+        {
+            messageDetails = message;
+            CauseOfError = cause;
+            ErrorTimeStamp = time;
+        }
+
+        //Override the Exception.Message property.
+        public override string Message
+        {
+            get
+            {
+                return string.Format("Car Error Message:{0}\n", messageDetails);
+            }
         }
     }
 }
