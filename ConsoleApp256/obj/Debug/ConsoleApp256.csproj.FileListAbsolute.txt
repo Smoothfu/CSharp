@@ -1,0 +1,7 @@
+D:\C\ConsoleApp256\ConsoleApp256\bin\Debug\ConsoleApp256.exe.config
+D:\C\ConsoleApp256\ConsoleApp256\bin\Debug\ConsoleApp256.exe
+D:\C\ConsoleApp256\ConsoleApp256\bin\Debug\ConsoleApp256.pdb
+D:\C\ConsoleApp256\ConsoleApp256\obj\Debug\ConsoleApp256.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp256\ConsoleApp256\obj\Debug\ConsoleApp256.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp256\ConsoleApp256\obj\Debug\ConsoleApp256.exe
+D:\C\ConsoleApp256\ConsoleApp256\obj\Debug\ConsoleApp256.pdb
