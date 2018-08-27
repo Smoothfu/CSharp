@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace ConsoleApp255
 {
@@ -10,19 +11,13 @@ namespace ConsoleApp255
     {
         static void Main(string[] args)
         {
-            try
+
+            Car mc = new Car("PRADO", 50);
+            for(int i=0;i<10;i++)
             {
-                int result = Divide(10, 0);
-
+                mc.Acclerate(10);
+                mc.CrankTunes(true);
             }
-
-            //TargetSite actually returns a MethodBase object.
-            catch(Exception ex)
-            {
-                Console.WriteLine("\n***Error!****");               
-               
-            }
-
             Console.WriteLine("\n*****Out of exception logic*****\n");
             Console.ReadLine();
         }
@@ -103,25 +98,56 @@ namespace ConsoleApp255
         //See if Car has overheated.
         public void Acclerate(int delta)
         {
-            if(carIsDead)
+            try
             {
-                Console.WriteLine("{0} is out of order...", PetName);
-            }
-            else
-            {
-                CurrentSpeed += delta;
-
-                if(CurrentSpeed>MaxSpeed)
+                if (carIsDead)
                 {
-                    Console.WriteLine("{0} has overheated!", PetName);
-                    CurrentSpeed = 0;
-                    carIsDead = true;
+                    Console.WriteLine("{0} is out of order...", PetName);
                 }
                 else
                 {
-                    Console.WriteLine("=>CurrentSpeed={0}\n", CurrentSpeed);
+                    CurrentSpeed += delta;
+
+                    if (CurrentSpeed > MaxSpeed)
+                    {
+                        Console.WriteLine("{0} has overheated!", PetName);
+                        CurrentSpeed = 0;
+                        //We need to call the HelpLink property,thus we need to create a local variable before throwing the exception object.
+                        Exception ex = new Exception(string.Format("{0} has overheated!\n", PetName));
+                        ex.HelpLink = "http://www.CarsRUs.com";
+
+                        //Stuff in custom data regarding the error.
+                        ex.Data.Add("TimeStamp", string.Format("The car exploded at {0}\n", DateTime.Now));
+                        ex.Data.Add("Cause", "You have a lead foot.");
+                        throw ex;
+                    }
+                    else
+                    {
+                        Console.WriteLine("=>CurrentSpeed={0}\n", CurrentSpeed);
+                    }
                 }
             }
+
+            catch(Exception ex)
+            {
+
+                Console.WriteLine("\n***Error!****");
+                Console.WriteLine("Member name:{0}\n", ex.TargetSite);
+                Console.WriteLine("Class defining member:{0}\n", ex.TargetSite.DeclaringType);
+                Console.WriteLine("Memeber type:{0}\n", ex.TargetSite.MemberType);
+                Console.WriteLine("Message:{0}\n", ex.Message);
+                Console.WriteLine("Source:{0}\n", ex.Source);
+                Console.WriteLine("HelpLink:{0}\n", ex.HelpLink);
+
+
+                Console.WriteLine("n->Custom Data:\n");
+
+                foreach(DictionaryEntry de in ex.Data)
+                {
+                    Console.WriteLine("->{0}:{1}", de.Key, de.Value);
+                }
+            }
+           
         }
     }
 }
