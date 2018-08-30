@@ -3,106 +3,99 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
 
 namespace ConsoleApp257
 {
-    interface IA
-    {
-        void AddMethod(int x, int y);
-    }
-
-    interface IB
-    {
-        void AddMethod(int x, int y);
-    }
-
-    class AddClass : IA, IB
-    {
-        void IA.AddMethod(int x, int y)
-        {
-            Console.WriteLine("In IA:{0}+{1}={2}\n", x, y, x + y);
-        }
-
-        void IB.AddMethod(int x, int y)
-        {
-            Console.WriteLine("In IB:{0}+{1}={2}\n", x, y, x + y);
-        }
-    }
+  
     class Program
     {
         static void Main(string[] args)
         {
-            Student stu = new Student(1, "Fred");
-            Student stu2 = stu.ShallowCopy();
-            Console.WriteLine("The original values:\n");
-            Console.WriteLine("stu:" + stu);
-            Console.WriteLine("stu2: " + stu2);
+            string host;
+            int port = 80;
+            if(args.Length==0)
+            {
+                //If no server name is passed as argument to this program,use the current host name as the default.
+                host = Dns.GetHostName();
+            }
+            else
+            {
+                host = args[0];
+            }
 
-            stu.StuId = 2;
-            stu.StuName = "Floomberg";
-            Console.WriteLine("The changed values:\n");
-            Console.WriteLine("stu: " + stu);
-            Console.WriteLine("stu2: " + stu2);
-           
-           
+            string result = SocketSendReceive(host, port);
+            Console.WriteLine(result);
             Console.ReadLine();
         }
 
-        static void DisplayValues(Person p)
+
+        private static Socket ConnectSocket(string server,int port)
         {
-            Console.WriteLine("Name:{0:s},Age:{1:d}", p.Name, p.Age);
-            Console.WriteLine("Value:{0:d}", p.IdInfo.IdNumber);
+            Socket s = null;
+            IPHostEntry hostEntry = null;
+
+            //Get host related information.
+            hostEntry = Dns.GetHostEntry(server);
+
+            // Loop through the AddressList to obtain the supported AddressFamily. This is to avoid
+            // an exception that occurs when the host IP Address is not compatible with the address family
+            // (typical in the IPv6 case).
+            foreach(IPAddress address in hostEntry.AddressList)
+            {
+                IPEndPoint ipe = new IPEndPoint(address, port);
+                Socket tempSocket = new Socket(ipe.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                tempSocket.Connect(ipe);
+
+                if(tempSocket.Connected)
+                {
+                    s = tempSocket;
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return s;
+        }
+
+        //This method requests the home page content for the specified server.
+        private static string SocketSendReceive(string server,int port)
+        {
+            string request = "GET/HTTP/1.1\r\nHost: " + server + "\r\nConnection:Close\r\n\r\n";
+            byte[] byteSend = Encoding.UTF8.GetBytes(request);
+            byte[] bytesReceived = new Byte[256];
+
+            //Creates a socket connection with the specified server and port.
+            Socket s = ConnectSocket(server, port);
+            if(s==null)
+            {
+                return ("Connection failed!");
+            }
+
+            //Send request to the server.
+            s.Send(byteSend, byteSend.Length, 0);
+
+            //Receive the server home page content.
+            int bytes = 0;
+            string page = "Default HTML page on " + server + ":\r\n";
+
+            //The following will block until the page is transmitted.
+            do
+            {
+                bytes = s.Receive(bytesReceived, bytesReceived.Length, 0);
+                page = page + Encoding.UTF8.GetString(bytesReceived, 0, bytesReceived.Length);
+
+            } while (bytes > 0);
+            return page;
         }
     }
 
-    public class IdInfo
-    {
-        public int IdNumber;
-        public IdInfo(int idNumber)
-        {
-            this.IdNumber = idNumber;
-        }
-    }
-
-    public class Person
-    {
-        public int Age;
-        public string Name;
-        public IdInfo IdInfo;
 
 
-        public Person ShallowCopy()
-        {
-            return (Person)this.MemberwiseClone();
-        }
 
-        public Person DeepCopy()
-        {
-            Person other = (Person)this.MemberwiseClone();
-            other.IdInfo = new IdInfo(IdInfo.IdNumber);
-            other.Name = string.Copy(Name);
-            return other;
-        }
-    }
 
-    public class Student
-    {
-        public int StuId { get; set; }
-        public string StuName { get; set; }
-        public Student(int id,string name)
-        {
-            this.StuId = id;
-            this.StuName = name;
-        }
-
-        public   Student ShallowCopy()
-        {
-            return (Student)this.MemberwiseClone();
-        }
-
-        public override string ToString()
-        {
-            return string.Format("Id:{0},Name:{1}\n", StuId, StuName);
-        }
-    }
 }
