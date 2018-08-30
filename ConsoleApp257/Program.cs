@@ -58,6 +58,19 @@ namespace ConsoleApp257
             DisplayValues(p1);
             Console.WriteLine("p2 instance values:\n");
             DisplayValues(p2);
+
+            //Make a deep copy of p1 and assign it to p3.
+            Person p3 = p1.DeepCopy();
+            //Change the members of the p1 class to new values to show the deep copy.
+            p1.Name = "George";
+            p1.Age = 25;
+            p1.IdInfo.IdNumber = 789034354;
+            Console.WriteLine("\nValues of p1 and p3 after changes to p1:\n");
+            Console.WriteLine("p1 instance values:\n");
+            DisplayValues(p1);
+            Console.WriteLine("p3 instance values:\n");
+            DisplayValues(p3);
+
            
            
             Console.ReadLine();
