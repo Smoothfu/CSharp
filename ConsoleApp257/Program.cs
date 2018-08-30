@@ -32,45 +32,17 @@ namespace ConsoleApp257
     {
         static void Main(string[] args)
         {
-            //Create an instane of Person and assign values to its fields.
-            Person p1 = new Person();
-            p1.Age = 31;
-            p1.Name = "Fred";
-            p1.IdInfo = new IdInfo(1000000);
+            Student stu = new Student(1, "Fred");
+            Student stu2 = stu.ShallowCopy();
+            Console.WriteLine("The original values:\n");
+            Console.WriteLine("stu:" + stu);
+            Console.WriteLine("stu2: " + stu2);
 
-
-            //Perform a shallow copy of p1 and assign it to p2.
-            Person p2 = p1.ShallowCopy();
-
-            //Display values of p1,p2
-            Console.WriteLine("Original values of p1 and p2:\n");
-            Console.WriteLine(" p1 instance values:\n");
-            DisplayValues(p1);
-            Console.WriteLine("p2 instance values:\n");
-            DisplayValues(p2);
-
-            //Change the value of p1 properties and display the values of p1 and p2.
-            p1.Age = 27;
-            p1.Name = "LZY";
-            p1.IdInfo.IdNumber = 787878787;
-            Console.WriteLine("\nValues of p1 and p2 after changes to p1:\n");
-            Console.WriteLine("p1 instance values:\n");
-            DisplayValues(p1);
-            Console.WriteLine("p2 instance values:\n");
-            DisplayValues(p2);
-
-            //Make a deep copy of p1 and assign it to p3.
-            Person p3 = p1.DeepCopy();
-            //Change the members of the p1 class to new values to show the deep copy.
-            p1.Name = "George";
-            p1.Age = 25;
-            p1.IdInfo.IdNumber = 789034354;
-            Console.WriteLine("\nValues of p1 and p3 after changes to p1:\n");
-            Console.WriteLine("p1 instance values:\n");
-            DisplayValues(p1);
-            Console.WriteLine("p3 instance values:\n");
-            DisplayValues(p3);
-
+            stu.StuId = 2;
+            stu.StuName = "Floomberg";
+            Console.WriteLine("The changed values:\n");
+            Console.WriteLine("stu: " + stu);
+            Console.WriteLine("stu2: " + stu2);
            
            
             Console.ReadLine();
@@ -110,6 +82,27 @@ namespace ConsoleApp257
             other.IdInfo = new IdInfo(IdInfo.IdNumber);
             other.Name = string.Copy(Name);
             return other;
+        }
+    }
+
+    public class Student
+    {
+        public int StuId { get; set; }
+        public string StuName { get; set; }
+        public Student(int id,string name)
+        {
+            this.StuId = id;
+            this.StuName = name;
+        }
+
+        public   Student ShallowCopy()
+        {
+            return (Student)this.MemberwiseClone();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Id:{0},Name:{1}\n", StuId, StuName);
         }
     }
 }
