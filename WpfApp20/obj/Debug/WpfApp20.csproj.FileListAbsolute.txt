@@ -13,3 +13,4 @@ D:\C\WpfApp20\WpfApp20\obj\Debug\WpfApp20.csproj.GenerateResource.Cache
 D:\C\WpfApp20\WpfApp20\obj\Debug\WpfApp20.csproj.CoreCompileInputs.cache
 D:\C\WpfApp20\WpfApp20\obj\Debug\WpfApp20.exe
 D:\C\WpfApp20\WpfApp20\obj\Debug\WpfApp20.pdb
+D:\C\WpfApp20\WpfApp20\obj\Debug\Window1.g.cs

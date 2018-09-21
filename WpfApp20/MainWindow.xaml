@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp20"
+        x:Subclass="WpfApp20.Window1"
         mc:Ignorable="d" Name="mw"
         Title="MainWindow" Height="350" Width="525" >
     <Window.Resources>
@@ -19,7 +20,14 @@
         </ResourceDictionary>
     </Window.Resources>
     <StackPanel Orientation="Vertical">
-        <Label Target="{x:Reference txt}"  Content="Binding ElementName=txt,Path=Text"/>
-        <TextBox x:Name="txt"/>
+        <Button Click="btnw_Click">OK</Button>
+        <x:Code>
+            <![CDATA[
+            void btnw_Click(object sender,RoutedEventArgs e)
+            {
+              this.Close();
+            }
+            ]]>
+        </x:Code>
     </StackPanel>
 </Window>
