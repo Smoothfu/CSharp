@@ -19,7 +19,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <StackPanel Orientation="Vertical">
-        <Label Target="{Binding ElementName=txt}"  Content="Binding ElementName=txt,Path=Text"/>
+        <Label Target="{x:Reference txt}"  Content="Binding ElementName=txt,Path=Text"/>
         <TextBox x:Name="txt"/>
     </StackPanel>
 </Window>
