@@ -8,10 +8,8 @@
         Title="MainWindow" Height="350" Width="525" >
     <StackPanel Orientation="Vertical">
         <ListBox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <ListBox.Items>
-                <ListBoxItem Content="Item 1"/>
-                <ListBoxItem Content="Item 2"/>
-            </ListBox.Items>
+            <ListBoxItem Content="Item1"/>
+            <ListBoxItem Content="Item 2"/>
         </ListBox>
     </StackPanel>
 </Window>
