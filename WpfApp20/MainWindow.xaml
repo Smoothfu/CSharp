@@ -18,7 +18,7 @@
             <Button.Content>
                 <Binding Path="Height">
                     <Binding.RelativeSource>
-                        <RelativeSource Mode="Self"/>
+                        <RelativeSource Mode="PreviousData"/>
                     </Binding.RelativeSource>
                 </Binding>
             </Button.Content>
