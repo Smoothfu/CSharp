@@ -7,7 +7,10 @@
         mc:Ignorable="d" Name="mw"
         Title="MainWindow" Height="350" Width="525" >
     <StackPanel Orientation="Vertical">
-        <Button Content="OK" Background="Yellow"/>
-        <Button Content="Cancel" Background="Black"/>
+        <Button xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Content="OK">
+            <Button.Background>
+                <SolidColorBrush Color="Yellow"/>
+            </Button.Background>
+        </Button>
     </StackPanel>
 </Window>
