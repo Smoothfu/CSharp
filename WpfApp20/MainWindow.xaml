@@ -12,13 +12,14 @@
             <Color x:Key="1" A="255" R="255" G="255" B="255"/>
             <Color x:Key="2" A="0" R="0" G="0" B="0"/>
             <SolidColorBrush Color="Red" x:Key="scb"/>
-
+            
             <Style TargetType="{x:Type TextBox}">
                 <Setter Property="Background" Value="Yellow"/>
             </Style>
         </ResourceDictionary>
     </Window.Resources>
     <StackPanel Orientation="Vertical">
-        <TextBox  Foreground="{StaticResource  ResourceKey=scb}" Text="This is wonferful" /> 
+        <Label   Content="{Binding ElementName=txt,Path=Text}"/>
+        <TextBox x:Name="txt"/>
     </StackPanel>
 </Window>
