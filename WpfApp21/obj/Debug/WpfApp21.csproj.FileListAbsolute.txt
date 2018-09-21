@@ -12,3 +12,4 @@ D:\C\WpfApp21\WpfApp21\obj\Debug\WpfApp21.csproj.GenerateResource.Cache
 D:\C\WpfApp21\WpfApp21\obj\Debug\WpfApp21.csproj.CoreCompileInputs.cache
 D:\C\WpfApp21\WpfApp21\obj\Debug\WpfApp21.exe
 D:\C\WpfApp21\WpfApp21\obj\Debug\WpfApp21.pdb
+D:\C\WpfApp21\WpfApp21\obj\Debug\WpfApp21.csprojResolveAssemblyReference.cache

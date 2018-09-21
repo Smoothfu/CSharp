@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.Text;
+using System.Xaml;
 
 namespace WpfApp21
 {
@@ -22,9 +25,28 @@ namespace WpfApp21
     {
         public MainWindow()
         {
-            //InitializeComponent();
-            System.Uri uri = new System.Uri("/WpfApp21;component/MainWindow.xaml", System.UriKind.Relative);
-            Window win = (Window)Application.LoadComponent(uri);
+            InitializeComponent();
+            string xmlString = @"/WpfApp21;component/MainWindow.xaml";
+
+            ConvertXmlStringToObjectGraph(xmlString);
+        }
+
+        public static object ConvertXmlStringToObjectGraph(string xmlString)
+        {
+            using (TextReader textReader = new StringReader(xmlString))
+            using (XamlXmlReader reader = new XamlXmlReader(textReader, System.Windows.Markup.XamlReader.GetWpfSchemaContext()))
+            using(XamlObjectWriter writer=new XamlObjectWriter(reader.SchemaContext))
+            {
+                //Simple node loop.
+                while(reader.Read())
+                {
+                    writer.WriteNode(reader);
+                }
+
+                //When XamlObjectWriter is done,this is the root object insatnce.
+                return writer.Result;
+            }
+
         }
     }
 }
