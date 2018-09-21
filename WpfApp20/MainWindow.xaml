@@ -9,7 +9,11 @@
     <StackPanel Orientation="Vertical">
         <Button xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Content="OK">
             <Button.Background>
-                <SolidColorBrush Color="Yellow"/>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="255" G="135" B="240"/>
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
             </Button.Background>
         </Button>
     </StackPanel>
