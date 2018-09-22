@@ -17,25 +17,17 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>-->
-    <StackPanel Width="1000">
-        <Button Background="Red">No Scaling</Button>
-        <Button Background="Orange">
-            <Button.RenderTransform>
-                <ScaleTransform ScaleX="2"/>
-            </Button.RenderTransform>
-            X
-        </Button>
-        <Button Background="Yellow">
-            <Button.RenderTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2"/>
-            </Button.RenderTransform>
-            X+Y
-        </Button>
-        <Button Background="Lime">
-            <Button.RenderTransform>
-                <ScaleTransform ScaleY="2"/>
-            </Button.RenderTransform>
-            Y
-        </Button>
+    <StackPanel Width="1000" Height="500">
+        <Rectangle Width="200" Height="50" Fill="Yellow" Margin="61,27,117,184" />
+
+        <Rectangle Width="200" Height="50" Fill="Blue"  Opacity="0.5" Margin="59,101,119,110">
+
+            <Rectangle.RenderTransform>
+
+                <SkewTransform CenterX="0" CenterY="0" AngleX="45" AngleY="0" />
+
+            </Rectangle.RenderTransform>
+
+        </Rectangle>
     </StackPanel>
 </Window>
