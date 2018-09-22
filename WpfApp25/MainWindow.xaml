@@ -6,17 +6,15 @@
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
         Title="Buttons in a Canvas" Height="750" Width="1525">
-    <ScrollViewer  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" >
-        <StackPanel Orientation="Horizontal" ScrollBar.Scroll="StackPanel_Scroll" VirtualizingPanel.IsVirtualizing="True"  >
-            <Button Width="1000" Height="1000" Background="Yellow"/>
-            <Button Width="1000" Height="1000" Background="Blue"/>
-            <Button Width="1000" Height="1000"  Background="Black"/>
-            <Button Width="1000" Height="1000" Background="Green"/>
-            <Button Width="1000" Height="1000" Background="Red"/>
-            <Button Width="1000" Height="1000" Background="Bisque"/>
-            <Button Width="1000" Height="1000" Background="Silver"/>
-
-        </StackPanel>
-    </ScrollViewer>
-    
+    <WrapPanel ItemHeight="100" >
+        <Button Width="100" Height="100" Background="Yellow"/>
+        <Button Width="100" Height="100" Background="Blue"/>
+        <Button Width="100" Height="100"  Background="Black"/>
+        <Button Width="100" Height="100" Background="Green"/>
+        <Button Width="100" Height="100" Background="Red"/>
+        <Button Width="100" Height="100" Background="Bisque"/>
+        <Button Width="100" Height="100" Background="Silver"/>
+    </WrapPanel>
+      
+     
 </Window>
