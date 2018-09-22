@@ -6,17 +6,8 @@
         xmlns:local="clr-namespace:WpfApp24"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button Height="40" Width="175" Margin="10" Content="Dependency Property">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Red"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
-    </Grid>
+    <StackPanel>
+        <local:UserControl1   Content="{Binding SetTextValue,Mode=TwoWay}"/>
+        <Label Content="{Binding LabelContent,Mode=TwoWay}"/>
+    </StackPanel>
 </Window>

@@ -13,3 +13,6 @@ D:\C\WpfApp24\WpfApp24\obj\Debug\WpfApp24.csproj.GenerateResource.Cache
 D:\C\WpfApp24\WpfApp24\obj\Debug\WpfApp24.csproj.CoreCompileInputs.cache
 D:\C\WpfApp24\WpfApp24\obj\Debug\WpfApp24.exe
 D:\C\WpfApp24\WpfApp24\obj\Debug\WpfApp24.pdb
+D:\C\WpfApp24\WpfApp24\obj\Debug\UserControl1.g.cs
+D:\C\WpfApp24\WpfApp24\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\C\WpfApp24\WpfApp24\obj\Debug\UserControl1.baml

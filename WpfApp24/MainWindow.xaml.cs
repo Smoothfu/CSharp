@@ -23,6 +23,38 @@ namespace WpfApp24
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
+
+        private string setTextValue;
+        public string SetTextValue
+        {
+            get
+            {
+                var metaData = UserControl1.SetTextProperty.GetMetadata(typeof(MainWindow));                
+                setTextValue = metaData.DefaultValue.ToString();
+                return setTextValue;
+            }
+            set
+            {
+                setTextValue = value;
+            }
+        }
+
+        private string labelContent;
+        public string LabelContent
+        {
+            get
+            {
+                labelContent = "this is label content!";
+                return labelContent;
+            }
+            set
+            {
+                labelContent = value;
+            }
+        }
+        
+
     }
 }
