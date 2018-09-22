@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
-
+using System.Collections;
 
 namespace WpfApp23
 {
@@ -22,12 +22,27 @@ namespace WpfApp23
     /// </summary>
     public partial class MainWindow : Window
     {
+        //The dependency property.
+        public static readonly DependencyProperty IsDefaultProperty;
         public MainWindow()
         {
             InitializeComponent();
-            PrintLogicalTree(0, this);
-          
         }
+
+
+        static  MainWindow()
+        {
+            PropertyChangedCallback OnDefaultIsChanged = null;
+            
+
+
+        }
+        private void OnDefaultIsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+       
 
         protected override void OnContentRendered(EventArgs e)
         {
@@ -64,5 +79,8 @@ namespace WpfApp23
                 PrintVisualTree(depth + 1, VisualTreeHelper.GetChild(obj, i));
             }
         }
+
+       
+
     }
 }
