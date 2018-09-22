@@ -5,30 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp24" 
         mc:Ignorable="d" SizeToContent="WidthAndHeight" FontSize="50" FontStyle="Italic"
-        Title="MainWindow" Height="350" Width="525" Background="OrangeRed">
+        Title="MainWindow" Height="750" Width="525" Background="OrangeRed">
     <StackPanel>
-       <!--PADDING--><!--
-        <Label Padding="0" Background="Orange">0</Label>
-        <Label Padding="10" Background="Orange">10</Label>
-
-        <Label Padding="20,5" Background="Orange">20,5</Label>
-        <Label Padding="0,10,20,30" Background="Orange">0,10,20,30</Label>
-        
-        --><!--Margin--><!--
-        <Border BorderBrush="Black" BorderThickness="1">
-            <Label Background="Aqua">0</Label>
-        </Border>
-
-        <Border BorderBrush="Black" BorderThickness="1">
-            <Label Margin="10" Background="Aqua">10</Label>
-        </Border>
-
-        <Border BorderBrush="Black" BorderThickness="1">
-            <Label Margin="20,5" Background="Aqua">20,5</Label>
-        </Border>-->
-
-        <Border BorderBrush="Black" BorderThickness="10">
-            <Label Margin="10,100,200,300" Background="Red">10,100,200,300</Label>
-        </Border>
+        <StackPanel Height="100" Background="Aqua">
+            <Button Visibility="Collapsed">Collapsed Button</Button>
+            <Button>Below a collapsed Button</Button>
+        </StackPanel>
+        <StackPanel Height="300" Background="Aqua">
+            <Button Visibility="Hidden">Hidden Button</Button>
+            <Button>Below a Hidden Button</Button>
+        </StackPanel>
     </StackPanel>
 </Window>
