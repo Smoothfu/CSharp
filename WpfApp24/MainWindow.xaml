@@ -7,13 +7,9 @@
         mc:Ignorable="d" SizeToContent="WidthAndHeight" FontSize="50" FontStyle="Italic"
         Title="MainWindow" Height="750" Width="525" Background="OrangeRed">
     <StackPanel>
-        <StackPanel Height="100" Background="Aqua">
-            <Button Visibility="Collapsed">Collapsed Button</Button>
-            <Button>Below a collapsed Button</Button>
-        </StackPanel>
-        <StackPanel Height="300" Background="Aqua">
-            <Button Visibility="Hidden">Hidden Button</Button>
-            <Button>Below a Hidden Button</Button>
-        </StackPanel>
+        <Button HorizontalAlignment="Left" Background="Red">Left</Button>
+        <Button HorizontalAlignment="Center" Background="Orange">Center</Button>
+        <Button HorizontalAlignment="Right" Background="Yellow">Right</Button>
+        <Button HorizontalAlignment="Stretch" Background="Lime">Strech</Button>
     </StackPanel>
 </Window>
