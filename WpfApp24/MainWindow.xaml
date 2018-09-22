@@ -7,19 +7,28 @@
         mc:Ignorable="d" SizeToContent="WidthAndHeight" FontSize="50" FontStyle="Italic"
         Title="MainWindow" Height="350" Width="525" Background="OrangeRed">
     <StackPanel>
-        <Label FontWeight="Bold" FontSize="20" Foreground="White">
-            WPF 4 Unleashed
-        </Label>
-        <Label>@2010 SAMS Publishing</Label>
-        <Label>Installed Chapters:</Label>
-        <ListBox>
-            <ListBoxItem>Chapter 1</ListBoxItem>
-            <ListBoxItem>Chapter 2</ListBoxItem>
-        </ListBox>
-        <StackPanel TextElement.FontSize="30" TextElement.FontWeight="ExtraBold" TextElement.FontStyle="Italic"  Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button MinWidth="75" Margin="10" Padding="30">Help</Button>
-            <Button MinWidth="75" Margin="10">OK</Button>
-        </StackPanel>
-        <StatusBar>You have successfully registered this product.</StatusBar>
+       <!--PADDING--><!--
+        <Label Padding="0" Background="Orange">0</Label>
+        <Label Padding="10" Background="Orange">10</Label>
+
+        <Label Padding="20,5" Background="Orange">20,5</Label>
+        <Label Padding="0,10,20,30" Background="Orange">0,10,20,30</Label>
+        
+        --><!--Margin--><!--
+        <Border BorderBrush="Black" BorderThickness="1">
+            <Label Background="Aqua">0</Label>
+        </Border>
+
+        <Border BorderBrush="Black" BorderThickness="1">
+            <Label Margin="10" Background="Aqua">10</Label>
+        </Border>
+
+        <Border BorderBrush="Black" BorderThickness="1">
+            <Label Margin="20,5" Background="Aqua">20,5</Label>
+        </Border>-->
+
+        <Border BorderBrush="Black" BorderThickness="10">
+            <Label Margin="10,100,200,300" Background="Red">10,100,200,300</Label>
+        </Border>
     </StackPanel>
 </Window>
