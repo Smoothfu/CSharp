@@ -7,7 +7,11 @@
         mc:Ignorable="d" SizeToContent="WidthAndHeight" FontSize="50" FontStyle="Italic"
         Title="MainWindow" Height="750" Width="525" Background="OrangeRed">
     <StackPanel>
-        <Button FlowDirection="LeftToRight" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Height="200" Background="Red">LeftToRight</Button>
-        <Button FlowDirection="RightToLeft" HorizontalContentAlignment="Left" VerticalAlignment="Top" Height="200" Background="Orange">RightToLeft</Button>
+        <Button Background="Red" Width="300" Height="100" Content="No Rotate" />
+        <Button RenderTransformOrigin="0.5,0.5" Background="Orange" Width="300" Content="Rotate 45" Height="100">
+            <Button.RenderTransform>
+                <RotateTransform Angle="45"/>
+            </Button.RenderTransform>
+        </Button>
     </StackPanel>
 </Window>
