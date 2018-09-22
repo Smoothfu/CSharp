@@ -5,16 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
-        Title="Buttons in a Canvas" Height="750" Width="1525">
-    <WrapPanel ItemHeight="100" >
-        <Button Width="100" Height="100" Background="Yellow"/>
-        <Button Width="100" Height="100" Background="Blue"/>
-        <Button Width="100" Height="100"  Background="Black"/>
-        <Button Width="100" Height="100" Background="Green"/>
-        <Button Width="100" Height="100" Background="Red"/>
-        <Button Width="100" Height="100" Background="Bisque"/>
-        <Button Width="100" Height="100" Background="Silver"/>
-    </WrapPanel>
+        Title="Buttons in a Canvas" Height="550" Width="1525">
+    <DockPanel>
+        <Button DockPanel.Dock="Top" Background="Red">1 Top</Button>
+        <Button DockPanel.Dock="Left" Background="Orange">2 Left</Button>
+        <Button DockPanel.Dock="Right" Background="Yellow">3 Right</Button>
+        <Button DockPanel.Dock="Bottom" Background="Lime">4Bottom</Button>
+        <Button Background="Black">5</Button>
+
+    </DockPanel>
       
      
 </Window>
