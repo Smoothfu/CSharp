@@ -31,8 +31,8 @@ namespace WpfApp24
         {
             get
             {
-                var metaData = UserControl1.SetTextProperty.GetMetadata(typeof(MainWindow));                
-                setTextValue = metaData.DefaultValue.ToString();
+                 
+                setTextValue = "This is the new value";
                 return setTextValue;
             }
             set

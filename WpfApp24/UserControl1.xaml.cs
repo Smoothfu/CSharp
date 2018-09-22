@@ -26,7 +26,7 @@ namespace WpfApp24
         }
 
         public static readonly DependencyProperty SetTextProperty = DependencyProperty.Register("SetText",typeof(string), typeof(UserControl1),
-            new PropertyMetadata("This is default value!", new PropertyChangedCallback(OnSetTextChanged)));
+            new PropertyMetadata("", new PropertyChangedCallback(OnSetTextChanged)));
 
         private static void OnSetTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

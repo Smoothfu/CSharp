@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <StackPanel>
-        <local:UserControl1   Content="{Binding SetTextValue,Mode=TwoWay}"/>
+        <local:UserControl1  SetText="This is the cutomized Dependency Property!"/>
         <Label Content="{Binding LabelContent,Mode=TwoWay}"/>
     </StackPanel>
 </Window>
