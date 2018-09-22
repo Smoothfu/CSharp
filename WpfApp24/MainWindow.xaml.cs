@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -24,6 +25,8 @@ namespace WpfApp24
         {
             InitializeComponent();
             this.DataContext = this;
+            GeometryModel3D model = new GeometryModel3D();
+            model.SetValue(FrameworkElement.TagProperty, "my custom data");
         }
 
         private string setTextValue;
