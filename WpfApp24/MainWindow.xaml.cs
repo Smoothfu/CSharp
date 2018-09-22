@@ -54,7 +54,25 @@ namespace WpfApp24
                 labelContent = value;
             }
         }
-        
 
+        //Change the foreground to blue when the mouse enters the button.
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button btn = sender as Button;
+            if(btn!=null)
+            {
+                btn.Foreground = Brushes.Blue;
+            }
+        }
+
+        //Restore the foreground to black when the mouse exit the button.
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button leaveBth = sender as Button;
+            if(leaveBth!=null)
+            {
+                leaveBth.Foreground = Brushes.Black;
+            }
+        }
     }
 }

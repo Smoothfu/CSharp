@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <StackPanel>
-        <local:UserControl1  SetText="This is the cutomized Dependency Property!"/>
-        <Label Content="{Binding LabelContent,Mode=TwoWay}"/>
+        <Button MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" MinWidth="75" Margin="10">Help</Button>
+        <Button MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" MinWidth="75" Margin="10">OK</Button>
     </StackPanel>
 </Window>
