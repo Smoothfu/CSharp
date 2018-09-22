@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Buttons in a Canvas" Height="750" Width="1525">
     <ScrollViewer  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" >
-        <StackPanel Orientation="Horizontal" ScrollBar.Scroll="StackPanel_Scroll">
+        <StackPanel Orientation="Horizontal" ScrollBar.Scroll="StackPanel_Scroll" VirtualizingPanel.IsVirtualizing="True"  >
             <Button Width="1000" Height="1000" Background="Yellow"/>
             <Button Width="1000" Height="1000" Background="Blue"/>
             <Button Width="1000" Height="1000"  Background="Black"/>
