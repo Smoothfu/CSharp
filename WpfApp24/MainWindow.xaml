@@ -7,9 +7,7 @@
         mc:Ignorable="d" SizeToContent="WidthAndHeight" FontSize="50" FontStyle="Italic"
         Title="MainWindow" Height="750" Width="525" Background="OrangeRed">
     <StackPanel>
-        <Button HorizontalAlignment="Left" Background="Red">Left</Button>
-        <Button HorizontalAlignment="Center" Background="Orange">Center</Button>
-        <Button HorizontalAlignment="Right" Background="Yellow">Right</Button>
-        <Button HorizontalAlignment="Stretch" Background="Lime">Strech</Button>
+        <Button FlowDirection="LeftToRight" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Height="200" Background="Red">LeftToRight</Button>
+        <Button FlowDirection="RightToLeft" HorizontalContentAlignment="Left" VerticalAlignment="Top" Height="200" Background="Orange">RightToLeft</Button>
     </StackPanel>
 </Window>
