@@ -6,28 +6,28 @@
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
         Title="MainWindow" Height="750" Width="1525">
-    <!--<Window.Resources>
+    <Window.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="Red"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="Black"  BorderThickness="1">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
                 <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="true">
-                        <Setter Property="Foreground" Value="Red"/>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="Blue"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
         </ResourceDictionary>
-    </Window.Resources>-->
+    </Window.Resources>
     <StackPanel Width="1000" Height="500">
-        <Rectangle Width="200" Height="50" Fill="Yellow" Margin="61,27,117,184" />
-
-        <Rectangle Width="200" Height="50" Fill="Blue"  Opacity="0.5" Margin="59,101,119,110">
-
-            <Rectangle.RenderTransform>
-
-                <SkewTransform CenterX="0" CenterY="0" AngleX="45" AngleY="0" />
-
-            </Rectangle.RenderTransform>
-
-        </Rectangle>
+        <Button MinHeight="200" MaxHeight="1000" MinWidth="500" MaxWidth="500"/>
     </StackPanel>
 </Window>
