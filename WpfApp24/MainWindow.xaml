@@ -17,7 +17,7 @@
             <ListBoxItem>Chapter 2</ListBoxItem>
         </ListBox>
         <StackPanel TextElement.FontSize="30" TextElement.FontWeight="ExtraBold" TextElement.FontStyle="Italic"  Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button MinWidth="75" Margin="10">Help</Button>
+            <Button MinWidth="75" Margin="10" Padding="30">Help</Button>
             <Button MinWidth="75" Margin="10">OK</Button>
         </StackPanel>
         <StatusBar>You have successfully registered this product.</StatusBar>
