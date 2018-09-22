@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
         Title="MainWindow" Height="750" Width="1525">
-    <Window.Resources>
+    <!--<Window.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type Button}">
                 <Style.Triggers>
@@ -16,25 +16,26 @@
                 </Style.Triggers>
             </Style>
         </ResourceDictionary>
-    </Window.Resources>
-    <Grid>
-        <Button Background="Orange"  Width="500" Height="300">
-            <StackPanel Orientation="Vertical">
-                <TextBlock RenderTransformOrigin="0.5,0.5" FontSize="50">
-                    <TextBlock.RenderTransform>
-                        <RotateTransform Angle="45"/>
-                    </TextBlock.RenderTransform>
-                45°
-                </TextBlock>
-                <TextBlock RenderTransformOrigin="0.3,0.3" FontSize="150" >
-                    <TextBlock.RenderTransform>
-                        <RotateTransform Angle="90"/>
-                    </TextBlock.RenderTransform>
-                    90
-                </TextBlock>
-            </StackPanel>
-          
-            
+    </Window.Resources>-->
+    <StackPanel Width="1000">
+        <Button Background="Red">No Scaling</Button>
+        <Button Background="Orange">
+            <Button.RenderTransform>
+                <ScaleTransform ScaleX="2"/>
+            </Button.RenderTransform>
+            X
         </Button>
-    </Grid>
+        <Button Background="Yellow">
+            <Button.RenderTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"/>
+            </Button.RenderTransform>
+            X+Y
+        </Button>
+        <Button Background="Lime">
+            <Button.RenderTransform>
+                <ScaleTransform ScaleY="2"/>
+            </Button.RenderTransform>
+            Y
+        </Button>
+    </StackPanel>
 </Window>
