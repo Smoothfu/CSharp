@@ -74,5 +74,15 @@ namespace WpfApp24
                 leaveBth.Foreground = Brushes.Black;
             }
         }
+
+        public static void SetFontSize(DependencyObject element,double value)
+        {
+            element.SetValue(TextElement.FontSizeProperty, value);
+        }
+
+        public static double GetFontSize(DependencyObject element)
+        {
+            return (double)element.GetValue(TextElement.FontSizeProperty);
+        }
     }
 }
