@@ -6,12 +6,16 @@
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
         Title="MainWindow" Height="750" Width="1525">  
-    <StackPanel Width="1000" Height="500">
-        <Rectangle Width="200" Height="100" Fill="Red" />
-        <Rectangle Width="200" Height="100" Fill="Blue" Opacity="0.7">
-            <Rectangle.RenderTransform>
-                <TranslateTransform X="500" Y="200"/>
-            </Rectangle.RenderTransform>
-        </Rectangle>
+    <StackPanel Width="1000" Height="500" Orientation="Vertical">
+        <Button Width="350" Height="100" Content="Original "/>
+        <Button   Width="350" Height="100" Content="RenderTransform" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="45"/>
+                    <ScaleTransform ScaleX="5" ScaleY="2"/>
+                    <SkewTransform AngleX="30"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
     </StackPanel>
 </Window>
