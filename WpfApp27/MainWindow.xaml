@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfApp27.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp27"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+            <StackPanel>
+                <DataGrid ItemsSource="{Binding PersonList}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="390"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="390"/>
+                        <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="390"/>
+                        <DataGridTextColumn Header="Job" Binding="{Binding Job}" Width="390"/>
+                        <DataGridTextColumn Header="Hobby" Binding="{Binding Hobby}" Width="390"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

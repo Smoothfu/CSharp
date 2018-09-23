@@ -1,0 +1,14 @@
+D:\C\WpfApp27\WpfApp27\bin\Debug\WpfApp27.exe.config
+D:\C\WpfApp27\WpfApp27\bin\Debug\WpfApp27.exe
+D:\C\WpfApp27\WpfApp27\bin\Debug\WpfApp27.pdb
+D:\C\WpfApp27\WpfApp27\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp27\WpfApp27\obj\Debug\App.g.cs
+D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27_MarkupCompile.cache
+D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27_MarkupCompile.lref
+D:\C\WpfApp27\WpfApp27\obj\Debug\MainWindow.baml
+D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.g.resources
+D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.Properties.Resources.resources
+D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.csproj.GenerateResource.Cache
+D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.csproj.CoreCompileInputs.cache
+D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.exe
+D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.pdb
