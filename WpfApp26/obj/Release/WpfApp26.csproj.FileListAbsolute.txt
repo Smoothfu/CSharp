@@ -1,0 +1,14 @@
+D:\C\WpfApp26\WpfApp26\bin\Release\WpfApp26.exe.config
+D:\C\WpfApp26\WpfApp26\bin\Release\WpfApp26.exe
+D:\C\WpfApp26\WpfApp26\bin\Release\WpfApp26.pdb
+D:\C\WpfApp26\WpfApp26\obj\Release\MainWindow.g.cs
+D:\C\WpfApp26\WpfApp26\obj\Release\App.g.cs
+D:\C\WpfApp26\WpfApp26\obj\Release\WpfApp26_MarkupCompile.cache
+D:\C\WpfApp26\WpfApp26\obj\Release\WpfApp26_MarkupCompile.lref
+D:\C\WpfApp26\WpfApp26\obj\Release\MainWindow.baml
+D:\C\WpfApp26\WpfApp26\obj\Release\WpfApp26.g.resources
+D:\C\WpfApp26\WpfApp26\obj\Release\WpfApp26.Properties.Resources.resources
+D:\C\WpfApp26\WpfApp26\obj\Release\WpfApp26.csproj.GenerateResource.Cache
+D:\C\WpfApp26\WpfApp26\obj\Release\WpfApp26.csproj.CoreCompileInputs.cache
+D:\C\WpfApp26\WpfApp26\obj\Release\WpfApp26.exe
+D:\C\WpfApp26\WpfApp26\obj\Release\WpfApp26.pdb

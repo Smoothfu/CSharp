@@ -28,16 +28,16 @@
     <Grid Background="LightBlue" ShowGridLines="True">
         <!--Define four rows:-->
         <Grid.RowDefinitions >
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition Height="2*"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         
         <!--Define two colums:-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <!--Arrange the children:-->
         <Label Grid.Row="0" Grid.Column="0"  Background="Blue" Foreground="White"
@@ -48,7 +48,7 @@
                   Header="Getting Started"></GroupBox>
         <GroupBox Grid.Row="3" Grid.Column="0"  Background="White"
                   Header="Headlines"></GroupBox>
-        <GroupBox Grid.Row="1" Grid.Column="1" Background="White" Grid.RowSpan="3"
+        <GroupBox Grid.Row="1" Grid.Column="1" Background="White"  
                   Header="Online Articles">
             <ListBox>
                 <ListBoxItem>Article #1</ListBoxItem>
