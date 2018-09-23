@@ -25,7 +25,7 @@
             </Style.Triggers>            
         </Style>
     </Window.Resources>
-    <Grid Background="LightBlue" ShowGridLines="True">
+    <Grid Background="LightBlue">
         <!--Define four rows:-->
         <Grid.RowDefinitions >
             <RowDefinition />
@@ -48,6 +48,7 @@
                   Header="Getting Started"></GroupBox>
         <GroupBox Grid.Row="3" Grid.Column="0"  Background="White"
                   Header="Headlines"></GroupBox>
+        <GridSplitter  Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderBrush="Black" BorderThickness="5" />
         <GroupBox Grid.Row="1" Grid.Column="1" Background="White"  
                   Header="Online Articles">
             <ListBox>
