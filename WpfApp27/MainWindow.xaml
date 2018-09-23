@@ -8,25 +8,47 @@
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <ResourceDictionary>
-            <Style TargetType="{x:Type ListBox}">
-
+            <local:IdColorConverter x:Key="idColorConverter"/>
+            <local:IdDividedBy3Converter x:Key="idDividedBy3Converter"/>
+            <Style TargetType="{x:Type ListBoxItem}">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter Property="FontSize" Value="50"/>
+                        <Setter Property="Background" Value="Black"/>
+                    </Trigger>
+                    <DataTrigger Binding="{Binding Id,Converter={StaticResource ResourceKey=idColorConverter}}" Value="true">
+                        <Setter Property="Background" Value="Blue"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Id, Converter={StaticResource idDividedBy3Converter}}" Value="True">
+                        <Setter Property="Background" Value="Red"/>
+                    </DataTrigger>                    
+                </Style.Triggers>
+                 
             </Style>
-
+            <DataTemplate x:Key="listBoxDataTemplate"   >
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>                            
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Path=Id}"/>                       
+                    </Grid>
+                </Border>
+                <DataTemplate.Triggers>
+                    <Trigger>
+                       
+                    </Trigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding PersonList}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            <!--<ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Path=Id}"/>
-                        <TextBlock Text="{Binding Path=Name}"/>
-                        <TextBlock Text="{Binding Path=Age}"/>
-                        <TextBlock Text="{Binding Path=Job}"/>
-                        <TextBlock Text="{Binding Path=Hobby}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>-->
+        <ListBox ItemsSource="{Binding PersonList}"
+                 ItemTemplate="{StaticResource listBoxDataTemplate}"
+                 ScrollViewer.VerticalScrollBarVisibility="Visible">         
         </ListBox>
     </Grid>
 </Window>
