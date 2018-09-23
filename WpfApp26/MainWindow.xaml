@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp26"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Window.Resources>
+    <!--<Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Red"/>
             <Setter Property="Template">
@@ -24,19 +24,19 @@
                 </Trigger>
             </Style.Triggers>            
         </Style>
-    </Window.Resources>
-    <SelectiveScrollingGrid ShowGridLines="True" SelectiveScrollingGrid.SelectiveScrollingOrientation="Both">
-        <SelectiveScrollingGrid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </SelectiveScrollingGrid.ColumnDefinitions>
-        <SelectiveScrollingGrid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </SelectiveScrollingGrid.RowDefinitions>
+    </Window.Resources>-->
+    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+        <StackPanel>
+            <DataGrid ItemsSource="{Binding PersonList}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                    <DataGridTextColumn Header="Job" Binding="{Binding Job}"/>
+                    <DataGridTextColumn Header="Hobby" Binding="{Binding Hobby}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
         
-    </SelectiveScrollingGrid>
+    </ScrollViewer>
 </Window>
