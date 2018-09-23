@@ -25,11 +25,37 @@
             </Style.Triggers>            
         </Style>
     </Window.Resources>
-    <DockPanel LastChildFill="True">
-        <Button DockPanel.Dock="Top" HorizontalAlignment="Right" Background="Red">1 (Top,Aligh=Right)</Button>
-        <Button DockPanel.Dock="Left" VerticalAlignment="Bottom" Background="Orange">2 (Left,Align=Bottom)</Button>
-        <Button DockPanel.Dock="Right" VerticalAlignment="Center" Background="Yellow">3(Right,Align=Bottom)</Button>
-        <Button DockPanel.Dock="Bottom" HorizontalAlignment="Right" Background="Lime">4(Bottom,Align=Right)</Button>
-        <Button Background="Aqua">5</Button>
-    </DockPanel>
+    <Grid Background="LightBlue">
+        <!--Define four rows:-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!--Define two colums:-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--Arrange the children:-->
+        <Label Grid.Row="0" Grid.Column="0" Background="Blue" Foreground="White"
+               HorizontalContentAlignment="Center">Start Page</Label>
+        <GroupBox Grid.Row="1" Grid.Column="0" Background="White"
+                  Header="Recent Projects">...</GroupBox>
+        <GroupBox Grid.Row="2" Grid.Column="0" Background="White"
+                  Header="Getting Started">...</GroupBox>
+        <GroupBox Grid.Row="3" Grid.Column="0" Background="White"
+                  Header="Headlines">...</GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="1" Background="White"
+                  Header="Online Articles">
+            <ListBox>
+                <ListBoxItem>Article #1</ListBoxItem>
+                <ListBoxItem>Article #2</ListBoxItem>
+                <ListBoxItem>Article #3</ListBoxItem>
+                <ListBoxItem>Article #4</ListBoxItem>
+            </ListBox>
+        </GroupBox>
+    </Grid>
 </Window>
