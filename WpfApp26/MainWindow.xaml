@@ -25,9 +25,17 @@
             </Style.Triggers>            
         </Style>
     </Window.Resources>
-    <ToolBarTray>
-        <ToolBar Header="FirstTBT"/>
-        <ToolBar Header="SecondTBT"/>
-        <ToolBar Header="ThirdTBT"/>
-    </ToolBarTray>
+    <UniformGrid>
+        <Button/>
+        <Button/>
+        <Button/>
+        <Button/>
+        <Button/>
+        <Button/>
+        <Button/>
+        <Button/>
+        <Button/>
+        <Button/>
+        <Button/>
+    </UniformGrid>
 </Window>
