@@ -27,8 +27,8 @@
     </Window.Resources>
     <Grid Background="LightBlue">
         <!--Define four rows:-->
-        <Grid.RowDefinitions>
-            <RowDefinition/>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -36,11 +36,11 @@
         
         <!--Define two colums:-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <!--Arrange the children:-->
-        <Label Grid.Row="0" Grid.Column="0" Background="Blue" Foreground="White"
+        <Label Grid.Row="0" Grid.Column="0"  Background="Blue" Foreground="White"
                HorizontalContentAlignment="Center">Start Page</Label>
         <GroupBox Grid.Row="1" Grid.Column="0" Background="White"
                   Header="Recent Projects">...</GroupBox>
