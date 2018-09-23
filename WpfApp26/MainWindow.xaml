@@ -25,16 +25,9 @@
             </Style.Triggers>            
         </Style>
     </Window.Resources>
-    <ToolBarPanel>
-        <ToolBar Header="FirstTBP">
-            <ToolBarTray>
-                <ToolBar Header="subFirstHeader"/>
-                <ToolBar Header="subSecondHeader">
-                    <ToolBar Header="SubSubFirstHeader"/>
-                </ToolBar>
-            </ToolBarTray>
-        </ToolBar>
-        <ToolBar Header="SecondTBP"/>
-        <ToolBar Header="ThirdTBP"/>
-    </ToolBarPanel>
+    <ToolBarOverflowPanel>
+        <ToolBar Header="FirstTB"/>
+        <ToolBar Header="SecondTB"/>
+        <ToolBar Header="ThirdTB"/>
+    </ToolBarOverflowPanel>
 </Window>
