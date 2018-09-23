@@ -25,17 +25,18 @@
             </Style.Triggers>            
         </Style>
     </Window.Resources>
-    <UniformGrid>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-    </UniformGrid>
+    <SelectiveScrollingGrid ShowGridLines="True" SelectiveScrollingGrid.SelectiveScrollingOrientation="Both">
+        <SelectiveScrollingGrid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </SelectiveScrollingGrid.ColumnDefinitions>
+        <SelectiveScrollingGrid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </SelectiveScrollingGrid.RowDefinitions>
+        
+    </SelectiveScrollingGrid>
 </Window>
