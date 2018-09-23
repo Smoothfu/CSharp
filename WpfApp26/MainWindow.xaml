@@ -26,10 +26,10 @@
         </Style>
     </Window.Resources>
     <DockPanel LastChildFill="True">
-        <Button DockPanel.Dock="Top" Background="Red">1 (Top)</Button>
-        <Button DockPanel.Dock="Left" Background="Orange">2 (Left)</Button>
-        <Button DockPanel.Dock="Right" Background="Yellow">3 (Right)</Button>
-        <Button DockPanel.Dock="Bottom" Background="Silver">4 (Bottom)</Button>
-        <Button Background="Blue" >5</Button>
+        <Button DockPanel.Dock="Top" HorizontalAlignment="Right" Background="Red">1 (Top,Aligh=Right)</Button>
+        <Button DockPanel.Dock="Left" VerticalAlignment="Bottom" Background="Orange">2 (Left,Align=Bottom)</Button>
+        <Button DockPanel.Dock="Right" VerticalAlignment="Center" Background="Yellow">3(Right,Align=Bottom)</Button>
+        <Button DockPanel.Dock="Bottom" HorizontalAlignment="Right" Background="Lime">4(Bottom,Align=Right)</Button>
+        <Button Background="Aqua">5</Button>
     </DockPanel>
 </Window>
