@@ -23,7 +23,7 @@ namespace WpfApp27
         public PersonVM()
         {
             mPersonList = new List<Person>();
-            for(int i=0;i<1000;i++)
+            for(int i=0;i<100000001;i++)
             {
                 mPersonList.Add(new Person()
                 {

@@ -13,7 +13,7 @@
             <Style TargetType="{x:Type ListBoxItem}">
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="true">
-                        <Setter Property="FontSize" Value="50"/>
+                        <Setter Property="FontSize" Value="150"/>
                         <Setter Property="Background" Value="Black"/>
                     </Trigger>
                     <DataTrigger Binding="{Binding Id,Converter={StaticResource ResourceKey=idColorConverter}}" Value="true">
@@ -45,7 +45,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <Viewbox>
+        <Viewbox SnapsToDevicePixels="True" FlowDirection="RightToLeft" StretchDirection="Both" >
             <ListBox ItemsSource="{Binding PersonList}"
                  ItemTemplate="{StaticResource listBoxDataTemplate}" >
             </ListBox>
