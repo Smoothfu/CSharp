@@ -6,19 +6,27 @@
         xmlns:local="clr-namespace:WpfApp27"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type ListBox}">
+
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-            <StackPanel>
-                <DataGrid ItemsSource="{Binding PersonList}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="390"/>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="390"/>
-                        <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="390"/>
-                        <DataGridTextColumn Header="Job" Binding="{Binding Job}" Width="390"/>
-                        <DataGridTextColumn Header="Hobby" Binding="{Binding Hobby}" Width="390"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
-        </ScrollViewer>
+        <ListBox ItemsSource="{Binding PersonList}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <!--<ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Id}"/>
+                        <TextBlock Text="{Binding Path=Name}"/>
+                        <TextBlock Text="{Binding Path=Age}"/>
+                        <TextBlock Text="{Binding Path=Job}"/>
+                        <TextBlock Text="{Binding Path=Hobby}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>-->
+        </ListBox>
     </Grid>
 </Window>

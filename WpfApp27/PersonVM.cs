@@ -8,7 +8,7 @@ namespace WpfApp27
 {
     class PersonVM
     {
-        private List<Person> mPersonList=new List<Person>();
+        private List<Person> mPersonList;
         public List<Person> PersonList
         {
             get
@@ -22,7 +22,8 @@ namespace WpfApp27
         }
         public PersonVM()
         {
-            for(int i=0;i<100000;i++)
+            mPersonList = new List<Person>();
+            for(int i=0;i<1000;i++)
             {
                 mPersonList.Add(new Person()
                 {
