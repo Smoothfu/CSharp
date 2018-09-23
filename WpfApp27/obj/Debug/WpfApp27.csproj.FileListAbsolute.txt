@@ -13,3 +13,4 @@ D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.csproj.CoreCompileInputs.cache
 D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.exe
 D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.pdb
 D:\C\WpfApp27\WpfApp27\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\C\WpfApp27\WpfApp27\obj\Debug\WpfApp27.csprojResolveAssemblyReference.cache

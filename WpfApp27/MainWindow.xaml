@@ -22,8 +22,7 @@
                     <DataTrigger Binding="{Binding Id, Converter={StaticResource idDividedBy3Converter}}" Value="True">
                         <Setter Property="Background" Value="Red"/>
                     </DataTrigger>                    
-                </Style.Triggers>
-                 
+                </Style.Triggers>                 
             </Style>
             <DataTemplate x:Key="listBoxDataTemplate"   >
                 <Border BorderBrush="Black" BorderThickness="1">
@@ -46,9 +45,11 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding PersonList}"
-                 ItemTemplate="{StaticResource listBoxDataTemplate}"
-                 ScrollViewer.VerticalScrollBarVisibility="Visible">         
-        </ListBox>
+        <Viewbox>
+            <ListBox ItemsSource="{Binding PersonList}"
+                 ItemTemplate="{StaticResource listBoxDataTemplate}" >
+            </ListBox>
+        </Viewbox>
+       
     </Grid>
 </Window>
