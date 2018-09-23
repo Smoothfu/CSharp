@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
-        <Style TargetType="{x:Type Button}" x:Key="BtnStyle">
+        <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Red"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -22,11 +22,14 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="Yellow"/>
                 </Trigger>
-            </Style.Triggers>
-            
+            </Style.Triggers>            
         </Style>
     </Window.Resources>
-    <Grid>
-        <Button RenderTransform="1,0,0,1,10,20" Width="500" Height="150"  Style="{StaticResource ResourceKey=BtnStyle}"/>
-    </Grid>
+    <DockPanel LastChildFill="True">
+        <Button DockPanel.Dock="Top" Background="Red">1 (Top)</Button>
+        <Button DockPanel.Dock="Left" Background="Orange">2 (Left)</Button>
+        <Button DockPanel.Dock="Right" Background="Yellow">3 (Right)</Button>
+        <Button DockPanel.Dock="Bottom" Background="Silver">4 (Bottom)</Button>
+        <Button Background="Blue" >5</Button>
+    </DockPanel>
 </Window>
