@@ -1,0 +1,7 @@
+D:\C\ConsoleApp264\ConsoleApp264\bin\Debug\ConsoleApp264.exe.config
+D:\C\ConsoleApp264\ConsoleApp264\bin\Debug\ConsoleApp264.exe
+D:\C\ConsoleApp264\ConsoleApp264\bin\Debug\ConsoleApp264.pdb
+D:\C\ConsoleApp264\ConsoleApp264\obj\Debug\ConsoleApp264.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp264\ConsoleApp264\obj\Debug\ConsoleApp264.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp264\ConsoleApp264\obj\Debug\ConsoleApp264.exe
+D:\C\ConsoleApp264\ConsoleApp264\obj\Debug\ConsoleApp264.pdb
