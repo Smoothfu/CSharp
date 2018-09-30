@@ -1,0 +1,7 @@
+D:\C\ConsoleApp265\ConsoleApp265\bin\Debug\ConsoleApp265.exe.config
+D:\C\ConsoleApp265\ConsoleApp265\bin\Debug\ConsoleApp265.exe
+D:\C\ConsoleApp265\ConsoleApp265\bin\Debug\ConsoleApp265.pdb
+D:\C\ConsoleApp265\ConsoleApp265\obj\Debug\ConsoleApp265.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp265\ConsoleApp265\obj\Debug\ConsoleApp265.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp265\ConsoleApp265\obj\Debug\ConsoleApp265.exe
+D:\C\ConsoleApp265\ConsoleApp265\obj\Debug\ConsoleApp265.pdb
