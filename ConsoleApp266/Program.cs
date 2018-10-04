@@ -12,14 +12,7 @@ namespace ConsoleApp266
         static void Main(string[] args)
         {
 
-            //Init a standard array.
-            int[] intArray = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-            //Init a generic List<> of ints.
-            List<int> intList = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-            //Init a ArrayList with numerical data.
-            ArrayList al = new ArrayList { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            Person.UseGenericList();
             Console.ReadLine();
         }
 
@@ -73,6 +66,30 @@ namespace ConsoleApp266
         public override string ToString()
         {
             return string.Format("Name:{0}{1},Age:{2}\n", FirstName, LastName, Age);
+        }
+
+        public static void UseGenericList()
+        {
+            //Make a list of person objects,filled with collection/object init syntax.
+            List<Person> personList = new List<Person>()
+            {
+                new Person { FirstName="Fred1",LastName="Fu1",Age=31},
+                new Person { FirstName = "Fred2", LastName = "Fu2", Age = 32 },
+                new Person { FirstName = "Fred3", LastName = "Fu3", Age = 33 },
+                new Person { FirstName = "Fred5", LastName = "Fu5", Age = 35 },
+                new Person { FirstName = "Fred6", LastName = "Fu6", Age = 36 },
+                new Person { FirstName = "Fred7", LastName = "Fu7", Age = 37 },
+                new Person { FirstName = "Fred8", LastName = "Fu8", Age = 38 }
+            };
+
+            //Print out # of items in list.
+            Console.WriteLine("Items in list:{0}\n", personList.Count);
+
+            //Enumerate over list.
+            personList.ForEach(x =>
+            {
+                Console.WriteLine(x);
+            });
         }
     }
 
