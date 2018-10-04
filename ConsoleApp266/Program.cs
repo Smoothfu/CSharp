@@ -36,23 +36,11 @@ namespace ConsoleApp266
         public delegate T Add<T>(T param1, T param2);
         static void Main(string[] args)
         {
-            IList<int> intList = new List<int>();
-            intList.Add(10);
-            intList.Add(20);
-            intList.Add(30);
-            intList.Add(40);
-
-            List<int> intList2 = new List<int>();
-            intList2.AddRange(intList);
-
-            IList<string> stringList = new List<string>();
-            stringList.Add("One");
-            stringList.Add("Two");
-            stringList.Add("Three");
-            stringList.Add("Four");
-            stringList.Add("Five");
-            stringList.Add(null);
-            stringList.Add(null);
+            List<int> intList = new List<int>() { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+            intList.ForEach(x =>
+            {
+                Console.WriteLine(x);
+            });
             Console.ReadLine();             
         }
 
