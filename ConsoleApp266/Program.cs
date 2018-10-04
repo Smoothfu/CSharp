@@ -37,6 +37,9 @@ namespace ConsoleApp266
         static void Main(string[] args)
         {
             List<int> intList = new List<int>() { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+            intList.Insert(3, 11000);
+            intList.Remove(45);
+            intList.RemoveAt(4);
             intList.ForEach(x =>
             {
                 Console.WriteLine(x);
