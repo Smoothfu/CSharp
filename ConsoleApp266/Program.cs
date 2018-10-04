@@ -42,6 +42,9 @@ namespace ConsoleApp266
             intList.Add(30);
             intList.Add(40);
 
+            List<int> intList2 = new List<int>();
+            intList2.AddRange(intList);
+
             IList<string> stringList = new List<string>();
             stringList.Add("One");
             stringList.Add("Two");
