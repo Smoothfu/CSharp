@@ -66,4 +66,63 @@ namespace ConsoleApp266
             al.Add(3.14);
         }
     } 
+
+    public class Person
+    {
+        public int Age { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Person()
+        {
+
+        }
+
+        public Person(string firstName,string lastName,int age)
+        {
+            Age = age;
+            FirstName = firstName;
+            LastName = lastName;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Name:{0}{1},Age:{2}\n", FirstName, LastName, Age);
+        }
+    }
+
+
+    public class PersonCollection : IEnumerable
+    {
+        private ArrayList alPeople = new ArrayList();
+
+        //Cast for caller.
+        public Person GetPerson(int pos)
+        {
+            return (Person)alPeople[pos];
+        }
+
+        //Insert only person objects.
+        public void AddPerson(Person p)
+        {
+            alPeople.Add(p);
+        }
+
+        public void ClearPeople()
+        {
+            alPeople.Clear();
+        }
+
+        public int Count
+        {
+            get
+            {
+                return alPeople.Count;
+            }
+        }
+        
+        public IEnumerator GetEnumerator()
+        {
+            return alPeople.GetEnumerator();
+        }
+    }
 }
