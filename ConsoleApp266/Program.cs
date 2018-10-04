@@ -21,6 +21,13 @@ namespace ConsoleApp266
             return genericMemberVariable;
         }
 
+        public T genericMethod<U>(T genericParameter,U anotherGenericType) where U:struct
+        {
+            Console.WriteLine("Generic Parameter of type {0},value {1}\n", typeof(T).ToString(), genericParameter);
+            Console.WriteLine("Return value of type {0},value {1}\n", typeof(T).ToString(), genericMemberVariable);
+            return genericMemberVariable;
+        }
+
         public T genericProperty { get; set; }
     }
     class Program
@@ -28,10 +35,9 @@ namespace ConsoleApp266
         public delegate T Add<T>(T param1, T param2);
         static void Main(string[] args)
         {
-            Add<int> sum = AddNumber;
-            Console.WriteLine(sum(1000, 20000));
-            Add<string> concateString = Concate;
-            Console.WriteLine(concateString("Hello ", "world!"));
+
+            MyGenericClass<string> stringGenericClass = new MyGenericClass<string>("Hello World");
+            stringGenericClass.generateMethod("HHHHHHHHHHHHHHHHH");
             Console.ReadLine();
         }
 
