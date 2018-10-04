@@ -11,8 +11,15 @@ namespace ConsoleApp266
     {
         static void Main(string[] args)
         {
-            PersonCollection.InitPersonCollection();
+            int[] myInts = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
 
+            //Specify the placeholder to the generic Sort<>() method.
+            Array.Sort<int>(myInts);
+
+            foreach(int i in myInts)
+            {
+                Console.WriteLine(i);
+            }
             Console.ReadLine();
         }
 
@@ -106,7 +113,7 @@ namespace ConsoleApp266
 
        public static void InitPersonCollection()
         {
-
+            List<Person> personList = new List<Person>();
             Console.WriteLine("*****Custom Person Collection*****");
             PersonCollection personCollection = new PersonCollection();
             personCollection.AddPerson(new Person("Fred1", "Fu1", 31));
