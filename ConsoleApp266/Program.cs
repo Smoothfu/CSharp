@@ -55,5 +55,15 @@ namespace ConsoleApp266
                 Console.WriteLine(ex.Message);
             }
         }
+
+        static void ArrayListOfRandomObjects()
+        {
+            //The ArrayList can hold anything at all.
+            ArrayList al = new ArrayList();
+            al.Add(true);
+            al.Add(new OperatingSystem(PlatformID.MacOSX, new Version(10, 0)));
+            al.Add(66);
+            al.Add(3.14);
+        }
     } 
 }
