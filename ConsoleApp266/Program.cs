@@ -12,7 +12,7 @@ namespace ConsoleApp266
         static void Main(string[] args)
         {
 
-            Person.UseGenericStack();
+            Person.UseGenericQueue();
             Console.ReadLine();
         }
 
@@ -135,6 +135,39 @@ namespace ConsoleApp266
                 Console.WriteLine("\nError! {0}\n",ex.Message);
             }
                 
+        }
+
+        public static void UseGenericQueue()
+        {
+            //Make a Q with three people
+            Queue<Person> personQueue = new Queue<Person>();
+            personQueue.Enqueue(new Person { FirstName = "Fred1", LastName = "Fu1", Age = 31 });
+            personQueue.Enqueue(new Person { FirstName = "Fred2", LastName = "Fu2", Age = 32 });
+            personQueue.Enqueue(new Person { FirstName = "Fred3", LastName = "Fu3", Age = 33 });
+
+            //Peel at first person in person queue
+            Console.WriteLine("{0} is first in line!\n", personQueue.Peek().FirstName);
+
+            //Remove each person from person queue
+
+            GetPersonFirstName(personQueue.Dequeue());
+            GetPersonFirstName(personQueue.Dequeue());
+            GetPersonFirstName(personQueue.Dequeue());
+
+            //Try to de-Q againg
+            try
+            {
+                GetPersonFirstName(personQueue.Dequeue());
+            }
+            catch(InvalidOperationException ex)
+            {
+                Console.WriteLine("Error!{0}\n", ex.Message);
+            }
+        }
+
+        static void GetPersonFirstName(Person p)
+        {
+            Console.WriteLine("{0} got coffee!\n", p.FirstName);
         }
     }
 
