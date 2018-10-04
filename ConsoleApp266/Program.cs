@@ -45,8 +45,15 @@ namespace ConsoleApp266
             //Box the int into an object reference.
             object boxedInt = myInt;
 
-            //Unbox the reference back into a corresponding int
-            int unboxedInt = (int)boxedInt;
+            //Unbox in the wrong data type to trigger runtime exception.
+            try
+            {
+                long unboxedINt = (long)boxedInt;
+            }
+            catch(InvalidCastException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     } 
 }
