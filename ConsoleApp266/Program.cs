@@ -44,6 +44,9 @@ namespace ConsoleApp266
             {
                 Console.WriteLine(x);
             });
+
+            bool res = intList.TrueForAll(x => x % 2 == 0);
+            Console.WriteLine(res);
             Console.ReadLine();             
         }
 
