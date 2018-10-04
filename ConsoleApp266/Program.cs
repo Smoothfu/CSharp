@@ -12,7 +12,7 @@ namespace ConsoleApp266
         static void Main(string[] args)
         {
 
-            Person.UseGenericQueue();
+            Person.UseSortedSet();
             Console.ReadLine();
         }
 
@@ -165,10 +165,44 @@ namespace ConsoleApp266
             }
         }
 
-        static void GetPersonFirstName(Person p)
+        public static void GetPersonFirstName(Person p)
         {
             Console.WriteLine("{0} got coffee!\n", p.FirstName);
         }
+
+        public static void UseSortedSet()
+        {
+            //Make some people with different ages/
+            SortedSet<Person> personSortedSet = new SortedSet<Person>(new SortPeopleByAge())
+            {
+                new Person{FirstName="Fred1",LastName="Fu1",Age=31},
+                new Person{FirstName="Fred2",LastName="Fu2",Age=32},
+                new Person{FirstName="Fred3",LastName="Fu3",Age=33},
+                new Person{FirstName="Fred5",LastName="Fu5",Age=35},
+                new Person{FirstName="Fred6",LastName="Fu6",Age=36},
+                new Person{FirstName="Fred7",LastName="Fu7",Age=37}
+            };
+
+            //Note the items are sorted by age!
+            foreach(Person p in personSortedSet)
+            {
+                Console.WriteLine(p);
+            }
+
+
+            Console.WriteLine();
+
+            //Add a few people,with various ages.
+            personSortedSet.Add(new Person { FirstName = "Fred8", LastName = "Fu8", Age = 38 });
+            personSortedSet.Add(new Person { FirstName = "Fred9", LastName = "Fu9", Age = 39 });
+
+            //Still sorted by age!
+            foreach(Person p in personSortedSet)
+            {
+                Console.WriteLine(p);
+            }
+        }
+
     }
 
 
@@ -274,5 +308,25 @@ namespace ConsoleApp266
 
         public int CarId { get; set; }
         
+    }
+
+    public class SortPeopleByAge : IComparer<Person>
+    {
+        public int Compare(Person x, Person y)
+        {
+            if(x.Age>y.Age)
+            {
+                return 1;
+            }
+
+            if(x.Age<y.Age)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
