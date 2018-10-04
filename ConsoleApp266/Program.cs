@@ -44,6 +44,9 @@ namespace ConsoleApp266
 
             //Box the int into an object reference.
             object boxedInt = myInt;
+
+            //Unbox the reference back into a corresponding int
+            int unboxedInt = (int)boxedInt;
         }
     } 
 }
