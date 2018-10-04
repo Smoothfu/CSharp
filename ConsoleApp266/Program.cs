@@ -36,30 +36,36 @@ namespace ConsoleApp266
         public delegate T Add<T>(T param1, T param2);
         static void Main(string[] args)
         {
-            SortedList<int, string> intSortedList = new SortedList<int, string>();
-            intSortedList.Add(1, "One");
-            intSortedList.Add(2, "Two");
-            intSortedList.Add(3, "Three");
-            intSortedList.Add(4, "Four");
-            intSortedList.Add(5, "Five");
+            //Declaring an int array.
+            MyGenericArray<int> intArray = new MyGenericArray<int>(5);
 
-            SortedList<string, int> stringSortedList = new SortedList<string, int>();
-            stringSortedList.Add("One", 1);
-            stringSortedList.Add("Two", 2);
-            stringSortedList.Add("Three", 3);
-            stringSortedList.Add("Four", 4);
-
-
-            SortedList<double, int?> doubleSortedList = new SortedList<double, int?>();
-            doubleSortedList.Add(1.4, 100);
-            doubleSortedList.Add(3.5, 200);
-            doubleSortedList.Add(3.9, 500);
-            doubleSortedList.Add(3.8, null);
-            doubleSortedList.Add(3.81111111111111111, null);
-
-            foreach(double d in doubleSortedList.Keys)
+            //setting values
+            for(int i=0;i<5;i++)
             {
-                Console.WriteLine(d);
+                intArray.SetItem(i, i * i);
+            }
+
+            //Retrieving the values/
+            for(int i=0;i<5;i++)
+            {
+                Console.WriteLine(intArray.GetItem(i));
+            }
+
+            Console.WriteLine();
+
+            //Declaring a character array.
+            MyGenericArray<char> charArray = new MyGenericArray<char>(10);
+
+            //setting values/
+            for(int i=0;i<10;i++)
+            {
+                charArray.SetItem(i, (char)(i + 97));
+            }
+
+            //retrieving the values/
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine(charArray.GetItem(i));
             }
             Console.ReadLine();             
         }
@@ -77,6 +83,25 @@ namespace ConsoleApp266
         static bool IsPositiveInt(int i)
         {
             return i > 0;
+        }
+    }
+
+    public class MyGenericArray<T>
+    {
+        private T[] array;
+        public MyGenericArray(int size)
+        {
+            array = new T[size + 1];
+        }
+
+        public T GetItem(int index)
+        {
+            return array[index];
+        }
+
+        public void SetItem(int index,T value)
+        {
+            array[index] = value;
         }
     }
 }
