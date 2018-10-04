@@ -18,6 +18,8 @@ namespace ConsoleApp266
             Console.WriteLine("This array has {0} items.\n", stringArray.Length);
             Console.WriteLine();
 
+            
+
             //Display contents using enumerator.
             foreach(string str in stringArray)
             {
@@ -33,6 +35,15 @@ namespace ConsoleApp266
             }
 
             Console.ReadLine();
+        }
+
+        static void SimpleBoxUnboxOperation()
+        {
+            //Make a ValueType (int) variable.
+            int myInt = 25;
+
+            //Box the int into an object reference.
+            object boxedInt = myInt;
         }
     } 
 }
