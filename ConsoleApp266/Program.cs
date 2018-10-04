@@ -27,8 +27,9 @@ namespace ConsoleApp266
     {
         static void Main(string[] args)
         {
-            MyGenericClass<int> intGenericClass = new MyGenericClass<int>(10);
-            int val = intGenericClass.generateMethod(200);
+            MyGenericClass<string> stringGenericClass = new MyGenericClass<string>("Hello Generics");
+            stringGenericClass.genericProperty = "This is a generic property example";
+            stringGenericClass.generateMethod("Generic Paramter");
             Console.ReadLine();
 
         }
