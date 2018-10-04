@@ -11,15 +11,15 @@ namespace ConsoleApp266
     {
         static void Main(string[] args)
         {
-            int[] myInts = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
 
-            //Specify the placeholder to the generic Sort<>() method.
-            Array.Sort<int>(myInts);
+            //Init a standard array.
+            int[] intArray = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-            foreach(int i in myInts)
-            {
-                Console.WriteLine(i);
-            }
+            //Init a generic List<> of ints.
+            List<int> intList = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            //Init a ArrayList with numerical data.
+            ArrayList al = new ArrayList { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
             Console.ReadLine();
         }
 
@@ -129,5 +129,55 @@ namespace ConsoleApp266
                 Console.WriteLine(p);
             }
         }
+    }
+
+    public class Car : IComparable,IComparable<Car>
+    {
+        //IComparable implementation.
+        public int CompareTo(object obj)
+        {
+            Car tempCar = obj as Car;
+            if (tempCar != null)
+            {
+                if (this.CarId > tempCar.CarId)
+                {
+                    return 1;
+                }
+
+                if (this.CarId < tempCar.CarId)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            else
+            {
+                throw new ArgumentException("Parameter is not a Car!");
+            }
+        }
+
+        public int CompareTo(Car other)
+        {
+            if(this.CarId>other.CarId)
+            {
+                return 1;
+            }
+
+            if(this.CarId<other.CarId)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public int CarId { get; set; }
+        
     }
 }
