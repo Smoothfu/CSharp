@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,10 +36,21 @@ namespace ConsoleApp266
         public delegate T Add<T>(T param1, T param2);
         static void Main(string[] args)
         {
+            IList<int> intList = new List<int>();
+            intList.Add(10);
+            intList.Add(20);
+            intList.Add(30);
+            intList.Add(40);
 
-            MyGenericClass<string> stringGenericClass = new MyGenericClass<string>("Hello World");
-            stringGenericClass.generateMethod("HHHHHHHHHHHHHHHHH");
-            Console.ReadLine();
+            IList<string> stringList = new List<string>();
+            stringList.Add("One");
+            stringList.Add("Two");
+            stringList.Add("Three");
+            stringList.Add("Four");
+            stringList.Add("Five");
+            stringList.Add(null);
+            stringList.Add(null);
+            Console.ReadLine();             
         }
 
         public static int AddNumber(int val1,int val2)
