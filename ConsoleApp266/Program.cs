@@ -11,28 +11,7 @@ namespace ConsoleApp266
     {
         static void Main(string[] args)
         {
-            //Make an array of string data.
-            string[] stringArray = { "First", "Second", "Third" };
-
-            //Show number if items in array using length property.
-            Console.WriteLine("This array has {0} items.\n", stringArray.Length);
-            Console.WriteLine();
-
-            
-
-            //Display contents using enumerator.
-            foreach(string str in stringArray)
-            {
-                Console.WriteLine(str);
-            }
-            Console.WriteLine();
-
-            //Reverse the array and print again.
-            Array.Reverse(stringArray);
-            foreach(string str in stringArray)
-            {
-                Console.WriteLine("Array Entry:{0}\n", str);
-            }
+            PersonCollection.InitPersonCollection();
 
             Console.ReadLine();
         }
@@ -123,6 +102,25 @@ namespace ConsoleApp266
         public IEnumerator GetEnumerator()
         {
             return alPeople.GetEnumerator();
+        }
+
+       public static void InitPersonCollection()
+        {
+
+            Console.WriteLine("*****Custom Person Collection*****");
+            PersonCollection personCollection = new PersonCollection();
+            personCollection.AddPerson(new Person("Fred1", "Fu1", 31));
+            personCollection.AddPerson(new Person("Fred2", "Fu2", 32));
+            personCollection.AddPerson(new Person("Fred3", "Fu3", 33));
+            personCollection.AddPerson(new Person("Fred5", "Fu5", 35));
+            personCollection.AddPerson(new Person("Fred6", "Fu6", 36));
+            personCollection.AddPerson(new Person("Fred7", "Fu7", 37));
+            personCollection.AddPerson(new Person("Fred8", "Fu8", 38));
+
+            foreach(Person p in personCollection)
+            {
+                Console.WriteLine(p);
+            }
         }
     }
 }
