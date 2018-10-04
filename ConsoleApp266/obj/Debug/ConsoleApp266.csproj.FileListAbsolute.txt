@@ -1,0 +1,6 @@
+D:\C\ConsoleApp266\ConsoleApp266\bin\Debug\ConsoleApp266.exe.config
+D:\C\ConsoleApp266\ConsoleApp266\bin\Debug\ConsoleApp266.exe
+D:\C\ConsoleApp266\ConsoleApp266\bin\Debug\ConsoleApp266.pdb
+D:\C\ConsoleApp266\ConsoleApp266\obj\Debug\ConsoleApp266.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp266\ConsoleApp266\obj\Debug\ConsoleApp266.exe
+D:\C\ConsoleApp266\ConsoleApp266\obj\Debug\ConsoleApp266.pdb
