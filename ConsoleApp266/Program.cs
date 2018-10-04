@@ -36,17 +36,31 @@ namespace ConsoleApp266
         public delegate T Add<T>(T param1, T param2);
         static void Main(string[] args)
         {
-            List<int> intList = new List<int>() { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
-            intList.Insert(3, 11000);
-            intList.Remove(45);
-            intList.RemoveAt(4);
-            intList.ForEach(x =>
-            {
-                Console.WriteLine(x);
-            });
+            SortedList<int, string> intSortedList = new SortedList<int, string>();
+            intSortedList.Add(1, "One");
+            intSortedList.Add(2, "Two");
+            intSortedList.Add(3, "Three");
+            intSortedList.Add(4, "Four");
+            intSortedList.Add(5, "Five");
 
-            bool res = intList.TrueForAll(x => x % 2 == 0);
-            Console.WriteLine(res);
+            SortedList<string, int> stringSortedList = new SortedList<string, int>();
+            stringSortedList.Add("One", 1);
+            stringSortedList.Add("Two", 2);
+            stringSortedList.Add("Three", 3);
+            stringSortedList.Add("Four", 4);
+
+
+            SortedList<double, int?> doubleSortedList = new SortedList<double, int?>();
+            doubleSortedList.Add(1.4, 100);
+            doubleSortedList.Add(3.5, 200);
+            doubleSortedList.Add(3.9, 500);
+            doubleSortedList.Add(3.8, null);
+            doubleSortedList.Add(3.81111111111111111, null);
+
+            foreach(double d in doubleSortedList.Keys)
+            {
+                Console.WriteLine(d);
+            }
             Console.ReadLine();             
         }
 
@@ -58,6 +72,11 @@ namespace ConsoleApp266
         public static string Concate(string firstStr,string secondStr)
         {
             return firstStr + secondStr;
+        }
+
+        static bool IsPositiveInt(int i)
+        {
+            return i > 0;
         }
     }
 }
