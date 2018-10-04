@@ -12,7 +12,7 @@ namespace ConsoleApp266
         static void Main(string[] args)
         {
 
-            Person.UseGenericList();
+            Person.UseGenericStack();
             Console.ReadLine();
         }
 
@@ -90,6 +90,51 @@ namespace ConsoleApp266
             {
                 Console.WriteLine(x);
             });
+
+            //Insert a new person.
+            Console.WriteLine("\n->Inserting new person.");
+            personList.Insert(2, new Person { FirstName = "Fred9", LastName = "Fu9", Age = 39 });
+
+            Console.WriteLine("Items in list:{0}\n", personList.Count);
+
+            //Copy data into a new array.
+            Person[] arrayOfPerson = personList.ToArray();
+            for (int i = 0; i < arrayOfPerson.Length; i++)
+            {
+                Console.WriteLine("First Name:{0}", arrayOfPerson[i].FirstName);
+            }
+        }
+
+        public static void UseGenericStack()
+        {
+            Stack<Person> personStack = new Stack<Person>();
+            personStack.Push(new Person { FirstName = "Fred1", LastName = "Fu1", Age = 31 });
+            personStack.Push(new Person { FirstName = "Fred2", LastName = "Fu2", Age = 32 });
+            personStack.Push(new Person { FirstName = "Fred3", LastName = "Fu3", Age = 33 });
+            personStack.Push(new Person { FirstName = "Fred5", LastName = "Fu5", Age = 35 });
+            personStack.Push(new Person { FirstName = "Fred6", LastName = "Fu6", Age = 36 });
+            personStack.Push(new Person { FirstName = "Fred7", LastName = "Fu7", Age = 37 });
+            personStack.Push(new Person { FirstName = "Fred8", LastName = "Fu8", Age = 38 });
+
+            //Now look at the top item,pop it,and look again.
+            Console.WriteLine("First person is:{0}\n", personStack.Peek());
+            Console.WriteLine("Popped off{0}\n", personStack.Pop());
+            Console.WriteLine("\nFirst person is:{0}\n", personStack.Peek());
+            Console.WriteLine("Popped off {0}\n", personStack.Pop());
+            Console.WriteLine("\nFirst person item is:{0}\n", personStack.Peek());
+            Console.WriteLine("Popped off {0}\n", personStack.Pop());
+
+            try
+            {
+                Console.WriteLine("\nFirst person is:{0}\n", personStack.Peek());
+                Console.WriteLine("Popped off {0}\n", personStack.Pop());
+            }
+
+            catch(InvalidOperationException ex)
+            {
+                Console.WriteLine("\nError! {0}\n",ex.Message);
+            }
+                
         }
     }
 
