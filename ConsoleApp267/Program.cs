@@ -14,7 +14,15 @@ namespace ConsoleApp267
     {
         static void Main(string[] args)
         {
-            DisplayBaseClass<int>(); 
+            //Point using ints.
+            Point<int> intPoint = new Point<int>(10, 10);
+
+            Console.WriteLine(intPoint);
+            Console.WriteLine("\n\n\n\n\n");
+
+            //Point using double.
+            Point<double> doublePoint = new Point<double>(54.5, 333.333);
+            Console.WriteLine(doublePoint);
             Console.ReadLine();
         }
 
@@ -125,7 +133,7 @@ namespace ConsoleApp267
             };
 
             //Note the items are sorted by age!
-            foreach(Person p in setOfPersons)
+            foreach (Person p in setOfPersons)
             {
                 Console.WriteLine(p);
             }
@@ -137,7 +145,7 @@ namespace ConsoleApp267
             setOfPersons.Add(new Person { FirstName = "Fred1", LastName = "Fu1", Age = 81 });
 
             //Still sorted by age!
-            foreach(Person p in setOfPersons)
+            foreach (Person p in setOfPersons)
             {
                 Console.WriteLine(p);
             }
@@ -173,7 +181,7 @@ namespace ConsoleApp267
 
             Console.WriteLine("\n\n\nThis is the new dictionary!");
 
-            foreach(string key in dic2.Keys)
+            foreach (string key in dic2.Keys)
             {
                 Console.WriteLine(key);
             }
@@ -197,6 +205,59 @@ namespace ConsoleApp267
             {
                 return 0;
             }
+        }
+    }
+
+    //A generic Point structure.
+    public struct Point<T>
+    {
+        //Generic state date.
+        private T xPos;
+        private T yPos;
+
+        //Generic constructor.
+        public Point(T xVal, T yVal)
+        {
+            xPos = xVal;
+            yPos = yVal;
+        }
+
+        //Generic properties.
+        public T X
+        {
+            get
+            {
+                return xPos;
+            }
+            set
+            {
+                xPos = value;
+            }
+        }
+
+        public T Y
+        {
+            get
+            {
+                return yPos;
+            }
+            set
+            {
+                yPos = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("[{0},{1}]", xPos, yPos);
+        }
+
+        //Reset fields to the default value of the type parameter.
+        public void ResetPoint()
+        {
+            xPos = default(T);
+            yPos = default(T);
+            
         }
     }
 }
