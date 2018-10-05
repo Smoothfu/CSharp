@@ -7,4 +7,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:complexType name="ArrayOfDataDesc">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataDesc" nillable="true" type="tns:DataDesc" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataDesc" nillable="true" type="tns:ArrayOfDataDesc" />
+  <xs:complexType name="DataDesc">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="DataDesc" nillable="true" type="tns:DataDesc" />
 </xs:schema>

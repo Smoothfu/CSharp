@@ -9,7 +9,38 @@
 //------------------------------------------------------------------------------
 
 namespace ConsoleApp1.AddService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataDesc", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary4")]
+    [System.SerializableAttribute()]
+    public partial class DataDesc : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AddService.IService1")]
@@ -32,6 +63,12 @@ namespace ConsoleApp1.AddService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMethod", ReplyAction="http://tempuri.org/IService1/AddMethodResponse")]
         System.Threading.Tasks.Task<int> AddMethodAsync(int x, int y);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDBDescs", ReplyAction="http://tempuri.org/IService1/GetDBDescsResponse")]
+        ConsoleApp1.AddService.DataDesc[] GetDBDescs();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDBDescs", ReplyAction="http://tempuri.org/IService1/GetDBDescsResponse")]
+        System.Threading.Tasks.Task<ConsoleApp1.AddService.DataDesc[]> GetDBDescsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +120,14 @@ namespace ConsoleApp1.AddService {
         
         public System.Threading.Tasks.Task<int> AddMethodAsync(int x, int y) {
             return base.Channel.AddMethodAsync(x, y);
+        }
+        
+        public ConsoleApp1.AddService.DataDesc[] GetDBDescs() {
+            return base.Channel.GetDBDescs();
+        }
+        
+        public System.Threading.Tasks.Task<ConsoleApp1.AddService.DataDesc[]> GetDBDescsAsync() {
+            return base.Channel.GetDBDescsAsync();
         }
     }
 }

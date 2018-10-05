@@ -22,6 +22,10 @@ namespace WcfServiceLibrary4
 
         [OperationContract]
         int AddMethod(int x, int y);
+
+        [OperationContract]
+
+        List<DataDesc> GetDBDescs();
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
@@ -45,5 +49,15 @@ namespace WcfServiceLibrary4
             get { return stringValue; }
             set { stringValue = value; }
         }
+    }
+
+    [DataContract]
+
+    public class DataDesc
+    {
+        public string TableCatalog { get; set; }
+        public string TableSchema { get; set; }
+        public string TableName { get; set; }
+        public string TableType { get; set; }
     }
 }

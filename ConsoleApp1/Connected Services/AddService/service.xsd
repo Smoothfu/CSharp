@@ -44,4 +44,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetDBDescs">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDBDescsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceLibrary4" minOccurs="0" name="GetDBDescsResult" nillable="true" type="q3:ArrayOfDataDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
