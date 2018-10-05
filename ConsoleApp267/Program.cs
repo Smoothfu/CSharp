@@ -14,30 +14,8 @@ namespace ConsoleApp267
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("*****Fun with Custom Generic Methods*****\n");
-
-            //Swap 2 ints
-            int a = 10, b = 90;
-            Console.WriteLine("Before swap:{0},{1}\n", a, b);
-            Swap<int>(ref a, ref b);
-            Console.WriteLine("After swap:{0},{1}\n", a, b);
-            Console.WriteLine();
-
-            //Swap 2 strings.
-            string str1 = "Hello", str2 = " World!";
-            Console.WriteLine("Before swap:{0},{1}\n", str1, str2);
-            Swap<string>(ref str1, ref str2);
-            Console.WriteLine("After swap:{0},{1}\n", str1, str2);
-
-
-            //Compiler will infer System.Boolean.
-            bool b1 = true, b2 = false;
-            Console.WriteLine("Before swap:{0},{1}\n", b1, b2);
-            Swap<bool>(ref b1, ref b2);
-            Console.WriteLine("After swap:{0},{1}\n", b1, b2);
+            DisplayBaseClass<int>(); 
             Console.ReadLine();
-
-
         }
 
         private static void PersonCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -109,6 +87,12 @@ namespace ConsoleApp267
             T temp = a;
             a = b;
             b = temp;
+        }
+
+        static void DisplayBaseClass<T>()
+        {
+            //BaseType is a method used in reflection,which will be examined in Chapter 15
+            Console.WriteLine("Base class of {0} is {1}\n", typeof(T), typeof(T).BaseType);
         }
     }
 
