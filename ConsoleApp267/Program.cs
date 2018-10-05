@@ -90,17 +90,7 @@ namespace ConsoleApp267
             Person temp = a;
             a = b;
             b = temp;
-        }
-
-        //This method will swap any two items as specified by the type parameter <T>.
-        //static void Swap<T>(ref T a, ref T b)
-        //{
-        //    Console.WriteLine("You sent the Swap() method a {0}\n", typeof(T));
-
-        //    T temp = a;
-        //    a = b;
-        //    b = temp;
-        //}
+        }         
 
         static void DisplayBaseClass<T>()
         {
@@ -284,5 +274,28 @@ namespace ConsoleApp267
         where T:struct,IComparable<T>
     {
 
+    }
+
+    public class BasicMath<T> where T:operator +,operator -,operator *,operator /
+    {
+        public T Add(T arg1,T arg2)
+        {
+            return arg1 + arg2;
+        }
+
+        public T Subtract(T arg1,T arg2)
+        {
+            return arg1 - arg2;
+        }
+
+        public T Multiply(T arg1,T arg2)
+        {
+            return arg1 * arg2;
+        }
+
+        public T Divide(T arg1,T arg2)
+        {
+            return arg1 / arg2;
+        }
     }
 }
