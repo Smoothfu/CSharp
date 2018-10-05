@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WcfServiceLibrary4;
+ 
 
 namespace ConsoleApp1
 {
@@ -11,9 +12,13 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            WcfServiceLibrary4.Service1 client = new Service1();
-            int result = client.AddMethod(10, 100000000);
-            Console.WriteLine(result);
+            Task task = Task.Run(() =>
+            {
+                AddService.Service1Client client = new AddService.Service1Client();
+                int result = client.AddMethod(100, 1000000);
+                Console.WriteLine(result);
+            });
+           
             Console.ReadLine();
         }
     }
