@@ -265,4 +265,11 @@ namespace ConsoleApp267
             
         }
     }
+
+
+    //MyGenericClass derives from object,while contained items must be a class implementing IDrawable and must support a default ctor.
+    public class MyGenericClass<T> where T:class,INotifyCollectionChanged,new()
+    {
+
+    }
 }
