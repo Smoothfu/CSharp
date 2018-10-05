@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace ConsoleApp267
 {
@@ -33,7 +34,7 @@ namespace ConsoleApp267
 
         private static void PersonCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         static void GetAllFiles()
