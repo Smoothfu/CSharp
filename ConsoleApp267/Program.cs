@@ -34,7 +34,31 @@ namespace ConsoleApp267
 
         private static void PersonCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            
+            //What was the action that caused the event?
+            Console.WriteLine("Action for this event:{0}\n", e.Action);
+
+
+            //They removed something.
+
+            if(e.Action==System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
+            {
+                Console.WriteLine("Here are the OLD items:\n");
+                foreach(Person p in e.OldItems)
+                {
+                    Console.WriteLine(p);
+                }
+            }
+
+            //They added something
+            if(e.Action==System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            {
+                //Now show the NEW items that were inserted.
+                Console.WriteLine("Here are the NEW items:\n");
+                foreach(Person p in e.NewItems)
+                {
+                    Console.WriteLine(p);
+                }                
+            }
         }
 
         static void GetAllFiles()
