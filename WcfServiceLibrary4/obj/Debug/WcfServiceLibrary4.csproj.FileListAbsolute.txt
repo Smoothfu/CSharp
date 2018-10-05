@@ -1,0 +1,6 @@
+D:\C\WcfServiceLibrary4\WcfServiceLibrary4\bin\Debug\WcfServiceLibrary4.dll.config
+D:\C\WcfServiceLibrary4\WcfServiceLibrary4\bin\Debug\WcfServiceLibrary4.dll
+D:\C\WcfServiceLibrary4\WcfServiceLibrary4\bin\Debug\WcfServiceLibrary4.pdb
+D:\C\WcfServiceLibrary4\WcfServiceLibrary4\obj\Debug\WcfServiceLibrary4.csproj.CoreCompileInputs.cache
+D:\C\WcfServiceLibrary4\WcfServiceLibrary4\obj\Debug\WcfServiceLibrary4.dll
+D:\C\WcfServiceLibrary4\WcfServiceLibrary4\obj\Debug\WcfServiceLibrary4.pdb
