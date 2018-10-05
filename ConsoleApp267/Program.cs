@@ -28,7 +28,16 @@ namespace ConsoleApp267
             Console.WriteLine("Before swap:{0},{1}\n", str1, str2);
             Swap<string>(ref str1, ref str2);
             Console.WriteLine("After swap:{0},{1}\n", str1, str2);
+
+
+            //Compiler will infer System.Boolean.
+            bool b1 = true, b2 = false;
+            Console.WriteLine("Before swap:{0},{1}\n", b1, b2);
+            Swap<bool>(ref b1, ref b2);
+            Console.WriteLine("After swap:{0},{1}\n", b1, b2);
             Console.ReadLine();
+
+
         }
 
         private static void PersonCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
