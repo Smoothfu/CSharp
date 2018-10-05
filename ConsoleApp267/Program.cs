@@ -10,7 +10,7 @@ namespace ConsoleApp267
     {
         static void Main(string[] args)
         {
-            Person.UseSortedSet();
+            Person.UseDictionary();
             Console.ReadLine();
         }
     }
@@ -60,6 +60,31 @@ namespace ConsoleApp267
             {
                 Console.WriteLine(p);
             }
+        }
+
+        public static void UseDictionary()
+        {
+            //Populate using Add() method.
+            Dictionary<string, Person> personDic = new Dictionary<string, Person>();
+            personDic.Add("Fred1", new Person { FirstName = "Fred1", LastName = "Fu1", Age = 31 });
+            personDic.Add("Fred2", new Person { FirstName = "Fred2", LastName = "Fu2", Age = 32 });
+            personDic.Add("Fred3", new Person { FirstName = "Fred3", LastName = "Fu3", Age = 33 });
+            personDic.Add("Fred5", new Person { FirstName = "Fred4", LastName = "Fu5", Age = 35 });
+            personDic.Add("Fred6", new Person { FirstName = "Fred6", LastName = "Fu6", Age = 36 });
+
+            foreach(var  p in personDic)
+            {
+                Console.WriteLine(p.Value);
+            }
+
+            Console.WriteLine("\n\n\n\n\n");
+
+            //Get Fred1
+            Person p2 = personDic["Fred1"];
+            Console.WriteLine(p2);
+
+            //Popupate with initialization syntax.
+
         }
     }
 
