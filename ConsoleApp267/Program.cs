@@ -14,15 +14,20 @@ namespace ConsoleApp267
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("*****Fun wih Generic Structures*****\n");
+
             //Point using ints.
             Point<int> intPoint = new Point<int>(10, 10);
-
-            Console.WriteLine(intPoint);
-            Console.WriteLine("\n\n\n\n\n");
+            Console.WriteLine("intPoint.ToString()={0}\n", intPoint.ToString());
+            intPoint.ResetPoint();
+            Console.WriteLine("intPoint.ToString()={0}\n", intPoint.ToString());
 
             //Point using double.
-            Point<double> doublePoint = new Point<double>(54.5, 333.333);
-            Console.WriteLine(doublePoint);
+            Point<double> doublePoint = new Point<double>(5.555555555555, 33333333333333.33);
+            Console.WriteLine("doublePoint.ToString()={0}\n", doublePoint.ToString());
+            doublePoint.ResetPoint();
+            Console.WriteLine("doublePoint.ToString()={0}\n", doublePoint.ToString());
+
             Console.ReadLine();
         }
 
