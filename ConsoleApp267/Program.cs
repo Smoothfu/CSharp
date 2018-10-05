@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace ConsoleApp267
 {
@@ -12,19 +13,43 @@ namespace ConsoleApp267
     {
         static void Main(string[] args)
         {
+            //Make a collection to observe and add a few person objects.
+            ObservableCollection<Person> personCollection = new ObservableCollection<Person>()
+            {
+                new Person{FirstName="Fred1",LastName="Fu1",Age=31},
+                new Person{FirstName="Fred2",LastName="Fu2",Age=32},
+                new Person{FirstName="Fred3",LastName="Fu3",Age=33}
+            };
+
+            foreach(Person p in personCollection)
+            {
+                Console.WriteLine(p);
+            }
+            personCollection.CollectionChanged += PersonCollection_CollectionChanged;
+            //Wire up the CollectionChanged event.
+            
+            Console.ReadLine();
+        }
+
+        private static void PersonCollection_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        static void GetAllFiles()
+        {
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             DirectoryInfo dir = new DirectoryInfo(path);
             DirectoryInfo rootDir = dir.Parent.Parent.Parent;
-            FileInfo[] allFiles= rootDir.GetFiles("*.exe", SearchOption.AllDirectories);
+            FileInfo[] allFiles = rootDir.GetFiles("*.exe", SearchOption.AllDirectories);
             if (allFiles != null && allFiles.Any())
             {
                 Console.WriteLine("There are totally {0} files in the {1}!\n\n\n\n\n", allFiles.Count(), rootDir.FullName);
-               foreach(FileInfo file in allFiles)
+                foreach (FileInfo file in allFiles)
                 {
                     Console.WriteLine(file.FullName);
                 }
             }
-            Console.ReadLine();
         }
     }
 
