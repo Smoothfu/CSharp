@@ -272,4 +272,11 @@ namespace ConsoleApp267
     {
 
     }
+
+    //<K> must extend ParentClass and have a default ctor, while <T> must be a struct and implement the generic IComparable interface.
+    public class MyGenericClassKT<K,T> where K:ParentClass,new()
+        where T:struct,IComparable<T>
+    {
+
+    }
 }
