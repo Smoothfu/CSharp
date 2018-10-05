@@ -72,7 +72,7 @@ namespace ConsoleApp267
             personDic.Add("Fred5", new Person { FirstName = "Fred4", LastName = "Fu5", Age = 35 });
             personDic.Add("Fred6", new Person { FirstName = "Fred6", LastName = "Fu6", Age = 36 });
 
-            foreach(var  p in personDic)
+            foreach (var p in personDic)
             {
                 Console.WriteLine(p.Value);
             }
@@ -83,8 +83,19 @@ namespace ConsoleApp267
             Person p2 = personDic["Fred1"];
             Console.WriteLine(p2);
 
-            //Popupate with initialization syntax.
+            Dictionary<string, Person> dic2 = new Dictionary<string, Person>()
+            {
+                ["Fred1"] = new Person { FirstName = "Fred1", LastName = "Fu1", Age = 31 },
+                ["Fred2"] = new Person { FirstName = "Fred2", LastName = "Fu2", Age = 32 },
+                ["Fred3"] = new Person { FirstName = "Fred3", LastName = "Fu2", Age = 33 }
+            };
 
+            Console.WriteLine("\n\n\nThis is the new dictionary!");
+
+            foreach(string key in dic2.Keys)
+            {
+                Console.WriteLine(key);
+            }
         }
     }
 
