@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
+using System.IO;
 
 namespace ConsoleApp267
 {
@@ -10,7 +12,18 @@ namespace ConsoleApp267
     {
         static void Main(string[] args)
         {
-            Person.UseDictionary();
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            DirectoryInfo dir = new DirectoryInfo(path);
+            DirectoryInfo rootDir = dir.Parent.Parent.Parent;
+            FileInfo[] allFiles= rootDir.GetFiles("*.exe", SearchOption.AllDirectories);
+            if (allFiles != null && allFiles.Any())
+            {
+                Console.WriteLine("There are totally {0} files in the {1}!\n\n\n\n\n", allFiles.Count(), rootDir.FullName);
+               foreach(FileInfo file in allFiles)
+                {
+                    Console.WriteLine(file.FullName);
+                }
+            }
             Console.ReadLine();
         }
     }
