@@ -93,19 +93,25 @@ namespace ConsoleApp267
         }
 
         //This method will swap any two items as specified by the type parameter <T>.
-        static void Swap<T>(ref T a, ref T b)
-        {
-            Console.WriteLine("You sent the Swap() method a {0}\n", typeof(T));
+        //static void Swap<T>(ref T a, ref T b)
+        //{
+        //    Console.WriteLine("You sent the Swap() method a {0}\n", typeof(T));
 
-            T temp = a;
-            a = b;
-            b = temp;
-        }
+        //    T temp = a;
+        //    a = b;
+        //    b = temp;
+        //}
 
         static void DisplayBaseClass<T>()
         {
             //BaseType is a method used in reflection,which will be examined in Chapter 15
             Console.WriteLine("Base class of {0} is {1}\n", typeof(T), typeof(T).BaseType);
+        }
+
+        //This method will swap any structure,but not classes.
+        static void Swap<T>(ref T a,ref T b) where T:struct
+        {
+
         }
     }
 
