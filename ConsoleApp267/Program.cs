@@ -14,21 +14,20 @@ namespace ConsoleApp267
     {
         static void Main(string[] args)
         {
-            //Make a collection to observe and add a few person objects.
-            ObservableCollection<Person> personCollection = new ObservableCollection<Person>()
-            {
-                new Person{FirstName="Fred1",LastName="Fu1",Age=31},
-                new Person{FirstName="Fred2",LastName="Fu2",Age=32},
-                new Person{FirstName="Fred3",LastName="Fu3",Age=33}
-            };
+            Console.WriteLine("*****Fun with Custom Generic Methods*****\n");
 
-            foreach(Person p in personCollection)
-            {
-                Console.WriteLine(p);
-            }
-            personCollection.CollectionChanged += PersonCollection_CollectionChanged;
-            //Wire up the CollectionChanged event.
-            
+            //Swap 2 ints
+            int a = 10, b = 90;
+            Console.WriteLine("Before swap:{0},{1}\n", a, b);
+            Swap<int>(ref a, ref b);
+            Console.WriteLine("After swap:{0},{1}\n", a, b);
+            Console.WriteLine();
+
+            //Swap 2 strings.
+            string str1 = "Hello", str2 = " World!";
+            Console.WriteLine("Before swap:{0},{1}\n", str1, str2);
+            Swap<string>(ref str1, ref str2);
+            Console.WriteLine("After swap:{0},{1}\n", str1, str2);
             Console.ReadLine();
         }
 
@@ -40,24 +39,24 @@ namespace ConsoleApp267
 
             //They removed something.
 
-            if(e.Action==System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
                 Console.WriteLine("Here are the OLD items:\n");
-                foreach(Person p in e.OldItems)
+                foreach (Person p in e.OldItems)
                 {
                     Console.WriteLine(p);
                 }
             }
 
             //They added something
-            if(e.Action==System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
             {
                 //Now show the NEW items that were inserted.
                 Console.WriteLine("Here are the NEW items:\n");
-                foreach(Person p in e.NewItems)
+                foreach (Person p in e.NewItems)
                 {
                     Console.WriteLine(p);
-                }                
+                }
             }
         }
 
@@ -75,6 +74,32 @@ namespace ConsoleApp267
                     Console.WriteLine(file.FullName);
                 }
             }
+        }
+
+        //Swap two integers
+        static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        //Swap two person objects.
+        static void Swap(ref Person a, ref Person b)
+        {
+            Person temp = a;
+            a = b;
+            b = temp;
+        }
+
+        //This method will swap any two items as specified by the type parameter <T>.
+        static void Swap<T>(ref T a, ref T b)
+        {
+            Console.WriteLine("You sent the Swap() method a {0}\n", typeof(T));
+
+            T temp = a;
+            a = b;
+            b = temp;
         }
     }
 
