@@ -1,0 +1,7 @@
+D:\C\WcfService10\WcfService10\bin\WcfService10.dll.config
+D:\C\WcfService10\WcfService10\bin\WcfService10.dll
+D:\C\WcfService10\WcfService10\bin\WcfService10.pdb
+D:\C\WcfService10\WcfService10\obj\Debug\WcfService10.csprojResolveAssemblyReference.cache
+D:\C\WcfService10\WcfService10\obj\Debug\WcfService10.csproj.CoreCompileInputs.cache
+D:\C\WcfService10\WcfService10\obj\Debug\WcfService10.dll
+D:\C\WcfService10\WcfService10\obj\Debug\WcfService10.pdb
