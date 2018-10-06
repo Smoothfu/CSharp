@@ -1,0 +1,10 @@
+D:\C\WcfServiceLibrary11\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+D:\C\WcfServiceLibrary11\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+D:\C\WcfServiceLibrary11\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+D:\C\WcfServiceLibrary11\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
+D:\C\WcfServiceLibrary11\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+D:\C\WcfServiceLibrary11\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+D:\C\WcfServiceLibrary11\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+D:\C\WcfServiceLibrary11\ConsoleApp1\bin\Debug\WcfServiceLibrary11.dll
+D:\C\WcfServiceLibrary11\ConsoleApp1\bin\Debug\WcfServiceLibrary11.pdb
+D:\C\WcfServiceLibrary11\ConsoleApp1\bin\Debug\WcfServiceLibrary11.dll.config
