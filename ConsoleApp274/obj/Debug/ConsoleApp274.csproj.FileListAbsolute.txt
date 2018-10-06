@@ -1,0 +1,10 @@
+D:\C\ConsoleApp274\ConsoleApp274\bin\Debug\ConsoleApp274.exe.config
+D:\C\ConsoleApp274\ConsoleApp274\bin\Debug\ConsoleApp274.exe
+D:\C\ConsoleApp274\ConsoleApp274\bin\Debug\ConsoleApp274.pdb
+D:\C\ConsoleApp274\ConsoleApp274\bin\Debug\WcfServiceLibrary9.dll
+D:\C\ConsoleApp274\ConsoleApp274\bin\Debug\WcfServiceLibrary9.pdb
+D:\C\ConsoleApp274\ConsoleApp274\bin\Debug\WcfServiceLibrary9.dll.config
+D:\C\ConsoleApp274\ConsoleApp274\obj\Debug\ConsoleApp274.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp274\ConsoleApp274\obj\Debug\ConsoleApp274.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp274\ConsoleApp274\obj\Debug\ConsoleApp274.exe
+D:\C\ConsoleApp274\ConsoleApp274\obj\Debug\ConsoleApp274.pdb
