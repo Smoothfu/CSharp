@@ -31,6 +31,7 @@ namespace ConsoleApp1
             host.Open();
             Console.WriteLine("Service is host at: " + DateTime.Now.ToString());
             Console.WriteLine("Host is running... Press key to stop!");
+            host.Close();
             Console.ReadLine();
         }
     }
