@@ -31,8 +31,7 @@ namespace ConsoleApp275
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-           
+            }          
                
             Console.ReadLine();                
         }
