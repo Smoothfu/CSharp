@@ -1,0 +1,10 @@
+D:\C\ConsoleApp275\ConsoleApp275\bin\Debug\ConsoleApp275.exe.config
+D:\C\ConsoleApp275\ConsoleApp275\bin\Debug\ConsoleApp275.exe
+D:\C\ConsoleApp275\ConsoleApp275\bin\Debug\ConsoleApp275.pdb
+D:\C\ConsoleApp275\ConsoleApp275\bin\Debug\WcfServiceLibrary12.dll
+D:\C\ConsoleApp275\ConsoleApp275\bin\Debug\WcfServiceLibrary12.pdb
+D:\C\ConsoleApp275\ConsoleApp275\bin\Debug\WcfServiceLibrary12.dll.config
+D:\C\ConsoleApp275\ConsoleApp275\obj\Debug\ConsoleApp275.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp275\ConsoleApp275\obj\Debug\ConsoleApp275.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp275\ConsoleApp275\obj\Debug\ConsoleApp275.exe
+D:\C\ConsoleApp275\ConsoleApp275\obj\Debug\ConsoleApp275.pdb
