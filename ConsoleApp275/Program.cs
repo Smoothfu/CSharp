@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WcfServiceLibrary12;
-using ConsoleApp275.MathServiceReference;
-
+using System.Configuration;
 
 namespace ConsoleApp275
 {
@@ -15,9 +14,10 @@ namespace ConsoleApp275
         {
             try
             {
-                using (MathServiceClient mathClient = new MathServiceClient())
+                using (MathService mathService = new MathService())
                 {
-                    List<DBTables> resultList = mathClient.GetDBColumnString().ToList();
+                    string connString = ConfigurationManager.AppSettings["conString"].ToString();
+                    List<DBTables> resultList = mathService.GetDBColumnString(connString).ToList();
                     if (resultList != null && resultList.Any())
                     {
                         resultList.ForEach(x =>
@@ -26,6 +26,19 @@ namespace ConsoleApp275
                         });
                     }
                 }
+
+                   
+                //using (MathServiceClient mathClient = new MathServiceClient())
+                //{
+                //    List<DBTables> resultList = mathClient.GetDBColumnString().ToList();
+                //    if (resultList != null && resultList.Any())
+                //    {
+                //        resultList.ForEach(x =>
+                //        {
+                //            Console.WriteLine("STABLECATALOG:{0,-20} STABLESCHEMA:{1,-20} STABLENAME:{2,-50} STABLETYPE:{3,-30}\n", x.STABLECATALOG, x.STABLESCHEMA, x.STABLENAME, x.STABLETYPE);
+                //        });
+                //    }
+                //}
             }
 
             catch(Exception ex)
