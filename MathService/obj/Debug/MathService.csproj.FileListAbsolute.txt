@@ -1,0 +1,7 @@
+E:\C\MathService\MathService\bin\Debug\MathService.dll.config
+E:\C\MathService\MathService\bin\Debug\MathService.dll
+E:\C\MathService\MathService\bin\Debug\MathService.pdb
+E:\C\MathService\MathService\obj\Debug\MathService.csprojAssemblyReference.cache
+E:\C\MathService\MathService\obj\Debug\MathService.csproj.CoreCompileInputs.cache
+E:\C\MathService\MathService\obj\Debug\MathService.dll
+E:\C\MathService\MathService\obj\Debug\MathService.pdb
