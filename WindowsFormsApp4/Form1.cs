@@ -67,7 +67,7 @@ namespace WindowsFormsApp4
 
                 //Gray Image
                 gray_Image[0, 0] = new Gray(200);
-                panAndZoomPictureBox2.Image = My_Image.ToBitmap(); 
+                panAndZoomPictureBox2.Image = gray_Image.ToBitmap(); 
             }
         }
 
