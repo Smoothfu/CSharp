@@ -20,7 +20,8 @@ namespace WindowsFormsApp4
     {
         public Form1()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            InitPanAndZoomPictureBoxes();
         }
 
         private void InitWin()
@@ -52,6 +53,18 @@ namespace WindowsFormsApp4
             
         }
 
+        private void InitPanAndZoomPictureBoxes()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Image<Bgr, Byte> My_Image = new Image<Bgr, byte>(ofd.FileName);
+                panAndZoomPictureBox1.Image = My_Image.ToBitmap();
+                Image<Gray, byte> gray_Image = My_Image.Convert<Gray, byte>();
+                panAndZoomPictureBox2.Image = gray_Image.ToBitmap();
+            }
+        }
+
         private void LoadBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -59,6 +72,8 @@ namespace WindowsFormsApp4
             {
                 Image<Bgr, Byte> My_Image = new Image<Bgr, byte>(ofd.FileName);
                 panAndZoomPictureBox1.Image = My_Image.ToBitmap();
+                Image<Gray, byte> gray_Image = My_Image.Convert<Gray, byte>();
+                panAndZoomPictureBox2.Image = gray_Image.ToBitmap();
             }
         }
     }
