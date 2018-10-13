@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emgu.CV;
+using Emgu.CV.Util;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using Emgu.CV.UI;
+using Emgu.Util;
 
 namespace WindowsFormsApp4
 {
@@ -18,8 +20,7 @@ namespace WindowsFormsApp4
     {
         public Form1()
         {
-            InitializeComponent();
-            InitWin();
+            InitializeComponent(); 
         }
 
         private void InitWin()
@@ -50,6 +51,16 @@ namespace WindowsFormsApp4
                 ImageViewer.Show(img, "Emgu Test Window");
             }
             
+        }
+
+        private void LoadBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if(ofd.ShowDialog()==DialogResult.OK)
+            {
+                Image<Bgr, Byte> My_Image = new Image<Bgr, byte>(ofd.FileName);
+                panAndZoomPictureBox1.Image = My_Image.ToBitmap();
+            }
         }
     }
 }
