@@ -69,10 +69,16 @@ namespace WindowsFormsApp4
                 //Write to the Blue Spectrum.
                 My_Image.Data[0, 0, 0] = R.B;
                 panAndZoomPictureBox1.Image = My_Image.ToBitmap();
+                //Colour Image.
+                Bgr my_Bgr = My_Image[0, 0];
+                Color my_Color = Color.FromArgb(My_Image.Data[0, 0, 0], My_Image.Data[0, 0, 1], My_Image.Data[0, 0, 2]);
+
                 Image<Gray, byte> gray_Image = My_Image.Convert<Gray, byte>();
 
                 //Gray Image
                 gray_Image[0, 0] = new Gray(200);
+                Gray my_Gray = gray_Image[0, 0];
+                int my_Intensity = gray_Image.Data[0, 0, 0];
                 panAndZoomPictureBox2.Image = gray_Image.ToBitmap(); 
             }
         }
