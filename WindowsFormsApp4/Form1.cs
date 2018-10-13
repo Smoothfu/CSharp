@@ -13,6 +13,7 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using Emgu.CV.UI;
 using Emgu.Util;
+using System.Diagnostics;
 
 namespace WindowsFormsApp4
 {
@@ -129,6 +130,13 @@ namespace WindowsFormsApp4
 
                 ImageViewer imgViewer = new ImageViewer(uImg, "Pyrdown PyrUp");
                 imgViewer.ShowDialog();
+
+                #region circle detection
+                Stopwatch watch = Stopwatch.StartNew();
+                double cannyThreshold = 180.0;
+                double circleAccumulatorThreshold = 120;
+
+                #endregion
             }
         }
     }
