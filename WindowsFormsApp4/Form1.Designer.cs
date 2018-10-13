@@ -28,21 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panAndZoomPictureBox1 = new Emgu.CV.UI.PanAndZoomPictureBox();
             this.panAndZoomPictureBox2 = new Emgu.CV.UI.PanAndZoomPictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).BeginInit();
+            this.panAndZoomPictureBox1 = new Emgu.CV.UI.PanAndZoomPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panAndZoomPictureBox1
-            // 
-            this.panAndZoomPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panAndZoomPictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.panAndZoomPictureBox1.Name = "panAndZoomPictureBox1";
-            this.panAndZoomPictureBox1.Size = new System.Drawing.Size(1740, 676);
-            this.panAndZoomPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.panAndZoomPictureBox1.TabIndex = 1;
-            this.panAndZoomPictureBox1.TabStop = false;
             // 
             // panAndZoomPictureBox2
             // 
@@ -55,24 +45,34 @@
             this.panAndZoomPictureBox2.TabIndex = 2;
             this.panAndZoomPictureBox2.TabStop = false;
             // 
+            // panAndZoomPictureBox1
+            // 
+            this.panAndZoomPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panAndZoomPictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.panAndZoomPictureBox1.Name = "panAndZoomPictureBox1";
+            this.panAndZoomPictureBox1.Size = new System.Drawing.Size(852, 676);
+            this.panAndZoomPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.panAndZoomPictureBox1.TabIndex = 3;
+            this.panAndZoomPictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1740, 676);
-            this.Controls.Add(this.panAndZoomPictureBox2);
             this.Controls.Add(this.panAndZoomPictureBox1);
+            this.Controls.Add(this.panAndZoomPictureBox2);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Emgu.CV.UI.PanAndZoomPictureBox panAndZoomPictureBox1;
         private Emgu.CV.UI.PanAndZoomPictureBox panAndZoomPictureBox2;
+        private Emgu.CV.UI.PanAndZoomPictureBox panAndZoomPictureBox1;
     }
 }
 

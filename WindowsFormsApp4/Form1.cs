@@ -109,7 +109,7 @@ namespace WindowsFormsApp4
             }
         }
 
-        static void DetectRectangleEllipseCircles()
+        private void DetectRectangleEllipseCircles()
         {
             StringBuilder msgBuilder = new StringBuilder("Performance: ");
             OpenFileDialog ofd = new OpenFileDialog();
@@ -128,13 +128,32 @@ namespace WindowsFormsApp4
                 CvInvoke.PyrDown(uImg, pyrDown);
                 CvInvoke.PyrUp(pyrDown, uImg);
 
-                ImageViewer imgViewer = new ImageViewer(uImg, "Pyrdown PyrUp");
-                imgViewer.ShowDialog();
+                
 
                 #region circle detection
                 Stopwatch watch = Stopwatch.StartNew();
                 double cannyThreshold = 180.0;
                 double circleAccumulatorThreshold = 120;
+                CircleF[] circles = CvInvoke.HoughCircles(uImg, HoughType.Gradient,
+                    2.0, 20.0, cannyThreshold, circleAccumulatorThreshold, 5);
+
+                
+                watch.Stop();
+                msgBuilder.Append(string.Format("Hough circles -{0} ms;", watch.ElapsedMilliseconds));
+
+                string circleCaption = string.Format("Hough circles -{0} ms;", watch.ElapsedMilliseconds);
+                
+                #endregion
+
+                #region draw circles
+                Image<Bgr, Byte> circleImage = img.CopyBlank();
+                foreach(CircleF circle in circles)
+                {
+                    circleImage.Draw(circle, new Bgr(Color.Brown), 5);                    
+                }
+
+                panAndZoomPictureBox1.Image = img.ToBitmap();
+                panAndZoomPictureBox2.Image = circleImage.ToBitmap();
 
                 #endregion
             }
