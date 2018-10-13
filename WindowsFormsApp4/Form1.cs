@@ -156,6 +156,14 @@ namespace WindowsFormsApp4
                 panAndZoomPictureBox2.Image = circleImage.ToBitmap();
 
                 #endregion
+
+                #region Canny and edge detection
+                watch.Reset();
+                watch.Start();
+                double cannyThreadsholdLinking = 120.0;
+                UMat cannyEdges = new UMat();
+                CvInvoke.Canny(uImg, cannyEdges, cannyThreshold, cannyThreadsholdLinking);
+                #endregion
             }
         }
     }
