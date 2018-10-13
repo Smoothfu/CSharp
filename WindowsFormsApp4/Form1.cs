@@ -22,6 +22,7 @@ namespace WindowsFormsApp4
         {
             InitializeComponent();
             InitImageViewer();
+            this.Hide();
         }
 
         static void InitImageViewer()
@@ -29,11 +30,11 @@ namespace WindowsFormsApp4
             OpenFileDialog ofd = new OpenFileDialog();
             if(ofd.ShowDialog()==DialogResult.OK)
             {
-                //create an image viewer.
-                ImageViewer viewer = new ImageViewer();
+               
                 Image<Bgr, Byte> My_Image = new Image<Bgr, byte>(ofd.FileName);
-
-                viewer.Image = My_Image;
+                //create an image viewer.
+                ImageViewer viewer = new ImageViewer(My_Image,"ImageViewer Name");
+                 
                 viewer.ShowDialog();
             }
         }
