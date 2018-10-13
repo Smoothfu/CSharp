@@ -115,7 +115,7 @@ namespace WindowsFormsApp4
             if(ofd.ShowDialog()==DialogResult.OK)
             {
                 //Load the image from file and resize it for display.
-                Image<Bgr, Byte> img = new Image<Bgr, byte>(ofd.FileName).Resize(1500, 1000, 
+                Image<Bgr, Byte> img = new Image<Bgr, byte>(ofd.FileName).Resize(1300, 800, 
                     Emgu.CV.CvEnum.Inter.Linear, true);
 
                 //Convert the image to grayscale and filter out the noise 
