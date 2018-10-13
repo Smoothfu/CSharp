@@ -113,10 +113,10 @@ namespace WindowsFormsApp4
         {
             StringBuilder msgBuilder = new StringBuilder("Performance: ");
             OpenFileDialog ofd = new OpenFileDialog();
-            if(ofd.ShowDialog()==DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
                 //Load the image from file and resize it for display.
-                Image<Bgr, Byte> img = new Image<Bgr, byte>(ofd.FileName).Resize(1300, 800, 
+                Image<Bgr, Byte> img = new Image<Bgr, byte>(ofd.FileName).Resize(1300, 800,
                     Emgu.CV.CvEnum.Inter.Linear, true);
 
                 //Convert the image to grayscale and filter out the noise 
@@ -128,7 +128,7 @@ namespace WindowsFormsApp4
                 CvInvoke.PyrDown(uImg, pyrDown);
                 CvInvoke.PyrUp(pyrDown, uImg);
 
-                
+
 
                 #region circle detection
                 Stopwatch watch = Stopwatch.StartNew();
@@ -137,19 +137,19 @@ namespace WindowsFormsApp4
                 CircleF[] circles = CvInvoke.HoughCircles(uImg, HoughType.Gradient,
                     2.0, 20.0, cannyThreshold, circleAccumulatorThreshold, 5);
 
-                
+
                 watch.Stop();
                 msgBuilder.Append(string.Format("Hough circles -{0} ms;", watch.ElapsedMilliseconds));
 
                 string circleCaption = string.Format("Hough circles -{0} ms;", watch.ElapsedMilliseconds);
-                
+
                 #endregion
 
                 #region draw circles
                 Image<Bgr, Byte> circleImage = img.CopyBlank();
-                foreach(CircleF circle in circles)
+                foreach (CircleF circle in circles)
                 {
-                    circleImage.Draw(circle, new Bgr(Color.Brown), 5);                    
+                    circleImage.Draw(circle, new Bgr(Color.Brown), 5);
                 }
 
                 panAndZoomPictureBox1.Image = img.ToBitmap();
@@ -178,10 +178,91 @@ namespace WindowsFormsApp4
                     //gap between lines
                     10);
                 watch.Stop();
-                string circleMsg=string.Format("Canny & Hough lines -{0} ms",watch.ElapsedMilliseconds);
+                string cannyMsg = string.Format("Canny & Hough lines -{0} ms", watch.ElapsedMilliseconds);
+                #endregion
+
+                #region
+                watch.Reset();
+                watch.Start();
+                List<Triangle2DF> triangleList = new List<Triangle2DF>();
+
+                //a box is a rotated rectangle.
+                List<RotatedRect> rectangleList = new List<RotatedRect>();
+                using (VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint())
+                {
+                    CvInvoke.FindContours(cannyEdges, contours, null, RetrType.List, ChainApproxMethod.ChainApproxSimple);
+                    int count = contours.Size;
+                    for(int i=0;i<count;i++)
+                    {
+                        using (VectorOfPoint contour = contours[i])
+                        using (VectorOfPoint approxContour = new VectorOfPoint())
+                        {
+                            CvInvoke.ApproxPolyDP(contour, approxContour, CvInvoke.ArcLength(contour, true) * 0.05, true);
+                            if(CvInvoke.ContourArea(approxContour,false)>250)
+                            {
+                                if(approxContour.Size==3)
+                                {
+                                    Point[] pts = approxContour.ToArray();
+                                    triangleList.Add(new Triangle2DF(
+                                        pts[0],
+                                        pts[1],
+                                        pts[2]
+                                        ));
+                                }
+                                else
+                                //The contour has 4 vertices.
+                                if(approxContour.Size==4)
+                                {
+                                    #region determine if all the angles in the contour are within[80,100] degree.
+                                    bool isRectangle = true;
+                                    Point[] pts = approxContour.ToArray();
+                                    LineSegment2D[] edges = PointCollection.PolyLine(pts, true);
+
+                                    for(int j=0;j<edges.Length;j++)
+                                    {
+                                        double angle = Math.Abs(edges[(j + 1) % edges.Length].GetExteriorAngleDegree(edges[j]));
+                                        if(angle<80 || angle>100)
+                                        {
+                                            isRectangle = false;
+                                            break;
+                                        }
+                                    }
+
+                                    #endregion
+
+                                    if(isRectangle)
+                                    {
+                                        rectangleList.Add(CvInvoke.MinAreaRect(approxContour));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                watch.Stop();
+                string triangleRectMsg = string.Format("Triangles & Rectangles -{0} ms;", watch.ElapsedMilliseconds);
 
 
                 #endregion
+
+
+                #region draw triangles and rectangles
+                Image<Bgr, Byte> triangleRectangleImage = img.CopyBlank();
+                foreach(Triangle2DF triangle in triangleList)
+                {
+                    triangleRectangleImage.Draw(triangle, new Bgr(Color.DarkBlue), 2);
+                }
+
+                foreach(RotatedRect box in rectangleList)
+                {
+                    triangleRectangleImage.Draw(box, new Bgr(Color.DarkOrange), 2);
+                    
+                }
+                panAndZoomPictureBox2.Image = triangleRectangleImage.ToBitmap();
+                #endregion
+
+
             }
         }
     }
