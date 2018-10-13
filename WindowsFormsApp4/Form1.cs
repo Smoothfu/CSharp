@@ -254,11 +254,11 @@ namespace WindowsFormsApp4
                     triangleRectangleImage.Draw(triangle, new Bgr(Color.DarkBlue), 2);
                 }
 
-                foreach(RotatedRect box in rectangleList)
-                {
-                    triangleRectangleImage.Draw(box, new Bgr(Color.DarkOrange), 2);
+                //foreach(RotatedRect box in rectangleList)
+                //{
+                //    triangleRectangleImage.Draw(box, new Bgr(Color.DarkOrange), 2);
                     
-                }
+                //}
                 panAndZoomPictureBox2.Image = triangleRectangleImage.ToBitmap();
                 #endregion
 
