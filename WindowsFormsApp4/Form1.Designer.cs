@@ -47,10 +47,10 @@
             // panAndZoomPictureBox2
             // 
             this.panAndZoomPictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panAndZoomPictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panAndZoomPictureBox2.Location = new System.Drawing.Point(852, 0);
+            this.panAndZoomPictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panAndZoomPictureBox2.Location = new System.Drawing.Point(855, 0);
             this.panAndZoomPictureBox2.Name = "panAndZoomPictureBox2";
-            this.panAndZoomPictureBox2.Size = new System.Drawing.Size(888, 676);
+            this.panAndZoomPictureBox2.Size = new System.Drawing.Size(885, 676);
             this.panAndZoomPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.panAndZoomPictureBox2.TabIndex = 2;
             this.panAndZoomPictureBox2.TabStop = false;

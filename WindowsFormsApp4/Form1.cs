@@ -60,8 +60,14 @@ namespace WindowsFormsApp4
             {
                 Image<Bgr, Byte> My_Image = new Image<Bgr, byte>(ofd.FileName);
                 panAndZoomPictureBox1.Image = My_Image.ToBitmap();
+                //Colour Image
+                My_Image[0, 0] = new Bgr(Color.Red);
+               
                 Image<Gray, byte> gray_Image = My_Image.Convert<Gray, byte>();
-                panAndZoomPictureBox2.Image = gray_Image.ToBitmap();
+
+                //Gray Image
+                gray_Image[0, 0] = new Gray(200);
+                panAndZoomPictureBox2.Image = My_Image.ToBitmap(); 
             }
         }
 
