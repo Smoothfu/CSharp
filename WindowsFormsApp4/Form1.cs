@@ -59,10 +59,16 @@ namespace WindowsFormsApp4
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 Image<Bgr, Byte> My_Image = new Image<Bgr, byte>(ofd.FileName);
-                panAndZoomPictureBox1.Image = My_Image.ToBitmap();
+
                 //Colour Image
-                My_Image[0, 0] = new Bgr(Color.Red);
-               
+                Color R = Color.Red;
+                //Write to the Red Spectrum.
+                My_Image.Data[0, 0, 2] = R.R;
+                //Write to the Green Spectrum.
+                My_Image.Data[0, 0, 1] = R.G;
+                //Write to the Blue Spectrum.
+                My_Image.Data[0, 0, 0] = R.B;
+                panAndZoomPictureBox1.Image = My_Image.ToBitmap();
                 Image<Gray, byte> gray_Image = My_Image.Convert<Gray, byte>();
 
                 //Gray Image
