@@ -18,7 +18,8 @@ namespace ConsoleApp4
         [STAThread]
         static void Main(string[] args)
         {
-            InitImageViewer();
+            int sum = Add(10, 10,10);
+            Console.WriteLine(sum);
             Console.ReadLine();
         }
 
@@ -32,6 +33,11 @@ namespace ConsoleApp4
                 imageViewer.ShowDialog();
             }
 
+        }
+
+        static int Add(int x,int y,int z=100)
+        {
+            return x + y + z;
         }
 
     }
