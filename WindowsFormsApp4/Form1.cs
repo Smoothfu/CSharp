@@ -37,7 +37,6 @@ namespace WindowsFormsApp4
                 //set it to blue color.
                 img.SetTo(new Bgr(255, 0, 0).MCvScalar);
 
-
                 //Draw "hello world" on the image using the specific font.
                 CvInvoke.PutText(
                     img,

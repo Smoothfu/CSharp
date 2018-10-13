@@ -36,9 +36,10 @@
             // LoadBtn
             // 
             this.LoadBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LoadBtn.Location = new System.Drawing.Point(0, 427);
+            this.LoadBtn.Font = new System.Drawing.Font("SimSun", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LoadBtn.Location = new System.Drawing.Point(0, 300);
             this.LoadBtn.Name = "LoadBtn";
-            this.LoadBtn.Size = new System.Drawing.Size(800, 23);
+            this.LoadBtn.Size = new System.Drawing.Size(800, 150);
             this.LoadBtn.TabIndex = 0;
             this.LoadBtn.Text = "Load Button";
             this.LoadBtn.UseVisualStyleBackColor = true;
@@ -49,7 +50,7 @@
             this.panAndZoomPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panAndZoomPictureBox1.Location = new System.Drawing.Point(0, 0);
             this.panAndZoomPictureBox1.Name = "panAndZoomPictureBox1";
-            this.panAndZoomPictureBox1.Size = new System.Drawing.Size(800, 427);
+            this.panAndZoomPictureBox1.Size = new System.Drawing.Size(800, 300);
             this.panAndZoomPictureBox1.TabIndex = 1;
             this.panAndZoomPictureBox1.TabStop = false;
             // 
