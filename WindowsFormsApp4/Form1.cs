@@ -163,6 +163,24 @@ namespace WindowsFormsApp4
                 double cannyThreadsholdLinking = 120.0;
                 UMat cannyEdges = new UMat();
                 CvInvoke.Canny(uImg, cannyEdges, cannyThreshold, cannyThreadsholdLinking);
+
+                LineSegment2D[] lines = CvInvoke.HoughLinesP(
+                    cannyEdges,
+
+                    //Distance resolution in pixel-related units 
+                    1,
+                    //Angle resolution measured in radians.
+                    Math.PI / 45.0,
+                    //threshold
+                    20,
+                    //min Line width
+                    30,
+                    //gap between lines
+                    10);
+                watch.Stop();
+                string circleMsg=string.Format("Canny & Hough lines -{0} ms",watch.ElapsedMilliseconds);
+
+
                 #endregion
             }
         }
