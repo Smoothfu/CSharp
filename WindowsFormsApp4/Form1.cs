@@ -21,8 +21,7 @@ namespace WindowsFormsApp4
         public Form1()
         {
             InitializeComponent();
-            InitImageViewer();
-            this.Hide();
+            DetectRectangleEllipseCircles();
         }
 
         static void InitImageViewer()
@@ -106,6 +105,30 @@ namespace WindowsFormsApp4
                 panAndZoomPictureBox1.Image = My_Image.ToBitmap();
                 Image<Gray, byte> gray_Image = My_Image.Convert<Gray, byte>();
                 panAndZoomPictureBox2.Image = gray_Image.ToBitmap();
+            }
+        }
+
+        static void DetectRectangleEllipseCircles()
+        {
+            StringBuilder msgBuilder = new StringBuilder("Performance: ");
+            OpenFileDialog ofd = new OpenFileDialog();
+            if(ofd.ShowDialog()==DialogResult.OK)
+            {
+                //Load the image from file and resize it for display.
+                Image<Bgr, Byte> img = new Image<Bgr, byte>(ofd.FileName).Resize(1500, 1000, 
+                    Emgu.CV.CvEnum.Inter.Linear, true);
+
+                //Convert the image to grayscale and filter out the noise 
+                UMat uImg = new UMat();
+                CvInvoke.CvtColor(img, uImg, ColorConversion.Bgr2Gray);
+
+                //use image pyr to remove noise.
+                UMat pyrDown = new UMat();
+                CvInvoke.PyrDown(uImg, pyrDown);
+                CvInvoke.PyrUp(pyrDown, uImg);
+
+                ImageViewer imgViewer = new ImageViewer(uImg, "Pyrdown PyrUp");
+                imgViewer.ShowDialog();
             }
         }
     }
