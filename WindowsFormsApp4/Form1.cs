@@ -21,9 +21,22 @@ namespace WindowsFormsApp4
         public Form1()
         {
             InitializeComponent();
-            InitPanAndZoomPictureBoxes();
+            InitImageViewer();
         }
 
+        static void InitImageViewer()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if(ofd.ShowDialog()==DialogResult.OK)
+            {
+                //create an image viewer.
+                ImageViewer viewer = new ImageViewer();
+                Image<Bgr, Byte> My_Image = new Image<Bgr, byte>(ofd.FileName);
+
+                viewer.Image = My_Image;
+                viewer.ShowDialog();
+            }
+        }
         private void InitWin()
         {
             //The name of the window.
