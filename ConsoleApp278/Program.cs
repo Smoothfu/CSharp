@@ -13,10 +13,11 @@ namespace ConsoleApp278
         static void Main(string[] args)
         {
           
-            string fileName = "myTxt.txt";
+            string fileName = @"myTxt.txt";
+          
+            File.Copy(fileName, "myTxtCopy.txt", true);
             Console.WriteLine(File.Exists(fileName));
-            File.Delete(fileName);
-            Console.WriteLine(File.Exists(fileName));
+            Console.WriteLine(File.Exists("myTxtCopy.txt"));
             Console.ReadLine();
         }
     }
