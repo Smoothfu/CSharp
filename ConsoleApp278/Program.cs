@@ -13,11 +13,11 @@ namespace ConsoleApp278
         static void Main(string[] args)
         {
           
-            string fileName = @"myTxt.txt";
+            string fileName = @"myTxt3.txt";
           
-            File.Copy(fileName, "myTxtCopy.txt", true);
-            Console.WriteLine(File.Exists(fileName));
-            Console.WriteLine(File.Exists("myTxtCopy.txt"));
+            string destName = @"D:\C\ConsoleApp278\ConsoleApp278\myTxtmove3.txt";
+            File.Move(fileName, destName);
+            Console.WriteLine(File.Exists(destName));
             Console.ReadLine();
         }
     }
