@@ -12,9 +12,11 @@ namespace ConsoleApp278
     {
         static void Main(string[] args)
         {
-            string path = @"D:\C\ConsoleApp278\ConsoleApp278\bin\Debug\ConsoleApp278.exe";
-            bool isExist = File.Exists(path);
-            Console.WriteLine(isExist);
+          
+            string fileName = "myTxt.txt";
+            Console.WriteLine(File.Exists(fileName));
+            File.Delete(fileName);
+            Console.WriteLine(File.Exists(fileName));
             Console.ReadLine();
         }
     }
