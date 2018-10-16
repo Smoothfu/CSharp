@@ -12,19 +12,9 @@ namespace ConsoleApp278
     {
         static void Main(string[] args)
         {
-            string currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            DirectoryInfo dir = new DirectoryInfo(currentPath);
-            FileInfo[] files = dir.Parent.Parent.Parent.GetFiles("*", SearchOption.AllDirectories);
-            if(files!=null && files.Any())
-            {
-                Console.WriteLine("There are {0} files in {1}.\n\n\n\n\n", files.Count(), dir.Parent.Parent.Parent.FullName);
-                for (int i=0;i<files.Count();i++)
-                {
-                    Console.WriteLine(files[i].FullName);
-                }
-
-                
-            }
+            string path = @"D:\C\ConsoleApp278\ConsoleApp278\bin\Debug\ConsoleApp278.exe";
+            bool isExist = File.Exists(path);
+            Console.WriteLine(isExist);
             Console.ReadLine();
         }
     }
