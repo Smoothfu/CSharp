@@ -12,12 +12,15 @@ namespace ConsoleApp278
     {
         static void Main(string[] args)
         {
-          
-            string fileName = @"myTxt3.txt";
-          
-            string destName = @"D:\C\ConsoleApp278\ConsoleApp278\myTxtmove3.txt";
-            File.Move(fileName, destName);
-            Console.WriteLine(File.Exists(destName));
+            string fileName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+ "\\ConsoleApp278.exe";
+
+            FileAttributes attributes = File.GetAttributes(fileName);
+            Console.WriteLine(attributes);
+            if((attributes&FileAttributes.ReadOnly)!=0)
+            {
+                Console.WriteLine("The {0} is ReadOnly!", fileName);
+            }
+           
             Console.ReadLine();
         }
     }
