@@ -13,14 +13,13 @@ namespace ConsoleApp278
         static void Main(string[] args)
         {
             string fileName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+ "\\ConsoleApp278.exe";
-
-            FileAttributes attributes = File.GetAttributes(fileName);
-            Console.WriteLine(attributes);
-            if((attributes&FileAttributes.ReadOnly)!=0)
-            {
-                Console.WriteLine("The {0} is ReadOnly!", fileName);
-            }
-           
+            FileInfo fi = new FileInfo(fileName);
+            Console.WriteLine(fi.CreationTime);
+            Console.WriteLine(fi.Directory);
+            Console.WriteLine(fi.Extension);
+            Console.WriteLine(fi.FullName);
+            Console.WriteLine(fi.IsReadOnly);
+            Console.WriteLine(fi.Length);
             Console.ReadLine();
         }
     }
