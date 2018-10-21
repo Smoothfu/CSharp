@@ -11,8 +11,18 @@ namespace ConsoleApp11
     {
         static void Main(string[] args)
         {
-            new Thread(new ParameterizedThreadStart(ExecuteLongRunningOperation)).Start(10000);
-            Console.ReadLine();
+            IService service = new EmailService("Email");
+            new Thread(new ParameterizedThreadStart(RunBackgroundService)).Start(service);
+
+
+         
+                
+                Console.ReadLine();
+        }
+
+        static void RunBackgroundService(object service)
+        {
+            ((IService)service).Execute();
         }
 
         static void GetCurrentTime()
@@ -53,5 +63,26 @@ namespace ConsoleApp11
         {
             return string.Format("Id:{0},Name:{1}\n", PId, PName);
         } 
+    }
+
+    public interface IService
+    {
+        string Name { get; set; }
+        void Execute();
+    }
+
+    public class EmailService : IService
+    {
+        public string Name { get ; set ; }
+
+        public void Execute()
+        {
+            Console.WriteLine("The Name is {0} \n.", Name);
+        }
+
+        public EmailService(string name)
+        {
+            this.Name = name;
+        }
     }
 }
