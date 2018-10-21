@@ -11,11 +11,7 @@ namespace ConsoleApp11
     {
         static void Main(string[] args)
         {
-            Person pn = new Person(1, "Floomberg");
-            ParameterizedThreadStart parameterizedThreadStart = new ParameterizedThreadStart(DescPerson);
-            
-            Thread thread = new Thread(parameterizedThreadStart);
-            thread.Start(pn);
+            new Thread(new ParameterizedThreadStart(ExecuteLongRunningOperation)).Start(10000);
             Console.ReadLine();
         }
 
@@ -33,6 +29,13 @@ namespace ConsoleApp11
                 Console.WriteLine(personObj.ToString());
             }
         }
+         
+        static void ExecuteLongRunningOperation(object milliseconds)
+        {
+            Thread.Sleep((int)milliseconds);
+            Console.WriteLine("Operation completed successfully!\n");
+        }
+
     }
 
     public class Person
