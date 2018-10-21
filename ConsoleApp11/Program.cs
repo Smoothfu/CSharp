@@ -12,12 +12,18 @@ namespace ConsoleApp11
         static void Main(string[] args)
         {
             IService service = new EmailService("Email");
-            new Thread(new ParameterizedThreadStart(RunBackgroundService)).Start(service);
+            new Thread(new ParameterizedThreadStart(RunBackgroundServiceThreadPriority)).Start(service);
 
 
          
                 
                 Console.ReadLine();
+        }
+
+        static void RunBackgroundServiceThreadPriority(object service)
+        {
+            Thread.CurrentThread.Priority = ThreadPriority.Highest;
+            ((IService)service).Execute();
         }
 
         static void RunBackgroundService(object service)
