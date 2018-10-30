@@ -15,15 +15,22 @@ namespace ConsoleApp278
         public event MathDel MathEvent;
         static void Main(string[] args)
         {
-            Publisher pub = new Publisher();
-            Subscriber sub1 = new Subscriber("sub1", pub);
-            Subscriber sub2 = new Subscriber("sub2", pub);
 
-            //Call the method that raises the event.
-            pub.DoSomething();
+            //Create the event publishers and subscriber
+            Circle c1 = new Circle(54);
+            Rectangle r1 = new Rectangle(12, 9);
+            ShapeConatiner sc = new ShapeConatiner();
 
-            //Keep the console window open.
-            Console.WriteLine("Press enter to close this window.");
+            //Add the shapes to the container
+            sc.AddShape(c1);
+            sc.AddShape(r1);
+
+            //Cause some events to be raised.
+            c1.Update(57);
+            r1.Update(7, 7);
+
+            //Keep the console window open in debug mode.
+          
             
             Console.ReadLine();
         }
@@ -162,6 +169,154 @@ namespace ConsoleApp278
         private void HandleCustomEvent(object sender, CustomEventArgs e)
         {
             Console.WriteLine(id + " received this message:{0}\n", e.Message);
+        }
+    }
+
+    //Special EventArgs class to hold info about shapes.
+    public class ShapeEventArgs:EventArgs
+    {
+        private double newArea;
+        public double NewArea
+        {
+            get
+            {
+                return newArea;
+            }
+        }
+        public ShapeEventArgs(double d)
+        {
+            newArea = d;
+        }
+    }
+
+    //Base class event publisher.
+    public abstract class Shape
+    {
+        protected double area;
+        public double Area
+        {
+            get
+            {
+                return area;
+            }
+            set
+            {
+                area = value;
+            }
+        }
+
+        //The event.Note that by using the generic EventHandler<T> event we do not need to declare a separate delegate type.
+        public event EventHandler<ShapeEventArgs> ShapeChanged;
+
+        public abstract void Draw();
+
+        //The event-invoking method that derived classes can override
+        protected virtual void OnShapeChanged(ShapeEventArgs e)
+        {
+            //Make a temporary copy of the event to avoid possiblity a race condition
+            //if the last subscriber unsubscribes immediately after the null check and before
+            //the event is raised.
+            EventHandler<ShapeEventArgs> handler = ShapeChanged;
+
+            if(handler!=null)
+            {
+                handler(this, e);
+            }
+        }
+    }
+
+    public class Circle : Shape
+    {
+        private double radius;
+        public Circle(double d)
+        {
+            radius = d;
+            area = 3.14 * radius * radius;
+        }
+
+        public void Update(double d)
+        {
+            radius = d;
+            area = 3.14 * radius * radius;
+            OnShapeChanged(new ShapeEventArgs(area));
+        }
+
+        protected override void OnShapeChanged(ShapeEventArgs e)
+        {
+            //Do any circle-specific processing here.
+            //call the base class event invoation method.
+            base.OnShapeChanged(e);
+        }
+
+        public override void Draw()
+        {
+            Console.WriteLine("Drawing a circle!");
+        }
+    }
+
+    public class Rectangle:Shape
+    {
+        private double length;
+        private double width;
+        public Rectangle(double length,double width)
+        {
+            this.length = length;
+            this.width = width;
+            area = length * width;
+        }
+
+        public void Update(double length,double width)
+        {
+            this.length = length;
+            this.width = width;
+            area = width * length;
+
+            OnShapeChanged(new ShapeEventArgs(area));
+        }
+
+        protected override void OnShapeChanged(ShapeEventArgs e)
+        {
+            //Do any rectangle-specific processing here.
+            //Call the base class event invocation method.
+            base.OnShapeChanged(e);
+        }
+
+        public override void Draw()
+        {
+            Console.WriteLine("Drawing a rectangle!");
+        }
+    }
+
+    //Represents the surface on which the shapes are drawn subscribes to shape events so that it knows
+    //when to redraw a shape.
+    public class ShapeConatiner
+    {
+        List<Shape> _list;
+        public ShapeConatiner()
+        {
+            _list = new List<Shape>();
+        }
+
+        public void AddShape(Shape s)
+        {
+            _list.Add(s);
+
+            //Subscribe to the base class event.
+            s.ShapeChanged += S_ShapeChanged;
+        }
+
+        //other methods to draw,resize,etc.
+        private void S_ShapeChanged(object sender, ShapeEventArgs e)
+        {
+            Shape s = sender as Shape;
+            if (s != null)
+            {
+                //Diagnostic messgae for demonstration purposes.
+                Console.WriteLine("Received event.Shape area is now {0}\n", e.NewArea);
+
+                //Redraw the shape here.
+                s.Draw();
+            }
         }
     }
 }
