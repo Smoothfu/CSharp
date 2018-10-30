@@ -12,7 +12,7 @@ namespace ConsoleApp278
     {
         static void Main(string[] args)
         {
-            string fileName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+ "\\txt.txt";
+            string fileName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+ "\\txt2.txt";
 
             using (StreamWriter streamWriter = File.CreateText(fileName))
             {
