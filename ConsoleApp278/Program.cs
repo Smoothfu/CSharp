@@ -14,6 +14,7 @@ namespace ConsoleApp278
         {
             Person floomberg = new Person();
             floomberg.Eat();
+            floomberg.Run();
             Console.ReadLine();
         }
     }
@@ -21,6 +22,10 @@ namespace ConsoleApp278
     public abstract class Animal
     {
         public abstract void Eat();
+        public virtual void Run()
+        {
+            Console.WriteLine("The live animal can run!");
+        }
     }
 
     public class Person:Animal
@@ -28,6 +33,11 @@ namespace ConsoleApp278
         public override void Eat()
         {
             Console.WriteLine("The human being eat cooked food!");
+        }
+
+        public override void Run()
+        {
+            Console.WriteLine("Floomberg should run 10000 m everyday!");
         }
     }
 }
