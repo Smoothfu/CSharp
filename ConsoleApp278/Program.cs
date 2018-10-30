@@ -8,14 +8,50 @@ using System.Reflection;
 
 namespace ConsoleApp278
 {
+    public delegate void MathDel(int x, int y);
     class Program
     {
         static void Main(string[] args)
         {
-            Person floomberg = new Person();
-            floomberg.Eat();
-            floomberg.Run();
+            int x = 1235634, y = 65634576;
+            Program obj = new Program();
+            MathDel mathDel = new MathDel(obj.AddMethod);
+            mathDel(x, y);
+
+            Console.WriteLine("\n\n\n");
+            mathDel = new MathDel(obj.SubMethod);
+            mathDel(x, y);
+
+            Console.WriteLine("\n\n\n");
+
+            mathDel = new MathDel(obj.Multiply);
+            mathDel(x, y);
+
+            Console.WriteLine("\n\n\n");
+            mathDel = new MathDel(obj.Divide);
+            mathDel(x, y);
+            
             Console.ReadLine();
+        }
+
+        public void AddMethod(int x,int y)
+        {
+            Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+        }
+
+        public void SubMethod(int x,int y)
+        {
+            Console.WriteLine("{0}-{1}={2}\n", x, y, x - y);
+        }
+
+        public void Multiply(int x,int y)
+        {
+            Console.WriteLine("{0}*{1}={2}\n", x, y, x * y);
+        }
+
+        public void Divide(int x,int y)
+        {
+            Console.WriteLine("{0}/{1}={2}\n", x, y, x / y);
         }
     }
 
@@ -37,7 +73,9 @@ namespace ConsoleApp278
 
         public override void Run()
         {
-            Console.WriteLine("Floomberg should run 10000 m everyday!");
+            Console.WriteLine("Floomberg should run 10000 m+ everyday!");
         }
     }
+
+    
 }
