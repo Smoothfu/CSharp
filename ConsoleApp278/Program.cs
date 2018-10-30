@@ -12,13 +12,22 @@ namespace ConsoleApp278
     {
         static void Main(string[] args)
         {
-            string fileName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+ "\\txt2.txt";
+            Person floomberg = new Person();
+            floomberg.Eat();
+            Console.ReadLine();
+        }
+    }
 
-            using (StreamWriter streamWriter = File.CreateText(fileName))
-            {
-                streamWriter.WriteLine(fileName);
-            }
-                Console.ReadLine();
+    public abstract class Animal
+    {
+        public abstract void Eat();
+    }
+
+    public class Person:Animal
+    {
+        public override void Eat()
+        {
+            Console.WriteLine("The human being eat cooked food!");
         }
     }
 }
