@@ -22,6 +22,7 @@ namespace ConsoleApp278
                 writer.WriteLine("This is a first line!");
                 writer.WriteLine("This is the second line!");
                 writer.WriteLine("This is the third line!");
+                writer.WriteLine("This is the last line!");
             }
 
             using (StreamReader reader = fi.OpenText())
