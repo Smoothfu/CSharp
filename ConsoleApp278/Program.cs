@@ -16,21 +16,20 @@ namespace ConsoleApp278
         static void Main(string[] args)
         {
 
-            //Create the event publishers and subscriber
-            Circle c1 = new Circle(54);
-            Rectangle r1 = new Rectangle(12, 9);
-            ShapeConatiner sc = new ShapeConatiner();
+            string currentPath = @"D:\C";
+            DirectoryInfo dir = new DirectoryInfo(currentPath);
+            FileInfo[] allFiles = dir.GetFiles("*", SearchOption.AllDirectories);
 
-            //Add the shapes to the container
-            sc.AddShape(c1);
-            sc.AddShape(r1);
+            if(allFiles!=null && allFiles.Any())
+            {
+                allFiles.All(x =>
+                {
+                    Console.WriteLine(x.FullName);
+                    return true;
+                });
 
-            //Cause some events to be raised.
-            c1.Update(57);
-            r1.Update(7, 7);
-
-            //Keep the console window open in debug mode.
-          
+                Console.WriteLine("\n\n\nThere are totally {0} files in {1}\n", allFiles.Count(), currentPath);
+            }          
             
             Console.ReadLine();
         }
