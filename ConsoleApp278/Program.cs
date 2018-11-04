@@ -16,18 +16,19 @@ namespace ConsoleApp278
         public event MathDel MathEvent;
         static void Main(string[] args)
         {
-            ArrayList al = new ArrayList();
-            al.Add(1);
-            al.Add(1.1);
-            al.Add(true);
-            al.Add("This is a beautiful");
-            al.Add('a');
-            foreach(var a in al)
+            FileInfo fi = new FileInfo("FileStream.txt");
+            using (StreamWriter writer = fi.CreateText())
             {
-                Console.WriteLine(a);
+                writer.WriteLine("This is a first line!");
+                writer.WriteLine("This is the second line!");
+                writer.WriteLine("This is the third line!");
             }
 
-
+            using (StreamReader reader = fi.OpenText())
+            {
+                string allText = reader.ReadToEnd();
+                Console.WriteLine(allText);
+            }
             Console.ReadLine();
         }
 
