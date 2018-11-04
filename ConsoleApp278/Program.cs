@@ -15,22 +15,12 @@ namespace ConsoleApp278
         public event MathDel MathEvent;
         static void Main(string[] args)
         {
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.AppendLine("This is the first line");
+            strBuilder.AppendLine("This is the second line.");
+            strBuilder.AppendLine("This is the third line");
 
-            string currentPath = @"D:\C";
-            DirectoryInfo dir = new DirectoryInfo(currentPath);
-            FileInfo[] allFiles = dir.GetFiles("*", SearchOption.AllDirectories);
-
-            if(allFiles!=null && allFiles.Any())
-            {
-                allFiles.All(x =>
-                {
-                    Console.WriteLine(x.FullName);
-                    return true;
-                });
-
-                Console.WriteLine("\n\n\nThere are totally {0} files in {1}\n", allFiles.Count(), currentPath);
-            }          
-            
+            Console.WriteLine(strBuilder.ToString());
             Console.ReadLine();
         }
 
