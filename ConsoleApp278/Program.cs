@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
+using System.Collections;
 
 namespace ConsoleApp278
 {
@@ -15,12 +16,18 @@ namespace ConsoleApp278
         public event MathDel MathEvent;
         static void Main(string[] args)
         {
-            StringBuilder strBuilder = new StringBuilder();
-            strBuilder.AppendLine("This is the first line");
-            strBuilder.AppendLine("This is the second line.");
-            strBuilder.AppendLine("This is the third line");
+            ArrayList al = new ArrayList();
+            al.Add(1);
+            al.Add(1.1);
+            al.Add(true);
+            al.Add("This is a beautiful");
+            al.Add('a');
+            foreach(var a in al)
+            {
+                Console.WriteLine(a);
+            }
 
-            Console.WriteLine(strBuilder.ToString());
+
             Console.ReadLine();
         }
 
