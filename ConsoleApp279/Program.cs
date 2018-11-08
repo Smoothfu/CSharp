@@ -12,9 +12,16 @@ namespace ConsoleApp279
         static void Main(string[] args)
         {
             int x = 10, y = 20;
-            MathDel addDel = AddMethod;
+        
+            //Instantiate the delegate using an annoymous method.
+            MathDel addDel = delegate (int w, int z)
+            {
+                Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+            };
+
             addDel(x, y);
             Console.ReadLine();
+
         }
 
         static void AddMethod(int x,int y)
