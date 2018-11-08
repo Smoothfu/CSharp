@@ -15,11 +15,9 @@ namespace ConsoleApp279
             int x = 10, y = 20;
 
             //Instantiate the delegate using an annoymous method.
-            StringDel strDel = delegate (string str)
-              {
-                  Console.WriteLine("This string is {0}\n", str);
-              };
-            strDel("Annoymous methods"); 
+
+            StringDel strDel = str => Console.WriteLine("The string is {0}\n", str);
+            strDel("A lambda expression is an annoymous function that you can use to create delegates or expression tree types");
             Console.ReadLine();
 
         }
