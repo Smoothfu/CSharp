@@ -131,3 +131,30 @@ join Person.EmailAddress pe
 on pp.BusinessEntityID =pe.BusinessEntityID
 join Purchasing.Vendor pv
 on pp.BusinessEntityID=pv.BusinessEntityID
+
+
+select pp.ProductNumber
+from Production.Product PP
+join Production.ProductInventory PPI
+on PPI.ProductID=pp.ProductID
+where ppi.Quantity<100
+union
+select pp.ProductNumber 
+from Production.Product pp
+join Sales.SpecialOfferProduct ssop
+on pp.ProductID=ssop.ProductID
+where ssop.SpecialOfferID>1
+
+select pp.ProductNumber,ppi.ProductID
+from Production.Product pp
+join Production.ProductInventory PPI
+on PPI.ProductID=pp.ProductID
+where PPI.Quantity<100
+union all
+select pp.ProductNumber,ssop.ProductID
+from Production.Product pp
+join sales.SpecialOfferProduct ssop
+on pp.ProductID=ssop.ProductID
+join sales.SpecialOffer so
+on so.SpecialOfferID=ssop.SpecialOfferID
+where ssop.SpecialOfferID>1

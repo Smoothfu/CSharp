@@ -9,16 +9,17 @@ using System.Threading;
 namespace ConsoleApp279
 {
     class Program
-    { 
+    {
+        delegate void AddDel(int x, int y);
         delegate void StringDel(string str);
         static void Main(string[] args)
         {
-            Console.WriteLine("The main main thread ManagedThreadId is :{0}\n", Thread.CurrentThread.ManagedThreadId);
-            Task.Run(() =>
+            AddDel del = delegate (int x, int y)
             {
-                Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
-            });
+                Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+            };
 
+            del(100, 100000000);
             Console.ReadLine();
         }
 
