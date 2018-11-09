@@ -73,3 +73,61 @@ select distinct v.Name
 from Purchasing.Vendor v
 left join Purchasing.ProductVendor pv
 on v.BusinessEntityID=pv.BusinessEntityID
+
+select * from Purchasing.vVendorWithAddresses
+
+select v.Name
+from Purchasing.Vendor v
+left join Purchasing.vVendorWithAddresses va
+on v.BusinessEntityID=va.BusinessEntityID
+
+select v.Name,va.BusinessEntityID
+from Purchasing.Vendor v
+left join Purchasing.vVendorWithAddresses va
+on v.BusinessEntityID=va.BusinessEntityID
+
+select v.name
+from Purchasing.Vendor v
+cross join Purchasing.vVendorWithAddresses va
+
+select * from Purchasing.Vendor
+select * from Purchasing.vVendorWithAddresses
+
+select 104*104
+ 
+
+ select *
+ from Person.Person
+ join HumanResources.Employee
+ on Person.BusinessEntityID=HumanResources.Employee.BusinessEntityID
+
+ select *
+ from Person.Person,HumanResources.Employee
+ where Person.BusinessEntityID=HumanResources.Employee.BusinessEntityID
+ 
+ select sso.SpecialOfferID,Description,DiscountPct,ProductID
+ from sales.SpecialOffer sso
+ left join sales.SpecialOfferProduct ssop
+ on sso.SpecialOfferID=ssop.SpecialOfferID
+ where sso.SpecialOfferID!=1
+
+ select sso.SpecialOfferID,Description,DiscountPct,ProductID
+ from sales.SpecialOffer sso,
+ sales.SpecialOfferProduct ssop
+
+ select v.Name,va.AddressLine1
+ from Purchasing.Vendor v,Purchasing.vVendorWithAddresses va
+
+ select FirstName+' '+LastName as FullName,pe.EmailAddress PEEmailAddress
+ from Person.Person pp
+ join Person.EmailAddress pe
+ on pp.BusinessEntityID=pe.BusinessEntityID
+ join sales.Customer sc
+ on pp.BusinessEntityID=sc.CustomerID
+ union
+select FirstName+' '+LastName as FullName,pe.EmailAddress as VendorEmailAddress 
+from Person.Person pp
+join Person.EmailAddress pe
+on pp.BusinessEntityID =pe.BusinessEntityID
+join Purchasing.Vendor pv
+on pp.BusinessEntityID=pv.BusinessEntityID
