@@ -90,3 +90,7 @@ exec sp_helpconstraint customers
 alter table customers
 nocheck
 constraint CN_CustomerPhoneNo;
+
+alter table Customers
+check
+constraint CN_CustomerPhoneNo;
