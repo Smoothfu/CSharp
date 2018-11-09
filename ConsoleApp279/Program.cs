@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using System.Threading;
 
 namespace ConsoleApp279
 {
@@ -12,18 +13,10 @@ namespace ConsoleApp279
         delegate void StringDel(string str);
         static void Main(string[] args)
         {
-            List<int> intList = new List<int>();
-            Random rnd = new Random();
-            for (int i=0;i<10;i++)
-            {                
-                int num = rnd.Next(1, 100);
-                intList.Add(num);
-            }
-
-            Parallel.ForEach(intList, x =>
+            Console.WriteLine("The main main thread ManagedThreadId is :{0}\n", Thread.CurrentThread.ManagedThreadId);
+            Task.Run(() =>
             {
-                Console.WriteLine(x);
-                Console.ReadLine();
+                Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
             });
 
             Console.ReadLine();
