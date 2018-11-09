@@ -99,3 +99,5 @@ create rule SalayRule
 as @Salary>0;
 
 exec sp_helptext SalayRule
+
+exec sp_bindrule 'salayrule','employees.salary';
