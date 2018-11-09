@@ -101,3 +101,5 @@ as @Salary>0;
 exec sp_helptext SalayRule
 
 exec sp_bindrule 'salayrule','employees.salary';
+
+exec  sp_unbindrule 'Employees.Salary'
