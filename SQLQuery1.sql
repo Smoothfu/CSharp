@@ -176,3 +176,4 @@ inner join
 Person.BusinessEntityAddress pbea on pp.BusinessEntityID=pbea.BusinessEntityID
 inner join
 person.Address pa on pa.AddressID=pbea.AddressID
+
