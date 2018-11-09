@@ -8,19 +8,25 @@ using System.Linq.Expressions;
 namespace ConsoleApp279
 {
     class Program
-    {
-        delegate void MathDel(int x, int y);
+    { 
         delegate void StringDel(string str);
         static void Main(string[] args)
         {
-            int x = 10, y = 20;
+            List<int> intList = new List<int>();
+            Random rnd = new Random();
+            for (int i=0;i<10;i++)
+            {                
+                int num = rnd.Next(1, 100);
+                intList.Add(num);
+            }
 
-            //Instantiate the delegate using an annoymous method.
+            Parallel.ForEach(intList, x =>
+            {
+                Console.WriteLine(x);
+                Console.ReadLine();
+            });
 
-            StringDel strDel = str => Console.WriteLine("The string is {0}\n", str);
-            strDel("A lambda expression is an annoymous function that you can use to create delegates or expression tree types");
             Console.ReadLine();
-
         }
 
         static void AddMethod(int x,int y)
