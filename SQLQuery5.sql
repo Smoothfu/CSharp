@@ -107,3 +107,5 @@ exec  sp_unbindrule 'Employees.Salary'
 
 create default SalaryDefault
 as 0;
+
+exec sp_bindefault 'salarydefault','Employees.Salary';
