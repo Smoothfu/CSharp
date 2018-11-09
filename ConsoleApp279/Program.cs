@@ -14,12 +14,16 @@ namespace ConsoleApp279
         delegate void StringDel(string str);
         static void Main(string[] args)
         {
-            AddDel del = delegate (int x, int y)
-            {
-                Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
-            };
-
-            del(100, 100000000);
+            Thread thread = new Thread(() =>
+              {
+                  AddDel del = delegate (int x, int y)
+                  {
+                      Console.WriteLine("{0}+{1}={2}\n", x, y, x + y);
+                  };
+                  del(100, 100000000);
+              });
+            thread.Start();
+           
             Console.ReadLine();
         }
 

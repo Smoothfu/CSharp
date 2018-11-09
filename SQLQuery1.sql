@@ -158,3 +158,21 @@ on pp.ProductID=ssop.ProductID
 join sales.SpecialOffer so
 on so.SpecialOfferID=ssop.SpecialOfferID
 where ssop.SpecialOfferID>1
+
+
+select *
+from Purchasing.Vendor v
+cross join Purchasing.vVendorWithAddresses va
+
+select * from Purchasing.Vendor
+select * from Purchasing.vVendorWithAddresses
+
+select hre.NationalIDNumber,pp.FirstName,pp.LastName,hre.NationalIDNumber
+from HumanResources.Employee hre
+inner join
+Person.Person pp
+on pp.BusinessEntityID =hre.BusinessEntityID
+inner join
+Person.BusinessEntityAddress pbea on pp.BusinessEntityID=pbea.BusinessEntityID
+inner join
+person.Address pa on pa.AddressID=pbea.AddressID
