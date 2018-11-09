@@ -94,3 +94,8 @@ constraint CN_CustomerPhoneNo;
 alter table Customers
 check
 constraint CN_CustomerPhoneNo;
+
+create rule SalayRule
+as @Salary>0;
+
+exec sp_helptext SalayRule
