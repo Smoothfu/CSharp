@@ -103,3 +103,7 @@ exec sp_helptext SalayRule
 exec sp_bindrule 'salayrule','employees.salary';
 
 exec  sp_unbindrule 'Employees.Salary'
+
+
+create default SalaryDefault
+as 0;
