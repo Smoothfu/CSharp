@@ -62,3 +62,31 @@ exec sp_helpconstraint Customers
 alter table customers
 add constraint CN_CustomersAddress
 default 'UNKNOWN' for address1;
+
+insert into Customers
+(
+CustomerName,Address1,Address2,City,State,Zip,Contact,Phone,FedIdNo,DateInSystem)
+values
+(
+'MyCust','123 Anywhere',' ','Reno','NV',80808,
+'Joe Bob',
+'555-1212',
+'931234567',
+GETDATE());
+
+select * from Customers
+
+alter table Customers
+with nocheck
+add constraint CN_CustomerPhoneNo
+check
+(phone like '([0-9][0-9][0-9])[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]');
+
+exec sp_helpconstraint customers
+
+select * from Customers
+exec sp_helpconstraint customers
+
+alter table customers
+nocheck
+constraint CN_CustomerPhoneNo;
