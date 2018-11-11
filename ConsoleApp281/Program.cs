@@ -16,13 +16,20 @@ namespace ConsoleApp281
     {
         static void Main(string[] args)
         {
-            WcfServiceLibrary1.Service1 dateTimeService = new Service1();
-            DateTime dt = dateTimeService.GetDateTime();
-            MyServiceHost msh = new MyServiceHost(typeof(WcfServiceLibrary1.Service1));
-            msh.Open();
-            Console.WriteLine("服务已开启，回车关闭服务!");
+            Console.WriteLine("***\r\n Begin program -no logging\r\n");
+            IRepository<Customer> customerRepository = new Repository<Customer>();
+            Customer customer = new Customer
+            {
+                Id = 1,
+                Name = "Customer 1",
+                Address = "Address 1"
+            };
+
+            customerRepository.Add(customer);
+            customerRepository.Update(customer);
+            customerRepository.Delete(customer);
+            Console.WriteLine("\r\nEnd program -no logging\r\n");
             Console.ReadLine();
-            msh.Close();
         }
     }
 
@@ -137,5 +144,50 @@ namespace ConsoleApp281
                 }
             }
         }
+    }
+
+    public interface IRepository<T>
+    {
+        void Add(T entity);
+        void Delete(T entity);
+        void Update(T entity);
+        IEnumerable<T> GetAll();
+        T GetById(int id);
+    }
+    public class Repository<T> : IRepository<T>
+    {
+        public void Add(T entity)
+        {
+            Console.WriteLine("Adding {0}\n", entity);
+        }
+
+        public void Delete(T entity)
+        {
+            Console.WriteLine("Deleting {0}\n", entity);
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+            Console.WriteLine("Getting entities");
+            return null;
+        }
+
+        public T GetById(int id)
+        {
+            Console.WriteLine("Getting entity {0}\n", id);
+            return default(T);
+        }
+
+        public void Update(T entity)
+        {
+            Console.WriteLine("Updating {0}\n", entity);
+        }
+    }
+
+    public class Customer
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
     }
 }
