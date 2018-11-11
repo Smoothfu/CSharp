@@ -5,3 +5,6 @@ D:\C\ConsoleApp280\ConsoleApp280\obj\Debug\ConsoleApp280.csprojResolveAssemblyRe
 D:\C\ConsoleApp280\ConsoleApp280\obj\Debug\ConsoleApp280.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp280\ConsoleApp280\obj\Debug\ConsoleApp280.exe
 D:\C\ConsoleApp280\ConsoleApp280\obj\Debug\ConsoleApp280.pdb
+D:\C\ConsoleApp280\ConsoleApp280\bin\Debug\WcfServiceLibrary1.dll
+D:\C\ConsoleApp280\ConsoleApp280\bin\Debug\WcfServiceLibrary1.pdb
+D:\C\ConsoleApp280\ConsoleApp280\bin\Debug\WcfServiceLibrary1.dll.config

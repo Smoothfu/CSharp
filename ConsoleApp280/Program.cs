@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using WcfServiceLibrary1;
 
 namespace ConsoleApp280
 {
@@ -13,10 +14,20 @@ namespace ConsoleApp280
     {
         static void Main(string[] args)
         {
+            int x = 78904525, y = 254563456;
+            MathService mathService = new MathService();
+            int addResult = mathService.Add(x, y);
+            Console.WriteLine("{0}+{1}={2}\n", x, y, addResult);
+           
+            Console.ReadLine();
+        }
+
+        static void RetrieveFromDB()
+        {
             string connString = ConfigurationManager.AppSettings["conString"].ToString();
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                if(conn.State!=ConnectionState.Open)
+                if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
@@ -26,7 +37,7 @@ namespace ConsoleApp280
                     "OrderDate = (select min(OrderDate) from sales.SalesOrderHeader)";
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.Connection = conn; 
+                    cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = selectSQL;
                     cmd.ExecuteNonQuery();
@@ -35,11 +46,11 @@ namespace ConsoleApp280
                     sqlDataAdapter.SelectCommand = cmd;
                     DataSet ds = new DataSet();
                     sqlDataAdapter.Fill(ds);
-                    if(ds.Tables[0]!=null && ds.Tables[0].Rows.Count>0)
+                    if (ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
                     {
-                        for(int i=0;i<ds.Tables[0].Rows.Count;i++)
+                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                         {
-                            for(int j=0;j<ds.Tables[0].Columns.Count;j++)
+                            for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
                             {
                                 Console.Write(ds.Tables[0].Rows[i][j].ToString());
                             }
@@ -48,7 +59,7 @@ namespace ConsoleApp280
                     }
                 }
             }
-            Console.ReadLine();
+
         }
     }
 }
