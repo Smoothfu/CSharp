@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using WcfServiceLibrary1;
+ 
 
 namespace ConsoleApp280
 {
@@ -14,10 +15,9 @@ namespace ConsoleApp280
     {
         static void Main(string[] args)
         {
-            int x = 78904525, y = 254563456;
-            MathService mathService = new MathService();
-            int addResult = mathService.Add(x, y);
-            Console.WriteLine("{0}+{1}={2}\n", x, y, addResult);
+            ServiceReference1.DateServiceClient client = new ServiceReference1.DateServiceClient();
+            DateTime dt = client.GetDate();
+            Console.WriteLine(dt);
            
             Console.ReadLine();
         }
