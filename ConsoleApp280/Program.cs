@@ -15,10 +15,10 @@ namespace ConsoleApp280
     {
         static void Main(string[] args)
         {
-            ServiceReference1.DateServiceClient client = new ServiceReference1.DateServiceClient();
-            DateTime dt = client.GetDate();
-            Console.WriteLine(dt);
            
+            ServiceReference1.DateServiceClient client=new ServiceReference1.DateServiceClient()
+
+
             Console.ReadLine();
         }
 
