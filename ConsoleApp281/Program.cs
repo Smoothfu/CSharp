@@ -16,9 +16,9 @@ namespace ConsoleApp281
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("***\r\n Begin program -no logging\r\n");
-            IRepository<Customer> customerRepository = new Repository<Customer>();
-            Customer customer = new Customer
+            Console.WriteLine("***\r\n Begin program -logging with decorator\r\n");
+            IRepository<Customer> customerRepository = new LoggerRepository<Customer>(new Repository<Customer>());
+            var customer = new Customer
             {
                 Id = 1,
                 Name = "Customer 1",
@@ -28,7 +28,7 @@ namespace ConsoleApp281
             customerRepository.Add(customer);
             customerRepository.Update(customer);
             customerRepository.Delete(customer);
-            Console.WriteLine("\r\nEnd program -no logging\r\n");
+            Console.WriteLine("\r\nEnd Program-Logging with decorator\r\n***");
             Console.ReadLine();
         }
     }
@@ -189,5 +189,57 @@ namespace ConsoleApp281
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+    }
+
+    public class LoggerRepository<T> : IRepository<T>
+    {
+        private readonly IRepository<T> _decorated;
+        public LoggerRepository(IRepository<T> decorated)
+        {
+            _decorated = decorated;
+        }
+
+        private void Log(string msg,object arg=null)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(msg, arg);
+            Console.ResetColor();
+        }
+        public void Add(T entity)
+        {
+            Log("In decorator-Before Adding{0}\n", entity);
+            _decorated.Add(entity);
+            Log("In decorator-After Adding{0}\n", entity);
+        }
+
+        public void Delete(T entity)
+        {
+            Log("In decorator- Before Deleting{0}\n", entity);
+            _decorated.Delete(entity);
+            Log("In decorator- After Deleting{0}\n", entity);
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+            Log("In decorator- Before Getting Entities\n");
+            var result = _decorated.GetAll();
+            Log("In decorator-After Getting Entities\n");
+            return result;
+        }
+
+        public T GetById(int id)
+        {
+            Log("In decorator-Before Getting Entity{0}\n", id);
+            var result = _decorated.GetById(id);
+            Log("In decorator-After Getting Entity{0}\n", id);
+            return result;
+        }
+
+        public void Update(T entity)
+        {
+            Log("In decorator-Before updating{0}\n", entity);
+            _decorated.Update(entity);
+            Log("In decorator-After updating{0}\n", entity);
+        }
     }
 }
