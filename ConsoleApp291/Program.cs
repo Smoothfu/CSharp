@@ -10,7 +10,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            FindPrimes(100);
+            BinarySearch(1000);
             Console.ReadLine();
         }
 
@@ -21,7 +21,7 @@ namespace ConsoleApp291
                 return;
             }
 
-           
+            
             List<int> primeList = new List<int>();
             
             for (int i=2;i<=num;i++)
@@ -46,6 +46,15 @@ namespace ConsoleApp291
             {
                 Console.WriteLine(i);
             }
+        }
+
+        static void BinarySearch(int count)
+        {
+           List<int> intList=new List<int>(Enumerable.Range(1, count));
+            intList.ForEach(x =>
+            {
+                Console.WriteLine(x);
+            });           
         }
     }
 }
