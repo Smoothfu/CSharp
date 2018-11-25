@@ -178,7 +178,7 @@ namespace ConsoleApp291
 
         static void StructSample()
         {
-            PersonStruct pStruct = new PersonStruct(31, "Floomberg");
+            PersonStruct pStruct = new PersonStruct();
             Console.WriteLine(pStruct.Age);
             Console.WriteLine(pStruct.Name);
         }
@@ -188,10 +188,10 @@ namespace ConsoleApp291
     {
         public int Age { get; set; }
         public string Name { get; set; }
-        public PersonStruct(int age,string name)
+        public PersonStruct()
         {
-            Age = age;
-            Name = name;
+
         }
+       
     }
 }
