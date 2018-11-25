@@ -11,7 +11,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            GetAllFiles();
+            StackOrder(10);
             Console.ReadLine();
         }
 
@@ -134,6 +134,23 @@ namespace ConsoleApp291
 
                 Console.WriteLine("\n\n\nThere are totally {0} files in {1}\n", allFiles.Count(), path);
             }
+        }
+
+        static void StackOrder(int count)
+        {
+            Stack<int> intStack = new Stack<int>();
+            Random rnd = new Random();
+            for(int i=0;i<count;i++)
+            {
+                intStack.Push(i);
+            }
+
+            Console.WriteLine("There are {0} totally numbers in stack", intStack.Count);
+            while(intStack.Count>0)
+            {
+                Console.Write(intStack.Pop()+"\t");
+            }
+
         }
     }
 }
