@@ -10,7 +10,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            BinarySearch(1000);
+            BinarySearch(1000000);
             Console.ReadLine();
         }
 
@@ -53,7 +53,7 @@ namespace ConsoleApp291
            List<int> intList=new List<int>(Enumerable.Range(1, count));
             intList.ForEach(x =>
             {
-                Console.WriteLine(x);
+                Console.Write(x+"\t");
             });           
         }
     }
