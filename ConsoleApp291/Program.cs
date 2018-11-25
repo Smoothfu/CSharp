@@ -10,7 +10,9 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            BubbleySearch(100);
+            int[] arr = { 10, 7, 89, 345, 3455, 89566, 4565, 45624, 252346, 2456234, 433434, 3454359, 7686563, 5674567 };
+            int resultIndex=BinarySearch(arr, 2456234);
+            Console.WriteLine(resultIndex);
             Console.ReadLine();
         }
 
@@ -81,6 +83,42 @@ namespace ConsoleApp291
             {
                 Console.Write(i + "\t");
             }
+        }
+
+        static int  BinarySearch(int[] arr,int target)
+        {
+            if(arr==null || !arr.Any())
+            {
+                return -1;
+            }
+            int high = arr.Length-1;        
+            
+            Array.Sort(arr);
+            Console.WriteLine("The original data is :\n");
+            foreach(int a in arr)
+            {
+                Console.Write(a + "\t");
+            }
+            Console.WriteLine("\n\n\n");
+            int low = 0;                  
+
+            while(low<=high)
+            {
+                int mid = (low + high) / 2;
+                if (target == arr[mid])
+                {
+                    return mid;
+                }
+                if (arr[mid]>target)
+                {
+                    high = mid-1;
+                }
+                if(arr[mid]<target)
+                {
+                    low = mid + 1;
+                }
+            }
+            return -1;
         }
     }
 }
