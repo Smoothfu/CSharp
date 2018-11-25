@@ -11,9 +11,9 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            int[] arr = { 23, 34, 78, 4356, 3434, 34534, 34523459, 89909, 54356, 34345, 34531453, 343455, 3423432, 78945634 };
-            int result = SearchArray(arr, 34523459);
-            Console.WriteLine(result+1);
+            //1,1,2,3,5,8,13,21,34,55,
+            int result = Fob(8);
+            Console.WriteLine(result);
             Console.ReadLine();
         }
 
@@ -216,6 +216,23 @@ namespace ConsoleApp291
                              select a).FirstOrDefault();
             int foundIndex = Array.IndexOf(arr, foundResult);
             return foundIndex;
+        }
+
+        static int Fob(int i)
+        {
+            if(i<0)
+            {
+                return -1;
+            }
+
+            if(i==1||i==2)
+            {
+                return 1;
+            }
+            else
+            {
+                return Fob(i - 1) + Fob(i - 2);
+            }
         }
     }
 
