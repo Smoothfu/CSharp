@@ -10,7 +10,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            BinarySearch(100);
+            BubbleySearch(100);
             Console.ReadLine();
         }
 
@@ -48,13 +48,13 @@ namespace ConsoleApp291
             }
         }
 
-        static void BinarySearch(int count)
+        static void BubbleySearch(int count)
         {
             int[] arr = new int[count];
             Random rnd = new Random();
             for(int i=0;i<count;i++)
             {
-                arr[i] = rnd.Next(1, 1000000);
+                arr[i] = rnd.Next(1, 10000);
             }
 
             Console.WriteLine("The original sequence is:\n");
