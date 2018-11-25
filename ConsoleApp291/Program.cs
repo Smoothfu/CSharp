@@ -11,8 +11,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            //1,1,2,3,5,8,13,21,34,55,
-            int result = Fob(8);
+            int result = Factorial(5);
             Console.WriteLine(result);
             Console.ReadLine();
         }
@@ -232,6 +231,24 @@ namespace ConsoleApp291
             else
             {
                 return Fob(i - 1) + Fob(i - 2);
+            }
+        }
+
+        static int  Factorial(int i)
+        {
+            if(i<0)
+            {
+                return -1;
+            }
+
+            if(i==1 || i==0)
+            {
+                return 1;
+            }
+
+            else
+            {
+                return i * Factorial(i - 1);
             }
         }
     }
