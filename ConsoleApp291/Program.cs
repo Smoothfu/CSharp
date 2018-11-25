@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ConsoleApp291
 {
@@ -10,9 +11,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            int[] arr = { 10, 7, 89, 345, 3455, 89566, 4565, 45624, 252346, 2456234, 433434, 3454359, 7686563, 5674567 };
-            int resultIndex=BinarySearch(arr, 89566);
-            Console.WriteLine(resultIndex+1);
+            GetAllFiles();
             Console.ReadLine();
         }
 
@@ -119,6 +118,22 @@ namespace ConsoleApp291
                 }
             }
             return -1;
+        }
+
+        static void GetAllFiles()
+        {
+            string path = @"D:\C";
+            DirectoryInfo dir = new DirectoryInfo(path);
+            FileInfo[] allFiles = dir.GetFiles("*",SearchOption.AllDirectories);
+            if(allFiles!=null && allFiles.Any())
+            {
+               foreach(var file in allFiles)
+                {
+                    Console.WriteLine(file.FullName);
+                }
+
+                Console.WriteLine("\n\n\nThere are totally {0} files in {1}\n", allFiles.Count(), path);
+            }
         }
     }
 }
