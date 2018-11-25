@@ -11,7 +11,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            StackOrder(10);
+            QueueOrder(10);
             Console.ReadLine();
         }
 
@@ -138,6 +138,10 @@ namespace ConsoleApp291
 
         static void StackOrder(int count)
         {
+            if (count <= 0)
+            {
+                return;
+            }
             Stack<int> intStack = new Stack<int>();
             Random rnd = new Random();
             for(int i=0;i<count;i++)
@@ -151,6 +155,25 @@ namespace ConsoleApp291
                 Console.Write(intStack.Pop()+"\t");
             }
 
+        }
+
+        static void QueueOrder(int count)
+        {
+            if(count<=0)
+            {
+                return;
+            }
+
+            Queue<int> intQueue = new Queue<int>();
+            for(int i=0;i<count;i++)
+            {
+                intQueue.Enqueue(i * 100);
+            }
+
+            while(intQueue.Count>0)
+            {
+                Console.WriteLine(intQueue.Dequeue());
+            }
         }
     }
 }
