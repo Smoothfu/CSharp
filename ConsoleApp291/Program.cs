@@ -274,21 +274,18 @@ namespace ConsoleApp291
             }
 
             char[] charArr = str.ToCharArray();
-            if(charArr!=null && charArr.Any())
+            Parallel.ForEach(charArr, ch =>
             {
-                foreach(char ch in charArr)
+                if (char.IsLetter(ch))
                 {
-                    if(char.IsLetter(ch))
-                    {
-                        letterList.Add(ch);
-                    }
-
-                    if(char.IsNumber(ch))
-                    {
-                        numList.Add(ch);
-                    }
+                    letterList.Add(ch);
                 }
-            }
+
+                if (char.IsNumber(ch))
+                {
+                    numList.Add(ch);
+                }
+            }); 
            
 
             if(letterList!=null && letterList.Any())
