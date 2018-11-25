@@ -11,7 +11,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            QueueOrder(10);
+            MaxContractNum(789);
             Console.ReadLine();
         }
 
@@ -183,6 +183,23 @@ namespace ConsoleApp291
             pStruct.InitPersonStruct(31, "Floomberg");
             Console.WriteLine(pStruct.Age);
             Console.WriteLine(pStruct.Name); 
+        }
+
+        static void MaxContractNum(int num)
+        {
+            List<int> contractList = new List<int>();
+            for(int i=1;i<=num/2;i++)
+            {
+                if(num%i==0)
+                {
+                    contractList.Add(i);
+                }
+            }
+
+            int maxContractNum = (from n in contractList
+                                  orderby n descending
+                                  select n).FirstOrDefault();
+            Console.WriteLine("{0}'s biggest contract number is :{1}\n", num, maxContractNum);
         }
     }
 
