@@ -11,8 +11,8 @@ namespace ConsoleApp291
         static void Main(string[] args)
         {
             int[] arr = { 10, 7, 89, 345, 3455, 89566, 4565, 45624, 252346, 2456234, 433434, 3454359, 7686563, 5674567 };
-            int resultIndex=BinarySearch(arr, 2456234);
-            Console.WriteLine(resultIndex);
+            int resultIndex=BinarySearch(arr, 89566);
+            Console.WriteLine(resultIndex+1);
             Console.ReadLine();
         }
 
