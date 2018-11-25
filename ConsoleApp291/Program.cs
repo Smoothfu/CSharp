@@ -10,7 +10,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            BinarySearch(1000000);
+            BinarySearch(100);
             Console.ReadLine();
         }
 
@@ -50,11 +50,37 @@ namespace ConsoleApp291
 
         static void BinarySearch(int count)
         {
-           List<int> intList=new List<int>(Enumerable.Range(1, count));
-            intList.ForEach(x =>
+            int[] arr = new int[count];
+            Random rnd = new Random();
+            for(int i=0;i<count;i++)
             {
-                Console.Write(x+"\t");
-            });           
+                arr[i] = rnd.Next(1, 1000000);
+            }
+
+            Console.WriteLine("The original sequence is:\n");
+            foreach(var i in arr)
+            {
+                Console.Write(i + "\t");
+            }
+
+            Console.WriteLine("\n\n\n\n\nThe ordered result is:");
+            for(int i=0;i<arr.Length;i++)
+            {
+                for(int j=i+1;j<arr.Length; j++)
+                {
+                    if(arr[i]>arr[j])
+                    {
+                        int temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+
+            foreach(int i in arr)
+            {
+                Console.Write(i + "\t");
+            }
         }
     }
 }
