@@ -303,8 +303,7 @@ namespace ConsoleApp291
                 numList.ForEach(x =>
                 {
                     Console.Write(x + "\t");
-                });
-                
+                });                
             }
 
         }
