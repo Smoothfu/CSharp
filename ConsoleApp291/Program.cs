@@ -11,8 +11,13 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            int result = Factorial(5);
-            Console.WriteLine(result);
+            int[] arr = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+            int maxValue = arr.Max();
+            Console.WriteLine("Max value is {0}\n", maxValue);
+            int minValue = arr.Min();
+            Console.WriteLine("Min value is {0}\n", minValue);
+            int sum = RecursiveSum(arr);            
+            Console.WriteLine("The sum of arr is {0}\n",sum);
             Console.ReadLine();
         }
 
@@ -250,6 +255,17 @@ namespace ConsoleApp291
             {
                 return i * Factorial(i - 1);
             }
+        }
+
+        static int RecursiveSum(int[] arr)
+        {
+            if(arr==null || !arr.Any())
+            {
+                return -1;
+            }
+
+            var sum = arr.Sum();
+            return sum;
         }
     }
 
