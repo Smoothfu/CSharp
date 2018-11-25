@@ -11,13 +11,9 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            int[] arr = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
-            int maxValue = arr.Max();
-            Console.WriteLine("Max value is {0}\n", maxValue);
-            int minValue = arr.Min();
-            Console.WriteLine("Min value is {0}\n", minValue);
-            int sum = RecursiveSum(arr);            
-            Console.WriteLine("The sum of arr is {0}\n",sum);
+            string str = "abc123 3463456 this is a test";
+            IdentifyString(str);
+
             Console.ReadLine();
         }
 
@@ -267,6 +263,54 @@ namespace ConsoleApp291
             var sum = arr.Sum();
             return sum;
         }
+
+        static void IdentifyString(string str)
+        {
+            List<char> letterList = new List<char>();
+            List<char> numList = new List<char>();
+            if(string.IsNullOrEmpty(str))
+            {
+                return;
+            }
+
+            char[] charArr = str.ToCharArray();
+            if(charArr!=null && charArr.Any())
+            {
+                foreach(char ch in charArr)
+                {
+                    if(char.IsLetter(ch))
+                    {
+                        letterList.Add(ch);
+                    }
+
+                    if(char.IsNumber(ch))
+                    {
+                        numList.Add(ch);
+                    }
+                }
+            }
+           
+
+            if(letterList!=null && letterList.Any())
+            {
+                Console.WriteLine("\n\n\nThere are totally {0} letters\n", letterList.Count());
+                letterList.ForEach(x =>
+                {
+                    Console.Write(x + "\t");
+                });
+            }
+
+            if(numList!=null && numList.Any())
+            {
+                Console.WriteLine("\n\n\nThere are totally {0} numbers", numList.Count());
+                numList.ForEach(x =>
+                {
+                    Console.Write(x + "\t");
+                });
+                
+            }
+
+        }
     }
 
     public struct PersonStruct
@@ -279,5 +323,16 @@ namespace ConsoleApp291
             Name = name;
         }
        
+    }
+
+    public class Person
+    {
+        public int Age { get; set; }
+        public string Name { get; set; }
+        public Person(int age,string name)
+        {
+            Age = age;
+            Name = name;
+        }
     }
 }
