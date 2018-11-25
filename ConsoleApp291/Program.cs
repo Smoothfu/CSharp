@@ -11,7 +11,7 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            QueueOrder(10);
+            StructSample();
             Console.ReadLine();
         }
 
@@ -174,6 +174,24 @@ namespace ConsoleApp291
             {
                 Console.WriteLine(intQueue.Dequeue());
             }
+        }
+
+        static void StructSample()
+        {
+            PersonStruct pStruct = new PersonStruct(31, "Floomberg");
+            Console.WriteLine(pStruct.Age);
+            Console.WriteLine(pStruct.Name);
+        }
+    }
+
+    public struct PersonStruct
+    {
+        public int Age { get; set; }
+        public string Name { get; set; }
+        public PersonStruct(int age,string name)
+        {
+            Age = age;
+            Name = name;
         }
     }
 }
