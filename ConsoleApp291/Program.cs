@@ -11,7 +11,9 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            MaxContractNum(789);
+            int[] arr = { 23, 34, 78, 4356, 3434, 34534, 34523459, 89909, 54356, 34345, 34531453, 343455, 3423432, 78945634 };
+            int result = SearchArray(arr, 34523459);
+            Console.WriteLine(result+1);
             Console.ReadLine();
         }
 
@@ -200,6 +202,20 @@ namespace ConsoleApp291
                                   orderby n descending
                                   select n).FirstOrDefault();
             Console.WriteLine("{0}'s biggest contract number is :{1}\n", num, maxContractNum);
+        }
+
+        static int SearchArray(int []arr,int target)
+        {
+            if(arr==null||!arr.Any())
+            {
+                return -1;
+            }
+
+            var foundResult = (from a in arr
+                             where a == target
+                             select a).FirstOrDefault();
+            int foundIndex = Array.IndexOf(arr, foundResult);
+            return foundIndex;
         }
     }
 
