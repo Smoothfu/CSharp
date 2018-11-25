@@ -11,7 +11,17 @@ namespace ConsoleApp291
     {
         static void Main(string[] args)
         {
-            StructSample();
+            Console.WriteLine("The size of int:{0}\n", sizeof(int));
+            Console.WriteLine("The size of Int16:{0}\n", sizeof(Int16));
+            Console.WriteLine("The size of Int32:{0}\n", sizeof(Int32));
+            Console.WriteLine("The size of Int64:{0}\n", sizeof(Int64));
+            Console.WriteLine("The size of float:{0}\n", sizeof(float));
+            Console.WriteLine("The size of char:{0}\n", sizeof(char));
+            Console.WriteLine("The size of boolean:{0}\n", sizeof(bool));
+            Console.WriteLine("The size of long :{0}\n", sizeof(long));
+            Console.WriteLine("The size of double:{0}\n", sizeof(double));
+            Console.WriteLine("The size of decimal:{0}\n", sizeof(decimal)); 
+
             Console.ReadLine();
         }
 
