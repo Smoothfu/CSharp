@@ -11,13 +11,7 @@ namespace ConsoleApp292
     {
         static void Main(string[] args)
         {
-            ArrayList al = new ArrayList();
-            al.Capacity = 5;
-            for (int i=0;i<10;i++)
-            {
-                al.Add(i);
-            }
-            Console.WriteLine(al.Capacity);
+            StackOrder();
             Console.ReadLine();
         }
 
@@ -53,7 +47,6 @@ namespace ConsoleApp292
                 Console.Write(x + "\t");
             });
         }
-
         static void ArraySample()
         {
             int[] arr = new int[10];
@@ -96,6 +89,32 @@ namespace ConsoleApp292
             if (int.TryParse(str, out num))
             {
                 Console.WriteLine("You entered num is {0}\n", num);
+            }
+        }
+        static void ArrayListCapacityExpandAutomobile()
+        {
+            ArrayList al = new ArrayList();
+            al.Capacity = 3;
+            for (int i = 0; i < 10; i++)
+            {
+                al.Add(i);
+            }
+            Console.WriteLine(al.Capacity);
+        }
+        static void StackOrder()
+        {
+            Stack<int> intStack = new Stack<int>();
+            Console.WriteLine("The pushed order:");
+            for (int i = 0; i < 10; i++)
+            {
+                intStack.Push(i);
+                Console.Write(i + "\t");
+            }
+
+            Console.WriteLine("\n\n\n\n\nThe popped up order:");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write(intStack.Pop() + "\t");
             }
         }
     }
