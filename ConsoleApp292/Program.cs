@@ -10,7 +10,26 @@ namespace ConsoleApp292
     {
         static void Main(string[] args)
         {
-            FindPrimes(100);
+            int[] arr = new int[10];
+            Random rnd = new Random();
+            for(int i=0;i<10;i++)
+            {
+                arr[i] = rnd.Next(1, 1000);
+            }
+            Console.WriteLine("The original array:\n");
+            arr.All(x =>
+            {
+                Console.Write(x + "\t");
+                return true;
+            });
+
+            Array.Sort(arr);
+            Console.WriteLine("\n\n\nThe sorted array:\n");
+            arr.All(x =>
+            {
+                Console.Write(x + "\t");
+                return true;
+            });
             Console.ReadLine();
         }
 
