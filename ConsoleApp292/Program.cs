@@ -14,44 +14,9 @@ namespace ConsoleApp292
     {
         static void Main(string[] args)
         {
-            string selectSQL = "select * from Production.Product where  ProductID > all(select ProductID from Production.Product where ProductID>500 and ProductID<=800)";
-            string connString = ConfigurationManager.AppSettings["conString"].ToString();
-            using (SqlConnection conn = new SqlConnection(connString))
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-                using (SqlCommand cmd = new SqlCommand(selectSQL, conn))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Connection = conn;
-                    cmd.CommandText = selectSQL;
-                    cmd.ExecuteNonQuery();
-                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                    sqlDataAdapter.SelectCommand = cmd;
-                    DataSet ds = new DataSet();
-                    sqlDataAdapter.Fill(ds);
-                    if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
-                    {
-                         
-
-                        for(int i=0;i<ds.Tables[0].Rows.Count;i++)
-                        {
-                            for(int j=0;j<ds.Tables[0].Columns.Count;j++)
-                            {
-                                string formatMsg = string.Format("{0,-10}:{1,-30}"+"\t", 
-                                    ds.Tables[0].Columns[j].ColumnName,
-                                    ds.Tables[0].Rows[i][j].ToString());
-                                Console.Write(formatMsg);
-                            }
-                            Console.WriteLine();
-                        }
-
-                        Console.WriteLine("\n\n\n\n\nThere are totally {0} rows data in the table", ds.Tables[0].Rows.Count);
-                    }
-                }
-            }
+            Singleton instance = Singleton.GetSingleton();
+            Type type = instance.GetType();
+            Console.WriteLine(type.FullName);
             Console.ReadLine();
         }
 
@@ -172,6 +137,67 @@ namespace ConsoleApp292
             while (intQueue.Count > 0)
             {
                 Console.Write(intQueue.Dequeue() + "\t");
+            }
+        }
+        static void SQLADONET()
+        {
+            string selectSQL = "select * from Production.Product where  ProductID > all(select ProductID from Production.Product where ProductID>500 and ProductID<=800)";
+            string connString = ConfigurationManager.AppSettings["conString"].ToString();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                using (SqlCommand cmd = new SqlCommand(selectSQL, conn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = conn;
+                    cmd.CommandText = selectSQL;
+                    cmd.ExecuteNonQuery();
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                    sqlDataAdapter.SelectCommand = cmd;
+                    DataSet ds = new DataSet();
+                    sqlDataAdapter.Fill(ds);
+                    if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                    {
+
+
+                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                        {
+                            for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
+                            {
+                                string formatMsg = string.Format("{0,-10}:{1,-30}" + "\t",
+                                    ds.Tables[0].Columns[j].ColumnName,
+                                    ds.Tables[0].Rows[i][j].ToString());
+                                Console.Write(formatMsg);
+                            }
+                            Console.WriteLine();
+                        }
+
+                        Console.WriteLine("\n\n\n\n\nThere are totally {0} rows data in the table", ds.Tables[0].Rows.Count);
+                    }
+                }
+            }
+        }
+    }
+
+    public  sealed  class Singleton
+    {
+        private Singleton()
+        {
+        }
+        private static Singleton Instance;
+        private static string str = "loclObj";
+        public static Singleton GetSingleton()
+        {
+            lock(str)
+            {
+                if(Instance==null)
+                {
+                    Instance = new Singleton();
+                }
+                return Instance;
             }
         }
     }
