@@ -11,7 +11,7 @@ namespace ConsoleApp292
     {
         static void Main(string[] args)
         {
-            StackOrder();
+            QueueOrder();
             Console.ReadLine();
         }
 
@@ -115,6 +115,23 @@ namespace ConsoleApp292
             for (int i = 0; i < 10; i++)
             {
                 Console.Write(intStack.Pop() + "\t");
+            }
+        }
+        static void QueueOrder()
+        {
+            Queue<int> intQueue = new Queue<int>();
+
+            Console.WriteLine("The enqueue order: ");
+            for (int i = 0; i < 10; i++)
+            {
+                intQueue.Enqueue(i);
+                Console.Write(i + "\t");
+            }
+
+            Console.WriteLine("\n\n\n\n\nThe dequeue order: ");
+            while (intQueue.Count > 0)
+            {
+                Console.Write(intQueue.Dequeue() + "\t");
             }
         }
     }
