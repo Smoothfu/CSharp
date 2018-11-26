@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace ConsoleApp292
 {
@@ -10,26 +11,13 @@ namespace ConsoleApp292
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[10];
-            Random rnd = new Random();
-            for(int i=0;i<10;i++)
+            ArrayList al = new ArrayList();
+            al.Capacity = 5;
+            for (int i=0;i<10;i++)
             {
-                arr[i] = rnd.Next(1, 1000);
+                al.Add(i);
             }
-            Console.WriteLine("The original array:\n");
-            arr.All(x =>
-            {
-                Console.Write(x + "\t");
-                return true;
-            });
-
-            Array.Sort(arr);
-            Console.WriteLine("\n\n\nThe sorted array:\n");
-            arr.All(x =>
-            {
-                Console.Write(x + "\t");
-                return true;
-            });
+            Console.WriteLine(al.Capacity);
             Console.ReadLine();
         }
 
@@ -64,6 +52,51 @@ namespace ConsoleApp292
             {
                 Console.Write(x + "\t");
             });
+        }
+
+        static void ArraySample()
+        {
+            int[] arr = new int[10];
+            Random rnd = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                arr[i] = rnd.Next(1, 1000);
+            }
+            Console.WriteLine("The original array:\n");
+            arr.All(x =>
+            {
+                Console.Write(x + "\t");
+                return true;
+            });
+
+            Array.Sort(arr);
+            Console.WriteLine("\n\n\nThe sorted array:\n");
+            arr.All(x =>
+            {
+                Console.Write(x + "\t");
+                return true;
+            });
+        }
+        static void Top10Languages()
+        {
+            string[] top10Language = new string[] { "Javascript", "Java", "Python", "PHP", "C++", "C#", "TypeScript", "Shell", "C", "Ruby" };
+
+            top10Language.All(x =>
+            {
+                Console.WriteLine(x);
+                return true;
+            });
+        }
+        static void IntTryParse()
+        {
+            int num;
+            string str;
+            Console.Write("Enter a number: ");
+            str = Console.ReadLine();
+            if (int.TryParse(str, out num))
+            {
+                Console.WriteLine("You entered num is {0}\n", num);
+            }
         }
     }
 }
