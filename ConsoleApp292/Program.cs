@@ -7,17 +7,109 @@ using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Reflection;
 
 namespace ConsoleApp292
 {
-    class Program
+    interface IMath
     {
+        void Add(int x, int y);
+        void Subtract(int x, int y);
+    }
+    class Program:IDisposable,IMath
+    {
+        public event EventHandler FirstEvent;
+        public event EventHandler SecondEvent;
+        public string Name { get; set; }
+        public int Age { get; set; }
+        private string name = "Floomberg";
+        public int age = 31;
+        protected decimal Asset = 100000000.0m;
         static void Main(string[] args)
         {
-            Singleton instance = Singleton.GetSingleton();
-            Type type = instance.GetType();
-            Console.WriteLine(type.FullName);
+            Program obj = new Program();
+            obj.FirstEvent += Obj_FirstEvent;
+            if(obj.FirstEvent!=null)
+            {
+                Obj_FirstEvent(obj, new EventArgs());
+            }
+            Type type = typeof(Program);
+            FieldInfo[] fis = type.GetFields();
+            if(fis!=null && fis.Any())
+            {
+                Console.WriteLine("FieldInfo:");
+                fis.All(x =>
+                {
+                    Console.WriteLine(x.Name);
+                    return true;
+                });
+                Console.WriteLine("\n\n\n");
+            }
+            MemberInfo[] mis = type.GetMembers();
+            if(mis!=null && mis.Any())
+            {
+                Console.WriteLine("MemberInfo:");
+                mis.All(x =>
+                {
+                    Console.WriteLine(x.Name);
+                    return true;
+                });
+                Console.WriteLine("\n\n\n");
+            }
+
+            MethodInfo[] miss = type.GetMethods();
+            if(miss!=null && miss.Any())
+            {
+                Console.WriteLine("MethodInfo:");
+                miss.All(x =>
+                {
+                    Console.WriteLine(x.Name);
+                    return true;
+                });
+                Console.WriteLine("\n\n\n");
+            }
+
+            Type[] types = type.GetInterfaces();
+            if(types!=null && types.Any())
+            {
+                Console.WriteLine("GetInterfaces");
+                types.All(x =>
+                {
+                    Console.WriteLine(x.FullName);
+                    return true;
+                });
+                Console.WriteLine("\n\n\n");
+            }
+
+            PropertyInfo[] pis = type.GetProperties();
+            if(pis!=null && pis.Any())
+            {
+                Console.WriteLine("Properties:");
+                pis.All(x =>
+                {
+                    Console.WriteLine(x.Name);
+                    return true;
+                });
+                Console.WriteLine("\n\n\n");
+            }
+
+            EventInfo[] eis = type.GetEvents();
+            if(eis!=null && eis.Any())
+            {
+                Console.WriteLine("EventInfo:");
+                eis.All(x =>
+                {
+                    Console.WriteLine(x.Name);
+                    return true;
+                });
+                Console.WriteLine("\n\n\n");
+            }
             Console.ReadLine();
+        }
+
+        private static void Obj_FirstEvent(object sender, EventArgs e)
+        {
+            Console.WriteLine(DateTime.Now);
         }
 
         static void FindPrimes(int num)
@@ -179,6 +271,20 @@ namespace ConsoleApp292
                     }
                 }
             }
+        }
+        public void Dispose()
+        {
+            this.Dispose();
+        }
+
+        public void Add(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Subtract(int x, int y)
+        {
+            throw new NotImplementedException();
         }
     }
 
