@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ConsoleApp292
 {
@@ -11,7 +14,44 @@ namespace ConsoleApp292
     {
         static void Main(string[] args)
         {
-            QueueOrder();
+            string selectSQL = "select * from Production.Product where  ProductID > all(select ProductID from Production.Product where ProductID>500 and ProductID<=800)";
+            string connString = ConfigurationManager.AppSettings["conString"].ToString();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                using (SqlCommand cmd = new SqlCommand(selectSQL, conn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = conn;
+                    cmd.CommandText = selectSQL;
+                    cmd.ExecuteNonQuery();
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                    sqlDataAdapter.SelectCommand = cmd;
+                    DataSet ds = new DataSet();
+                    sqlDataAdapter.Fill(ds);
+                    if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
+                    {
+                         
+
+                        for(int i=0;i<ds.Tables[0].Rows.Count;i++)
+                        {
+                            for(int j=0;j<ds.Tables[0].Columns.Count;j++)
+                            {
+                                string formatMsg = string.Format("{0,-10}:{1,-30}"+"\t", 
+                                    ds.Tables[0].Columns[j].ColumnName,
+                                    ds.Tables[0].Rows[i][j].ToString());
+                                Console.Write(formatMsg);
+                            }
+                            Console.WriteLine();
+                        }
+
+                        Console.WriteLine("\n\n\n\n\nThere are totally {0} rows data in the table", ds.Tables[0].Rows.Count);
+                    }
+                }
+            }
             Console.ReadLine();
         }
 
