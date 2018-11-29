@@ -13,6 +13,25 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
+            List<int> numbers = new List<int> { 35, 44, 200, 84, 3987, 4, 199, 329, 446, 208 };
+
+            IEnumerable<IGrouping<int, int>> query = from n in numbers
+                                                     group n by n % 2;
+            foreach(var q in query)
+            {
+                Console.WriteLine(q.Key==0? "\nEven numbers:" : "\nOdd numbers:");
+                foreach(int i in q)
+                {
+                    Console.WriteLine(i);
+                }
+
+            }
+            Console.ReadLine();
+        }
+
+
+        static void LinqOrderbyOrderbyDescending()
+        {
             int[] num = { -20, 12, 6, 10, 0, -3, 1 };
 
             //create a query that obtain the values in sorted order
@@ -22,7 +41,7 @@ namespace ConsoleApp293
             Console.WriteLine("Values in ascending order:\n");
 
             //Execute the query and diplay the results
-            foreach(int i in posNums)
+            foreach (int i in posNums)
             {
                 Console.Write(i + "\t");
             }
@@ -33,14 +52,11 @@ namespace ConsoleApp293
                               select n;
             Console.WriteLine("\nValues in descending order:\n");
             //Execute the query and display the results.
-            foreach(int i in posNumsDesc)
+            foreach (int i in posNumsDesc)
             {
                 Console.WriteLine(i);
             }
-            Console.ReadLine();
         }
-
-
         static void LINQFrompInPhrasesfromwinpSplitselectw()
         {
             List<string> phrases = new List<string>() { "an apple a day", "the quick brown fox" };
