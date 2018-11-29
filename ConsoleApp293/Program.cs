@@ -13,6 +13,23 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
+            List<string> phrases = new List<string>() { "an apple a day", "the quick brown fox" };
+
+            var query = from p in phrases
+                        from w in p.Split(' ')
+                        select w;
+
+            foreach (var q in query)
+            {
+                Console.WriteLine(q);
+            }
+           
+            Console.ReadLine();
+        }
+
+
+        static void LINQSubstring()
+        {
             List<string> words = new List<string>() { "an", "apple", "a", "day" };
             var query = from q in words select q.Substring(0, 1);
 
@@ -20,10 +37,7 @@ namespace ConsoleApp293
             {
                 Console.WriteLine(x);
             });
-           
-            Console.ReadLine();
         }
-
         static void ADONETSample()
         {
             string conString = ConfigurationManager.AppSettings["conString"].ToString();
