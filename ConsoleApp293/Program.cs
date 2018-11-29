@@ -21,7 +21,7 @@ namespace ConsoleApp293
                 {
                     conn.Open();
                 }
-                string selectSQL = "select ProductID,name,ProductNumber," +
+                string selectSQL = "select ProductID,Name,ProductNumber," +
                     "MakeFlag,FinishedGoodsFlag,SafetyStockLevel,ReorderPoint " +
                     "from Production.Product where SafetyStockLevel is not null";
                 using (SqlCommand cmd = new SqlCommand(selectSQL, conn))
@@ -38,7 +38,7 @@ namespace ConsoleApp293
                         string safetyStockLevelCN = reader.GetName(5);
                         string reorderPointCN = reader.GetName(6);
 
-                        string formatHeaderName = string.Format("{0,-30}  {1,-40}  {2,-20}  {3,-20}  {4,-20}  {5,-20}  {6,-20}\n\n",
+                        string formatHeaderName = string.Format("{0,-10}  {1,-20}  {2,20}  {3,0}  {4,20}  {5,20}  {6,20}\n\n",
                             productIdCN, nameCN, productNumberCN, makeFlagCN, finishedGoodsFlagCN, safetyStockLevelCN, reorderPointCN);
                         Console.WriteLine(formatHeaderName);
                         int rowCount = 0;
@@ -52,7 +52,7 @@ namespace ConsoleApp293
                             Int16 safetyStockLevel = reader.GetInt16(5);
                             Int16 reorderPoint = reader.GetInt16(6);
 
-                            string msg = string.Format("{0,-30} {1,-40} {2,-20} {3,-20} {4,-20} {5,-20} {6,-20}",
+                            string msg = string.Format("{0,-10} {1,-30} {2,-15} {3,-20} {4,-20} {5,-20} {6,-20}",
                                 productId, name, productNumber, makeFlag, finishedGoodsFlag, safetyStockLevel, reorderPoint);
                             Console.WriteLine(msg + "\n");
                             ++rowCount;
