@@ -13,6 +13,40 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
+            Pet[] cats = GetCats();
+            Pet[] dogs = GetDogs();
+
+            IEnumerable<string> query = cats.Select(x => x.Name).Concat(dogs.Select(y => y.Name));
+            foreach(var q in query)
+            {
+                Console.WriteLine("Name={0}\n", q);
+            }
+            Console.ReadLine();
+        }
+
+        static Pet[] GetCats()
+        {
+            Pet[] cats =
+            {
+                new Pet{Name="Barley",Age=8},
+                new Pet{Name="Boots",Age=4},
+                new Pet{Name="Whiskers",Age=1}
+            };
+            return cats;
+        }
+        static Pet[] GetDogs()
+        {
+            Pet[] dogs =
+            {
+                new Pet{Name="Bounder",Age=3},
+                new Pet{Name="Snoopy",Age=14},
+                new Pet{Name="Fido",Age=9}
+            };
+
+            return dogs;
+        }
+        static void LINQCastExample()
+        {
             Plant[] plants = new Plant[]
             {
                 new CarnivorousPlant{Name="Venus Fly Trap",TrapType="Snap Trap"},
@@ -25,15 +59,11 @@ namespace ConsoleApp293
                         where cPlant.TrapType == "Snap Trap"
                         select cPlant;
 
-            foreach(var e in query)
+            foreach (var e in query)
             {
                 Console.WriteLine("Name={0},Trap Type={1}\n", e.Name, e.TrapType);
             }
-
-            Console.ReadLine();
         }
-
-
         static void LINQIGroup()
         {
             List<int> numbers = new List<int> { 35, 44, 200, 84, 3987, 4, 199, 329, 446, 208 };
@@ -248,5 +278,11 @@ namespace ConsoleApp293
     class CarnivorousPlant:Plant
     {
         public string TrapType { get; set; }
+    }
+
+    class Pet
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
     }
 }
