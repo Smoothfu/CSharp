@@ -13,17 +13,27 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
+            int[] arr = Enumerable.Range(1, 100).ToArray();
+            var linqSkip = arr.Skip<int>(5);
+            foreach(int a in linqSkip)
+            {
+                Console.Write(a + "\t");
+            }
+
+            Console.ReadLine();
+        }
+
+        static void LINQConcatSample()
+        {
             Pet[] cats = GetCats();
             Pet[] dogs = GetDogs();
 
             IEnumerable<string> query = cats.Select(x => x.Name).Concat(dogs.Select(y => y.Name));
-            foreach(var q in query)
+            foreach (var q in query)
             {
                 Console.WriteLine("Name={0}\n", q);
             }
-            Console.ReadLine();
         }
-
         static Pet[] GetCats()
         {
             Pet[] cats =
