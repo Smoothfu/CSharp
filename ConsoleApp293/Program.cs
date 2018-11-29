@@ -13,13 +13,28 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
-            string[] words = { "humpty", "dumpty", "set", "on", "a", "wall" };
-            IEnumerable<string> query = from word in words where word.Length == 2 select word;
-            foreach(string q in query)
-            {
-                Console.WriteLine(q);
-            }
+            List<DepartmentClass> departments = new List<DepartmentClass>();
+            departments.Add(new DepartmentClass { DepartmentId = 1, Name = "Account" });
+            departments.Add(new DepartmentClass { DepartmentId = 2, Name = "Sales" });
+            departments.Add(new DepartmentClass { DepartmentId = 3, Name = "Marketing" });
+            List<EmployeeClass> employeesList = new List<EmployeeClass>();
+            employeesList.Add(new EmployeeClass { DepartmentId = 1, EmployeeId = 1, EmployeeName = "Fred1" });
+            employeesList.Add(new EmployeeClass { DepartmentId = 2, EmployeeId = 2, EmployeeName = "Fred2" });
+            employeesList.Add(new EmployeeClass { DepartmentId = 1, EmployeeId = 3, EmployeeName = "Fred3" });
 
+            var list = (from e in employeesList
+                        join d in departments on e.DepartmentId equals d.DepartmentId
+                        select new
+                        {
+                            EmployeeName = e.EmployeeName,
+                            DepartmentName = d.Name
+                        });
+
+            Parallel.ForEach(list, x =>
+            {
+                Console.WriteLine("Employee Name={0},Department Name={1}\n", x.EmployeeName, x.DepartmentName);
+            });
+           
             Console.ReadLine();
         }
 
@@ -82,7 +97,14 @@ namespace ConsoleApp293
 
         static void LINQWords()
         {
-            string[] words = { "hello", "wonderful", "LINQ", "beautifulgril", "World" };
+            string[] words = { "humpty", "dumpty", "set", "on", "a", "wall" };
+            IEnumerable<string> query = from word in words where word.Length == 2 select word;
+            foreach (string q in query)
+            {
+                Console.WriteLine(q);
+            }
+
+            string[] words2 = { "hello", "wonderful", "LINQ", "beautifulgril", "World" };
 
             ////get only short words
             //var shortWords = from word in words
@@ -117,5 +139,18 @@ namespace ConsoleApp293
                 Console.WriteLine(i);
             }
         }
+    }
+
+    class DepartmentClass
+    {
+        public int DepartmentId { get; set; }
+        public string Name { get; set; }
+    }
+
+    class EmployeeClass
+    {
+        public int EmployeeId { get; set; }
+        public string EmployeeName { get; set; }
+        public int DepartmentId { get; set; }
     }
 }
