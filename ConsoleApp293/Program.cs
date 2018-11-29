@@ -26,7 +26,17 @@ namespace ConsoleApp293
             {
                 Console.Write(i + "\t");
             }
-           
+
+
+            var posNumsDesc = from n in num
+                              orderby n descending
+                              select n;
+            Console.WriteLine("\nValues in descending order:\n");
+            //Execute the query and display the results.
+            foreach(int i in posNumsDesc)
+            {
+                Console.WriteLine(i);
+            }
             Console.ReadLine();
         }
 
