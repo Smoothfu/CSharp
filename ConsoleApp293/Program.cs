@@ -13,6 +13,26 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
+            int[] num = { -20, 12, 6, 10, 0, -3, 1 };
+
+            //create a query that obtain the values in sorted order
+            var posNums = from n in num
+                          orderby n
+                          select n;
+            Console.WriteLine("Values in ascending order:\n");
+
+            //Execute the query and diplay the results
+            foreach(int i in posNums)
+            {
+                Console.Write(i + "\t");
+            }
+           
+            Console.ReadLine();
+        }
+
+
+        static void LINQFrompInPhrasesfromwinpSplitselectw()
+        {
             List<string> phrases = new List<string>() { "an apple a day", "the quick brown fox" };
 
             var query = from p in phrases
@@ -23,11 +43,8 @@ namespace ConsoleApp293
             {
                 Console.WriteLine(q);
             }
-           
-            Console.ReadLine();
+
         }
-
-
         static void LINQSubstring()
         {
             List<string> words = new List<string>() { "an", "apple", "a", "day" };
