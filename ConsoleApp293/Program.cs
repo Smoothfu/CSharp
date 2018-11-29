@@ -59,6 +59,8 @@ namespace ConsoleApp293
                             Console.WriteLine();
                         }
 
+                        reader.NextResult();
+
                         Console.WriteLine("There are totally {0} rows data!\n", rowCount);
                     }
                    
