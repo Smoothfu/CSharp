@@ -12,10 +12,11 @@ namespace ConsoleApp293
         {
             string[] words = { "hello", "wonderful", "LINQ", "beautiful", "World" };
 
-            //get only short words
-            var shortWords = from word in words
-                             where word.Length <= 5
-                             select word;
+            ////get only short words
+            //var shortWords = from word in words
+            //                 where word.Length <= 5
+            //                 select word;
+            var shortWords = words.Where(x => x.Length <= 5);
 
             //print each word out.
             foreach(var word in shortWords)
