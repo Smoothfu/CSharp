@@ -13,26 +13,12 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
-            List<DepartmentClass> departments = new List<DepartmentClass>();
-            departments.Add(new DepartmentClass { DepartmentId = 1, Name = "Account" });
-            departments.Add(new DepartmentClass { DepartmentId = 2, Name = "Sales" });
-            departments.Add(new DepartmentClass { DepartmentId = 3, Name = "Marketing" });
-            List<EmployeeClass> employeesList = new List<EmployeeClass>();
-            employeesList.Add(new EmployeeClass { DepartmentId = 1, EmployeeId = 1, EmployeeName = "Fred1" });
-            employeesList.Add(new EmployeeClass { DepartmentId = 2, EmployeeId = 2, EmployeeName = "Fred2" });
-            employeesList.Add(new EmployeeClass { DepartmentId = 1, EmployeeId = 3, EmployeeName = "Fred3" });
+            List<string> words = new List<string>() { "an", "apple", "a", "day" };
+            var query = from q in words select q.Substring(0, 1);
 
-            var list = (from e in employeesList
-                        join d in departments on e.DepartmentId equals d.DepartmentId
-                        select new
-                        {
-                            EmployeeName = e.EmployeeName,
-                            DepartmentName = d.Name
-                        });
-
-            Parallel.ForEach(list, x =>
+            Parallel.ForEach(query, x =>
             {
-                Console.WriteLine("Employee Name={0},Department Name={1}\n", x.EmployeeName, x.DepartmentName);
+                Console.WriteLine(x);
             });
            
             Console.ReadLine();
@@ -138,6 +124,31 @@ namespace ConsoleApp293
             {
                 Console.WriteLine(i);
             }
+        }
+
+        static void LINQJoinInOn()
+        {
+            List<DepartmentClass> departments = new List<DepartmentClass>();
+            departments.Add(new DepartmentClass { DepartmentId = 1, Name = "Account" });
+            departments.Add(new DepartmentClass { DepartmentId = 2, Name = "Sales" });
+            departments.Add(new DepartmentClass { DepartmentId = 3, Name = "Marketing" });
+            List<EmployeeClass> employeesList = new List<EmployeeClass>();
+            employeesList.Add(new EmployeeClass { DepartmentId = 1, EmployeeId = 1, EmployeeName = "Fred1" });
+            employeesList.Add(new EmployeeClass { DepartmentId = 2, EmployeeId = 2, EmployeeName = "Fred2" });
+            employeesList.Add(new EmployeeClass { DepartmentId = 1, EmployeeId = 3, EmployeeName = "Fred3" });
+
+            var list = (from e in employeesList
+                        join d in departments on e.DepartmentId equals d.DepartmentId
+                        select new
+                        {
+                            EmployeeName = e.EmployeeName,
+                            DepartmentName = d.Name
+                        });
+
+            Parallel.ForEach(list, x =>
+            {
+                Console.WriteLine("Employee Name={0},Department Name={1}\n", x.EmployeeName, x.DepartmentName);
+            });
         }
     }
 
