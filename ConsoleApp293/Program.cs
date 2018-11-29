@@ -10,7 +10,7 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
-            string[] words = { "hello", "wonderful", "LINQ", "beautiful", "World" };
+            string[] words = { "hello", "wonderful", "LINQ", "beautifulgril", "World" };
 
             ////get only short words
             //var shortWords = from word in words
@@ -20,6 +20,13 @@ namespace ConsoleApp293
 
             //print each word out.
             foreach(var word in shortWords)
+            {
+                Console.WriteLine(word);
+            }
+
+            Console.WriteLine("The following are longer words:\n");
+            var longWords = from w in words where w.Length >= 10 select w;
+            foreach(var word in longWords)
             {
                 Console.WriteLine(word);
             }
