@@ -13,23 +13,43 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
+            Plant[] plants = new Plant[]
+            {
+                new CarnivorousPlant{Name="Venus Fly Trap",TrapType="Snap Trap"},
+                new CarnivorousPlant{Name="Pitcher Plant",TrapType="Pitfall Trap"},
+                new CarnivorousPlant{Name="Sundew",TrapType="Flypaper Trap"},
+                new CarnivorousPlant{Name="Waterwheel",TrapType="Snap Trap"}
+            };
+
+            var query = from CarnivorousPlant cPlant in plants
+                        where cPlant.TrapType == "Snap Trap"
+                        select cPlant;
+
+            foreach(var e in query)
+            {
+                Console.WriteLine("Name={0},Trap Type={1}\n", e.Name, e.TrapType);
+            }
+
+            Console.ReadLine();
+        }
+
+
+        static void LINQIGroup()
+        {
             List<int> numbers = new List<int> { 35, 44, 200, 84, 3987, 4, 199, 329, 446, 208 };
 
             IEnumerable<IGrouping<int, int>> query = from n in numbers
                                                      group n by n % 2;
-            foreach(var q in query)
+            foreach (var q in query)
             {
-                Console.WriteLine(q.Key==0? "\nEven numbers:" : "\nOdd numbers:");
-                foreach(int i in q)
+                Console.WriteLine(q.Key == 0 ? "\nEven numbers:" : "\nOdd numbers:");
+                foreach (int i in q)
                 {
                     Console.WriteLine(i);
                 }
 
             }
-            Console.ReadLine();
         }
-
-
         static void LinqOrderbyOrderbyDescending()
         {
             int[] num = { -20, 12, 6, 10, 0, -3, 1 };
@@ -137,7 +157,6 @@ namespace ConsoleApp293
                 }
             }
         }
-
         static void LINQWords()
         {
             string[] words = { "humpty", "dumpty", "set", "on", "a", "wall" };
@@ -182,7 +201,6 @@ namespace ConsoleApp293
                 Console.WriteLine(i);
             }
         }
-
         static void LINQJoinInOn()
         {
             List<DepartmentClass> departments = new List<DepartmentClass>();
@@ -220,5 +238,15 @@ namespace ConsoleApp293
         public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }
         public int DepartmentId { get; set; }
+    }
+
+    class Plant
+    {
+        public string Name { get; set; }
+    }
+
+    class CarnivorousPlant:Plant
+    {
+        public string TrapType { get; set; }
     }
 }
