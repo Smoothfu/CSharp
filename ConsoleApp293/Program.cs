@@ -13,6 +13,18 @@ namespace ConsoleApp293
     {
         static void Main(string[] args)
         {
+            string[] words = { "humpty", "dumpty", "set", "on", "a", "wall" };
+            IEnumerable<string> query = from word in words where word.Length == 2 select word;
+            foreach(string q in query)
+            {
+                Console.WriteLine(q);
+            }
+
+            Console.ReadLine();
+        }
+
+        static void ADONETSample()
+        {
             string conString = ConfigurationManager.AppSettings["conString"].ToString();
 
             using (SqlConnection conn = new SqlConnection(conString))
@@ -26,9 +38,9 @@ namespace ConsoleApp293
                     "from Production.Product where SafetyStockLevel is not null";
                 using (SqlCommand cmd = new SqlCommand(selectSQL, conn))
                 {
-                    SqlDataReader reader = cmd.ExecuteReader();                   
-                   
-                    if(reader.HasRows)
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
                     {
                         string productIdCN = reader.GetName(0);
                         string nameCN = reader.GetName(1);
@@ -63,11 +75,9 @@ namespace ConsoleApp293
 
                         Console.WriteLine("There are totally {0} rows data!\n", rowCount);
                     }
-                   
+
                 }
             }
-
-            Console.ReadLine();
         }
 
         static void LINQWords()
