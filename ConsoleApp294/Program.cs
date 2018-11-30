@@ -10,14 +10,32 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
-            int[] arr = { 10, 20, 30, 40, 50, 60,60,50,40,30,20,10 };
-            int[] arrr = { 20, 30, 40, 50, 60, 70, 80, 90, 100 };
-            var unionValues = arr.Union(arrr);
-            foreach(int i in unionValues)
-            {
-                Console.WriteLine(i);
-            }
+            Pet barley = new Pet { Name = "Barley", Age = 4 };
+            Pet boots = new Pet() { Name = "Boots", Age = 1 };
+            Pet whiskers = new Pet() { Name = "Whiskers", Age = 6 };
+
+            List<Pet> pets1 = new List<Pet>() { barley, boots };
+            List<Pet> pets2 = new List<Pet> { barley, boots };
+            List<Pet> pets3 = new List<Pet> { barley, boots, whiskers };
+
+            bool equal = pets1.SequenceEqual(pets2);
+            bool equal2 = pets1.SequenceEqual(pets3);
+
+            Console.WriteLine("The lists pets1 and pets2 {0} equal.", equal ? "are" : "are not");
+            Console.WriteLine("The lists pets1 and pets3 {0} equal.", equal2 ? "are" : "are not");
             Console.ReadLine();
+        }
+
+        static void LINQExcept()
+        {
+            double[] numbers1 = { 2.0, 2.1, 2.2, 2.3, 2.4, 2.5 };
+            double[] numbers2 = { 2.2 };
+            IEnumerable<double> onlyInFirstSet = numbers1.Except(numbers2);
+            foreach (double number in onlyInFirstSet)
+            {
+                Console.WriteLine(number);
+            }
+
         }
 
         static void LINQEnumerableRepeat()
