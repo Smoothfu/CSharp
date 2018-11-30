@@ -10,6 +10,16 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
+            string[] names = { "Hartono", "Tommy", "Adams", "Terry", "Andersen,Henriette Thaulow", "Hedlund,Magnus", "Tto,Shu" };
+            Random rnd = new Random(DateTime.Now.Millisecond);
+            string name = names.ElementAt(rnd.Next(0, names.Length));
+            Console.WriteLine("The name chosen at random is '{0}'.", name);
+
+            Console.ReadLine();
+        }
+
+        static void LINQSequenceEqual()
+        {
             Pet barley = new Pet { Name = "Barley", Age = 4 };
             Pet boots = new Pet() { Name = "Boots", Age = 1 };
             Pet whiskers = new Pet() { Name = "Whiskers", Age = 6 };
@@ -23,9 +33,7 @@ namespace ConsoleApp294
 
             Console.WriteLine("The lists pets1 and pets2 {0} equal.", equal ? "are" : "are not");
             Console.WriteLine("The lists pets1 and pets3 {0} equal.", equal2 ? "are" : "are not");
-            Console.ReadLine();
         }
-
         static void LINQExcept()
         {
             double[] numbers1 = { 2.0, 2.1, 2.2, 2.3, 2.4, 2.5 };
