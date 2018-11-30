@@ -21,13 +21,13 @@ namespace ConsoleApp294
             SqlDataAdapter dataAdapter = new SqlDataAdapter(selectSQL, conString);
 
             //Create table mappings
-            dataAdapter.TableMappings.Add("Table", "Department");
+            dataAdapter.TableMappings.Add("Table", "Department2");
 
             //Create and fill the dataset
             DataSet ds = new DataSet();
             dataAdapter.Fill(ds);
 
-            DataTable department = ds.Tables["Department"];
+            DataTable department = ds.Tables["Department2"];
 
             var query = from d in department.AsEnumerable()
                         select new
