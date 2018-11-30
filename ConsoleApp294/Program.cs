@@ -16,24 +16,31 @@ namespace ConsoleApp294
                 ToString();
             LINQToSQLDataContext db = new LINQToSQLDataContext(connString);
 
-            //Create new department
-            Department department = new Department();
-            //department.DepartmentID = 17;            
-            department.Name = "Board Chairman2";
-            department.GroupName = "SmoothInfo Group2";
-            department.ModifiedDate = DateTime.Now;
+            ////Create new department
+            //Department department = new Department();
+            ////department.DepartmentID = 17;            
+            //department.Name = "Board Chairman2";
+            //department.GroupName = "SmoothInfo Group2";
+            //department.ModifiedDate = DateTime.Now;
 
-            ////Add new department to database
-            //db.Departments.InsertOnSubmit(department);
+            //////Add new department to database
+            ////db.Departments.InsertOnSubmit(department);
 
-            ////save changes to database
-            //db.SubmitChanges();
+            //////save changes to database
+            ////db.SubmitChanges();
 
-            //get new inserted departement 
+            ////get new inserted departement 
 
-            Department newDepart = db.Departments.FirstOrDefault(x => x.DepartmentID == 18);
-            Console.WriteLine("DepartmentId={0},Name={1},GroupName={2},ModifiedDate={3}\n", newDepart.DepartmentID,
-                newDepart.Name, newDepart.GroupName, newDepart.ModifiedDate);
+            //Department newDepart = db.Departments.FirstOrDefault(x => x.DepartmentID == 18);
+            //Console.WriteLine("DepartmentId={0},Name={1},GroupName={2},ModifiedDate={3}\n", newDepart.DepartmentID,
+            //    newDepart.Name, newDepart.GroupName, newDepart.ModifiedDate);
+            Department updateDepartment = db.Departments.FirstOrDefault(x => x.DepartmentID == 19);
+            updateDepartment.Name = "Great!";
+            updateDepartment.ModifiedDate = DateTime.Now;
+            db.SubmitChanges();
+
+            Department newDepartment = db.Departments.FirstOrDefault(x => x.DepartmentID == 19);
+            Console.WriteLine("DepartmentId:{0},Name:{1},GroupName:{2},UpdatedTime:{3}\n", newDepartment.DepartmentID, newDepartment.Name, newDepartment.GroupName, newDepartment.ModifiedDate);
             Console.ReadLine();
         }
 
