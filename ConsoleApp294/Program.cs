@@ -12,10 +12,10 @@ namespace ConsoleApp294
         {
             int[] arr = { 10, 20, 30, 40, 50, 60,60,50,40,30,20,10 };
             int[] arrr = { 20, 30, 40, 50, 60, 70, 80, 90, 100 };
-            var distinctValues = arr.Distinct();
-            foreach(var d in distinctValues)
+            var exceptValues = arr.Except(arrr);
+            foreach(int i in exceptValues)
             {
-                Console.WriteLine(d);
+                Console.WriteLine(i);
             }
             Console.ReadLine();
         }
