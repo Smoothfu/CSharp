@@ -6,13 +6,32 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Xml.Linq;
 
 namespace ConsoleApp294
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            string myXML = @"<Departments>
+                <Department>IT</Department>
+                <Department>RD</Department>
+                <Department>Finance</Department>
+                <Department>Sales</Department>
+                </Departments>";
+            XDocument xDoc = new XDocument();
+            xDoc = XDocument.Parse(myXML);
+            var result = xDoc.Element("Departments").Descendants();
+            foreach(XElement item in result)
+            {
+                Console.WriteLine("Department Name:{0,-30}", item.Value);
+            }
+            
+            Console.ReadLine();
+        }
+
+        static void LINQToDS()
         {
             string conString = ConfigurationManager.ConnectionStrings["ConsoleApp294.Properties.Settings.AdventureWorks2012ConnectionString"].ToString();
             string selectSQL = "select * from HumanResources.Department";
@@ -32,17 +51,15 @@ namespace ConsoleApp294
             var query = from d in department.AsEnumerable()
                         select new
                         {
-                            DepartmentId=d.Field<Int16>("DepartmentId"),
-                            DepartmentName=d.Field<string>("Name")
+                            DepartmentId = d.Field<Int16>("DepartmentId"),
+                            DepartmentName = d.Field<string>("Name")
                         };
-            
-            foreach(var q in query)
+
+            foreach (var q in query)
             {
                 Console.WriteLine("DepartmentId:{0,-10}  DepartmentName:{1,-35}", q.DepartmentId, q.DepartmentName);
             }
-            Console.ReadLine();
         }
-
         static void LINQTODataSet()
         {
             string conString = ConfigurationManager.ConnectionStrings["ConsoleApp294.Properties.Settings.AdventureWorks2012ConnectionString"].ToString();
@@ -273,6 +290,8 @@ namespace ConsoleApp294
             Console.WriteLine("Avg={0}\n",avg);
         }
     }
+
+    
 
     class Pet
     {
