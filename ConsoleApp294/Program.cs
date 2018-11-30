@@ -34,13 +34,30 @@ namespace ConsoleApp294
             //Department newDepart = db.Departments.FirstOrDefault(x => x.DepartmentID == 18);
             //Console.WriteLine("DepartmentId={0},Name={1},GroupName={2},ModifiedDate={3}\n", newDepart.DepartmentID,
             //    newDepart.Name, newDepart.GroupName, newDepart.ModifiedDate);
-            Department updateDepartment = db.Departments.FirstOrDefault(x => x.DepartmentID == 19);
-            updateDepartment.Name = "Great!";
-            updateDepartment.ModifiedDate = DateTime.Now;
+            //Department updateDepartment = db.Departments.FirstOrDefault(x => x.DepartmentID == 19);
+            //updateDepartment.Name = "Great!";
+            //updateDepartment.ModifiedDate = DateTime.Now;
+            //db.SubmitChanges();
+
+            Department deleteDepartment = db.Departments.FirstOrDefault(x => x.DepartmentID == 19);
+            //Delete Employee
+            if(deleteDepartment!=null)
+            {
+                db.Departments.DeleteOnSubmit(deleteDepartment);
+            }
+            
+
+            //Save changes to Database
             db.SubmitChanges();
 
-            Department newDepartment = db.Departments.FirstOrDefault(x => x.DepartmentID == 19);
-            Console.WriteLine("DepartmentId:{0},Name:{1},GroupName:{2},UpdatedTime:{3}\n", newDepartment.DepartmentID, newDepartment.Name, newDepartment.GroupName, newDepartment.ModifiedDate);
+            //Get all departments from database;
+            var departmentList = db.Departments;
+
+            foreach(Department dept in departmentList)
+            {
+                Console.WriteLine("DepartmentId:{0,-5} Name:{1,-30} GroupName:{2,-50} ModifiedDate:{3,-20},", dept.DepartmentID, dept.Name, dept.GroupName, dept.ModifiedDate);
+            }
+ 
             Console.ReadLine();
         }
 
