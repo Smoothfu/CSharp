@@ -10,16 +10,20 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
-            //Generate a sequence of integers from 1 to 5
-            //and select their squares.
-            IEnumerable<int> cubes = Enumerable.Range(1, 50).Select(x => x * x * x);
-            foreach(int i in cubes)
-            {
-                Console.WriteLine(i);
-            }
+           
             Console.ReadLine();
         }
 
+        static void LINQEnumerangeRange()
+        {
+            //Generate a sequence of integers from 1 to 5
+            //and select their squares.
+            IEnumerable<int> cubes = Enumerable.Range(1, 50).Select(x => x * x * x);
+            foreach (int i in cubes)
+            {
+                Console.WriteLine(i);
+            }
+        }
         static void  LINQDefaultIfEmpty()
         {
 
