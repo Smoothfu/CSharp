@@ -29,6 +29,9 @@ namespace ConsoleApp294
             //Add new Element at first
             xDoc.Element("Departments").AddFirst(new XElement("Department", "Pre-Sales"));
             xDoc.Element("Departments").AddFirst(new XElement("Department", "Pre-Consult"));
+
+            //Remove Pre-Sales Department
+            xDoc.Descendants().Where(x => x.Value == "Pre-Sales").Remove();
             var result = xDoc.Element("Departments").Descendants();
             foreach(XElement item in result)
             {
