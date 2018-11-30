@@ -10,10 +10,20 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
-            LINQQuantifierOperator();
+            PartitionOperators();
             Console.ReadLine();
         }
 
+        static void PartitionOperators()
+        {
+            int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var biggerthan5 = arr.Skip(5);
+            foreach(int i in biggerthan5)
+            {
+                Console.WriteLine(i);
+            }
+
+        }
 
         static void LINQQuantifierOperator()
         {
