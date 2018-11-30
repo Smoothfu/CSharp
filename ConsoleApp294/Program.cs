@@ -10,10 +10,32 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
-            PartitionOperators();
+            //Generate a sequence of integers from 1 to 5
+            //and select their squares.
+            IEnumerable<int> cubes = Enumerable.Range(1, 50).Select(x => x * x * x);
+            foreach(int i in cubes)
+            {
+                Console.WriteLine(i);
+            }
             Console.ReadLine();
         }
 
+        static void  LINQDefaultIfEmpty()
+        {
+
+            Pet barley = new Pet() { Name = "Barley", Age = 4 };
+            Pet boots = new Pet() { Name = "Boots", Age = 1 };
+            Pet whiskers = new Pet() { Name = "Whiskers", Age = 6 };
+            Pet bluemoon = new Pet() { Name = "Blue Moon", Age = 9 };
+            Pet daisy = new Pet() { Name = "Daisy", Age = 3 };
+
+            List<Pet> pets = new List<Pet>() { barley, boots, whiskers, bluemoon, daisy };
+
+            foreach (var pet in pets.DefaultIfEmpty())
+            {
+                Console.WriteLine("Name={0}\n", pet.Name);
+            }
+        }
         static void PartitionOperators()
         {
             int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -47,5 +69,11 @@ namespace ConsoleApp294
             double avg = arr.Average();
             Console.WriteLine("Avg={0}\n",avg);
         }
+    }
+
+    class Pet
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
     }
 }
