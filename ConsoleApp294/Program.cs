@@ -15,6 +15,37 @@ namespace ConsoleApp294
         static void Main(string[] args)
         {
             string conString = ConfigurationManager.ConnectionStrings["ConsoleApp294.Properties.Settings.AdventureWorks2012ConnectionString"].ToString();
+            string selectSQL = "select * from HumanResources.Department";
+
+            //Create the data adapter to retrieve data from the database
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(selectSQL, conString);
+
+            //Create table mappings
+            dataAdapter.TableMappings.Add("Table", "Department");
+
+            //Create and fill the dataset
+            DataSet ds = new DataSet();
+            dataAdapter.Fill(ds);
+
+            DataTable department = ds.Tables["Department"];
+
+            var query = from d in department.AsEnumerable()
+                        select new
+                        {
+                            DepartmentId=d.Field<Int16>("DepartmentId"),
+                            DepartmentName=d.Field<string>("Name")
+                        };
+            
+            foreach(var q in query)
+            {
+                Console.WriteLine("DepartmentId:{0,-10}  DepartmentName:{1,-35}", q.DepartmentId, q.DepartmentName);
+            }
+            Console.ReadLine();
+        }
+
+        static void LINQTODataSet()
+        {
+            string conString = ConfigurationManager.ConnectionStrings["ConsoleApp294.Properties.Settings.AdventureWorks2012ConnectionString"].ToString();
             string selectSQL = "select  * from HumanResources.Department " + " select   * from HumanResources.Employee ";
 
             //Create the data adpater to retrieve data from the database
@@ -44,15 +75,13 @@ namespace ConsoleApp294
                             DepartmentName = d.Field<string>("Name")
                         };
 
-            foreach(var q in query)
+            foreach (var q in query)
             {
-                Console.WriteLine("EmployeeId:{0,-20} Name:{1,-35} Department Name:{2,20}", q.EmployeeId, q.Name, q.DepartmentName);
+                Console.WriteLine("EmployeeId:{0,-20} Name:{1,-35} Department Name:{2,-20}", q.EmployeeId, q.Name, q.DepartmentName);
             }
 
 
-            Console.ReadLine();
         }
-
         static void LINQToObject()
         {
             List<DepartM> departList = new List<DepartM>();
