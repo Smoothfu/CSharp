@@ -11,19 +11,34 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
+            List<DepartM> departList = new List<DepartM>();
+            departList.Add(new DepartM { DeptId = 1, DeptName = "IT" });
+            departList.Add(new DepartM { DeptId = 2, DeptName = "RD" });
+            departList.Add(new DepartM { DeptId = 3, DeptName = "Finance" });
+             
+            var departsList=from dept in departList
+                            select dept;
+            foreach(DepartM dept in departsList)
+            {
+                Console.WriteLine("Department Id={0},Department Name={1}", dept.DeptId, dept.DeptName);
+            }
+
+            Console.ReadLine();
+        }
+
+        static void LINQToObjects()
+        {
             string[] tools = { "Tablesaw", "Bandsaw", "Planer", "Jointer", "Drill", "Sander" };
             var list = from t in tools
                        select t;
 
             StringBuilder sb = new StringBuilder();
-            foreach(string str in list)
+            foreach (string str in list)
             {
                 sb.Append(str + Environment.NewLine);
             }
             Console.WriteLine(sb.ToString(), "a");
-            Console.ReadLine();
         }
-
         static void LINQToSQL()
         {
             string connString = ConfigurationManager.
@@ -86,7 +101,6 @@ namespace ConsoleApp294
             int first = numbers.First();
             Console.WriteLine(first);
         }
-
         static void LINQElementAt()
         {
             string[] names = { "Hartono", "Tommy", "Adams", "Terry", "Andersen,Henriette Thaulow", "Hedlund,Magnus", "Tto,Shu" };
@@ -121,7 +135,6 @@ namespace ConsoleApp294
             }
 
         }
-
         static void LINQEnumerableRepeat()
         {
             IEnumerable<string> strings = Enumerable.Repeat("I like programming.", 30);
@@ -131,7 +144,6 @@ namespace ConsoleApp294
                 Console.WriteLine(str);
             }
         }
-
         static void LINQEnumerangeRange()
         {
             //Generate a sequence of integers from 1 to 5
@@ -168,7 +180,6 @@ namespace ConsoleApp294
             }
 
         }
-
         static void LINQQuantifierOperator()
         {
             int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -197,5 +208,11 @@ namespace ConsoleApp294
     {
         public string Name { get; set; }
         public int Age { get; set; }
+    }
+
+    class DepartM
+    {
+        public int DeptId { get; set; }
+        public string DeptName { get; set; }
     }
 }
