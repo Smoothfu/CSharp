@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace ConsoleApp294
 {
@@ -10,13 +11,38 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
-            int[] numbers = { 9, 34, 65, 92, 87, 435, 3, 54, 83, 23, 87, 435, 67, 12, 19 };
-            int last = numbers.Last();
-            Console.WriteLine(last);
+            string connString = ConfigurationManager.
+                ConnectionStrings["ConsoleApp294.Properties.Settings.AdventureWorks2012ConnectionString"].
+                ToString();
+            LINQToSQLDataContext db = new LINQToSQLDataContext(connString);
 
+            //Create new department
+            Department department = new Department();
+            //department.DepartmentID = 17;            
+            department.Name = "Board Chairman2";
+            department.GroupName = "SmoothInfo Group2";
+            department.ModifiedDate = DateTime.Now;
+
+            //Add new department to database
+            db.Departments.InsertOnSubmit(department);
+
+            //save changes to database
+            db.SubmitChanges();
+
+            //get new inserted departement 
+
+            Department newDepart = db.Departments.FirstOrDefault(x => x.DepartmentID == 18);
+            Console.WriteLine("DepartmentId={0},Name={1},GroupName={2},ModifiedDate={3}\n", newDepart.DepartmentID,
+                newDepart.Name, newDepart.GroupName, newDepart.ModifiedDate);
             Console.ReadLine();
         }
 
+        static void LINQLast()
+        {
+            int[] numbers = { 9, 34, 65, 92, 87, 435, 3, 54, 83, 23, 87, 435, 67, 12, 19 };
+            int last = numbers.Last();
+            Console.WriteLine(last);
+        }
         static void LINQFirst()
         {
             int[] numbers = { 9, 34, 65, 92, 87, 435, 3, 54, 83, 23, 87, 435, 67, 12, 19 };

@@ -5,3 +5,7 @@ D:\C\ConsoleApp294\ConsoleApp294\obj\Debug\ConsoleApp294.csprojResolveAssemblyRe
 D:\C\ConsoleApp294\ConsoleApp294\obj\Debug\ConsoleApp294.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp294\ConsoleApp294\obj\Debug\ConsoleApp294.exe
 D:\C\ConsoleApp294\ConsoleApp294\obj\Debug\ConsoleApp294.pdb
+D:\C\ConsoleApp294\ConsoleApp294\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp294\ConsoleApp294\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp294\ConsoleApp294\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp294\ConsoleApp294\bin\Debug\EntityFramework.SqlServer.xml
