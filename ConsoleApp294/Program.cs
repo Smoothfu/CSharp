@@ -10,13 +10,24 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
+            int[] arr = { 10, 20, 30, 40, 50, 60,60,50,40,30,20,10 };
+            int[] arrr = { 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+            var distinctValues = arr.Distinct();
+            foreach(var d in distinctValues)
+            {
+                Console.WriteLine(d);
+            }
+            Console.ReadLine();
+        }
+
+        static void LINQEnumerableRepeat()
+        {
             IEnumerable<string> strings = Enumerable.Repeat("I like programming.", 30);
 
-            foreach(string str in strings)
+            foreach (string str in strings)
             {
                 Console.WriteLine(str);
             }
-            Console.ReadLine();
         }
 
         static void LINQEnumerangeRange()
