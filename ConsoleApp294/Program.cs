@@ -28,6 +28,7 @@ namespace ConsoleApp294
 
             //Add new Element at first
             xDoc.Element("Departments").AddFirst(new XElement("Department", "Pre-Sales"));
+            xDoc.Element("Departments").AddFirst(new XElement("Department", "Pre-Consult"));
             var result = xDoc.Element("Departments").Descendants();
             foreach(XElement item in result)
             {
