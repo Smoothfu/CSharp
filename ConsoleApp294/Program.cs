@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+
 
 namespace ConsoleApp294
 {
@@ -11,21 +14,59 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
-            List<DepartM> departList = new List<DepartM>();
-            departList.Add(new DepartM { DeptId = 1, DeptName = "IT" });
-            departList.Add(new DepartM { DeptId = 2, DeptName = "RD" });
-            departList.Add(new DepartM { DeptId = 3, DeptName = "Finance" });
-             
-            var departsList=from dept in departList
-                            select dept;
-            foreach(DepartM dept in departsList)
+            string conString = ConfigurationManager.ConnectionStrings["ConsoleApp294.Properties.Settings.AdventureWorks2012ConnectionString"].ToString();
+            string selectSQL = "select  * from HumanResources.Department " + " select   * from HumanResources.Employee ";
+
+            //Create the data adpater to retrieve data from the database
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(selectSQL, conString);
+
+            //Create table mappings.
+            dataAdapter.TableMappings.Add("Table", "Department");
+            dataAdapter.TableMappings.Add("Table1", "Employee");
+
+            //Create and fill the DataSet
+            DataSet ds = new DataSet();
+            dataAdapter.Fill(ds);
+
+            //DataRelation dr = ds.Relations.Add("FK_Employee_Department", ds.Tables["Department"].Columns["DepartmentID"], ds.Tables["Employee"].Columns["BusinessEntityID"]);
+            DataTable department = ds.Tables["Department"];
+            DataTable employee = ds.Tables["Employee"];
+
+            var query = from d in department.AsEnumerable()
+                        join e in employee.AsEnumerable()
+                        on d.Field<Int16>("DepartmentID") equals
+                        e.Field<int>("BusinessEntityID")
+                        select new
+                        {
+                            EmployeeId = e.Field<string>("NationalIDNumber"),
+                            Name = e.Field<string>("JobTitle"),
+                            DepartmentId = d.Field<Int16>("DepartmentID"),
+                            DepartmentName = d.Field<string>("Name")
+                        };
+
+            foreach(var q in query)
             {
-                Console.WriteLine("Department Id={0},Department Name={1}", dept.DeptId, dept.DeptName);
+                Console.WriteLine("Employee Id={0},Name={1},Department Name={2}", q.EmployeeId, q.Name, q.DepartmentName);
             }
+
 
             Console.ReadLine();
         }
 
+        static void LINQToObject()
+        {
+            List<DepartM> departList = new List<DepartM>();
+            departList.Add(new DepartM { DeptId = 1, DeptName = "IT" });
+            departList.Add(new DepartM { DeptId = 2, DeptName = "RD" });
+            departList.Add(new DepartM { DeptId = 3, DeptName = "Finance" });
+
+            var departsList = from dept in departList
+                              select dept;
+            foreach (DepartM dept in departsList)
+            {
+                Console.WriteLine("Department Id={0},Department Name={1}", dept.DeptId, dept.DeptName);
+            }
+        }
         static void LINQToObjects()
         {
             string[] tools = { "Tablesaw", "Bandsaw", "Planer", "Jointer", "Drill", "Sander" };
