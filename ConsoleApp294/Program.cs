@@ -10,14 +10,20 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
-            string[] names = { "Hartono", "Tommy", "Adams", "Terry", "Andersen,Henriette Thaulow", "Hedlund,Magnus", "Tto,Shu" };
-            Random rnd = new Random(DateTime.Now.Millisecond);
-            string name = names.ElementAt(rnd.Next(0, names.Length));
-            Console.WriteLine("The name chosen at random is '{0}'.", name);
+            int[] numbers = { 9, 34, 65, 92, 87, 435, 3, 54, 83, 23, 87, 435, 67, 12, 19 };
+            int first = numbers.First();
+            Console.WriteLine(first);
 
             Console.ReadLine();
         }
 
+        static void LINQElementAt()
+        {
+            string[] names = { "Hartono", "Tommy", "Adams", "Terry", "Andersen,Henriette Thaulow", "Hedlund,Magnus", "Tto,Shu" };
+            Random rnd = new Random(DateTime.Now.Millisecond);
+            string name = names.ElementAt(rnd.Next(0, names.Length));
+            Console.WriteLine("The name chosen at random is '{0}'.", name);
+        }
         static void LINQSequenceEqual()
         {
             Pet barley = new Pet { Name = "Barley", Age = 4 };
