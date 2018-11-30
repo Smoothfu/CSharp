@@ -10,7 +10,12 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
-           
+            IEnumerable<string> strings = Enumerable.Repeat("I like programming.", 30);
+
+            foreach(string str in strings)
+            {
+                Console.WriteLine(str);
+            }
             Console.ReadLine();
         }
 
