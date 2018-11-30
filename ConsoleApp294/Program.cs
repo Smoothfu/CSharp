@@ -46,7 +46,7 @@ namespace ConsoleApp294
 
             foreach(var q in query)
             {
-                Console.WriteLine("Employee Id={0},Name={1},Department Name={2}", q.EmployeeId, q.Name, q.DepartmentName);
+                Console.WriteLine("EmployeeId:{0,-20} Name:{1,-35} Department Name:{2,20}", q.EmployeeId, q.Name, q.DepartmentName);
             }
 
 
