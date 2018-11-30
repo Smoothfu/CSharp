@@ -10,10 +10,21 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
-            LINQSum();
+            LINQQuantifierOperator();
             Console.ReadLine();
         }
 
+
+        static void LINQQuantifierOperator()
+        {
+            int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            bool AllBiggerThan5 = arr.All(x => x > 5);
+            Console.WriteLine("AllBiggerthan5={0}\n", AllBiggerThan5);
+            bool AnyBiggerThan5 = arr.Any(x => x > 5);
+            Console.WriteLine("AnyBiggerThan5={0}\n", AnyBiggerThan5);
+            bool Contain10 = arr.Contains(10);
+            Console.WriteLine("Contain10={0}\n", Contain10);
+        }
         static void LINQSum()
         {
             int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -22,7 +33,9 @@ namespace ConsoleApp294
             int max = arr.Max();
             Console.WriteLine("Max={0}\n", max);
             int min = arr.Min();
-            Console.WriteLine(min);
+            Console.WriteLine("Min={0}\n",min);
+            double avg = arr.Average();
+            Console.WriteLine("Avg={0}\n",avg);
         }
     }
 }
