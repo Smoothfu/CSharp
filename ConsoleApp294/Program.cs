@@ -11,9 +11,24 @@ namespace ConsoleApp294
     {
         static void Main(string[] args)
         {
+            string[] tools = { "Tablesaw", "Bandsaw", "Planer", "Jointer", "Drill", "Sander" };
+            var list = from t in tools
+                       select t;
+
+            StringBuilder sb = new StringBuilder();
+            foreach(string str in list)
+            {
+                sb.Append(str + Environment.NewLine);
+            }
+            Console.WriteLine(sb.ToString(), "a");
+            Console.ReadLine();
+        }
+
+        static void LINQToSQL()
+        {
             string connString = ConfigurationManager.
-                ConnectionStrings["ConsoleApp294.Properties.Settings.AdventureWorks2012ConnectionString"].
-                ToString();
+               ConnectionStrings["ConsoleApp294.Properties.Settings.AdventureWorks2012ConnectionString"].
+               ToString();
             LINQToSQLDataContext db = new LINQToSQLDataContext(connString);
 
             ////Create new department
@@ -41,11 +56,11 @@ namespace ConsoleApp294
 
             Department deleteDepartment = db.Departments.FirstOrDefault(x => x.DepartmentID == 19);
             //Delete Employee
-            if(deleteDepartment!=null)
+            if (deleteDepartment != null)
             {
                 db.Departments.DeleteOnSubmit(deleteDepartment);
             }
-            
+
 
             //Save changes to Database
             db.SubmitChanges();
@@ -53,14 +68,12 @@ namespace ConsoleApp294
             //Get all departments from database;
             var departmentList = db.Departments;
 
-            foreach(Department dept in departmentList)
+            foreach (Department dept in departmentList)
             {
                 Console.WriteLine("DepartmentId:{0,-5} Name:{1,-30} GroupName:{2,-50} ModifiedDate:{3,-20},", dept.DepartmentID, dept.Name, dept.GroupName, dept.ModifiedDate);
             }
- 
-            Console.ReadLine();
-        }
 
+        }
         static void LINQLast()
         {
             int[] numbers = { 9, 34, 65, 92, 87, 435, 3, 54, 83, 23, 87, 435, 67, 12, 19 };
