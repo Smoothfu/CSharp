@@ -17,7 +17,7 @@ namespace ConsoleApp294
         static void PartitionOperators()
         {
             int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            IEnumerable<int> lessThan5 = arr.OrderByDescending(x => x).SkipWhile(x => x >= 5);
+            IEnumerable<int> lessThan5 = arr.Take(5);
             foreach(int i in lessThan5)
             {
                 Console.WriteLine(i);
