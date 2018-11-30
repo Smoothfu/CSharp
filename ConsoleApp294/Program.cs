@@ -23,11 +23,11 @@ namespace ConsoleApp294
             department.GroupName = "SmoothInfo Group2";
             department.ModifiedDate = DateTime.Now;
 
-            //Add new department to database
-            db.Departments.InsertOnSubmit(department);
+            ////Add new department to database
+            //db.Departments.InsertOnSubmit(department);
 
-            //save changes to database
-            db.SubmitChanges();
+            ////save changes to database
+            //db.SubmitChanges();
 
             //get new inserted departement 
 
