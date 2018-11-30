@@ -22,6 +22,12 @@ namespace ConsoleApp294
                 </Departments>";
             XDocument xDoc = new XDocument();
             xDoc = XDocument.Parse(myXML);
+
+            //Add new Element
+            xDoc.Element("Departments").Add(new XElement("Department", "XLab"));
+
+            //Add new Element at first
+            xDoc.Element("Departments").AddFirst(new XElement("Department", "Pre-Sales"));
             var result = xDoc.Element("Departments").Descendants();
             foreach(XElement item in result)
             {
