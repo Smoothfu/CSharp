@@ -11,10 +11,17 @@ namespace ConsoleApp294
         static void Main(string[] args)
         {
             int[] numbers = { 9, 34, 65, 92, 87, 435, 3, 54, 83, 23, 87, 435, 67, 12, 19 };
-            int first = numbers.First();
-            Console.WriteLine(first);
+            int last = numbers.Last();
+            Console.WriteLine(last);
 
             Console.ReadLine();
+        }
+
+        static void LINQFirst()
+        {
+            int[] numbers = { 9, 34, 65, 92, 87, 435, 3, 54, 83, 23, 87, 435, 67, 12, 19 };
+            int first = numbers.First();
+            Console.WriteLine(first);
         }
 
         static void LINQElementAt()
