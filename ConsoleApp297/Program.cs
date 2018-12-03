@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace ConsoleApp297
 {
@@ -37,17 +38,35 @@ namespace ConsoleApp297
         }
         static void Main(string[] args)
         {
+            int[] source = new[] { 3, 8, 4, 6, 1, 7, 9, 2, 4, 8 };
 
+            foreach (int i in source.Where(x =>
+             {
+                 if (x <= 3)
+                 {
+                     return true;
+                 }
+                 else if (x >= 7)
+                 {
+                     return true;
+                 }
+                 return false;
+             }))
+                Console.WriteLine(i);
+            
+
+            Console.ReadLine();
+        }
+
+        static void LINQVariable()
+        {
             Test test = new Test();
             test.TestMethod(5);
 
             //Prove that del2 still has a copy of local variable j from TestMethod.
             bool result = test.del2(10);
             Console.WriteLine(result);
-
-            Console.ReadLine();
         }
-
         static void LINQAVG()
         {
             int[] fibNum = { 1, 1, 2, 3, 5, 8, 13, 21, 34 };
