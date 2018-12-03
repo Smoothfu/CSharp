@@ -31,8 +31,9 @@ namespace ConsoleApp297
                
 
                 //Update existing Department.
-                Department updateDept = context.Departments.FirstOrDefault(x => x.Name == "SupportTeam");
-                updateDept.Name = "SupportTeam2";
+                Department updateDept = context.Departments.FirstOrDefault(x => x.Name == "SupportTeam2");
+                
+                context.Departments.Remove(updateDept);
                 context.SaveChanges();
 
                 Console.WriteLine("Department Name=Support is inserted in Database");
