@@ -1,0 +1,11 @@
+D:\C\ConsoleApp297\ConsoleApp297\bin\Debug\ConsoleApp297.exe.config
+D:\C\ConsoleApp297\ConsoleApp297\bin\Debug\ConsoleApp297.exe
+D:\C\ConsoleApp297\ConsoleApp297\bin\Debug\ConsoleApp297.pdb
+D:\C\ConsoleApp297\ConsoleApp297\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp297\ConsoleApp297\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp297\ConsoleApp297\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp297\ConsoleApp297\bin\Debug\EntityFramework.SqlServer.xml
+D:\C\ConsoleApp297\ConsoleApp297\obj\Debug\ConsoleApp297.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp297\ConsoleApp297\obj\Debug\ConsoleApp297.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp297\ConsoleApp297\obj\Debug\ConsoleApp297.exe
+D:\C\ConsoleApp297\ConsoleApp297\obj\Debug\ConsoleApp297.pdb
