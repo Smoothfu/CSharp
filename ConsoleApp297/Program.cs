@@ -11,6 +11,14 @@ namespace ConsoleApp297
         delegate int Del(int i);
         static void Main(string[] args)
         {
+            int[] fibNum = { 1, 1, 2, 3, 5, 8, 13, 21, 34 };
+            double avgValue = fibNum.Average();
+            Console.WriteLine(avgValue);
+            Console.ReadLine();
+        }
+
+        static void LINQLambdaExpression()
+        {
             Del myDel = y => y * y * y;
             int j = myDel(5);
             Console.WriteLine("The cube of {0} is {1}", 5, j);
