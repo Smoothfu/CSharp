@@ -7,20 +7,22 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Reflection;
 namespace ConsoleApp299
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int[] nums = new int[100000];
-            BuildArray(nums);
-            TimeSpan startTime;
-            TimeSpan duration;
-            startTime = Process.GetCurrentProcess().Threads[0].UserProcessorTime;  
-            DisplayNums(nums);
-            duration = Process.GetCurrentProcess().Threads[0].UserProcessorTime.Subtract(startTime);
-            Console.WriteLine("\n\nTime: " + duration.TotalSeconds);
+            Process[] processes = Process.GetProcesses();
+            if(processes!=null && processes.Any())
+            {
+                Console.WriteLine("There are {0} active processes now\n\n\n", processes.Count());
+                Parallel.ForEach(processes, x =>
+                {
+                    Console.WriteLine(x.ProcessName);
+                });
+            }
             Console.ReadLine();
         }
 
