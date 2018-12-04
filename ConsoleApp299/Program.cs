@@ -11,16 +11,36 @@ namespace ConsoleApp299
     {
         static void Main(string[] args)
         {
-            Timer timer = new Timer(x=>
-            {
-                OutputTime();
-            },null,0,1000);
+            Singleton instance = Singleton.GetSingletonInstance();
+            Console.WriteLine(instance.GetType().Name);
             Console.ReadLine();
         }
 
         static void OutputTime()
         {
             Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+        }
+    }
+
+    public  sealed  class Singleton
+    {
+        private static Singleton Instance;
+        private Singleton()
+        { 
+        }
+
+        private static object objLock = new object();
+
+        public static Singleton GetSingletonInstance()
+        {
+            lock(objLock)
+            {
+                if(Instance==null)
+                {
+                    Instance = new Singleton();
+                }
+            }
+            return Instance;
         }
     }
 }
