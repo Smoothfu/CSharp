@@ -11,10 +11,30 @@ namespace ConsoleApp299
     {
         static void Main(string[] args)
         {
+            Queue<int> intQueue = new Queue<int>();
+            Random rnd = new Random();
+            Console.WriteLine("Enqueue Order:\n");
+            for(int i=0;i<10;i++)
+            {
+                int tempValue = rnd.Next(0, int.MaxValue);
+                intQueue.Enqueue(tempValue);
+                Console.Write(tempValue + "\t");
+            }
+
+            Console.WriteLine("\n\nDequeue Order:\n");
+            while(intQueue.Count>0)
+            {
+                Console.Write(intQueue.Dequeue() + "\t");
+            }
+            Console.ReadLine();
+        }
+
+        static void StackIntSample()
+        {
             Stack<int> intStack = new Stack<int>();
             Random rnd = new Random();
             Console.WriteLine("The push in order:\n");
-            for(int i=0;i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
                 int tempValue = rnd.Next(0, int.MaxValue);
                 intStack.Push(tempValue);
@@ -22,13 +42,11 @@ namespace ConsoleApp299
             }
 
             Console.WriteLine("\nThe pop up order:\n");
-            while(intStack.Count>0)
+            while (intStack.Count > 0)
             {
                 Console.Write(intStack.Pop() + "\t");
             }
-            Console.ReadLine();
         }
-
         static void ReadNumber()
         {
             int num;
