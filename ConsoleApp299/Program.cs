@@ -13,6 +13,23 @@ namespace ConsoleApp299
     {
         static void Main(string[] args)
         {
+            Node<string> node1 = new Node<string>("Mike", null);
+            Node<string> node2 = new Node<string>("Redmond", node1);
+
+            int[] arr = Enumerable.Range(1, 10000).ToArray();
+            DisplayNums(arr);
+            Console.ReadLine();
+        }
+
+        static void DisplayNums(int[] arr)
+        {
+            for(int i=0;i<=arr.GetUpperBound(0);i++)
+            {
+                Console.Write(arr[i] + "\t");
+            }
+        }
+        static void GenericT()
+        {
             string name1 = "Fred0";
             string name2 = "Fred1";
             Console.WriteLine("Before swap:");
@@ -29,13 +46,11 @@ namespace ConsoleApp299
             Console.WriteLine("\nBefore swap:");
             Console.WriteLine("num1={0}", num1);
             Console.WriteLine("num2={0}", num2);
-            Swap<int>(ref num1,ref  num2);
+            Swap<int>(ref num1, ref num2);
             Console.WriteLine("\nAfter swap:");
             Console.WriteLine("num1={0}", num1);
             Console.WriteLine("num2={0}", num2);
-            Console.ReadLine();
         }
-
         static void Swap<T>(ref T val1,ref T val2)
         {
             T temp;
@@ -189,6 +204,17 @@ namespace ConsoleApp299
         public new int Count()
         {
             return InnerList.Count;
+        }
+    }
+
+    public class Node<T>
+    {
+        T data;
+        Node<T> link;
+        public Node(T data,Node<T> link)
+        {
+            this.data = data;
+            this.link = link; 
         }
     }
 }
