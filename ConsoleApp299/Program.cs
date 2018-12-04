@@ -13,6 +13,10 @@ namespace ConsoleApp299
         static void Main(string[] args)
         {
             Hashtable hashtable = new Hashtable();
+            DictionaryEntry dee = new DictionaryEntry();
+            dee.Key = Guid.NewGuid();
+            dee.Value = "Fred";
+            hashtable[0] = dee;
             for(int i=0;i<10;i++)
             {
                 string name = "Fred" + i;
