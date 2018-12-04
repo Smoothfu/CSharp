@@ -6,27 +6,31 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-
+using System.Diagnostics;
 namespace ConsoleApp299
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Node<string> node1 = new Node<string>("Mike", null);
-            Node<string> node2 = new Node<string>("Redmond", node1);
-
-            int[] arr = Enumerable.Range(1, 10000).ToArray();
-
-            DisplayNums(arr);
-            GC.WaitForPendingFinalizers();
-            int maxGeneration = GC.MaxGeneration;
-            Console.WriteLine(maxGeneration);
-
-
+            int[] nums = new int[100000];
+            BuildArray(nums);
+            TimeSpan startTime;
+            TimeSpan duration;
+            startTime = Process.GetCurrentProcess().Threads[0].UserProcessorTime;  
+            DisplayNums(nums);
+            duration = Process.GetCurrentProcess().Threads[0].UserProcessorTime.Subtract(startTime);
+            Console.WriteLine("\n\nTime: " + duration.TotalSeconds);
             Console.ReadLine();
         }
 
+        static void BuildArray(int[] arr)
+        {
+            for(int i=0;i<=99999;i++)
+            {
+                arr[i] = i;
+            }
+        }
         static void DisplayNums(int[] arr)
         {
             for(int i=0;i<=arr.GetUpperBound(0);i++)
