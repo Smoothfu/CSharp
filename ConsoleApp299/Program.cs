@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,24 @@ namespace ConsoleApp299
     {
         static void Main(string[] args)
         {
-            
+            Hashtable hashtable = new Hashtable();
+            for(int i=0;i<10;i++)
+            {
+                string name = "Fred" + i;
+                hashtable.Add(Guid.NewGuid(),name);
+            }
+
+           foreach(DictionaryEntry de in hashtable)
+           {
+                Console.WriteLine(de.Key + "\t" + de.Value);
+            }
+           
+                
+            Console.ReadLine();
+        }
+
+        static void HashSetDistictValue()
+        {
             HashSet<int> intHashSet = new HashSet<int>();
             intHashSet.Add(10);
             intHashSet.Add(20);
@@ -20,9 +38,7 @@ namespace ConsoleApp299
             {
                 Console.WriteLine(x);
             });
-            Console.ReadLine();
         }
-
         static void QueueFirstInFirstOut()
         {
             Queue<int> intQueue = new Queue<int>();
