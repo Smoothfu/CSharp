@@ -14,8 +14,20 @@ namespace ConsoleApp299
     {
         static void Main(string[] args)
         {
+            int[] nums = new int[100000];
+            BuildArray(nums);
+            Timing tObj = new Timing();
+            tObj.StartTime();
+            DisplayNums(nums);
+            tObj.StopTime();
+            Console.WriteLine(tObj.Result().TotalMilliseconds);
+            Console.ReadLine();
+        }
+
+        static void GetProcesses()
+        {
             Process[] processes = Process.GetProcesses();
-            if(processes!=null && processes.Any())
+            if (processes != null && processes.Any())
             {
                 Console.WriteLine("There are {0} active processes now\n\n\n", processes.Count());
                 Parallel.ForEach(processes, x =>
@@ -23,9 +35,7 @@ namespace ConsoleApp299
                     Console.WriteLine(x.ProcessName);
                 });
             }
-            Console.ReadLine();
         }
-
         static void BuildArray(int[] arr)
         {
             for(int i=0;i<=99999;i++)
@@ -227,6 +237,34 @@ namespace ConsoleApp299
         {
             this.data = data;
             this.link = link; 
+        }
+    }
+
+    public class Timing
+    {
+        TimeSpan startingTime;
+        TimeSpan duration;
+        public Timing()
+        {
+            startingTime = new TimeSpan(0);
+            duration = new TimeSpan(0);
+        }
+
+        public void StopTime()
+        { 
+            duration = Process.GetCurrentProcess().Threads[0].UserProcessorTime.Subtract(startingTime);
+        }
+
+        public void StartTime()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            startingTime = Process.GetCurrentProcess().Threads[0].UserProcessorTime;
+        }
+
+        public TimeSpan Result()
+        {
+            return duration;
         }
     }
 }
