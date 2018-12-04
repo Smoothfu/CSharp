@@ -13,12 +13,44 @@ namespace ConsoleApp299
     {
         static void Main(string[] args)
         {
+            string name1 = "Fred0";
+            string name2 = "Fred1";
+            Console.WriteLine("Before swap:");
+            Console.WriteLine("name1={0}", name1);
+            Console.WriteLine("name2={0}", name2);
+
+            Console.WriteLine("\nAfter swap:");
+            Swap<string>(ref name1, ref name2);
+            Console.WriteLine("name1={0}", name1);
+            Console.WriteLine("name2={0}", name2);
+
+            int num1 = 100;
+            int num2 = 200;
+            Console.WriteLine("\nBefore swap:");
+            Console.WriteLine("num1={0}", num1);
+            Console.WriteLine("num2={0}", num2);
+            Swap<int>(ref num1,ref  num2);
+            Console.WriteLine("\nAfter swap:");
+            Console.WriteLine("num1={0}", num1);
+            Console.WriteLine("num2={0}", num2);
+            Console.ReadLine();
+        }
+
+        static void Swap<T>(ref T val1,ref T val2)
+        {
+            T temp;
+            temp = val1;
+            val1 = val2;
+            val2 = temp;
+        }
+        static void AbstractCollectionBase()
+        {
             Collection names = new Collection();
             names.Add("Fred0");
             names.Add("Fred1");
             names.Add("Fred2");
             names.Add("Fred3");
-            foreach(object name in names)
+            foreach (object name in names)
             {
                 Console.WriteLine(name);
             }
@@ -28,10 +60,7 @@ namespace ConsoleApp299
             Console.WriteLine("\n\nNumber of names: " + names.Count());
             names.Clear();
             Console.WriteLine("\n\nNumber of names: " + names.Count());
-            Console.ReadLine();
         }
-
-
         static void HashTableKeyValueDictionaryEntry()
         {
             Hashtable hashtable = new Hashtable();
