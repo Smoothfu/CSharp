@@ -12,26 +12,29 @@ namespace ConsoleApp299
     {
         static void Main(string[] args)
         {
+            HashSetDistictValue();
+            Console.ReadLine();
+        }
+
+
+        static void HashTableKeyValueDictionaryEntry()
+        {
             Hashtable hashtable = new Hashtable();
             DictionaryEntry dee = new DictionaryEntry();
             dee.Key = Guid.NewGuid();
             dee.Value = "Fred";
             hashtable[0] = dee;
-            for(int i=0;i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
                 string name = "Fred" + i;
-                hashtable.Add(Guid.NewGuid(),name);
+                hashtable.Add(Guid.NewGuid(), name);
             }
 
-           foreach(DictionaryEntry de in hashtable)
-           {
+            foreach (DictionaryEntry de in hashtable)
+            {
                 Console.WriteLine(de.Key + "\t" + de.Value);
             }
-           
-                
-            Console.ReadLine();
         }
-
         static void HashSetDistictValue()
         {
             HashSet<int> intHashSet = new HashSet<int>();
