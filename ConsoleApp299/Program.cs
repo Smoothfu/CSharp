@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace ConsoleApp299
 {
@@ -12,7 +13,21 @@ namespace ConsoleApp299
     {
         static void Main(string[] args)
         {
-            HashSetDistictValue();
+            Collection names = new Collection();
+            names.Add("Fred0");
+            names.Add("Fred1");
+            names.Add("Fred2");
+            names.Add("Fred3");
+            foreach(object name in names)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.WriteLine("\n\nNumber of names: " + names.Count());
+            names.Remove("Fred2");
+            Console.WriteLine("\n\nNumber of names: " + names.Count());
+            names.Clear();
+            Console.WriteLine("\n\nNumber of names: " + names.Count());
             Console.ReadLine();
         }
 
@@ -122,6 +137,29 @@ namespace ConsoleApp299
                 }
             }
             return Instance;
+        }
+    }
+
+    public class Collection : CollectionBase
+    {
+        public void Add(object item)
+        {
+            InnerList.Add(item);
+        }
+
+        public void Remove(object item)
+        {
+            InnerList.Remove(item);
+        }
+
+        public new void Clear()
+        {
+            InnerList.Clear();
+        }
+
+        public new int Count()
+        {
+            return InnerList.Count;
         }
     }
 }
