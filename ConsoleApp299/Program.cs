@@ -11,10 +11,24 @@ namespace ConsoleApp299
     {
         static void Main(string[] args)
         {
+            
+            HashSet<int> intHashSet = new HashSet<int>();
+            intHashSet.Add(10);
+            intHashSet.Add(20);
+            Console.WriteLine(intHashSet.Count);
+            Parallel.ForEach(intHashSet, x =>
+            {
+                Console.WriteLine(x);
+            });
+            Console.ReadLine();
+        }
+
+        static void QueueFirstInFirstOut()
+        {
             Queue<int> intQueue = new Queue<int>();
             Random rnd = new Random();
             Console.WriteLine("Enqueue Order:\n");
-            for(int i=0;i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
                 int tempValue = rnd.Next(0, int.MaxValue);
                 intQueue.Enqueue(tempValue);
@@ -22,14 +36,12 @@ namespace ConsoleApp299
             }
 
             Console.WriteLine("\n\nDequeue Order:\n");
-            while(intQueue.Count>0)
+            while (intQueue.Count > 0)
             {
                 Console.Write(intQueue.Dequeue() + "\t");
             }
-            Console.ReadLine();
         }
-
-        static void StackIntSample()
+        static void StackFirstInLastOut()
         {
             Stack<int> intStack = new Stack<int>();
             Random rnd = new Random();
