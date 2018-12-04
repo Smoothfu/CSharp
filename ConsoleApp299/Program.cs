@@ -17,7 +17,13 @@ namespace ConsoleApp299
             Node<string> node2 = new Node<string>("Redmond", node1);
 
             int[] arr = Enumerable.Range(1, 10000).ToArray();
+
             DisplayNums(arr);
+            GC.WaitForPendingFinalizers();
+            int maxGeneration = GC.MaxGeneration;
+            Console.WriteLine(maxGeneration);
+
+
             Console.ReadLine();
         }
 
