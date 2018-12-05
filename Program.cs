@@ -11,12 +11,64 @@ namespace ConsoleApp300
     {
         static void Main(string[] args)
         {
-            int[] arr = Enumerable.Range(1, 10000).ToArray();
-            decimal sum = sumNums(arr);
-            Console.WriteLine("The sum is " + sum);
+            ArrayList al = new ArrayList();
+            int[] arr = { 1, 2, 3 };
+            al.AddRange(arr);
+            al.Add(true);
+            al.Add("d");
+            al.Add("C");
+            al.Add(100032);
+            al.Add(787);
+            Console.WriteLine("This is the original order:\n");
+            foreach(var a in al)
+            {
+                Console.Write(a+"\t");
+            }
+
+            Console.WriteLine("\n\n\nThis is the reversed order:\n");
+            al.Reverse();
+            foreach (var a in al)
+            {
+                Console.Write(a + "\t");
+            }
             Console.ReadLine();
         }
 
+        static void JaggedArray()
+        {
+            int[] Jan = new int[31];
+            int[] Feb = new int[29];
+            int[][] sales = new int[][] { Jan, Feb };
+            int month, day, total;
+            double average = 0.00;
+            sales[0][0] = 41;
+            sales[0][1] = 30;
+            sales[0][0] = 41;
+            sales[0][1] = 30;
+            sales[0][2] = 23;
+            sales[0][3] = 34;
+            sales[0][4] = 28;
+            sales[0][5] = 35;
+            sales[0][6] = 45;
+            sales[1][0] = 35;
+            sales[1][1] = 37;
+            sales[1][2] = 32;
+            sales[1][3] = 26;
+            sales[1][4] = 45;
+            sales[1][5] = 38;
+            sales[1][6] = 42;
+
+            for (month = 0; month <= 1; month++)
+            {
+                total = 0;
+                for (day = 0; day <= 6; day++)
+                {
+                    total += sales[month][day];
+                }
+                average = total / 7;
+                Console.WriteLine("Average sales for month: " + month + " :" + average);
+            }
+        }
         static int sumNums(params int[] arr)
         {
             int sum = 0;
