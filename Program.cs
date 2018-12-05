@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace ConsoleApp300
 {
@@ -10,7 +11,14 @@ namespace ConsoleApp300
     {
         static void Main(string[] args)
         {
-            FindPrimes(10000);
+            ArrayList al = new ArrayList();
+            al.Capacity = 5;
+            Random rnd = new Random();
+            for(int i=0;i<1000002;i++)
+            {
+                al.Add(rnd.Next(0, 10000002));
+            }
+            Console.WriteLine(al.Capacity);
 
             Console.ReadLine();
         }
@@ -27,8 +35,7 @@ namespace ConsoleApp300
                 {
                     ++countNum;
                     if (i%j==0)
-                    {
-                        
+                    {                        
                         isPrime = false;
                         break;
                     }                 
