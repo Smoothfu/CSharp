@@ -27,9 +27,9 @@ namespace ConsoleApp300
 
             if (names != null && names.Any())
             {
-                foreach (string name in names)
+                for(int i=0;i<names.Count();i++)
                 {
-                    Console.WriteLine(name);
+                    Console.WriteLine(names[i]);
                 }
             }
 
