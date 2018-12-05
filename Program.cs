@@ -10,7 +10,7 @@ namespace ConsoleApp300
     {
         static void Main(string[] args)
         {
-            FindPrimes(1000);
+            FindPrimes(10000);
 
             Console.ReadLine();
         }
@@ -25,9 +25,10 @@ namespace ConsoleApp300
                 bool isPrime = true;
                 for (int j=2;j<=Math.Sqrt(i);j++)
                 {
-                    if(i%j==0)
+                    ++countNum;
+                    if (i%j==0)
                     {
-                        ++countNum;
+                        
                         isPrime = false;
                         break;
                     }                 
