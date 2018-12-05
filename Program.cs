@@ -11,20 +11,50 @@ namespace ConsoleApp300
     {
         static void Main(string[] args)
         {
+            int[,] grades = new int[,]
+            {
+                {1,82,74,89,100},
+                {2,93,96,85,86},
+                {3,83,72,95,89},
+                {4,91,98,79,88}
+            };
+
+            int last_grade = grades.GetUpperBound(1);
+            double average = 0;
+            int total;
+            int last_Student = grades.GetUpperBound(0);
+            for(int row=0;row<=last_Student;row++)
+            {
+                total = 0;
+                for(int col=0;col<=last_grade;col++)
+                {
+                    total += grades[row, col];
+                }
+
+                average = total / last_grade;
+                Console.WriteLine("Average :" + average);
+            }
+            
+            Console.ReadLine();
+        }
+
+
+        static void ArrayGetLength()
+        {
             string[] names = new string[10];
-            names.SetValue("Fred1", 0);
-            names.SetValue("Fred2", 1);
-            names.SetValue("Fred3", 2);
-            names.SetValue("Fred4", 3);
-            names.SetValue("Fred5", 4);
-            names.SetValue("Fred6", 5);
-            names.SetValue("Fred1", 6);
-            names.SetValue("Fred2", 7);
-            names.SetValue("Fred3", 8);            
+            //names.SetValue("Fred1", 0);
+            //names.SetValue("Fred2", 1);
+            //names.SetValue("Fred3", 2);
+            //names.SetValue("Fred4", 3);
+            //names.SetValue("Fred5", 4);
+            //names.SetValue("Fred6", 5);
+            //names.SetValue("Fred1", 6);
+            //names.SetValue("Fred2", 7);
+            //names.SetValue("Fred3", 8);            
 
             if (names != null && names.Any())
             {
-                for(int i=0;i<names.Count();i++)
+                for (int i = 0; i < names.Count(); i++)
                 {
                     Console.WriteLine(names[i]);
                 }
@@ -38,12 +68,17 @@ namespace ConsoleApp300
             int arrayRank = names.Rank;
             Console.WriteLine("The rank of names is :{0}\n", arrayRank);
 
-            string typeName = names.GetType().Name;
+            Type typeName = names.GetType();
+            if (typeName.IsArray)
+            {
+                Console.WriteLine("The names array type  is {0}\n", typeName);
+            }
+            else
+            {
+                Console.WriteLine("Not an array!\n");
+            }
             Console.WriteLine("The type of names is :{0}\n", typeName);
-            
-            Console.ReadLine();
         }
-
         static void ArrayListSizeChangeDynamically()
         {
             ArrayList al = new ArrayList();
