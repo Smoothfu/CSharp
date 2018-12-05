@@ -12,16 +12,22 @@ namespace ConsoleApp300
         static void Main(string[] args)
         {
             string[] names = new string[10];
-            names.SetValue("Fred1",0);
-            names.SetValue("Fred2",1);
-            names.SetValue("Fred3",2);
-            names.SetValue("Fred4",3);
-            names.SetValue("Fred5",4);
-            names.SetValue("Fred6",5);
+            names.SetValue("Fred1", 0);
+            names.SetValue("Fred2", 1);
+            names.SetValue("Fred3", 2);
+            names.SetValue("Fred4", 3);
+            names.SetValue("Fred5", 4);
+            names.SetValue("Fred6", 5);
+            names.SetValue("Fred1", 6);
+            names.SetValue("Fred2", 7);
+            names.SetValue("Fred3", 8);
+            names.SetValue("Fred4", 9);
+            names.SetValue("Fred5", 10);
+            names.SetValue("Fred6", 11);
 
-            if(names!=null && names.Any())
+            if (names != null && names.Any())
             {
-                foreach(string name in names)
+                foreach (string name in names)
                 {
                     Console.WriteLine(name);
                 }
