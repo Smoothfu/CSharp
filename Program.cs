@@ -22,8 +22,8 @@ namespace ConsoleApp300
             names.SetValue("Fred2", 7);
             names.SetValue("Fred3", 8);
             names.SetValue("Fred4", 9);
-            names.SetValue("Fred5", 10);
-            names.SetValue("Fred6", 11);
+
+           
 
             if (names != null && names.Any())
             {
@@ -32,6 +32,10 @@ namespace ConsoleApp300
                     Console.WriteLine(name);
                 }
             }
+
+            Console.WriteLine("\n\n\n\n\n");
+            string myName = names.GetValue(8).ToString();
+            Console.WriteLine(myName);
             Console.ReadLine();
         }
 
