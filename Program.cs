@@ -11,6 +11,12 @@ namespace ConsoleApp300
     {
         static void Main(string[] args)
         {
+            ArrayListAdjustSizeAutomatically();
+            Console.ReadLine();
+        }
+
+        static void ArrayListAdjustSizeAutomatically()
+        {
             ArrayList al = new ArrayList();
             int[] arr = { 1, 2, 3 };
             al.AddRange(arr);
@@ -18,11 +24,11 @@ namespace ConsoleApp300
             al.Add("d");
             al.Add("C");
             al.Add(100032);
-            al.Add(787);
+            int index=al.Add(787);
             Console.WriteLine("This is the original order:\n");
-            foreach(var a in al)
+            foreach (var a in al)
             {
-                Console.Write(a+"\t");
+                Console.Write(a + "\t");
             }
 
             Console.WriteLine("\n\n\nThis is the reversed order:\n");
@@ -31,9 +37,9 @@ namespace ConsoleApp300
             {
                 Console.Write(a + "\t");
             }
-            Console.ReadLine();
-        }
 
+            Console.WriteLine("The index is " + index);
+        }
         static void JaggedArray()
         {
             int[] Jan = new int[31];
