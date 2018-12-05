@@ -11,6 +11,23 @@ namespace ConsoleApp300
     {
         static void Main(string[] args)
         {
+            int[] arr = Enumerable.Range(1, 10000).ToArray();
+            decimal sum = sumNums(arr);
+            Console.WriteLine("The sum is " + sum);
+            Console.ReadLine();
+        }
+
+        static int sumNums(params int[] arr)
+        {
+            int sum = 0;
+            for(int i=0;i<=arr.GetUpperBound(0);i++)
+            {
+                sum += arr[i];
+            }
+            return sum; 
+        }
+        static void MultiDimensionArray()
+        {
             int[,] grades = new int[,]
             {
                 {1,82,74,89,100},
@@ -23,10 +40,10 @@ namespace ConsoleApp300
             double average = 0;
             int total;
             int last_Student = grades.GetUpperBound(0);
-            for(int row=0;row<=last_Student;row++)
+            for (int row = 0; row <= last_Student; row++)
             {
                 total = 0;
-                for(int col=0;col<=last_grade;col++)
+                for (int col = 0; col <= last_grade; col++)
                 {
                     total += grades[row, col];
                 }
@@ -34,11 +51,11 @@ namespace ConsoleApp300
                 average = total / last_grade;
                 Console.WriteLine("Average :" + average);
             }
-            
-            Console.ReadLine();
+
+
+            int rank = grades.Rank;
+            Console.WriteLine("The rank of grades is " + rank);
         }
-
-
         static void ArrayGetLength()
         {
             string[] names = new string[10];
