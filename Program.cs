@@ -20,10 +20,7 @@ namespace ConsoleApp300
             names.SetValue("Fred6", 5);
             names.SetValue("Fred1", 6);
             names.SetValue("Fred2", 7);
-            names.SetValue("Fred3", 8);
-            names.SetValue("Fred4", 9);
-
-           
+            names.SetValue("Fred3", 8);            
 
             if (names != null && names.Any())
             {
@@ -33,9 +30,17 @@ namespace ConsoleApp300
                 }
             }
 
-            Console.WriteLine("\n\n\n\n\n");
-            string myName = names.GetValue(8).ToString();
-            Console.WriteLine(myName);
+            int arrLength = names.Length;
+            Console.WriteLine("The length of the array is {0}\n", arrLength);
+            int elementsNum = names.GetLength(0);
+            Console.WriteLine("GetLength():{0}\n", elementsNum);
+
+            int arrayRank = names.Rank;
+            Console.WriteLine("The rank of names is :{0}\n", arrayRank);
+
+            string typeName = names.GetType().Name;
+            Console.WriteLine("The type of names is :{0}\n", typeName);
+            
             Console.ReadLine();
         }
 
