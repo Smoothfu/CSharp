@@ -11,7 +11,9 @@ namespace ConsoleApp301
     {
         static void Main(string[] args)
         {
-
+            CArray arr = new CArray(100);
+            Random rnd = new Random(100);
+            arr.DisplayElements();
             Console.ReadLine();
         }
 
@@ -71,6 +73,43 @@ namespace ConsoleApp301
             {
                 Console.Write(a+"\t");
             }            
+        }
+    }
+
+    class CArray
+    {
+        private int[] arr;
+        private int upper;
+        private int numElements;
+
+        public CArray(int size)
+        {
+            arr = new int[size];
+            upper = size - 1;
+            numElements = 0;
+        }
+        
+        public void Insert(int item)
+        {
+            arr[numElements] = item;
+            numElements++;
+        }
+
+        public void DisplayElements()
+        {
+            for(int i=0;i<=upper;i++)
+            {
+                Console.Write(arr[i] + "\t");
+            }
+        }
+
+        public void Clear()
+        {
+            for(int i=0;i<=upper;i++)
+            {
+                arr[i] = 0;                
+            }
+            numElements = 0;
         }
     }
 }
