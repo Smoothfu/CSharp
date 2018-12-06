@@ -11,15 +11,6 @@ namespace ConsoleApp301
     {
         static void Main(string[] args)
         {
-            Random rnd = new Random();
-            int[] arr = new int[100];
-            for(int i=0;i<100;i++)
-            {
-                int tempValue = rnd.Next(1, 1000000000);
-                arr[i] = tempValue;
-            }
-
-            BubbleSortAsc(arr);
 
             Console.ReadLine();
         }
@@ -43,9 +34,16 @@ namespace ConsoleApp301
             }
         }
 
-        static void BubbleSortAsc(int[] arr)
+        static void BubbleSortAsc()
         {
-            if(arr==null || !arr.Any())
+            Random rnd = new Random();
+            int[] arr = new int[100];
+            for (int i = 0; i < 100; i++)
+            {
+                int tempValue = rnd.Next(1, 1000000000);
+                arr[i] = tempValue;
+            }
+            if (arr==null || !arr.Any())
             {
                 return;
             }
