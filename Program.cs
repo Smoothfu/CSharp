@@ -11,14 +11,68 @@ namespace ConsoleApp301
     {
         static void Main(string[] args)
         {
-            BubbleSortAsc();
-            //86	99	67	86	60	62	88	47	98	25
-            //92	62	72	70	98	49	17	56	14	77
-            //48	92	4	73	44	19	75	98	48	59
+            int[] arr = new int[10];
+            Random rnd = new Random();
+            for(int i=0;i<10;i++)
+            {
+                int rndValue = rnd.Next(1, 1000);
+                arr[i] = rndValue;
+            }
+
+            SelectionSort(arr);
             //在擂台下面，台上的生死更你没关，你只不过是看个乐子；可是站在这里头，你只能赢，不能输！
             Console.ReadLine();
         }
 
+
+        static void SelectionSort(int []arr)
+        {
+            if(arr==null || !arr.Any())
+            {
+                return;
+            }
+
+            Console.WriteLine("\nThe orignal order:");
+            foreach(int a in arr)
+            {
+                Console.Write(a + "\t");
+            }
+            
+            //Advance the position through the entire array.
+            //could do i<arr.Length because single element is also min element.
+            for(int i=0;i<arr.Length;i++)
+            {
+                //find the min element in the unsorted a[i,...,arr.Length-1]
+                //assume the min is the first element
+
+                int minIndex = i;
+                //test against elements after i to find the smallest
+
+                for (int j=i+1;j<arr.Length;j++)
+                {
+                    //if this element is less,then it is the new minimum.
+                   if(arr[minIndex]>arr[j])
+                    {  
+                        //found new minimum,remember its index
+                        minIndex = j;                        
+                    }                     
+                }  
+                
+                if(minIndex!=i)
+                {
+                    int temp = arr[minIndex];
+                    arr[minIndex] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+
+            Console.WriteLine("\n\n\nAfter sorting,the array order:");
+            foreach(int a in arr)
+            {
+                Console.Write(a + "\t");
+            }
+
+        }
         static void RandomPseduo()
         {
             CArray arr = new CArray(10);
