@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Threading;
 
 namespace ConsoleApp301
 {
@@ -11,23 +12,78 @@ namespace ConsoleApp301
     {
         static void Main(string[] args)
         {
+            //DateTime dt = DateTime.Now;
+            //DateTime dtFuture = dt.AddSeconds(10);
+            //Timer selectionSort1SecondInterval = new Timer(x =>
+            //{
+            //    if(DateTime.Now<dtFuture)
+            //    {
+            //        SelectionSort();
+            //    }
+
+            //}, null, 0, 1000);
+
             int[] arr = new int[10];
             Random rnd = new Random();
-            for(int i=0;i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
                 int rndValue = rnd.Next(1, 1000);
                 arr[i] = rndValue;
             }
+            SelectSort(arr);
 
-            SelectionSort(arr);
             //在擂台下面，台上的生死更你没关，你只不过是看个乐子；可是站在这里头，你只能赢，不能输！
             Console.ReadLine();
         }
 
-
-        static void SelectionSort(int []arr)
+        static void SelectSort(int []arr)
         {
             if(arr==null || !arr.Any())
+            {
+                return;
+            }
+
+            Console.WriteLine("The original arr order:");
+            foreach(int a in arr)
+            {
+                Console.Write(a + "\t");
+            }
+
+            for(int i=0;i<arr.Length;i++)
+            {
+                int minIndex = i;
+                for(int j=i+1;j<arr.Length;j++)
+                {
+                    if (arr[minIndex] > arr[j])
+                    {
+                        minIndex = j;
+                    }
+                }
+
+                if(minIndex!=i)
+                {
+                    int temp = arr[minIndex];
+                    arr[minIndex] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+
+            Console.WriteLine("\n\n\nAfter selection sort:");
+            foreach(int a in arr)
+            {
+                Console.Write(a + "\t");
+            }
+        }
+        static void SelectionSort()
+        {
+            int[] arr = new int[10];
+            Random rnd = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                int rndValue = rnd.Next(1, 1000);
+                arr[i] = rndValue;
+            }
+            if (arr==null || !arr.Any())
             {
                 return;
             }
@@ -71,7 +127,7 @@ namespace ConsoleApp301
             {
                 Console.Write(a + "\t");
             }
-
+            Console.WriteLine("\n\n");
         }
         static void RandomPseduo()
         {
