@@ -10,20 +10,20 @@ namespace ConsoleApp302
     class Program
     {
         static void Main(string[] args)
-        {
-            int[] arr = new int[10];
-            Random rnd = new Random();
-            for(int i=0;i<10;i++)
-            {
-                arr[i] = rnd.Next(1, 100000);
-            }
-            SelectionSort(arr);
+        { 
+            SelectionSort();
             Console.ReadLine();
         }
 
-        static void SelectionSort(int[] arr)
+        static void SelectionSort( )
         {
-            if(arr==null || !arr.Any())
+            int[] arr = new int[10];
+            Random rnd = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                arr[i] = rnd.Next(1, 100000);
+            }
+            if (arr==null || !arr.Any())
             {
                 return;
             }
@@ -58,8 +58,7 @@ namespace ConsoleApp302
                     Console.Write(a + "\t");
                 }
                  
-                Console.WriteLine();
-                Console.ReadLine();
+                Console.WriteLine();                
             }
 
             Console.WriteLine("\nAfter selection sort,the array order:");
