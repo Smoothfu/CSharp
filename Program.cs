@@ -12,14 +12,7 @@ namespace ConsoleApp302
         static void Main(string[] args)
         {
             int[] arr ={ 22, 68, 15, 53, 48, 36, 88, 16, 14, 58 };
-            //Random rnd = new Random();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    arr[i] = rnd.Next(1, 100);
-            //}
-            Console.Write("Initial array: ");
-            Console.WriteLine(string.Join(" ", arr));
-            InsertionSort(arr);
+            InsertSort(arr);
             Console.ReadLine();
         }
 
@@ -44,6 +37,36 @@ namespace ConsoleApp302
                 //Printing array after pass
                 Console.WriteLine(string.Join(" ", arr));
             }
+        }
+
+        static void InsertSort(int[] arr)
+        {
+            if (arr == null || !arr.Any())
+            {
+                return;
+            }
+
+            Console.WriteLine("The initial array:");
+
+            Console.WriteLine(string.Join("\t", arr));
+
+            Console.WriteLine();
+            for (int i = 1; i < arr.Length; i++)
+            {
+                int j = i - 1;
+                int temp = arr[i];
+                while (j >= 0 && arr[j] > temp)
+                {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+                arr[j + 1] = temp;
+            }
+
+            Console.WriteLine("\nAfter sort:");
+
+            Console.WriteLine(string.Join("\t", arr));
+
         }
 
         static void SelectionSort( )
