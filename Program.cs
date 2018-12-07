@@ -10,9 +10,40 @@ namespace ConsoleApp302
     class Program
     {
         static void Main(string[] args)
-        { 
-            SelectionSort();
+        {
+            int[] arr = new int[10];
+            Random rnd = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                arr[i] = rnd.Next(1, 100);
+            }
+            Console.Write("Initial array: ");
+            Console.WriteLine(string.Join(" ", arr));
+            InsertionSort(arr);
             Console.ReadLine();
+        }
+
+        static void InsertionSort(int[] arr)
+        {
+            if(arr==null || !arr.Any())
+            {
+                return;
+            }
+
+            for(int i=1;i<arr.Length;i++)
+            {
+                int temp = arr[i];
+                int j = i - 1; 
+                while(j>=0 && arr[j]> temp)
+                {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+                arr[j+1] = temp;
+                Console.Write("\nAfter pass " + i + "  : ");
+                //Printing array after pass
+                Console.WriteLine(string.Join(" ", arr));
+            }
         }
 
         static void SelectionSort( )
