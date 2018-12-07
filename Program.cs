@@ -11,12 +11,12 @@ namespace ConsoleApp302
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[10];
-            Random rnd = new Random();
-            for (int i = 0; i < 10; i++)
-            {
-                arr[i] = rnd.Next(1, 100);
-            }
+            int[] arr ={ 22, 68, 15, 53, 48, 36, 88, 16, 14, 58 };
+            //Random rnd = new Random();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    arr[i] = rnd.Next(1, 100);
+            //}
             Console.Write("Initial array: ");
             Console.WriteLine(string.Join(" ", arr));
             InsertionSort(arr);
@@ -40,7 +40,7 @@ namespace ConsoleApp302
                     j--;
                 }
                 arr[j+1] = temp;
-                Console.Write("\nAfter pass " + i + "  : ");
+                Console.Write("\nAfter pass " + i + " : ");
                 //Printing array after pass
                 Console.WriteLine(string.Join(" ", arr));
             }
