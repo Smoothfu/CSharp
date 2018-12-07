@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace ConsoleApp302
 {
@@ -14,7 +15,7 @@ namespace ConsoleApp302
             Random rnd = new Random();
             for(int i=0;i<10;i++)
             {
-                arr[i] = rnd.Next(1, 1000000000);
+                arr[i] = rnd.Next(1, 100000);
             }
             SelectionSort(arr);
             Console.ReadLine();
@@ -44,15 +45,24 @@ namespace ConsoleApp302
                     }
                 }
 
+                
                 if(minIndex!=i)
                 {
                     int temp = arr[minIndex];
                     arr[minIndex] = arr[i];
                     arr[i] = temp;
                 }
+                Console.WriteLine("\nThe {0} loop result:",i+1);
+                foreach (int a in arr)
+                {
+                    Console.Write(a + "\t");
+                }
+                 
+                Console.WriteLine();
+                Console.ReadLine();
             }
 
-            Console.WriteLine("After selection sort,the array order:");
+            Console.WriteLine("\nAfter selection sort,the array order:");
             foreach(int a in arr)
             {
                 Console.Write(a + "\t");
