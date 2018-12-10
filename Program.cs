@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ConsoleApp304
 {
@@ -16,9 +17,26 @@ namespace ConsoleApp304
             //{
             //    arr[i] = rnd.Next(1, 10000000);
             //}
+            int target = 888888888;
+            int[] arr = new int[10000];
+            Random rnd = new Random();
+            for(int i=0;i<10000;i++)
+            {
+                arr[i] = rnd.Next(0, 1000000000);
+            }
+            arr[8888] = target;
+            Array.Sort(arr);
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            BinarySearch(arr, target);
+            sw.Stop();
+            Console.WriteLine("The BinarySearch cost " + sw.ElapsedMilliseconds + "\n");
 
-            int[] arr = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190 };
-            RecursiveBinSearch(arr, 150, 0, arr.Length - 1);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            RecursiveBinSearch(arr, target, 0, arr.Length - 1);
+            stopwatch.Stop();
+            Console.WriteLine("The Recursive Binary Search cost " + stopwatch.ElapsedMilliseconds + "\n");
             
           
             Console.ReadLine();
