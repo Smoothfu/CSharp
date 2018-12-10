@@ -17,28 +17,11 @@ namespace ConsoleApp304
             //{
             //    arr[i] = rnd.Next(1, 10000000);
             //}
-            int target = 888888888;
-            int[] arr = new int[10000];
-            Random rnd = new Random();
-            for(int i=0;i<10000;i++)
-            {
-                arr[i] = rnd.Next(0, 1000000000);
-            }
-            arr[8888] = target;
-            Array.Sort(arr);
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            BinarySearch(arr, target);
-            sw.Stop();
-            Console.WriteLine("The BinarySearch cost " + sw.ElapsedMilliseconds + "\n");
 
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            RecursiveBinSearch(arr, target, 0, arr.Length - 1);
-            stopwatch.Stop();
-            Console.WriteLine("The Recursive Binary Search cost " + stopwatch.ElapsedMilliseconds + "\n");
-            
-          
+            string str = "dad";
+            CheckPalindrome(str);
+
+
             Console.ReadLine();
         }
 
@@ -169,6 +152,44 @@ namespace ConsoleApp304
                 }
             }
             return -1;
+        }
+
+        static void CheckPalindrome(string str)
+        {
+            if(string.IsNullOrEmpty(str))
+            {
+                return;
+            }
+
+            string ch;
+            bool isPalindrome = true;
+            int pos = 0;
+            Stack<string> stringStack = new Stack<string>();
+            
+            for(int i=0;i<str.Length;i++)
+            {
+                stringStack.Push(str.Substring(i, 1));
+            }
+
+            while (stringStack.Count > 0)
+            {
+                ch = stringStack.Pop().ToString();
+                if(ch!=str.Substring(pos,1))
+                {
+                    isPalindrome = false;
+                    break;
+                }
+                pos++;
+            }
+
+            if(isPalindrome)
+            {
+                Console.WriteLine(str + " is a palindrome");
+            }
+            else
+            {
+                Console.WriteLine(str + " is not a palindrome");
+            }                       
         }
     }
 }
