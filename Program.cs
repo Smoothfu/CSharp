@@ -10,16 +10,14 @@ namespace ConsoleApp304
     {
         static void Main(string[] args)
         {
-            //int[] arr = new int[100];
-            //Random rnd = new Random();
-            //for(int i=0;i<100;i++)
-            //{
-            //    arr[i] = rnd.Next(1,10000000);
-            //}
+            int[] arr = new int[10];
+            Random rnd = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                arr[i] = rnd.Next(1, 10000000);
+            }
 
-            int[] arr={ 10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170};
-            int resultIndex = BinarySearch(arr, 130);
-            Console.WriteLine(resultIndex);
+            FindMax(arr);
             Console.ReadLine();
         }
 
@@ -83,6 +81,45 @@ namespace ConsoleApp304
             }
 
             return -1;
+        }
+
+        static void FindMin(int[] arr)
+        {
+            if(arr==null || !arr.Any())
+            {
+                return;
+            }
+            Console.WriteLine("The initial array is \n" + string.Join("\t", arr) + "\n");
+            int min = arr[0];
+            for(int i=0;i<arr.Length;i++)
+            {
+                if(arr[i]<min)
+                {
+                    min = arr[i];
+                }
+            }
+
+            Console.WriteLine("\nThe minimum element in this array is  " + min);
+        }
+
+        static void FindMax(int[]arr)
+        {
+            if(arr==null || !arr.Any())
+            {
+                return;
+            }
+
+            Console.WriteLine("The initial order: \n" + string.Join("\t", arr));
+            int max = arr[0];
+            for(int i=0;i<arr.Length;i++)
+            {
+                if(arr[i]>max)
+                {
+                    max = arr[i];
+                }
+            }
+
+            Console.WriteLine("\nThe max in array is " + max);
         }
     }
 }
