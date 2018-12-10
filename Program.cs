@@ -8,28 +8,22 @@ namespace ConsoleApp305
     {    
         static void Main(string[] args)
         {
-            Queue[] numQueue = new Queue[10];
-            int[] nums = new int[] { 91, 46, 85, 15, 92, 35, 31, 22 };
-            int[] random = new int[99];
-            //display original list
-            for(int i=0;i<10;i++)
+            PQueue erwait = new PQueue();
+            PQItem[] erPatient = new PQItem[4];
+            PQItem nextPatient;
+            erPatient[0].name = "Joe Smith";
+            erPatient[0].priority = 1;
+            erPatient[1].name = "Mary Brown";
+            erPatient[1].priority = 0;
+            erPatient[2].name = "Sam Jones";
+            erPatient[2].priority = 3;
+            for(int i=0;i<=erPatient.GetUpperBound(0);i++)
             {
-                numQueue[i] = new Queue();
+                erwait.Enqueue(erPatient[i]);
             }
 
-            RSort(numQueue, nums, DigitType.ones);
-
-            //numQueue,nums,1
-            BuildArray(numQueue, nums);
-            Console.WriteLine("\nFirst pass results:");
-            DisplayArray(nums);
-
-            //Second pass sort.
-            RSort(numQueue, nums, DigitType.tens);
-            BuildArray(numQueue, nums);
-            Console.WriteLine("\nSecond pass results:");
-            //display final results
-            DisplayArray(nums);
+            nextPatient =(PQItem)erwait.Dequeue();
+            Console.WriteLine(nextPatient.name);
             Console.ReadLine();
         }
 
@@ -215,5 +209,43 @@ namespace ConsoleApp305
         }
 
        
+    }
+
+    public struct PQItem
+    {
+        public int priority;
+        public string name;
+    }
+
+    public class PQueue : Queue
+    {       
+
+        public override object Dequeue()
+        {
+            object[] items;
+            int  min, minIndex=0;
+            items = this.ToArray();
+            min = ((PQItem)items[0]).priority;
+            for(int i=1;i<=items.GetUpperBound(0);i++)
+            {
+                if(((PQItem)items[i]).priority<min)
+                {
+                    min = ((PQItem)items[i]).priority;
+                    minIndex = i;
+                }
+            }
+
+            this.Clear();
+
+            for(int i=0;i<=items.GetUpperBound(0);i++)
+            {
+                if(i!=minIndex && ((PQItem)items[i]).name!=" ")
+                {
+                    this.Enqueue(items[i]);
+                }               
+            }
+
+            return items[minIndex];
+        }
     }
 }
