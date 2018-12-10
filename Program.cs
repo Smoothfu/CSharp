@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 
 namespace ConsoleApp305
 {
@@ -8,25 +9,34 @@ namespace ConsoleApp305
     {    
         static void Main(string[] args)
         {
-            PQueue erwait = new PQueue();
-            PQItem[] erPatient = new PQItem[4];
-            PQItem nextPatient;
-            erPatient[0].name = "Joe Smith";
-            erPatient[0].priority = 1;
-            erPatient[1].name = "Mary Brown";
-            erPatient[1].priority = 0;
-            erPatient[2].name = "Sam Jones";
-            erPatient[2].priority = 3;
-            for(int i=0;i<=erPatient.GetUpperBound(0);i++)
-            {
-                erwait.Enqueue(erPatient[i]);
-            }
-
-            nextPatient =(PQItem)erwait.Dequeue();
-            Console.WriteLine(nextPatient.name);
+            FindPrimes(1000);
             Console.ReadLine();
         }
 
+        static void FindPrimes(int num)
+        {
+            List<int> primeList = new List<int>();
+            for(int i=2;i<=num;i++)
+            {
+                bool isPrime = true;
+                for(int j=2;j<=Math.Sqrt(i);j++)
+                {
+                    if(i%j==0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+                if(isPrime)
+                {
+                    primeList.Add(i);
+                }
+            }
+
+            Console.WriteLine("The totally primes below " + num + "\n");
+            Console.WriteLine(string.Join("\t", primeList));
+        }
         enum DigitType { ones = 1, tens = 10 }
         static void DisplayArray(int[] arr)
         {
