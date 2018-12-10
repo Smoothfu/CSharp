@@ -19,9 +19,10 @@ namespace ConsoleApp304
                 stack.Push(i);
             }
 
-            object[] arr = new object[stack.Count];
-            stack.CopyTo(arr, 0);
+            object[] arr = stack.ToArray(); 
+            
 
+            Console.WriteLine(string.Join("\t", arr));
             Console.ReadLine();
         }
 
