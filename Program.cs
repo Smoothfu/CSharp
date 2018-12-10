@@ -7,25 +7,14 @@ namespace ConsoleApp305
     {
         static void Main(string[] args)
         {
-            CQueue queue = new CQueue();
-            queue.EnQueue(10);
-            queue.EnQueue(10);
-            queue.EnQueue(10);
-            queue.EnQueue(10);
-            queue.EnQueue(10);
-            queue.EnQueue(10);
-            queue.EnQueue(10);
-            queue.EnQueue(10);
+            Queue myQueue = new Queue(32, 3);
+            for(int i=0;i<33;i++)
+            {
+                myQueue.Enqueue(i);
+            }
 
-            var peekResult = queue.Peek();
-            Console.WriteLine(peekResult);
-            queue.DeQueue();
-
-            int queueEleCount2 = queue.Count();
-            Console.WriteLine(queueEleCount2);
-            queue.ClearQueue();
-            int queueEleCount = queue.Count();
-            Console.WriteLine(queueEleCount);
+            Console.WriteLine(myQueue.Count);
+            Console.WriteLine();
             Console.ReadLine();
         }
     }
