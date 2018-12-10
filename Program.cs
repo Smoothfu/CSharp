@@ -13,11 +13,15 @@ namespace ConsoleApp304
     {
         static void Main(string[] args)
         {
-            Stack nums = new Stack();
-            Stack ops = new Stack();
-            string expression = "5+10+15+20";
-            Calculate(nums, ops, expression);
-            Console.WriteLine(nums.Pop());
+            Stack stack = new Stack();
+            for(int i=20;i>0;i--)
+            {
+                stack.Push(i);
+            }
+
+            object[] arr = new object[stack.Count];
+            stack.CopyTo(arr, 0);
+
             Console.ReadLine();
         }
 
