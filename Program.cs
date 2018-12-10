@@ -10,14 +10,17 @@ namespace ConsoleApp304
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[10];
-            Random rnd = new Random();
-            for (int i = 0; i < 10; i++)
-            {
-                arr[i] = rnd.Next(1, 10000000);
-            }
+            //int[] arr = new int[10];
+            //Random rnd = new Random();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    arr[i] = rnd.Next(1, 10000000);
+            //}
 
-            FindMax(arr);
+            int[] arr = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190 };
+            RecursiveBinSearch(arr, 150, 0, arr.Length - 1);
+            
+          
             Console.ReadLine();
         }
 
@@ -120,6 +123,34 @@ namespace ConsoleApp304
             }
 
             Console.WriteLine("\nThe max in array is " + max);
+        }
+
+        static int RecursiveBinSearch(int[] arr,int target,int low,int high)
+        {            
+            if(arr==null ||!arr.Any())
+            {
+                return -1;
+            }
+
+            else
+            {
+                int mid;
+                mid = (low + high) / 2;
+                if(target>arr[mid])
+                {
+                    RecursiveBinSearch(arr, target,mid+1,high);
+                }
+                else if (target==arr[mid])
+                {
+                    Console.WriteLine("The target value in the arr's index is {0}\n ", mid + 1);
+                    return mid;
+                }
+                else
+                {
+                    RecursiveBinSearch(arr, target,low,mid-1);
+                }
+            }
+            return -1;
         }
     }
 }
