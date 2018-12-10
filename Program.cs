@@ -13,17 +13,30 @@ namespace ConsoleApp304
     {
         static void Main(string[] args)
         {
-            Stack stack = new Stack();
-            for(int i=20;i>0;i--)
-            {
-                stack.Push(i);
-            }
-
-            object[] arr = stack.ToArray(); 
-            
-
-            Console.WriteLine(string.Join("\t", arr));
+            int num, baseNum;
+            Console.Write("Enter a decimal number: ");
+            num = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter a base: ");
+            baseNum = Convert.ToInt32(Console.ReadLine());
+            Console.Write(num + " converts to ");
+            MulBase(num, baseNum);
+            Console.WriteLine(" Base " + baseNum);
             Console.ReadLine();
+        }
+
+        private static void MulBase(int num, int baseNum)
+        {
+            Stack digits = new Stack();
+            do
+            {
+                digits.Push(num % baseNum);
+                num /= baseNum;
+            } while (num != 0);
+
+            while(digits.Count>0)
+            {
+                Console.Write(digits.Pop());
+            }
         }
 
         static void SelectionSort(int[] arr)
