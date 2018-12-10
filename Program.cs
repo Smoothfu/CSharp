@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections;
 
 namespace ConsoleApp304
 {
@@ -11,16 +12,12 @@ namespace ConsoleApp304
     {
         static void Main(string[] args)
         {
-            //int[] arr = new int[10];
-            //Random rnd = new Random();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    arr[i] = rnd.Next(1, 10000000);
-            //}
-
-            string str = "dad";
-            CheckPalindrome(str);
-
+            string[] names = { "Microsoft", "Redmond", "Seattle" };
+            Stack stringStack = new Stack(names);
+            while(stringStack.Count>0)
+            {
+                Console.WriteLine(stringStack.Pop());
+            }
 
             Console.ReadLine();
         }
