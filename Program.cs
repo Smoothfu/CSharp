@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace ConsoleApp306
 {
@@ -10,7 +11,7 @@ namespace ConsoleApp306
     {
         static void Main(string[] args)
         {
-            BitArraySet();
+            StringToCharArray();
             Console.ReadLine();
         }
 
@@ -182,6 +183,16 @@ namespace ConsoleApp306
             {
                 Console.Write(bitTrue[i] + "\t");
             }
+        }
+
+        static void StringToCharArray()
+        {
+            string str = "the quick brown fox jumped over the lazy dog";
+            char[] charArr = str.ToCharArray();
+            var nonWhiteSpaceCharArr = from c in charArr
+                                       where !char.IsWhiteSpace(c)
+                                       select c;
+            Console.WriteLine(string.Join("\t", nonWhiteSpaceCharArr));
         }
     }
 }
