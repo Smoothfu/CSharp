@@ -9,7 +9,7 @@ namespace ConsoleApp306
     {
         static void Main(string[] args)
         {
-            ByteBitArray();
+            BitGet();
             Console.ReadLine();
         }
 
@@ -121,6 +121,37 @@ namespace ConsoleApp306
             for (int i=0;i<bitSet.Count;i++)
             {
                 Console.Write(bitSet.Get(i)+"\t");
+            }
+        }
+
+        static void BitGet()
+        {
+            int bits;
+            string[] binNumber = new string[8];
+            int binary;
+            byte[] byteSet = new byte[] { 1, 2, 3, 4, 5 };
+            BitArray bitSet = new BitArray(byteSet);
+            bits = 0;
+            binary = 7;
+            for(int i=0;i<bitSet.Count;i++)
+            {
+                if(bitSet.Get(i)==true)
+                {
+                    binNumber[binary] = "1";
+                }
+                else
+                {
+                    binNumber[binary] = "0";
+                }
+                bits++;
+                binary--;
+
+                if((bits%8)==0)
+                {
+                    binary = 7;
+                    bits = 0;
+                    Console.WriteLine(string.Join("\t", binNumber));
+                }
             }
         }
     }
