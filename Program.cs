@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ConsoleApp306
 {
@@ -9,7 +10,7 @@ namespace ConsoleApp306
     {
         static void Main(string[] args)
         {
-            BitGet();
+            BitArraySet();
             Console.ReadLine();
         }
 
@@ -150,8 +151,36 @@ namespace ConsoleApp306
                 {
                     binary = 7;
                     bits = 0;
-                    Console.WriteLine(string.Join("\t", binNumber));
+                    Console.WriteLine(string.Join("", binNumber));
                 }
+            }
+        }
+        static void BitArraySet()
+        {
+            BitArray bits = new BitArray(100);
+            for(int i=0;i<100;i++)
+            {
+                bool bitValue = i % 2 == 0 ? true : false;
+                bits.Set(i, bitValue);
+            }
+
+            Console.WriteLine("The BitArray Set()");
+            if(bits!=null)
+            {
+                 for(int i=0;i<bits.Length;i++)
+                {
+                    Console.Write(bits[i] + "\t");
+                }
+            }
+
+            Console.WriteLine("\n\n\n\n\n");
+
+            Console.WriteLine("The BitArray.SetAll()");
+            BitArray bitTrue = new BitArray(100);
+            bitTrue.SetAll(true);
+            for(int i=0;i<100;i++)
+            {
+                Console.Write(bitTrue[i] + "\t");
             }
         }
     }
