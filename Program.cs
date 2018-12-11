@@ -9,15 +9,7 @@ namespace ConsoleApp306
     {
         static void Main(string[] args)
         {
-            int intSize = sizeof(int);
-            Console.WriteLine("Int size:{0}", intSize);
-            int byteSize = sizeof(Byte);
-            Console.WriteLine("Byte size:{0}", byteSize);
-            int boolSize = sizeof(bool);
-            Console.WriteLine("Bool size:{0}", boolSize);
-            Console.WriteLine("\n\n\n");
-
-            BitArrayExample();
+            ByteBitArray();
             Console.ReadLine();
         }
 
@@ -119,6 +111,17 @@ namespace ConsoleApp306
                 Console.WriteLine("{0,8}", obj);
             }
             Console.WriteLine();
+        }
+
+        static void ByteBitArray()
+        {
+            byte[] byteSet = new byte[] { 1, 2, 3, 4, 5 };
+            BitArray bitSet = new BitArray(byteSet);
+            
+            for (int i=0;i<bitSet.Count;i++)
+            {
+                Console.Write(bitSet.Get(i)+"\t");
+            }
         }
     }
 }
