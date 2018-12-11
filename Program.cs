@@ -9,7 +9,15 @@ namespace ConsoleApp306
     {
         static void Main(string[] args)
         {
-            BitShift();
+            int intSize = sizeof(int);
+            Console.WriteLine("Int size:{0}", intSize);
+            int byteSize = sizeof(Byte);
+            Console.WriteLine("Byte size:{0}", byteSize);
+            int boolSize = sizeof(bool);
+            Console.WriteLine("Bool size:{0}", boolSize);
+            Console.WriteLine("\n\n\n");
+
+            BitArrayExample();
             Console.ReadLine();
         }
 
@@ -69,6 +77,48 @@ namespace ConsoleApp306
             int k = 10 >> 2;
             Console.WriteLine("left shift: "+j);
             Console.WriteLine("right shitf: " + k);
+        }
+
+        static void BitArrayExample()
+        {
+            BitArray ba1 = new BitArray(5);
+            BitArray ba2 = new BitArray(5, false);
+            byte[] myBytes = new byte[5] { 1, 2, 3, 4, 5 };
+            BitArray ba3 = new BitArray(myBytes);
+            bool[] myBools = new bool[5] { true, false, true, true, false };
+            BitArray ba4 = new BitArray(myBools);
+            int[] myInts = new int[5] { 6, 7, 8, 9, 10 };
+            BitArray ba5 = new BitArray(myInts);
+
+            //Displays the properties and values of the BitArrays
+           
+            Console.WriteLine("ba1,default false,Count:{0},Length:{1}\n", ba1.Count, ba1.Length);
+           
+
+            Console.WriteLine("ba2,false,Count:{0},Length:{1}\n", ba2.Count, ba2.Length);
+             
+
+            Console.WriteLine("ba3,byte,Count:{0},Length:{1}\n", ba3.Count, ba3.Length);
+
+            Console.WriteLine("ba4,bool,Count:{0},Length:{1}\n", ba4.Count, ba4.Length); 
+
+            Console.WriteLine("ba5,int,Count:{0},Length:{1}\n", ba5.Count, ba5.Length); 
+        }
+
+        public static void PrintValues(IEnumerable myList,int myWidth)
+        {
+            int i = myWidth;
+            foreach(object obj in myList)
+            {
+                if(i<=0)
+                {
+                    i = myWidth;
+                    Console.WriteLine();
+                }
+                i--;
+                Console.WriteLine("{0,8}", obj);
+            }
+            Console.WriteLine();
         }
     }
 }
