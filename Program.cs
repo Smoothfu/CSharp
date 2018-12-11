@@ -9,9 +9,7 @@ namespace ConsoleApp306
     {
         static void Main(string[] args)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder = ConvertBits(100000000);
-            Console.WriteLine(stringBuilder.ToString());
+            BitShift();
             Console.ReadLine();
         }
 
@@ -62,6 +60,15 @@ namespace ConsoleApp306
             }
 
             return bitBuffer;
+        }
+
+        static void BitShift()
+        {
+            int i = 10;
+            int j = 10 << 3;
+            int k = 10 >> 2;
+            Console.WriteLine("left shift: "+j);
+            Console.WriteLine("right shitf: " + k);
         }
     }
 }
