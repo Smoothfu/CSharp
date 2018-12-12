@@ -9,7 +9,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringPad();
+            StringContcatenate();
             Console.ReadLine();
         }
 
@@ -171,6 +171,36 @@ namespace ConsoleApp307
             Console.WriteLine(str.Length);
             Console.Write(str.PadRight(20));
             Console.ReadKey();
+        }
+
+        static void AlignData()
+        {
+            string[,] names = new string[,]
+            {{"1504", "Mary", "Ella", "Steve", "Bob"},
+            {"1133", "Elizabeth", "Alex", "David", "Joe"},
+            {"2624", "Joel", "Chris", "Craig", "Bill"}};
+
+            Console.WriteLine("\n\n\n\n\n");
+            for(int i=0;i<=names.GetUpperBound(0);i++)
+            {
+                for(int j=0;j<names.GetUpperBound(1);j++)
+                {
+                    Console.Write(names[i, j].PadRight(10) + "\t");
+                }
+                Console.WriteLine("\n");
+            }
+        }
+
+        static void StringContcatenate()
+        {
+            string str1 = "Hello";
+            string s2 = "world!";
+            string s3 = "";
+            s3 = string.Concat(str1, "\t", s2,"wonderful");
+            Console.WriteLine(s3);
+
+            string[] arr = { "I", " am ", " a", " programmer", " focused ", " on ", " C# " };
+            Console.WriteLine(string.Concat(arr));
         }
     }
 }
