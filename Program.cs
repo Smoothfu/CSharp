@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleApp307
 {
@@ -7,7 +9,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringCompare();
+            StringReplace();
             Console.ReadLine();
         }
 
@@ -104,6 +106,62 @@ namespace ConsoleApp307
             Console.WriteLine(string.Compare(str1, str2));
             Console.WriteLine(str1.CompareTo(str2));
 
+        }
+
+        static void StringEndsWith()
+        {
+            string[] arr = new string[] {"cat","dog","bird","eggs","bones"};
+            var pluralAnimals = from a in arr
+                                         where a.EndsWith('s')
+                                         select a;
+            if (pluralAnimals != null && pluralAnimals.Any())
+            {
+                Console.WriteLine(string.Join("\t", pluralAnimals));                
+            }            
+        }
+
+        static void StringStartsWith()
+        {
+            string[] words = new string[] { "triangle", "diagonal", "trimester", "bifocal", "triglycerides" };
+            ArrayList triWords = new ArrayList();
+            foreach(string word in words)
+            {
+                if(word.StartsWith("tri"))
+                {
+                    triWords.Add(word);
+                }
+            }
+
+            if(triWords!=null && triWords.Count>0)
+            {
+                foreach(string str in triWords)
+                {
+                    Console.WriteLine(str);
+                }
+            }
+        }
+
+        static void StringInsert()
+        {
+            string str = "Hello,Welcome to my class";
+            string name = "Floomberg ";
+            int pos = str.IndexOf(",");
+            str = str.Insert(pos + 1, name);
+            Console.WriteLine(str);
+            str = str.Remove(pos + 1, name.Length);
+            Console.WriteLine(str);
+        }
+
+        static void StringReplace()
+        {
+            string[] words = new string[] { "Receive", "Deceive", "Receipt" };
+            Console.WriteLine("Initial word:" + string.Join("\t", words));
+            Console.WriteLine("\nThe replace result:");
+            for(int i=0;i<=words.GetUpperBound(0);i++)
+            {
+                words[i] = words[i].Replace("cei", "cie");
+                Console.Write(words[i]+"\t");
+            }
         }
     }
 }
