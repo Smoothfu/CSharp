@@ -269,6 +269,7 @@ namespace ConsoleApp307
         static void StringBuilderExample()
         {
             StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.EnsureCapacity(20);
             string msg = "This world it is,every thing";
             StringBuilder strBuilder = new StringBuilder(msg);
             Console.WriteLine("Stringbuilder default capacity: " + stringBuilder.Capacity);
