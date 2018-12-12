@@ -9,7 +9,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringToUpperToLower();
+            StringTrim();
             Console.ReadLine();
         }
 
@@ -209,8 +209,43 @@ namespace ConsoleApp307
             str = str.ToUpper();
             Console.WriteLine("ToUpper: " + str);
             str = str.ToLowerInvariant();
-            Console.WriteLine(str);
-            
+            Console.WriteLine(str);            
+        }
+
+        static void StringTrim()
+        {
+            string[] names = { " David", " Raymond", "Mike ", "Bernica " };
+            Console.WriteLine("\n");
+            ShowNames(names);
+            Console.WriteLine("\n\n\n\n\n");
+            TrimVals(names);
+            Console.WriteLine("\n\n\n\n\n");
+            ShowNames(names);
+        }
+
+        static void ShowNames(string[] arr)
+        {
+            if(arr==null && !arr.Any())
+            {
+                return;
+            }
+
+            Console.WriteLine(string.Join("\t", arr));
+        }
+
+        static void TrimVals(string[] arr)
+        {
+            if(arr==null || !arr.Any())
+            {
+                return;
+            }
+
+            char[] charArr = new char[] { ' ' };
+            for(int i=0;i<arr.Length;i++)
+            {
+                arr[i] = arr[i].Trim(charArr[0]);
+                arr[i] = arr[i].TrimEnd(charArr[0]);
+            }
         }
     }
 }
