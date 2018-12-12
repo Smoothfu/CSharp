@@ -9,7 +9,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringReplace();
+            StringPad();
             Console.ReadLine();
         }
 
@@ -162,6 +162,15 @@ namespace ConsoleApp307
                 words[i] = words[i].Replace("cei", "cie");
                 Console.Write(words[i]+"\t");
             }
+        }
+
+        static void StringPad()
+        {
+            string str = "Hello";
+            Console.WriteLine(str.PadLeft(20));
+            Console.WriteLine(str.Length);
+            Console.Write(str.PadRight(20));
+            Console.ReadKey();
         }
     }
 }
