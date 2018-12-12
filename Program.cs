@@ -9,7 +9,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringContcatenate();
+            StringToUpperToLower();
             Console.ReadLine();
         }
 
@@ -201,6 +201,16 @@ namespace ConsoleApp307
 
             string[] arr = { "I", " am ", " a", " programmer", " focused ", " on ", " C# " };
             Console.WriteLine(string.Concat(arr));
+        }
+
+        static void StringToUpperToLower()
+        {
+            string str = "hello world";
+            str = str.ToUpper();
+            Console.WriteLine("ToUpper: " + str);
+            str = str.ToLowerInvariant();
+            Console.WriteLine(str);
+            
         }
     }
 }
