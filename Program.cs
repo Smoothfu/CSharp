@@ -7,13 +7,10 @@ namespace ConsoleApp307
         static void Main(string[] args)
         {
             string str = "This is a string which consist of any character that is part of the Unicode character set";
-            string[] arr = str.Split(" ", StringSplitOptions.None);
+            string[] arr = str.Split(new char[] { ' ' });
             if(arr!=null && arr.Length>0)
             {
-                foreach(string a in arr)
-                {
-                    Console.WriteLine(a);
-                }
+                Console.WriteLine(string.Join("-", arr));
             }
             Console.ReadLine();
         }
