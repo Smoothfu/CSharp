@@ -1,0 +1,11 @@
+D:\C\ConsoleApp307\bin\Debug\netcoreapp2.1\ConsoleApp307.deps.json
+D:\C\ConsoleApp307\bin\Debug\netcoreapp2.1\ConsoleApp307.runtimeconfig.json
+D:\C\ConsoleApp307\bin\Debug\netcoreapp2.1\ConsoleApp307.runtimeconfig.dev.json
+D:\C\ConsoleApp307\bin\Debug\netcoreapp2.1\ConsoleApp307.dll
+D:\C\ConsoleApp307\bin\Debug\netcoreapp2.1\ConsoleApp307.pdb
+D:\C\ConsoleApp307\obj\Debug\netcoreapp2.1\ConsoleApp307.csprojAssemblyReference.cache
+D:\C\ConsoleApp307\obj\Debug\netcoreapp2.1\ConsoleApp307.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp307\obj\Debug\netcoreapp2.1\ConsoleApp307.AssemblyInfoInputs.cache
+D:\C\ConsoleApp307\obj\Debug\netcoreapp2.1\ConsoleApp307.AssemblyInfo.cs
+D:\C\ConsoleApp307\obj\Debug\netcoreapp2.1\ConsoleApp307.dll
+D:\C\ConsoleApp307\obj\Debug\netcoreapp2.1\ConsoleApp307.pdb
