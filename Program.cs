@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace ConsoleApp307
 {
@@ -9,7 +10,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringTrimComments();
+            StringBuilderExample();
             Console.ReadLine();
         }
 
@@ -263,6 +264,16 @@ namespace ConsoleApp307
             }
 
             Console.WriteLine(string.Join("\n", htmlComments));
+        }
+
+        static void StringBuilderExample()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            string msg = "This world it is,every thing";
+            StringBuilder strBuilder = new StringBuilder(msg);
+            Console.WriteLine("Stringbuilder default capacity: " + stringBuilder.Capacity);
+            Console.WriteLine("The raw msg length: " + msg.Length);
+            Console.WriteLine("strBuilder customized capacity more than 16: " + strBuilder.Capacity);
         }
     }
 }
