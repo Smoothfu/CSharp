@@ -6,12 +6,14 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            string str = "This is a string which consist of any character that is part of the Unicode character set";
-            string[] arr = str.Split(new char[] { ' ' });
-            if(arr!=null && arr.Length>0)
-            {
-                Console.WriteLine(string.Join("+", arr));
-            }
+            string str = "Hello, world!";
+            int len = str.Length;
+            int pos = str.IndexOf(" ");
+            string firstWord, secondWord;
+            firstWord = str.Substring(0, pos);
+            secondWord = str.Substring(pos + 1, (len - 1) - (pos + 1));
+            Console.WriteLine("First word: " + firstWord);
+            Console.WriteLine("Second Word: " + secondWord);
             Console.ReadLine();
         }
     }
