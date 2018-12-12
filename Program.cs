@@ -7,7 +7,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringSplitSeparator();
+            StringCompare();
             Console.ReadLine();
         }
 
@@ -89,6 +89,21 @@ namespace ConsoleApp307
             string strJoin;
             strJoin = string.Join(",", strData);
             Console.WriteLine("\n" + strJoin);
+        }
+
+        static void StringCompare()
+        {
+            string str1 = "foobar";
+            string str2 = "foobar";
+            Console.WriteLine(str1.CompareTo(str2));
+            Console.WriteLine(string.Compare(str1, str2));
+            str2 = "foofoo";
+            Console.WriteLine(string.Compare(str1, str2));
+            Console.WriteLine(str1.CompareTo(str2));
+            str2 = "fooaar";
+            Console.WriteLine(string.Compare(str1, str2));
+            Console.WriteLine(str1.CompareTo(str2));
+
         }
     }
 }
