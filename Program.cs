@@ -10,7 +10,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringBuilderExample();
+            StringBuilderAppend();
             Console.ReadLine();
         }
 
@@ -275,6 +275,23 @@ namespace ConsoleApp307
             Console.WriteLine("Stringbuilder default capacity: " + stringBuilder.Capacity);
             Console.WriteLine("The raw msg length: " + msg.Length);
             Console.WriteLine("strBuilder customized capacity more than 16: " + strBuilder.Capacity);
+        }
+
+        static void StringBuilderAppend()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            string[] arr = { "The ","world ","is ","fair ","everything ","depend ","on ","myself ","I ","should ","make ","every ","second ","count "};
+            for(int i=0;i<arr.Length;i++)
+            {
+                stringBuilder.Append(arr[i]);
+            }
+            Console.WriteLine(stringBuilder);
+
+            Console.WriteLine("AppendJoin");
+
+            StringBuilder newStringBuilder = new StringBuilder();
+            newStringBuilder.AppendJoin(" ", arr);
+            Console.WriteLine(newStringBuilder);
         }
     }
 }
