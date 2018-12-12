@@ -9,7 +9,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringTrim();
+            StringTrimComments();
             Console.ReadLine();
         }
 
@@ -246,6 +246,23 @@ namespace ConsoleApp307
                 arr[i] = arr[i].Trim(charArr[0]);
                 arr[i] = arr[i].TrimEnd(charArr[0]);
             }
+        }
+
+        static void StringTrimComments()
+        {
+            string[] htmlComments = {"<!-- Start Page Number Function -->",
+                                     "<!-- Get user name and password -->",
+                                     "<!-- End Title page -->",
+                                     "<!-- End script -->"};
+            char[] commentChars = { '<', '!', '-', '>' };
+
+            for(int i=0;i<htmlComments.Length;i++)
+            {
+                htmlComments[i] = htmlComments[i].Trim(commentChars);
+                htmlComments[i] = htmlComments[i].TrimEnd(commentChars);
+            }
+
+            Console.WriteLine(string.Join("\n", htmlComments));
         }
     }
 }
