@@ -10,7 +10,7 @@ namespace ConsoleApp307
     {
         static void Main(string[] args)
         {
-            StringBuilderAppend();
+            StringBuilderAppendFormat();
             Console.ReadLine();
         }
 
@@ -292,6 +292,15 @@ namespace ConsoleApp307
             StringBuilder newStringBuilder = new StringBuilder();
             newStringBuilder.AppendJoin(" ", arr);
             Console.WriteLine(newStringBuilder);
+        }
+
+        static void StringBuilderAppendFormat()
+        {
+            StringBuilder strBuilder = new StringBuilder();
+            Console.WriteLine();
+            strBuilder.AppendFormat("Your order is for {0000} widgets.\n", 234);
+            strBuilder.AppendFormat("\nWe have {0000} widgets left.\n", 12);
+            Console.WriteLine(strBuilder);
         }
     }
 }
