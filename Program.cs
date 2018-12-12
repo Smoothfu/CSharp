@@ -10,7 +10,7 @@ namespace ConsoleApp307
             string[] arr = str.Split(new char[] { ' ' });
             if(arr!=null && arr.Length>0)
             {
-                Console.WriteLine(string.Join("-", arr));
+                Console.WriteLine(string.Join("+", arr));
             }
             Console.ReadLine();
         }
