@@ -1,0 +1,12 @@
+D:\C\ConsoleApp310\bin\Debug\ConsoleApp310.exe.config
+D:\C\ConsoleApp310\bin\Debug\ConsoleApp310.exe
+D:\C\ConsoleApp310\bin\Debug\ConsoleApp310.pdb
+D:\C\ConsoleApp310\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp310\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp310\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp310\bin\Debug\EntityFramework.SqlServer.xml
+D:\C\ConsoleApp310\obj\Debug\ConsoleApp310.csprojAssemblyReference.cache
+D:\C\ConsoleApp310\obj\Debug\ConsoleApp310.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp310\obj\Debug\ConsoleApp310.csproj.CopyComplete
+D:\C\ConsoleApp310\obj\Debug\ConsoleApp310.exe
+D:\C\ConsoleApp310\obj\Debug\ConsoleApp310.pdb
