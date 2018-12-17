@@ -13,14 +13,14 @@ namespace ConsoleApp312
             using (AdventureWorks2017Entities db = new AdventureWorks2017Entities())
             {
 
-                var persons = db.SalesPersons;
-                if(persons!=null && persons.Count()>0)
-                {
-                    foreach(SalesPerson sp in persons)
-                    {
-                        Console.WriteLine(sp.BusinessEntityID);
-                    }
-                }
+                //var persons = db.SalesPersons;
+                //if(persons!=null && persons.Count()>0)
+                //{
+                //    foreach(SalesPerson sp in persons)
+                //    {
+                //        Console.WriteLine(sp.BusinessEntityID);
+                //    }
+                //}
 
                 var result = (from s in db.SalesPersons
                               join t in db.SalesTerritories
