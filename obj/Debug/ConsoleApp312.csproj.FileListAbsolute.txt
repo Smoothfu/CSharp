@@ -1,0 +1,12 @@
+D:\C\ConsoleApp312\bin\Debug\ConsoleApp312.exe.config
+D:\C\ConsoleApp312\bin\Debug\ConsoleApp312.exe
+D:\C\ConsoleApp312\bin\Debug\ConsoleApp312.pdb
+D:\C\ConsoleApp312\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp312\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp312\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp312\bin\Debug\EntityFramework.SqlServer.xml
+D:\C\ConsoleApp312\obj\Debug\ConsoleApp312.csprojAssemblyReference.cache
+D:\C\ConsoleApp312\obj\Debug\ConsoleApp312.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp312\obj\Debug\ConsoleApp312.csproj.CopyComplete
+D:\C\ConsoleApp312\obj\Debug\ConsoleApp312.exe
+D:\C\ConsoleApp312\obj\Debug\ConsoleApp312.pdb
