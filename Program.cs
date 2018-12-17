@@ -23,20 +23,22 @@ namespace ConsoleApp312
                 //}
 
                 var result = (from s in db.SalesPersons
-                              join t in db.SalesTerritories
-                              on s.TerritoryID equals t.TerritoryID
+                              from t in db.SalesTerritories
+                              where s.TerritoryID == t.TerritoryID
                               select new
                               {
                                   SID = s.BusinessEntityID,
-                                  TID = t.TerritoryID
-                              }).AsEnumerable();
+                                  CRC = t.CountryRegionCode
+                              }).ToArray();
 
 
-                if (result != null && result.Count() > 0)
+                List<int> intList = new List<int>();
+                if (result != null && result.Count()> 0)
                 {
+                    Console.WriteLine("Count:"+result.Count());
                     foreach (var r in result)
                     {
-                        Console.WriteLine(r.SID + "\n");
+                        Console.WriteLine(r.SID + ","+r.CRC+"\n");
                     }
                 }
             }
