@@ -47,7 +47,7 @@ namespace ConsoleApp313
             }
             Console.ReadLine();
         }
-        static void ExportEntityStoresByNPOI<T>(IList<T> listT)
+        static void ExportEntityStoresByNPOI<T>(T[] listT)
         {
             if(listT==null || !listT.Any())
             {
