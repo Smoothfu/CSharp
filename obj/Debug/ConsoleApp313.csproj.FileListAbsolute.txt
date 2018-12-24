@@ -10,3 +10,9 @@ D:\C\ConsoleApp313\bin\Debug\EntityFramework.SqlServer.dll
 D:\C\ConsoleApp313\bin\Debug\EntityFramework.xml
 D:\C\ConsoleApp313\bin\Debug\EntityFramework.SqlServer.xml
 D:\C\ConsoleApp313\obj\Debug\ConsoleApp313.csproj.CopyComplete
+D:\C\ConsoleApp313\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\C\ConsoleApp313\bin\Debug\NPOI.dll
+D:\C\ConsoleApp313\bin\Debug\NPOI.OOXML.dll
+D:\C\ConsoleApp313\bin\Debug\NPOI.OpenXml4Net.dll
+D:\C\ConsoleApp313\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\C\ConsoleApp313\bin\Debug\ICSharpCode.SharpZipLib.xml
