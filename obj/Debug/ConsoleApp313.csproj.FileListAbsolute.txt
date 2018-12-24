@@ -5,3 +5,8 @@ D:\C\ConsoleApp313\obj\Debug\ConsoleApp313.csprojAssemblyReference.cache
 D:\C\ConsoleApp313\obj\Debug\ConsoleApp313.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp313\obj\Debug\ConsoleApp313.exe
 D:\C\ConsoleApp313\obj\Debug\ConsoleApp313.pdb
+D:\C\ConsoleApp313\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp313\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp313\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp313\bin\Debug\EntityFramework.SqlServer.xml
+D:\C\ConsoleApp313\obj\Debug\ConsoleApp313.csproj.CopyComplete

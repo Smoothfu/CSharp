@@ -12,12 +12,21 @@ namespace ConsoleApp313
         public event CallHandler CallEvent;
         public delegate void MathDel(int x, int y);
         public event MathDel MathEvent;
+        public event EventHandler MyOwnEvent;
 
         static void Main(string[] args)
-        {            
-            Program p = new Program();
-            p.MathEvent += P_MathEvent;
-            p.OnMathEvent(100, 100);
+        {
+            using (AdventureWorks2017Entities db = new AdventureWorks2017Entities())
+            {
+                List<Store> storesList = db.Stores.ToList();
+                if (storesList != null && storesList.Any())
+                {
+                    foreach (Store s in storesList)
+                    {
+                        Console.WriteLine($"{s.BusinessEntityID},{s.ModifiedDate},{s.Name}");
+                    }
+                }
+            }
             Console.ReadLine();
         }
 
