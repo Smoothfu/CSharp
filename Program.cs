@@ -47,9 +47,12 @@ namespace ConsoleApp313
             }
             Console.ReadLine();
         }
-        static void ExportEntityStoresByNPOI(Store[] storesArr)
+        static void ExportEntityStoresByNPOI<T>(IList<T> listT)
         {
-            Store firstStore = storesArr.FirstOrDefault();
+            if(listT==null || !listT.Any())
+            {
+                System.Windows.Forms.MessageBox.Show("The data source is empty!Please confirm!");
+            }
             SaveFileDialog sfd = new SaveFileDialog();
             List<string> columnsList = new List<string>();
             HSSFWorkbook book;
@@ -65,7 +68,7 @@ namespace ConsoleApp313
                 sfd.InitialDirectory = "";
                 var firstRow = sheet.CreateRow(0);
 
-                PropertyInfo[] piss = storesArr[0].GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).ToArray();
+                PropertyInfo[] piss = listT[0].GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).ToArray();
                  
                 if(piss!=null && piss.Any())
                 {
@@ -76,17 +79,17 @@ namespace ConsoleApp313
                     }
                 }                 
 
-                for (int i = 1; i <= storesArr.Count(); i++)
+                for (int i = 1; i <= listT.Count(); i++)
                 {
                     var indexRow = sheet.CreateRow(i);
-                    PropertyInfo[] pis = storesArr[i - 1].GetType().GetProperties().Where(x=>!x.GetMethod.IsVirtual).ToArray();
+                    PropertyInfo[] pis = listT[i - 1].GetType().GetProperties().Where(x=>!x.GetMethod.IsVirtual).ToArray();
 
                     int columnIndex = 0;
                     if(pis!=null && pis.Any())
                     {
                         foreach(PropertyInfo pi in pis)
                         {
-                            var columnValue = pi.GetValue(storesArr[i - 1]);
+                            var columnValue = pi.GetValue(listT[i - 1]);
                             var column = indexRow.CreateCell(columnIndex);
                             
                             column.SetCellValue(columnValue.ToString());
