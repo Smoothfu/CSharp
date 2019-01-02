@@ -10,3 +10,9 @@ D:\C\ConsoleApp314\obj\Debug\ConsoleApp314.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp314\obj\Debug\ConsoleApp314.csproj.CopyComplete
 D:\C\ConsoleApp314\obj\Debug\ConsoleApp314.exe
 D:\C\ConsoleApp314\obj\Debug\ConsoleApp314.pdb
+D:\C\ConsoleApp314\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\C\ConsoleApp314\bin\Debug\NPOI.dll
+D:\C\ConsoleApp314\bin\Debug\NPOI.OOXML.dll
+D:\C\ConsoleApp314\bin\Debug\NPOI.OpenXml4Net.dll
+D:\C\ConsoleApp314\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\C\ConsoleApp314\bin\Debug\ICSharpCode.SharpZipLib.xml
