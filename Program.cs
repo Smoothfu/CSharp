@@ -9,39 +9,52 @@ using System.Windows.Forms;
 using NPOI.XSSF.UserModel;
 using System.Diagnostics;
 using System.Threading;
+using System.Reflection;
 
 namespace ConsoleApp314
 {
     class Program
     {
         static Stopwatch watch = new Stopwatch();
-        static int exportNum = 0;
+        static int exportNum = 0;         
+        static string logPath = Directory.GetCurrentDirectory()+"\\ExportLog.txt";
+
         [STAThread]
         static void Main(string[] args)
         {
-            watch.Start();
+            if (!Directory.Exists(logPath))
+            {
+                FileInfo fi = new FileInfo(logPath);
+            }
 
-            Thread exportThread = new Thread(() =>
-              {
-                  using (AdventureWorks2017Entities db = new AdventureWorks2017Entities())
-                  {
-                      List<SalesOrderDetail> dbSales = db.SalesOrderDetails.ToList();
-                      dbSales.AddRange(dbSales);
-                      dbSales.AddRange(dbSales);
-                      //dbSales.AddRange(dbSales);
-                      exportNum = dbSales.Count; 
-                      ExportTEntity<SalesOrderDetail>(dbSales.ToArray());
-                      db.Dispose();
-                  }
-              });
-            exportThread.IsBackground = true;
-            exportThread.SetApartmentState(ApartmentState.STA);
-            exportThread.Start();            
-            Console.ReadLine();
+            using (AdventureWorks2017Entities db = new AdventureWorks2017Entities())
+            {
+                List<SalesOrderDetail> dbSales = db.SalesOrderDetails.ToList();
+                dbSales.AddRange(dbSales);
+                dbSales.AddRange(dbSales);
+                exportNum = dbSales.Count;
+                SalesOrderDetail[] arr = dbSales.ToArray();
+                dbSales = null;
+
+                for (int i = 0; i < 10; i++)
+                {
+                    watch.Start();
+
+                    Thread exportThread = new Thread(() =>
+                    {
+                        string threadMsg = string.Format($"ThreadId:{Thread.CurrentThread.ManagedThreadId},Time is {DateTime.Now.ToString("yyyyMMddHHmmssffffff")} \n\n\n");
+                        File.AppendAllText(logPath, threadMsg);
+                        ExportTEntity<SalesOrderDetail>(arr); 
+                        
+                    });
+                    exportThread.IsBackground = true;
+                    exportThread.SetApartmentState(ApartmentState.STA);
+                    exportThread.Start();
+                    exportThread.Join();
+                }
+            }
         }
-
-
-        [STAThread]
+        
         static void ExportTEntity<T>(T[] arr)
         {
             if (arr != null && !arr.Any())
@@ -52,7 +65,7 @@ namespace ConsoleApp314
             {
                 XSSFWorkbook book;
                 sfd.Filter = "Excel Files(.xls)|*.xls|Excel Files(.xlsx)| *.xlsx | All Files | *.*";
-                sfd.FileName = DateTime.Now.ToString("yyyyMMddMMhhssfff") + ".xlsx";
+                sfd.FileName = DateTime.Now.ToString("yyyyMMddHHmmssffffff") +Guid.NewGuid().ToString() + ".xlsx";
                 sfd.InitialDirectory = Directory.GetCurrentDirectory();
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -88,10 +101,10 @@ namespace ConsoleApp314
                     }
 
                     watch.Stop();
-                    string showMsg = string.Format($"There are totally {exportNum} salesorderdetails and cost {watch.ElapsedMilliseconds} millseconds");
-                    MessageBox.Show(showMsg);
+                    string exportMsg = string.Format($"There are totally {exportNum} salesorderdetails and cost {watch.ElapsedMilliseconds} millseconds and now is {DateTime.Now.ToString("yyyyMMddHHmmssfff")} \n\n");                
+                    File.AppendAllText(logPath,exportMsg);
                 }
-
+                
                 arr = null;
             }                   
         }
