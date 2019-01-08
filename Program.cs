@@ -22,11 +22,6 @@ namespace ConsoleApp314
         [STAThread]
         static void Main(string[] args)
         {
-            if (!Directory.Exists(logPath))
-            {
-                FileInfo fi = new FileInfo(logPath);
-            }
-
             using (AdventureWorks2017Entities db = new AdventureWorks2017Entities())
             {
                 List<SalesOrderDetail> dbSales = db.SalesOrderDetails.ToList();
@@ -36,25 +31,19 @@ namespace ConsoleApp314
                 SalesOrderDetail[] arr = dbSales.ToArray();
                 dbSales = null;
 
-                for (int i = 0; i < 10; i++)
+                watch.Start();
+                Task.Run(() =>
                 {
-                    watch.Start();
-
-                    Thread exportThread = new Thread(() =>
-                    {
-                        string threadMsg = string.Format($"ThreadId:{Thread.CurrentThread.ManagedThreadId},Time is {DateTime.Now.ToString("yyyyMMddHHmmssffffff")} \n\n\n");
-                        File.AppendAllText(logPath, threadMsg);
-                        ExportTEntity<SalesOrderDetail>(arr); 
-                        
-                    });
-                    exportThread.IsBackground = true;
-                    exportThread.SetApartmentState(ApartmentState.STA);
-                    exportThread.Start();
-                    exportThread.Join();
-                }
+                    string threadMsg = string.Format($"ThreadId:{Thread.CurrentThread.ManagedThreadId},Time is {DateTime.Now.ToString("yyyyMMddHHmmssffffff")} \n\n\n");
+                    File.AppendAllText(logPath, threadMsg);
+                    ExportTEntity<SalesOrderDetail>(arr);
+                });
+               
+                Console.ReadLine();
             }
         }
         
+        [STAThread]
         static void ExportTEntity<T>(T[] arr)
         {
             if (arr != null && !arr.Any())
@@ -103,6 +92,7 @@ namespace ConsoleApp314
                     watch.Stop();
                     string exportMsg = string.Format($"There are totally {exportNum} salesorderdetails and cost {watch.ElapsedMilliseconds} millseconds and now is {DateTime.Now.ToString("yyyyMMddHHmmssfff")} \n\n");                
                     File.AppendAllText(logPath,exportMsg);
+                    MessageBox.Show(exportMsg);
                 }
                 
                 arr = null;
