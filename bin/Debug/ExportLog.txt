@@ -1,0 +1,15 @@
+Saved in D:\C\ConsoleApp315\bin\Debug\201901102200552735165f831676-d7be-41bd-b6eb-021668771a88.xlsx.
+There are totally 485268 salesorderdetails and cost 97952 millseconds and now is 20190110220233226 
+
+Saved in D:\C\ConsoleApp315\bin\Debug\2019011022285171390310bf1506-a5d1-4bbe-a4f3-1f230d418da4.xlsx.
+There are totally 485268 salesorderdetails and cost 95086 millseconds and now is 20190110223026801 
+
+Saved in D:\C\ConsoleApp315\bin\Debug\201901102233265013622ed0a1a1-5da2-4398-83a8-44e512723f36.xlsx.
+There are totally 485268 salesorderdetails and cost 97903 millseconds and now is 20190110223504404 
+
+Saved in D:\C\ConsoleApp315\bin\Debug\2019011022394301260700baeaf4-f3f7-4b1c-9c30-b71dd78219b9.xlsx.
+There are totally 485268 salesorderdetails and cost 87348 millseconds and now is 20190110224110361 
+
+Saved in D:\C\ConsoleApp315\bin\Debug\20190110224200097943f7609a05-8f3d-49ad-9078-503b82c32616.xlsx.
+There are totally 485268 salesorderdetails and cost 88352 millseconds and now is 20190110224328450 
+
