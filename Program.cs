@@ -11,9 +11,18 @@ namespace ConsoleApp319
     {
         static void Main(string[] args)
         {
-            TimerCallback tcb = new TimerCallback(PrintTime);
-            Timer timer = new Timer(tcb, null, 0, 1000);
+            Task<int> intTask = AddTask(10, 20);
+            Console.WriteLine($"Id:{intTask.Id},Status:{intTask.Status},Result:{intTask.Result}");
+            Console.WriteLine(intTask.Status);
             Console.ReadLine();
+        }
+
+        static Task<int> AddTask(int x,int y)
+        {
+            return Task<int>.Run(() =>
+            {
+                return x + y;
+            });
         }
         static void Divide(int x,int y)
         {
@@ -37,9 +46,18 @@ namespace ConsoleApp319
 
         }
 
+        static void TaskRun()
+        {
+            Task.Run(() =>
+            {
+                TimerCallback tcb = new TimerCallback(PrintTime);
+                Timer timer = new Timer(tcb, null, 0, 300);
+
+            });
+        }
         static void PrintTime(object obj)
         {
-            Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmss")}");
+            Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
         }
     }
 }
