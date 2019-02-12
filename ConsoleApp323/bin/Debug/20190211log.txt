@@ -1,3 +1,5 @@
 cost:31694 milliseconds,export number:121317,now:20190211225221421,memory:53616640
 SqlDataAdapter cost:28963 milliseconds,export number:121317,now:20190211225336143,memory:53563392
 SqlDataReader cost:26885 milliseconds,export number:121317now:20190211230550549,memory:18116608
+SqlDataReader cost:26771 milliseconds,export number:121317now:20190211231015189,memory:18284544
+SqlDataReader cost:27138 milliseconds,export number:121317,now:20190211231112399,memory:18157568

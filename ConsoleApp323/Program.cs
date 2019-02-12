@@ -8,6 +8,9 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
+using NPOI.XSSF;
+using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;
 
 namespace ConsoleApp323
 {
@@ -20,10 +23,10 @@ namespace ConsoleApp323
         static string exportMsg = "";
         static int exportNum = 0;
         static string logFullName = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMdd") + "log.txt";
+        static string excelFullName = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + "ExportExcel.xlsx";
         static void Main(string[] args)
         {
-            SqlDataReaderDB();
-            Console.ReadLine();
+            ExportList();
         }
 
         static void SqlDataAdapterDB()
@@ -88,7 +91,7 @@ namespace ConsoleApp323
                   }
             }
             stopwatch.Stop();
-            exportMsg = $"SqlDataReader cost:{stopwatch.ElapsedMilliseconds} milliseconds,export number:{exportNum}" +
+            exportMsg = $"SqlDataReader cost:{stopwatch.ElapsedMilliseconds} milliseconds,export number:{exportNum}," +
                 $"now:{DateTime.Now.ToString("yyyyMMddHHmmssfff")},memory:{Process.GetCurrentProcess().PrivateMemorySize64}";
             LogMessage(exportMsg);
             
@@ -100,6 +103,84 @@ namespace ConsoleApp323
             {
                 streamWriter.WriteLine(logMsg);
             }
+        }
+
+        static void ExportList()
+        {
+            using (AdventureWorks2017Entities db = new AdventureWorks2017Entities())
+            {
+                List<SalesOrderDetail> orderList = db.SalesOrderDetails.ToList();
+                orderList.AddRange(orderList);
+                orderList.AddRange(orderList);
+                orderList.AddRange(orderList);
+                if (orderList!=null && orderList.Any())
+                {
+                    ExportGenericT<SalesOrderDetail>(orderList);
+                }
+            }
+        }
+        static void ExportGenericT<T>(List<T> dataList)
+        {
+            stopwatch.Restart();
+            XSSFWorkbook book;
+            exportNum = 0;
+            if (dataList==null || !dataList.Any())
+            {
+                return;
+            }
+            try
+            {
+                var firstRowData = dataList.FirstOrDefault();
+                var properties = firstRowData.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).ToList();
+                book = new XSSFWorkbook();
+                ISheet firstSheet = book.CreateSheet("First Sheet");
+                IRow headerRow = firstSheet.CreateRow(0);
+                for(int i=0;i<properties.Count;i++)
+                {
+                    ICell headerCell = headerRow.CreateCell(i);
+                    string columnName = properties[i].Name;
+                    if(!string.IsNullOrEmpty(columnName))
+                    {
+                        headerCell.SetCellValue(columnName);
+                    }
+                }
+
+                for(int i=1;i<=dataList.Count;i++)
+                {
+                    exportNum++;
+                    IRow dataRow = firstSheet.CreateRow(i);
+                    if(dataRow!=null)
+                    {
+                        for(int j=0;j<properties.Count;j++)
+                        {
+                            ICell dataCell = dataRow.CreateCell(j);
+                            var dataCellValue = properties[j].GetValue(dataList[i-1]);
+                            if(dataCellValue!=null)
+                            {
+                                dataCell.SetCellValue(dataCellValue.ToString());
+                            }
+                        }
+                    }
+                }
+
+                using (FileStream excelStream = File.OpenWrite(excelFullName))
+                {
+                    book.Write(excelStream);
+                }
+                stopwatch.Stop();
+                exportMsg = $"NPOI export file full name {excelFullName},export number {exportNum}," +
+                    $"cost {stopwatch.ElapsedMilliseconds} milliseconds,memory {Process.GetCurrentProcess().PrivateMemorySize64}" +
+                    $" now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
+                LogMessage(exportMsg);
+            }
+            catch(Exception ex)
+            {
+                exportMsg = $"NPOI export file full name {excelFullName},export number {exportNum}," +
+                    $" cost {stopwatch.ElapsedMilliseconds} milliseconds,memory {Process.GetCurrentProcess().PrivateMemorySize64}" +
+                    $" now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
+                LogMessage(exportMsg);
+                Console.WriteLine(ex.Message);
+            }            
         }
     }
 }

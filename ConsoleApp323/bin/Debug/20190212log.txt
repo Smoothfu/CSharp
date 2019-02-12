@@ -1,0 +1,4 @@
+SqlDataReader cost:56180 milliseconds,export number:121317,now:20190212204115163,memory:17620992
+NPOI export file full name D:\C\ConsoleApp323\ConsoleApp323\bin\Debug\20190212211103792ExportExcel.xlsx,export number 121317,cost 22094 milliseconds,memory 646696960now is 201902122111290835
+NPOI export file full name D:\C\ConsoleApp323\ConsoleApp323\bin\Debug\20190212211324601ExportExcel.xlsx,export number 121317,cost 149868 milliseconds,memory 647868416 now is 201902122116093942
+NPOI export file full name D:\C\ConsoleApp323\ConsoleApp323\bin\Debug\20190212211833286ExportExcel.xlsx,export number 242634,cost 33347 milliseconds,memory 1053708288 now is 201902122119090368
