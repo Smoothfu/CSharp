@@ -10,12 +10,42 @@ namespace ConsoleApp324
 {
     class Program
     {
+        static object lockObj = new object();
         static void Main(string[] args)
         {
-            ThreadParamterizedStart();
+            ThreadPoolSample();
             Console.ReadLine();
         }
 
+        static void ThreadPoolSample()
+        {
+            ThreadPool.QueueUserWorkItem(ShowThreadInformation);
+            //var th1 = new Thread(ShowThreadInformation);
+            //th1.Name = "th1";
+            //th1.Start();
+            //var th2 = new Thread(ShowThreadInformation);
+            //th2.IsBackground = true;
+            //th2.Name = "th2";
+            //th2.Start();
+
+            //Thread.Sleep(500);
+            //ShowThreadInformation(null);
+        }
+        static void ShowThreadInformation(object state)
+        {
+            lock(lockObj)
+            {
+                var th = Thread.CurrentThread;
+                Console.WriteLine($"Thread name:{th.Name}");
+                Console.WriteLine($"Managed thread #{th.ManagedThreadId}");
+                Console.WriteLine($"Background thread:{th.IsBackground}");
+                Console.WriteLine($"Thread pool thread:{th.IsThreadPoolThread}");
+                Console.WriteLine($"Priority:{th.Priority}");
+                Console.WriteLine($"Culture:{th.CurrentCulture.Name}");
+                Console.WriteLine($"UI culture:{th.CurrentUICulture.Name}");
+                Console.WriteLine("\n");
+            }
+        }
         static void ThreadParamterizedStart()
         {
             var th = new Thread(ParameterizedSample);
