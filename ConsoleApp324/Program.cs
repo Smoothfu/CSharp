@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 namespace ConsoleApp324
 {
@@ -11,10 +12,53 @@ namespace ConsoleApp324
     {
         static void Main(string[] args)
         {
-            ActionTSample();
+            ThreadParamterizedStart();
             Console.ReadLine();
         }
 
+        static void ThreadParamterizedStart()
+        {
+            var th = new Thread(ParameterizedSample);
+            th.Start(4500);
+            Thread.Sleep(1000);
+            Console.WriteLine($"Main thread {Thread.CurrentThread.ManagedThreadId}");
+        }
+        static void ParameterizedSample(object obj)
+        {
+            int interval;
+            try
+            {
+                interval = (int)obj;
+            }
+            catch(InvalidCastException)
+            {
+                interval = 5000;
+            }
+
+            DateTime startTime = DateTime.Now;
+            var sw = Stopwatch.StartNew();
+            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId},{Thread.CurrentThread.ThreadState}," +
+                $"{Thread.CurrentThread.Priority}");
+            do
+            {
+                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId}," +
+                    $"{sw.ElapsedMilliseconds} seconds");
+                Thread.Sleep(500);
+            } while (sw.ElapsedMilliseconds <= interval);
+        }
+        static void ExecuteInForeground()
+        {
+            DateTime startDt = DateTime.Now;
+            var sw = Stopwatch.StartNew();
+            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId},{Thread.CurrentThread.ThreadState}," +
+                $"{Thread.CurrentThread.Priority}");
+            do
+            {
+                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId}," +
+                    $"elapsed {sw.ElapsedMilliseconds}");
+            } while (sw.ElapsedMilliseconds <= 5000);
+            sw.Stop();
+        }
         static void ActionTSample()
         {
             Action<int> intAction = x => { Console.WriteLine($"The cubic of {x} is {x * x * x}"); };
