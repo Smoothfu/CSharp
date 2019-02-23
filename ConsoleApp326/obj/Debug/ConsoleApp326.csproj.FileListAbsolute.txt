@@ -1,0 +1,7 @@
+D:\C\ConsoleApp326\ConsoleApp326\bin\Debug\ConsoleApp326.exe.config
+D:\C\ConsoleApp326\ConsoleApp326\bin\Debug\ConsoleApp326.exe
+D:\C\ConsoleApp326\ConsoleApp326\bin\Debug\ConsoleApp326.pdb
+D:\C\ConsoleApp326\ConsoleApp326\obj\Debug\ConsoleApp326.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp326\ConsoleApp326\obj\Debug\ConsoleApp326.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp326\ConsoleApp326\obj\Debug\ConsoleApp326.exe
+D:\C\ConsoleApp326\ConsoleApp326\obj\Debug\ConsoleApp326.pdb
