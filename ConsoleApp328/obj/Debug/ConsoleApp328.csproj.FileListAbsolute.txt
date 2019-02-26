@@ -1,0 +1,7 @@
+D:\C\ConsoleApp328\ConsoleApp328\bin\Debug\ConsoleApp328.exe.config
+D:\C\ConsoleApp328\ConsoleApp328\bin\Debug\ConsoleApp328.exe
+D:\C\ConsoleApp328\ConsoleApp328\bin\Debug\ConsoleApp328.pdb
+D:\C\ConsoleApp328\ConsoleApp328\obj\Debug\ConsoleApp328.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp328\ConsoleApp328\obj\Debug\ConsoleApp328.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp328\ConsoleApp328\obj\Debug\ConsoleApp328.exe
+D:\C\ConsoleApp328\ConsoleApp328\obj\Debug\ConsoleApp328.pdb
