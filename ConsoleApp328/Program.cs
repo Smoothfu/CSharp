@@ -12,7 +12,7 @@ namespace ConsoleApp328
     {
         static void Main(string[] args)
         {
-            KeyValuePairExample();
+            SortedListClass sortedList=new SortedListClass();
             Console.ReadLine();
         }
 
@@ -111,6 +111,52 @@ namespace ConsoleApp328
         public void Remove(Guid keyGuid)
         {
             base.InnerHashtable.Remove(keyGuid);
+        }
+    }
+
+    public class KVDic:DictionaryBase
+    {
+        public KVDic()
+        {
+            for(int i=0;i<100000;i++)
+            {
+                Add(i, "Fred" + i);
+            }
+            foreach(DictionaryEntry de in base.InnerHashtable)
+            {
+                Console.WriteLine($"Key {de.Key}, Value {de.Value}");
+            }
+        }
+        public void Add(int i,string name)
+        {
+            base.InnerHashtable.Add(i, name);
+        }
+
+        public string Item(int index)
+        {
+            return base.InnerHashtable[index].ToString();
+        }
+
+        public void Remove(int index)
+        {
+            base.InnerHashtable.Remove(index);
+        }
+    }
+
+    public class SortedListClass
+    {
+        public SortedListClass()
+        {
+            SortedList<int, string> intStringList = new SortedList<int, string>();
+            for(int i=0;i<10000;i++)
+            {
+                intStringList.Add(i, "Fred" + i);
+            }
+
+            foreach(var de in intStringList)
+            {
+                Console.WriteLine($"Key={de.Key},Value={de.Value}");
+            }
         }
     }
 }
