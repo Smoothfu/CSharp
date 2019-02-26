@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Collections;
 
 namespace ConsoleApp328
 {
@@ -11,7 +12,7 @@ namespace ConsoleApp328
     {
         static void Main(string[] args)
         {
-            CustomizeAttributes();
+            KeyValueDic kvd = new KeyValueDic();
             Console.ReadLine();
         }
 
@@ -62,6 +63,37 @@ namespace ConsoleApp328
         public DerivedDerivedClass()
         {
             Console.WriteLine($"This is {typeof(DerivedDerivedClass).Name}");
+        }
+    }
+
+    public class KeyValueDic:DictionaryBase
+    {
+        public KeyValueDic()
+        {
+            for(int i=0;i<10000000;i++)
+            {
+                Add(Guid.NewGuid(), i);
+            }
+
+            foreach(DictionaryEntry kv in base.InnerHashtable)
+            {
+                Console.WriteLine($"Key={kv.Key},value={kv.Value}");
+            }
+        }
+
+        public void Add(Guid keyGuid,int i)
+        {
+            base.InnerHashtable.Add(keyGuid, i);
+        }
+
+        public string Item(Guid keyGuid)
+        {
+            return base.InnerHashtable[keyGuid].ToString();
+        }
+
+        public void Remove(Guid keyGuid)
+        {
+            base.InnerHashtable.Remove(keyGuid);
         }
     }
 }
