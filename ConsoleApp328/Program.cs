@@ -12,10 +12,27 @@ namespace ConsoleApp328
     {
         static void Main(string[] args)
         {
-            KeyValueDic kvd = new KeyValueDic();
+            KeyValuePairExample();
             Console.ReadLine();
         }
 
+
+        static void KeyValuePairExample()
+        {
+            KeyValuePair<int, string>[] kvpArr = new  KeyValuePair<int, string>[10000];
+            for(int i=0;i<10000;i++)
+            {
+                kvpArr[i] = new KeyValuePair<int, string>(i, "Fred" + i);
+            }
+
+            if(kvpArr!=null && kvpArr.Any())
+            {
+                foreach(KeyValuePair<int,string> kvp in kvpArr)
+                {
+                    Console.WriteLine($"Key:{kvp.Key},Value:{kvp.Value}");
+                }
+            }
+        }
         static void CustomizeAttributes()
         {
             var attrs = Attribute.GetCustomAttributes(typeof(DerivedDerivedClass), true);
