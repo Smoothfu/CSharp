@@ -12,10 +12,23 @@ namespace ConsoleApp328
     {
         static void Main(string[] args)
         {
-            SortedListClass sortedList=new SortedListClass();
+            SortedDictionaryExample();
             Console.ReadLine();
         }
 
+        static void SortedDictionaryExample()
+        {
+            SortedDictionary<Guid, string> sortedDic = new SortedDictionary<Guid, string>();
+            for(int i=0;i<10;i++)
+            {
+                sortedDic.Add(Guid.NewGuid(), "Fred" + 1);
+            }
+
+            foreach(var de in sortedDic)
+            {
+                Console.WriteLine($"Key:{de.Key},Value:{de.Value}");
+            }
+        }
 
         static void KeyValuePairExample()
         {
@@ -153,6 +166,7 @@ namespace ConsoleApp328
                 intStringList.Add(i, "Fred" + i);
             }
 
+            
             foreach(var de in intStringList)
             {
                 Console.WriteLine($"Key={de.Key},Value={de.Value}");
