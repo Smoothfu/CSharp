@@ -119,6 +119,9 @@ namespace ConsoleApp330
                 dataList.AddRange(dataList);
                 dataList.AddRange(dataList);
                 dataList.AddRange(dataList);
+                dataList.AddRange(dataList);
+                dataList.AddRange(dataList);
+                dataList.AddRange(dataList);
 
                 stopWatch.Restart();
                 dt = ConvertListToDataTable<SalesOrderDetail>(dataList);

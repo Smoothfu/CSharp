@@ -2,3 +2,10 @@
 
 121317  rows data,cost 1839    milliseconds,memory 167833600    bytes,now is 201903252117469206
 
+7764288 rows data,cost 149419  milliseconds,memory 1973624832   bytes,now is 201903252121270170
+
+   at System.ComponentModel.ReflectPropertyDescriptor.GetValue(Object component)
+   at ConsoleApp330.Program.ConvertListToDataTable[T](List`1 dataList) in D:\C\ConsoleApp330\ConsoleApp330\Program.cs:line 157
+
+62114304 rows data,cost 309749  milliseconds,memory 3543109632   bytes,now is 201903252132127163
+
