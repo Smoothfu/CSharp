@@ -7,6 +7,11 @@ using System.IO;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 using System.Diagnostics;
+using iTextSharp;
+using iTextSharp.text;
+using System.Data;
+using iTextSharp.text.pdf;
+using System.ComponentModel;
 
 namespace ConsoleApp330
 {
@@ -19,7 +24,7 @@ namespace ConsoleApp330
         static object lockObj = new object();
         static void Main(string[] args)
         {
-            ExportSalesData();
+            DataTable dt=GetDataTableFromList();
         }
 
 
@@ -27,10 +32,7 @@ namespace ConsoleApp330
         {
             using (AdventureWorks2017Entities db = new AdventureWorks2017Entities())
             {
-                var dataList = db.SalesOrderDetails.ToList();
-                dataList.AddRange(dataList);
-                dataList.AddRange(dataList);
-                dataList.AddRange(dataList);
+                var dataList = db.SalesOrderDetails.ToList();  
                 ExportTData<SalesOrderDetail>(dataList);
             }
         }
@@ -97,13 +99,76 @@ namespace ConsoleApp330
                 LogMessage(ex.StackTrace);
             }              
         }
-
         static void LogMessage(string logMsg)
         {
             using (StreamWriter logWriter = new StreamWriter(logFullName, true))
             {
                 logWriter.WriteLine(logMsg + Environment.NewLine);
             }
+        }
+
+        static DataTable GetDataTableFromList()
+        {
+            DataTable dt = new DataTable();
+            using (AdventureWorks2017Entities db = new AdventureWorks2017Entities())
+            {
+                var dataList = db.SalesOrderDetails.ToList();
+                dataList.AddRange(dataList);
+                dataList.AddRange(dataList);
+                dataList.AddRange(dataList);
+                dataList.AddRange(dataList);
+                dataList.AddRange(dataList);
+                dataList.AddRange(dataList);
+
+                stopWatch.Restart();
+                dt = ConvertListToDataTable<SalesOrderDetail>(dataList);
+                stopWatch.Stop();
+                exportMsg = $"{dataList.Count,-7} rows data,cost {stopWatch.ElapsedMilliseconds,-7} milliseconds," +
+                    $"memory {Process.GetCurrentProcess().PrivateMemorySize64,-12} bytes,now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
+                LogMessage(exportMsg);
+            }
+            return dt;
+        }
+
+        static DataTable ConvertListToDataTable<T>(List<T> dataList)
+        {           
+            if(dataList==null || !dataList.Any())
+            {
+                return null;
+            }
+
+            try
+            {
+                DataTable dt = new DataTable();
+
+                PropertyDescriptorCollection props = TypeDescriptor.GetProperties(typeof(T));
+                foreach (PropertyDescriptor prop in props)
+                {
+                    dt.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+                }
+                foreach (var dl in dataList)
+                {
+                    DataRow dtRow = dt.NewRow();
+                    foreach (PropertyDescriptor prop in props)
+                    {
+                        dtRow[prop.Name] = prop.GetValue(dl) ?? DBNull.Value;
+                    }
+                    dt.Rows.Add(dtRow);
+                }
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                LogMessage(ex.StackTrace.ToString());
+            }
+            return null;           
+        }
+        static void ExportToPDF(DataTable dt)
+        {
+            Document pdfDoc = new Document(PageSize.A2);
+            MemoryStream memStream = new MemoryStream();
+            PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDoc, memStream);
+
         }
     }
 }

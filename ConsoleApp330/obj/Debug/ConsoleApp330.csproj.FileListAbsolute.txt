@@ -13,3 +13,6 @@ D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\EntityFramework.SqlServer.xml
 D:\C\ConsoleApp330\ConsoleApp330\obj\Debug\ConsoleApp330.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp330\ConsoleApp330\obj\Debug\ConsoleApp330.exe
 D:\C\ConsoleApp330\ConsoleApp330\obj\Debug\ConsoleApp330.pdb
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\itextsharp.dll
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\itextsharp.xml
+D:\C\ConsoleApp330\ConsoleApp330\obj\Debug\ConsoleApp330.csprojResolveAssemblyReference.cache
