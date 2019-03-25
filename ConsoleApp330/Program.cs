@@ -12,6 +12,7 @@ using iTextSharp.text;
 using System.Data;
 using iTextSharp.text.pdf;
 using System.ComponentModel;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ConsoleApp330
 {
@@ -24,7 +25,7 @@ namespace ConsoleApp330
         static object lockObj = new object();
         static void Main(string[] args)
         {
-            DataTable dt=GetDataTableFromList();
+            ExportSalesData();
         }
 
 
@@ -38,7 +39,7 @@ namespace ConsoleApp330
         }
         static void ExportTData<T>(List<T> dataList)
         {
-            if(dataList==null || !dataList.Any())
+            if (dataList == null || !dataList.Any())
             {
                 return;
             }
@@ -47,21 +48,21 @@ namespace ConsoleApp330
             {
                 stopWatch.Start();
                 var firstRowData = dataList.FirstOrDefault();
-                var props = firstRowData.GetType().GetProperties().Where(x=>!x.GetMethod.IsVirtual).ToList();
+                var props = firstRowData.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).ToList();
                 XSSFWorkbook workBook = new XSSFWorkbook();
                 ISheet firstSheet = workBook.CreateSheet("First Sheet");
                 IRow headerRow = firstSheet.CreateRow(0);
-                if(props!=null && props.Any())
+                if (props != null && props.Any())
                 {
-                    for(int headerColumn=0;headerColumn<props.Count;headerColumn++)
+                    for (int headerColumn = 0; headerColumn < props.Count; headerColumn++)
                     {
                         ICell headerCell = headerRow.CreateCell(headerColumn);
                         string headerName = props[headerColumn].Name;
-                        if(!string.IsNullOrEmpty(headerName))
+                        if (!string.IsNullOrEmpty(headerName))
                         {
-                            headerCell.SetCellValue(headerName);                             
+                            headerCell.SetCellValue(headerName);
                         }
-                    }                    
+                    }
                 }
 
                 for (int i = 0; i < dataList.Count; i++)
@@ -71,10 +72,10 @@ namespace ConsoleApp330
                     {
                         ICell dataCell = dataRow.CreateCell(j);
 
-                        if(i==0)
+                        if (i == 0)
                         {
                             firstSheet.AutoSizeColumn(j);
-                        }                       
+                        }
 
                         var cellValue = props[j].GetValue(dataList[i]);
                         if (cellValue != null && !string.IsNullOrEmpty(cellValue.ToString()))
@@ -82,12 +83,12 @@ namespace ConsoleApp330
                             dataCell.SetCellValue(cellValue.ToString());
                         }
                     }
-                }
+                }               
 
                 using (FileStream excelStream = File.Open(excelFullName, FileMode.OpenOrCreate))
                 {
                     workBook.Write(excelStream);
-                }
+                }              
 
                 stopWatch.Stop();
                 exportMsg = $"{dataList.Count,-7} rows data,cost {stopWatch.ElapsedMilliseconds,-7} milliseconds," +
@@ -97,7 +98,7 @@ namespace ConsoleApp330
             catch (Exception ex)
             {
                 LogMessage(ex.StackTrace);
-            }              
+            }
         }
         static void LogMessage(string logMsg)
         {
@@ -172,6 +173,19 @@ namespace ConsoleApp330
             MemoryStream memStream = new MemoryStream();
             PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDoc, memStream);
 
+        }
+
+        static byte[] ObjectToByteArray(object obj)
+        {
+            if (obj == null)
+            {
+                return null;
+            }
+
+            BinaryFormatter binFormatter = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+            binFormatter.Serialize(ms, obj);
+            return ms.ToArray();
         }
     }
 }

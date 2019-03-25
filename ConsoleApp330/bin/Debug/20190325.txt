@@ -1,11 +1,18 @@
-121317  rows data,cost 2103    milliseconds,memory 167813120    bytes,now is 201903252117126392
+121317  rows data,cost 18999   milliseconds,memory 613556224    bytes, now is 201903252325414309            
 
-121317  rows data,cost 1839    milliseconds,memory 167833600    bytes,now is 201903252117469206
+121317  rows data,cost 18277   milliseconds,memory 645390336    bytes, now is 201903252326198450            
 
-7764288 rows data,cost 149419  milliseconds,memory 1973624832   bytes,now is 201903252121270170
+121317  rows data,cost 18589   milliseconds,memory 645423104    bytes, now is 201903252326578289            
 
-   at System.ComponentModel.ReflectPropertyDescriptor.GetValue(Object component)
-   at ConsoleApp330.Program.ConvertListToDataTable[T](List`1 dataList) in D:\C\ConsoleApp330\ConsoleApp330\Program.cs:line 157
+121317  rows data,cost 17824   milliseconds,memory 645177344    bytes, now is 201903252328056426            
 
-62114304 rows data,cost 309749  milliseconds,memory 3543109632   bytes,now is 201903252132127163
+121317  rows data,cost 20082   milliseconds,memory 645214208    bytes, now is 201903252332314823            
+
+121317  rows data,cost 17735   milliseconds,memory 645328896    bytes, now is 201903252333116626            
+
+121317  rows data,cost 18128   milliseconds,memory 645234688    bytes, now is 201903252334031927            
+
+121317  rows data,cost 18271   milliseconds,memory 636923904    bytes, now is 201903252334435881            
+
+121317  rows data,cost 18633   milliseconds,memory 637054976    bytes, now is 201903252335283891            
 

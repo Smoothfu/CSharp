@@ -12,6 +12,7 @@ namespace ConsoleApp330
     using System;
     using System.Collections.Generic;
     
+    [Serializable]
     public partial class SalesOrderDetail
     {
         public int SalesOrderID { get; set; }
