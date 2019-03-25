@@ -1,0 +1,15 @@
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\ConsoleApp330.exe.config
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\ConsoleApp330.exe
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\ConsoleApp330.pdb
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\NPOI.dll
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\NPOI.OOXML.dll
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\NPOI.OpenXml4Net.dll
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp330\ConsoleApp330\bin\Debug\EntityFramework.SqlServer.xml
+D:\C\ConsoleApp330\ConsoleApp330\obj\Debug\ConsoleApp330.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp330\ConsoleApp330\obj\Debug\ConsoleApp330.exe
+D:\C\ConsoleApp330\ConsoleApp330\obj\Debug\ConsoleApp330.pdb

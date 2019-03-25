@@ -1,0 +1,8 @@
+121317  rows data,cost 18667   milliseconds,memory 646094848    bytes, now is 201903251945253662            
+
+242634  rows data,cost 36697   milliseconds,memory 1052176384   bytes, now is 201903251946291928            
+
+485268  rows data,cost 71433   milliseconds,memory 1948639232   bytes, now is 201903251948334209            
+
+970536  rows data,cost 150108  milliseconds,memory 3311890432   bytes, now is 201903251951379345            
+
