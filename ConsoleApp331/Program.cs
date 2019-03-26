@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.Remoting.Messaging;
 
 namespace ConsoleApp331
 {
@@ -15,8 +16,35 @@ namespace ConsoleApp331
     {
         static void Main(string[] args)
         {
-            TestIAsyncResultIsCompleted();
+            IAsyncResultAsyncDelegate();
             Console.ReadLine();
+        }
+
+        static void IAsyncResultAsyncDelegate()
+        {
+            //Create the delegate.
+            GetNowDel getNowCaller = new GetNowDel(GetTimeMethod);
+            IAsyncResult asyncResult = getNowCaller.BeginInvoke(DateTime.Now, new AsyncCallback(GetTimeCallback),
+                "The call executed on thread {0},with return value {1}");
+            Console.WriteLine($"The main thread {Thread.CurrentThread.ManagedThreadId} continues to execute...");
+            
+            Console.WriteLine("The main thread ends");
+        }
+
+        static void GetTimeCallback(IAsyncResult ar)
+        {
+            //Retrieve the delegate.
+            AsyncResult asyncResult = ar as AsyncResult;
+            if(asyncResult!=null)
+            {
+                GetNowDel caller = (GetNowDel)asyncResult.AsyncDelegate;
+
+                //retrieve the format string that was passed as state information.
+                string formatString = (string)ar.AsyncState;
+                
+                string returnValue = caller.EndInvoke(ar);
+                Console.WriteLine(formatString, Thread.CurrentThread.ManagedThreadId, returnValue);
+            }
         }
 
         static void TestIAsyncResultIsCompleted()
@@ -111,8 +139,7 @@ namespace ConsoleApp331
 
         static string GetTimeMethod(DateTime dt)
         {
-            Console.WriteLine("This is GetTimeMethod() method!");
-            Thread.Sleep(2000);
+            Console.WriteLine("This is GetTimeMethod() method!");             
             return dt.ToString("yyyyMMddHHmmssffff");
         }
     }
