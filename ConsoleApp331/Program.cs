@@ -15,10 +15,34 @@ namespace ConsoleApp331
     {
         static void Main(string[] args)
         {
-            InvokeGetTimeMethod();
+            TestWaitHandle();
             Console.ReadLine();
         }
 
+        static void TestWaitHandle()
+        {
+            //Create the delegate.
+            GetNowDel getNowCaller = new GetNowDel(GetTimeMethod);
+
+            //Initiate the asynchronous call.
+            IAsyncResult asyncResult = getNowCaller.BeginInvoke(DateTime.Now, new AsyncCallback(GetTimeNowCallBack), "This is the WaitHandle");
+
+            string asyncState = asyncResult.AsyncState.ToString();
+            Console.WriteLine($"AsyncState is {asyncState}");
+
+            //Wait for the WaitHandle to become signaled.
+            asyncResult.AsyncWaitHandle.WaitOne();
+
+            //Perform additional processing here.
+            //call EndInvoke to retrieve the results.
+            string returnValue = getNowCaller.EndInvoke(asyncResult);
+
+            //Close the wait handle.
+
+            asyncResult.AsyncWaitHandle.Close();
+            Console.WriteLine($"The call executed on thread {Thread.CurrentThread.ManagedThreadId},with return " +
+                $"value {returnValue} ");
+        }
         static void InvokeGetTimeMethod()
         {
             GetNowDel getNowDel = new GetNowDel(GetTimeMethod);
@@ -29,7 +53,6 @@ namespace ConsoleApp331
             string finalResult = getNowDel.EndInvoke(result);
             Console.WriteLine($"FinalResult is {finalResult}");
         }
-
         static void GetTimeNowCallBack(IAsyncResult ar)
         {
             Console.WriteLine("This is the GetTimeNowCallBack(IAsyncResult ar) method");
@@ -39,7 +62,6 @@ namespace ConsoleApp331
                 Console.WriteLine(asyncState);
             }
         }
-
         static void TestEndInvoke()
         {
             //The asynchronous method puts the thread id here.
