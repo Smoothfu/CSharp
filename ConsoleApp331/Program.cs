@@ -15,10 +15,29 @@ namespace ConsoleApp331
     {
         static void Main(string[] args)
         {
-            TestWaitHandle();
+            TestIAsyncResultIsCompleted();
             Console.ReadLine();
         }
 
+        static void TestIAsyncResultIsCompleted()
+        {
+            //Create the delegate.
+            GetNowDel getNowCaller = new GetNowDel(GetTimeMethod);
+
+            //Initiate the asynchronous call.
+            IAsyncResult asyncResult = getNowCaller.BeginInvoke(DateTime.Now, new AsyncCallback(GetTimeNowCallBack), "This is the IAsyncResult IsCompleted property");
+
+            //Poll while simulating work.
+            while(asyncResult.IsCompleted==false)
+            {
+                Console.WriteLine($"The asyncResult.IsCompleted==false,now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
+            }
+
+            //call EndInvoke to retrieve the results
+            string returnValue = getNowCaller.EndInvoke(asyncResult);
+            Console.WriteLine($"\nThe call execute on thread {Thread.CurrentThread.ManagedThreadId}," +
+                $"with return value {returnValue}");
+        }
         static void TestWaitHandle()
         {
             //Create the delegate.
@@ -93,6 +112,7 @@ namespace ConsoleApp331
         static string GetTimeMethod(DateTime dt)
         {
             Console.WriteLine("This is GetTimeMethod() method!");
+            Thread.Sleep(2000);
             return dt.ToString("yyyyMMddHHmmssffff");
         }
     }
