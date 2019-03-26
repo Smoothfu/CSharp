@@ -24,11 +24,10 @@ namespace ConsoleApp331
         static ArrayList hostData = new ArrayList();
         static StringCollection hostNames = new StringCollection();
         static string fileStreamLogFullPath = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmm") + "FileStreamlog.txt";
-        static string streamWriterLogFullPath = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmm") + "StreamWriterlog.txt";
+        static string streamWriterLogFullPath = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMdd") + "StreamWriterlog.txt";
         static void Main(string[] args)
         {
-            DateTimeStamp();
-            Console.ReadLine();
+            StreamWriterExample();
         }
 
         static void DateTimeStamp()
@@ -38,7 +37,7 @@ namespace ConsoleApp331
         }
         static void StreamWriterExample()
         {
-            using (StreamWriter logStream = new StreamWriter(streamWriterLogFullPath, true))
+            using (StreamWriter logStream = new StreamWriter(streamWriterLogFullPath))
             {
                 DateTime dtStart = DateTime.Now;
                 DateTime dtEnd = dtStart.AddSeconds(1);
