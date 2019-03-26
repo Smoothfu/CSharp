@@ -25,8 +25,16 @@ namespace ConsoleApp331
           
         static void Main(string[] args)
         {
-            TestThreadPool();
+            TestTicks();
             Console.ReadLine();
+        }
+
+        static void TestTicks()
+        {
+            DateTime dtEarly = DateTime.Now;
+            DateTime dtLate = DateTime.Now;
+            long elapsedTicks = dtLate.Ticks - dtEarly.Ticks;
+            Console.WriteLine(elapsedTicks);
         }
 
         static void TestThreadPool()
