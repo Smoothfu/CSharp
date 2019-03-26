@@ -16,3 +16,5 @@
 
 121317  rows data,cost 18633   milliseconds,memory 637054976    bytes, now is 201903252335283891            
 
+121317  rows data,cost 18331   milliseconds,memory 645255168    bytes, now is 201903252339521264            
+

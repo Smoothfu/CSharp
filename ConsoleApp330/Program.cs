@@ -13,9 +13,11 @@ using System.Data;
 using iTextSharp.text.pdf;
 using System.ComponentModel;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 
 namespace ConsoleApp330
 {
+    delegate void AsyncFoo(int i);
     class Program
     {
         static string excelFullName = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".xlsx";
@@ -25,9 +27,12 @@ namespace ConsoleApp330
         static object lockObj = new object();
         static void Main(string[] args)
         {
-            ExportSalesData();
-        }
+            PrintCurrentThreadInfo("Main()");
 
+            PostAsync();
+
+            Console.ReadLine();
+        }
 
         static void ExportSalesData()
         {
@@ -107,7 +112,6 @@ namespace ConsoleApp330
                 logWriter.WriteLine(logMsg + Environment.NewLine);
             }
         }
-
         static DataTable GetDataTableFromList()
         {
             DataTable dt = new DataTable();
@@ -133,7 +137,6 @@ namespace ConsoleApp330
             }
             return dt;
         }
-
         static DataTable ConvertListToDataTable<T>(List<T> dataList)
         {           
             if(dataList==null || !dataList.Any())
@@ -174,7 +177,6 @@ namespace ConsoleApp330
             PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDoc, memStream);
 
         }
-
         static byte[] ObjectToByteArray(object obj)
         {
             if (obj == null)
@@ -186,6 +188,33 @@ namespace ConsoleApp330
             MemoryStream ms = new MemoryStream();
             binFormatter.Serialize(ms, obj);
             return ms.ToArray();
+        }
+
+        static void PrintCurrentThreadInfo(string name)
+        {
+            string isThreadPoolThread = Thread.CurrentThread.IsThreadPoolThread ? "" : " not "
+                + " thread pool thread";
+            Console.WriteLine("Thread Id of "+ name+" is "+ Thread.CurrentThread.ManagedThreadId  +
+                ",current thread is " + (Thread.CurrentThread.IsThreadPoolThread ? "":" not ")+ " thread pool thread");  
+        }
+
+        static void Foo(int i)
+        {
+            PrintCurrentThreadInfo("Foo()");
+            Thread.Sleep(i);
+        }
+
+        static void PostAsync()
+        {
+            AsyncFoo caller = new AsyncFoo(Foo);
+            caller.BeginInvoke(1000, new AsyncCallback(FooCallBack), caller);
+        }
+
+        static void FooCallBack(IAsyncResult ar)
+        {
+            PrintCurrentThreadInfo("FooCallBack()");
+            AsyncFoo caller = (AsyncFoo)ar.AsyncState;
+            caller.EndInvoke(ar);
         }
     }
 }
