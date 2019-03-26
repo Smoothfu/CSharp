@@ -5,21 +5,115 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Runtime.Remoting.Messaging;
+using System.Net;
+using System.Net.Sockets;
+using System.Collections;
+using System.Collections.Specialized;
 
 namespace ConsoleApp331
 {
     //This delegate must have the same signature as the method it will call asynchronously.
     public delegate string AsyncMethodDel(int callDuration, out int threadId);
     public delegate string GetNowDel(DateTime dt);
-
+   
+    
     class Program
     {
+        static int requestCounter;
+        static ArrayList hostData = new ArrayList();
+        static StringCollection hostNames = new StringCollection();
+          
         static void Main(string[] args)
         {
-            IAsyncResultAsyncDelegate();
+            TestAsyncCallback();
             Console.ReadLine();
         }
 
+        static void TestAsyncCallback()
+        {
+            //Create the delegate that will process the results of the asynchronous request.
+            AsyncCallback asyncCallback = new AsyncCallback(ProcessDnsInformation);
+            string host;
+            do
+            {
+                Console.WriteLine("Enter the name of a host computer or <Enter> to finish: ");
+                host = Console.ReadLine();
+                if(host.Length>0)
+                {
+                    //Increment the request counter in a thread safe 
+                    Interlocked.Increment(ref requestCounter);
+                    //Start the asynchronous request for DNS information.
+                    Dns.BeginGetHostEntry(host, asyncCallback, host);
+                }
+            } while (host.Length>0);
+
+            while(requestCounter>0)
+            {
+                UpdateUserInterface();
+            }
+
+            //Display the results
+            for(int i=0;i<hostNames.Count;i++)
+            {
+                object data = hostData[i];
+                string msg = data as string;
+                
+                //A SocketException was thrown
+                if(!string.IsNullOrEmpty(msg))
+                {
+                    Console.WriteLine($"Request for {hostNames[i]} returned message {msg}");
+                }
+
+                //Get the results
+                IPHostEntry hostEntry = (IPHostEntry)data;
+                string[] aliases = hostEntry.Aliases;
+                IPAddress[] address = hostEntry.AddressList;
+                if(aliases.Length>0)
+                {
+                    Console.WriteLine($"Aliases for {hostNames[i]}");
+                    for(int j=0;j<aliases.Length;j++)
+                    {
+                        Console.WriteLine(aliases[j]);
+                    }
+                }
+
+                if(address.Length>0)
+                {
+                    Console.WriteLine($"Addresses for {hostNames[i]}");
+                    for(int k=0;k<address.Length;k++)
+                    {
+                        Console.WriteLine(address[k].ToString());
+                    }
+                }
+            }
+        }
+
+        //The following method is called when each asynchronous operation completed.
+        static void ProcessDnsInformation(IAsyncResult asyncResult)
+        {
+            string hostName = (string)asyncResult.AsyncState;
+            hostNames.Add(hostName);
+
+            try
+            {
+                //Get the results
+                IPHostEntry host = Dns.EndGetHostEntry(asyncResult);
+                hostData.Add(host);
+            }
+            catch(SocketException ex)
+            {
+                hostData.Add(ex.Message);
+            }
+            finally
+            {
+                //Decrement the request counter in a thread-safe manner.
+                Interlocked.Decrement(ref requestCounter);
+            }
+        }
+        static void UpdateUserInterface()
+        {
+            Console.WriteLine($"{requestCounter} requests remaining");
+        }
         static void IAsyncResultAsyncDelegate()
         {
             //Create the delegate.
