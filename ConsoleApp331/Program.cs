@@ -25,8 +25,22 @@ namespace ConsoleApp331
           
         static void Main(string[] args)
         {
-            TestAsyncCallback();
+            TestThreadPool();
             Console.ReadLine();
+        }
+
+        static void TestThreadPool()
+        {
+            //Queue the task.
+            ThreadPool.QueueUserWorkItem(QuqueWorkWaitCallback);
+            Console.WriteLine("Main thread does some work,then sleeps");
+            Thread.Sleep(1000);
+            Console.WriteLine("Main thread exists.");
+        }
+
+        static void QuqueWorkWaitCallback(object obj)
+        {
+            Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
         }
 
         static void TestAsyncCallback()
