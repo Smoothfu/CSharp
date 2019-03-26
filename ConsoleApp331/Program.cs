@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Collections;
 using System.Collections.Specialized;
+using System.IO;
 
 namespace ConsoleApp331
 {
@@ -22,19 +23,38 @@ namespace ConsoleApp331
         static int requestCounter;
         static ArrayList hostData = new ArrayList();
         static StringCollection hostNames = new StringCollection();
-          
+        static string fileStreamLogFullPath = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmm") + "FileStreamlog.txt";
+        static string streamWriterLogFullPath = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmm") + "StreamWriterlog.txt";
         static void Main(string[] args)
         {
-            TestTicks();
+            DateTimeStamp();
             Console.ReadLine();
         }
 
+        static void DateTimeStamp()
+        {
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
+           Console.WriteLine( (int)(DateTime.Now - startTime).TotalSeconds);
+        }
+        static void StreamWriterExample()
+        {
+            using (StreamWriter logStream = new StreamWriter(streamWriterLogFullPath, true))
+            {
+                DateTime dtStart = DateTime.Now;
+                DateTime dtEnd = dtStart.AddSeconds(1);
+                while(DateTime.Now<dtEnd)
+                {
+                    string msg = $"Time is {DateTime.Now.ToString("yyyyMMddHHmmssffff")},Guid is {Guid.NewGuid()}\n";
+                    logStream.WriteLine(msg);
+                }
+            }
+        }
         static void TestTicks()
         {
             DateTime dtEarly = DateTime.Now;
-            DateTime dtLate = DateTime.Now;
-            long elapsedTicks = dtLate.Ticks - dtEarly.Ticks;
+            long elapsedTicks = dtEarly.Ticks;
             Console.WriteLine(elapsedTicks);
+
         }
 
         static void TestThreadPool()
