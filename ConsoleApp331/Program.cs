@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace ConsoleApp331
+{
+    //This delegate must have the same signature as the method it will call asynchronously.
+    public delegate string AsyncMethodDel(int callDuration, out int threadId);
+    public delegate string GetNowDel(DateTime dt);
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            InvokeGetTimeMethod();
+            Console.ReadLine();
+        }
+
+        static void InvokeGetTimeMethod()
+        {
+            GetNowDel getNowDel = new GetNowDel(GetTimeMethod);
+            IAsyncResult result = getNowDel.BeginInvoke(DateTime.Now, new AsyncCallback(GetTimeNowCallBack),
+                "This is the GetTime now async state ");
+            string asyncState = result.AsyncState.ToString();
+            Console.WriteLine($"The AsyncState is {asyncState}");
+            string finalResult = getNowDel.EndInvoke(result);
+            Console.WriteLine($"FinalResult is {finalResult}");
+        }
+
+        static void GetTimeNowCallBack(IAsyncResult ar)
+        {
+            Console.WriteLine("This is the GetTimeNowCallBack(IAsyncResult ar) method");
+            string asyncState = ar.AsyncState.ToString();
+            if(!string.IsNullOrEmpty(asyncState))
+            {
+                Console.WriteLine(asyncState);
+            }
+        }
+
+        static void TestEndInvoke()
+        {
+            //The asynchronous method puts the thread id here.
+            int threadId;
+
+            //Create the delegate.
+            AsyncMethodDel asyncCaller = new AsyncMethodDel(TestAsyncMethod);
+
+            //Initiate the asynchronous call.
+            IAsyncResult asyncResult = asyncCaller.BeginInvoke(3000, out threadId, null, "This is async state");
+            string asyncState = asyncResult.AsyncState.ToString();
+            Console.WriteLine(asyncState);
+            Thread.Sleep(0);
+            Console.WriteLine($"Main thread {Thread.CurrentThread.ManagedThreadId} does some work");
+
+            //Call EndInvoke to wait for the asynchronous call to complete,and to retrieve the results
+            string returnValue = asyncCaller.EndInvoke(out threadId, asyncResult);
+            Console.WriteLine($"The call executed on thread {threadId}, with returned value {returnValue}");
+        }
+        //The method to be executed asynchronously
+        static string TestAsyncMethod(int callDuration,out int threadId)
+        {
+            Console.WriteLine("Test method begins");
+            Thread.Sleep(callDuration);
+            threadId = Thread.CurrentThread.ManagedThreadId;
+            return string.Format($"My call time was {callDuration.ToString()}");
+        }
+
+        static string GetTimeMethod(DateTime dt)
+        {
+            Console.WriteLine("This is GetTimeMethod() method!");
+            return dt.ToString("yyyyMMddHHmmssffff");
+        }
+    }
+}
