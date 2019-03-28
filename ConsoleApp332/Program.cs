@@ -15,12 +15,10 @@ namespace ConsoleApp332
 
         static void Main(string[] args)
         {
-            Task[] allTasks = new Task[4];
-            Parallel.ForEach(allTasks, x =>
-            {
-                Task.Run(() => { Add(i); }, cts.Token);
-            });
-           
+            Task<string> stringTask = Task<string>.Run<string>(() => RetrieveString(),cts.Token);
+
+            string result = stringTask.Result;
+            Console.WriteLine(result);
             Console.ReadLine();
         }
         static void Add(object obj)
@@ -44,6 +42,13 @@ namespace ConsoleApp332
                 Console.WriteLine(ex.Message);
             }
                   
+        }
+
+        static string RetrieveString()
+        {
+            string msg = $"i {i},Guid:{Guid.NewGuid()}";
+            cts.Cancel();
+            return msg;
         }
     }
 
