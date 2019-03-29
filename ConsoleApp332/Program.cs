@@ -12,15 +12,13 @@ namespace ConsoleApp332
     {
         static int i = 0;
         static CancellationTokenSource cts = new CancellationTokenSource();
-
+        delegate void AddDel(int x, int y); 
         static void Main(string[] args)
-        {           
-            Console.WriteLine($"sizeof(int):{sizeof(int)},Int32.MaxValue:{Int32.MaxValue}");
-            Console.WriteLine($"sizeof(long):{sizeof(long)},long.MaxValue:{long.MaxValue}");
-            Console.WriteLine($"sizeof(decimal):{sizeof(decimal)},decimal.MaxValue:{decimal.MaxValue}");
-            Console.WriteLine($"sizeof(double):{sizeof(double)},double.MaxValue:{double.MaxValue}");             
-            Console.WriteLine($"sizeof(char):{sizeof(char)}");
-            Console.WriteLine($"sizeof(bool):{sizeof(bool)}");
+        {
+            int x = 10, y = 20;
+            MathClass mathObj = new MathClass();
+            MathBase.MathDel mathDel = new MathBase.MathDel(mathObj.Add);
+            mathDel(x, y);
            
             Console.ReadLine();
         }
@@ -88,6 +86,29 @@ namespace ConsoleApp332
                     logWriter.WriteLine(logMessage);
                 }
             }            
+        }
+    }
+
+    public class MathBase
+    {
+        public delegate void MathDel(int x, int y);
+    }
+
+    public class MathClass : MathBase
+    {
+        public void Add(int x, int y)
+        {
+            Console.WriteLine($"Add,{x}+{y}={x + y}");
+        }
+
+        public void Subtract(int x,int y)
+        {
+            Console.WriteLine($"Subtract:{x}-{y}={x - y}");
+        }
+
+        public void Multiply(int x,int y)
+        {
+            Console.WriteLine($"Multiply:{x}*{y}={x * y}");
         }
     }
 }
