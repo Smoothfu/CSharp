@@ -12,16 +12,36 @@ namespace ConsoleApp332
     {
         static int i = 0;
         static CancellationTokenSource cts = new CancellationTokenSource();
-        delegate void AddDel(int x, int y); 
+        delegate void AddDel(int x, int y);
+        delegate int MathDel(int x,int y);
+        delegate string GetTimeNowDel();
         static void Main(string[] args)
         {
-            int x = 10, y = 20;
-            MathClass mathObj = new MathClass();
-            MathBase.MathDel mathDel = new MathBase.MathDel(mathObj.Add);
-            mathDel(x, y);
-           
+            GetTimeNowDel getNowDel = new GetTimeNowDel(GetNow);
+            IAsyncResult asyncResult = getNowDel.BeginInvoke(NowCallBack, "Test del.BeginInvoke,del.EndInvoke()");
+            string result = getNowDel.EndInvoke(asyncResult);
+            Console.WriteLine(result);             
             Console.ReadLine();
         }
+
+        private static void NowCallBack(IAsyncResult ar)
+        {
+            Console.WriteLine($"The async state is {ar.AsyncState.ToString()}");
+        }
+
+        static string GetNow()
+        {
+            return "Now is "+ DateTime.Now.ToString("yyyyMMddHHmmssffff");
+        }
+        static int Add(int x,int y)
+        {
+            return x + y;
+        }
+        private static void AddCallBack(IAsyncResult ar)
+        {
+            Console.WriteLine(ar.AsyncState.ToString());             
+        }
+
         static void Add(object obj)
         {
             try
