@@ -13,30 +13,34 @@ namespace ConsoleApp332
         static int i = 0;
         static CancellationTokenSource cts = new CancellationTokenSource();
         delegate void AddDel(int x, int y);
-        delegate int MathDel(int x,int y);
+        delegate int MathDel(int x, int y);
         delegate string GetTimeNowDel();
         static DateTime startTime = DateTime.Now;
         static DateTime endTime = startTime.AddSeconds(10);
         static void Main(string[] args)
-        {           
-            while(DateTime.Now<endTime)
-            {                
-                Task.Run(() =>
-                {
-                    GetTimerCallback(startTime);
-                }, cts.Token);
-            }                               
+        {
+            Task.Run(() =>
+            {
+                TestTimeCallback();
+            }, cts.Token);
             Console.ReadLine();
         }
 
+        static void TestTimeCallback()
+        {
+            while (DateTime.Now < endTime)
+            {
+                Timer timer = new Timer(GetTimerCallback, "Test call back", 0, 1000);
+            };
+        }
         private static void GetTimerCallback(object state)
         {
-            if(DateTime.Now>endTime)
+            if (DateTime.Now > endTime)
             {
                 cts.Cancel();
             }
             Thread.Sleep(1000);
-            Console.WriteLine("Now is " + DateTime.Now.ToString("yyyyMMddHHmmssffff"));            
+            Console.WriteLine("Now is " + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
         }
 
         private static void NowCallBack(IAsyncResult ar)
@@ -46,15 +50,15 @@ namespace ConsoleApp332
 
         static string GetNow()
         {
-            return "Now is "+ DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            return "Now is " + DateTime.Now.ToString("yyyyMMddHHmmssffff");
         }
-        static int Add(int x,int y)
+        static int Add(int x, int y)
         {
             return x + y;
         }
         private static void AddCallBack(IAsyncResult ar)
         {
-            Console.WriteLine(ar.AsyncState.ToString());             
+            Console.WriteLine(ar.AsyncState.ToString());
         }
 
         static void Add(object obj)
@@ -73,11 +77,11 @@ namespace ConsoleApp332
                     i++;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-                  
+
         }
 
         static string RetrieveString()
@@ -100,7 +104,7 @@ namespace ConsoleApp332
 
         static double ReturnDouble()
         {
-             
+
             return double.MaxValue;
         }
     }
