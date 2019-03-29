@@ -19,10 +19,11 @@ namespace ConsoleApp332
         static DateTime endTime = startTime.AddSeconds(10);
         static void Main(string[] args)
         {
-            Task.Run(() =>
-            {
-                TestTimeCallback();
-            }, cts.Token);
+            TimeSpan ts = endTime.Subtract(startTime);
+            Console.WriteLine($"Seconds: {ts.Seconds}");
+            Console.WriteLine($"Milliseconds:{ts.Seconds*1000}");
+            Console.WriteLine($"Microseconds:{ts.Ticks / 10}");
+            Console.WriteLine($"NanoSeconds:{ts.Ticks * 100}");
             Console.ReadLine();
         }
 
@@ -30,7 +31,7 @@ namespace ConsoleApp332
         {
             while (DateTime.Now < endTime)
             {
-                Timer timer = new Timer(GetTimerCallback, "Test call back", 0, 1000);
+                Timer timer = new Timer(GetTimerCallback, "Test call back",TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
             };
         }
         private static void GetTimerCallback(object state)
