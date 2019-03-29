@@ -17,11 +17,14 @@ namespace ConsoleApp332
         delegate string GetTimeNowDel();
         static void Main(string[] args)
         {
-            GetTimeNowDel getNowDel = new GetTimeNowDel(GetNow);
-            IAsyncResult asyncResult = getNowDel.BeginInvoke(NowCallBack, "Test del.BeginInvoke,del.EndInvoke()");
-            string result = getNowDel.EndInvoke(asyncResult);
-            Console.WriteLine(result);             
+            Timer callbackTimer = new Timer(GetTimerCallback, "Test Timer call back", 0, 1);                       
             Console.ReadLine();
+        }
+
+        private static void GetTimerCallback(object state)
+        {
+            Console.WriteLine("Now is " + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+            Console.WriteLine(state.ToString());
         }
 
         private static void NowCallBack(IAsyncResult ar)
