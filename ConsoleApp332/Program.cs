@@ -15,16 +15,28 @@ namespace ConsoleApp332
         delegate void AddDel(int x, int y);
         delegate int MathDel(int x,int y);
         delegate string GetTimeNowDel();
+        static DateTime startTime = DateTime.Now;
+        static DateTime endTime = startTime.AddSeconds(10);
         static void Main(string[] args)
-        {
-            Timer callbackTimer = new Timer(GetTimerCallback, "Test Timer call back", 0, 1);                       
+        {           
+            while(DateTime.Now<endTime)
+            {                
+                Task.Run(() =>
+                {
+                    GetTimerCallback(startTime);
+                }, cts.Token);
+            }                               
             Console.ReadLine();
         }
 
         private static void GetTimerCallback(object state)
         {
-            Console.WriteLine("Now is " + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
-            Console.WriteLine(state.ToString());
+            if(DateTime.Now>endTime)
+            {
+                cts.Cancel();
+            }
+            Thread.Sleep(1000);
+            Console.WriteLine("Now is " + DateTime.Now.ToString("yyyyMMddHHmmssffff"));            
         }
 
         private static void NowCallBack(IAsyncResult ar)
