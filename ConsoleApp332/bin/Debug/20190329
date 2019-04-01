@@ -88,3 +88,4 @@ i 86,Guid:08ff4137-7bac-44c9-b190-c42c0ca44865
 i 87,Guid:2b48895c-87a2-4417-aea2-8eee745178a0
 i 88,Guid:d281cdfe-01e0-4f34-8d77-d057772dc775
 i 89,Guid:f70aceb2-6101-4951-93b3-d8b6f14611f8
+MultiThread insert data in to db,cost 0 milliseconds. Insert rows 0memory:19161088 bytes,Now is 201903291712142919

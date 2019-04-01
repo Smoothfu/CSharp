@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace ConsoleApp332
 {
@@ -16,17 +19,91 @@ namespace ConsoleApp332
         delegate int MathDel(int x, int y);
         delegate string GetTimeNowDel();
         static DateTime startTime = DateTime.Now;
-        static DateTime endTime = startTime.AddSeconds(10);
+        static DateTime endTime = startTime.AddSeconds(100);
+        static string connString = "Server=FRED;Database=mydb;Integrated Security=true";
+        static int insertCount = 0;
+        static string selectCountSQL = "select count(*) from InsertTB";
         static void Main(string[] args)
         {
-            TimeSpan ts = endTime.Subtract(startTime);
-            Console.WriteLine($"Seconds: {ts.Seconds}");
-            Console.WriteLine($"Milliseconds:{ts.Seconds*1000}");
-            Console.WriteLine($"Microseconds:{ts.Ticks / 10}");
-            Console.WriteLine($"NanoSeconds:{ts.Ticks * 100}");
+            ThreadPool.QueueUserWorkItem(NewWaitCallBack);
             Console.ReadLine();
         }
 
+        private static void NewWaitCallBack(object state)
+        {
+            Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssfff")}");
+        }
+
+        static void TestMultiWriteDB()
+        {
+            Task.Run(() =>
+            {
+                InsertDataIntoTB();
+            },cts.Token);
+
+            Task.Run(() =>
+            {
+                while (DateTime.Now > endTime)
+                {
+                    Console.WriteLine(DateTime.Now.ToString());
+                }
+                if (DateTime.Now > endTime)
+                {
+                    cts.Cancel();
+                }
+            });
+        }
+
+        static void QueryInsertCount()
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = selectCountSQL;
+
+                    using (SqlDataAdapter selectAdaper = new SqlDataAdapter())
+                    {
+                        selectAdaper.SelectCommand = cmd;
+                        DataSet ds = new DataSet();
+                        selectAdaper.Fill(ds);
+                        insertCount = int.Parse(ds.Tables[0].Rows[0][0].ToString());
+                    } 
+                }
+
+                string msg = $"MultiThread insert data in to db,cost " +
+               $"{endTime.Subtract(startTime).Milliseconds} milliseconds. Insert rows {insertCount}" +
+               $"memory:{Process.GetCurrentProcess().PrivateMemorySize64} bytes,Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
+                Logger.WriteLog(msg);
+            }
+        }
+        static void InsertDataIntoTB()
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                if(conn.State!=ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 30000000;
+                    cmd.CommandText = "spInsertTB";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
         static void TestTimeCallback()
         {
             while (DateTime.Now < endTime)
@@ -43,7 +120,6 @@ namespace ConsoleApp332
             Thread.Sleep(1000);
             Console.WriteLine("Now is " + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
         }
-
         private static void NowCallBack(IAsyncResult ar)
         {
             Console.WriteLine($"The async state is {ar.AsyncState.ToString()}");
@@ -114,7 +190,7 @@ namespace ConsoleApp332
     {
         private static string lockString = "lockString";
         private static string logFullPath = Directory.GetCurrentDirectory() + "\\"
-            + DateTime.Now.ToString("yyyyMMdd");
+            + DateTime.Now.ToString("yyyyMMdd")+".txt";
         
         public static void WriteLog(string logMessage)
         {   

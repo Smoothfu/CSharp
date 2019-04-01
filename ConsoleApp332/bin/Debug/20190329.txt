@@ -1,0 +1,8 @@
+﻿MultiThread insert data in to db,cost 0 milliseconds. Insert rows 0memory:19091456 bytes,Now is 201903291713183025
+MultiThread insert data in to db,cost 0 milliseconds. Insert rows 0memory:18804736 bytes,Now is 201903291715224660
+MultiThread insert data in to db,cost 0 milliseconds. Insert rows 0memory:18829312 bytes,Now is 201903291719544037
+MultiThread insert data in to db,cost 0 milliseconds. Insert rows 0memory:18923520 bytes,Now is 201903291721231111
+MultiThread insert data in to db,cost 0 milliseconds. Insert rows 0memory:18894848 bytes,Now is 201903291722577935
+MultiThread insert data in to db,cost 0 milliseconds. Insert rows 0memory:19181568 bytes,Now is 201903291723547604
+MultiThread insert data in to db,cost 0 milliseconds. Insert rows 0memory:21893120 bytes,Now is 201903291725023003
+MultiThread insert data in to db,cost 0 milliseconds. Insert rows 0memory:18956288 bytes,Now is 201903291729250866
