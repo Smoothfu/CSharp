@@ -42,15 +42,14 @@ namespace ConsoleApp332
                 Console.WriteLine(thread.ThreadState);
                 if (thread != null && thread.IsAlive)
                 {
-                    if (!thread.Join(3000))
+                    if (!thread.Join(5000))
                     {
                        
                         thread.Abort();
                     }
                 }              
                 
-                thread.Join();
-                Console.WriteLine(thread.ThreadState);
+                thread.Join();                
             }
             catch(Exception ex)
             {
