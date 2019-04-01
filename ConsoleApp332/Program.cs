@@ -31,15 +31,42 @@ namespace ConsoleApp332
 
         static void ThreadRunSpecifiedTimespan()
         {
-            Thread thread = new Thread(() =>
-              {
-                  TaskRun3();
-              });
-            Console.WriteLine(thread.ThreadState);
-            thread.Start();
-            Console.WriteLine(thread.ThreadState);
-            thread.Join(1);
-            Console.WriteLine(thread.ThreadState);
+            try
+            {
+                Thread thread = new Thread(() =>
+                {
+                    PrintTimeIn10Seconds();
+                });
+                Console.WriteLine(thread.ThreadState);
+                thread.Start();
+                Console.WriteLine(thread.ThreadState);
+                if (thread != null && thread.IsAlive)
+                {
+                    if (!thread.Join(3000))
+                    {
+                       
+                        thread.Abort();
+                    }
+                }              
+                
+                thread.Join();
+                Console.WriteLine(thread.ThreadState);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }            
+        }
+
+        static void PrintTimeIn10Seconds()
+        {
+            DateTime nowTime = DateTime.Now;
+            DateTime endTime = nowTime.AddSeconds(10);
+            while(DateTime.Now<endTime)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
+            }
         }
         private static void NewTimerCallBack(object state)
         {
