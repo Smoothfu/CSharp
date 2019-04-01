@@ -31,33 +31,28 @@ namespace ConsoleApp332
 
         static void ThreadRunSpecifiedTimespan()
         {
-            Task[] allTasks = new Task[3];
-            allTasks[0] = new Task(() => { TaskRun1(); });
-            allTasks[1] = new Task(() => { TaskRun2(); });
-            allTasks[2] = new Task(() => { TaskRun3(); });
-
-            foreach(Task task in allTasks)
-            {
-                task.Start();
-            }
-            Task.WaitAll(allTasks, 1000);
-             
+            Thread thread = new Thread(() =>
+              {
+                  TaskRun3();
+              });
+            Console.WriteLine(thread.ThreadState);
+            thread.Start();
+            Console.WriteLine(thread.ThreadState);
+            thread.Join(1);
+            Console.WriteLine(thread.ThreadState);
         }
         private static void NewTimerCallBack(object state)
         {
             Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssfff")}");
         }
-
         static void TaskRun1()
         {
             Console.WriteLine("TaskRun1()");
         }
-
         static void TaskRun2()
         {
             Console.WriteLine("TaskRun2()");
         }
-
         static void TaskRun3()
         {
             Console.WriteLine("TaskRun3()");
@@ -81,7 +76,6 @@ namespace ConsoleApp332
                 }
             });
         }
-
         static void QueryInsertCount()
         {
             using (SqlConnection conn = new SqlConnection(connString))
@@ -152,7 +146,6 @@ namespace ConsoleApp332
         {
             Console.WriteLine($"The async state is {ar.AsyncState.ToString()}");
         }
-
         static string GetNow()
         {
             return "Now is " + DateTime.Now.ToString("yyyyMMddHHmmssffff");
@@ -165,7 +158,6 @@ namespace ConsoleApp332
         {
             Console.WriteLine(ar.AsyncState.ToString());
         }
-
         static void Add(object obj)
         {
             try
@@ -188,25 +180,21 @@ namespace ConsoleApp332
             }
 
         }
-
         static string RetrieveString()
         {
             string msg = $"i {i},Guid:{Guid.NewGuid()}";
             cts.Cancel();
             return msg;
         }
-
         static long ReturnInt()
         {
             cts.Cancel();
             return Int64.MaxValue;
         }
-
         static decimal ReturnDecimal()
         {
             return Decimal.MaxValue;
         }
-
         static double ReturnDouble()
         {
 
@@ -232,12 +220,10 @@ namespace ConsoleApp332
             }            
         }
     }
-
     public class MathBase
     {
         public delegate void MathDel(int x, int y);
     }
-
     public class MathClass : MathBase
     {
         public void Add(int x, int y)
