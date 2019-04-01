@@ -19,21 +19,49 @@ namespace ConsoleApp332
         delegate int MathDel(int x, int y);
         delegate string GetTimeNowDel();
         static DateTime startTime = DateTime.Now;
-        static DateTime endTime = startTime.AddSeconds(100);
+        static DateTime endTime = startTime.AddSeconds(10);
         static string connString = "Server=FRED;Database=mydb;Integrated Security=true";
         static int insertCount = 0;
         static string selectCountSQL = "select count(*) from InsertTB";
         static void Main(string[] args)
         {
-            ThreadPool.QueueUserWorkItem(NewWaitCallBack);
+            ThreadRunSpecifiedTimespan();
             Console.ReadLine();
         }
 
-        private static void NewWaitCallBack(object state)
+        static void ThreadRunSpecifiedTimespan()
+        {
+            Task[] allTasks = new Task[3];
+            allTasks[0] = new Task(() => { TaskRun1(); });
+            allTasks[1] = new Task(() => { TaskRun2(); });
+            allTasks[2] = new Task(() => { TaskRun3(); });
+
+            foreach(Task task in allTasks)
+            {
+                task.Start();
+            }
+            Task.WaitAll(allTasks, 1000);
+             
+        }
+        private static void NewTimerCallBack(object state)
         {
             Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssfff")}");
         }
 
+        static void TaskRun1()
+        {
+            Console.WriteLine("TaskRun1()");
+        }
+
+        static void TaskRun2()
+        {
+            Console.WriteLine("TaskRun2()");
+        }
+
+        static void TaskRun3()
+        {
+            Console.WriteLine("TaskRun3()");
+        }
         static void TestMultiWriteDB()
         {
             Task.Run(() =>
