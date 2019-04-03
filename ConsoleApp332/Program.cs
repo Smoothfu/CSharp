@@ -25,15 +25,41 @@ namespace ConsoleApp332
         static string selectCountSQL = "select count(*) from InsertTB";
         static void Main(string[] args)
         {
-            for(int i=0;i<10;i++)
+            MissException();
+            Thread.Sleep(100000);
+            Console.WriteLine("Over");
+            Console.ReadLine();
+        }
+
+        static void MissException()
+        {
+            try
             {
-                if(i%3==0)
+                for (int i = -10; i < 10; i++)
+                {
+                    Console.WriteLine(10 / i);
+                }
+            }
+            catch(OutOfMemoryException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+        }
+        static void ContinueExample()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (i % 3 == 0)
                 {
                     continue;
                 }
                 Console.WriteLine(i);
             }
-            Console.ReadLine();
         }
 
         static void ThreadRunSpecifiedTimespan()
