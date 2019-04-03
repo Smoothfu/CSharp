@@ -25,7 +25,14 @@ namespace ConsoleApp332
         static string selectCountSQL = "select count(*) from InsertTB";
         static void Main(string[] args)
         {
-            ThreadRunSpecifiedTimespan();
+            for(int i=0;i<10;i++)
+            {
+                if(i%3==0)
+                {
+                    continue;
+                }
+                Console.WriteLine(i);
+            }
             Console.ReadLine();
         }
 
