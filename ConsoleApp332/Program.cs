@@ -44,6 +44,15 @@ namespace ConsoleApp332
             {
                 Console.WriteLine(ex.Message);
             }
+            catch(DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message);                
+            }
+
+            //finally
+            //{
+            //    MissException();
+            //}
             //catch (Exception ex)
             //{
             //    Console.WriteLine(ex.Message);
