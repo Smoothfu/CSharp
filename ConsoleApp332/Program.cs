@@ -25,12 +25,31 @@ namespace ConsoleApp332
         static string selectCountSQL = "select count(*) from InsertTB";
         static void Main(string[] args)
         {
-            MissException();
-            Thread.Sleep(100000);
-            Console.WriteLine("Over");
+            PrintNumbersWords();
             Console.ReadLine();
         }
 
+        static void PrintNumbersWords()
+        {
+            List<string> strList = new List<string>();
+            for(int i=1;i<=52;i++)
+            {
+                strList.Add(i.ToString());
+            }
+
+            string words = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            char[] charArr = words.ToCharArray();
+            for(int i=1;i<=26;i++)
+            {
+                strList.Insert(3*i-1, charArr[i-1].ToString());
+            }
+
+           
+            foreach(string str in strList)
+            {
+                Console.Write(str);
+            }
+        }
         static void MissException()
         {
             try
@@ -44,9 +63,9 @@ namespace ConsoleApp332
             {
                 Console.WriteLine(ex.Message);
             }
-            catch(DivideByZeroException ex)
+            catch (DivideByZeroException ex)
             {
-                Console.WriteLine(ex.Message);                
+                Logger.WriteLog(ex.Message);
             }
 
             //finally
