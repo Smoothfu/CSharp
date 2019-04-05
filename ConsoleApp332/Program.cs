@@ -23,12 +23,29 @@ namespace ConsoleApp332
         static string connString = "Server=FRED;Database=mydb;Integrated Security=true";
         static int insertCount = 0;
         static string selectCountSQL = "select count(*) from InsertTB";
+        delegate int AddXYDel(int x, int y);
+        
         static void Main(string[] args)
         {
-            ThreadPool.QueueUserWorkItem(WaitCallback, "To test the thread pool QueueUserWorkItem");
+            int x = 10000, y = 20000;
+            AddXYDel addDel = new AddXYDel(AddXY);
+            IAsyncResult asyncResult = addDel.BeginInvoke(x, y, NewXYCallBack, "The XY delegate IAsyncResult");
+            int addResult = addDel.EndInvoke(asyncResult);
+            Console.WriteLine($"The final result is {addResult}");
             Console.ReadLine();
         }
 
+        static void NewXYCallBack(IAsyncResult ar)
+        {
+            Console.WriteLine($"{ar.AsyncState}");
+            Console.WriteLine("This is the AsyncCallback method,public interface IAsyncResult,public interface IAsyncResult");
+        }
+
+        static int AddXY(int x,int y)
+        {
+            Console.WriteLine($"{x}+{y}={x + y}");
+            return x + y;
+        }
 
         static void WaitCallback(object obj)
         {
