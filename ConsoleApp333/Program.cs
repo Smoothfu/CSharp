@@ -24,7 +24,7 @@ namespace ConsoleApp333
             stopWatch.Start();
             Task testTask= Task.Run(() =>
             {
-                TestAsyncAwaitCost(100);
+                TestAsyncAwaitCost(30);
             });
             testTask.Wait();
            
@@ -36,8 +36,8 @@ namespace ConsoleApp333
             costMsg = $"cost:{stopWatch.ElapsedMilliseconds} milliseconds,memory: {Process.GetCurrentProcess().PrivateMemorySize64} bytes,now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
             Logger.WriteLog(costMsg);
 
-            var intList = (from i in concurrentDic
-                          select i).ToList();
+            var intList = (from i in concurrentQueue
+                           select i).ToList();
             Console.WriteLine($"Total count:{intList.Count}");
 
             var uniqueList = intList.Distinct().ToList() ;
@@ -63,13 +63,14 @@ namespace ConsoleApp333
                 using (HttpClient httpClient = new HttpClient())
                 {
                     var stringTask = httpClient.GetStringAsync("https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth");
+                    concurrentQueue.Enqueue(i);
                     tempString = await stringTask;
                     //string dtMsg = $"now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
                     //if (!countTimeDic.ContainsKey(i))
                     //{
                     //    countTimeDic[i] = dtMsg;
                     //}
-                    concurrentQueue.Enqueue(i);
+                   
                     Console.WriteLine($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
                     //if (!concurrentDic.ContainsKey(i))
                     //{
