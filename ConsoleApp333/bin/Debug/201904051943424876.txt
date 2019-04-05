@@ -1,0 +1,1 @@
+﻿cost:8388 milliseconds,memory: 29298688 bytes,now is 201904051943424876
