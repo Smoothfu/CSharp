@@ -25,10 +25,16 @@ namespace ConsoleApp332
         static string selectCountSQL = "select count(*) from InsertTB";
         static void Main(string[] args)
         {
-            PrintNumbersWords();
+            ThreadPool.QueueUserWorkItem(WaitCallback, "To test the thread pool QueueUserWorkItem");
             Console.ReadLine();
         }
 
+
+        static void WaitCallback(object obj)
+        {
+            Console.WriteLine(obj.ToString());
+            Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssfff")}");
+        }
         static void PrintNumbersWords()
         {
             List<string> strList = new List<string>();
