@@ -18,6 +18,7 @@ namespace ConsoleApp333
         static ConcurrentDictionary<int, string> concurrentDic = new ConcurrentDictionary<int, string>();
         static Stopwatch stopWatch = new Stopwatch();
         static ConcurrentDictionary<int, string> countTimeDic = new ConcurrentDictionary<int, string>();
+        static ConcurrentQueue<int> concurrentQueue = new ConcurrentQueue<int>();
         static void Main(string[] args)
         {
             stopWatch.Start();
@@ -34,6 +35,13 @@ namespace ConsoleApp333
             stopWatch.Stop();
             costMsg = $"cost:{stopWatch.ElapsedMilliseconds} milliseconds,memory: {Process.GetCurrentProcess().PrivateMemorySize64} bytes,now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
             Logger.WriteLog(costMsg);
+
+            var intList = (from i in concurrentDic
+                          select i).ToList();
+            Console.WriteLine($"Total count:{intList.Count}");
+
+            var uniqueList = intList.Distinct().ToList() ;
+            Console.WriteLine($"Unique count:{uniqueList.Count}");
             System.Windows.Forms.MessageBox.Show(costMsg);
         }
 
@@ -61,6 +69,7 @@ namespace ConsoleApp333
                     //{
                     //    countTimeDic[i] = dtMsg;
                     //}
+                    concurrentQueue.Enqueue(i);
                     Console.WriteLine($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
                     //if (!concurrentDic.ContainsKey(i))
                     //{
@@ -71,6 +80,7 @@ namespace ConsoleApp333
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Exception :{i}");
                 Logger.WriteLog($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}, {ex.StackTrace.ToString()}");
             }
             return string.Empty;
