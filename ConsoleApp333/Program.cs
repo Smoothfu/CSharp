@@ -21,7 +21,12 @@ namespace ConsoleApp333
         static void Main(string[] args)
         {
             stopWatch.Start();
-            TestAsyncAwaitCost(100);
+            Task testTask= Task.Run(() =>
+            {
+                TestAsyncAwaitCost(100);
+            });
+            testTask.Wait();
+           
             //foreach (var dic in concurrentDic)
             //{
             //    Console.Write(dic.Key+"\t");
@@ -39,7 +44,7 @@ namespace ConsoleApp333
             {
                 tasksArr[i-1] = GetUrlContent(i);
             }
-            Task startTask = Task.WhenAll(tasksArr);           
+            Task startTask = Task.WhenAll(tasksArr);
             startTask.Wait();
         }
 
@@ -56,7 +61,7 @@ namespace ConsoleApp333
                     //{
                     //    countTimeDic[i] = dtMsg;
                     //}
-                    //Console.WriteLine($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
+                    Console.WriteLine($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
                     //if (!concurrentDic.ContainsKey(i))
                     //{
                     //    concurrentDic[i] = tempString;
