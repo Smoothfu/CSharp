@@ -24,7 +24,7 @@ namespace ConsoleApp333
             stopWatch.Start();
             Task testTask= Task.Run(() =>
             {
-                TestAsyncAwaitCost(40);
+                TestAsyncAwaitCost(47);
             });
             testTask.Wait();
            
