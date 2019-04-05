@@ -1,0 +1,61 @@
+﻿i=2,now is 201904051639491337,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=6,now is 201904051639492396,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=38,now is 201904051639493225,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=19,now is 201904051639493825,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=79,now is 201904051639495654,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=5,now is 201904051639495654,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=80,now is 201904051639496713,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=67,now is 201904051639496713,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=83,now is 201904051639497653,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=26,now is 201904051639496454,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=86,now is 201904051639497353,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=99,now is 201904051639499202,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=91,now is 201904051639498692,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=93,now is 201904051639498682,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+i=98,now is 201904051639499982,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp332.Program.<GetUrlContent>d__17.MoveNext() in D:\C\ConsoleApp332\ConsoleApp332\Program.cs:line 65
+cost:102070 milliseconds,memory: 33574912 bytes,now is 201904051639501461

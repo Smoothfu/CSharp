@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
+using System.Collections.Concurrent;
 
 namespace ConsoleApp332
 {
@@ -28,14 +29,14 @@ namespace ConsoleApp332
         delegate int AddXYDel(int x, int y);
         static string tempString = "Test temporary";
         static string costMsg = string.Empty;
-        static Dictionary<int, string> contentDic = new Dictionary<int, string>();
-
+        static ConcurrentDictionary<int, string> concurrentDic = new ConcurrentDictionary<int, string>();
         static Stopwatch stopWatch = new Stopwatch();
+
         static void Main(string[] args)
         {
             stopWatch.Start();
-            TestAsyncAwaitCost();            
-            foreach (var dic in contentDic)
+            TestAsyncAwaitCost(100);            
+            foreach (var dic in concurrentDic)
             {
                 Console.WriteLine(dic.Key);
             }
@@ -45,15 +46,14 @@ namespace ConsoleApp332
             Console.ReadLine();
         }
 
-        static void TestAsyncAwaitCost()
-        {           
-            List<Task<string>> allStringTasks = new List<Task<string>>(); 
-            for(int i=0;i<100;i++)
+        static void TestAsyncAwaitCost(int tasksCount)
+        {
+            Task<string>[] tasksArr = new Task<string>[tasksCount];
+            for(int i=0;i<tasksCount;i++)
             {
-                allStringTasks.Add(GetUrlContent(i));
+                tasksArr[i] = GetUrlContent(i);
             }
-           Task task= Task.WhenAll(allStringTasks);
-           task.Wait();
+            Task.WaitAll(tasksArr);
         }      
         
         static async Task<string> GetUrlContent(int i)
@@ -65,7 +65,7 @@ namespace ConsoleApp332
                     var stringTask = httpClient.GetStringAsync("https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth");
                     tempString = await stringTask;
                     Console.WriteLine($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
-                    contentDic.Add(i, tempString);
+                    concurrentDic[i] = tempString;
                     return tempString;
                 }                
             }
