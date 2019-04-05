@@ -29,9 +29,8 @@ namespace ConsoleApp332
         
         static void Main(string[] args)
         {
-            string result = TaskAsync().Result;
-            Console.WriteLine(result);
-            Logger.WriteLog(result);
+            int intResult =  TaskIntAsync(10, 100000).Result;
+            Console.WriteLine(intResult);
             Console.ReadLine();
         }
 
@@ -42,6 +41,15 @@ namespace ConsoleApp332
             return page;
         }
 
+
+        static async Task<int> TaskIntAsync(int x,int y)
+        {
+            var intTask = Task<int>.Run(() =>
+            {
+                return x + y;
+            });
+            return intTask.Result;
+        }
         static async void AsyncAwait(int x,int y)
         {
              
