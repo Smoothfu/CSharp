@@ -38,7 +38,7 @@ namespace ConsoleApp333
             {
                 tasksArr[i] = GetUrlContent(i);
             }
-            Task startTask = Task.WhenAll(tasksArr);
+            Task startTask = Task.WhenAll(tasksArr);           
             startTask.Wait();
         }
 
