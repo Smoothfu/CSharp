@@ -1,0 +1,9 @@
+﻿i=10,now is 201904051800206295,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp333.Program.<GetUrlContent>d__6.MoveNext() in D:\C\ConsoleApp333\ConsoleApp333\Program.cs:line 52
+i=62,now is 201904051800207225,    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at ConsoleApp333.Program.<GetUrlContent>d__6.MoveNext() in D:\C\ConsoleApp333\ConsoleApp333\Program.cs:line 52
+cost:101293 milliseconds,memory: 35856384 bytes,now is 201904051800208244

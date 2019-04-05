@@ -16,7 +16,7 @@ namespace ConsoleApp333
         static string costMsg = string.Empty;
         static ConcurrentDictionary<int, string> concurrentDic = new ConcurrentDictionary<int, string>();
         static Stopwatch stopWatch = new Stopwatch();
-
+        static ConcurrentDictionary<int, string> countTimeDic = new ConcurrentDictionary<int, string>();
         static void Main(string[] args)
         {
             stopWatch.Start();
@@ -34,9 +34,9 @@ namespace ConsoleApp333
         static void TestAsyncAwaitCost(int tasksCount)
         {
             Task<string>[] tasksArr = new Task<string>[tasksCount];
-            for (int i = 0; i < tasksCount; i++)
+            for (int i = 1; i <= tasksCount; i++)
             {
-                tasksArr[i] = GetUrlContent(i);
+                tasksArr[i-1] = GetUrlContent(i);
             }
             Task startTask = Task.WhenAll(tasksArr);           
             startTask.Wait();
@@ -50,8 +50,16 @@ namespace ConsoleApp333
                 {
                     var stringTask = httpClient.GetStringAsync("https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth");
                     tempString = await stringTask;
+                    string dtMsg = $"now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
+                    if(!countTimeDic.ContainsKey(i))
+                    {
+                        countTimeDic[i] = dtMsg;
+                    }
                     Console.WriteLine($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
-                    concurrentDic[i] = tempString;
+                    if(!concurrentDic.ContainsKey(i))
+                    {
+                        concurrentDic[i] = tempString;
+                    }                    
                     return tempString;
                 }
             }

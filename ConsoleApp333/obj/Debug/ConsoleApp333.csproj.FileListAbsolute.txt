@@ -1,7 +1,6 @@
 D:\C\ConsoleApp333\ConsoleApp333\bin\Debug\ConsoleApp333.exe.config
 D:\C\ConsoleApp333\ConsoleApp333\bin\Debug\ConsoleApp333.exe
 D:\C\ConsoleApp333\ConsoleApp333\bin\Debug\ConsoleApp333.pdb
-D:\C\ConsoleApp333\ConsoleApp333\obj\Debug\ConsoleApp333.csprojResolveAssemblyReference.cache
 D:\C\ConsoleApp333\ConsoleApp333\obj\Debug\ConsoleApp333.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp333\ConsoleApp333\obj\Debug\ConsoleApp333.exe
 D:\C\ConsoleApp333\ConsoleApp333\obj\Debug\ConsoleApp333.pdb
