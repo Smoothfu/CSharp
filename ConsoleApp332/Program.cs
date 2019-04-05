@@ -26,35 +26,95 @@ namespace ConsoleApp332
         static int insertCount = 0;
         static string selectCountSQL = "select count(*) from InsertTB";
         delegate int AddXYDel(int x, int y);
-        
+        static string tempString = "Test temporary";
+        static string costMsg = string.Empty;
+        static Dictionary<int, string> contentDic = new Dictionary<int, string>();
+
+        static Stopwatch stopWatch = new Stopwatch();
         static void Main(string[] args)
         {
-            int intResult =  TaskIntAsync(10, 100000).Result;
-            Console.WriteLine(intResult);
+            stopWatch.Start();
+            TestAsyncAwaitCost();            
+            foreach (var dic in contentDic)
+            {
+                Console.WriteLine(dic.Key);
+            }
+            stopWatch.Stop();
+            costMsg = $"cost:{stopWatch.ElapsedMilliseconds} milliseconds,memory: {Process.GetCurrentProcess().PrivateMemorySize64} bytes,now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
+            Logger.WriteLog(costMsg);
             Console.ReadLine();
         }
 
+        static void TestAsyncAwaitCost()
+        {           
+            List<Task<string>> allStringTasks = new List<Task<string>>(); 
+            for(int i=0;i<100;i++)
+            {
+                allStringTasks.Add(GetUrlContent(i));
+            }
+           Task task= Task.WhenAll(allStringTasks);
+           task.Wait();
+        }      
+        
+        static async Task<string> GetUrlContent(int i)
+        {
+            try
+            {
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    var stringTask = httpClient.GetStringAsync("https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth");
+                    tempString = await stringTask;
+                    Console.WriteLine($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
+                    contentDic.Add(i, tempString);
+                    return tempString;
+                }                
+            }
+            catch(Exception ex)
+            {
+                Logger.WriteLog($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}, {ex.StackTrace.ToString()}");
+            }
+            return string.Empty;
+        }
+
+        static async Task<int> IntAsyncAwait(int x,int y)
+        {
+            Task<int> intTask = Task<int>.Run<int>(() =>
+            {
+                return x + y;
+            });
+            return await intTask;
+        }
+        static async Task<int> TaskIntAsyncAwait(int x,int y)
+        {
+            Task<int> task = Task.Run(() =>
+            {
+                return x + y;
+            });
+            return await task;
+        }
         static async Task<string> TaskAsync()
         {
             HttpClient httpClient = new HttpClient();
             var  page = await httpClient.GetStringAsync("https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth");
             return page;
         }
-
-
-        static async Task<int> TaskIntAsync(int x,int y)
+        static  Task<int> TaskIntAsync(int x,int y)
         {
             var intTask = Task<int>.Run(() =>
+            { 
+                Thread.Sleep(2000);
+                return x + y;
+            });
+            return intTask;
+        }
+        static async Task<int> AsyncAwait(int x,int y)
+        {
+            int task=await  Task<int>.Run<int>(() =>
             {
                 return x + y;
             });
-            return intTask.Result;
+            return task;      
         }
-        static async void AsyncAwait(int x,int y)
-        {
-             
-        }
-
         static int ReturnXAddY(int x,int y)
         {
             Thread.Sleep(1000);
@@ -65,13 +125,11 @@ namespace ConsoleApp332
             Console.WriteLine($"{ar.AsyncState}");
             Console.WriteLine("This is the AsyncCallback method,public interface IAsyncResult,public interface IAsyncResult");
         }
-
         static int AddXY(int x,int y)
         {
             Console.WriteLine($"{x}+{y}={x + y}");
             return x + y;
         }
-
         static void WaitCallback(object obj)
         {
             Console.WriteLine(obj.ToString());
@@ -137,7 +195,6 @@ namespace ConsoleApp332
                 Console.WriteLine(i);
             }
         }
-
         static void ThreadRunSpecifiedTimespan()
         {
             try
@@ -165,7 +222,6 @@ namespace ConsoleApp332
                 Console.WriteLine(ex.Message);
             }            
         }
-
         static void PrintTimeIn10Seconds()
         {
             DateTime nowTime = DateTime.Now;
@@ -341,7 +397,7 @@ namespace ConsoleApp332
     {
         private static string lockString = "lockString";
         private static string logFullPath = Directory.GetCurrentDirectory() + "\\"
-            + DateTime.Now.ToString("yyyyMMdd")+".txt";
+            + DateTime.Now.ToString("yyyyMMddHHmmssffff")+".txt";
         
         public static void WriteLog(string logMessage)
         {   
@@ -349,7 +405,6 @@ namespace ConsoleApp332
             {
                 using (StreamWriter logWriter = new StreamWriter(logFullPath, true, Encoding.UTF8))
                 {
-
                     logWriter.WriteLine(logMessage);
                 }
             }            
