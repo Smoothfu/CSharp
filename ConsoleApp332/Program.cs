@@ -8,6 +8,8 @@ using System.IO;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Http;
 
 namespace ConsoleApp332
 {
@@ -27,14 +29,29 @@ namespace ConsoleApp332
         
         static void Main(string[] args)
         {
-            int x = 10000, y = 20000;
-            AddXYDel addDel = new AddXYDel(AddXY);
-            IAsyncResult asyncResult = addDel.BeginInvoke(x, y, NewXYCallBack, "The XY delegate IAsyncResult");
-            int addResult = addDel.EndInvoke(asyncResult);
-            Console.WriteLine($"The final result is {addResult}");
+            string result = TaskAsync().Result;
+            Console.WriteLine(result);
+            Logger.WriteLog(result);
             Console.ReadLine();
         }
 
+        static async Task<string> TaskAsync()
+        {
+            HttpClient httpClient = new HttpClient();
+            var  page = await httpClient.GetStringAsync("https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth");
+            return page;
+        }
+
+        static async void AsyncAwait(int x,int y)
+        {
+             
+        }
+
+        static int ReturnXAddY(int x,int y)
+        {
+            Thread.Sleep(1000);
+            return x + y;
+        }
         static void NewXYCallBack(IAsyncResult ar)
         {
             Console.WriteLine($"{ar.AsyncState}");
