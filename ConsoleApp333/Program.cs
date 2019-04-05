@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http;
+using System.Windows.Forms;
 
 namespace ConsoleApp333
 {
@@ -21,14 +22,14 @@ namespace ConsoleApp333
         {
             stopWatch.Start();
             TestAsyncAwaitCost(100);
-            foreach (var dic in concurrentDic)
-            {
-                Console.Write(dic.Key+"\t");
-            }
+            //foreach (var dic in concurrentDic)
+            //{
+            //    Console.Write(dic.Key+"\t");
+            //}
             stopWatch.Stop();
             costMsg = $"cost:{stopWatch.ElapsedMilliseconds} milliseconds,memory: {Process.GetCurrentProcess().PrivateMemorySize64} bytes,now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
             Logger.WriteLog(costMsg);
-            Console.ReadLine();
+            System.Windows.Forms.MessageBox.Show(costMsg);
         }
 
         static void TestAsyncAwaitCost(int tasksCount)
@@ -50,16 +51,16 @@ namespace ConsoleApp333
                 {
                     var stringTask = httpClient.GetStringAsync("https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth");
                     tempString = await stringTask;
-                    string dtMsg = $"now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
-                    if(!countTimeDic.ContainsKey(i))
-                    {
-                        countTimeDic[i] = dtMsg;
-                    }
-                    Console.WriteLine($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
-                    if(!concurrentDic.ContainsKey(i))
-                    {
-                        concurrentDic[i] = tempString;
-                    }                    
+                    //string dtMsg = $"now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}";
+                    //if (!countTimeDic.ContainsKey(i))
+                    //{
+                    //    countTimeDic[i] = dtMsg;
+                    //}
+                    //Console.WriteLine($"i={i},now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
+                    //if (!concurrentDic.ContainsKey(i))
+                    //{
+                    //    concurrentDic[i] = tempString;
+                    //}
                     return tempString;
                 }
             }
