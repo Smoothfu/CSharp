@@ -14,7 +14,7 @@ namespace ConsoleApp334
         static void Main(string[] args)
         {
             DateTime dtNow = DateTime.Now;
-            DateTime dtEnd = dtNow.AddSeconds(90);
+            DateTime dtEnd = dtNow.AddSeconds(40);
             StringBuilder strBuilder = new StringBuilder();
             while (DateTime.Now < dtEnd)
             {
@@ -22,7 +22,10 @@ namespace ConsoleApp334
             }
 
             Console.WriteLine($"Message size: {strBuilder.ToString().Length},memory:{Process.GetCurrentProcess().PrivateMemorySize64}");
-            FileStreamWriter(strBuilder.ToString());
+            //FileStreamWriter(strBuilder.ToString());
+            StreamWriterWriter(strBuilder.ToString());
+            Console.WriteLine("Finished");
+            Console.ReadLine();
         }
         static void StreamWriterWriter(string msg)
         {
