@@ -21,10 +21,20 @@ namespace ConsoleApp333
         static ConcurrentQueue<int> concurrentQueue = new ConcurrentQueue<int>();
         static void Main(string[] args)
         {
-            string url = "https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/await";
-            GetPageSizeAsync(url).Wait();
+            int x = 100000, y = 2000000;
+            int intResult = GetAddTaskAsync(x, y).Result;
+            Console.WriteLine(intResult);
         }
 
+        static  async Task<int> GetAddTaskAsync(int x,int y)
+        {
+            var intResult=await Task.Run<int>(() =>
+            {
+                return x + y;
+            });
+            Console.WriteLine(intResult.GetType().Name);
+            return intResult;
+        }
         static async Task GetPageSizeAsync(string url)
         {
             var client = new HttpClient();
