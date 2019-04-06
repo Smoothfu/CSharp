@@ -21,13 +21,27 @@ namespace ConsoleApp333
         static ConcurrentQueue<int> concurrentQueue = new ConcurrentQueue<int>();
         static void Main(string[] args)
         {
+            string url = "https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/await";
+            GetPageSizeAsync(url).Wait();
+        }
+
+        static async Task GetPageSizeAsync(string url)
+        {
+            var client = new HttpClient();
+            var uri = new Uri(Uri.EscapeUriString(url));
+            byte[] urlContents = await client.GetByteArrayAsync(uri);
+            Console.WriteLine($"{url}:{urlContents.Length / 2:N0} characters");
+        }
+
+        static void TestAsyncAwait()
+        {
             stopWatch.Start();
-            Task testTask= Task.Run(() =>
+            Task testTask = Task.Run(() =>
             {
                 TestAsyncAwaitCost(47);
             });
             testTask.Wait();
-           
+
             //foreach (var dic in concurrentDic)
             //{
             //    Console.Write(dic.Key+"\t");
@@ -40,11 +54,10 @@ namespace ConsoleApp333
                            select i).ToList();
             Console.WriteLine($"Total count:{intList.Count}");
 
-            var uniqueList = intList.Distinct().ToList() ;
+            var uniqueList = intList.Distinct().ToList();
             Console.WriteLine($"Unique count:{uniqueList.Count}");
             System.Windows.Forms.MessageBox.Show(costMsg);
         }
-
         static void TestAsyncAwaitCost(int tasksCount)
         {
             Task<string>[] tasksArr = new Task<string>[tasksCount];
