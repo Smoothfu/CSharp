@@ -14,7 +14,7 @@ namespace ConsoleApp334
         static void Main(string[] args)
         {
             DateTime dtNow = DateTime.Now;
-            DateTime dtEnd = dtNow.AddSeconds(120);
+            DateTime dtEnd = dtNow.AddSeconds(90);
             StringBuilder strBuilder = new StringBuilder();
             while (DateTime.Now < dtEnd)
             {
