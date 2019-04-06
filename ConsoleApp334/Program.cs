@@ -13,25 +13,39 @@ namespace ConsoleApp334
         static string fullLogName = Directory.GetCurrentDirectory() + "//" + DateTime.Now.ToString("yyyyMMddHHMMssffff")+".txt";
         static void Main(string[] args)
         {
-            DateTime dtNow = DateTime.Now;
-            DateTime dtEnd = dtNow.AddSeconds(40);
             StringBuilder strBuilder = new StringBuilder();
-            while (DateTime.Now < dtEnd)
+            try
             {
-                strBuilder.Append($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
-            }
+                DateTime dtNow = DateTime.Now;
+                DateTime dtEnd = dtNow.AddSeconds(30);
 
-            Console.WriteLine($"Message size: {strBuilder.ToString().Length},memory:{Process.GetCurrentProcess().PrivateMemorySize64}");
-            //FileStreamWriter(strBuilder.ToString());
-            StreamWriterWriter(strBuilder.ToString());
-            Console.WriteLine("Finished");
+                while (DateTime.Now < dtEnd)
+                {
+                    strBuilder.Append($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
+                }
+
+                Console.WriteLine($"First Message size: {strBuilder.ToString().Length},memory:{Process.GetCurrentProcess().PrivateMemorySize64}");
+                              
+                //FileStreamWriter(strBuilder.ToString());
+                for(int i=0;i<100;i++)
+                {
+                    StreamWriterWriter(strBuilder.ToString());
+                }
+                
+                //StreamWriterWriter(strBuilder.ToString());
+                Console.WriteLine("Finished");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"datetime exception,Message size: {strBuilder.ToString().Length},memory:{Process.GetCurrentProcess().PrivateMemorySize64},exception:{ex.Message}");
+            }
             Console.ReadLine();
         }
         static void StreamWriterWriter(string msg)
         {
             try
             {
-                Console.WriteLine($"Message size: {msg.Length},memory:{Process.GetCurrentProcess().PrivateMemorySize64}");
+                Console.WriteLine($"StreamWriterWriter Message size: {msg.Length},memory:{Process.GetCurrentProcess().PrivateMemorySize64}");
                 using (StreamWriter logStreamWriter = new StreamWriter(fullLogName, true))
                 {
                     logStreamWriter.WriteLine(msg);
@@ -39,18 +53,18 @@ namespace ConsoleApp334
             }
             catch(Exception ex)
             {
-                Console.WriteLine($"memory:{Process.GetCurrentProcess().PrivateMemorySize64},{ex.Message}");
+                Console.WriteLine($"StreamWriterWriter exception memory:{Process.GetCurrentProcess().PrivateMemorySize64},{ex.Message}");
             }           
         }
 
         static void FileStreamWriter(string msg)
         {
             try
-            {
-                Console.WriteLine($"Message size: {msg.Length},memory:{Process.GetCurrentProcess().PrivateMemorySize64}");
-                byte[] byteArr = ASCIIEncoding.UTF8.GetBytes(msg);
+            {               
                 using (FileStream writerStream = File.OpenWrite(fullLogName))
                 {
+                    Console.WriteLine($"Message size: {msg.Length},memory:{Process.GetCurrentProcess().PrivateMemorySize64}");
+                    byte[] byteArr = ASCIIEncoding.UTF8.GetBytes(msg);
                     writerStream.Write(byteArr, 0, byteArr.Length);
                 }
             }
