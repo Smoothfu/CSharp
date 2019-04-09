@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace ConsoleApp335
 {
@@ -13,36 +14,57 @@ namespace ConsoleApp335
     {
         static string logFullName = Directory.GetCurrentDirectory() + "//" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".txt";
         static string popUpMsg = string.Empty;
+        static int i = 0;
         static void Main(string[] args)
+        {
+            popUpMsg = $"i is {i} in main,Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")},memory is" +
+                  $" {Process.GetCurrentProcess().PrivateMemorySize64}";
+            Console.WriteLine(popUpMsg);
+            bool isCreatedNew;
+            Mutex mutex = new Mutex(true, "ConsoleApp335", out isCreatedNew);
+            if(!isCreatedNew)
+            {
+                MessageBox.Show("ConsoleApp335.exe is always running!");
+                return;
+            }
+            Console.ReadLine();
+        }
+
+        static void StringBuilderDatetime()
         {
             StringBuilder stringBuilder = new StringBuilder();
             try
             {
-                for (int i = 0; i < 100; i++)
+                for (i = 0; i < 100; i++)
                 {
                     DateTime startDt = DateTime.Now;
                     DateTime endDt = startDt.AddSeconds(10);
                     while (DateTime.Now < endDt)
                     {
-                        string msg = DateTime.Now.ToString("yyyyMMddHHmmssffff");
-                        stringBuilder.Append(msg);
+                        stringBuilder.Append(DateTime.Now.ToString("yyyyMMddHHmmssffff"));
                     }
-                    LogMessage(stringBuilder.ToString());
+                    StreamWriterLogMessage(stringBuilder.ToString());
+                    stringBuilder.Clear();
                 }
 
-                popUpMsg = $"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")},memory is {Process.GetCurrentProcess().PrivateMemorySize64}";
+                popUpMsg = $"i is {i} in main,Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")},memory is" +
+                    $" {Process.GetCurrentProcess().PrivateMemorySize64}";
                 MessageBox.Show(popUpMsg);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                popUpMsg = $"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")},memory is {Process.GetCurrentProcess().PrivateMemorySize64}";
+                popUpMsg = $"i is {i} in main exception,Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")},memory is " +
+                    $"{Process.GetCurrentProcess().PrivateMemorySize64},exception {ex.StackTrace}";
                 MessageBox.Show(popUpMsg);
-            }         
+            }
         }
-        static void LogMessage(string logMsg)
+        static void StreamWriterLogMessage(string logMsg)
         {
             try
             {
+                popUpMsg = $"i is {i} in main,Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")},memory is" +
+                   $" {Process.GetCurrentProcess().PrivateMemorySize64}";
+                Console.WriteLine(popUpMsg);
                 using (StreamWriter logWriter = new StreamWriter(logFullName, true))
                 {
                     logWriter.WriteLine(logMsg);
@@ -50,9 +72,27 @@ namespace ConsoleApp335
             }
             catch(Exception ex)
             {
-                popUpMsg = $"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")},memory is {Process.GetCurrentProcess().PrivateMemorySize64}";
+                popUpMsg = $"i is {i} in log exception,Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")},memory is" +
+                    $" {Process.GetCurrentProcess().PrivateMemorySize64},exception {ex.StackTrace}";
                 MessageBox.Show(popUpMsg);
             }            
+        }
+
+        static void FileStreamWriter(string msg)
+        {
+            try
+            {
+                using (FileStream writerStream = File.OpenWrite(logFullName))
+                {
+                    Console.WriteLine($"Message size: {msg.Length},memory:{Process.GetCurrentProcess().PrivateMemorySize64}");
+                    byte[] byteArr = ASCIIEncoding.UTF8.GetBytes(msg);
+                    writerStream.Write(byteArr, 0, byteArr.Length);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"memory:{Process.GetCurrentProcess().PrivateMemorySize64},{ex.Message}");
+            }
         }
     }
 }
