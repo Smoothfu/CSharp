@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+ 
 
 namespace ConsoleApp337
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
+            string finalResult=client.Add(10, 20);
+            Console.WriteLine(finalResult);
+            Console.ReadLine();
+        }
+
+        static void ParamArrayAttributeExample()
         {
             Temperature temp = new Temperature(100);
             string[] formats = { "C", "G", "F", "K" };
@@ -27,9 +36,7 @@ namespace ConsoleApp337
             //Call parameter Display method.
             Console.WriteLine("Calling Display with an implicit parameter array:");
             temp.Display();
-            Console.ReadLine();
         }
-
         static void TestOverload()
         {
             Add(0);

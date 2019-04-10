@@ -1,0 +1,6 @@
+D:\C\ConsoleApp337\WCFService\bin\WCFService.dll.config
+D:\C\ConsoleApp337\WCFService\bin\WCFService.dll
+D:\C\ConsoleApp337\WCFService\bin\WCFService.pdb
+D:\C\ConsoleApp337\WCFService\obj\Debug\WCFService.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp337\WCFService\obj\Debug\WCFService.dll
+D:\C\ConsoleApp337\WCFService\obj\Debug\WCFService.pdb
