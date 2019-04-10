@@ -10,7 +10,23 @@ namespace ConsoleApp337
     {
         static void Main(string[] args)
         {
-            TestOverload();
+            Temperature temp = new Temperature(100);
+            string[] formats = { "C", "G", "F", "K" };
+
+            //call display method with a string empty.
+            Console.WriteLine("Calling Display with a string array: ");
+            temp.Display(formats);
+
+            Console.WriteLine();
+
+            //Call Display method with individual string arguments.
+            Console.WriteLine("Calling Display with individual arguments:");
+            temp.Display("C", "F", "K", "G");
+            Console.WriteLine();
+
+            //Call parameter Display method.
+            Console.WriteLine("Calling Display with an implicit parameter array:");
+            temp.Display();
             Console.ReadLine();
         }
 
@@ -41,5 +57,62 @@ namespace ConsoleApp337
     public class ConcreteClass:AbstractClass
     {
 
+    }
+
+    public class Temperature
+    {
+        private decimal temp;
+        public Temperature(decimal temperature)
+        {
+            this.temp = temperature;
+        }
+
+        public override string ToString()
+        {
+            return ToString("C");
+        }
+
+        public string ToString(string format)
+        {
+            if(string.IsNullOrEmpty(format))
+            {
+                format = "G";
+            }
+
+            switch (format.ToUpper())
+            {
+                case "G":
+                case "C":
+                    return temp.ToString("N") + " ℃";
+                case "F":
+                    return (9 * temp / 5 + 32).ToString("N") + " ℉";
+                case "K":
+                    return (temp + 273.15m).ToString("N") + " °F";
+                default:
+                    throw new FormatException(string.Format("The '{0}' format specifier is not supported"));
+            }
+        }
+
+        public void Display(params string[] formats)
+        {
+            if(formats.Length==0)
+            {
+                Console.WriteLine(this.ToString("G"));
+            }
+            else
+            {
+                foreach(string format in formats)
+                {
+                    try
+                    {
+                        Console.WriteLine(this.ToString(format));
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+        }
     }
 }
