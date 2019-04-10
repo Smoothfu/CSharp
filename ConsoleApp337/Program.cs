@@ -10,8 +10,7 @@ namespace ConsoleApp337
     {
         static void Main(string[] args)
         {
-            ConcreteClass cc = new ConcreteClass();
-            cc.VirtualMethod();
+            TestOverload();
             Console.ReadLine();
         }
 
