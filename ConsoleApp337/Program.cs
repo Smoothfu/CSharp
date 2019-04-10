@@ -10,13 +10,17 @@ namespace ConsoleApp337
     {
         static void Main(string[] args)
         {
-            Add(0);
-            Add(1, 2);
-            Add(1, 2, 3);
-            Add(1, 2, 3, 4); 
+            ConcreteClass cc = new ConcreteClass();
+            cc.VirtualMethod();
             Console.ReadLine();
         }
 
+        static void TestOverload()
+        {
+            Add(0);
+            Add(1, 2);
+            Add(1, 2, 3);
+        }
         static void Add(params int[]arr)
         {
             Console.WriteLine("params int[]arr");
@@ -25,5 +29,18 @@ namespace ConsoleApp337
         {
             Console.WriteLine("X&Y");
         }
+    }
+
+    public abstract class AbstractClass
+    {
+        public virtual void VirtualMethod()
+        {
+            Console.WriteLine("Virtual method in abstract class");
+        }
+    }
+
+    public class ConcreteClass:AbstractClass
+    {
+
     }
 }
