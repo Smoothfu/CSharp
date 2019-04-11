@@ -16,21 +16,15 @@ namespace ConsoleApp338
         static string logFullName = Directory.GetCurrentDirectory() + "//" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".txt";
         static void Main(string[] args)
         {
-            Counter counter = new Counter(2);
+            Counter counter = new Counter(15);
             counter.ThresholdReached += Counter_ThresholdReached;
-            Console.WriteLine("Press 'a' key to increase total");
-            while(Console.ReadKey().KeyChar=='a')
-            {
-                Console.WriteLine("Adding one");
-                counter.Add(1);
-            }
-
+            counter.SetCounterNewValue(20);
+            Console.ReadLine();
         }
 
         private static void Counter_ThresholdReached(object sender, ThresholdReachedEventArgs e)
         {
-            Console.WriteLine($"The threshold of {e.ThreshoId} was reached at {e.TimeReached}");
-            Environment.Exit(0);
+            Console.WriteLine($"The threshold of {e.ThreshoId} was reached at {e.TimeReached}");           
         }
 
         private static void Pub_SampleEvent(object sender, SampleEventArgs e)
@@ -92,7 +86,18 @@ namespace ConsoleApp338
         private int total;
         public Counter(int passedThreshold)
         {
-            threshold = passedThreshold;
+            threshold = passedThreshold;           
+        }
+
+        public void SetCounterNewValue(int newValue)
+        {
+            if(newValue>=threshold)
+            {
+                ThresholdReachedEventArgs args = new ThresholdReachedEventArgs();
+                args.ThreshoId = threshold;
+                args.TimeReached = DateTime.Now;
+                OnThresholdReached(args);
+            }
         }
 
         public void Add(int x)
