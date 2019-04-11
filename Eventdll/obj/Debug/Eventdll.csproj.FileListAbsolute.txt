@@ -1,0 +1,5 @@
+D:\C\ConsoleApp338\Eventdll\bin\Debug\Eventdll.dll
+D:\C\ConsoleApp338\Eventdll\bin\Debug\Eventdll.pdb
+D:\C\ConsoleApp338\Eventdll\obj\Debug\Eventdll.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp338\Eventdll\obj\Debug\Eventdll.dll
+D:\C\ConsoleApp338\Eventdll\obj\Debug\Eventdll.pdb

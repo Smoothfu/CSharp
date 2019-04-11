@@ -29,6 +29,34 @@ namespace DownloadDll
             }
         }
 
+        public static void WebClientDownloadAsync(string url)
+        {
+            try
+            {
+                using (WebClient downClient = new WebClient())
+                {                    
+                    downClient.DownloadDataCompleted += DownClient_DownloadDataCompleted;
+                    downClient.DownloadDataAsync(new Uri(url));                    
+                }
+            }
+            catch(Exception ex)
+            {
+                LogMessage(ex.Message);
+            }
+        }
+
+        static void downloadFinished()
+        {
+            MessageBox.Show("downloadFinished()");
+        }
+
+        private static void DownClient_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
+        {
+            byte[] results = e.Result;
+            string stringResult = ASCIIEncoding.UTF8.GetString(results);
+            LogMessage(stringResult);
+        }
+
         static void LogMessage(string logMsg)
         {
             using (StreamWriter logWriter = new StreamWriter(logFullName, true))
