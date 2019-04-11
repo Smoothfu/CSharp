@@ -1,0 +1,9 @@
+D:\C\ConsoleApp338\ConsoleApp338\bin\Debug\ConsoleApp338.exe.config
+D:\C\ConsoleApp338\ConsoleApp338\bin\Debug\ConsoleApp338.exe
+D:\C\ConsoleApp338\ConsoleApp338\bin\Debug\ConsoleApp338.pdb
+D:\C\ConsoleApp338\ConsoleApp338\bin\Debug\DownloadDll.dll
+D:\C\ConsoleApp338\ConsoleApp338\bin\Debug\DownloadDll.pdb
+D:\C\ConsoleApp338\ConsoleApp338\obj\Debug\ConsoleApp338.csprojResolveAssemblyReference.cache
+D:\C\ConsoleApp338\ConsoleApp338\obj\Debug\ConsoleApp338.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp338\ConsoleApp338\obj\Debug\ConsoleApp338.exe
+D:\C\ConsoleApp338\ConsoleApp338\obj\Debug\ConsoleApp338.pdb

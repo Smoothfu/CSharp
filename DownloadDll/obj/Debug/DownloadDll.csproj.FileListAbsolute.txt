@@ -1,0 +1,5 @@
+D:\C\ConsoleApp338\DownloadDll\bin\Debug\DownloadDll.dll
+D:\C\ConsoleApp338\DownloadDll\bin\Debug\DownloadDll.pdb
+D:\C\ConsoleApp338\DownloadDll\obj\Debug\DownloadDll.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp338\DownloadDll\obj\Debug\DownloadDll.dll
+D:\C\ConsoleApp338\DownloadDll\obj\Debug\DownloadDll.pdb
