@@ -1,0 +1,6 @@
+In 10 seconds, TaskRun() it run 6249 times
+In 10 seconds,Task.Factory.StartNew() it run 9941 times
+In 50 seconds, TaskRun() it run 55886 times
+In 50 seconds,Task.Factory.StartNew() it run 59531 times
+In 100 seconds, TaskRun() it run 68314 times
+In 100 seconds,Task.Factory.StartNew() it run 84715 times

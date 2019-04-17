@@ -10,15 +10,15 @@ namespace ConsoleApp340
 {
     class Program
     {
-        static string logFullName = Directory.GetCurrentDirectory() + "//" + DateTime.Now.ToString("yyyyMMddHH") + ".txt";
+        static string logFullName = Directory.GetCurrentDirectory() + "//" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
         static int runTimes;
         static string runMsg;
         static int secondsSpan;
         static void Main(string[] args)
         {
-            secondsSpan = 100;
-            //TaskFactoryStartNew();
+            secondsSpan = 150;
             TaskRun();
+            TaskFactoryStartNew();
         }
 
         static void TaskRun()
