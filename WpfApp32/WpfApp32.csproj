@@ -64,6 +64,8 @@
     <Compile Include="Models\Family.cs" />
     <Compile Include="Models\FamilyMember.cs" />
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\TreeViewItemBase.cs" />
     <Compile Include="UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>

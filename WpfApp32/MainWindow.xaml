@@ -15,7 +15,7 @@
         <local:NumbertoEvenOddConverter x:Key="evenOddConverter"/>
         <localConverter:NumberToBooleanConverter x:Key="numberToBooleanConverter"/>
     </Window.Resources>
-    <Grid Margin="10">
+    <!--<Grid Margin="10">
         <TreeView Name="trvFamilies">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type model:Family}" ItemsSource="{Binding Members}">
@@ -38,5 +38,29 @@
                 </DataTemplate>
             </TreeView.Resources>
         </TreeView>
-    </Grid>        
+    </Grid>-->
+    <DockPanel Margin="10">
+        <WrapPanel Margin="0,10,0,0" DockPanel.Dock="Bottom"
+                   HorizontalAlignment="Center">
+            <Button Name="btnSelectNext" Click="btnSelectNext_Click" Width="120">Select next</Button>
+            <Button Name="btnToggleExpansion" Click="btnToggleExpansion_Click" Width="120" 
+                    Margin="10,0,0,0">Toggle expansion</Button>
+        </WrapPanel>
+        <TreeView Name="trvPersons">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/WpfApp32;component/Images/lyf1.jpg" Width="50" Height="50"/>
+                        <TextBlock Text="{Binding Name}" Margin="0,0,4,0"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded}"/>
+                </Style>                      
+            </TreeView.ItemContainerStyle>
+        </TreeView>
+    </DockPanel>
 </Window>
