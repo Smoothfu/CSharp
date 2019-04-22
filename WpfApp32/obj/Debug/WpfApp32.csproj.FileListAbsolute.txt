@@ -15,3 +15,4 @@ D:\C\WpfApp32\WpfApp32\obj\Debug\WpfApp32.csproj.GenerateResource.Cache
 D:\C\WpfApp32\WpfApp32\obj\Debug\WpfApp32.csproj.CoreCompileInputs.cache
 D:\C\WpfApp32\WpfApp32\obj\Debug\WpfApp32.exe
 D:\C\WpfApp32\WpfApp32\obj\Debug\WpfApp32.pdb
+D:\C\WpfApp32\WpfApp32\obj\Debug\WpfApp32.csprojResolveAssemblyReference.cache

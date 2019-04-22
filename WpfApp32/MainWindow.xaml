@@ -13,9 +13,14 @@
         <local:NumbertoEvenOddConverter x:Key="evenOddConverter"/>
         <localConverter:NumberToBooleanConverter x:Key="numberToBooleanConverter"/>
     </Window.Resources>
-    <StackPanel Margin="10">
-        <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},ConverterCulture='de-DE',StringFormat=German date:{0:D}}"/>
-        <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},ConverterCulture='en-US',StringFormat=American date:{0:D}}"/>
-        <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},ConverterCulture='ja-JP',StringFormat=Japanese date:{0:D}}"/>
-    </StackPanel>   
+    <TreeView>
+        <TreeViewItem Header="Level 1" IsExpanded="True">
+            <TreeViewItem Header="Level 2.1"/>
+            <TreeViewItem Header="Level 2.2" IsExpanded="True">
+                <TreeViewItem Header="Level 3.1"/>
+                <TreeViewItem Header="Level 3.2"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Level 2.3"/>
+        </TreeViewItem>
+    </TreeView> 
 </Window>
