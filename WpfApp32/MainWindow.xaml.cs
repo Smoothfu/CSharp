@@ -23,6 +23,9 @@ namespace WpfApp32
         public MainWindow()
         {
             InitializeComponent();
+            Binding binding = new Binding("Text");
+            binding.Source = txtValue;
+            lblValue.SetBinding(TextBlock.TextProperty, binding);
         }
     }
 }
