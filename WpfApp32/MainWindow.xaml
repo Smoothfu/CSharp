@@ -15,13 +15,28 @@
         <local:NumbertoEvenOddConverter x:Key="evenOddConverter"/>
         <localConverter:NumberToBooleanConverter x:Key="numberToBooleanConverter"/>
     </Window.Resources>
-    <StackPanel>
-        <TreeView Name="trvMenu">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type model:MenuItem}" ItemsSource="{Binding Items}">
-                    <TextBlock Text="{Binding Title}"/>
+    <Grid Margin="10">
+        <TreeView Name="trvFamilies">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type model:Family}" ItemsSource="{Binding Members}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/WpfApp32;component/Images/lfy1.jpg" Width="50" Height="50"/>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text=" [ " Foreground="Blue"/>
+                        <TextBlock Text="{Binding Members.Count}" Foreground="Blue"/>
+                        <TextBlock Text=" ] " Foreground="Blue"/>
+                    </StackPanel>
                 </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
+                <DataTemplate DataType="{x:Type model:FamilyMember}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/WpfApp32;component/Images/lyf2.jpg" Width="50" Height="50"/>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text=" ( " Foreground="Green"/>
+                        <TextBlock Text="{Binding Age}" Foreground="Green" />
+                        <TextBlock Text="years)" Foreground="Green"/>
+                    </StackPanel>
+                </DataTemplate>
+            </TreeView.Resources>
         </TreeView>
-    </StackPanel>          
+    </Grid>        
 </Window>

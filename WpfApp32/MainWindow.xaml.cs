@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp32.Models;
 
 namespace WpfApp32
 {
@@ -26,34 +27,24 @@ namespace WpfApp32
         public MainWindow()
         {
             InitializeComponent();
-            InitMenuItems();
+            InitFamilies();
         }
 
-        private void InitMenuItems()
+        private void InitFamilies()
         {
-            WpfApp32.Models.MenuItem root = new WpfApp32.Models.MenuItem()
-            {
-                Title = "Menu"
-            };
-            WpfApp32.Models.MenuItem childItem1 = new Models.MenuItem()
-            {
-                Title = "Child item #1"
-            };
-            childItem1.Items.Add(new Models.MenuItem()
-            {
-                Title = "Child item #1.1"
-            });
-            childItem1.Items.Add(new Models.MenuItem()
-            {
-                Title = "Child item #1.2"
-            });
+            List<Family> families = new List<Family>();
+            Family fam1 = new Family() { Name = "Fred's Tycoon Family" };
+            fam1.Members.Add(new FamilyMember() { Name = "Fred I", Age = 42 });
+            fam1.Members.Add(new FamilyMember() { Name = "Fred II", Age = 10 });
+            fam1.Members.Add(new FamilyMember() { Name = "Fred III", Age = 8 });
+            families.Add(fam1);
 
-            root.Items.Add(childItem1);
-            root.Items.Add(new Models.MenuItem()
-            {
-                Title = "Child item #2"
-            });
-            trvMenu.Items.Add(root);
+            Family fam2 = new Family() { Name = "Fu's Family" };
+            fam2.Members.Add(new FamilyMember() { Name = "Fu I", Age = 38 });
+            fam2.Members.Add(new FamilyMember() { Name = "Fu II", Age = 15 });
+            families.Add(fam2);
+
+            trvFamilies.ItemsSource = families;
         }
     }
 

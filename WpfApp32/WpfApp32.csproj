@@ -61,6 +61,8 @@
     </Compile>
     <Compile Include="Converters\NumberToBooleanConverter.cs" />
     <Compile Include="Converters\NumbertoEvenOddConverter.cs" />
+    <Compile Include="Models\Family.cs" />
+    <Compile Include="Models\FamilyMember.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
