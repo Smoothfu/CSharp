@@ -25,8 +25,36 @@ namespace WpfApp32
         private ObservableCollection<User> usersList = new ObservableCollection<User>();        
         public MainWindow()
         {
-            InitializeComponent();             
-        }  
+            InitializeComponent();
+            InitMenuItems();
+        }
+
+        private void InitMenuItems()
+        {
+            WpfApp32.Models.MenuItem root = new WpfApp32.Models.MenuItem()
+            {
+                Title = "Menu"
+            };
+            WpfApp32.Models.MenuItem childItem1 = new Models.MenuItem()
+            {
+                Title = "Child item #1"
+            };
+            childItem1.Items.Add(new Models.MenuItem()
+            {
+                Title = "Child item #1.1"
+            });
+            childItem1.Items.Add(new Models.MenuItem()
+            {
+                Title = "Child item #1.2"
+            });
+
+            root.Items.Add(childItem1);
+            root.Items.Add(new Models.MenuItem()
+            {
+                Title = "Child item #2"
+            });
+            trvMenu.Items.Add(root);
+        }
     }
 
     public class User:INotifyPropertyChanged

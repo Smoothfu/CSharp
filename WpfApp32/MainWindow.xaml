@@ -6,6 +6,8 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:WpfApp32" 
+        xmlns:control="clr-namespace:WpfApp32.Controls"
+        xmlns:model="clr-namespace:WpfApp32.Models"
         xmlns:localConverter="clr-namespace:WpfApp32.Converters"
         mc:Ignorable="d"
         Title="String Format Sample" Height="350" Width="525" Name="wnd">
@@ -13,44 +15,13 @@
         <local:NumbertoEvenOddConverter x:Key="evenOddConverter"/>
         <localConverter:NumberToBooleanConverter x:Key="numberToBooleanConverter"/>
     </Window.Resources>
-    <TreeView>
-        <TreeViewItem IsExpanded="True">
-            <TreeViewItem.Header>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/WpfApp32;component/Images/lyf1.jpg" Width="10" Height="10"/>
-                    <TextBlock Text="Level 1"/>
-                </StackPanel>
-            </TreeViewItem.Header>
-            <TreeViewItem>
-                <TreeViewItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Level 2.1" Foreground="Blue"/>
-                    </StackPanel>
-                </TreeViewItem.Header>
-            </TreeViewItem>
-            <TreeViewItem IsExpanded="True">
-                <TreeViewItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/WpfApp32;component/Images/lyf2.jpg" Width="10" Height="10" />
-                        <TextBlock Text="Level 2.2" Foreground="Blue"/>
-                    </StackPanel>
-                </TreeViewItem.Header>
-                <TreeViewItem>
-                    <TreeViewItem.Header>
-                        <TextBlock Text="Level 3.1" Foreground="Green"/>
-                    </TreeViewItem.Header>
-                </TreeViewItem>
-                <TreeViewItem>
-                    <TreeViewItem.Header>
-                        <TextBlock Text="Level 3.2" Foreground="Green"/>
-                    </TreeViewItem.Header>
-                </TreeViewItem>
-            </TreeViewItem>
-            <TreeViewItem>
-                <TreeViewItem.Header>
-                    <TextBlock Text="Level 2.3" Foreground="Blue"/>
-                </TreeViewItem.Header>
-            </TreeViewItem>
-        </TreeViewItem>
-    </TreeView> 
+    <StackPanel>
+        <TreeView Name="trvMenu">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type model:MenuItem}" ItemsSource="{Binding Items}">
+                    <TextBlock Text="{Binding Title}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </StackPanel>          
 </Window>
