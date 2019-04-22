@@ -10,62 +10,53 @@
         xmlns:model="clr-namespace:WpfApp32.Models"
         xmlns:converter="clr-namespace:WpfApp32.Converters"
         xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        xmlns:vm="clr-namespace:WpfApp32.ViewModels"
         mc:Ignorable="d"
         Title="String Format Sample" Height="350" Width="525" Name="wnd">
     <Window.Resources>
         <local:NumbertoEvenOddConverter x:Key="evenOddConverter"/>
         <converter:NumberToBooleanConverter x:Key="numberToBooleanConverter"/>
         <converter:DebugDummyConverter x:Key="debugDummyConverter"/>
+        <converter:GenderConverter x:Key="genderConverter"/>
+        <DataTemplate x:Key="defaultDataTemplate">
+            <Border x:Name="border" Height="50">
+                
+            </Border>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListBoxItem}},
+                    Path=IsSelected}" Value="True">
+                    <Setter TargetName="border" Property="Height" Value="100"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <DataTemplate x:Key="enumDataTemplate">            
+        </DataTemplate>
+        <DataTemplate x:Key="booleanDataTemplate">            
+        </DataTemplate>
+        <model:PropertyDataTemplateSelector x:Key="templateSelector"
+                                            DefaultDataTemplate="{StaticResource defaultDataTemplate}"
+                                            BooleanDataTemplate="{StaticResource  booleanDataTemplate}"
+                                            EnumDataTemplate="{StaticResource enumDataTemplate}"/>
     </Window.Resources>
-    <!--<Grid Margin="10">
-        <TreeView Name="trvFamilies">
-            <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type model:Family}" ItemsSource="{Binding Members}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/WpfApp32;component/Images/lfy1.jpg" Width="50" Height="50"/>
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text=" [ " Foreground="Blue"/>
-                        <TextBlock Text="{Binding Members.Count}" Foreground="Blue"/>
-                        <TextBlock Text=" ] " Foreground="Blue"/>
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type model:FamilyMember}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/WpfApp32;component/Images/lyf2.jpg" Width="50" Height="50"/>
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text=" ( " Foreground="Green"/>
-                        <TextBlock Text="{Binding Age}" Foreground="Green" />
-                        <TextBlock Text="years)" Foreground="Green"/>
-                    </StackPanel>
-                </DataTemplate>
-            </TreeView.Resources>
-        </TreeView>
-    </Grid>-->
-    <!--<DockPanel Margin="10">
-        <WrapPanel Margin="0,10,0,0" DockPanel.Dock="Bottom"
-                   HorizontalAlignment="Center">
-            <Button Name="btnSelectNext" Click="btnSelectNext_Click" Width="120">Select next</Button>
-            <Button Name="btnToggleExpansion" Click="btnToggleExpansion_Click" Width="120" 
-                    Margin="10,0,0,0">Toggle expansion</Button>
-        </WrapPanel>
-        <TreeView Name="trvPersons">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/WpfApp32;component/Images/lyf1.jpg" Width="50" Height="50"/>
-                        <TextBlock Text="{Binding Name}" Margin="0,0,4,0"/>
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-            <TreeView.ItemContainerStyle>
-                <Style TargetType="TreeViewItem">
-                    <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
-                    <Setter Property="IsExpanded" Value="{Binding IsExpanded}"/>
-                </Style>                      
-            </TreeView.ItemContainerStyle>
-        </TreeView>
-    </DockPanel>-->
-    <Grid Margin="10">
-        <TextBlock Text="{Binding Title,ElementName=wnd,Converter={StaticResource debugDummyConverter}}"/>
-    </Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" AutoGenerateColumns="False" ItemsSource="{Binding UsersCollection,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" BorderBrush="Black" BorderThickness="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"  Binding="{Binding Path=Id}" Width="100" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="100"/>
+                <DataGridTextColumn Header="Gender" Binding="{Binding Path=Gender}"  Width="100">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="{Binding Path=Gender,Converter={StaticResource ResourceKey=genderConverter}}"/>
+                            <Setter Property="Background" Value="{Binding Path=Gender,Converter={StaticResource ResourceKey=genderConverter}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="1" Content="Clear Grid" Command="{Binding ClearCmd}"/>
+    </Grid>   
 </Window>
