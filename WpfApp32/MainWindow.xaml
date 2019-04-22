@@ -8,12 +8,14 @@
         xmlns:local="clr-namespace:WpfApp32" 
         xmlns:control="clr-namespace:WpfApp32.Controls"
         xmlns:model="clr-namespace:WpfApp32.Models"
-        xmlns:localConverter="clr-namespace:WpfApp32.Converters"
+        xmlns:converter="clr-namespace:WpfApp32.Converters"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="String Format Sample" Height="350" Width="525" Name="wnd">
     <Window.Resources>
         <local:NumbertoEvenOddConverter x:Key="evenOddConverter"/>
-        <localConverter:NumberToBooleanConverter x:Key="numberToBooleanConverter"/>
+        <converter:NumberToBooleanConverter x:Key="numberToBooleanConverter"/>
+        <converter:DebugDummyConverter x:Key="debugDummyConverter"/>
     </Window.Resources>
     <!--<Grid Margin="10">
         <TreeView Name="trvFamilies">
@@ -39,7 +41,7 @@
             </TreeView.Resources>
         </TreeView>
     </Grid>-->
-    <DockPanel Margin="10">
+    <!--<DockPanel Margin="10">
         <WrapPanel Margin="0,10,0,0" DockPanel.Dock="Bottom"
                    HorizontalAlignment="Center">
             <Button Name="btnSelectNext" Click="btnSelectNext_Click" Width="120">Select next</Button>
@@ -62,5 +64,8 @@
                 </Style>                      
             </TreeView.ItemContainerStyle>
         </TreeView>
-    </DockPanel>
+    </DockPanel>-->
+    <Grid Margin="10">
+        <TextBlock Text="{Binding Title,ElementName=wnd,Converter={StaticResource debugDummyConverter}}"/>
+    </Grid>
 </Window>

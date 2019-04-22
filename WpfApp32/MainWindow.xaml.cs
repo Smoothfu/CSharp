@@ -27,7 +27,7 @@ namespace WpfApp32
         public MainWindow()
         {
             InitializeComponent();
-            InitChildren();
+            this.DataContext = this;
         }
 
         private void InitChildren()
@@ -49,54 +49,10 @@ namespace WpfApp32
 
             p2.IsExpanded = true;
             p2.IsSelected = true;
-            trvPersons.ItemsSource = persons;
+            //trvPersons.ItemsSource = persons;
         }
 
-        private void InitFamilies()
-        {
-            List<Family> families = new List<Family>();
-            Family fam1 = new Family() { Name = "Fred's Tycoon Family" };
-            fam1.Members.Add(new FamilyMember() { Name = "Fred I", Age = 42 });
-            fam1.Members.Add(new FamilyMember() { Name = "Fred II", Age = 10 });
-            fam1.Members.Add(new FamilyMember() { Name = "Fred III", Age = 8 });
-            families.Add(fam1);
-
-            Family fam2 = new Family() { Name = "Fu's Family" };
-            fam2.Members.Add(new FamilyMember() { Name = "Fu I", Age = 38 });
-            fam2.Members.Add(new FamilyMember() { Name = "Fu II", Age = 15 });
-            families.Add(fam2);
-
-            
-        }
-
-        private void btnSelectNext_Click(object sender, RoutedEventArgs e)
-        {
-            if(trvPersons.SelectedItem!=null)
-            {
-                var list = (trvPersons.ItemsSource as List<Person>);
-                int curIndex = list.IndexOf(trvPersons.SelectedItem as Person);
-                if(curIndex>=0)
-                {
-                    curIndex++;
-                }
-                if(curIndex>=list.Count)
-                {
-                    curIndex = 0;
-                }
-                if(curIndex>=0)
-                {
-                    list[curIndex].IsSelected = true;
-                }
-            }
-        }
-
-        private void btnToggleExpansion_Click(object sender, RoutedEventArgs e)
-        {
-            if(trvPersons.SelectedItem!=null)
-            {
-                (trvPersons.SelectedItem as Person).IsExpanded = !(trvPersons.SelectedItem as Person).IsExpanded;
-            }
-        }
+       
     }
 
     public class User:INotifyPropertyChanged

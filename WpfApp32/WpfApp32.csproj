@@ -59,6 +59,7 @@
     <Compile Include="Controls\TreeViewControl.xaml.cs">
       <DependentUpon>TreeViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DebugDummyConverter.cs" />
     <Compile Include="Converters\NumberToBooleanConverter.cs" />
     <Compile Include="Converters\NumbertoEvenOddConverter.cs" />
     <Compile Include="Models\Family.cs" />
