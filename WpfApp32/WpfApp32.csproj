@@ -104,5 +104,25 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lyf1.jpg" />
+    <Resource Include="Images\lyf10.jpg" />
+    <Resource Include="Images\lyf11.jpg" />
+    <Resource Include="Images\lyf12.jpg" />
+    <Resource Include="Images\lyf13.jpg" />
+    <Resource Include="Images\lyf14.jpg" />
+    <Resource Include="Images\lyf15.jpg" />
+    <Resource Include="Images\lyf17.jpg" />
+    <Resource Include="Images\lyf18.jpg" />
+    <Resource Include="Images\lyf19.jpg" />
+    <Resource Include="Images\lyf2.jpg" />
+    <Resource Include="Images\lyf3.jpg" />
+    <Resource Include="Images\lyf4.jpg" />
+    <Resource Include="Images\lyf5.jpg" />
+    <Resource Include="Images\lyf6.jpg" />
+    <Resource Include="Images\lyf7.jpg" />
+    <Resource Include="Images\lyf8.jpg" />
+    <Resource Include="Images\lyf9.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

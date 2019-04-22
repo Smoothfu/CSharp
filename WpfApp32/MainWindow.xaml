@@ -14,13 +14,43 @@
         <localConverter:NumberToBooleanConverter x:Key="numberToBooleanConverter"/>
     </Window.Resources>
     <TreeView>
-        <TreeViewItem Header="Level 1" IsExpanded="True">
-            <TreeViewItem Header="Level 2.1"/>
-            <TreeViewItem Header="Level 2.2" IsExpanded="True">
-                <TreeViewItem Header="Level 3.1"/>
-                <TreeViewItem Header="Level 3.2"/>
+        <TreeViewItem IsExpanded="True">
+            <TreeViewItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/WpfApp32;component/Images/lyf1.jpg" Width="10" Height="10"/>
+                    <TextBlock Text="Level 1"/>
+                </StackPanel>
+            </TreeViewItem.Header>
+            <TreeViewItem>
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Level 2.1" Foreground="Blue"/>
+                    </StackPanel>
+                </TreeViewItem.Header>
             </TreeViewItem>
-            <TreeViewItem Header="Level 2.3"/>
+            <TreeViewItem IsExpanded="True">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/WpfApp32;component/Images/lyf2.jpg" Width="10" Height="10" />
+                        <TextBlock Text="Level 2.2" Foreground="Blue"/>
+                    </StackPanel>
+                </TreeViewItem.Header>
+                <TreeViewItem>
+                    <TreeViewItem.Header>
+                        <TextBlock Text="Level 3.1" Foreground="Green"/>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem>
+                    <TreeViewItem.Header>
+                        <TextBlock Text="Level 3.2" Foreground="Green"/>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem>
+                <TreeViewItem.Header>
+                    <TextBlock Text="Level 2.3" Foreground="Blue"/>
+                </TreeViewItem.Header>
+            </TreeViewItem>
         </TreeViewItem>
     </TreeView> 
 </Window>
