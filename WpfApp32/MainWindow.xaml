@@ -14,7 +14,8 @@
         <localConverter:NumberToBooleanConverter x:Key="numberToBooleanConverter"/>
     </Window.Resources>
     <StackPanel Margin="10">
-        <TextBlock Text="Width: "/>
-        <TextBlock Text="{Binding ElementName=wnd,Path=ActualWidth,StringFormat={}{0:#,#.0}}"/>
+        <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},ConverterCulture='de-DE',StringFormat=German date:{0:D}}"/>
+        <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},ConverterCulture='en-US',StringFormat=American date:{0:D}}"/>
+        <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},ConverterCulture='ja-JP',StringFormat=Japanese date:{0:D}}"/>
     </StackPanel>   
 </Window>
