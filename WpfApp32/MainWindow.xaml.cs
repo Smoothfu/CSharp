@@ -25,49 +25,8 @@ namespace WpfApp32
         private ObservableCollection<User> usersList = new ObservableCollection<User>();        
         public MainWindow()
         {
-            InitializeComponent(); 
-
-            for(int i=0;i<10;i++)
-            {
-                usersList.Add(new User()
-                {
-                    Name = "Fred" + i,
-                    Id = i
-                });
-            }
-
-            lbUsers.ItemsSource = usersList;
-        }        
-
-        private void btnAddUser_Click(object sender, RoutedEventArgs e)
-        {
-            Random rnd = new Random();
-            usersList.Add(new User() { Name = "New User" + Guid.NewGuid().ToString(), Id = rnd.Next(10, 100)  });
-        }
-
-        private void btnChangeUser_Click(object sender, RoutedEventArgs e)
-        {
-            if(lbUsers.SelectedItem!=null)
-            {
-                var selectedUser = lbUsers.SelectedItem as User;
-                if(selectedUser!=null)
-                {
-                    selectedUser.Name = "Random Name"+Guid.NewGuid().ToString();
-                }
-            }
-        }
-
-        private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
-        {
-            if (lbUsers.SelectedItem != null)
-            {
-                var deleteUser = lbUsers.SelectedItem as User;
-                if (deleteUser != null)
-                {
-                    usersList.Remove(deleteUser);
-                }
-            }
-        }
+            InitializeComponent();             
+        }  
     }
 
     public class User:INotifyPropertyChanged
