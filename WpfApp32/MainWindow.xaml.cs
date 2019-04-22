@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,16 +22,97 @@ namespace WpfApp32
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ObservableCollection<User> usersList = new ObservableCollection<User>();        
         public MainWindow()
         {
-            InitializeComponent();
-            this.DataContext = this;
+            InitializeComponent(); 
+
+            for(int i=0;i<10;i++)
+            {
+                usersList.Add(new User()
+                {
+                    Name = "Fred" + i,
+                    Id = i
+                });
+            }
+
+            lbUsers.ItemsSource = usersList;
+        }        
+
+        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        {
+            usersList.Add(new User() { Name = "New User", Id = 11 });
         }
 
-        private void btnUpdateSource_Click(object sender, RoutedEventArgs e)
+        private void btnChangeUser_Click(object sender, RoutedEventArgs e)
         {
-            BindingExpression binding = txtWindowTitle.GetBindingExpression(TextBox.TextProperty);
-            binding.UpdateSource();
+            if(lbUsers.SelectedItem!=null)
+            {
+                var selectedUser = lbUsers.SelectedItem as User;
+                if(selectedUser!=null)
+                {
+                    selectedUser.Name = "Random Name";
+                }
+            }
+        }
+
+        private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbUsers.SelectedItem != null)
+            {
+                var deleteUser = lbUsers.SelectedItem as User;
+                if (deleteUser != null)
+                {
+                    usersList.Remove(deleteUser);
+                }
+            }
+        }
+    }
+
+    public class User:INotifyPropertyChanged
+    {
+        private string name;
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                if(this.name!=value)
+                {
+                    this.name = value;
+                    this.NotifyPropertyChanged("Name");
+                }
+            }
+        }
+
+        private int id;
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                if(this.id!=value)
+                {
+                    this.id = value;
+                    NotifyPropertyChanged("Id");
+                }
+            }
+
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
         }
     }
 }
