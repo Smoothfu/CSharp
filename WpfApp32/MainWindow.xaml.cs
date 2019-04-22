@@ -41,7 +41,8 @@ namespace WpfApp32
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
-            usersList.Add(new User() { Name = "New User", Id = 11 });
+            Random rnd = new Random();
+            usersList.Add(new User() { Name = "New User" + Guid.NewGuid().ToString(), Id = rnd.Next(10, 100)  });
         }
 
         private void btnChangeUser_Click(object sender, RoutedEventArgs e)
@@ -51,7 +52,7 @@ namespace WpfApp32
                 var selectedUser = lbUsers.SelectedItem as User;
                 if(selectedUser!=null)
                 {
-                    selectedUser.Name = "Random Name";
+                    selectedUser.Name = "Random Name"+Guid.NewGuid().ToString();
                 }
             }
         }
