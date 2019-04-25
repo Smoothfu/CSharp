@@ -31,7 +31,7 @@ namespace StringFilterRule.Model
         {
             get
             {
-                return RuleValue;
+                return ruleValue;
             }
             set
             {
@@ -43,10 +43,27 @@ namespace StringFilterRule.Model
             }
         }
 
+        private string ruleComment = string.Empty;
+        public string RuleComment
+        {
+            get
+            {
+                return ruleComment;
+            }
+            set
+            {
+                if(value!=ruleComment)
+                {
+                    ruleComment = value;
+                    NotifyPropertyChanged("RuleComment");
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propName)
         {
-            if (propName != null)
+            if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }

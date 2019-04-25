@@ -7,14 +7,29 @@
         mc:Ignorable="d" FontSize="20"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
+        <Style TargetType="ListBoxItem">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex"  Value="0">
+                    <Setter Property="Background" Value="Azure" />
+                </Trigger>
+                <Trigger Property="ListBoxItem.IsSelected" Value="true">
+                    <Setter  Property="Foreground" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>        
         <DataTemplate x:Key="rulesTemplate">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="350" />                    
+                    <ColumnDefinition Width="Auto" />                    
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0"  Text="{Binding Key}" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" Margin="150,0,0,0" Text="{Binding Value}"  HorizontalAlignment="Right"/>
+                <TextBlock Grid.Row="0" Grid.Column="0"  Text="{Binding RuleKey}" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Margin="150,0,0,0" Text="{Binding RuleValue}"  HorizontalAlignment="Right"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding RuleComment}" Background="LightBlue"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>
@@ -32,9 +47,8 @@
         <Button Grid.Row="0" Grid.Column="0" Content="Select Text File" FontSize="20" Command="{Binding SelectTextCmd}"/>
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Selected File: " FontSize="20" Margin="0,0,30,0" HorizontalAlignment="Center"/>
         <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding TextFileFullPath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>
-        <ListBox Grid.Row="1" Grid.Column="0"  ItemsSource="{Binding RulesDic,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                 Grid.IsSharedSizeScope="True" ItemTemplate="{StaticResource rulesTemplate}">             
-        </ListBox>                 
+        <ListBox Grid.Row="1" Grid.Column="0"  ItemsSource="{Binding RulesList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                 Grid.IsSharedSizeScope="True" ItemTemplate="{StaticResource rulesTemplate}"/>
         <Button Grid.Row="2" Grid.Column="0" Content="Select Filter Rule" FontSize="20" Command="{Binding SelectRuleCmd}" />
     </Grid>
 </Window>

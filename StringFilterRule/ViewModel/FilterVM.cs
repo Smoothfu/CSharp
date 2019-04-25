@@ -12,6 +12,8 @@ using System.Reflection;
 using StringFilterRule.Model;
 using System.Xml;
 using System.Net.Http;
+using System.Resources;
+using System.Collections;
 
 namespace StringFilterRule.ViewModel
 {
@@ -22,11 +24,11 @@ namespace StringFilterRule.ViewModel
             InitRulesDic();
             SelectTextCmd = new DelegateCommand(SelectTextCmdExecuted, SelectTextCmdCanExecute);
             SelectRuleCmd = new DelegateCommand(SelectRuleCmdExecuted, SelectRuleCmdCanExecute);
-        }        
+        }
 
         #region Properties
 
-        private string textFileFullPath;
+        private string textFileFullPath = string.Empty;
         public string TextFileFullPath
         {
             get
@@ -43,19 +45,19 @@ namespace StringFilterRule.ViewModel
             }
         }        
 
-        private Dictionary<string,string> rulesDic = new Dictionary<string, string>();
-        public Dictionary<string, string> RulesDic
+        private List<RuleModel> rulesList = new List<RuleModel>();
+        public List<RuleModel> RulesList
         {
             get
             {
-                return rulesDic;
+                return rulesList;
             }
             set
             {
-                if(value!=rulesDic)
+                if(value!=rulesList)
                 {
-                    rulesDic = value;
-                    NotifyPropertyChanged("RulesDic");
+                    rulesList = value;
+                    NotifyPropertyChanged("RulesList");
                 }
             }
         }        
@@ -105,7 +107,7 @@ namespace StringFilterRule.ViewModel
         }
         private bool SelectRuleCmdCanExecute()
         {
-            if(RulesDic!=null && RulesDic.Any())
+            if(RulesList != null && RulesList.Any())
             {
                 return true;
             }
@@ -121,41 +123,55 @@ namespace StringFilterRule.ViewModel
 
         private void InitRulesDic()
         {
-            XmlDocument doc = new XmlDocument(); 
+            XmlDocument doc = new XmlDocument();
             string filePath = Environment.CurrentDirectory + @"\Properties\Resources.resx";
-            doc.Load(filePath);
-            List<string> commentList = new List<string>();
+            doc.Load(filePath); 
             Type resourceType = typeof(Resources);
             PropertyInfo[] pis = resourceType.GetProperties(BindingFlags.NonPublic | BindingFlags.Static);
             foreach (var pi in pis.Where(x => x.PropertyType == typeof(string) && x.Name.StartsWith("R")))
             {
                 if (!string.IsNullOrEmpty(pi.Name))
                 {
-                    string dicValue = Resources.ResourceManager.GetString(pi.Name);
-                    string comment= ReadResourceComment(doc, pi.Name);
-                    if(!string.IsNullOrEmpty(comment))
-                    {
-                        commentList.Add(comment);
-                    }
+                    string ruleValue = Resources.ResourceManager.GetString(pi.Name);
+                    string ruleComment = ReadResourceComment(doc, pi.Name);                                   
 
-                    if (!rulesDic.Any(x => x.Key.Contains(pi.Name)))
+                     if(!rulesList.Any(x=>x.RuleKey.Contains(pi.Name)))
                     {
-                        rulesDic.Add(pi.Name, dicValue);
+                        rulesList.Add(new RuleModel()
+                        {
+                            RuleKey = pi.Name,
+                            RuleValue = ruleValue,
+                            RuleComment = ruleComment
+                        });
+
+                        var temp = RulesList;
                     }
                     else
                     {
-                        rulesDic[pi.Name] = dicValue;
+                        var selectedItem = RulesList.Where(x => x.RuleKey == pi.Name).FirstOrDefault();
+                        if(selectedItem!=null)
+                        {
+                            var selectedIndex = RulesList.IndexOf(selectedItem);
+                            RulesList.RemoveAt(selectedIndex);
+                            var updatedItem = new RuleModel()
+                            {
+                                RuleKey = pi.Name,
+                                RuleValue = ruleValue,
+                                RuleComment = ruleComment
+                            };
+                            RulesList.Insert(selectedIndex, updatedItem);
+                        }                        
                     }
                 }
-            }
-            var temp = commentList;
+            } 
         }
 
         public string ReadResourceComment(XmlDocument doc, string FieldName)
         {
             if (doc != null && !string.IsNullOrEmpty(doc.InnerXml))
             {
-                return doc.SelectSingleNode("root/data[@name='" + FieldName + "']")["comment"].InnerText;
+                string nodeComment= doc.SelectSingleNode("root/data[@name='" + FieldName + "']")["comment"].InnerText;
+                return nodeComment;
             }
 
             return string.Empty;
