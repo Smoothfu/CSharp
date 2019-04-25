@@ -23,3 +23,5 @@ D:\C\StringFilterRule\StringFilterRule\obj\Debug\StringFilterRule.csproj.CoreCom
 D:\C\StringFilterRule\StringFilterRule\obj\Debug\StringFilterRule.exe
 D:\C\StringFilterRule\StringFilterRule\obj\Debug\StringFilterRule.pdb
 D:\C\StringFilterRule\StringFilterRule\obj\Debug\StringFilterRule.csprojResolveAssemblyReference.cache
+D:\C\StringFilterRule\StringFilterRule\bin\Debug\FilterFunctionDll.dll
+D:\C\StringFilterRule\StringFilterRule\bin\Debug\FilterFunctionDll.pdb

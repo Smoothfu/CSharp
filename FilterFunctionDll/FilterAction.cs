@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace FilterFunctionDll
 {
-    class FilterDelegate:INotifyPropertyChanged
+   public class FilterAction:INotifyPropertyChanged
     {
         delegate bool FilterDel(string[] filterActionNames, string[] filterConditions);
-        public FilterDelegate()
+        public FilterAction()
         {
 
         }
 
-        public bool StartsWithFilterValue(string originalValue,string filterValue)
+        public bool BeginsWithFilterValue(string originalValue,string filterValue)
         {
             if(!string.IsNullOrEmpty(originalValue) && !string.IsNullOrEmpty(filterValue))
             {
@@ -60,7 +60,7 @@ namespace FilterFunctionDll
         public bool BeginsOrEndsWithFilterValue(string originalValue,
             string startsWithFilterValue,string endsWithFilterValue)
         {
-            return StartsWithFilterValue(originalValue, startsWithFilterValue)
+            return BeginsWithFilterValue(originalValue, startsWithFilterValue)
                 || EndsWithFilterValue(originalValue, endsWithFilterValue);
         }
 

@@ -11,7 +11,7 @@
             <Style.Triggers>
                 <Trigger Property="ItemsControl.AlternationIndex"  Value="0">
                     <Setter Property="Background" Value="Azure" />
-                </Trigger>
+                </Trigger> 
                 <Trigger Property="ListBoxItem.IsSelected" Value="true">
                     <Setter  Property="Foreground" Value="Red"/>
                 </Trigger>
@@ -29,15 +29,15 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0"  Text="{Binding RuleKey}" HorizontalAlignment="Left"/>
                 <TextBlock Grid.Row="0" Grid.Column="1" Margin="150,0,0,0" Text="{Binding RuleValue}"  HorizontalAlignment="Right"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding RuleComment}" Background="LightBlue"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding RuleComment}"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>
     <Grid>         
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -48,7 +48,8 @@
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Selected File: " FontSize="20" Margin="0,0,30,0" HorizontalAlignment="Center"/>
         <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding TextFileFullPath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>
         <ListBox Grid.Row="1" Grid.Column="0"  ItemsSource="{Binding RulesList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                 Grid.IsSharedSizeScope="True" ItemTemplate="{StaticResource rulesTemplate}"/>
+                 Grid.IsSharedSizeScope="True" ItemTemplate="{StaticResource rulesTemplate}"
+                 SelectedItem="{Binding SelectedRuleModel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <Button Grid.Row="2" Grid.Column="0" Content="Select Filter Rule" FontSize="20" Command="{Binding SelectRuleCmd}" />
     </Grid>
 </Window>

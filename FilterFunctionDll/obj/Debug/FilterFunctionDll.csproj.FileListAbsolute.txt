@@ -1,6 +1,5 @@
 D:\C\StringFilterRule\FilterFunctionDll\bin\Debug\FilterFunctionDll.dll
 D:\C\StringFilterRule\FilterFunctionDll\bin\Debug\FilterFunctionDll.pdb
-D:\C\StringFilterRule\FilterFunctionDll\obj\Debug\FilterFunctionDll.csprojResolveAssemblyReference.cache
 D:\C\StringFilterRule\FilterFunctionDll\obj\Debug\FilterFunctionDll.csproj.CoreCompileInputs.cache
 D:\C\StringFilterRule\FilterFunctionDll\obj\Debug\FilterFunctionDll.dll
 D:\C\StringFilterRule\FilterFunctionDll\obj\Debug\FilterFunctionDll.pdb

@@ -14,11 +14,15 @@ using System.Xml;
 using System.Net.Http;
 using System.Resources;
 using System.Collections;
+using FilterFunctionDll;
+using System.IO;
 
 namespace StringFilterRule.ViewModel
 {
     class FilterVM : INotifyPropertyChanged
     {
+        static string FilterResultFileFullName = Directory.GetCurrentDirectory() + "\\" +
+            DateTime.Now.ToString("yyyyMMdd") + "FilterResult.txt";
         public FilterVM()
         {
             InitRulesDic();
@@ -60,7 +64,85 @@ namespace StringFilterRule.ViewModel
                     NotifyPropertyChanged("RulesList");
                 }
             }
-        }        
+        }
+
+        private RuleModel selectedRuleModel;
+        public RuleModel SelectedRuleModel
+        {
+            get
+            {
+                if(selectedRuleModel==null)
+                {
+                    selectedRuleModel = new RuleModel();
+                }
+                return selectedRuleModel;
+            }
+            set
+            {
+                if(value!=selectedRuleModel)
+                {
+                    selectedRuleModel = value;
+                    NotifyPropertyChanged("SelectedRuleModel");
+                }
+            }
+        }
+
+        private FilterAction filterActionInstance;
+        public FilterAction FilterActionInstance
+        {
+            get
+            {
+                //Implement IOC by getter
+                if(filterActionInstance==null)
+                {
+                    filterActionInstance = InvokeDllClass.GetFilterActionInstance();
+                }
+                return filterActionInstance;
+            }
+            set
+            {
+                if (value != filterActionInstance)
+                {
+                    filterActionInstance = value;
+                    NotifyPropertyChanged("FilterActionInstance");
+                }
+            }
+        }
+
+
+        private string originalValue = string.Empty;
+        public string OriginalValue
+        {
+            get
+            {
+                return originalValue;
+            }
+            set
+            {
+                if(value!=originalValue)
+                {
+                    originalValue = value;
+                    NotifyPropertyChanged("OriginalValue");
+                }
+            }
+        }
+
+        private string finalResult = string.Empty;
+        public string FinalResult
+        {
+            get
+            {
+                return finalResult;
+            }
+            set
+            {
+                if(value!=finalResult)
+                {
+                    finalResult = value;
+                    NotifyPropertyChanged("FinalResult");
+                }
+            }
+        }
         #endregion
 
         #region Commands
@@ -93,7 +175,7 @@ namespace StringFilterRule.ViewModel
 
         #region Methods
         private bool SelectTextCmdCanExecute()
-        {
+        {           
             return true;
         }
         private void SelectTextCmdExecuted()
@@ -104,10 +186,11 @@ namespace StringFilterRule.ViewModel
             {
                 TextFileFullPath = ofd.FileName;
             }
+            originalValue = File.ReadAllText(textFileFullPath);
         }
         private bool SelectRuleCmdCanExecute()
-        {
-            if(RulesList != null && RulesList.Any())
+        {            
+            if (RulesList != null && RulesList.Any())
             {
                 return true;
             }
@@ -118,62 +201,125 @@ namespace StringFilterRule.ViewModel
         }
         private void SelectRuleCmdExecuted()
         {
-            
+            try
+            {
+                if (SelectedRuleModel != null)
+                {
+                    string actionName = SelectedRuleModel.RuleKey;
+                    string filterValue = selectedRuleModel.RuleValue;
+                    switch (actionName)
+                    {
+                        case "R1":
+                            FilterActionInstance.BeginsWithFilterValue(OriginalValue, filterValue);
+                            break;
+                        case "R2":
+                            filterActionInstance.EndsWithFilterValue(originalValue, filterValue);
+                            break;
+                        case "R3":
+                            filterActionInstance.ContainsFilterValue(originalValue, filterValue); break;
+                        case "R4":
+                            string endsFilterValue = RulesList.Where(x => x.RuleKey == actionName).FirstOrDefault().RuleValue;
+                            filterActionInstance.BeginsOrEndsWithFilterValue(originalValue, filterValue, endsFilterValue);
+                            break;
+                        case "R5":
+                            filterActionInstance.NotContainsFilterValue(originalValue, filterValue);
+                            break;
+                        case "R6":
+                            string beginsFilterString= RulesList.Where(x => x.RuleKey == "R1").FirstOrDefault().RuleValue;
+                            string endsFilterString = RulesList.Where(x => x.RuleKey == "R2").FirstOrDefault().RuleValue;
+                            string containsFilterString = RulesList.Where(x => x.RuleKey == "R3").FirstOrDefault().RuleValue;
+                            filterActionInstance.BeginsWithOrEndsWithNotContainsFilterValue(originalValue, beginsFilterString,
+                                endsFilterString, containsFilterString);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    FinalResult = FilterActionInstance.FilterResult;
+                    LogMessage(FinalResult);
+                }
+            }
+            catch(Exception ex)
+            {
+                LogMessage(ex.StackTrace);
+            }
+        }        
+
+        void LogMessage(string writeMsg)
+        {
+            using (StreamWriter filterWriter = new StreamWriter(FilterResultFileFullName, true))
+            {
+                filterWriter.WriteLine(writeMsg);
+                filterWriter.WriteLine($"{DateTime.Now.ToString("yyyyMMddHHmmssffff")}" + Environment.NewLine);
+            }
         }
 
         private void InitRulesDic()
         {
-            XmlDocument doc = new XmlDocument();
-            string filePath = Environment.CurrentDirectory + @"\Properties\Resources.resx";
-            doc.Load(filePath); 
-            Type resourceType = typeof(Resources);
-            PropertyInfo[] pis = resourceType.GetProperties(BindingFlags.NonPublic | BindingFlags.Static);
-            foreach (var pi in pis.Where(x => x.PropertyType == typeof(string) && x.Name.StartsWith("R")))
+            try
             {
-                if (!string.IsNullOrEmpty(pi.Name))
+                XmlDocument doc = new XmlDocument();
+                string filePath = Environment.CurrentDirectory + @"\Properties\Resources.resx";
+                doc.Load(filePath);
+                Type resourceType = typeof(Resources);
+                PropertyInfo[] pis = resourceType.GetProperties(BindingFlags.NonPublic | BindingFlags.Static);
+                foreach (var pi in pis.Where(x => x.PropertyType == typeof(string) && x.Name.StartsWith("R")))
                 {
-                    string ruleValue = Resources.ResourceManager.GetString(pi.Name);
-                    string ruleComment = ReadResourceComment(doc, pi.Name);                                   
-
-                     if(!rulesList.Any(x=>x.RuleKey.Contains(pi.Name)))
+                    if (!string.IsNullOrEmpty(pi.Name))
                     {
-                        rulesList.Add(new RuleModel()
-                        {
-                            RuleKey = pi.Name,
-                            RuleValue = ruleValue,
-                            RuleComment = ruleComment
-                        });
+                        string ruleValue = Resources.ResourceManager.GetString(pi.Name);
+                        string ruleComment = ReadResourceComment(doc, pi.Name);
 
-                        var temp = RulesList;
-                    }
-                    else
-                    {
-                        var selectedItem = RulesList.Where(x => x.RuleKey == pi.Name).FirstOrDefault();
-                        if(selectedItem!=null)
+                        if (!rulesList.Any(x => x.RuleKey.Contains(pi.Name)))
                         {
-                            var selectedIndex = RulesList.IndexOf(selectedItem);
-                            RulesList.RemoveAt(selectedIndex);
-                            var updatedItem = new RuleModel()
+                            rulesList.Add(new RuleModel()
                             {
                                 RuleKey = pi.Name,
                                 RuleValue = ruleValue,
                                 RuleComment = ruleComment
-                            };
-                            RulesList.Insert(selectedIndex, updatedItem);
-                        }                        
+                            });
+
+                            var temp = RulesList;
+                        }
+                        else
+                        {
+                            var selectedItem = RulesList.Where(x => x.RuleKey == pi.Name).FirstOrDefault();
+                            if (selectedItem != null)
+                            {
+                                var selectedIndex = RulesList.IndexOf(selectedItem);
+                                RulesList.RemoveAt(selectedIndex);
+                                var updatedItem = new RuleModel()
+                                {
+                                    RuleKey = pi.Name,
+                                    RuleValue = ruleValue,
+                                    RuleComment = ruleComment
+                                };
+                                RulesList.Insert(selectedIndex, updatedItem);
+                            }
+                        }
                     }
                 }
-            } 
+            }
+            catch (Exception ex)
+            {
+                LogMessage(ex.StackTrace);
+            }
         }
 
         public string ReadResourceComment(XmlDocument doc, string FieldName)
         {
-            if (doc != null && !string.IsNullOrEmpty(doc.InnerXml))
+            try
             {
-                string nodeComment= doc.SelectSingleNode("root/data[@name='" + FieldName + "']")["comment"].InnerText;
-                return nodeComment;
+                if (doc != null && !string.IsNullOrEmpty(doc.InnerXml))
+                {
+                    string nodeComment = doc.SelectSingleNode("root/data[@name='" + FieldName + "']")["comment"].InnerText;
+                    return nodeComment;
+                }
             }
-
+            catch (Exception ex)
+            {
+                LogMessage(ex.StackTrace);
+            }
             return string.Empty;
         }
         public event PropertyChangedEventHandler PropertyChanged;
