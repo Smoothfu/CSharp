@@ -21,3 +21,5 @@ D:\C\StringFilterRule\StringFilterRule\bin\Debug\Microsoft.Practices.ServiceLoca
 D:\C\StringFilterRule\StringFilterRule\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 D:\C\StringFilterRule\StringFilterRule\bin\Debug\Prism.xml
 D:\C\StringFilterRule\StringFilterRule\bin\Debug\Prism.Wpf.xml
+D:\C\StringFilterRule\StringFilterRule\bin\Debug\Properties\Resources.resx
+D:\C\StringFilterRule\StringFilterRule\bin\Debug\Properties\Resources.Designer.cs

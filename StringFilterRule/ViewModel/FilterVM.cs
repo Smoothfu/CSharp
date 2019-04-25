@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using StringFilterRule.Properties;
 using System.Reflection;
 using StringFilterRule.Model;
+using System.Xml;
+using System.Net.Http;
 
 namespace StringFilterRule.ViewModel
 {
@@ -41,8 +43,8 @@ namespace StringFilterRule.ViewModel
             }
         }        
 
-        private List<KeyValuePair<string,string>> rulesDic = new List<KeyValuePair<string, string>>();
-        public List<KeyValuePair<string, string>> RulesDic
+        private Dictionary<string,string> rulesDic = new Dictionary<string, string>();
+        public Dictionary<string, string> RulesDic
         {
             get
             {
@@ -119,23 +121,44 @@ namespace StringFilterRule.ViewModel
 
         private void InitRulesDic()
         {
+            XmlDocument doc = new XmlDocument(); 
+            string filePath = Environment.CurrentDirectory + @"\Properties\Resources.resx";
+            doc.Load(filePath);
+            List<string> commentList = new List<string>();
             Type resourceType = typeof(Resources);
             PropertyInfo[] pis = resourceType.GetProperties(BindingFlags.NonPublic | BindingFlags.Static);
-            foreach (var pi in pis.Where(x => x.PropertyType == typeof(string) && x.Name.EndsWith("Value")))
+            foreach (var pi in pis.Where(x => x.PropertyType == typeof(string) && x.Name.StartsWith("R")))
             {
-                if(!string.IsNullOrEmpty(pi.Name))
+                if (!string.IsNullOrEmpty(pi.Name))
                 {
                     string dicValue = Resources.ResourceManager.GetString(pi.Name);
-                    if (!rulesDic.Any(x=>x.Key.Contains(pi.Name)))
+                    string comment= ReadResourceComment(doc, pi.Name);
+                    if(!string.IsNullOrEmpty(comment))
                     {
-                        rulesDic.Add(new KeyValuePair<string, string>(pi.Name, dicValue));
+                        commentList.Add(comment);
+                    }
+
+                    if (!rulesDic.Any(x => x.Key.Contains(pi.Name)))
+                    {
+                        rulesDic.Add(pi.Name, dicValue);
                     }
                     else
                     {
                         rulesDic[pi.Name] = dicValue;
                     }
-                }               
+                }
             }
+            var temp = commentList;
+        }
+
+        public string ReadResourceComment(XmlDocument doc, string FieldName)
+        {
+            if (doc != null && !string.IsNullOrEmpty(doc.InnerXml))
+            {
+                return doc.SelectSingleNode("root/data[@name='" + FieldName + "']")["comment"].InnerText;
+            }
+
+            return string.Empty;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propName)
@@ -146,6 +169,5 @@ namespace StringFilterRule.ViewModel
             }
         }
         #endregion
-
     }
 }
