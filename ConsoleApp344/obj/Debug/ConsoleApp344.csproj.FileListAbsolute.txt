@@ -4,3 +4,4 @@ D:\C\ConsoleApp344\ConsoleApp344\bin\Debug\ConsoleApp344.pdb
 D:\C\ConsoleApp344\ConsoleApp344\obj\Debug\ConsoleApp344.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp344\ConsoleApp344\obj\Debug\ConsoleApp344.exe
 D:\C\ConsoleApp344\ConsoleApp344\obj\Debug\ConsoleApp344.pdb
+D:\C\ConsoleApp344\ConsoleApp344\obj\Debug\ConsoleApp344.csprojResolveAssemblyReference.cache
