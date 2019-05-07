@@ -10,7 +10,10 @@ namespace ConsoleApp344
     {
         static void Main(string[] args)
         {
-            HashCodeDistinct();
+            string str1 = "Hello";
+            string str2 = str1;
+            str1 = "Hello world";
+            Console.WriteLine($"str1 is {str1},str2 is {str2}");
             Console.ReadLine();
         }
 
