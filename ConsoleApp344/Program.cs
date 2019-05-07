@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,15 @@ namespace ConsoleApp344
     {
         static void Main(string[] args)
         {
-            string str1 = "Hello";
-            string str2 = str1;
-            str1 = "Hello world";
-            Console.WriteLine($"str1 is {str1},str2 is {str2}");
+            HashTableExample2();
             Console.ReadLine();
+        }
+
+        static void HashTableExample2()
+        {
+            Hashtable hashtable1 = new Hashtable();
+            Hashtable hashTable2 = new Hashtable(50);
+            Hashtable hashTable3 = new Hashtable(25, 0.3f);
         }
 
         static void HashCodeDistinct()
@@ -68,6 +73,58 @@ namespace ConsoleApp344
                 {
                     Console.WriteLine(i + "\t" + arr[i]);
                 }
+            }
+        }
+    }
+
+    public class BucketHash
+    {
+        private const int SIZE = 101;
+        ArrayList[] data;
+        public BucketHash()
+        {
+            data = new ArrayList[SIZE];
+            for(int i=0;i<=SIZE-1;i++)
+            {
+                data[i] = new ArrayList(4);
+            } 
+        }
+
+        public int Hash(string str)
+        {
+            long tot = 0;
+            char[] charArr;
+            charArr = str.ToCharArray();
+            for(int i=0;i<=str.Length-1;i++)
+            {
+                tot += 37 * tot + (int)charArr[i];
+            }
+            tot = tot % data.Length;
+            if(tot<0)
+            {
+                tot += data.Length;
+            }
+            return (int)tot;
+        }
+
+        public void Insert(string item)
+        {
+            int hash_Value;
+            hash_Value = Hash(item);
+
+            if(!data[hash_Value].Contains(item))
+            {
+                data[hash_Value].Add(item);
+            }
+        }
+
+        public void Remove(string item)
+        {
+            int hash_Value;
+            hash_Value = Hash(item);
+            if(data[hash_Value].Contains(item))
+            {
+                data[hash_Value].Remove(item);
             }
         }
     }
