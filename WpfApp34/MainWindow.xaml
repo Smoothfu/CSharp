@@ -29,7 +29,7 @@
         <TextBlock>Header 2</TextBlock>
         <TextBlock Foreground="Blue">Header 3</TextBlock>
     </StackPanel>-->
-    <Grid Margin="10">
+    <!--<Grid Margin="10">
         <TextBlock Text="Style test">
             <TextBlock.Style>
                 <Style>
@@ -37,5 +37,17 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-    </Grid>
+    </Grid>-->
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel Margin="10">
+        <TextBlock>Header 1</TextBlock>
+        <TextBlock>Header 2</TextBlock>
+        <TextBlock Foreground="Blue">Header 3</TextBlock>
+    </StackPanel>
 </Window>
