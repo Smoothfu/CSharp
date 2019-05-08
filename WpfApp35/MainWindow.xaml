@@ -84,7 +84,7 @@
         </TextBlock>
     </Grid>-->
 
-    <StackPanel Orientation="Vertical">
+    <!--<StackPanel Orientation="Vertical">
         <TextBox Width="300" />
         <TextBox VerticalAlignment="Center" HorizontalAlignment="Center"
                  Text="Hover and focus here" Width="150">
@@ -104,5 +104,28 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
+    </StackPanel>-->
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <CheckBox Name="cbSampleYes" Content="Yes"/>
+        <CheckBox Name="cbSampleSure" Content="I'm sure"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="28">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="Unverified"/>
+                    <Setter Property="Foreground" Value="Red"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=cbSampleYes,Path=IsChecked}" Value="True"/>
+                                <Condition Binding="{Binding ElementName=cbSampleSure,Path=IsChecked}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Text" Value="Verified"/>
+                            <Setter Property="Foreground" Value="Green"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
     </StackPanel>
 </Window>
