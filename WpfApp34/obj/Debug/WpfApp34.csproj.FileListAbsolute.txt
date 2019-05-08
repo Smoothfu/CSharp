@@ -1,7 +1,6 @@
 D:\C\WpfApp34\WpfApp34\bin\Debug\WpfApp34.exe.config
 D:\C\WpfApp34\WpfApp34\bin\Debug\WpfApp34.exe
 D:\C\WpfApp34\WpfApp34\bin\Debug\WpfApp34.pdb
-D:\C\WpfApp34\WpfApp34\obj\Debug\WpfApp34.csprojResolveAssemblyReference.cache
 D:\C\WpfApp34\WpfApp34\obj\Debug\MainWindow.g.cs
 D:\C\WpfApp34\WpfApp34\obj\Debug\App.g.cs
 D:\C\WpfApp34\WpfApp34\obj\Debug\WpfApp34_MarkupCompile.cache

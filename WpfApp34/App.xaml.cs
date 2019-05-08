@@ -13,5 +13,9 @@ namespace WpfApp34
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+
+        }
     }
 }
