@@ -18,7 +18,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>-->        
     <!--</Grid>-->
-    <StackPanel Margin="10">
+    <!--<StackPanel Margin="10">
         <StackPanel.Resources>
             <Style TargetType="TextBlock">
                 <Setter Property="Foreground" Value="Gray"/>
@@ -28,5 +28,14 @@
         <TextBlock>Header 1</TextBlock>
         <TextBlock>Header 2</TextBlock>
         <TextBlock Foreground="Blue">Header 3</TextBlock>
-    </StackPanel>
+    </StackPanel>-->
+    <Grid Margin="10">
+        <TextBlock Text="Style test">
+            <TextBlock.Style>
+                <Style>
+                    <Setter Property="TextBlock.FontSize" Value="36"/>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </Grid>
 </Window>
