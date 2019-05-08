@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WpfApp34"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <ComboBox ItemsSource="{Binding PersonList}" Height="100" SnapsToDevicePixels="True">
+    <!--<Grid>-->
+        <!--<ComboBox ItemsSource="{Binding PersonList}" Height="100" SnapsToDevicePixels="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -16,6 +16,17 @@
                     </StackPanel>                    
                 </DataTemplate>
             </ComboBox.ItemTemplate>
-        </ComboBox>
-    </Grid>
+        </ComboBox>-->        
+    <!--</Grid>-->
+    <StackPanel Margin="10">
+        <StackPanel.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="FontSize" Value="24"/>
+            </Style>
+        </StackPanel.Resources>
+        <TextBlock>Header 1</TextBlock>
+        <TextBlock>Header 2</TextBlock>
+        <TextBlock Foreground="Blue">Header 3</TextBlock>
+    </StackPanel>
 </Window>
