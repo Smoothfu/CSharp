@@ -1,0 +1,14 @@
+D:\C\WpfApp35\WpfApp35\bin\Debug\WpfApp35.exe.config
+D:\C\WpfApp35\WpfApp35\bin\Debug\WpfApp35.exe
+D:\C\WpfApp35\WpfApp35\bin\Debug\WpfApp35.pdb
+D:\C\WpfApp35\WpfApp35\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp35\WpfApp35\obj\Debug\App.g.cs
+D:\C\WpfApp35\WpfApp35\obj\Debug\WpfApp35_MarkupCompile.cache
+D:\C\WpfApp35\WpfApp35\obj\Debug\WpfApp35_MarkupCompile.lref
+D:\C\WpfApp35\WpfApp35\obj\Debug\MainWindow.baml
+D:\C\WpfApp35\WpfApp35\obj\Debug\WpfApp35.g.resources
+D:\C\WpfApp35\WpfApp35\obj\Debug\WpfApp35.Properties.Resources.resources
+D:\C\WpfApp35\WpfApp35\obj\Debug\WpfApp35.csproj.GenerateResource.Cache
+D:\C\WpfApp35\WpfApp35\obj\Debug\WpfApp35.csproj.CoreCompileInputs.cache
+D:\C\WpfApp35\WpfApp35\obj\Debug\WpfApp35.exe
+D:\C\WpfApp35\WpfApp35\obj\Debug\WpfApp35.pdb
