@@ -17,7 +17,7 @@
         <TextBlock Style="{StaticResource HeaderStyle}">Header 2</TextBlock>
         <TextBlock>Header 3</TextBlock>
     </StackPanel>-->
-    <Grid>
+    <!--<Grid>
         <TextBlock Text="Hello,style world!" FontSize="28" HorizontalAlignment="Center"
                    VerticalAlignment="Center">
             <TextBlock.Style>
@@ -32,5 +32,23 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-    </Grid>
+    </Grid>-->
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <CheckBox Name="cbSample" Content="Hello,world?"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="48">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="No"/>
+                    <Setter Property="Foreground" Value="Red"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=cbSample,Path=IsChecked}" Value="True">
+                            <Setter Property="Text" Value="Yes!"/>
+                            <Setter Property="Foreground" Value="Green"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </StackPanel>
 </Window>
