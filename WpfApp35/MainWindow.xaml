@@ -106,7 +106,7 @@
         </TextBox>
     </StackPanel>-->
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <CheckBox Name="cbSampleYes" Content="Yes"/>
         <CheckBox Name="cbSampleSure" Content="I'm sure"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="28">
@@ -127,5 +127,36 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-    </StackPanel>
+    </StackPanel>-->
+
+    <Grid>
+        <Border Background="LightGreen" Width="100" Height="100" BorderBrush="Green">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.400" To="13" Storyboard.TargetProperty="BorderThickness"/>
+                                        <DoubleAnimation Duration="0:0:0.300" To="1250" Storyboard.TargetProperty="Height"/>
+                                        <DoubleAnimation Duration="0:0:0.300" To="1250" Storyboard.TargetProperty="Width"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" Storyboard.TargetProperty="BorderThickness"/>
+                                        <DoubleAnimation Duration="0:0:0.150" Storyboard.TargetProperty="Height"/>
+                                        <DoubleAnimation Duration="0:0:0.150" Storyboard.TargetProperty="Width"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
+    </Grid>
 </Window>
