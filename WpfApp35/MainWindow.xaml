@@ -52,7 +52,7 @@
         </TextBlock>
     </StackPanel>-->
 
-    <Grid>
+    <!--<Grid>
         <TextBlock Name="lblStyled" Text="Hello,Styled world!" FontSize="18"
                    HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock.Style>
@@ -62,7 +62,7 @@
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Duration="0:0:5" 
+                                        <DoubleAnimation Duration="0:0:2" 
                                                          Storyboard.TargetProperty="FontSize" To="150"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -72,7 +72,7 @@
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Duration="0:0:0.800" Storyboard.TargetProperty="FontSize"
+                                        <DoubleAnimation Duration="0:0:5" Storyboard.TargetProperty="FontSize"
                                                          To="18"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -82,5 +82,27 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-    </Grid>
+    </Grid>-->
+
+    <StackPanel Orientation="Vertical">
+        <TextBox Width="300" />
+        <TextBox VerticalAlignment="Center" HorizontalAlignment="Center"
+                 Text="Hover and focus here" Width="150">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsKeyboardFocused" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Background" Value="LightGreen"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+    </StackPanel>
 </Window>
