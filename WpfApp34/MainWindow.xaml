@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button Height="100" Width="500" Content="Test Tag" Tag="This is to test the tag property"/>
+        <ComboBox ItemsSource="{Binding PersonList}" Height="100" SnapsToDevicePixels="True">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" Width="100" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Id}" Width="100" HorizontalAlignment="Right"/>
+                    </StackPanel>                    
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
     </Grid>
 </Window>
