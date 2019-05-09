@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp38"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="This is generated in MainApp.XAML" Height="350" Width="525">
     <Grid>
         <FlowDocumentScrollViewer IsToolBarVisible="True"
                                  Zoom="80" ScrollViewer.VerticalScrollBarVisibility="Auto">

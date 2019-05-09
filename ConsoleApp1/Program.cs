@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows; 
 using System.Diagnostics;
+using System.Windows.Media;
 
 namespace ConsoleApp1
 {
@@ -14,6 +15,11 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Process.Start("WpfApp38.exe");
+            Application app = new MainApp();
+            Window win = new Window();
+            win.Title = "This is generated in Console";
+            win.Background = new SolidColorBrush(Colors.Yellow);
+            app.Run(win);
             Console.ReadLine();
         }
     }

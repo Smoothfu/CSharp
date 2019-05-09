@@ -17,8 +17,10 @@ namespace WpfApp38
         public App()
         {
             Window win = new Window();
-            win.Title = "New Window";
+            win.Title = "This is generated in App()";
             win.BorderBrush = new SolidColorBrush(Colors.Red);
+            win.Background=new SolidColorBrush(Colors.Red);
+
             win.Show();
         }       
     }
