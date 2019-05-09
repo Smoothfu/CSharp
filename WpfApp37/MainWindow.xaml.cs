@@ -35,21 +35,29 @@ namespace WpfApp37
 
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if(e.Cancelled)
+            try
             {
-                lblStatus.Foreground = Brushes.Red;
-                lblStatus.Text = "Cancelled by user...";
+                if (e.Cancelled)
+                {
+                    lblStatus.Foreground = Brushes.Red;
+                    lblStatus.Text = "Cancelled by user..." + e.UserState;
+                }
+                else
+                {
+                    lblStatus.Foreground = Brushes.Green;
+                    lblStatus.Text = "Donw...Calc result:" + e.Result;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                lblStatus.Foreground = Brushes.Green;
-                lblStatus.Text = "Donw...Calc result:" + e.Result;
+                System.Diagnostics.Debug.WriteLine(ex.StackTrace);
             }
+            
         }
 
         private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            lblStatus.Text = "Working...(" + e.ProgressPercentage + "%)";
+            lblStatus.Text = "Working...(" + e.ProgressPercentage + "%) "+e.UserState;
         }
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
@@ -61,7 +69,7 @@ namespace WpfApp37
                     e.Cancel = true;
                     return;
                 }
-                worker.ReportProgress(i);
+                worker.ReportProgress(i,"Now is "+ DateTime.Now.ToString("yyyyMMddHHmmssffff"));
                 System.Threading.Thread.Sleep(50);
             }
             e.Result = 42;
