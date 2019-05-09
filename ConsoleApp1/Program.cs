@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows; 
+using System.Diagnostics;
 
 namespace ConsoleApp1
 {
@@ -12,11 +13,7 @@ namespace ConsoleApp1
         [STAThread]
         static void Main(string[] args)
         {
-            Window win = new Window();
-            win.Title = "Start from Console";
-            win.Content = "Dare to do terrible things";
-            Application app = new MainApp();
-            app.Run(win);
+            Process.Start("WpfApp38.exe");
             Console.ReadLine();
         }
     }
@@ -36,10 +33,10 @@ namespace ConsoleApp1
 
         protected override void OnExit(ExitEventArgs e)
         {
-            Console.WriteLine("OnExit");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("OnExit");            
             Console.WriteLine($"ApplicationExitCode:{e.ApplicationExitCode}");
-            this.Shutdown(0);
-            
+            this.Shutdown(0);            
         }
 
         protected override void OnStartup(StartupEventArgs e)

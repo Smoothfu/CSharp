@@ -22,7 +22,7 @@ namespace WpfApp38
     {
         public MainWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();            
         }
     }
 }

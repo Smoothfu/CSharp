@@ -10,7 +10,7 @@
         <FlowDocumentScrollViewer IsToolBarVisible="True"
                                  Zoom="80" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <FlowDocument>
-                <Paragraph FontSize="36">Hello, world!
+                <Paragraph FontSize="36">Hello, world! Cherish the present moment!
                 </Paragraph>
                 <Paragraph FontStyle="Italic" TextAlignment="Left" FontSize="14" Foreground="Gray">The ultimate programming greeting!</Paragraph>
             </FlowDocument>

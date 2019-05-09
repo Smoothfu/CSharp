@@ -14,39 +14,12 @@ namespace WpfApp38
     /// </summary>
     public partial class App : Application
     {
-        public App():base()
+        public App()
         {
-
-        }
-
-        protected override void OnActivated(EventArgs e)
-        {
-            Console.WriteLine("OnActivated");
-            base.OnActivated(e);
-        }
-
-        protected override void OnExit(ExitEventArgs e)
-        {
-            Console.WriteLine("OnExit");
-            this.Shutdown();
-        }
-
-        protected override void OnDeactivated(EventArgs e)
-        {
-            Console.WriteLine("OnDeactivated");
-            base.OnDeactivated(e);
-        }
-
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            Console.WriteLine("OnStartup");
-            base.OnStartup(e);
-        }
-
-        protected override void OnSessionEnding(SessionEndingCancelEventArgs e)
-        {
-            Console.WriteLine("OnSessionEnding");
-            base.OnSessionEnding(e);
-        }
+            Window win = new Window();
+            win.Title = "New Window";
+            win.BorderBrush = new SolidColorBrush(Colors.Red);
+            win.Show();
+        }       
     }
 }

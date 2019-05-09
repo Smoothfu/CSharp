@@ -1,0 +1,1055 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WpfApp38.1.0.0.0.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:WpfApp38.Fakes.ShimApp">
+            <summary>Shim type of WpfApp38.App</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimApp.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimApp.#ctor(WpfApp38.App)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:WpfApp38.Fakes.ShimApp.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimApp.AllInstances.InitializeComponent">
+            <summary>Sets the shim of App.InitializeComponent()</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimApp.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimApp.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimApp.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimApp.Bind(System.Windows.Markup.IQueryAmbient)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimApp.Constructor">
+            <summary>Sets the shim of App.App()</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimApp.InitializeComponent">
+            <summary>Sets the shim of App.InitializeComponent()</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimApp.Main">
+            <summary>Sets the shim of App.Main()</summary>
+        </member>
+        <member name="T:WpfApp38.Fakes.ShimMainWindow">
+            <summary>Shim type of WpfApp38.MainWindow</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.#ctor(WpfApp38.MainWindow)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:WpfApp38.Fakes.ShimMainWindow.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimMainWindow.AllInstances.InitializeComponent">
+            <summary>Sets the shim of MainWindow.InitializeComponent()</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimMainWindow.AllInstances.SystemWindowsMarkupIComponentConnectorConnectInt32Object">
+            <summary>Sets the shim of MainWindow.System.Windows.Markup.IComponentConnector.Connect(Int32 connectionId, Object target)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimMainWindow.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.Bind(System.Windows.IInputElement)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.Bind(System.Windows.Markup.IAddChild)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.Bind(System.Windows.Media.Animation.IAnimatable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.Bind(System.Windows.IFrameworkInputElement)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.Bind(System.ComponentModel.ISupportInitialize)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.Bind(System.Windows.Markup.IComponentConnector)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.ShimMainWindow.Bind(System.Windows.Markup.IQueryAmbient)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimMainWindow.Constructor">
+            <summary>Sets the shim of MainWindow.MainWindow()</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimMainWindow.InitializeComponent">
+            <summary>Sets the shim of MainWindow.InitializeComponent()</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.ShimMainWindow.SystemWindowsMarkupIComponentConnectorConnectInt32Object">
+            <summary>Sets the shim of MainWindow.System.Windows.Markup.IComponentConnector.Connect(Int32 connectionId, Object target)</summary>
+        </member>
+        <member name="T:WpfApp38.Fakes.StubApp">
+            <summary>Stub type of WpfApp38.App</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubApp.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.InitializeStub">
+            <summary>Initializes a new instance of type StubApp</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubApp.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubApp.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnActivated(System.EventArgs)">
+            <summary>Sets the stub of Application.OnActivated(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnActivatedEventArgs">
+            <summary>Sets the stub of Application.OnActivated(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnDeactivated(System.EventArgs)">
+            <summary>Sets the stub of Application.OnDeactivated(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnDeactivatedEventArgs">
+            <summary>Sets the stub of Application.OnDeactivated(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnExit(System.Windows.ExitEventArgs)">
+            <summary>Sets the stub of Application.OnExit(ExitEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnExitExitEventArgs">
+            <summary>Sets the stub of Application.OnExit(ExitEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnFragmentNavigation(System.Windows.Navigation.FragmentNavigationEventArgs)">
+            <summary>Sets the stub of Application.OnFragmentNavigation(FragmentNavigationEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnFragmentNavigationFragmentNavigationEventArgs">
+            <summary>Sets the stub of Application.OnFragmentNavigation(FragmentNavigationEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnLoadCompleted(System.Windows.Navigation.NavigationEventArgs)">
+            <summary>Sets the stub of Application.OnLoadCompleted(NavigationEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnLoadCompletedNavigationEventArgs">
+            <summary>Sets the stub of Application.OnLoadCompleted(NavigationEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnNavigated(System.Windows.Navigation.NavigationEventArgs)">
+            <summary>Sets the stub of Application.OnNavigated(NavigationEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnNavigatedNavigationEventArgs">
+            <summary>Sets the stub of Application.OnNavigated(NavigationEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnNavigating(System.Windows.Navigation.NavigatingCancelEventArgs)">
+            <summary>Sets the stub of Application.OnNavigating(NavigatingCancelEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnNavigatingNavigatingCancelEventArgs">
+            <summary>Sets the stub of Application.OnNavigating(NavigatingCancelEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnNavigationFailed(System.Windows.Navigation.NavigationFailedEventArgs)">
+            <summary>Sets the stub of Application.OnNavigationFailed(NavigationFailedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnNavigationFailedNavigationFailedEventArgs">
+            <summary>Sets the stub of Application.OnNavigationFailed(NavigationFailedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnNavigationProgress(System.Windows.Navigation.NavigationProgressEventArgs)">
+            <summary>Sets the stub of Application.OnNavigationProgress(NavigationProgressEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnNavigationProgressNavigationProgressEventArgs">
+            <summary>Sets the stub of Application.OnNavigationProgress(NavigationProgressEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnNavigationStopped(System.Windows.Navigation.NavigationEventArgs)">
+            <summary>Sets the stub of Application.OnNavigationStopped(NavigationEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnNavigationStoppedNavigationEventArgs">
+            <summary>Sets the stub of Application.OnNavigationStopped(NavigationEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnSessionEnding(System.Windows.SessionEndingCancelEventArgs)">
+            <summary>Sets the stub of Application.OnSessionEnding(SessionEndingCancelEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnSessionEndingSessionEndingCancelEventArgs">
+            <summary>Sets the stub of Application.OnSessionEnding(SessionEndingCancelEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubApp.OnStartup(System.Windows.StartupEventArgs)">
+            <summary>Sets the stub of Application.OnStartup(StartupEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubApp.OnStartupStartupEventArgs">
+            <summary>Sets the stub of Application.OnStartup(StartupEventArgs e)</summary>
+        </member>
+        <member name="T:WpfApp38.Fakes.StubMainWindow">
+            <summary>Stub type of WpfApp38.MainWindow</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.AddChild(System.Object)">
+            <summary>Sets the stub of ContentControl.AddChild(Object value)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.AddChildObject">
+            <summary>Sets the stub of ContentControl.AddChild(Object value)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.AddText(System.String)">
+            <summary>Sets the stub of ContentControl.AddText(String text)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.AddTextString">
+            <summary>Sets the stub of ContentControl.AddText(String text)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.ArrangeOverride(System.Windows.Size)">
+            <summary>Sets the stub of Window.ArrangeOverride(Size arrangeBounds)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.ArrangeOverrideSize">
+            <summary>Sets the stub of Window.ArrangeOverride(Size arrangeBounds)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.BeginInit">
+            <summary>Sets the stub of FrameworkElement.BeginInit()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.BeginInit01">
+            <summary>Sets the stub of FrameworkElement.BeginInit()</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubMainWindow.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.EndInit">
+            <summary>Sets the stub of FrameworkElement.EndInit()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.EndInit01">
+            <summary>Sets the stub of FrameworkElement.EndInit()</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.GetLayoutClip(System.Windows.Size)">
+            <summary>Sets the stub of FrameworkElement.GetLayoutClip(Size layoutSlotSize)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.GetLayoutClipSize">
+            <summary>Sets the stub of FrameworkElement.GetLayoutClip(Size layoutSlotSize)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.GetUIParentCore">
+            <summary>Sets the stub of FrameworkElement.GetUIParentCore()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.GetUIParentCore01">
+            <summary>Sets the stub of FrameworkElement.GetUIParentCore()</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.GetVisualChild(System.Int32)">
+            <summary>Sets the stub of FrameworkElement.GetVisualChild(Int32 index)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.GetVisualChildInt32">
+            <summary>Sets the stub of FrameworkElement.GetVisualChild(Int32 index)</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubMainWindow.HandlesScrolling">
+            <summary>Sets the stub of Control.get_HandlesScrolling()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.HandlesScrollingGet">
+            <summary>Sets the stub of Control.get_HandlesScrolling()</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubMainWindow.HasEffectiveKeyboardFocus">
+            <summary>Sets the stub of UIElement.get_HasEffectiveKeyboardFocus()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.HasEffectiveKeyboardFocusGet">
+            <summary>Sets the stub of UIElement.get_HasEffectiveKeyboardFocus()</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.HitTestCore(System.Windows.Media.GeometryHitTestParameters)">
+            <summary>Sets the stub of UIElement.HitTestCore(GeometryHitTestParameters hitTestParameters)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.HitTestCore(System.Windows.Media.PointHitTestParameters)">
+            <summary>Sets the stub of UIElement.HitTestCore(PointHitTestParameters hitTestParameters)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.HitTestCoreGeometryHitTestParameters">
+            <summary>Sets the stub of UIElement.HitTestCore(GeometryHitTestParameters hitTestParameters)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.HitTestCorePointHitTestParameters">
+            <summary>Sets the stub of UIElement.HitTestCore(PointHitTestParameters hitTestParameters)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.InitializeStub">
+            <summary>Initializes a new instance of type StubMainWindow</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubMainWindow.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubMainWindow.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubMainWindow.IsEnabledCore">
+            <summary>Sets the stub of UIElement.get_IsEnabledCore()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.IsEnabledCoreGet">
+            <summary>Sets the stub of UIElement.get_IsEnabledCore()</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubMainWindow.LogicalChildren">
+            <summary>Sets the stub of Window.get_LogicalChildren()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.LogicalChildrenGet">
+            <summary>Sets the stub of Window.get_LogicalChildren()</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.MeasureOverride(System.Windows.Size)">
+            <summary>Sets the stub of Window.MeasureOverride(Size availableSize)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.MeasureOverrideSize">
+            <summary>Sets the stub of Window.MeasureOverride(Size availableSize)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnAccessKey(System.Windows.Input.AccessKeyEventArgs)">
+            <summary>Sets the stub of UIElement.OnAccessKey(AccessKeyEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnAccessKeyAccessKeyEventArgs">
+            <summary>Sets the stub of UIElement.OnAccessKey(AccessKeyEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnActivated(System.EventArgs)">
+            <summary>Sets the stub of Window.OnActivated(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnActivatedEventArgs">
+            <summary>Sets the stub of Window.OnActivated(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnApplyTemplate">
+            <summary>Sets the stub of FrameworkElement.OnApplyTemplate()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnApplyTemplate01">
+            <summary>Sets the stub of FrameworkElement.OnApplyTemplate()</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnChildDesiredSizeChanged(System.Windows.UIElement)">
+            <summary>Sets the stub of UIElement.OnChildDesiredSizeChanged(UIElement child)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnChildDesiredSizeChangedUIElement">
+            <summary>Sets the stub of UIElement.OnChildDesiredSizeChanged(UIElement child)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnClosed(System.EventArgs)">
+            <summary>Sets the stub of Window.OnClosed(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnClosedEventArgs">
+            <summary>Sets the stub of Window.OnClosed(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnClosing(System.ComponentModel.CancelEventArgs)">
+            <summary>Sets the stub of Window.OnClosing(CancelEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnClosingCancelEventArgs">
+            <summary>Sets the stub of Window.OnClosing(CancelEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnContentChanged(System.Object,System.Object)">
+            <summary>Sets the stub of Window.OnContentChanged(Object oldContent, Object newContent)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnContentChangedObjectObject">
+            <summary>Sets the stub of Window.OnContentChanged(Object oldContent, Object newContent)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnContentRendered(System.EventArgs)">
+            <summary>Sets the stub of Window.OnContentRendered(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnContentRenderedEventArgs">
+            <summary>Sets the stub of Window.OnContentRendered(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnContentStringFormatChanged(System.String,System.String)">
+            <summary>Sets the stub of ContentControl.OnContentStringFormatChanged(String oldContentStringFormat, String newContentStringFormat)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnContentStringFormatChangedStringString">
+            <summary>Sets the stub of ContentControl.OnContentStringFormatChanged(String oldContentStringFormat, String newContentStringFormat)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnContentTemplateChanged(System.Windows.DataTemplate,System.Windows.DataTemplate)">
+            <summary>Sets the stub of ContentControl.OnContentTemplateChanged(DataTemplate oldContentTemplate, DataTemplate newContentTemplate)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnContentTemplateChangedDataTemplateDataTemplate">
+            <summary>Sets the stub of ContentControl.OnContentTemplateChanged(DataTemplate oldContentTemplate, DataTemplate newContentTemplate)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnContentTemplateSelectorChanged(System.Windows.Controls.DataTemplateSelector,System.Windows.Controls.DataTemplateSelector)">
+            <summary>Sets the stub of ContentControl.OnContentTemplateSelectorChanged(DataTemplateSelector oldContentTemplateSelector, DataTemplateSelector newContentTemplateSelector)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnContentTemplateSelectorChangedDataTemplateSelectorDataTemplateSelector">
+            <summary>Sets the stub of ContentControl.OnContentTemplateSelectorChanged(DataTemplateSelector oldContentTemplateSelector, DataTemplateSelector newContentTemplateSelector)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnContextMenuClosing(System.Windows.Controls.ContextMenuEventArgs)">
+            <summary>Sets the stub of FrameworkElement.OnContextMenuClosing(ContextMenuEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnContextMenuClosingContextMenuEventArgs">
+            <summary>Sets the stub of FrameworkElement.OnContextMenuClosing(ContextMenuEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnContextMenuOpening(System.Windows.Controls.ContextMenuEventArgs)">
+            <summary>Sets the stub of FrameworkElement.OnContextMenuOpening(ContextMenuEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnContextMenuOpeningContextMenuEventArgs">
+            <summary>Sets the stub of FrameworkElement.OnContextMenuOpening(ContextMenuEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnCreateAutomationPeer">
+            <summary>Sets the stub of Window.OnCreateAutomationPeer()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnCreateAutomationPeer01">
+            <summary>Sets the stub of Window.OnCreateAutomationPeer()</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnDeactivated(System.EventArgs)">
+            <summary>Sets the stub of Window.OnDeactivated(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnDeactivatedEventArgs">
+            <summary>Sets the stub of Window.OnDeactivated(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnDpiChanged(System.Windows.DpiScale,System.Windows.DpiScale)">
+            <summary>Sets the stub of Window.OnDpiChanged(DpiScale oldDpi, DpiScale newDpi)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnDpiChangedDpiScaleDpiScale">
+            <summary>Sets the stub of Window.OnDpiChanged(DpiScale oldDpi, DpiScale newDpi)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnDragEnter(System.Windows.DragEventArgs)">
+            <summary>Sets the stub of UIElement.OnDragEnter(DragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnDragEnterDragEventArgs">
+            <summary>Sets the stub of UIElement.OnDragEnter(DragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnDragLeave(System.Windows.DragEventArgs)">
+            <summary>Sets the stub of UIElement.OnDragLeave(DragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnDragLeaveDragEventArgs">
+            <summary>Sets the stub of UIElement.OnDragLeave(DragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnDragOver(System.Windows.DragEventArgs)">
+            <summary>Sets the stub of UIElement.OnDragOver(DragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnDragOverDragEventArgs">
+            <summary>Sets the stub of UIElement.OnDragOver(DragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnDrop(System.Windows.DragEventArgs)">
+            <summary>Sets the stub of UIElement.OnDrop(DragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnDropDragEventArgs">
+            <summary>Sets the stub of UIElement.OnDrop(DragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnGiveFeedback(System.Windows.GiveFeedbackEventArgs)">
+            <summary>Sets the stub of UIElement.OnGiveFeedback(GiveFeedbackEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnGiveFeedbackGiveFeedbackEventArgs">
+            <summary>Sets the stub of UIElement.OnGiveFeedback(GiveFeedbackEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnGotFocus(System.Windows.RoutedEventArgs)">
+            <summary>Sets the stub of FrameworkElement.OnGotFocus(RoutedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnGotFocusRoutedEventArgs">
+            <summary>Sets the stub of FrameworkElement.OnGotFocus(RoutedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnGotKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnGotKeyboardFocus(KeyboardFocusChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnGotKeyboardFocusKeyboardFocusChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnGotKeyboardFocus(KeyboardFocusChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnGotMouseCapture(System.Windows.Input.MouseEventArgs)">
+            <summary>Sets the stub of UIElement.OnGotMouseCapture(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnGotMouseCaptureMouseEventArgs">
+            <summary>Sets the stub of UIElement.OnGotMouseCapture(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnGotStylusCapture(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnGotStylusCapture(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnGotStylusCaptureStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnGotStylusCapture(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnGotTouchCapture(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnGotTouchCapture(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnGotTouchCaptureTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnGotTouchCapture(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnInitialized(System.EventArgs)">
+            <summary>Sets the stub of FrameworkElement.OnInitialized(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnInitializedEventArgs">
+            <summary>Sets the stub of FrameworkElement.OnInitialized(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnIsKeyboardFocusWithinChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnIsKeyboardFocusWithinChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnIsKeyboardFocusWithinChangedDependencyPropertyChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnIsKeyboardFocusWithinChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnIsKeyboardFocusedChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnIsKeyboardFocusedChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnIsKeyboardFocusedChangedDependencyPropertyChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnIsKeyboardFocusedChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnIsMouseCaptureWithinChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnIsMouseCaptureWithinChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnIsMouseCaptureWithinChangedDependencyPropertyChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnIsMouseCaptureWithinChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnIsMouseCapturedChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnIsMouseCapturedChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnIsMouseCapturedChangedDependencyPropertyChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnIsMouseCapturedChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnIsMouseDirectlyOverChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnIsMouseDirectlyOverChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnIsMouseDirectlyOverChangedDependencyPropertyChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnIsMouseDirectlyOverChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnIsStylusCaptureWithinChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnIsStylusCaptureWithinChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnIsStylusCaptureWithinChangedDependencyPropertyChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnIsStylusCaptureWithinChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnIsStylusCapturedChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnIsStylusCapturedChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnIsStylusCapturedChangedDependencyPropertyChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnIsStylusCapturedChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnIsStylusDirectlyOverChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnIsStylusDirectlyOverChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnIsStylusDirectlyOverChangedDependencyPropertyChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnIsStylusDirectlyOverChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnKeyDown(System.Windows.Input.KeyEventArgs)">
+            <summary>Sets the stub of UIElement.OnKeyDown(KeyEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnKeyDownKeyEventArgs">
+            <summary>Sets the stub of UIElement.OnKeyDown(KeyEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnKeyUp(System.Windows.Input.KeyEventArgs)">
+            <summary>Sets the stub of UIElement.OnKeyUp(KeyEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnKeyUpKeyEventArgs">
+            <summary>Sets the stub of UIElement.OnKeyUp(KeyEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnLocationChanged(System.EventArgs)">
+            <summary>Sets the stub of Window.OnLocationChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnLocationChangedEventArgs">
+            <summary>Sets the stub of Window.OnLocationChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnLostFocus(System.Windows.RoutedEventArgs)">
+            <summary>Sets the stub of UIElement.OnLostFocus(RoutedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnLostFocusRoutedEventArgs">
+            <summary>Sets the stub of UIElement.OnLostFocus(RoutedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnLostKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnLostKeyboardFocus(KeyboardFocusChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnLostKeyboardFocusKeyboardFocusChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnLostKeyboardFocus(KeyboardFocusChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnLostMouseCapture(System.Windows.Input.MouseEventArgs)">
+            <summary>Sets the stub of UIElement.OnLostMouseCapture(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnLostMouseCaptureMouseEventArgs">
+            <summary>Sets the stub of UIElement.OnLostMouseCapture(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnLostStylusCapture(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnLostStylusCapture(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnLostStylusCaptureStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnLostStylusCapture(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnLostTouchCapture(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnLostTouchCapture(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnLostTouchCaptureTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnLostTouchCapture(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnManipulationBoundaryFeedback(System.Windows.Input.ManipulationBoundaryFeedbackEventArgs)">
+            <summary>Sets the stub of Window.OnManipulationBoundaryFeedback(ManipulationBoundaryFeedbackEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnManipulationBoundaryFeedbackManipulationBoundaryFeedbackEventArgs">
+            <summary>Sets the stub of Window.OnManipulationBoundaryFeedback(ManipulationBoundaryFeedbackEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnManipulationCompleted(System.Windows.Input.ManipulationCompletedEventArgs)">
+            <summary>Sets the stub of UIElement.OnManipulationCompleted(ManipulationCompletedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnManipulationCompletedManipulationCompletedEventArgs">
+            <summary>Sets the stub of UIElement.OnManipulationCompleted(ManipulationCompletedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnManipulationDelta(System.Windows.Input.ManipulationDeltaEventArgs)">
+            <summary>Sets the stub of UIElement.OnManipulationDelta(ManipulationDeltaEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnManipulationDeltaManipulationDeltaEventArgs">
+            <summary>Sets the stub of UIElement.OnManipulationDelta(ManipulationDeltaEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnManipulationInertiaStarting(System.Windows.Input.ManipulationInertiaStartingEventArgs)">
+            <summary>Sets the stub of UIElement.OnManipulationInertiaStarting(ManipulationInertiaStartingEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnManipulationInertiaStartingManipulationInertiaStartingEventArgs">
+            <summary>Sets the stub of UIElement.OnManipulationInertiaStarting(ManipulationInertiaStartingEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnManipulationStarted(System.Windows.Input.ManipulationStartedEventArgs)">
+            <summary>Sets the stub of UIElement.OnManipulationStarted(ManipulationStartedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnManipulationStartedManipulationStartedEventArgs">
+            <summary>Sets the stub of UIElement.OnManipulationStarted(ManipulationStartedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnManipulationStarting(System.Windows.Input.ManipulationStartingEventArgs)">
+            <summary>Sets the stub of UIElement.OnManipulationStarting(ManipulationStartingEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnManipulationStartingManipulationStartingEventArgs">
+            <summary>Sets the stub of UIElement.OnManipulationStarting(ManipulationStartingEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseDoubleClick(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of Control.OnMouseDoubleClick(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseDoubleClickMouseButtonEventArgs">
+            <summary>Sets the stub of Control.OnMouseDoubleClick(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseDownMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseEnter(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseEnterMouseEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseEnter(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseLeave(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseLeaveMouseEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseLeave(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseLeftButtonDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseLeftButtonDownMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseLeftButtonDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseLeftButtonUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseLeftButtonUpMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseLeftButtonUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseMove(System.Windows.Input.MouseEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseMove(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseMoveMouseEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseMove(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseRightButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseRightButtonDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseRightButtonDownMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseRightButtonDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseRightButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseRightButtonUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseRightButtonUpMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseRightButtonUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseUpMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnMouseWheel(System.Windows.Input.MouseWheelEventArgs)">
+            <summary>Sets the stub of UIElement.OnMouseWheel(MouseWheelEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnMouseWheelMouseWheelEventArgs">
+            <summary>Sets the stub of UIElement.OnMouseWheel(MouseWheelEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewDragEnter(System.Windows.DragEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewDragEnter(DragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewDragEnterDragEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewDragEnter(DragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewDragLeave(System.Windows.DragEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewDragLeave(DragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewDragLeaveDragEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewDragLeave(DragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewDragOver(System.Windows.DragEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewDragOver(DragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewDragOverDragEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewDragOver(DragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewDrop(System.Windows.DragEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewDrop(DragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewDropDragEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewDrop(DragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewGiveFeedback(System.Windows.GiveFeedbackEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewGiveFeedback(GiveFeedbackEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewGiveFeedbackGiveFeedbackEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewGiveFeedback(GiveFeedbackEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewGotKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewGotKeyboardFocus(KeyboardFocusChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewGotKeyboardFocusKeyboardFocusChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewGotKeyboardFocus(KeyboardFocusChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewKeyDown(System.Windows.Input.KeyEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewKeyDown(KeyEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewKeyDownKeyEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewKeyDown(KeyEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewKeyUp(System.Windows.Input.KeyEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewKeyUp(KeyEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewKeyUpKeyEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewKeyUp(KeyEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewLostKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewLostKeyboardFocus(KeyboardFocusChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewLostKeyboardFocusKeyboardFocusChangedEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewLostKeyboardFocus(KeyboardFocusChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseDoubleClick(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of Control.OnPreviewMouseDoubleClick(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseDoubleClickMouseButtonEventArgs">
+            <summary>Sets the stub of Control.OnPreviewMouseDoubleClick(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewMouseDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseDownMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewMouseDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseLeftButtonDownMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseLeftButtonUpMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseMove(System.Windows.Input.MouseEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewMouseMove(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseMoveMouseEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewMouseMove(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseRightButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewMouseRightButtonDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseRightButtonDownMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewMouseRightButtonDown(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseRightButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewMouseRightButtonUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseRightButtonUpMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewMouseRightButtonUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewMouseUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseUpMouseButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewMouseUp(MouseButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseWheel(System.Windows.Input.MouseWheelEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewMouseWheel(MouseWheelEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewMouseWheelMouseWheelEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewMouseWheel(MouseWheelEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewQueryContinueDrag(System.Windows.QueryContinueDragEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewQueryContinueDrag(QueryContinueDragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewQueryContinueDragQueryContinueDragEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewQueryContinueDrag(QueryContinueDragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusButtonDown(System.Windows.Input.StylusButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewStylusButtonDown(StylusButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusButtonDownStylusButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewStylusButtonDown(StylusButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusButtonUp(System.Windows.Input.StylusButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewStylusButtonUp(StylusButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusButtonUpStylusButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewStylusButtonUp(StylusButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusDown(System.Windows.Input.StylusDownEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewStylusDown(StylusDownEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusDownStylusDownEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewStylusDown(StylusDownEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusInAirMove(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewStylusInAirMove(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusInAirMoveStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewStylusInAirMove(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusInRange(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewStylusInRange(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusInRangeStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewStylusInRange(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusMove(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewStylusMove(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusMoveStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewStylusMove(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusOutOfRange(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewStylusOutOfRange(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusOutOfRangeStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewStylusOutOfRange(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusSystemGesture(System.Windows.Input.StylusSystemGestureEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewStylusSystemGesture(StylusSystemGestureEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusSystemGestureStylusSystemGestureEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewStylusSystemGesture(StylusSystemGestureEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusUp(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewStylusUp(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewStylusUpStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewStylusUp(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewTextInput(System.Windows.Input.TextCompositionEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewTextInput(TextCompositionEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewTextInputTextCompositionEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewTextInput(TextCompositionEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewTouchDown(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewTouchDown(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewTouchDownTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewTouchDown(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewTouchMove(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewTouchMove(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewTouchMoveTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewTouchMove(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPreviewTouchUp(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnPreviewTouchUp(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPreviewTouchUpTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnPreviewTouchUp(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnPropertyChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>Sets the stub of FrameworkElement.OnPropertyChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnPropertyChangedDependencyPropertyChangedEventArgs">
+            <summary>Sets the stub of FrameworkElement.OnPropertyChanged(DependencyPropertyChangedEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnQueryContinueDrag(System.Windows.QueryContinueDragEventArgs)">
+            <summary>Sets the stub of UIElement.OnQueryContinueDrag(QueryContinueDragEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnQueryContinueDragQueryContinueDragEventArgs">
+            <summary>Sets the stub of UIElement.OnQueryContinueDrag(QueryContinueDragEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnQueryCursor(System.Windows.Input.QueryCursorEventArgs)">
+            <summary>Sets the stub of UIElement.OnQueryCursor(QueryCursorEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnQueryCursorQueryCursorEventArgs">
+            <summary>Sets the stub of UIElement.OnQueryCursor(QueryCursorEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnRender(System.Windows.Media.DrawingContext)">
+            <summary>Sets the stub of UIElement.OnRender(DrawingContext drawingContext)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnRenderDrawingContext">
+            <summary>Sets the stub of UIElement.OnRender(DrawingContext drawingContext)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnRenderSizeChanged(System.Windows.SizeChangedInfo)">
+            <summary>Sets the stub of FrameworkElement.OnRenderSizeChanged(SizeChangedInfo sizeInfo)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnRenderSizeChangedSizeChangedInfo">
+            <summary>Sets the stub of FrameworkElement.OnRenderSizeChanged(SizeChangedInfo sizeInfo)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnSourceInitialized(System.EventArgs)">
+            <summary>Sets the stub of Window.OnSourceInitialized(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnSourceInitializedEventArgs">
+            <summary>Sets the stub of Window.OnSourceInitialized(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStateChanged(System.EventArgs)">
+            <summary>Sets the stub of Window.OnStateChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStateChangedEventArgs">
+            <summary>Sets the stub of Window.OnStateChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStyleChanged(System.Windows.Style,System.Windows.Style)">
+            <summary>Sets the stub of FrameworkElement.OnStyleChanged(Style oldStyle, Style newStyle)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStyleChangedStyleStyle">
+            <summary>Sets the stub of FrameworkElement.OnStyleChanged(Style oldStyle, Style newStyle)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusButtonDown(System.Windows.Input.StylusButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusButtonDown(StylusButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusButtonDownStylusButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusButtonDown(StylusButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusButtonUp(System.Windows.Input.StylusButtonEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusButtonUp(StylusButtonEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusButtonUpStylusButtonEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusButtonUp(StylusButtonEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusDown(System.Windows.Input.StylusDownEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusDown(StylusDownEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusDownStylusDownEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusDown(StylusDownEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusEnter(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusEnter(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusEnterStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusEnter(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusInAirMove(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusInAirMove(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusInAirMoveStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusInAirMove(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusInRange(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusInRange(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusInRangeStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusInRange(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusLeave(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusLeave(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusLeaveStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusLeave(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusMove(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusMove(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusMoveStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusMove(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusOutOfRange(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusOutOfRange(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusOutOfRangeStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusOutOfRange(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusSystemGesture(System.Windows.Input.StylusSystemGestureEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusSystemGesture(StylusSystemGestureEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusSystemGestureStylusSystemGestureEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusSystemGesture(StylusSystemGestureEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnStylusUp(System.Windows.Input.StylusEventArgs)">
+            <summary>Sets the stub of UIElement.OnStylusUp(StylusEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnStylusUpStylusEventArgs">
+            <summary>Sets the stub of UIElement.OnStylusUp(StylusEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnTemplateChanged(System.Windows.Controls.ControlTemplate,System.Windows.Controls.ControlTemplate)">
+            <summary>Sets the stub of Control.OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnTemplateChangedControlTemplateControlTemplate">
+            <summary>Sets the stub of Control.OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnTextInput(System.Windows.Input.TextCompositionEventArgs)">
+            <summary>Sets the stub of UIElement.OnTextInput(TextCompositionEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnTextInputTextCompositionEventArgs">
+            <summary>Sets the stub of UIElement.OnTextInput(TextCompositionEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnToolTipClosing(System.Windows.Controls.ToolTipEventArgs)">
+            <summary>Sets the stub of FrameworkElement.OnToolTipClosing(ToolTipEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnToolTipClosingToolTipEventArgs">
+            <summary>Sets the stub of FrameworkElement.OnToolTipClosing(ToolTipEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnToolTipOpening(System.Windows.Controls.ToolTipEventArgs)">
+            <summary>Sets the stub of FrameworkElement.OnToolTipOpening(ToolTipEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnToolTipOpeningToolTipEventArgs">
+            <summary>Sets the stub of FrameworkElement.OnToolTipOpening(ToolTipEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnTouchDown(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnTouchDown(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnTouchDownTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnTouchDown(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnTouchEnter(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnTouchEnter(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnTouchEnterTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnTouchEnter(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnTouchLeave(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnTouchLeave(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnTouchLeaveTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnTouchLeave(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnTouchMove(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnTouchMove(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnTouchMoveTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnTouchMove(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnTouchUp(System.Windows.Input.TouchEventArgs)">
+            <summary>Sets the stub of UIElement.OnTouchUp(TouchEventArgs e)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnTouchUpTouchEventArgs">
+            <summary>Sets the stub of UIElement.OnTouchUp(TouchEventArgs e)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.OnVisualChildrenChanged(System.Windows.DependencyObject,System.Windows.DependencyObject)">
+            <summary>Sets the stub of Visual.OnVisualChildrenChanged(DependencyObject visualAdded, DependencyObject visualRemoved)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.OnVisualChildrenChangedDependencyObjectDependencyObject">
+            <summary>Sets the stub of Visual.OnVisualChildrenChanged(DependencyObject visualAdded, DependencyObject visualRemoved)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.ParentLayoutInvalidated(System.Windows.UIElement)">
+            <summary>Sets the stub of FrameworkElement.ParentLayoutInvalidated(UIElement child)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.ParentLayoutInvalidatedUIElement">
+            <summary>Sets the stub of FrameworkElement.ParentLayoutInvalidated(UIElement child)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.ShouldSerializeContent">
+            <summary>Sets the stub of ContentControl.ShouldSerializeContent()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.ShouldSerializeContent01">
+            <summary>Sets the stub of ContentControl.ShouldSerializeContent()</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.ShouldSerializeProperty(System.Windows.DependencyProperty)">
+            <summary>Sets the stub of DependencyObject.ShouldSerializeProperty(DependencyProperty dp)</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.ShouldSerializePropertyDependencyProperty">
+            <summary>Sets the stub of DependencyObject.ShouldSerializeProperty(DependencyProperty dp)</summary>
+        </member>
+        <member name="M:WpfApp38.Fakes.StubMainWindow.ToString">
+            <summary>Sets the stub of Control.ToString()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.ToString01">
+            <summary>Sets the stub of Control.ToString()</summary>
+        </member>
+        <member name="P:WpfApp38.Fakes.StubMainWindow.VisualChildrenCount">
+            <summary>Sets the stub of FrameworkElement.get_VisualChildrenCount()</summary>
+        </member>
+        <member name="F:WpfApp38.Fakes.StubMainWindow.VisualChildrenCountGet">
+            <summary>Sets the stub of FrameworkElement.get_VisualChildrenCount()</summary>
+        </member>
+    </members>
+</doc>
