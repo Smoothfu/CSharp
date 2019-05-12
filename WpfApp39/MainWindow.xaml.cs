@@ -26,35 +26,15 @@ namespace WpfApp39
             InitializeComponent();
             this.DataContext = this;
         }
-
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            MessageBox.Show("The New command was invoked");
-        }
-
-        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        
+        private void CommandBinding_CanExecute_3(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }
 
-        private void CommandBinding_CanExecute_1(object sender, CanExecuteRoutedEventArgs e)
+        private void CommandBinding_Executed_3(object sender, ExecutedRoutedEventArgs e)
         {
-            e.CanExecute = Clipboard.ContainsText();
-        }
-
-        private void CommandBinding_Executed_1(object sender, ExecutedRoutedEventArgs e)
-        {
-            txtEditor.Paste();
-        }
-
-        private void CommandBinding_CanExecute_2(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = (txtEditor != null) && (txtEditor.SelectionLength > 0);
-        }
-
-        private void CommandBinding_Executed_2(object sender, ExecutedRoutedEventArgs e)
-        {
-            txtEditor.Cut();
+            Application.Current.Shutdown();
         }
     }
 }

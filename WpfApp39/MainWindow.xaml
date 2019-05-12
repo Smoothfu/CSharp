@@ -4,13 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp39"
+        xmlns:cmd="clr-namespace:WpfApp39.Resources"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"> 
-    <DockPanel>
-        <WrapPanel DockPanel.Dock="Top" Margin="3">
-            <Button Command="ApplicationCommands.Cut" CommandTarget="{Binding ElementName=txtEditor}"  Width="60">_Cut</Button>
-            <Button Command="ApplicationCommands.Paste" CommandTarget="{Binding ElementName=txtEditor}" Width="60" Margin="3,0">_Paste</Button>
-        </WrapPanel>
-        <TextBox AcceptsReturn="True" Name="txtEditor"/>
-    </DockPanel>
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:CustomCommands.Exit" CanExecute="CommandBinding_CanExecute_3" Executed="CommandBinding_Executed_3"/>
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="File">
+                <MenuItem Command="cmd:CustomCommands.Exit"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Command="cmd:CustomCommands.Exit">Exit</Button>
+        </StackPanel>
+                    
+    </Grid>
 </Window>
