@@ -25,16 +25,6 @@ namespace WpfApp39
         {
             InitializeComponent();
             this.DataContext = new SnapshotVM();
-        }
-        
-        private void CommandBinding_CanExecute_3(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
-        private void CommandBinding_Executed_3(object sender, ExecutedRoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        }   
     }
 }

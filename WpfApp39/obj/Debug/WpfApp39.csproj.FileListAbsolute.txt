@@ -1,11 +1,15 @@
 D:\C\WpfApp39\WpfApp39\bin\Debug\WpfApp39.exe.config
 D:\C\WpfApp39\WpfApp39\bin\Debug\WpfApp39.exe
 D:\C\WpfApp39\WpfApp39\bin\Debug\WpfApp39.pdb
+D:\C\WpfApp39\WpfApp39\bin\Debug\EntityFramework.dll
+D:\C\WpfApp39\WpfApp39\bin\Debug\EntityFramework.SqlServer.dll
 D:\C\WpfApp39\WpfApp39\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 D:\C\WpfApp39\WpfApp39\bin\Debug\Prism.dll
 D:\C\WpfApp39\WpfApp39\bin\Debug\Prism.Mef.Wpf.dll
 D:\C\WpfApp39\WpfApp39\bin\Debug\Prism.Wpf.dll
 D:\C\WpfApp39\WpfApp39\bin\Debug\System.Windows.Interactivity.dll
+D:\C\WpfApp39\WpfApp39\bin\Debug\EntityFramework.xml
+D:\C\WpfApp39\WpfApp39\bin\Debug\EntityFramework.SqlServer.xml
 D:\C\WpfApp39\WpfApp39\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 D:\C\WpfApp39\WpfApp39\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 D:\C\WpfApp39\WpfApp39\bin\Debug\Prism.xml
@@ -13,6 +17,7 @@ D:\C\WpfApp39\WpfApp39\bin\Debug\Prism.Mef.Wpf.xml
 D:\C\WpfApp39\WpfApp39\bin\Debug\Prism.Wpf.xml
 D:\C\WpfApp39\WpfApp39\obj\Debug\MainWindow.g.cs
 D:\C\WpfApp39\WpfApp39\obj\Debug\App.g.cs
+D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39_Content.g.cs
 D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39_MarkupCompile.cache
 D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39_MarkupCompile.lref
 D:\C\WpfApp39\WpfApp39\obj\Debug\MainWindow.baml
@@ -22,4 +27,3 @@ D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39.csproj.GenerateResource.Cache
 D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39.csproj.CoreCompileInputs.cache
 D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39.exe
 D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39.pdb
-D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39.csprojResolveAssemblyReference.cache

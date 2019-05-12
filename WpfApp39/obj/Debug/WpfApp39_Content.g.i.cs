@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/textfile1.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/salesdetailmodel.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/salesdetailmodel.tt")]
 
 

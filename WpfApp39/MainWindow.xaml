@@ -4,13 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp39"
-        xmlns:cmd="clr-namespace:WpfApp39.Resources"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Window.CommandBindings>
-        <CommandBinding Command="cmd:CustomCommands.Exit" CanExecute="CommandBinding_CanExecute_3" Executed="CommandBinding_Executed_3"/>
-    </Window.CommandBindings>
+    <StackPanel>    
     <Grid>
-        <Button Command="{Binding SnapShotCmd}" Width="200" Height="100" >Screen Capture</Button>                      
-    </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="600"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Command="{Binding GetsDataCmd}">Get Data</Button>
+            <DataGrid Grid.Row="1" ItemsSource="{Binding SalesList,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" AutoGenerateColumns="False"
+                  AlternatingRowBackground="Azure">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="SalesOrderID" Binding="{Binding SalesOrderID }"/>
+                    <DataGridTextColumn Header="SalesOrderDetailID" Binding="{Binding SalesOrderDetailID}"/>
+                    <DataGridTextColumn Header="ModifiedDate" Binding="{Binding ModifiedDate}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </StackPanel>
 </Window>
