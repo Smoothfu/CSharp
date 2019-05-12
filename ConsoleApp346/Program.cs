@@ -26,11 +26,12 @@ namespace ConsoleApp346
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
                 {
-                    g.CopyFromScreen(System.Drawing.Point.Empty, System.Drawing.Point.Empty, bounds.Size);
+                    g.CopyFromScreen(0, 0, bounds.X, bounds.Y, bitmap.Size);
+                    //g.CopyFromScreen(System.Drawing.Point.Empty, System.Drawing.Point.Empty, bounds.Size);
                 }
                 string fullName = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".jpg";
                 bitmap.Save(fullName, ImageFormat.Jpeg);
             }
         }
-    }
+    }   
 }
