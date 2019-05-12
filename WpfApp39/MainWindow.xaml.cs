@@ -24,7 +24,7 @@ namespace WpfApp39
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = this;
+            this.DataContext = new SnapshotVM();
         }
         
         private void CommandBinding_CanExecute_3(object sender, CanExecuteRoutedEventArgs e)

@@ -39,18 +39,9 @@ namespace WpfApp39.ViewModel
                     g.CopyFromScreen(System.Drawing.Point.Empty, System.Drawing.Point.Empty, bounds.Size);
                 }
 
-                using (SaveFileDialog sfd = new SaveFileDialog())
-                {
-                    sfd.Title = "Save Pictures";
-                    sfd.RestoreDirectory = true;
-                    sfd.Filter = "bmp files(*.bmp)|*.bmp|All Files(*.*)|*.*";
-                    sfd.FileName = DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".jpg";
-                    if (sfd.ShowDialog() == DialogResult.OK)
-                    {
-                        string screenShotsFullName = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".jpg";                       
-                        bitmap.Save(sfd.FileName, ImageFormat.Jpeg);
-                    }
-                }                
+                string screenShotsFullName = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".jpg";
+
+                bitmap.Save(screenShotsFullName, ImageFormat.Jpeg);                               
             }            
         }
        
