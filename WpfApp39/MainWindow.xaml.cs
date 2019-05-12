@@ -24,7 +24,17 @@ namespace WpfApp39
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new SnapshotVM();
+            this.DataContext = this;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("The New command was invoked");
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }
