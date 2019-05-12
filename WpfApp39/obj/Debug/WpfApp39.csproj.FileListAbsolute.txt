@@ -27,3 +27,4 @@ D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39.csproj.GenerateResource.Cache
 D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39.csproj.CoreCompileInputs.cache
 D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39.exe
 D:\C\WpfApp39\WpfApp39\obj\Debug\WpfApp39.pdb
+D:\C\WpfApp39\WpfApp39\obj\Debug\GeneratedInternalTypeHelper.g.cs

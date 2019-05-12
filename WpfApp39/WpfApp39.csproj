@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\ColorConverter.cs" />
     <Compile Include="Model\SalesDetailModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

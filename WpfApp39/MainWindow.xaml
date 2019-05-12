@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp39"
+        xmlns:conver="clr-namespace:WpfApp39.Converter"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <conver:ColorConverter x:Key="colorConverter"/>
+    </Window.Resources>
     <StackPanel>    
     <Grid>
         <Grid.RowDefinitions>
@@ -13,8 +17,16 @@
             <RowDefinition Height="600"/>
         </Grid.RowDefinitions>
         <Button Grid.Row="0" Command="{Binding GetsDataCmd}">Get Data</Button>
-            <DataGrid Grid.Row="1" ItemsSource="{Binding SalesList,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" AutoGenerateColumns="False"
-                  AlternatingRowBackground="Azure">
+            <DataGrid Grid.Row="1" ItemsSource="{Binding SalesList,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" AutoGenerateColumns="False">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" >
+                            <Setter.Value>
+                                <Binding Path="SalesOrderDetailID" Converter="{StaticResource colorConverter}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.RowStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="SalesOrderID" Binding="{Binding SalesOrderID }"/>
                     <DataGridTextColumn Header="SalesOrderDetailID" Binding="{Binding SalesOrderDetailID}"/>
