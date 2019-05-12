@@ -36,5 +36,25 @@ namespace WpfApp39
         {
             e.CanExecute = true;
         }
+
+        private void CommandBinding_CanExecute_1(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Clipboard.ContainsText();
+        }
+
+        private void CommandBinding_Executed_1(object sender, ExecutedRoutedEventArgs e)
+        {
+            txtEditor.Paste();
+        }
+
+        private void CommandBinding_CanExecute_2(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = (txtEditor != null) && (txtEditor.SelectionLength > 0);
+        }
+
+        private void CommandBinding_Executed_2(object sender, ExecutedRoutedEventArgs e)
+        {
+            txtEditor.Cut();
+        }
     }
 }

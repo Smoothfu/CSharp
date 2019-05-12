@@ -8,8 +8,14 @@
         Title="MainWindow" Height="350" Width="525">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
+        <CommandBinding Command="ApplicationCommands.Paste" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_1"/>
+        <CommandBinding Command="ApplicationCommands.Cut" CanExecute="CommandBinding_CanExecute_2" Executed="CommandBinding_Executed_2"/>
     </Window.CommandBindings>
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Command="ApplicationCommands.New">New</Button>
-    </StackPanel>
+    <DockPanel>
+        <WrapPanel DockPanel.Dock="Top" Margin="3">
+            <Button Command="ApplicationCommands.Cut"  Width="60">_Cut</Button>
+            <Button Command="ApplicationCommands.Paste" Width="60" Margin="3,0">_Paste</Button>
+        </WrapPanel>
+        <TextBox AcceptsReturn="True" Name="txtEditor"/>
+    </DockPanel>
 </Window>
