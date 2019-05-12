@@ -5,16 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp39"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Window.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
-        <CommandBinding Command="ApplicationCommands.Paste" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_1"/>
-        <CommandBinding Command="ApplicationCommands.Cut" CanExecute="CommandBinding_CanExecute_2" Executed="CommandBinding_Executed_2"/>
-    </Window.CommandBindings>
+        Title="MainWindow" Height="350" Width="525"> 
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top" Margin="3">
-            <Button Command="ApplicationCommands.Cut"  Width="60">_Cut</Button>
-            <Button Command="ApplicationCommands.Paste" Width="60" Margin="3,0">_Paste</Button>
+            <Button Command="ApplicationCommands.Cut" CommandTarget="{Binding ElementName=txtEditor}"  Width="60">_Cut</Button>
+            <Button Command="ApplicationCommands.Paste" CommandTarget="{Binding ElementName=txtEditor}" Width="60" Margin="3,0">_Paste</Button>
         </WrapPanel>
         <TextBox AcceptsReturn="True" Name="txtEditor"/>
     </DockPanel>
