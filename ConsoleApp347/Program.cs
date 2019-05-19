@@ -12,11 +12,14 @@ namespace ConsoleApp347
     class Program
     {
         static void Main(string[] args)
-        {
-           Task task=Task.Run(() =>
-            {
-                ADO();
-            });
+        {          
+
+            Task task = new Task(() =>
+              {
+                  ADO();
+              });
+            Console.WriteLine($"task.Status:{task.Status}");
+            task.Start();
             Console.WriteLine($"task.Status:{task.Status}");
             task.Wait();
             Console.WriteLine($"task.Status:{task.Status}");
@@ -33,7 +36,7 @@ namespace ConsoleApp347
                     conn.Open();
                 }
 
-                string selectSQL = $"select SalesOrderID,SalesOrderDetailID,CarrierTrackingNumber," +
+                string selectSQL = $"select top(100) SalesOrderID,SalesOrderDetailID,CarrierTrackingNumber," +
                     "OrderQty,ProductID,SpecialOfferID,UnitPrice,UnitPriceDiscount,LineTotal,rowguid," +
                     "ModifiedDate from sales.SalesOrderDetail";
                 using (SqlCommand cmd = new SqlCommand(selectSQL, conn))
