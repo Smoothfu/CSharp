@@ -5,3 +5,13 @@ D:\C\ConsoleApp347\ConsoleApp347\obj\Debug\ConsoleApp347.csprojResolveAssemblyRe
 D:\C\ConsoleApp347\ConsoleApp347\obj\Debug\ConsoleApp347.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp347\ConsoleApp347\obj\Debug\ConsoleApp347.exe
 D:\C\ConsoleApp347\ConsoleApp347\obj\Debug\ConsoleApp347.pdb
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\NPOI.dll
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\NPOI.OOXML.dll
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\NPOI.OpenXml4Net.dll
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\EntityFramework.SqlServer.xml
+D:\C\ConsoleApp347\ConsoleApp347\bin\Debug\ICSharpCode.SharpZipLib.xml
