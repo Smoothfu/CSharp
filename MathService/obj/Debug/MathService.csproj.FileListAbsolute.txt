@@ -1,0 +1,6 @@
+D:\C\ConsoleApp349\MathService\bin\MathService.dll.config
+D:\C\ConsoleApp349\MathService\bin\MathService.dll
+D:\C\ConsoleApp349\MathService\bin\MathService.pdb
+D:\C\ConsoleApp349\MathService\obj\Debug\MathService.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp349\MathService\obj\Debug\MathService.dll
+D:\C\ConsoleApp349\MathService\obj\Debug\MathService.pdb
