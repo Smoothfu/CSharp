@@ -4,3 +4,6 @@ D:\C\ConsoleApp349\MathService\bin\MathService.pdb
 D:\C\ConsoleApp349\MathService\obj\Debug\MathService.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp349\MathService\obj\Debug\MathService.dll
 D:\C\ConsoleApp349\MathService\obj\Debug\MathService.pdb
+D:\C\ConsoleApp349\MathService\bin\GetDataTableFromDB.svc
+D:\C\ConsoleApp349\MathService\bin\GetDataTableFromDB.svc.cs
+D:\C\ConsoleApp349\MathService\obj\Debug\MathService.csprojAssemblyReference.cache

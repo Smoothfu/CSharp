@@ -1,0 +1,7 @@
+D:\C\ConsoleApp349\GetLengthService\bin\GetLengthService.dll.config
+D:\C\ConsoleApp349\GetLengthService\bin\GetLengthService.dll
+D:\C\ConsoleApp349\GetLengthService\bin\GetLengthService.pdb
+D:\C\ConsoleApp349\GetLengthService\obj\Debug\GetLengthService.csprojAssemblyReference.cache
+D:\C\ConsoleApp349\GetLengthService\obj\Debug\GetLengthService.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp349\GetLengthService\obj\Debug\GetLengthService.dll
+D:\C\ConsoleApp349\GetLengthService\obj\Debug\GetLengthService.pdb

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GetLengthService.StringGetLength" CodeBehind="StringGetLength.svc.cs" %>

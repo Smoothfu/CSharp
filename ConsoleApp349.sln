@@ -6,9 +6,12 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp349", "ConsoleApp349\ConsoleApp349.csproj", "{40F44942-19A8-48F9-9764-8A35EE214681}"
 	ProjectSection(ProjectDependencies) = postProject
 		{ECA5774E-42D4-4CDE-97A2-1EC4738043EB} = {ECA5774E-42D4-4CDE-97A2-1EC4738043EB}
+		{3EE68DDC-30EF-4A76-A570-D079A08282D0} = {3EE68DDC-30EF-4A76-A570-D079A08282D0}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathService", "MathService\MathService.csproj", "{ECA5774E-42D4-4CDE-97A2-1EC4738043EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetLengthService", "GetLengthService\GetLengthService.csproj", "{3EE68DDC-30EF-4A76-A570-D079A08282D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +27,10 @@ Global
 		{ECA5774E-42D4-4CDE-97A2-1EC4738043EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECA5774E-42D4-4CDE-97A2-1EC4738043EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECA5774E-42D4-4CDE-97A2-1EC4738043EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE68DDC-30EF-4A76-A570-D079A08282D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE68DDC-30EF-4A76-A570-D079A08282D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE68DDC-30EF-4A76-A570-D079A08282D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE68DDC-30EF-4A76-A570-D079A08282D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

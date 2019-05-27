@@ -45,7 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\GetDataTableService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\MathServiceWCF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\StringGetLengthService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -60,11 +70,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\GetDataTableService\GetDataTableFromDB.wsdl" />
+    <None Include="Connected Services\GetDataTableService\GetDataTableFromDB1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GetDataTableService\GetDataTableFromDB2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\MathServiceWCF\MathServiceWCF.wsdl" />
     <None Include="Connected Services\MathServiceWCF\MathServiceWCF.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\MathServiceWCF\MathServiceWCF1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StringGetLengthService\StringGetLength.wsdl" />
+    <None Include="Connected Services\StringGetLengthService\StringGetLength.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StringGetLengthService\StringGetLength1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ToUpperServiceWCF\ToUpperService.wsdl" />
@@ -74,12 +98,15 @@
     <None Include="Connected Services\ToUpperServiceWCF\ToUpperService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\GetDataTableService\" />
     <WCFMetadataStorage Include="Connected Services\MathServiceWCF\" />
+    <WCFMetadataStorage Include="Connected Services\StringGetLengthService\" />
     <WCFMetadataStorage Include="Connected Services\ToUpperServiceWCF\" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +135,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ToUpperServiceWCF\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StringGetLengthService\StringGetLength.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StringGetLengthService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StringGetLengthService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StringGetLengthService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GetDataTableService\GetDataTableFromDB.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GetDataTableService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GetDataTableService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GetDataTableService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
