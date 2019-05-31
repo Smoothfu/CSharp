@@ -1,0 +1,7 @@
+D:\C\ConsoleApp350\WcfService1\bin\WcfService1.dll.config
+D:\C\ConsoleApp350\WcfService1\bin\WcfService1.dll
+D:\C\ConsoleApp350\WcfService1\bin\WcfService1.pdb
+D:\C\ConsoleApp350\WcfService1\obj\Debug\WcfService1.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp350\WcfService1\obj\Debug\WcfService1.dll
+D:\C\ConsoleApp350\WcfService1\obj\Debug\WcfService1.pdb
+D:\C\ConsoleApp350\WcfService1\obj\Debug\WcfService1.csprojAssemblyReference.cache
