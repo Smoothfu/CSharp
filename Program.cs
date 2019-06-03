@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace ConsoleApp351
 {
@@ -16,13 +19,7 @@ namespace ConsoleApp351
         static volatile bool isStop = false;
         static void Main(string[] args)
         {
-            DateTime dt = DateTime.Now;
-            DateTime endDt = dt.AddSeconds(5);
-            while(DateTime.Now<endDt)
-            {
-                Timer taskTimer = new Timer(TaskCancellation, "This is the Timer", 0, 1000);
-            }
-            isStop = true;
+            GetSQLResult();
             Console.ReadLine();
         }
 
@@ -51,6 +48,32 @@ namespace ConsoleApp351
         static void MyMethod()
         {
             Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")};");
+        }
+        static void GetSQLResult()
+        {            
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ToString();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string executeFunc = "select ROUTINE_NAME,ROUTINE_DEFINITION from INFORMATION_SCHEMA.ROUTINES  where ROUTINE_TYPE='function' ";
+                using (SqlCommand cmd = new SqlCommand(executeFunc, conn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    while (sqlDataReader.Read())
+                    {
+                        StringBuilder sqlBuilder = new StringBuilder();
+                        for(int i=0;i<sqlDataReader.FieldCount;i++)
+                        {
+                            sqlBuilder.Append(sqlDataReader[i].ToString());
+                        }
+                        Console.WriteLine(sqlBuilder.ToString()+"\n");
+                    }
+                }
+            }
         }
     }
 }
