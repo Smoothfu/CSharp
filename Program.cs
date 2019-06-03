@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp351
@@ -11,12 +12,26 @@ namespace ConsoleApp351
     delegate void AddDel (int x, int y);
     class Program
     {
+        static CancellationTokenSource cts = new CancellationTokenSource();
+        static int x = 10000, y = 20000;
         static void Main(string[] args)
         {
-            int x = 100, y = 1000000;
-            AddDel addDel = new AddDel(AddMethod);
-            addDel.BeginInvoke(x, y, AddCallback, "This the begin invoke last parameter");
+            DateTime dt = DateTime.Now;
+            DateTime endDt = dt.AddSeconds(3);
+            while(DateTime.Now<endDt)
+            {
+                TaskCancellation();
+            }
+            //cts.Cancel();
             Console.ReadLine();
+        }
+
+        static void TaskCancellation()
+        {
+            Task.Run(() =>
+            {
+                MyMethod();
+            }, cts.Token);
         }
 
         private static void AddCallback(IAsyncResult ar)
@@ -25,7 +40,7 @@ namespace ConsoleApp351
             Console.WriteLine(iasynResult.ToString());
         }
 
-        static void AddMethod(int x,int y)
+        static void AddMethod(int x, int y)
         {
             Console.WriteLine($"{x}+{y}={x + y}");
         }
