@@ -17,8 +17,8 @@ namespace ServerService
         DataTable IGetDataTable.GetDataTable()
         {
             string connString= ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
-            string selectSQL = "select ROUTINE_CATALOG,ROUTINE_SCHEMA,ROUTINE_NAME,ROUTINE_DEFINITION from INFORMATION_SCHEMA.ROUTINES  where ROUTINE_TYPE='function'";
-            DataTable dt = new DataTable("DataTable from server");
+            string selectSQL = "select * from INFORMATION_SCHEMA.ROUTINES  where ROUTINE_TYPE='function'";
+            DataTable dt = new DataTable();
             using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSQL, connString))
             {
                 DataSet ds = new DataSet();
@@ -26,6 +26,6 @@ namespace ServerService
                 dt = ds.Tables[0];
             }            
             return dt;
-        }
+        }         
     }
 }
