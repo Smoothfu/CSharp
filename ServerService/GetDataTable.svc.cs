@@ -17,7 +17,7 @@ namespace ServerService
         DataTable IGetDataTable.GetDataTable()
         {
             string connString= ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
-            string selectSQL = "select * from INFORMATION_SCHEMA.ROUTINES  where ROUTINE_TYPE='function'";
+            string selectSQL = "select  * from sales.SalesOrderDetail";
             DataTable dt = new DataTable();
             using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectSQL, connString))
             {
