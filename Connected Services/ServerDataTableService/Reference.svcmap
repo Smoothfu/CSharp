@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="217f7d53-7e69-4821-9688-c1b1db21f067" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:5793/GetDataTable.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GetDataTable.xsd" MetadataType="Schema" ID="d20cfc23-8d01-4f52-a253-bd490815d153" SourceId="1" SourceUrl="http://localhost:5793/GetDataTable.svc?xsd=xsd0" />
+    <MetadataFile FileName="GetDataTable1.xsd" MetadataType="Schema" ID="a9386f7e-1d2c-467c-a369-5296ccd0f439" SourceId="1" SourceUrl="http://localhost:5793/GetDataTable.svc?xsd=xsd2" />
+    <MetadataFile FileName="GetDataTable.wsdl" MetadataType="Wsdl" ID="ff68163d-f629-45eb-9f14-b330bb91b565" SourceId="1" SourceUrl="http://localhost:5793/GetDataTable.svc?wsdl" />
+    <MetadataFile FileName="GetDataTable2.xsd" MetadataType="Schema" ID="0604554e-2c9f-4279-9fc6-2882ef37a00d" SourceId="1" SourceUrl="http://localhost:5793/GetDataTable.svc?xsd=xsd1" />
+    <MetadataFile FileName="GetDataTable.disco" MetadataType="Disco" ID="2df8f665-8835-43c3-9172-7dee2f960b0c" SourceId="1" SourceUrl="http://localhost:5793/GetDataTable.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

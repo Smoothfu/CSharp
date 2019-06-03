@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using ConsoleApp351.ServerDataTableService;
 
 namespace ConsoleApp351
 {
@@ -19,7 +20,17 @@ namespace ConsoleApp351
         static volatile bool isStop = false;
         static void Main(string[] args)
         {
-            GetSQLResult();
+            GetDataTableClient client = new GetDataTableClient();
+            DataTable dt = client.GetDataTable();
+            for(int i=0;i<dt.Rows.Count;i++)
+            {
+                StringBuilder rowBuilder = new StringBuilder();
+                for(int j=0;j<dt.Columns.Count;j++)
+                {
+                    rowBuilder.Append(dt.Rows[i][j]?.ToString() + "\t");
+                }
+                Console.WriteLine(rowBuilder.ToString());
+            }
             Console.ReadLine();
         }
 

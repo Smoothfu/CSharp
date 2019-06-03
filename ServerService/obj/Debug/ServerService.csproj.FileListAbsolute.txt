@@ -1,0 +1,7 @@
+D:\C\ConsoleApp351\ServerService\bin\ServerService.dll.config
+D:\C\ConsoleApp351\ServerService\bin\ServerService.dll
+D:\C\ConsoleApp351\ServerService\bin\ServerService.pdb
+D:\C\ConsoleApp351\ServerService\obj\Debug\ServerService.csprojAssemblyReference.cache
+D:\C\ConsoleApp351\ServerService\obj\Debug\ServerService.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp351\ServerService\obj\Debug\ServerService.dll
+D:\C\ConsoleApp351\ServerService\obj\Debug\ServerService.pdb
