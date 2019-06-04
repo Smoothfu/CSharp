@@ -1,0 +1,6 @@
+D:\C\ConsoleApp352\bin\Debug\ConsoleApp352.exe.config
+D:\C\ConsoleApp352\bin\Debug\ConsoleApp352.exe
+D:\C\ConsoleApp352\bin\Debug\ConsoleApp352.pdb
+D:\C\ConsoleApp352\obj\Debug\ConsoleApp352.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp352\obj\Debug\ConsoleApp352.exe
+D:\C\ConsoleApp352\obj\Debug\ConsoleApp352.pdb
