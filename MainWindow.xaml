@@ -5,18 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp43"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel Margin="10">
-        <WrapPanel>
-            <TextBlock Text="Window title: "/>
-            <TextBox Name="txtWindowTitle" Text="{Binding Title,UpdateSourceTrigger=Explicit}" Width="150"/>
-            <Button Name="btnUpdateSource" Click="BtnUpdateSource_Click" Margin="5,0" Width="100" Content="UpdateSource" Padding="5,0"/>
-        </WrapPanel>
-        <WrapPanel Margin="0,10,0,0">
-            <TextBlock Text="Window dimensions: "/>
-            <TextBox Text="{Binding Width,UpdateSourceTrigger=LostFocus}" Width="50"/>
-            <TextBlock Text=" x "/>
-            <TextBox Text="{Binding Height,UpdateSourceTrigger=PropertyChanged}" Width="50"/>
-        </WrapPanel>
-    </StackPanel>
+        Title="ChangeNotificationSample" Height="450" Width="800">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Right" Margin="10,0,0,0">
+            <Button Name="btnAddUser" Click="BtnAddUser_Click">Add User</Button>
+            <Button Name="btnChangeUser" Click="BtnChangeUser_Click" Margin="0,5">Change User</Button>
+            <Button Name="btnDeleteUser" Click="BtnDeleteUser_Click">Delete User</Button>
+            <Button Name="InsertUser" Click="InsertUser_Click">InsertUserAtSecond</Button>
+            <Button Name="ClearUsers" Click="ClearUsers_Click">Clear Users</Button>
+            <Button Name="RemoveUser" Click="RemoveUser_Click">Remove User</Button>
+            <Button Name="RemoveItem" Click="RemoveItem_Click">Remove User Item</Button>
+        </StackPanel>
+        <ListBox Name="lbUsers" DisplayMemberPath="Name" SelectedItem="{Binding SelectedUser}"></ListBox>
+    </DockPanel>
 </Window>
