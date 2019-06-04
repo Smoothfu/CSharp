@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="ChangeNotificationSample" Height="450" Width="800">
     <DockPanel>
-        <DataGrid x:Name="dg" Width="1300" Height="800" ItemsSource="{Binding}"
-                  AutoGenerateColumns="True" BorderBrush="LightYellow"
-                  BorderThickness="5" AlternatingRowBackground="Blue" />
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+            <DataGrid x:Name="dg" Width="500" Height="800"  
+                  AutoGenerateColumns="True" BorderBrush="Azure"
+                  BorderThickness="15" AlternatingRowBackground="Azure" VerticalScrollBarVisibility="Visible"
+                     HorizontalScrollBarVisibility="Visible" />
+        </ScrollViewer>        
     </DockPanel>
 </Window>
