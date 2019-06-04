@@ -7,15 +7,8 @@
         mc:Ignorable="d"
         Title="ChangeNotificationSample" Height="450" Width="800">
     <DockPanel>
-        <StackPanel DockPanel.Dock="Right" Margin="10,0,0,0">
-            <Button Name="btnAddUser" Click="BtnAddUser_Click">Add User</Button>
-            <Button Name="btnChangeUser" Click="BtnChangeUser_Click" Margin="0,5">Change User</Button>
-            <Button Name="btnDeleteUser" Click="BtnDeleteUser_Click">Delete User</Button>
-            <Button Name="InsertUser" Click="InsertUser_Click">InsertUserAtSecond</Button>
-            <Button Name="ClearUsers" Click="ClearUsers_Click">Clear Users</Button>
-            <Button Name="RemoveUser" Click="RemoveUser_Click">Remove User</Button>
-            <Button Name="RemoveItem" Click="RemoveItem_Click">Remove User Item</Button>
-        </StackPanel>
-        <ListBox Name="lbUsers" DisplayMemberPath="Name" SelectedItem="{Binding SelectedUser}"></ListBox>
+        <DataGrid x:Name="dg" Width="1300" Height="800" ItemsSource="{Binding}"
+                  AutoGenerateColumns="True" BorderBrush="LightYellow"
+                  BorderThickness="5" AlternatingRowBackground="Blue" />
     </DockPanel>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp43.GetDBTableWCFService;
+using System.Data;
 
 namespace WpfApp43
 {
@@ -52,66 +55,16 @@ namespace WpfApp43
         public MainWindow()
         {
             InitializeComponent();
-            usersList.Add(new User() { Name = "Fred Fu" });
-            usersList.Add(new User() { Name = "Cloud Lee" });
-            lbUsers.ItemsSource = usersList;
+            GetDBTableWCFService.GetDBTableClient serviceInstance = new GetDBTableClient();
+            DataTable dt = serviceInstance.GetDataTable();
+            dg.ItemsSource = dt.DefaultView;
             this.DataContext = this;
-        }
-
-        
+        }        
 
         private void BtnAddUser_Click(object sender, RoutedEventArgs e)
         {
             usersList.Add(new User() { Name = "New User"+Guid.NewGuid() });
-        }
-
-        private void BtnChangeUser_Click(object sender, RoutedEventArgs e)
-        {
-            if(lbUsers.SelectedItem!=null)
-            {
-                (lbUsers.SelectedItem as User).Name = "Changed Name"+Guid.NewGuid();
-            }
-        }
-
-        private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
-        {
-            if (lbUsers.SelectedItem != null)
-            {
-                usersList.Remove(lbUsers.SelectedItem as User);
-            }
-        }
-
-        private void InsertUser_Click(object sender, RoutedEventArgs e)
-        {             
-            usersList.Add(new User() { Name = "Added User" + Guid.NewGuid() });
-            var lastIndex = usersList.Count;
-            usersList.Insert(lastIndex, new User() { Name = "Inserted User" + Guid.NewGuid() });
-        }
-
-        private void ClearUsers_Click(object sender, RoutedEventArgs e)
-        {
-            usersList.Clear();
-        }
-
-        private void RemoveUser_Click(object sender, RoutedEventArgs e)
-        {
-            if(SelectedUser!=null)
-            {
-                usersList.Remove(selectedUser);
-            }                      
-        }
-
-        private void RemoveItem_Click(object sender, RoutedEventArgs e)
-        {
-            if(SelectedUser!=null)
-            {
-                var selectedIndex = usersList.IndexOf(SelectedUser);
-                if(selectedIndex!=-1)
-                {
-                    usersList.RemoveAt(selectedIndex);
-                }
-            }
-        }
+        }       
     }
     public class User:INotifyPropertyChanged
     {
@@ -139,6 +92,19 @@ namespace WpfApp43
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
+        }
+    }
+
+    public class UsersCollection : IEnumerable<UsersCollection>
+    {
+        public IEnumerator<UsersCollection> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

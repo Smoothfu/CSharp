@@ -1,0 +1,7 @@
+D:\C\WpfApp43\ServerDataTableService\bin\ServerDataTableService.dll.config
+D:\C\WpfApp43\ServerDataTableService\bin\ServerDataTableService.dll
+D:\C\WpfApp43\ServerDataTableService\bin\ServerDataTableService.pdb
+D:\C\WpfApp43\ServerDataTableService\obj\Debug\ServerDataTableService.csproj.CoreCompileInputs.cache
+D:\C\WpfApp43\ServerDataTableService\obj\Debug\ServerDataTableService.dll
+D:\C\WpfApp43\ServerDataTableService\obj\Debug\ServerDataTableService.pdb
+D:\C\WpfApp43\ServerDataTableService\obj\Debug\ServerDataTableService.csprojAssemblyReference.cache

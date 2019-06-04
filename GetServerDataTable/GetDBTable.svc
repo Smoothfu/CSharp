@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GetServerDataTable.GetDBTable" CodeBehind="GetDBTable.svc.cs" %>

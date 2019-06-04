@@ -1,0 +1,6 @@
+D:\C\WpfApp43\GetServerDataTable\bin\GetServerDataTable.dll.config
+D:\C\WpfApp43\GetServerDataTable\bin\GetServerDataTable.dll
+D:\C\WpfApp43\GetServerDataTable\bin\GetServerDataTable.pdb
+D:\C\WpfApp43\GetServerDataTable\obj\Debug\GetServerDataTable.csproj.CoreCompileInputs.cache
+D:\C\WpfApp43\GetServerDataTable\obj\Debug\GetServerDataTable.dll
+D:\C\WpfApp43\GetServerDataTable\obj\Debug\GetServerDataTable.pdb
