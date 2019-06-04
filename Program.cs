@@ -11,9 +11,12 @@ namespace ConsoleApp352
         delegate void AddDel(int x, int y);
         static void Main(string[] args)
         {
-            int x = 345667456, y = 456567456;
-            AddDel addDel = new AddDel(AddMethod);
-            addDel.BeginInvoke(x, y, AddDelCallBack, "This is the AddDel BeginInvoke async state");
+            int[] arr = new int[10000];
+            arr = Enumerable.Range(1, 10000).ToArray();
+            Parallel.ForEach(arr, x =>
+            {
+                Console.Write(x + "\t");
+            });
             Console.ReadLine();
         }
 
