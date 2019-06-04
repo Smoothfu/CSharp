@@ -1,0 +1,15 @@
+D:\C\WpfApp43\bin\Debug\WpfApp43.exe.config
+D:\C\WpfApp43\bin\Debug\WpfApp43.exe
+D:\C\WpfApp43\bin\Debug\WpfApp43.pdb
+D:\C\WpfApp43\obj\Debug\WpfApp43.csprojAssemblyReference.cache
+D:\C\WpfApp43\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp43\obj\Debug\App.g.cs
+D:\C\WpfApp43\obj\Debug\WpfApp43_MarkupCompile.cache
+D:\C\WpfApp43\obj\Debug\WpfApp43_MarkupCompile.lref
+D:\C\WpfApp43\obj\Debug\MainWindow.baml
+D:\C\WpfApp43\obj\Debug\WpfApp43.g.resources
+D:\C\WpfApp43\obj\Debug\WpfApp43.Properties.Resources.resources
+D:\C\WpfApp43\obj\Debug\WpfApp43.csproj.GenerateResource.cache
+D:\C\WpfApp43\obj\Debug\WpfApp43.csproj.CoreCompileInputs.cache
+D:\C\WpfApp43\obj\Debug\WpfApp43.exe
+D:\C\WpfApp43\obj\Debug\WpfApp43.pdb
