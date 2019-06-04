@@ -19,6 +19,8 @@ namespace ConsoleApp352
 
         private static void AddDelCallBack(IAsyncResult ar)
         {
+            var waitToCompleted=ar.AsyncWaitHandle;
+            Console.WriteLine(waitToCompleted);
             var result = ar.ToString();
             Console.WriteLine(result);
             Console.WriteLine(ar.AsyncState);
