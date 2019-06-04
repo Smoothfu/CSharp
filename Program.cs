@@ -20,6 +20,7 @@ namespace ConsoleApp351
         static volatile bool isStop = false;
         static void Main(string[] args)
         {
+            System.Diagnostics.Debug.WriteLine(Int64.MaxValue);
             GetDataTableClient client = new GetDataTableClient();
             DataTable dt = client.GetDataTable();
             for(int i=0;i<dt.Rows.Count;i++)
