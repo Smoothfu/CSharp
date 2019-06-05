@@ -1,0 +1,42 @@
+﻿<Window x:Class="WpfApp44.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp44"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:converter="clr-namespace:WpfApp44.Converters"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>    
+    <converter:SelectedDataRowViewToBooleanConverter x:Key="selectedDataRowViewToBooleanConverter"/>
+    </Window.Resources>
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/> 
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer Grid.Row="0" Grid.Column="0"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                <DataGrid x:Name="dg" ItemsSource="{Binding DGDefaultDataView}"
+            Width="1200" Height="800" BorderBrush="Azure" BorderThickness="10" 
+            VerticalScrollBarVisibility="Visible" SelectedItem="{Binding SelectedDataRowView}" 
+            HorizontalScrollBarVisibility="Visible" AlternatingRowBackground="Azure">
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedItemChangedCmd}" CommandParameter="{Binding SelectedDataRowView}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>-->
+                </DataGrid>
+            </ScrollViewer>
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Button  Content="Add" Command="{Binding AddCmd}"/>
+                <Button Content="Delete" 
+                        Command="{Binding DeleteCmd,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                        CommandParameter="{Binding SelectedDataRowView}"/>
+                <Button Content="Clear" Command="{Binding ClearCmd}"/>
+                <Button Content="Reload" Command="{Binding ReloadCmd}"/>
+            </StackPanel>
+        </Grid>       
+    </StackPanel>  
+</Window>

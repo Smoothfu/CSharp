@@ -1,0 +1,7 @@
+D:\C\WpfApp44\ServerDBWCFService\bin\ServerDBWCFService.dll.config
+D:\C\WpfApp44\ServerDBWCFService\bin\ServerDBWCFService.dll
+D:\C\WpfApp44\ServerDBWCFService\bin\ServerDBWCFService.pdb
+D:\C\WpfApp44\ServerDBWCFService\obj\Debug\ServerDBWCFService.csprojAssemblyReference.cache
+D:\C\WpfApp44\ServerDBWCFService\obj\Debug\ServerDBWCFService.csproj.CoreCompileInputs.cache
+D:\C\WpfApp44\ServerDBWCFService\obj\Debug\ServerDBWCFService.dll
+D:\C\WpfApp44\ServerDBWCFService\obj\Debug\ServerDBWCFService.pdb

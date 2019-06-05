@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d12681bc-cb49-49e2-a45f-27c1b14c6f72" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:14008/GetDBTables.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GetDBTables.xsd" MetadataType="Schema" ID="4ab6e287-c0cd-4a53-812f-668b97bae74c" SourceId="1" SourceUrl="http://localhost:14008/GetDBTables.svc?xsd=xsd1" />
+    <MetadataFile FileName="GetDBTables1.xsd" MetadataType="Schema" ID="36000b04-95b7-4b64-ac41-2fde78fc165a" SourceId="1" SourceUrl="http://localhost:14008/GetDBTables.svc?xsd=xsd0" />
+    <MetadataFile FileName="GetDBTables.wsdl" MetadataType="Wsdl" ID="f09f7554-bd0a-46cd-8981-83534dd1a6c4" SourceId="1" SourceUrl="http://localhost:14008/GetDBTables.svc?wsdl" />
+    <MetadataFile FileName="GetDBTables2.xsd" MetadataType="Schema" ID="321d29e1-71d8-40ca-9269-b4e3432af790" SourceId="1" SourceUrl="http://localhost:14008/GetDBTables.svc?xsd=xsd2" />
+    <MetadataFile FileName="GetDBTables.disco" MetadataType="Disco" ID="5435c6d9-8711-4df6-bd8c-0627e3d80310" SourceId="1" SourceUrl="http://localhost:14008/GetDBTables.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
