@@ -36,6 +36,7 @@
                         CommandParameter="{Binding SelectedDataRowView}"/>
                 <Button Content="Clear" Command="{Binding ClearCmd}"/>
                 <Button Content="Reload" Command="{Binding ReloadCmd}"/>
+                <Button Content="Export" Command="{Binding ExportCmd}"/>
             </StackPanel>
         </Grid>       
     </StackPanel>  

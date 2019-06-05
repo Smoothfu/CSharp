@@ -22,3 +22,9 @@ D:\C\WpfApp44\obj\Debug\WpfApp44.csproj.CopyComplete
 D:\C\WpfApp44\obj\Debug\WpfApp44.exe
 D:\C\WpfApp44\obj\Debug\WpfApp44.pdb
 D:\C\WpfApp44\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\C\WpfApp44\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\C\WpfApp44\bin\Debug\NPOI.dll
+D:\C\WpfApp44\bin\Debug\NPOI.OOXML.dll
+D:\C\WpfApp44\bin\Debug\NPOI.OpenXml4Net.dll
+D:\C\WpfApp44\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\C\WpfApp44\obj\Debug\WpfApp44.csprojAssemblyReference.cache

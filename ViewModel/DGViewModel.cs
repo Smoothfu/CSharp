@@ -10,6 +10,10 @@ using Prism.Mvvm;
 using Prism.Commands;
 using WpfApp44.GetDBTableService;
 using System.Windows.Input;
+using NPOI.XSSF;
+using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;
+using System.IO;
 
 namespace WpfApp44.ViewModel
 {
@@ -139,6 +143,7 @@ namespace WpfApp44.ViewModel
 
         private void ReloadCmdExecuted()
         {
+            DGDataTable.Clear();
             DGLoadItemsSource();
         }
 
@@ -209,7 +214,6 @@ namespace WpfApp44.ViewModel
             SelectedDataRowView.Row.Delete();
             DGDataTable.AcceptChanges();
         }
-
 
         private DelegateCommand addCmd;
         public DelegateCommand AddCmd
@@ -284,6 +288,75 @@ namespace WpfApp44.ViewModel
                 SelectedDataRowView.Row.Delete();
                 DGDataTable.AcceptChanges();
             }
+        }
+
+        private DelegateCommand<object> exportCmd;
+        public DelegateCommand<object> ExportCmd
+        {
+            get
+            {
+                if(exportCmd==null)
+                {
+                    exportCmd = new DelegateCommand<object>(ExportCmdExecuted, ExportCmdCanExecute);
+                }
+                return exportCmd;
+            }
+        }
+
+        private bool ExportCmdCanExecute(object arg)
+        {
+            return true;
+        }
+
+        private void ExportCmdExecuted(object obj)
+        {
+            ExportDataTable(DGDataTable);           
+        }
+
+        static void ExportDataTable(DataTable dt)
+        {
+            string exportedExcelFullName = Directory.GetCurrentDirectory() + "//" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".xlsx";
+            if(dt!=null && dt.Rows.Count>0)
+            {
+                XSSFWorkbook workBook = new XSSFWorkbook();
+                ISheet firstSheet = workBook.CreateSheet("First Sheet");
+                IRow headerRow = firstSheet.CreateRow(0);
+                var firstRowData = dt.Rows[0].ItemArray;
+                List<string> columnNamesList = new List<string>();
+                for(int i=0;i<dt.Columns.Count;i++)
+                {
+                    columnNamesList.Add(dt.Columns[i].ColumnName);
+                }
+                for(int i=0;i< columnNamesList.Count;i++)
+                {
+                    var columnName = columnNamesList[i];
+                    ICell headerCell = headerRow.CreateCell(i);
+                    if(!string.IsNullOrEmpty(columnName))
+                    {
+                        headerCell.SetCellValue(columnName);
+                    }                   
+                }
+
+                //for(int i=0;i<dt.Rows.Count;i++)
+                //{
+                //    IRow dataRow = firstSheet.CreateRow(i + 2);
+                //    for(int j=0;j<columnNamesList.Count;j++)
+                //    {
+                //        ICell dataCell = dataRow.CreateCell(j + 1);
+                //        var cellValue = propertiesList[i].GetValue(dt.Rows[i].ItemArray[j]);
+                //        if (cellValue!=null)
+                //        {
+                //            dataCell.SetCellValue(cellValue?.ToString());
+                //        }
+                //    }
+                //}
+
+                using (FileStream excelStream = File.Create(exportedExcelFullName))
+                {
+                    workBook.Write(excelStream);
+                }
+                System.Diagnostics.Debug.WriteLine(exportedExcelFullName);
+            }           
         }
 
         #endregion
