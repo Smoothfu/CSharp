@@ -321,41 +321,32 @@ namespace WpfApp44.ViewModel
                 XSSFWorkbook workBook = new XSSFWorkbook();
                 ISheet firstSheet = workBook.CreateSheet("First Sheet");
                 IRow headerRow = firstSheet.CreateRow(0);
-                var firstRowData = dt.Rows[0].ItemArray;
-                List<string> columnNamesList = new List<string>();
+               
+                for(int i=0;i<dt.Columns.Count;i++)
+                {                    
+                    ICell headerCell = headerRow.CreateCell(i);
+                    headerCell.SetCellValue(dt.Columns[i].ColumnName?.ToString());                     
+                }                
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    IRow dataRow = firstSheet.CreateRow(i + 1);
+                    for(int j=0;j<dt.Columns.Count;j++)
+                    {
+                        ICell dataCell = dataRow.CreateCell(j);                        
+                        dataCell.SetCellValue(dt.Rows[i][j]?.ToString());                        
+                    }
+                }
                 for(int i=0;i<dt.Columns.Count;i++)
                 {
-                    columnNamesList.Add(dt.Columns[i].ColumnName);
-                }
-                for(int i=0;i< columnNamesList.Count;i++)
-                {
-                    var columnName = columnNamesList[i];
-                    ICell headerCell = headerRow.CreateCell(i);
-                    if(!string.IsNullOrEmpty(columnName))
-                    {
-                        headerCell.SetCellValue(columnName);
-                    }                   
-                }
-
-                //for(int i=0;i<dt.Rows.Count;i++)
-                //{
-                //    IRow dataRow = firstSheet.CreateRow(i + 2);
-                //    for(int j=0;j<columnNamesList.Count;j++)
-                //    {
-                //        ICell dataCell = dataRow.CreateCell(j + 1);
-                //        var cellValue = propertiesList[i].GetValue(dt.Rows[i].ItemArray[j]);
-                //        if (cellValue!=null)
-                //        {
-                //            dataCell.SetCellValue(cellValue?.ToString());
-                //        }
-                //    }
-                //}
+                    firstSheet.AutoSizeColumn(i);
+                }                
 
                 using (FileStream excelStream = File.Create(exportedExcelFullName))
                 {
                     workBook.Write(excelStream);
-                }
-                System.Diagnostics.Debug.WriteLine(exportedExcelFullName);
+                } 
+                System.Windows.Application.Current.Shutdown();
             }           
         }
 
