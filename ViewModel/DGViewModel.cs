@@ -315,7 +315,7 @@ namespace WpfApp44.ViewModel
 
         static void ExportDataTable(DataTable dt)
         {
-            string exportedExcelFullName = Directory.GetCurrentDirectory() + "//" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".xlsx";
+            string exportedExcelFullName = Directory.GetCurrentDirectory() + "\\" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".xlsx";
             if(dt!=null && dt.Rows.Count>0)
             {
                 XSSFWorkbook workBook = new XSSFWorkbook();
