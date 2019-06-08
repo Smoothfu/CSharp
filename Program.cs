@@ -12,7 +12,7 @@ namespace ConsoleApp355
         static void Main(string[] args)
         {
             IEnumerable<int> intList = Enumerable.Range(1,1000000000);
-            CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(10000));
+            CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(1000));
             CancellationToken ctsToken = cts.Token;
 
             Task.Run(() =>
@@ -23,25 +23,19 @@ namespace ConsoleApp355
                     {
                         if (i % 10000000 == 0)
                         {
-                            Console.WriteLine(i);
                             if (i % 100000000 == 0)
                             {
                                 cts.Cancel();
-                                ctsToken.ThrowIfCancellationRequested();
-                                break;
                             }
+                            Console.WriteLine(i);                            
                         }
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    cts.Dispose();
-                }                
-            }, ctsToken);
+                }                                         
+            },ctsToken);
             Console.ReadLine();
         }
 
