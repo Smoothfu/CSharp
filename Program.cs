@@ -9,9 +9,41 @@ namespace ConsoleApp355
 {
     class Program
     {
+        static DateTime dt = DateTime.Now;
+        static DateTime dtEnd = dt.AddSeconds(5);
+        static Timer timer;
         static void Main(string[] args)
         {
-            IEnumerable<int> intList = Enumerable.Range(1,1000000000);
+            try
+            {
+                TimeSpan ts = TimeSpan.FromMilliseconds(500);
+                TimeSpan dueTS = TimeSpan.FromSeconds(0);
+                timer = new Timer(NewTimerCallback, "This is object state", dueTS, ts);
+            }
+            finally
+            {
+                if (timer != null && DateTime.Now >= dtEnd)
+                {
+                    timer.Dispose();
+                }
+            } 
+            
+            Console.ReadLine();
+        }        
+
+        private static void NewTimerCallback(object state)
+        {
+            if (DateTime.Now > dtEnd)
+            {
+                timer.Dispose();
+                return;
+            }
+            Console.WriteLine($"Now is {DateTime.Now.ToString("yyyyMMddHHmmssffff")}");
+        }
+
+        static void NewCancellationTokenSourceTimeSpan()
+        {
+            IEnumerable<int> intList = Enumerable.Range(1, 1000000000);
             CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(1000));
             CancellationToken ctsToken = cts.Token;
 
@@ -27,18 +59,16 @@ namespace ConsoleApp355
                             {
                                 cts.Cancel();
                             }
-                            Console.WriteLine(i);                            
+                            Console.WriteLine(i);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                }                                         
-            },ctsToken);
-            Console.ReadLine();
+                }
+            }, ctsToken);
         }
-
         static void TaskCancellationTokenSource()
         {
             //Define the cancellation token.
