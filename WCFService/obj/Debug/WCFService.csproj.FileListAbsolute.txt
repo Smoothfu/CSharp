@@ -1,0 +1,6 @@
+D:\C\WpfApp46\WCFService\bin\WCFService.dll.config
+D:\C\WpfApp46\WCFService\bin\WCFService.dll
+D:\C\WpfApp46\WCFService\bin\WCFService.pdb
+D:\C\WpfApp46\WCFService\obj\Debug\WCFService.csproj.CoreCompileInputs.cache
+D:\C\WpfApp46\WCFService\obj\Debug\WCFService.dll
+D:\C\WpfApp46\WCFService\obj\Debug\WCFService.pdb

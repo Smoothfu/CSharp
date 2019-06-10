@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2c21d7de-d326-4906-a1e4-b6231e57e4ed" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3654/GetSODDT.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GetSODDT.xsd" MetadataType="Schema" ID="683921bc-52ac-4d20-9e90-e3dbc6d9a7c0" SourceId="1" SourceUrl="http://localhost:3654/GetSODDT.svc?xsd=xsd0" />
+    <MetadataFile FileName="GetSODDT.wsdl" MetadataType="Wsdl" ID="68befc54-7bc0-4fd7-b3f0-e582b4380cc5" SourceId="1" SourceUrl="http://localhost:3654/GetSODDT.svc?wsdl" />
+    <MetadataFile FileName="GetSODDT.disco" MetadataType="Disco" ID="73eb100a-6219-4a94-a24d-90b5b0b8e9fd" SourceId="1" SourceUrl="http://localhost:3654/GetSODDT.svc?disco" />
+    <MetadataFile FileName="GetSODDT1.xsd" MetadataType="Schema" ID="650904f3-95ff-48af-83e0-538b6a3ab432" SourceId="1" SourceUrl="http://localhost:3654/GetSODDT.svc?xsd=xsd1" />
+    <MetadataFile FileName="GetSODDT2.xsd" MetadataType="Schema" ID="64d5978d-beda-4c36-8b30-79e313ff643f" SourceId="1" SourceUrl="http://localhost:3654/GetSODDT.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

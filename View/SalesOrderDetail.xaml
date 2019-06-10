@@ -1,0 +1,52 @@
+﻿<Window x:Class="WpfApp46.View.SalesOrderDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp46.View"
+        mc:Ignorable="d" ResizeMode="CanResizeWithGrip"  WindowState="Maximized"
+        Title="SalesOrderDetail" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>             
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Content="Clear" FontSize="30" Command="{Binding ClearCmd}"/>
+                <Button Grid.Row="1" Grid.Column="0" Content="Reload" FontSize="30" Command="{Binding ReloadCmd}"/>
+                <Button Grid.Row="2" Grid.Column="0" Content="Export" FontSize="30" Command="{Binding ExportCmd}"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="Edit" FontSize="30" Command="{Binding EditCmd}"/>
+            </Grid>            
+        </StackPanel>         
+        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="Blue" BorderThickness="5"
+                  AutoGenerateColumns="True"
+                  ItemsSource="{Binding SODDT,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                  SnapsToDevicePixels="True"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor,
+            AncestorType=Window,AncestorLevel=1}}"
+                  SelectedItem="{Binding SelectedSOD}" >
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem  Header="Clear" Command="{Binding ClearCmd}"/>
+                    <MenuItem Header="Reload" Command="{Binding ReloadCmd}"/>
+                    <MenuItem Header="Export" Command="{Binding ExportCmd}"/>
+                    <MenuItem Header="Edit"   Command="{Binding EditCmd}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</Window>
