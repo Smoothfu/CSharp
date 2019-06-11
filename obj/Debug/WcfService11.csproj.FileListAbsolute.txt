@@ -1,0 +1,11 @@
+D:\C\WcfService11\bin\WcfService11.dll.config
+D:\C\WcfService11\bin\WcfService11.dll
+D:\C\WcfService11\bin\WcfService11.pdb
+D:\C\WcfService11\bin\EntityFramework.dll
+D:\C\WcfService11\bin\EntityFramework.SqlServer.dll
+D:\C\WcfService11\bin\EntityFramework.xml
+D:\C\WcfService11\bin\EntityFramework.SqlServer.xml
+D:\C\WcfService11\obj\Debug\WcfService11.csproj.CoreCompileInputs.cache
+D:\C\WcfService11\obj\Debug\WcfService11.csproj.CopyComplete
+D:\C\WcfService11\obj\Debug\WcfService11.dll
+D:\C\WcfService11\obj\Debug\WcfService11.pdb

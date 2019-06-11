@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="56f734be-84e6-4c93-9560-0390379b9fb8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:11316/GetSODList.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GetSODList.disco" MetadataType="Disco" ID="ccfc3d6a-b094-4065-92a0-31d1d69a1de2" SourceId="1" SourceUrl="http://localhost:11316/GetSODList.svc?disco" />
+    <MetadataFile FileName="GetSODList.xsd" MetadataType="Schema" ID="0bb61b9c-9aca-4cfa-8a00-e62bee4861ec" SourceId="1" SourceUrl="http://localhost:11316/GetSODList.svc?xsd=xsd0" />
+    <MetadataFile FileName="GetSODList.wsdl" MetadataType="Wsdl" ID="22462f6c-7e44-4325-8a29-cba90e853fdf" SourceId="1" SourceUrl="http://localhost:11316/GetSODList.svc?wsdl" />
+    <MetadataFile FileName="GetSODList1.xsd" MetadataType="Schema" ID="ec12cfa3-2386-4b68-b0f0-fd46bee4e900" SourceId="1" SourceUrl="http://localhost:11316/GetSODList.svc?xsd=xsd2" />
+    <MetadataFile FileName="GetSODList2.xsd" MetadataType="Schema" ID="04f3fa2c-ba96-4d05-84c6-aa977322daea" SourceId="1" SourceUrl="http://localhost:11316/GetSODList.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

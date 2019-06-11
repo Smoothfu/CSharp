@@ -1,0 +1,10 @@
+D:\C\WcfService11\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+D:\C\WcfService11\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+D:\C\WcfService11\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+D:\C\WcfService11\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+D:\C\WcfService11\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+D:\C\WcfService11\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+D:\C\WcfService11\ConsoleApp1\bin\Debug\Newtonsoft.Json.dll
+D:\C\WcfService11\ConsoleApp1\bin\Debug\Newtonsoft.Json.xml
+D:\C\WcfService11\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
+D:\C\WcfService11\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CopyComplete
