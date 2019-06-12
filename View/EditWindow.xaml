@@ -14,8 +14,10 @@
         <DataGrid Grid.Row="0" ItemsSource="{Binding SelectedSODDt,Mode=TwoWay,
             UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="True" BorderBrush="Blue" 
                   BorderThickness="5"
-                  SnapsToDevicePixels="True"
-                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                  SnapsToDevicePixels="True"  SelectedItem="{Binding SelectedSOD}"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">             
+             
+        </DataGrid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="Save" FontSize="30" Command="{Binding SaveCmd}"/>
             <Button Content="Cancel" FontSize="30" Command="{Binding CancelCmd}"/>

@@ -4,3 +4,4 @@ D:\C\WpfApp46\WCFService\bin\WCFService.pdb
 D:\C\WpfApp46\WCFService\obj\Debug\WCFService.csproj.CoreCompileInputs.cache
 D:\C\WpfApp46\WCFService\obj\Debug\WCFService.dll
 D:\C\WpfApp46\WCFService\obj\Debug\WCFService.pdb
+D:\C\WpfApp46\WCFService\obj\Debug\WCFService.csprojAssemblyReference.cache

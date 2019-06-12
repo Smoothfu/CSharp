@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +23,9 @@ namespace WpfApp46.View
     {
         public EditWindow()
         {
-            InitializeComponent();
-            this.DataContext = new SODViewModel();
+            InitializeComponent();                        
         }
+
+        public SODViewModel SODVM { get; set; }
     }
 }

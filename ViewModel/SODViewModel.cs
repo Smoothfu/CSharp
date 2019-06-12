@@ -238,8 +238,8 @@ namespace WpfApp46.ViewModel
             SelectedSODDt.Rows.Add(SelectedSOD.Row.ItemArray);
             TempDt = SelectedSODDt;
             EditWindow editWin = new EditWindow();
-            editWin.Show();
-           
+            editWin.DataContext = this;
+            editWin.ShowDialog();
         }
 
         private ICommand loadDataCmd;
@@ -341,7 +341,7 @@ namespace WpfApp46.ViewModel
             var temp = SelectedSODDt;
             var temp2 = TempDt;
         }
-         
+        
         #endregion
     }
 }
