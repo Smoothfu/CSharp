@@ -1,0 +1,7 @@
+D:\C\ConsoleApp361\bin\Debug\ConsoleApp361.exe.config
+D:\C\ConsoleApp361\bin\Debug\ConsoleApp361.exe
+D:\C\ConsoleApp361\bin\Debug\ConsoleApp361.pdb
+D:\C\ConsoleApp361\obj\Debug\ConsoleApp361.csprojAssemblyReference.cache
+D:\C\ConsoleApp361\obj\Debug\ConsoleApp361.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp361\obj\Debug\ConsoleApp361.exe
+D:\C\ConsoleApp361\obj\Debug\ConsoleApp361.pdb
