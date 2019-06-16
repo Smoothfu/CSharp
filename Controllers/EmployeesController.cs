@@ -61,18 +61,18 @@ namespace WebApplication13.Controllers
         //    employeesList.Remove(deleteEmp);
         //}
 
-        [AcceptVerbs("GET")]
-        public Employee RetrieveEmployeeById(int id)
-        {
-            return employeesList.First(x => x.Id == id);
-        }
-
-
-        //[HttpGet]
+        //[AcceptVerbs("GET")]
         //public Employee RetrieveEmployeeById(int id)
         //{
         //    return employeesList.First(x => x.Id == id);
         //}
+
+
+        [HttpGet]
+        public Employee RetrieveEmployeeById(int id)
+        {
+            return employeesList.First(x => x.Id == id);
+        }
 
 
     }
