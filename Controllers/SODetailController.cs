@@ -18,7 +18,7 @@ namespace WebApplication14.Controllers
         {
             using (SODDB db = new SODDB())
             {
-                orderList = db.SalesOrderDetails.ToList().Take(10000).ToList();
+                orderList = db.SalesOrderDetails.ToList();
                 for(int i=0;i< orderList.Count; i++)
                 {
                     salesDetailList.Add(new SalesDetailClass()
@@ -39,6 +39,22 @@ namespace WebApplication14.Controllers
             return salesDetailList;
         }
 
+        public SalesOrderDetail GetSalesOrderDetail(int salesOrderDetailID)
+        {
+            try
+            {
+                var salesOrder = orderList.First(x => x.SalesOrderDetailID == salesOrderDetailID);
+                if(salesOrder!=null)
+                {
+                    return salesOrder;
+                }                  
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            return null;
+        }
         
         public SalesDetailClass GetSalesDetailClass(int sodDetailId)
         {
@@ -52,6 +68,12 @@ namespace WebApplication14.Controllers
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
             return null;
+        }
+
+        public SalesOrderDetail GetSODByRowGuid(Guid rowGuid)
+        {
+            var sodRow = orderList.First(x => x.rowguid == rowGuid);
+            return sodRow;
         }
 
         //[HttpGet]

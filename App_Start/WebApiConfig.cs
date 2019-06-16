@@ -19,6 +19,10 @@ namespace WebApplication14
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //config.Routes.MapHttpRoute(
+            //    name: "GetSODByRowGuidApi", 
+            //    routeTemplate: "GetSODByRowGuidApi/{controller}/{rowGuid}");
         }
     }
 }
