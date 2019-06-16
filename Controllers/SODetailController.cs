@@ -14,10 +14,10 @@ namespace WebApplication14.Controllers
         private List<SalesOrderDetail> orderList = new List<SalesOrderDetail>();
         private List<SalesOrderDetail> topOrderList = new List<SalesOrderDetail>();
         private List<SalesDetailClass> salesDetailList = new List<SalesDetailClass>();
+        SODDB db = new SODDB();
         public SODetailController()
         {
-            using (SODDB db = new SODDB())
-            {
+            
                 orderList = db.SalesOrderDetails.ToList();
                 for(int i=0;i< orderList.Count; i++)
                 {
@@ -26,7 +26,7 @@ namespace WebApplication14.Controllers
                         SalesOrderDetailID = orderList[i].SalesOrderDetailID
                     });
                 }
-            }
+             
         }
 
         //public List<SalesOrderDetail> GetList()
@@ -34,10 +34,10 @@ namespace WebApplication14.Controllers
         //    return topOrderList;
         //}
 
-        public List<SalesDetailClass> GetSalesDetailList()
-        {
-            return salesDetailList;
-        }
+        //public List<SalesDetailClass> GetSalesDetailList()
+        //{
+        //    return salesDetailList;
+        //}
 
         public SalesOrderDetail GetSalesOrderDetail(int salesOrderDetailID)
         {
@@ -107,6 +107,18 @@ namespace WebApplication14.Controllers
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
             return null;
+        }
+
+        [HttpDelete]
+        [HttpGet]
+        public void DeleteOrderByRowGuid(Guid deleteRowGuid)
+        {
+            var deleteOrder = orderList.First(x => x.rowguid == deleteRowGuid);
+            if(deleteOrder!=null)
+            {
+                db.SalesOrderDetails.Remove(deleteOrder);
+                db.SaveChanges();
+            }            
         }
 
         //[HttpGet]

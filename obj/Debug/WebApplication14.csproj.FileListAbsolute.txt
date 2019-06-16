@@ -83,3 +83,4 @@ D:\C\WebApplication14\obj\Debug\WebApplication14.csproj.CoreCompileInputs.cache
 D:\C\WebApplication14\obj\Debug\WebApplication14.csproj.CopyComplete
 D:\C\WebApplication14\obj\Debug\WebApplication14.dll
 D:\C\WebApplication14\obj\Debug\WebApplication14.pdb
+D:\C\WebApplication14\obj\Debug\WebApplication14.csprojAssemblyReference.cache
