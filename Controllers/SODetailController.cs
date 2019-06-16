@@ -76,6 +76,39 @@ namespace WebApplication14.Controllers
             return sodRow;
         }
 
+        public SalesOrderDetail GetSODDetailByUnitPrice(decimal specifiedUnitPrice)
+        {
+            try
+            {
+                var selectedUnitPrice = orderList.First(x => x.UnitPrice == specifiedUnitPrice);
+                if(selectedUnitPrice!=null)
+                {
+                    return selectedUnitPrice;
+                }
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            return null;   
+        }
+
+
+        public List<SalesOrderDetail> GetSalesOrderDetailListByUnitPrice(decimal filterUnitPrice)
+        {
+            try
+            {
+                List<SalesOrderDetail> salesOrderDetailList = new List<SalesOrderDetail>();
+                salesOrderDetailList = orderList.Where(x => x.UnitPrice == filterUnitPrice).ToList();
+                return salesOrderDetailList;
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
         //[HttpGet]
         //public SalesOrderDetail GetOrderBySODID(int soiID)
         //{
