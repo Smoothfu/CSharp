@@ -1,0 +1,6 @@
+D:\C\WpfApp46\ProductionWCFService\bin\ProductionWCFService.dll.config
+D:\C\WpfApp46\ProductionWCFService\bin\ProductionWCFService.dll
+D:\C\WpfApp46\ProductionWCFService\bin\ProductionWCFService.pdb
+D:\C\WpfApp46\ProductionWCFService\obj\Debug\ProductionWCFService.csproj.CoreCompileInputs.cache
+D:\C\WpfApp46\ProductionWCFService\obj\Debug\ProductionWCFService.dll
+D:\C\WpfApp46\ProductionWCFService\obj\Debug\ProductionWCFService.pdb

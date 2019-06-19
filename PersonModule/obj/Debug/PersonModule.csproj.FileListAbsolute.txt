@@ -1,0 +1,15 @@
+D:\C\WpfApp46\PersonModule\bin\Debug\PersonModule.exe.config
+D:\C\WpfApp46\PersonModule\bin\Debug\PersonModule.exe
+D:\C\WpfApp46\PersonModule\bin\Debug\PersonModule.pdb
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.csprojAssemblyReference.cache
+D:\C\WpfApp46\PersonModule\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp46\PersonModule\obj\Debug\App.g.cs
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule_MarkupCompile.cache
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule_MarkupCompile.lref
+D:\C\WpfApp46\PersonModule\obj\Debug\MainWindow.baml
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.g.resources
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.Properties.Resources.resources
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.csproj.GenerateResource.cache
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.csproj.CoreCompileInputs.cache
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.exe
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.pdb

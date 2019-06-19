@@ -41,7 +41,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -62,6 +70,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GetSODDT.svc" />
+    <Content Include="Models\ModelEF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelEF.edmx</DependentUpon>
+      <LastGenOutput>ModelEF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelEF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelEF.edmx</DependentUpon>
+      <LastGenOutput>ModelEF.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -69,18 +87,254 @@
       <DependentUpon>GetSODDT.svc</DependentUpon>
     </Compile>
     <Compile Include="IGetSODDT.cs" />
+    <Compile Include="Models\Address.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AddressType.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AWBuildVersion.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BillOfMaterial.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BusinessEntity.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BusinessEntityAddress.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BusinessEntityContact.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContactType.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CountryRegion.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CountryRegionCurrency.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CreditCard.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Culture.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Currency.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CurrencyRate.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatabaseLog.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmailAddress.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeDepartmentHistory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeePayHistory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ErrorLog.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Illustration.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JobCandidate.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Location.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelEF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelEF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelEF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Password.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Person.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonCreditCard.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonPhone.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhoneNumberType.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductCategory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductCostHistory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductDescription.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductDocument.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductInventory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductListPriceHistory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductModel.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductModelIllustration.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductModelProductDescriptionCulture.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductPhoto.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductProductPhoto.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductReview.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductSubcategory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductVendor.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseOrderDetail.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseOrderHeader.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesOrderDetail.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesOrderHeader.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesOrderHeaderSalesReason.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesPerson.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesPersonQuotaHistory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesReason.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesTaxRate.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesTerritory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesTerritoryHistory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScrapReason.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Shift.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShipMethod.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShoppingCartItem.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpecialOffer.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpecialOfferProduct.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StateProvince.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Store.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TransactionHistory.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TransactionHistoryArchive.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitMeasure.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vendor.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderRouting.cs">
+      <DependentUpon>ModelEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Models\ModelEF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelEF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelEF.edmx.diagram">
+      <DependentUpon>ModelEF.edmx</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

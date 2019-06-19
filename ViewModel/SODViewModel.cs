@@ -10,6 +10,7 @@ using WpfApp46.Common;
 using System.IO;
 using System.Windows.Forms;
 using WpfApp46.View;
+using System.Windows.Threading;
 
 namespace WpfApp46.ViewModel
 {
@@ -42,6 +43,41 @@ namespace WpfApp46.ViewModel
         }
 
         #region Property
+
+        private int selectedSODIndex;
+        public int SelectedSODIndex
+        {
+            get
+            {
+                return selectedSODIndex;
+            }
+            set
+            {
+                if(value!=selectedSODIndex)
+                {
+                    selectedSODIndex = value;
+                    NotifyPropertyChanged("SelectedSODIndex");
+                }
+            }
+        }
+
+        private DataRowView initialDataRowView;
+        public DataRowView InitialDataRowView
+        {
+            get
+            {
+                return initialDataRowView;
+            }
+            set
+            {
+                if(value!=initialDataRowView)
+                {
+                    initialDataRowView = value;
+                    NotifyPropertyChanged("InitialDataRowView");
+                }
+            }
+        }
+
         private DataTable sODDT;
         public DataTable SODDT
         {
@@ -63,6 +99,7 @@ namespace WpfApp46.ViewModel
             }
         }
 
+        public DataRowView UpdatedSOD { get; set; }
 
         private DataRowView selectedSOD;
         public DataRowView SelectedSOD
@@ -187,6 +224,7 @@ namespace WpfApp46.ViewModel
             Task exportTask = Task.Run(() =>
               {
                   CommonHelper.ExportDataTable(SODDT, excelFileName);
+                  System.Diagnostics.Debug.WriteLine(SODDT.Rows.Count);
               });
 
             exportTask.Wait();
@@ -229,14 +267,16 @@ namespace WpfApp46.ViewModel
 
         private void EditCmdExecuted(object obj)
         {
+            SelectedSODIndex = SODDT.Rows.IndexOf(SelectedSOD.Row);
+            InitialDataRowView = SelectedSOD;
             SelectedSODDt.Clear();
             for (int i=0;i<SelectedSOD.Row.ItemArray.Length;i++)
             {
                 SelectedSODDt.Columns.Add();
             }
-            
+
             SelectedSODDt.Rows.Add(SelectedSOD.Row.ItemArray);
-            TempDt = SelectedSODDt;
+            UpdatedSOD = SelectedSOD;
             EditWindow editWin = new EditWindow();
             editWin.DataContext = this;
             editWin.ShowDialog();
@@ -276,27 +316,7 @@ namespace WpfApp46.ViewModel
         {
             InitSODDT();
         }
-
-        public DataTable tempDt;
-        public DataTable TempDt
-        {
-            get
-            {
-                if(tempDt==null)
-                {
-                    tempDt = new DataTable("Temp DataTable");
-                }
-                return tempDt;
-            }
-            set
-            {
-                if(value!=tempDt)
-                {
-                    tempDt = value;
-                    NotifyPropertyChanged("TempDt");
-                }
-            }
-        }
+        
         private DataTable selectedSODDt;
         public DataTable SelectedSODDt
         {
@@ -337,11 +357,31 @@ namespace WpfApp46.ViewModel
         }
 
         private void SaveCmdExecuted(object obj)
-        {
-            var temp = SelectedSODDt;
-            var temp2 = TempDt;
+        {   
+            if(SelectedSODIndex!=-1)
+            {
+                SODDT.Rows.RemoveAt(SelectedSODIndex);
+                Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => 
+                {
+                    DataRow newUpdatedRow = SODDT.NewRow();
+                    newUpdatedRow.ItemArray = SelectedSOD.Row.ItemArray;
+                    SODDT.Rows.InsertAt(newUpdatedRow, SelectedSODIndex);                   
+                }));                
+            }           
+            SODDT.AcceptChanges();
         }
         
+       void UpdateDataTable()
+        {
+            var selectedDataRow = UpdatedSOD.Row;
+            var selectedIndex = SODDT.Rows.IndexOf(selectedDataRow);
+            if(selectedIndex!=-1)
+            {
+                DataRow newAddedRow = SelectedSOD.Row;
+                SODDT.ImportRow(SelectedSOD.Row);
+            }            
+        }
+
         #endregion
     }
 }

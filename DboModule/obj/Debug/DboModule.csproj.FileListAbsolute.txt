@@ -1,0 +1,14 @@
+D:\C\WpfApp46\DboModule\bin\Debug\DboModule.exe.config
+D:\C\WpfApp46\DboModule\bin\Debug\DboModule.exe
+D:\C\WpfApp46\DboModule\bin\Debug\DboModule.pdb
+D:\C\WpfApp46\DboModule\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp46\DboModule\obj\Debug\App.g.cs
+D:\C\WpfApp46\DboModule\obj\Debug\DboModule_MarkupCompile.cache
+D:\C\WpfApp46\DboModule\obj\Debug\DboModule_MarkupCompile.lref
+D:\C\WpfApp46\DboModule\obj\Debug\MainWindow.baml
+D:\C\WpfApp46\DboModule\obj\Debug\DboModule.g.resources
+D:\C\WpfApp46\DboModule\obj\Debug\DboModule.Properties.Resources.resources
+D:\C\WpfApp46\DboModule\obj\Debug\DboModule.csproj.GenerateResource.cache
+D:\C\WpfApp46\DboModule\obj\Debug\DboModule.csproj.CoreCompileInputs.cache
+D:\C\WpfApp46\DboModule\obj\Debug\DboModule.exe
+D:\C\WpfApp46\DboModule\obj\Debug\DboModule.pdb

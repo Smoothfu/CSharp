@@ -1,0 +1,6 @@
+D:\C\WpfApp46\PurchasingWCFService\bin\PurchasingWCFService.dll.config
+D:\C\WpfApp46\PurchasingWCFService\bin\PurchasingWCFService.dll
+D:\C\WpfApp46\PurchasingWCFService\bin\PurchasingWCFService.pdb
+D:\C\WpfApp46\PurchasingWCFService\obj\Debug\PurchasingWCFService.csproj.CoreCompileInputs.cache
+D:\C\WpfApp46\PurchasingWCFService\obj\Debug\PurchasingWCFService.dll
+D:\C\WpfApp46\PurchasingWCFService\obj\Debug\PurchasingWCFService.pdb

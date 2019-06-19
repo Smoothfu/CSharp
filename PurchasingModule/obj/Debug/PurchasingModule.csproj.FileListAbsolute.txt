@@ -1,0 +1,14 @@
+D:\C\WpfApp46\PurchasingModule\bin\Debug\PurchasingModule.exe.config
+D:\C\WpfApp46\PurchasingModule\bin\Debug\PurchasingModule.exe
+D:\C\WpfApp46\PurchasingModule\bin\Debug\PurchasingModule.pdb
+D:\C\WpfApp46\PurchasingModule\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp46\PurchasingModule\obj\Debug\App.g.cs
+D:\C\WpfApp46\PurchasingModule\obj\Debug\PurchasingModule_MarkupCompile.cache
+D:\C\WpfApp46\PurchasingModule\obj\Debug\PurchasingModule_MarkupCompile.lref
+D:\C\WpfApp46\PurchasingModule\obj\Debug\MainWindow.baml
+D:\C\WpfApp46\PurchasingModule\obj\Debug\PurchasingModule.g.resources
+D:\C\WpfApp46\PurchasingModule\obj\Debug\PurchasingModule.Properties.Resources.resources
+D:\C\WpfApp46\PurchasingModule\obj\Debug\PurchasingModule.csproj.GenerateResource.cache
+D:\C\WpfApp46\PurchasingModule\obj\Debug\PurchasingModule.csproj.CoreCompileInputs.cache
+D:\C\WpfApp46\PurchasingModule\obj\Debug\PurchasingModule.exe
+D:\C\WpfApp46\PurchasingModule\obj\Debug\PurchasingModule.pdb

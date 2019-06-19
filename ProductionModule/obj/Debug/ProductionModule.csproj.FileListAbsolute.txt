@@ -1,0 +1,14 @@
+D:\C\WpfApp46\ProductionModule\bin\Debug\ProductionModule.exe.config
+D:\C\WpfApp46\ProductionModule\bin\Debug\ProductionModule.exe
+D:\C\WpfApp46\ProductionModule\bin\Debug\ProductionModule.pdb
+D:\C\WpfApp46\ProductionModule\obj\Debug\MainWindow.g.cs
+D:\C\WpfApp46\ProductionModule\obj\Debug\App.g.cs
+D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule_MarkupCompile.cache
+D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule_MarkupCompile.lref
+D:\C\WpfApp46\ProductionModule\obj\Debug\MainWindow.baml
+D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.g.resources
+D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.Properties.Resources.resources
+D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.csproj.GenerateResource.cache
+D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.csproj.CoreCompileInputs.cache
+D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.exe
+D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.pdb

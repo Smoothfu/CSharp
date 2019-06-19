@@ -1,0 +1,7 @@
+D:\C\WpfApp46\PersonWCFService\bin\PersonWCFService.dll.config
+D:\C\WpfApp46\PersonWCFService\bin\PersonWCFService.dll
+D:\C\WpfApp46\PersonWCFService\bin\PersonWCFService.pdb
+D:\C\WpfApp46\PersonWCFService\obj\Debug\PersonWCFService.csproj.CoreCompileInputs.cache
+D:\C\WpfApp46\PersonWCFService\obj\Debug\PersonWCFService.dll
+D:\C\WpfApp46\PersonWCFService\obj\Debug\PersonWCFService.pdb
+D:\C\WpfApp46\PersonWCFService\obj\Debug\PersonWCFService.csprojAssemblyReference.cache
