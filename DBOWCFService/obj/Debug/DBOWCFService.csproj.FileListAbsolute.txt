@@ -4,4 +4,3 @@ D:\C\WpfApp46\DBOWCFService\bin\DBOWCFService.pdb
 D:\C\WpfApp46\DBOWCFService\obj\Debug\DBOWCFService.csproj.CoreCompileInputs.cache
 D:\C\WpfApp46\DBOWCFService\obj\Debug\DBOWCFService.dll
 D:\C\WpfApp46\DBOWCFService\obj\Debug\DBOWCFService.pdb
-D:\C\WpfApp46\DBOWCFService\obj\Debug\DBOWCFService.csprojAssemblyReference.cache

@@ -1,7 +1,6 @@
 D:\C\WpfApp46\SalesModule\bin\Debug\SalesModule.exe.config
 D:\C\WpfApp46\SalesModule\bin\Debug\SalesModule.exe
 D:\C\WpfApp46\SalesModule\bin\Debug\SalesModule.pdb
-D:\C\WpfApp46\SalesModule\obj\Debug\SalesModule.csprojAssemblyReference.cache
 D:\C\WpfApp46\SalesModule\obj\Debug\MainWindow.g.cs
 D:\C\WpfApp46\SalesModule\obj\Debug\App.g.cs
 D:\C\WpfApp46\SalesModule\obj\Debug\SalesModule_MarkupCompile.cache

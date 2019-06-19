@@ -27,4 +27,3 @@ D:\C\WpfApp46\bin\Debug\NPOI.OpenXml4Net.dll
 D:\C\WpfApp46\bin\Debug\NPOI.OpenXmlFormats.dll
 D:\C\WpfApp46\obj\Debug\View\EditWindow.g.cs
 D:\C\WpfApp46\obj\Debug\View\EditWindow.baml
-D:\C\WpfApp46\obj\Debug\WpfApp46.csprojAssemblyReference.cache

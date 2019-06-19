@@ -17,6 +17,7 @@ namespace WpfApp46.ViewModel
     public class SODViewModel : INotifyPropertyChanged
     {
        static GetSalesOrderService.GetSODDTClient client = new GetSalesOrderService.GetSODDTClient();
+        
         #region methods
 
         public SODViewModel()
@@ -30,7 +31,8 @@ namespace WpfApp46.ViewModel
             {
                 GetSalesOrderService.GetSODDTClient client = new GetSalesOrderService.GetSODDTClient();
                 SODDT = client.GetSalesOrderDetailDT();
-            }           
+            }
+            ColumnsCount = SODDT.Columns.Count;
         }
 
         #endregion
@@ -45,6 +47,22 @@ namespace WpfApp46.ViewModel
 
         #region Property
 
+        private int columnsCount;
+        public int ColumnsCount
+        {
+            get
+            {
+                return columnsCount;
+            }
+            set
+            {
+                if(value!=columnsCount)
+                {
+                    columnsCount = value;
+                    NotifyPropertyChanged("ColumnsCount");
+                }
+            }
+        }
         private EditWindow editWin;
         public EditWindow EditWin
         {
@@ -321,10 +339,7 @@ namespace WpfApp46.ViewModel
             }
 
             SelectedSODDt.Rows.Add(SelectedSOD.Row.ItemArray);
-            UpdatedSOD = SelectedSOD;
-            //EditWindow editWin = new EditWindow();
-            //editWin.DataContext = this;
-            //editWin.ShowDialog();
+            UpdatedSOD = SelectedSOD;            
             EditWin.DataContext = this;
             EditWin.ShowDialog();
         }
@@ -405,26 +420,32 @@ namespace WpfApp46.ViewModel
 
         private void SaveCmdExecuted(object obj)
         {
-            if(SelectedSODIndex!=-1)
+          Task updatesTask= Task.Run(() =>
             {
-                Dispatcher.CurrentDispatcher.InvokeAsync(() =>
-                {
-                    NewUpdatedDataRow.ItemArray = SelectedSOD.Row.ItemArray;
-                    SODDT.Rows.InsertAt(NewUpdatedDataRow, SelectedSODIndex);
+                if (SelectedSODIndex != -1)
+                {                    
+                    var tempDataRow = SelectedSOD.Row;
+                    DataRow newDataRow = SODDT.NewRow();
+                    newDataRow.ItemArray = tempDataRow.ItemArray.Take(ColumnsCount).ToArray();
+                    SODDT.Rows.InsertAt(newDataRow, SelectedSODIndex);
                     SODDT.Rows.RemoveAt(SelectedSODIndex + 1);
-                });
-                //Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => 
-                //{
-                //    NewUpdatedDataRow.ItemArray = SelectedSOD.Row.ItemArray;
-                //    SODDT.Rows.InsertAt(NewUpdatedDataRow, SelectedSODIndex);
-                //    SODDT.Rows.RemoveAt(SelectedSODIndex+1);
-                //}));                
-            }           
+                    SelectedSOD.Row.ItemArray = new object[ColumnsCount];
+                }
+            });
+
+            updatesTask.Wait();
             SODDT.AcceptChanges();
-            EditWin.Close(); 
+            editWin.Closed += EditWin_Closed;
+            EditWin.Close();           
         }
-        
-       void UpdateDataTable()
+
+        private void EditWin_Closed(object sender, EventArgs e)
+        {
+            EditWin.Close();
+            EditWin = null;
+        }
+
+        void UpdateDataTable()
         {
             var selectedDataRow = UpdatedSOD.Row;
             var selectedIndex = SODDT.Rows.IndexOf(selectedDataRow);

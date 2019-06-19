@@ -1,7 +1,6 @@
 D:\C\WpfApp46\HumanResourceWCFService\bin\HumanResourceWCFService.dll.config
 D:\C\WpfApp46\HumanResourceWCFService\bin\HumanResourceWCFService.dll
 D:\C\WpfApp46\HumanResourceWCFService\bin\HumanResourceWCFService.pdb
-D:\C\WpfApp46\HumanResourceWCFService\obj\Debug\HumanResourceWCFService.csprojAssemblyReference.cache
 D:\C\WpfApp46\HumanResourceWCFService\obj\Debug\HumanResourceWCFService.csproj.CoreCompileInputs.cache
 D:\C\WpfApp46\HumanResourceWCFService\obj\Debug\HumanResourceWCFService.dll
 D:\C\WpfApp46\HumanResourceWCFService\obj\Debug\HumanResourceWCFService.pdb
