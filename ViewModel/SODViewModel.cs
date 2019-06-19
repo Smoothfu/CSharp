@@ -16,6 +16,7 @@ namespace WpfApp46.ViewModel
 {
     public class SODViewModel : INotifyPropertyChanged
     {
+       static GetSalesOrderService.GetSODDTClient client = new GetSalesOrderService.GetSODDTClient();
         #region methods
 
         public SODViewModel()
@@ -44,6 +45,50 @@ namespace WpfApp46.ViewModel
 
         #region Property
 
+        private EditWindow editWin;
+        public EditWindow EditWin
+        {
+            get
+            {
+                lock(client)
+                {
+                    if (editWin == null)
+                    {
+                        editWin = new EditWindow();
+                    }
+                }              
+                return editWin;
+            }
+            set
+            {
+                if(value!=editWin)
+                {
+                    editWin = value;
+                    NotifyPropertyChanged("EditWin");
+                }
+            }
+        }
+        private DataRow newUpdatedDataRow;
+        public DataRow NewUpdatedDataRow
+        {
+            get
+            {
+                if(newUpdatedDataRow==null)
+                {
+                    newUpdatedDataRow = SODDT.NewRow();
+                }
+                return newUpdatedDataRow;
+            }
+            set
+            {
+                if(value!=newUpdatedDataRow)
+                {
+                    newUpdatedDataRow = value;
+                    NotifyPropertyChanged("NewUpdatedDataRow");
+                }
+
+            }
+        }
         private int selectedSODIndex;
         public int SelectedSODIndex
         {
@@ -277,9 +322,11 @@ namespace WpfApp46.ViewModel
 
             SelectedSODDt.Rows.Add(SelectedSOD.Row.ItemArray);
             UpdatedSOD = SelectedSOD;
-            EditWindow editWin = new EditWindow();
-            editWin.DataContext = this;
-            editWin.ShowDialog();
+            //EditWindow editWin = new EditWindow();
+            //editWin.DataContext = this;
+            //editWin.ShowDialog();
+            EditWin.DataContext = this;
+            EditWin.ShowDialog();
         }
 
         private ICommand loadDataCmd;
@@ -357,29 +404,35 @@ namespace WpfApp46.ViewModel
         }
 
         private void SaveCmdExecuted(object obj)
-        {   
+        {
             if(SelectedSODIndex!=-1)
             {
-                SODDT.Rows.RemoveAt(SelectedSODIndex);
-                Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => 
+                Dispatcher.CurrentDispatcher.InvokeAsync(() =>
                 {
-                    DataRow newUpdatedRow = SODDT.NewRow();
-                    newUpdatedRow.ItemArray = SelectedSOD.Row.ItemArray;
-                    SODDT.Rows.InsertAt(newUpdatedRow, SelectedSODIndex);                   
-                }));                
+                    NewUpdatedDataRow.ItemArray = SelectedSOD.Row.ItemArray;
+                    SODDT.Rows.InsertAt(NewUpdatedDataRow, SelectedSODIndex);
+                    SODDT.Rows.RemoveAt(SelectedSODIndex + 1);
+                });
+                //Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => 
+                //{
+                //    NewUpdatedDataRow.ItemArray = SelectedSOD.Row.ItemArray;
+                //    SODDT.Rows.InsertAt(NewUpdatedDataRow, SelectedSODIndex);
+                //    SODDT.Rows.RemoveAt(SelectedSODIndex+1);
+                //}));                
             }           
             SODDT.AcceptChanges();
+            EditWin.Close(); 
         }
         
        void UpdateDataTable()
         {
             var selectedDataRow = UpdatedSOD.Row;
             var selectedIndex = SODDT.Rows.IndexOf(selectedDataRow);
-            if(selectedIndex!=-1)
+            if (selectedIndex != -1)
             {
                 DataRow newAddedRow = SelectedSOD.Row;
                 SODDT.ImportRow(SelectedSOD.Row);
-            }            
+            }
         }
 
         #endregion
