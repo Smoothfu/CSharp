@@ -456,6 +456,37 @@ namespace WpfApp46.ViewModel
             }
         }
 
+
+        private ICommand cancelCmd;
+        public ICommand CancelCmd
+        {
+            get
+            {
+                if(cancelCmd==null)
+                {
+                    cancelCmd = new DelCmd(CancelCmdExecuted, CancelCmdCanExecute);
+                }
+                return cancelCmd;
+            }
+            set
+            {
+                if(value!=cancelCmd)
+                {
+                    cancelCmd = value;
+                    NotifyPropertyChanged("CancelCmd");
+                }
+            }
+        }
+
+        private bool CancelCmdCanExecute(object obj)
+        {
+            return true;
+        }
+
+        private void CancelCmdExecuted(object obj)
+        {
+            EditWin.Close();
+        }
         #endregion
     }
 }
