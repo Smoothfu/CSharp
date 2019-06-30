@@ -7,6 +7,7 @@ using System.Data;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 using System.IO;
+using System.Windows.Forms;
 
 namespace WpfApp46.Common
 {
@@ -42,6 +43,8 @@ namespace WpfApp46.Common
             {
                 workbook.Write(excelStream, true);
             }
+
+            MessageBox.Show($"The exported file has been saved as {excelFullName}");
         }
     }
 }

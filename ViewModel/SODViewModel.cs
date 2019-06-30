@@ -11,6 +11,7 @@ using System.IO;
 using System.Windows.Forms;
 using WpfApp46.View;
 using System.Windows.Threading;
+using System.Threading;
 
 namespace WpfApp46.ViewModel
 {
@@ -47,6 +48,23 @@ namespace WpfApp46.ViewModel
 
         #region Property
 
+        private string exportdExcelFileName;
+        public string ExportedExcelFileName
+        {
+            get
+            {
+                exportdExcelFileName = Directory.GetCurrentDirectory() + "//" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".xlsx";
+                return exportdExcelFileName;                              
+            }
+            set
+            {
+                if(value!=exportdExcelFileName)
+                {
+                    exportdExcelFileName = value;
+                    NotifyPropertyChanged("ExportedExcelFileName");
+                }
+            }
+        }
         private int columnsCount;
         public int ColumnsCount
         {
@@ -282,21 +300,20 @@ namespace WpfApp46.ViewModel
         }
 
         private void ExportCmdExecuted(object obj)
+        {            
+            BackgroundWorker bgWorker = new BackgroundWorker();
+            bgWorker.DoWork += BgWorker_DoWork;            
+            bgWorker.RunWorkerAsync();                                
+        }        
+
+        private void BgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            string excelFileName = Directory.GetCurrentDirectory() + "//" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".xlsx";
             Task exportTask = Task.Run(() =>
-              {
-                  CommonHelper.ExportDataTable(SODDT, excelFileName);
-                  System.Diagnostics.Debug.WriteLine(SODDT.Rows.Count);
-              });
-
-            exportTask.Wait();
-            if(exportTask.IsCompleted)
-            {
-                MessageBox.Show($"The exported file has been saved as {excelFileName}");
-            }
+             {
+                 CommonHelper.ExportDataTable(SODDT, ExportedExcelFileName);                 
+                 System.Diagnostics.Debug.WriteLine(SODDT.Rows.Count);
+             });
         }
-
 
         private ICommand editCmd;
         public ICommand EditCmd
