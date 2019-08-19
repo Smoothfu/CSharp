@@ -1,0 +1,11 @@
+﻿<Grid x:Class="ModuleA.View.GridA"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
+       >
+    <StackPanel>
+        <TextBlock Foreground="Red" FontSize="20">Hello! I am ModuleA</TextBlock>
+        <Button Height="30" Width="90" Background="LightPink">ClickMe</Button>
+    </StackPanel>
+</Grid>
