@@ -1,4 +1,6 @@
 ﻿using DBDll;
+using DBDll.Dll;
+using DBDll.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,11 +14,15 @@ namespace ConsoleApp369
     {
         static void Main(string[] args)
         {
-            DataTable dt = GetDT();
-            PrintDataTable(dt);
+            DataTableToTList();
             Console.ReadLine();
         }
 
+        static void DataTableToTList()
+        {
+            DataTable dt = GetDT();
+            List<SODEntity> sodEntitiesList = GetSODEntitiesListFromDT(dt);
+        }
         static DataTable GetDT()
         {
             DBDataTable obj = new DBDataTable();
@@ -39,6 +45,13 @@ namespace ConsoleApp369
                 }
                 Console.WriteLine();
             }
+        }
+
+        static List<SODEntity> GetSODEntitiesListFromDT(DataTable dt)
+        {
+            List<SODEntity> sodEntitiesList = new List<SODEntity>();
+            sodEntitiesList = DataTableConvert.ConvertDataTableToList<SODEntity>(dt);
+            return sodEntitiesList;
         }
     }
 }

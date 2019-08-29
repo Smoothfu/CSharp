@@ -8,3 +8,8 @@ D:\C\ConsoleApp369\bin\Debug\DBDll.dll.config
 D:\C\ConsoleApp369\obj\Debug\ConsoleApp369.csproj.CopyComplete
 D:\C\ConsoleApp369\obj\Debug\ConsoleApp369.exe
 D:\C\ConsoleApp369\obj\Debug\ConsoleApp369.pdb
+D:\C\ConsoleApp369\bin\Debug\Dapper.Contrib.dll
+D:\C\ConsoleApp369\bin\Debug\Dapper.dll
+D:\C\ConsoleApp369\bin\Debug\Dapper.Contrib.xml
+D:\C\ConsoleApp369\bin\Debug\Dapper.xml
+D:\C\ConsoleApp369\obj\Debug\ConsoleApp369.csprojAssemblyReference.cache
