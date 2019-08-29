@@ -1,0 +1,7 @@
+D:\C\ConsoleApp369\DBDll\bin\Debug\DBDll.dll.config
+D:\C\ConsoleApp369\DBDll\bin\Debug\DBDll.dll
+D:\C\ConsoleApp369\DBDll\bin\Debug\DBDll.pdb
+D:\C\ConsoleApp369\DBDll\obj\Debug\DBDll.csprojAssemblyReference.cache
+D:\C\ConsoleApp369\DBDll\obj\Debug\DBDll.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp369\DBDll\obj\Debug\DBDll.dll
+D:\C\ConsoleApp369\DBDll\obj\Debug\DBDll.pdb
