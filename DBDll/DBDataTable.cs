@@ -14,15 +14,9 @@ namespace DBDll
     {
         public DataTable GetDataTable()
         {
-            Configuration myDllConfig =
-            ConfigurationManager.OpenExeConfiguration(this.GetType().Assembly.Location);
-            // Get the appSettings section
-            AppSettingsSection myDllConfigAppSettings =
-            (AppSettingsSection)myDllConfig.GetSection("appSettings");
-
-            string connString = myDllConfigAppSettings.Settings["SQLConnString"].Value;
+            SqlConnection conn = DBCommon.GetSqlConnection();
             DataTable dt = new DataTable();
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (conn)
             {
                 if(conn.State!=ConnectionState.Open)
                 {

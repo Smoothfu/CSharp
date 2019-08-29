@@ -14,7 +14,7 @@ namespace ConsoleApp369
     {
         static void Main(string[] args)
         {
-            DataTableToTList();
+            DataTable dt = GetDT();
             Console.ReadLine();
         }
 
@@ -27,6 +27,7 @@ namespace ConsoleApp369
         {
             DBDataTable obj = new DBDataTable();
             DataTable dt = obj.GetDataTable();
+            PrintDataTable(dt);
             return dt;
         }
 
@@ -50,7 +51,7 @@ namespace ConsoleApp369
         static List<SODEntity> GetSODEntitiesListFromDT(DataTable dt)
         {
             List<SODEntity> sodEntitiesList = new List<SODEntity>();
-            sodEntitiesList = DataTableConvert.ConvertDataTableToList<SODEntity>(dt);
+            sodEntitiesList = DTConvert.ConvertDataTableToList<SODEntity>(dt);
             return sodEntitiesList;
         }
     }

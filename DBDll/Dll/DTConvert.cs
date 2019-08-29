@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DBDll.Dll
 {
-    public class DataTableConvert
+    public class DTConvert
     {
         public static List<T> ConvertDataTableToList<T>(DataTable dt)
         {

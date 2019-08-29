@@ -49,8 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBCommon.cs" />
     <Compile Include="DBDataTable.cs" />
-    <Compile Include="Dll\DataTableConvert.cs" />
+    <Compile Include="Dll\DTConvert.cs" />
     <Compile Include="Models\SODEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
