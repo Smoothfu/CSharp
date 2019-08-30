@@ -14,8 +14,14 @@ namespace ConsoleApp369
     {
         static void Main(string[] args)
         {
-            DataTable dt = GetDT();
+            HttpClientAsync();
             Console.ReadLine();
+        }
+
+        static void HttpClientAsync(string url=null)
+        {
+            url = "https://github.com/sjkp/letsencrypt-siteextension/issues/141";
+            HttpClientDemo.HttpClientShow(url);
         }
 
         static void DataTableToTList()
@@ -33,14 +39,14 @@ namespace ConsoleApp369
 
         static void PrintDataTable(DataTable dt)
         {
-            if(dt==null || dt.Rows.Count==0)
+            if (dt == null || dt.Rows.Count == 0)
             {
                 return;
             }
 
-            for(int i=0;i<dt.Rows.Count;i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                for(int j=0;j<dt.Columns.Count;j++)
+                for (int j = 0; j < dt.Columns.Count; j++)
                 {
                     Console.Write($"{dt.Rows[i][j]?.ToString() + "\t"}");
                 }
@@ -53,6 +59,13 @@ namespace ConsoleApp369
             List<SODEntity> sodEntitiesList = new List<SODEntity>();
             sodEntitiesList = DTConvert.ConvertDTToList<SODEntity>(dt);
             return sodEntitiesList;
+        }
+
+        static void RestSharpDemo()
+        {
+            string url = "https://api.github.com/repos/restsharp/restsharp/releases";
+            RestSharpApi.GetWebResonse(url);
+            Console.ReadLine();
         }
     }
 }

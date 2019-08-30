@@ -9,3 +9,7 @@ D:\C\ConsoleApp369\DBDll\obj\Debug\DBDll.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp369\DBDll\obj\Debug\DBDll.csproj.CopyComplete
 D:\C\ConsoleApp369\DBDll\obj\Debug\DBDll.dll
 D:\C\ConsoleApp369\DBDll\obj\Debug\DBDll.pdb
+D:\C\ConsoleApp369\DBDll\bin\Debug\RestSharp.dll
+D:\C\ConsoleApp369\DBDll\bin\Debug\RestSharp.xml
+D:\C\ConsoleApp369\DBDll\bin\Debug\Newtonsoft.Json.dll
+D:\C\ConsoleApp369\DBDll\bin\Debug\Newtonsoft.Json.xml

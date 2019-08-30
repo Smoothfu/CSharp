@@ -1,0 +1,2480 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://github.githubassets.com">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+
+
+
+  <link crossorigin="anonymous" media="all" integrity="sha512-rr6qkY7tiSSypi7gHiK5VBwtkKbR+ClgZppUh2TNaFOhHdZlYupFjSl4WAqQyBCMUNHoqXYvfD6acShJofTJHQ==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-9b9da82234dd0dde0ef8dab88ceabed8.css" />
+  <link crossorigin="anonymous" media="all" integrity="sha512-KuiOPw2s52joh8wChG/aU/pcCptPNExat20SuqIv/LFUZOP5fz55JrHI4aQKVFaeEHiB6dnHdtyct6z51YFx6g==" rel="stylesheet" href="https://github.githubassets.com/assets/site-4627609302f8233d1484cfb499753af2.css" />
+    <link crossorigin="anonymous" media="all" integrity="sha512-ltKKHsKubtqH19vShg8msQpBy1O0Ezj9nOY2+OUt2c4MHPFhEJeIftArn70soPQqIcg8A1BZneasCP3XzN5r4Q==" rel="stylesheet" href="https://github.githubassets.com/assets/github-b6d18623fe69182cfd3143ad01689439.css" />
+    
+    
+    
+    
+
+  <meta name="viewport" content="width=device-width">
+  
+  <title>Response status code does not indicate success: 403 (Forbidden). · Issue #141 · sjkp/letsencrypt-siteextension · GitHub</title>
+    <meta name="description" content="Hello. I have an exception on installation certificate. Could you please help me? ` Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about th...">
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+  <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+  <meta property="fb:app_id" content="1401488693436528">
+
+    <meta name="twitter:image:src" content="https://avatars1.githubusercontent.com/u/3397744?s=400&amp;v=4" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="Response status code does not indicate success: 403 (Forbidden). · Issue #141 · sjkp/letsencrypt-siteextension" /><meta name="twitter:description" content="Hello. I have an exception on installation certificate. Could you please help me? ` Description: An unhandled exception occurred during the execution of the current web request. Please review the s..." />
+    <meta property="og:image" content="https://avatars1.githubusercontent.com/u/3397744?s=400&amp;v=4" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="Response status code does not indicate success: 403 (Forbidden). · Issue #141 · sjkp/letsencrypt-siteextension" /><meta property="og:url" content="https://github.com/sjkp/letsencrypt-siteextension/issues/141" /><meta property="og:description" content="Hello. I have an exception on installation certificate. Could you please help me? ` Description: An unhandled exception occurred during the execution of the current web request. Please review the s..." />
+
+  <link rel="assets" href="https://github.githubassets.com/">
+  
+  <meta name="pjax-timeout" content="1000">
+  
+  <meta name="request-id" content="207D:20AE:37C766:53EE29:5D68A626" data-pjax-transient>
+
+    <meta name="hovercard-subject-tag" content="issue:231607494" data-pjax-transient>
+
+  
+
+  <meta name="selected-link" value="repo_issues" data-pjax-transient>
+
+      <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+
+  <meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-request_id" content="207D:20AE:37C766:53EE29:5D68A626" /><meta name="octolytics-dimension-region_edge" content="sea" /><meta name="octolytics-dimension-region_render" content="iad" /><meta name="octolytics-dimension-ga_id" content="" class="js-octo-ga-id" /><meta name="octolytics-dimension-visitor_id" content="3391619466288211494" />
+<meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/issues/show" data-pjax-transient="true" />
+
+
+
+    <meta name="google-analytics" content="UA-3769691-2">
+
+
+<meta class="js-ga-set" name="dimension1" content="Logged Out">
+
+
+
+  
+
+      <meta name="hostname" content="github.com">
+    <meta name="user-login" content="">
+
+      <meta name="expected-hostname" content="github.com">
+    <meta name="js-proxy-site-detection-payload" content="OGFkMWU1ZmEwMmNlN2IyZTc1NWJiNjI1ODk2MjRiZGQwOGZmNDAxYmUyYTc0Yjc1NGZlNDRjMDgyNWJkMTY4MHx7InJlbW90ZV9hZGRyZXNzIjoiMTQwLjIwNi43Ni4xMCIsInJlcXVlc3RfaWQiOiIyMDdEOjIwQUU6MzdDNzY2OjUzRUUyOTo1RDY4QTYyNiIsInRpbWVzdGFtcCI6MTU2NzEzOTM2NywiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
+
+    <meta name="enabled-features" content="ACTIONS_V2_ON_MARKETPLACE,MARKETPLACE_FEATURED_BLOG_POSTS,MARKETPLACE_INVOICED_BILLING,MARKETPLACE_SOCIAL_PROOF_CUSTOMERS,MARKETPLACE_TRENDING_SOCIAL_PROOF,MARKETPLACE_RECOMMENDATIONS,MARKETPLACE_PENDING_INSTALLATIONS">
+
+  <meta name="html-safe-nonce" content="8c3c7f1c54890324a2a58a58eb800e6446fc7fee">
+
+  <meta http-equiv="x-pjax-version" content="d8232482a1e4a953cd865a60a79d1e2d">
+  
+
+      <link href="https://github.com/sjkp/letsencrypt-siteextension/commits/master.atom" rel="alternate" title="Recent Commits to letsencrypt-siteextension:master" type="application/atom+xml">
+
+  <meta name="go-import" content="github.com/sjkp/letsencrypt-siteextension git https://github.com/sjkp/letsencrypt-siteextension.git">
+
+  <meta name="octolytics-dimension-user_id" content="3397744" /><meta name="octolytics-dimension-user_login" content="sjkp" /><meta name="octolytics-dimension-repository_id" content="48821690" /><meta name="octolytics-dimension-repository_nwo" content="sjkp/letsencrypt-siteextension" /><meta name="octolytics-dimension-repository_public" content="true" /><meta name="octolytics-dimension-repository_is_fork" content="false" /><meta name="octolytics-dimension-repository_network_root_id" content="48821690" /><meta name="octolytics-dimension-repository_network_root_nwo" content="sjkp/letsencrypt-siteextension" /><meta name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" content="false" />
+
+
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://github.githubassets.com/favicon.ico">
+
+<meta name="theme-color" content="#1e2327">
+
+
+
+
+
+  <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
+
+  </head>
+
+  <body class="logged-out env-production min-width-lg">
+    
+
+  <div class="position-relative js-header-wrapper ">
+    <a href="#start-of-content" tabindex="1" class="px-2 py-4 bg-blue text-white show-on-focus js-skip-to-content">Skip to content</a>
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
+
+    
+    
+    
+
+
+        <header class="Header-old header-logged-out  position-relative f4 py-2" role="banner">
+  <div class="container-lg d-flex px-3">
+    <div class="d-flex flex-justify-between flex-items-center">
+        <a class="mr-4" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+          <svg height="32" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+    </div>
+
+    <div class="HeaderMenu HeaderMenu--logged-out d-flex flex-justify-between flex-items-center flex-auto">
+      <div class="d-none">
+        <button class="btn-link js-details-target" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <svg height="24" class="octicon octicon-x text-gray" viewBox="0 0 12 16" version="1.1" width="18" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+        </button>
+      </div>
+
+        <nav class="mt-0" aria-label="Global">
+          <ul class="d-flex list-style-none">
+              <li class=" mr-3 mr-lg-3 edge-item-fix position-relative flex-wrap flex-justify-between d-flex flex-items-center ">
+                <details class="HeaderMenu-details details-overlay details-reset width-full">
+                  <summary class="HeaderMenu-summary HeaderMenu-link px-0 py-3 border-0 no-wrap  d-inline-block">
+                    Why GitHub?
+                    <svg x="0px" y="0px" viewBox="0 0 14 8" xml:space="preserve" fill="none" class="icon-chevon-down-mktg position-relative">
+                      <path d="M1,1l6.2,6L13,1"></path>
+                    </svg>
+                  </summary>
+                  <div class="dropdown-menu flex-auto rounded-1 bg-white px-0 mt-0  p-4 left-n4 position-absolute">
+                    <a href="/features" class="py-2 lh-condensed-ultra d-block link-gray-dark no-underline h5 Bump-link--hover" data-ga-click="(Logged out) Header, go to Features">Features <span class="Bump-link-symbol float-right text-normal text-gray-light">&rarr;</span></a>
+                    <ul class="list-style-none f5 pb-3">
+                      <li class="edge-item-fix"><a href="/features/code-review/" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Code review">Code review</a></li>
+                      <li class="edge-item-fix"><a href="/features/project-management/" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Project management">Project management</a></li>
+                      <li class="edge-item-fix"><a href="/features/integrations" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Integrations">Integrations</a></li>
+                      <li class="edge-item-fix"><a href="/features/actions" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Actions">Actions</a>
+                          <li class="edge-item-fix"><a href="/features/package-registry" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Package Registry">Package registry</a>
+                      <li class="edge-item-fix"><a href="/features#team-management" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Team management">Team management</a></li>
+                      <li class="edge-item-fix"><a href="/features#social-coding" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Social coding">Social coding</a></li>
+                      <li class="edge-item-fix"><a href="/features#documentation" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Documentation">Documentation</a></li>
+                      <li class="edge-item-fix"><a href="/features#code-hosting" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Code hosting">Code hosting</a></li>
+                    </ul>
+
+                    <ul class="list-style-none mb-0 border-lg-top pt-lg-3">
+                      <li class="edge-item-fix"><a href="/customer-stories" class="py-2 lh-condensed-ultra d-block no-underline link-gray-dark no-underline h5 Bump-link--hover" data-ga-click="(Logged out) Header, go to Customer stories">Customer stories <span class="Bump-link-symbol float-right text-normal text-gray-light">&rarr;</span></a></li>
+                      <li class="edge-item-fix"><a href="/security" class="py-2 lh-condensed-ultra d-block no-underline link-gray-dark no-underline h5 Bump-link--hover" data-ga-click="(Logged out) Header, go to Security">Security <span class="Bump-link-symbol float-right text-normal text-gray-light">&rarr;</span></a></li>
+                    </ul>
+                  </div>
+                </details>
+              </li>
+              <li class=" mr-3 mr-lg-3">
+                <a href="/enterprise" class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-ga-click="(Logged out) Header, go to Enterprise">Enterprise</a>
+              </li>
+
+              <li class=" mr-3 mr-lg-3 edge-item-fix position-relative flex-wrap flex-justify-between d-flex flex-items-center ">
+                <details class="HeaderMenu-details details-overlay details-reset width-full">
+                  <summary class="HeaderMenu-summary HeaderMenu-link px-0 py-3 border-0 no-wrap  d-inline-block">
+                    Explore
+                    <svg x="0px" y="0px" viewBox="0 0 14 8" xml:space="preserve" fill="none" class="icon-chevon-down-mktg position-relative">
+                      <path d="M1,1l6.2,6L13,1"></path>
+                    </svg>
+                  </summary>
+
+                  <div class="dropdown-menu flex-auto rounded-1 bg-white px-0 pt-2 pb-0 mt-0  p-4 left-n4 position-absolute">
+                    <ul class="list-style-none mb-3">
+                      <li class="edge-item-fix"><a href="/explore" class="py-2 lh-condensed-ultra d-block link-gray-dark no-underline h5 Bump-link--hover" data-ga-click="(Logged out) Header, go to Explore">Explore GitHub <span class="Bump-link-symbol float-right text-normal text-gray-light">&rarr;</span></a></li>
+                    </ul>
+
+                    <h4 class="text-gray-light text-normal text-mono f5 mb-2  border-top pt-3">Learn &amp; contribute</h4>
+                    <ul class="list-style-none mb-3">
+                      <li class="edge-item-fix"><a href="/topics" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Topics">Topics</a></li>
+                        <li class="edge-item-fix"><a href="/collections" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Collections">Collections</a></li>
+                      <li class="edge-item-fix"><a href="/trending" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Trending">Trending</a></li>
+                      <li class="edge-item-fix"><a href="https://lab.github.com/" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Learning lab">Learning Lab</a></li>
+                      <li class="edge-item-fix"><a href="https://opensource.guide" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Open source guides">Open source guides</a></li>
+                    </ul>
+
+                    <h4 class="text-gray-light text-normal text-mono f5 mb-2  border-top pt-3">Connect with others</h4>
+                    <ul class="list-style-none mb-0">
+                      <li class="edge-item-fix"><a href="https://github.com/events" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Events">Events</a></li>
+                      <li class="edge-item-fix"><a href="https://github.community" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Community forum">Community forum</a></li>
+                      <li class="edge-item-fix"><a href="https://education.github.com" class="py-2 pb-0 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to GitHub Education">GitHub Education</a></li>
+                    </ul>
+                  </div>
+                </details>
+              </li>
+
+              <li class=" mr-3 mr-lg-3">
+                <a href="/marketplace" class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-ga-click="(Logged out) Header, go to Marketplace">Marketplace</a>
+              </li>
+
+              <li class=" mr-3 mr-lg-3 edge-item-fix position-relative flex-wrap flex-justify-between d-flex flex-items-center ">
+                <details class="HeaderMenu-details details-overlay details-reset width-full">
+                  <summary class="HeaderMenu-summary HeaderMenu-link px-0 py-3 border-0 no-wrap  d-inline-block">
+                    Pricing
+                    <svg x="0px" y="0px" viewBox="0 0 14 8" xml:space="preserve" fill="none" class="icon-chevon-down-mktg position-relative">
+                       <path d="M1,1l6.2,6L13,1"></path>
+                    </svg>
+                  </summary>
+
+                  <div class="dropdown-menu flex-auto rounded-1 bg-white px-0 pt-2 pb-4 mt-0  p-4 left-n4 position-absolute">
+                    <a href="/pricing" class="pb-2 lh-condensed-ultra d-block link-gray-dark no-underline h5 Bump-link--hover" data-ga-click="(Logged out) Header, go to Pricing">Plans <span class="Bump-link-symbol float-right text-normal text-gray-light">&rarr;</span></a>
+
+                    <ul class="list-style-none mb-3">
+                      <li class="edge-item-fix"><a href="/pricing#feature-comparison" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Compare plans">Compare plans</a></li>
+                      <li class="edge-item-fix"><a href="https://enterprise.github.com/contact" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5" data-ga-click="(Logged out) Header, go to Contact Sales">Contact Sales</a></li>
+                    </ul>
+
+                    <ul class="list-style-none mb-0  border-top pt-3">
+                      <li class="edge-item-fix"><a href="/nonprofit" class="py-2 lh-condensed-ultra d-block no-underline link-gray-dark no-underline h5 Bump-link--hover" data-ga-click="(Logged out) Header, go to Nonprofits">Nonprofit <span class="Bump-link-symbol float-right text-normal text-gray-light">&rarr;</span></a></li>
+                      <li class="edge-item-fix"><a href="https://education.github.com" class="py-2 pb-0 lh-condensed-ultra d-block no-underline link-gray-dark no-underline h5 Bump-link--hover"  data-ga-click="(Logged out) Header, go to Education">Education <span class="Bump-link-symbol float-right text-normal text-gray-light">&rarr;</span></a></li>
+                    </ul>
+                  </div>
+                </details>
+              </li>
+          </ul>
+        </nav>
+
+      <div class="d-flex flex-items-center px-0 text-center text-left">
+          <div class="d-lg-flex ">
+            <div class="header-search mr-3 scoped-search site-scoped-search js-site-search position-relative js-jump-to"
+  role="combobox"
+  aria-owns="jump-to-results"
+  aria-label="Search or jump to"
+  aria-haspopup="listbox"
+  aria-expanded="false"
+>
+  <div class="position-relative">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-site-search-form" role="search" aria-label="Site" data-scope-type="Repository" data-scope-id="48821690" data-scoped-search-url="/sjkp/letsencrypt-siteextension/search" data-unscoped-search-url="/search" action="/sjkp/letsencrypt-siteextension/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <label class="form-control input-sm header-search-wrapper p-0 header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center js-chromeless-input-container">
+        <input type="text"
+          class="form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+          data-hotkey="s,/"
+          name="q"
+          value=""
+          placeholder="Search"
+          data-unscoped-placeholder="Search GitHub"
+          data-scoped-placeholder="Search"
+          autocapitalize="off"
+          aria-autocomplete="list"
+          aria-controls="jump-to-results"
+          aria-label="Search"
+          data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations#csrf-token=VDz4kY1V3E89Z+u0cVeV7OqpeFsGNoSpT8iJiFEY9+6b65p3a5lrXf45U26PGtZ5YzKxbx59pWvl5EORZQxXqg=="
+          spellcheck="false"
+          autocomplete="off"
+          >
+          <input type="hidden" class="js-site-search-type-field" name="type" >
+            <img src="https://github.githubassets.com/images/search-key-slash.svg" alt="" class="mr-2 header-search-key-slash">
+
+            <div class="Box position-absolute overflow-hidden d-none jump-to-suggestions js-jump-to-suggestions-container">
+              
+<ul class="d-none js-jump-to-suggestions-template-container">
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+</ul>
+
+<ul class="d-none js-jump-to-no-results-template-container">
+  <li class="d-flex flex-justify-center flex-items-center f5 d-none js-jump-to-suggestion p-2">
+    <span class="text-gray">No suggested jump to results</span>
+  </li>
+</ul>
+
+<ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container">
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+
+</ul>
+
+            </div>
+      </label>
+</form>  </div>
+</div>
+
+          </div>
+
+        <a href="/login?return_to=%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141"
+          class="HeaderMenu-link no-underline mr-3"
+          data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="8e841440ec5691cd9fed854010e3eba7bc6279cc33f98bf85541a0cd86476e49"
+          data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">
+          Sign&nbsp;in
+        </a>
+          <a href="/join"
+            class="HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1"
+            data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="8e841440ec5691cd9fed854010e3eba7bc6279cc33f98bf85541a0cd86476e49"
+            data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">
+            Sign&nbsp;up
+          </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+  </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+
+    <div id="js-flash-container">
+
+</div>
+
+
+
+  <div class="application-main " data-commit-hovercards-enabled>
+        <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <main id="js-repo-pjax-container" data-pjax-container >
+      
+  
+
+
+
+
+
+
+
+
+
+
+  <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav  ">
+    <div class="repohead-details-container clearfix container">
+
+      <ul class="pagehead-actions">
+
+
+
+
+  <li>
+    
+  <a class="tooltipped tooltipped-s btn btn-sm btn-with-count" aria-label="You must be signed in to watch a repository" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;notification subscription menu watch&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="61dde0603b3d0aefa08feedb13e8f598fb73298ad939d4aa83d58b6aa9202c50" href="/login?return_to=%2Fsjkp%2Fletsencrypt-siteextension">
+    <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+    Watch
+</a>    <a class="social-count" href="/sjkp/letsencrypt-siteextension/watchers"
+       aria-label="40 users are watching this repository">
+      40
+    </a>
+
+  </li>
+
+  <li>
+        <a class="btn btn-sm btn-with-count tooltipped tooltipped-s" aria-label="You must be signed in to star a repository" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;star button&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d5b2371c3bd3e2a2745cde02b1934635f3ddd3eeb09744c07feb130870bd12e1" href="/login?return_to=%2Fsjkp%2Fletsencrypt-siteextension">
+      <svg class="octicon octicon-star v-align-text-bottom" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>
+      Star
+</a>
+    <a class="social-count js-social-count" href="/sjkp/letsencrypt-siteextension/stargazers"
+      aria-label="616 users starred this repository">
+      616
+    </a>
+
+  </li>
+
+  <li>
+      <a class="btn btn-sm btn-with-count tooltipped tooltipped-s" aria-label="You must be signed in to fork a repository" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;repo details fork button&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="6e68809843307e6e612af492271f001b5cbd9a23df9691aaca1b0bdba1be099d" href="/login?return_to=%2Fsjkp%2Fletsencrypt-siteextension">
+        <svg class="octicon octicon-repo-forked v-align-text-bottom" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+        Fork
+</a>
+    <a href="/sjkp/letsencrypt-siteextension/network/members" class="social-count"
+       aria-label="65 users forked this repository">
+      65
+    </a>
+  </li>
+</ul>
+
+      <h1 class="public ">
+    <svg class="octicon octicon-repo" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+  <span class="author" itemprop="author"><a class="url fn" rel="author" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sjkp">sjkp</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a data-pjax="#js-repo-pjax-container" href="/sjkp/letsencrypt-siteextension">letsencrypt-siteextension</a></strong>
+  
+
+</h1>
+
+    </div>
+    
+<nav class="hx_reponav reponav js-repo-nav js-sidenav-container-pjax container"
+     itemscope
+     itemtype="http://schema.org/BreadcrumbList"
+    aria-label="Repository"
+     data-pjax="#js-repo-pjax-container">
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a class="js-selected-navigation-item reponav-item" itemprop="url" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /sjkp/letsencrypt-siteextension" href="/sjkp/letsencrypt-siteextension">
+      <svg class="octicon octicon-code" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+    <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a itemprop="url" data-hotkey="g i" class="js-selected-navigation-item selected reponav-item" aria-current="page" data-selected-links="repo_issues repo_labels repo_milestones /sjkp/letsencrypt-siteextension/issues" href="/sjkp/letsencrypt-siteextension/issues">
+        <svg class="octicon octicon-issue-opened" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"/></svg>
+        <span itemprop="name">Issues</span>
+        <span class="Counter">67</span>
+        <meta itemprop="position" content="2">
+</a>    </span>
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a data-hotkey="g p" itemprop="url" class="js-selected-navigation-item reponav-item" data-selected-links="repo_pulls checks /sjkp/letsencrypt-siteextension/pulls" href="/sjkp/letsencrypt-siteextension/pulls">
+      <svg class="octicon octicon-git-pull-request" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="Counter">3</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+
+    <a data-hotkey="g b" class="js-selected-navigation-item reponav-item" data-selected-links="repo_projects new_repo_project repo_project /sjkp/letsencrypt-siteextension/projects" href="/sjkp/letsencrypt-siteextension/projects">
+      <svg class="octicon octicon-project" viewBox="0 0 15 16" version="1.1" width="15" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      Projects
+      <span class="Counter" >0</span>
+</a>
+
+    <a class="js-selected-navigation-item reponav-item" data-hotkey="g w" data-selected-links="repo_wiki /sjkp/letsencrypt-siteextension/wiki" href="/sjkp/letsencrypt-siteextension/wiki">
+      <svg class="octicon octicon-book" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"/></svg>
+      Wiki
+</a>
+    <a data-skip-pjax="true" class="js-selected-navigation-item reponav-item" data-selected-links="security alerts policy /sjkp/letsencrypt-siteextension/security/advisories" href="/sjkp/letsencrypt-siteextension/security/advisories">
+      <svg class="octicon octicon-shield" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 2l7-2 7 2v6.02C14 12.69 8.69 16 7 16c-1.69 0-7-3.31-7-7.98V2zm1 .75L7 1l6 1.75v5.268C13 12.104 8.449 15 7 15c-1.449 0-6-2.896-6-6.982V2.75zm1 .75L7 2v12c-1.207 0-5-2.482-5-5.985V3.5z"/></svg>
+      Security
+</a>
+    <a class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors dependency_graph pulse people /sjkp/letsencrypt-siteextension/pulse" href="/sjkp/letsencrypt-siteextension/pulse">
+      <svg class="octicon octicon-graph" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"/></svg>
+      Insights
+</a>
+
+</nav>
+
+
+  </div>
+<div class="container-lg clearfix new-discussion-timeline experiment-repo-nav  px-3">
+  <div class="repository-content ">
+
+    
+    
+  <div class="js-check-all-container" data-pjax>
+    
+        <div class="signup-prompt-bg rounded-1">
+      <div class="signup-prompt p-4 text-center mb-4 rounded-1">
+        <div class="position-relative">
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form action="/prompt_dismissals/signup" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="Qb7eUIrs+diemJGJIwY1LNsF82b5ef+KeIF7pxjc+RG6JimGIYuxiNaBK3uzGdMIqN/+1CHOQnY3FrX08PP7uw==" />
+            <button type="submit" class="position-absolute top-0 right-0 btn-link link-gray" data-ga-click="(Logged out) Sign up prompt, clicked Dismiss, text:dismiss">
+              Dismiss
+            </button>
+</form>          <h3 class="pt-2">Join GitHub today</h3>
+          <p class="col-6 mx-auto">GitHub is home to over 40 million developers working together to host and review code, manage projects, and build software together.</p>
+          <a class="btn btn-primary" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;files signup prompt&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="daa5e8be1d27881495bb691a998f0af5e8e42b0c6eb172a8aded5c6883756529" data-ga-click="(Logged out) Sign up prompt, clicked Sign up, text:sign-up" href="/join?source=prompt-issue-show">Sign up</a>
+        </div>
+      </div>
+    </div>
+
+
+  <div id="show_issue"
+        class="js-issues-results js-socket-channel js-updatable-content"
+        data-channel="issue:231607494:timeline">
+
+    
+  <div
+    id="partial-discussion-header"
+    class="gh-header js-details-container Details js-socket-channel js-updatable-content issue"
+    data-channel="issue:231607494"
+    data-url="/sjkp/letsencrypt-siteextension/issues/141/show_partial?partial=issues%2Ftitle&amp;sticky=true"
+    data-gid="MDU6SXNzdWUyMzE2MDc0OTQ=">
+  <div class="gh-header-show ">
+      <div class="gh-header-actions">
+
+          
+<details class="details-reset details-overlay details-overlay-dark float-right" >
+  <summary
+    class="btn btn-sm btn-primary"
+   
+    data-ga-click="Issues, create new issue, view:issue_show location:issue_header style:button logged_in:false"
+>
+    
+    New issue
+  </summary>
+  <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast overflow-auto" aria-label="Sign up for GitHub">
+    <button class="position-absolute p-4 right-0 btn-link muted-link" type="button" aria-label="Close dialog" data-close-dialog>
+      <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+    </button>
+    <div class="p-4 d-flex flex-column">
+            <div class="mt-3 mb-2 text-center">
+  <svg height="60" class="octicon octicon-comment-discussion text-blue" viewBox="0 0 16 16" version="1.1" width="60" aria-hidden="true"><path fill-rule="evenodd" d="M15 1H6c-.55 0-1 .45-1 1v2H1c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h1v3l3-3h4c.55 0 1-.45 1-1V9h1l3 3V9h1c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1zM9 11H4.5L3 12.5V11H1V5h4v3c0 .55.45 1 1 1h3v2zm6-3h-2v1.5L11.5 8H6V2h9v6z"/></svg>
+</div>
+
+<div class="px-4">
+  <p class="text-center mb-4">
+  <strong>Have a question about this project?</strong> Sign up for a free GitHub account to open an issue and contact its maintainers and the community.
+  </p>
+
+  <form class="js-signup-form" autocomplete="off" action="/join?return_to=%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2Fnew" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="8eVv36oEo0o/3bnV/MXMiLXufVF5+dogcoq66OnvLR1kEnmkOo2qyn336eybef76HAxvGHMv1tKyZrt4d6yLWg==" />    <auto-check src="/signup_check/username" csrf="i24djmkqdyOwvtzYz4e5ycU1sNyGFvtzHH5ePU4uYQ/3dYazkaj/Gq2OW2I54nzFUqohV3tx+HQ/d7N6ZcGDhA==">
+      <dl class="form-group"><dt class="input-label"><label name="user[login]" autocapitalize="off" autofocus="autofocus" for="user_login_issues">Pick a username</label></dt><dd><input name="user[login]" autocapitalize="off" autofocus="autofocus" class="form-control" type="text" id="user_login_issues" /></dd></dl>
+    </auto-check>
+
+    <auto-check src="/signup_check/email" csrf="aHdT1+BLjuyczAQd0zmWiQZnId7qhlRlPyxAq1Kd+6jGNiBhfwmq8nBmUgH917jVeEMYYnYDMajSzAcFjEgUmQ==">
+      <dl class="form-group"><dt class="input-label"><label name="user[email]" autocapitalize="off" for="user_email_issues">Email Address</label></dt><dd><input name="user[email]" autocapitalize="off" class="form-control" type="text" id="user_email_issues" /></dd></dl>
+    </auto-check>
+
+    <dl class="form-group"><dt class="input-label"><label name="user[password]" for="user_password_issues">Password</label></dt><dd><input name="user[password]" class="form-control" type="password" id="user_password_issues" /></dd></dl>
+
+    <input type="hidden" name="source" class="js-signup-source" value="modal-issues">
+    <input type="text" name="required_field_98ad" id="required_field_98ad" hidden="hidden" class="form-control" />
+<input type="hidden" name="timestamp" value="1567139366967" class="form-control" />
+<input type="hidden" name="timestamp_secret" value="8845a07f7053ca9cfeb7ad4105e80c600a639507cb8a178e1730854f8a96ff77" class="form-control" />
+
+
+    <button class="btn btn-primary mt-2 btn-block" type="submit" data-ga-click="(Logged out) New issue modal, clicked Sign up, text:sign-up">Sign up for GitHub</button>
+</form>
+  <p class="mt-4 text-gray text-center">By clicking &ldquo;Sign up for GitHub&rdquo;, you agree to our <a href="https://help.github.com/terms" target="_blank">terms of service</a> and
+  <a href="https://help.github.com/privacy" target="_blank">privacy statement</a>. We’ll occasionally send you account related emails.</p>
+  <p class="mt-4 text-gray text-center">
+    Already on GitHub?
+    <a data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;new issue modal&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="7c8839d5ad97914fe98d6ec652e2e084687f7d91293eaec2aad830cefca74965" data-ga-click="(Logged out) New issue modal, clicked Sign in, text:sign-in" href="/login?return_to=%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2Fnew">Sign in</a>
+    to your account
+  </p>
+</div>
+
+</div>
+  </details-dialog>
+</details>
+      </div>
+
+    <h1 class="gh-header-title">
+      <span class="js-issue-title">
+        Response status code does not indicate success: 403 (Forbidden).
+      </span>
+      <span class="gh-header-number">#141</span>
+    </h1>
+  </div>
+
+  <div class="TableObject gh-header-meta">
+    <div class="TableObject-item">
+        <span class="State State--red  " title="Status: Closed">
+  
+  <svg height="16" class="octicon octicon-issue-closed" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M7 10h2v2H7v-2zm2-6H7v5h2V4zm1.5 1.5l-1 1L12 9l4-4.5-1-1L12 7l-1.5-1.5zM8 13.7A5.71 5.71 0 0 1 2.3 8c0-3.14 2.56-5.7 5.7-5.7 1.83 0 3.45.88 4.5 2.2l.92-.92A6.947 6.947 0 0 0 8 1C4.14 1 1 4.14 1 8s3.14 7 7 7 7-3.14 7-7l-1.52 1.52c-.66 2.41-2.86 4.19-5.48 4.19v-.01z"/></svg> Closed
+
+</span>
+
+    </div>
+    <div class="TableObject-item TableObject-item--primary">
+        <a class="author text-bold link-gray" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=5917631" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/ridicoulous">ridicoulous</a>  opened this issue
+<relative-time datetime="2017-05-26T12:00:26Z">May 26, 2017</relative-time>
+&middot; 8 comments
+
+
+    </div>
+  </div>
+
+
+    <div class="js-sticky js-sticky-offset-scroll top-0 gh-header-sticky" aria-hidden="true">
+      <div class="sticky-content">
+        <div class="d-flex flex-items-center flex-justify-between mt-2">
+          <div class="d-flex flex-row flex-items-center min-width-0">
+            <div class="mr-2 flex-shrink-0">
+                <span class="State State--red  " title="Status: Closed">
+  
+  <svg height="16" class="octicon octicon-issue-closed" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M7 10h2v2H7v-2zm2-6H7v5h2V4zm1.5 1.5l-1 1L12 9l4-4.5-1-1L12 7l-1.5-1.5zM8 13.7A5.71 5.71 0 0 1 2.3 8c0-3.14 2.56-5.7 5.7-5.7 1.83 0 3.45.88 4.5 2.2l.92-.92A6.947 6.947 0 0 0 8 1C4.14 1 1 4.14 1 8s3.14 7 7 7 7-3.14 7-7l-1.52 1.52c-.66 2.41-2.86 4.19-5.48 4.19v-.01z"/></svg> Closed
+
+</span>
+
+            </div>
+            <div class="min-width-0">
+              <h1 class="text-bold f5">
+  <a class="js-issue-title css-truncate css-truncate-target link-gray-dark" href="#" style="max-width: 48em">Response status code does not indicate success: 403 (Forbidden).</a>
+  <span class="gh-header-number text-gray-light pr-1">#141</span>
+</h1>
+
+              <div class="meta text-gray-light css-truncate css-truncate-target d-block" style="max-width: none">
+                  <a class="author text-bold link-gray" data-hovercard-z-index-override="111" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=5917631" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/ridicoulous">ridicoulous</a>  opened this issue
+<relative-time datetime="2017-05-26T12:00:26Z">May 26, 2017</relative-time>
+&middot; 8 comments
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gh-header-shadow box-shadow"></div>
+</div>
+
+
+    <h2 class="sr-only">Comments</h2>
+    <div id="discussion_bucket" class="d-flex">
+      <div class="col-9">
+        <div class="discussion-timeline js-quote-selection-container width-full "
+          data-quote-markdown=".js-comment-body"
+          data-issue-and-pr-hovercards-enabled
+          data-team-hovercards-enabled>
+
+          <div class="js-discussion js-socket-channel" data-channel="marked-as-read:issue:231607494">
+
+            
+<div class="timeline-comment-wrapper mt-0 js-comment-container js-socket-channel"
+  data-gid="MDU6SXNzdWUyMzE2MDc0OTQ="
+  data-url="/_render_node/MDU6SXNzdWUyMzE2MDc0OTQ=/issues/body"
+  data-channel="issue:231607494">
+
+  
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=5917631" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/ridicoulous"><img class="avatar rounded-1" height="40" width="40" alt="@ridicoulous" src="https://avatars2.githubusercontent.com/u/5917631?s=88&amp;v=4" /></a>
+
+</div>
+
+
+  
+<div class=" timeline-comment-group js-minimizable-comment-group js-targetable-comment" id="issue-231607494">
+  <div class=" unminimized-comment comment previewable-edit js-task-list-container js-comment timeline-comment timeline-comment--caret "
+       data-body-version="fc48670f7c63d81dc4b357705e355420"
+       data-unfurl-hide-url="/content_reference_attachments/hide"
+       data-unfurl-authenticity-token="sLqJwbV7dWbfZIA+iu3ZLUPcN2dQu0d3GP5wPieZ1MErc3KF5A2iZpKwqz7UAsXoy0YeCmkMABYm8SRMRI3c9g==">
+
+    
+<div class="timeline-comment-header clearfix">
+  <div class="timeline-comment-actions js-timeline-comment-actions" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="details-overlay details-reset position-relative d-inline-block ">
+  <summary class="btn-link timeline-comment-action">
+    <svg aria-label="Show options" class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" role="img"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw show-more-popover text-gray-dark anim-scale-in" style="width:185px">
+        <clipboard-copy
+    class="dropdown-item btn-link"
+    for="issue-231607494-permalink"
+    role="menuitem"
+    
+    >
+    Copy link
+  </clipboard-copy>
+
+        <button
+    type="button"
+    class="dropdown-item btn-link d-none js-comment-quote-reply"
+    role="menuitem">
+    Quote reply
+  </button>
+
+      
+  </details-menu>
+</details>
+
+  </div>
+
+
+    
+
+
+  
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+
+    <strong class="css-truncate expandable">
+      
+
+  <a class="author link-gray-dark css-truncate-target" show_full_name="false" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=5917631" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/ridicoulous">ridicoulous</a>
+  
+
+    </strong>
+
+    commented
+
+
+      <a href="#issue-231607494" id="issue-231607494-permalink" class="link-gray timestamp js-timestamp"><relative-time datetime="2017-05-26T12:00:26Z">May 26, 2017</relative-time></a>
+
+
+    <span class="js-comment-edit-history">
+    </span>
+  </h3>
+</div>
+
+
+    <div class="edit-comment-hide js-edit-comment-hide" >
+
+      
+<task-lists disabled sortable>
+<table class="d-block">
+  <tbody class="d-block">
+    <tr class="d-block">
+      <td class="d-block comment-body markdown-body  js-comment-body">
+          <p>Hello. I have an exception on installation certificate. Could you please help me?<br>
+`<br>
+Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.</p>
+<p>Exception Details: System.Net.Http.HttpRequestException: Response status code does not indicate success: 403 (Forbidden).</p>
+<p>Source Error:</p>
+<p>An unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.</p>
+<p>Stack Trace:</p>
+<p>[HttpRequestException: Response status code does not indicate success: 403 (Forbidden).]<br>
+System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode() +91716<br>
+LetsEncrypt.SiteExtension.Core.Services.CertificateService.Install(ICertificateInstallModel model) in J:\Projects\letsencrypt-siteextension\LetsEncrypt.SiteExtension.Core\Services\CertificateService.cs:57<br>
+LetsEncrypt.SiteExtension.Core.d__10.MoveNext() in J:\Projects\letsencrypt-siteextension\LetsEncrypt.SiteExtension.Core\CertificateManager.cs:150<br>
+System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task) +92<br>
+System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task) +58<br>
+LetsEncrypt.SiteExtension.Controllers.d__7.MoveNext() +581<br>
+System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task) +92<br>
+System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task) +58<br>
+System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult) +97<br>
+System.Web.Mvc.Async.&lt;&gt;c__DisplayClass37.b__36(IAsyncResult asyncResult) +17<br>
+System.Web.Mvc.Async.WrappedAsyncResult<code>1.CallEndDelegate(IAsyncResult asyncResult) +10 System.Web.Mvc.Async.WrappedAsyncResultBase</code>1.End() +49<br>
+System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult) +32<br>
+System.Web.Mvc.Async.AsyncInvocationWithFilters.b__3d() +50<br>
+System.Web.Mvc.Async.&lt;&gt;c__DisplayClass46.b__3f() +225<br>
+System.Web.Mvc.Async.&lt;&gt;c__DisplayClass33.b__32(IAsyncResult asyncResult) +10<br>
+System.Web.Mvc.Async.WrappedAsyncResult<code>1.CallEndDelegate(IAsyncResult asyncResult) +10 System.Web.Mvc.Async.WrappedAsyncResultBase</code>1.End() +49<br>
+System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult) +34<br>
+System.Web.Mvc.Async.&lt;&gt;c__DisplayClass2b.b__1c() +26<br>
+System.Web.Mvc.Async.&lt;&gt;c__DisplayClass21.b__1e(IAsyncResult asyncResult) +100<br>
+System.Web.Mvc.Async.WrappedAsyncResult<code>1.CallEndDelegate(IAsyncResult asyncResult) +10 System.Web.Mvc.Async.WrappedAsyncResultBase</code>1.End() +49<br>
+System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult) +27<br>
+System.Web.Mvc.Controller.b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState) +13<br>
+System.Web.Mvc.Async.WrappedAsyncVoid<code>1.CallEndDelegate(IAsyncResult asyncResult) +29 System.Web.Mvc.Async.WrappedAsyncResultBase</code>1.End() +49<br>
+System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult) +36<br>
+System.Web.Mvc.Controller.b__15(IAsyncResult asyncResult, Controller controller) +12<br>
+System.Web.Mvc.Async.WrappedAsyncVoid<code>1.CallEndDelegate(IAsyncResult asyncResult) +22 System.Web.Mvc.Async.WrappedAsyncResultBase</code>1.End() +49<br>
+System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult) +26<br>
+System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult) +10<br>
+System.Web.Mvc.MvcHandler.b__5(IAsyncResult asyncResult, ProcessRequestState innerState) +21<br>
+System.Web.Mvc.Async.WrappedAsyncVoid<code>1.CallEndDelegate(IAsyncResult asyncResult) +29 System.Web.Mvc.Async.WrappedAsyncResultBase</code>1.End() +49<br>
+System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult) +28<br>
+System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result) +9<br>
+System.Web.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar) +129`</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</task-lists>
+
+
+        
+
+<div class="comment-reactions has-reactions js-reactions-container "
+
+    >
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-pick-reaction" action="/users/sjkp/reactions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="55+wIBuyaLsqIO9inaDpPoTxf/3CJh4MPOr/djw+zDq3x+bdisUMjJ9jAHqcdTMy5dEZrYB0qB7qzsQ23QaJAQ==" />
+      <input type="hidden" name="input[subjectId]" value="MDU6SXNzdWUyMzE2MDc0OTQ=">
+
+      <div class="comment-reactions-options">
+          <button disabled
+                  class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline "
+                  name="input[content]"
+                  type="submit"
+                  value="THUMBS_UP react"
+                  aria-label="Viir reacted with thumbs up emoji">
+            <g-emoji alias="+1" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" class="emoji mr-1">👍</g-emoji>
+            1
+          </button>
+      </div>
+</form></div>
+
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+            
+
+  <div id="js-timeline-progressive-loader" data-timeline-item-src="sjkp/letsencrypt-siteextension/timeline?id=MDU6SXNzdWUyMzE2MDc0OTQ%3D&amp;variables%5Bafter%5D=Y3Vyc29yOnYyOpPPAAABZRuUkTAAqTQxMTU2ODY1Nw%3D%3D&amp;variables%5Bfirst%5D=60" ></div>
+
+
+  
+  
+<div class="js-timeline-item js-timeline-progressive-focus-container" data-gid="MDEyOklzc3VlQ29tbWVudDMwNDMzMDgyOA==">
+  
+    
+<div class="timeline-comment-wrapper js-comment-container"
+      data-gid="MDEyOklzc3VlQ29tbWVudDMwNDMzMDgyOA=="
+      data-url="/_render_node/MDEyOklzc3VlQ29tbWVudDMwNDMzMDgyOA==/timeline/issue_comment">
+
+  
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sjkp"><img class="avatar rounded-1" height="40" width="40" alt="@sjkp" src="https://avatars2.githubusercontent.com/u/3397744?s=88&amp;v=4" /></a>
+
+</div>
+
+
+  
+<div class=" timeline-comment-group js-minimizable-comment-group js-targetable-comment" id="issuecomment-304330828">
+    <div class=" minimized-comment position-relative  d-none ">
+      
+
+  
+
+<details class="Details-element details-reset border rounded-1 bg-white"
+       data-body-version="5ccb984b901fc698d0b03f238ad52097">
+    <summary class="bg-gray border-bottom-0 py-0 px-2">
+      <div class="d-flex flex-justify-between flex-items-center">
+        <h3 class="timeline-comment-header-text f5 text-gray text-normal text-italic">
+              This comment has been minimized.
+
+        </h3>
+        <div class="text-gray text-small">
+          <a rel="nofollow" class="link-gray" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;minimized comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="915529c87a8af0d6e38930edf2c7d0791ae277485029779f2762d1c2cc47ab8d" href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141">Sign in to view</a>
+        </div>
+      </div>
+    </summary>
+</details>
+
+
+    </div>
+  <div class=" unminimized-comment comment previewable-edit js-task-list-container js-comment timeline-comment timeline-comment--caret "
+       data-body-version="5ccb984b901fc698d0b03f238ad52097"
+       data-unfurl-hide-url="/content_reference_attachments/hide"
+       data-unfurl-authenticity-token="JOmRPEDGDRK09E8znevKif0ReAI/YGlgEEtxChUrLsC/IGp4EbDaEvkgZDPDBNZMdYtRbwbXLgEuRCV4dj8m9w==">
+
+    
+<div class="timeline-comment-header clearfix">
+  <div class="timeline-comment-actions js-timeline-comment-actions" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="details-overlay details-reset position-relative d-inline-block ">
+  <summary class="btn-link timeline-comment-action">
+    <svg aria-label="Show options" class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" role="img"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw show-more-popover text-gray-dark anim-scale-in" style="width:185px">
+        <clipboard-copy
+    class="dropdown-item btn-link"
+    for="issuecomment-304330828-permalink"
+    role="menuitem"
+    
+    >
+    Copy link
+  </clipboard-copy>
+
+        <button
+    type="button"
+    class="dropdown-item btn-link d-none js-comment-quote-reply"
+    role="menuitem">
+    Quote reply
+  </button>
+
+      
+  </details-menu>
+</details>
+
+  </div>
+
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the letsencrypt-siteextension repository.">
+      Owner
+    </span>
+
+
+  
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+
+    <strong class="css-truncate expandable">
+      
+
+  <a class="author link-gray-dark css-truncate-target" show_full_name="false" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sjkp">sjkp</a>
+  
+
+    </strong>
+
+    commented
+
+
+      <a href="#issuecomment-304330828" id="issuecomment-304330828-permalink" class="link-gray timestamp js-timestamp"><relative-time datetime="2017-05-26T16:42:37Z">May 26, 2017</relative-time></a>
+
+
+    <span class="js-comment-edit-history">
+    </span>
+  </h3>
+</div>
+
+
+    <div class="edit-comment-hide js-edit-comment-hide" >
+
+      
+<task-lists disabled sortable>
+<table class="d-block">
+  <tbody class="d-block">
+    <tr class="d-block">
+      <td class="d-block comment-body markdown-body  js-comment-body">
+          <p>Hi <a class="user-mention" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=5917631" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ridicoulous">@ridicoulous</a>  are you sure the service principal have access to the app service plan resource group. The error happens when the letsencrypt certificate are attempted to be installed by calling the Azure API with the credentials of the service principal:</p>
+<p><a href="https://github.com/sjkp/letsencrypt-siteextension/blob/master/LetsEncrypt.SiteExtension.Core/Services/CertificateService.cs#L57">https://github.com/sjkp/letsencrypt-siteextension/blob/master/LetsEncrypt.SiteExtension.Core/Services/CertificateService.cs#L57</a></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</task-lists>
+
+
+        
+
+<div class="comment-reactions has-reactions js-reactions-container "
+
+    >
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-pick-reaction" action="/users/sjkp/reactions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="IDQIjfpMO+6QxWKcwaN8GLyliydJLQOtkH5MplNZOZBwbF5waztf2SWGjYTAdqYU3YXtdwt/tb9GWnfmsmF8qw==" />
+      <input type="hidden" name="input[subjectId]" value="MDEyOklzc3VlQ29tbWVudDMwNDMzMDgyOA==">
+
+      <div class="comment-reactions-options">
+          <button disabled
+                  class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline "
+                  name="input[content]"
+                  type="submit"
+                  value="THUMBS_UP react"
+                  aria-label="ohadschn, andrewboudreau, ridicoulous, and samsmithnz reacted with thumbs up emoji">
+            <g-emoji alias="+1" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" class="emoji mr-1">👍</g-emoji>
+            4
+          </button>
+      </div>
+</form></div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+  
+  
+<div class="js-timeline-item js-timeline-progressive-focus-container" data-gid="MDEyOklzc3VlQ29tbWVudDMxMzk3MjYyNw==">
+  
+    
+<div class="timeline-comment-wrapper js-comment-container"
+      data-gid="MDEyOklzc3VlQ29tbWVudDMxMzk3MjYyNw=="
+      data-url="/_render_node/MDEyOklzc3VlQ29tbWVudDMxMzk3MjYyNw==/timeline/issue_comment">
+
+  
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=347602" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/dsghi"><img class="avatar rounded-1" height="40" width="40" alt="@dsghi" src="https://avatars2.githubusercontent.com/u/347602?s=88&amp;v=4" /></a>
+
+</div>
+
+
+  
+<div class=" timeline-comment-group js-minimizable-comment-group js-targetable-comment" id="issuecomment-313972627">
+    <div class=" minimized-comment position-relative  d-none ">
+      
+
+  
+
+<details class="Details-element details-reset border rounded-1 bg-white"
+       data-body-version="ef8751b00410be058c3c7df6bc7ba241">
+    <summary class="bg-gray border-bottom-0 py-0 px-2">
+      <div class="d-flex flex-justify-between flex-items-center">
+        <h3 class="timeline-comment-header-text f5 text-gray text-normal text-italic">
+              This comment has been minimized.
+
+        </h3>
+        <div class="text-gray text-small">
+          <a rel="nofollow" class="link-gray" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;minimized comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="915529c87a8af0d6e38930edf2c7d0791ae277485029779f2762d1c2cc47ab8d" href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141">Sign in to view</a>
+        </div>
+      </div>
+    </summary>
+</details>
+
+
+    </div>
+  <div class=" unminimized-comment comment previewable-edit js-task-list-container js-comment timeline-comment timeline-comment--caret "
+       data-body-version="ef8751b00410be058c3c7df6bc7ba241"
+       data-unfurl-hide-url="/content_reference_attachments/hide"
+       data-unfurl-authenticity-token="Llgtlys8uPnanDMhsq4QRkcQ7aLP53T/8ozt6lAzSU61kdbTekpv+ZdIGCHsQQyDz4rEz/ZQM57Mg7mYMydBeQ==">
+
+    
+<div class="timeline-comment-header clearfix">
+  <div class="timeline-comment-actions js-timeline-comment-actions" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="details-overlay details-reset position-relative d-inline-block ">
+  <summary class="btn-link timeline-comment-action">
+    <svg aria-label="Show options" class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" role="img"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw show-more-popover text-gray-dark anim-scale-in" style="width:185px">
+        <clipboard-copy
+    class="dropdown-item btn-link"
+    for="issuecomment-313972627-permalink"
+    role="menuitem"
+    
+    >
+    Copy link
+  </clipboard-copy>
+
+        <button
+    type="button"
+    class="dropdown-item btn-link d-none js-comment-quote-reply"
+    role="menuitem">
+    Quote reply
+  </button>
+
+      
+  </details-menu>
+</details>
+
+  </div>
+
+
+    
+
+
+  
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+
+    <strong class="css-truncate expandable">
+      
+
+  <a class="author link-gray-dark css-truncate-target" show_full_name="false" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=347602" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/dsghi">dsghi</a>
+  
+
+    </strong>
+
+    commented
+
+
+      <a href="#issuecomment-313972627" id="issuecomment-313972627-permalink" class="link-gray timestamp js-timestamp"><relative-time datetime="2017-07-09T23:28:28Z">Jul 9, 2017</relative-time></a>
+
+
+    <span class="js-comment-edit-history">
+    </span>
+  </h3>
+</div>
+
+
+    <div class="edit-comment-hide js-edit-comment-hide" >
+
+      
+<task-lists disabled sortable>
+<table class="d-block">
+  <tbody class="d-block">
+    <tr class="d-block">
+      <td class="d-block comment-body markdown-body  js-comment-body">
+          <p>I also receive this error, though everything else works fine. I am able to manually retrieve my certificate off the file system and add it via the Azure Portal.</p>
+<p>I have verified via logging it is failing where you've indicated:</p>
+<pre><code>2017-07-09T23:21:46  PID[7088] Error       Unabled to create Azure Web Site Management client System.Net.Http.HttpRequestException: Response status code does not indicate success: 403 (Forbidden).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at LetsEncrypt.SiteExtension.Core.Services.CertificateService.Install(ICertificateInstallModel model) in J:\Projects\letsencrypt-siteextension\LetsEncrypt.SiteExtension.Core\Services\CertificateService.cs:line 57
+   at LetsEncrypt.SiteExtension.Core.CertificateManager.&lt;RequestAndInstallInternalAsync&gt;d__10.MoveNext() in J:\Projects\letsencrypt-siteextension\LetsEncrypt.SiteExtension.Core\CertificateManager.cs:line 139
+</code></pre>
+<p>I have given the service principal owner permissions, and quadruple checked my settings. I have even redeployed to a new app service plan and resource group without any luck.</p>
+<p>Any suggestions for further troubleshooting?</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</task-lists>
+
+
+        
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+  
+  
+<div class="js-timeline-item js-timeline-progressive-focus-container" data-gid="MDEyOklzc3VlQ29tbWVudDMxMzk3MzI5NA==">
+  
+    
+<div class="timeline-comment-wrapper js-comment-container"
+      data-gid="MDEyOklzc3VlQ29tbWVudDMxMzk3MzI5NA=="
+      data-url="/_render_node/MDEyOklzc3VlQ29tbWVudDMxMzk3MzI5NA==/timeline/issue_comment">
+
+  
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=347602" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/dsghi"><img class="avatar rounded-1" height="40" width="40" alt="@dsghi" src="https://avatars2.githubusercontent.com/u/347602?s=88&amp;v=4" /></a>
+
+</div>
+
+
+  
+<div class=" timeline-comment-group js-minimizable-comment-group js-targetable-comment" id="issuecomment-313973294">
+    <div class=" minimized-comment position-relative  d-none ">
+      
+
+  
+
+<details class="Details-element details-reset border rounded-1 bg-white"
+       data-body-version="14a96692e49d83b9cfa3cac10a83c364">
+    <summary class="bg-gray border-bottom-0 py-0 px-2">
+      <div class="d-flex flex-justify-between flex-items-center">
+        <h3 class="timeline-comment-header-text f5 text-gray text-normal text-italic">
+              This comment has been minimized.
+
+        </h3>
+        <div class="text-gray text-small">
+          <a rel="nofollow" class="link-gray" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;minimized comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="915529c87a8af0d6e38930edf2c7d0791ae277485029779f2762d1c2cc47ab8d" href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141">Sign in to view</a>
+        </div>
+      </div>
+    </summary>
+</details>
+
+
+    </div>
+  <div class=" unminimized-comment comment previewable-edit js-task-list-container js-comment timeline-comment timeline-comment--caret "
+       data-body-version="14a96692e49d83b9cfa3cac10a83c364"
+       data-unfurl-hide-url="/content_reference_attachments/hide"
+       data-unfurl-authenticity-token="8Bf86edNCuTW+xWU5XCiax34WxzC7DSrexGYxg8uQ05r3gettjvd5JsvPpS7n76ulWJycftbc8pFHsy0bDpLeQ==">
+
+    
+<div class="timeline-comment-header clearfix">
+  <div class="timeline-comment-actions js-timeline-comment-actions" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="details-overlay details-reset position-relative d-inline-block ">
+  <summary class="btn-link timeline-comment-action">
+    <svg aria-label="Show options" class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" role="img"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw show-more-popover text-gray-dark anim-scale-in" style="width:185px">
+        <clipboard-copy
+    class="dropdown-item btn-link"
+    for="issuecomment-313973294-permalink"
+    role="menuitem"
+    
+    >
+    Copy link
+  </clipboard-copy>
+
+        <button
+    type="button"
+    class="dropdown-item btn-link d-none js-comment-quote-reply"
+    role="menuitem">
+    Quote reply
+  </button>
+
+      
+  </details-menu>
+</details>
+
+  </div>
+
+
+    
+
+
+  
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+
+    <strong class="css-truncate expandable">
+      
+
+  <a class="author link-gray-dark css-truncate-target" show_full_name="false" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=347602" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/dsghi">dsghi</a>
+  
+
+    </strong>
+
+    commented
+
+
+      <a href="#issuecomment-313973294" id="issuecomment-313973294-permalink" class="link-gray timestamp js-timestamp"><relative-time datetime="2017-07-09T23:41:57Z">Jul 9, 2017</relative-time></a>
+
+
+    <span class="js-comment-edit-history">
+    </span>
+  </h3>
+</div>
+
+
+    <div class="edit-comment-hide js-edit-comment-hide" >
+
+      
+<task-lists disabled sortable>
+<table class="d-block">
+  <tbody class="d-block">
+    <tr class="d-block">
+      <td class="d-block comment-body markdown-body  js-comment-body">
+          <p>Figured it out, it worked so well on my first site, I thought I could skim the instructions on the second. I mistakenly assigned permission to the app service and not the resource group. It worked as soon as I rectified this mistake. :)</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</task-lists>
+
+
+        
+
+<div class="comment-reactions has-reactions js-reactions-container "
+
+    >
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-pick-reaction" action="/users/sjkp/reactions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="tdxU7iV64RxPInKRH73/TzdLqyWssTVKXg/1adcKLlblhAITtA2FK/phnYkeaCVDVmvNde7jg1iIK84pNjJrbQ==" />
+      <input type="hidden" name="input[subjectId]" value="MDEyOklzc3VlQ29tbWVudDMxMzk3MzI5NA==">
+
+      <div class="comment-reactions-options">
+          <button disabled
+                  class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline "
+                  name="input[content]"
+                  type="submit"
+                  value="THUMBS_UP react"
+                  aria-label="ohadschn, psignoret, drub0y, BiggerNoise, and avs099 reacted with thumbs up emoji">
+            <g-emoji alias="+1" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" class="emoji mr-1">👍</g-emoji>
+            5
+          </button>
+      </div>
+</form></div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+  
+  
+<div class="js-timeline-item js-timeline-progressive-focus-container" data-gid="MDEyOklzc3VlQ29tbWVudDM4MzUzNjY1Mw==">
+  
+    
+<div class="timeline-comment-wrapper js-comment-container"
+      data-gid="MDEyOklzc3VlQ29tbWVudDM4MzUzNjY1Mw=="
+      data-url="/_render_node/MDEyOklzc3VlQ29tbWVudDM4MzUzNjY1Mw==/timeline/issue_comment">
+
+  
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=550209" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/TripleEmcoder"><img class="avatar rounded-1" height="40" width="40" alt="@TripleEmcoder" src="https://avatars2.githubusercontent.com/u/550209?s=88&amp;v=4" /></a>
+
+</div>
+
+
+  
+<div class=" timeline-comment-group js-minimizable-comment-group js-targetable-comment" id="issuecomment-383536653">
+    <div class=" minimized-comment position-relative  d-none ">
+      
+
+  
+
+<details class="Details-element details-reset border rounded-1 bg-white"
+       data-body-version="56b9aabef56dc6805f744d98984a6255">
+    <summary class="bg-gray border-bottom-0 py-0 px-2">
+      <div class="d-flex flex-justify-between flex-items-center">
+        <h3 class="timeline-comment-header-text f5 text-gray text-normal text-italic">
+              This comment has been minimized.
+
+        </h3>
+        <div class="text-gray text-small">
+          <a rel="nofollow" class="link-gray" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;minimized comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="915529c87a8af0d6e38930edf2c7d0791ae277485029779f2762d1c2cc47ab8d" href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141">Sign in to view</a>
+        </div>
+      </div>
+    </summary>
+</details>
+
+
+    </div>
+  <div class=" unminimized-comment comment previewable-edit js-task-list-container js-comment timeline-comment timeline-comment--caret "
+       data-body-version="56b9aabef56dc6805f744d98984a6255"
+       data-unfurl-hide-url="/content_reference_attachments/hide"
+       data-unfurl-authenticity-token="f+kVIneQvkSWekEgAetPgWZjQt0wDY4kmC53aTpaVcnkIO5mJuZpRNuuaiBfBFNE7vlrsAm6yUWmISMbWU5d/g==">
+
+    
+<div class="timeline-comment-header clearfix">
+  <div class="timeline-comment-actions js-timeline-comment-actions" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="details-overlay details-reset position-relative d-inline-block ">
+  <summary class="btn-link timeline-comment-action">
+    <svg aria-label="Show options" class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" role="img"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw show-more-popover text-gray-dark anim-scale-in" style="width:185px">
+        <clipboard-copy
+    class="dropdown-item btn-link"
+    for="issuecomment-383536653-permalink"
+    role="menuitem"
+    
+    >
+    Copy link
+  </clipboard-copy>
+
+        <button
+    type="button"
+    class="dropdown-item btn-link d-none js-comment-quote-reply"
+    role="menuitem">
+    Quote reply
+  </button>
+
+      
+  </details-menu>
+</details>
+
+  </div>
+
+
+    
+
+
+  
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+
+    <strong class="css-truncate expandable">
+      
+
+  <a class="author link-gray-dark css-truncate-target" show_full_name="false" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=550209" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/TripleEmcoder">TripleEmcoder</a>
+  
+
+    </strong>
+
+    commented
+
+
+      <a href="#issuecomment-383536653" id="issuecomment-383536653-permalink" class="link-gray timestamp js-timestamp"><relative-time datetime="2018-04-23T11:01:09Z">Apr 23, 2018</relative-time></a>
+
+
+    <span class="js-comment-edit-history">
+    </span>
+  </h3>
+</div>
+
+
+    <div class="edit-comment-hide js-edit-comment-hide" >
+
+      
+<task-lists disabled sortable>
+<table class="d-block">
+  <tbody class="d-block">
+    <tr class="d-block">
+      <td class="d-block comment-body markdown-body  js-comment-body">
+          <p>I just made the same mistake as <a class="user-mention" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=347602" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dsghi">@dsghi</a> - the permission must be on the resource group level. By the way, <a class="user-mention" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/sjkp">@sjkp</a> why is that so? From a security standpoint it would be better to limit permissions to the actual resource.</p>
+<p>Also, for anyone encountering this issue - give Azure a few minutes for the permissions to kick in. In my case another 403 was issued event after I correctly applied the contributor role. Had to give it some time and retry.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</task-lists>
+
+
+        
+
+<div class="comment-reactions has-reactions js-reactions-container "
+
+    >
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-pick-reaction" action="/users/sjkp/reactions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="/532Fsye1DXqWI1L8oihnkC7tm2K76zbhRbzsRQFZP6vxaDrXemwAl8bYlPzXXuSIZvQPci9GslTMsjx9T0hxQ==" />
+      <input type="hidden" name="input[subjectId]" value="MDEyOklzc3VlQ29tbWVudDM4MzUzNjY1Mw==">
+
+      <div class="comment-reactions-options">
+          <button disabled
+                  class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline "
+                  name="input[content]"
+                  type="submit"
+                  value="THUMBS_UP react"
+                  aria-label="avs099 and andrewboudreau reacted with thumbs up emoji">
+            <g-emoji alias="+1" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" class="emoji mr-1">👍</g-emoji>
+            2
+          </button>
+      </div>
+</form></div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+  
+  
+<div class="js-timeline-item js-timeline-progressive-focus-container" data-gid="MDEyOklzc3VlQ29tbWVudDM4MzU0NzU5OQ==">
+  
+    
+<div class="timeline-comment-wrapper js-comment-container"
+      data-gid="MDEyOklzc3VlQ29tbWVudDM4MzU0NzU5OQ=="
+      data-url="/_render_node/MDEyOklzc3VlQ29tbWVudDM4MzU0NzU5OQ==/timeline/issue_comment">
+
+  
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sjkp"><img class="avatar rounded-1" height="40" width="40" alt="@sjkp" src="https://avatars2.githubusercontent.com/u/3397744?s=88&amp;v=4" /></a>
+
+</div>
+
+
+  
+<div class=" timeline-comment-group js-minimizable-comment-group js-targetable-comment" id="issuecomment-383547599">
+    <div class=" minimized-comment position-relative  d-none ">
+      
+
+  
+
+<details class="Details-element details-reset border rounded-1 bg-white"
+       data-body-version="96dc2e3d5721ff71b89bf700b5e1f96d">
+    <summary class="bg-gray border-bottom-0 py-0 px-2">
+      <div class="d-flex flex-justify-between flex-items-center">
+        <h3 class="timeline-comment-header-text f5 text-gray text-normal text-italic">
+              This comment has been minimized.
+
+        </h3>
+        <div class="text-gray text-small">
+          <a rel="nofollow" class="link-gray" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;minimized comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="915529c87a8af0d6e38930edf2c7d0791ae277485029779f2762d1c2cc47ab8d" href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141">Sign in to view</a>
+        </div>
+      </div>
+    </summary>
+</details>
+
+
+    </div>
+  <div class=" unminimized-comment comment previewable-edit js-task-list-container js-comment timeline-comment timeline-comment--caret "
+       data-body-version="96dc2e3d5721ff71b89bf700b5e1f96d"
+       data-unfurl-hide-url="/content_reference_attachments/hide"
+       data-unfurl-authenticity-token="zTQjaeZjUSDY4eudN0VOIZWqx8JD/RTTG3JM4kMmp7NW/dgttxWGIJU1wJ1pqlLkHTDur3pKU7IlfRiQIDKvhA==">
+
+    
+<div class="timeline-comment-header clearfix">
+  <div class="timeline-comment-actions js-timeline-comment-actions" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="details-overlay details-reset position-relative d-inline-block ">
+  <summary class="btn-link timeline-comment-action">
+    <svg aria-label="Show options" class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" role="img"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw show-more-popover text-gray-dark anim-scale-in" style="width:185px">
+        <clipboard-copy
+    class="dropdown-item btn-link"
+    for="issuecomment-383547599-permalink"
+    role="menuitem"
+    
+    >
+    Copy link
+  </clipboard-copy>
+
+        <button
+    type="button"
+    class="dropdown-item btn-link d-none js-comment-quote-reply"
+    role="menuitem">
+    Quote reply
+  </button>
+
+      
+  </details-menu>
+</details>
+
+  </div>
+
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the letsencrypt-siteextension repository.">
+      Owner
+    </span>
+
+
+  
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+
+    <strong class="css-truncate expandable">
+      
+
+  <a class="author link-gray-dark css-truncate-target" show_full_name="false" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sjkp">sjkp</a>
+  
+
+    </strong>
+
+    commented
+
+
+      <a href="#issuecomment-383547599" id="issuecomment-383547599-permalink" class="link-gray timestamp js-timestamp"><relative-time datetime="2018-04-23T11:48:34Z">Apr 23, 2018</relative-time></a>
+
+
+    <span class="js-comment-edit-history">
+    </span>
+  </h3>
+</div>
+
+
+    <div class="edit-comment-hide js-edit-comment-hide" >
+
+      
+<task-lists disabled sortable>
+<table class="d-block">
+  <tbody class="d-block">
+    <tr class="d-block">
+      <td class="d-block comment-body markdown-body  js-comment-body">
+          <p>The reason why it is on resource group level, is because the certificates also gets installed as an azure resource, you can't see them in the portal interface (unless you check the show hidden types), but if you look in e.g. resources.azure.com you will see them. And because they are dangling in the resource group, permission for it is required. I can't change that, this is how MS implemented it unfortunately.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</task-lists>
+
+
+        
+
+<div class="comment-reactions has-reactions js-reactions-container "
+
+    >
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-pick-reaction" action="/users/sjkp/reactions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="o7mRnvWe7upap+H1d9loevBKd3Wlt9eZdcphuCLci9jz4cdjZOmK3e/kDu12DLJ2kWoRJeflYYuj7lr4w+TO4w==" />
+      <input type="hidden" name="input[subjectId]" value="MDEyOklzc3VlQ29tbWVudDM4MzU0NzU5OQ==">
+
+      <div class="comment-reactions-options">
+          <button disabled
+                  class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline "
+                  name="input[content]"
+                  type="submit"
+                  value="THUMBS_UP react"
+                  aria-label="Viir, samsmithnz, and SvenAelterman reacted with thumbs up emoji">
+            <g-emoji alias="+1" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" class="emoji mr-1">👍</g-emoji>
+            3
+          </button>
+      </div>
+</form></div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+  
+  
+<div class="js-timeline-item js-timeline-progressive-focus-container" data-gid="MDEyOklzc3VlQ29tbWVudDM4MzU2NDA3Nw==">
+  
+    
+<div class="timeline-comment-wrapper js-comment-container"
+      data-gid="MDEyOklzc3VlQ29tbWVudDM4MzU2NDA3Nw=="
+      data-url="/_render_node/MDEyOklzc3VlQ29tbWVudDM4MzU2NDA3Nw==/timeline/issue_comment">
+
+  
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=550209" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/TripleEmcoder"><img class="avatar rounded-1" height="40" width="40" alt="@TripleEmcoder" src="https://avatars2.githubusercontent.com/u/550209?s=88&amp;v=4" /></a>
+
+</div>
+
+
+  
+<div class=" timeline-comment-group js-minimizable-comment-group js-targetable-comment" id="issuecomment-383564077">
+    <div class=" minimized-comment position-relative  d-none ">
+      
+
+  
+
+<details class="Details-element details-reset border rounded-1 bg-white"
+       data-body-version="b8c04af8cf170fe5b07711491e28cee1">
+    <summary class="bg-gray border-bottom-0 py-0 px-2">
+      <div class="d-flex flex-justify-between flex-items-center">
+        <h3 class="timeline-comment-header-text f5 text-gray text-normal text-italic">
+              This comment has been minimized.
+
+        </h3>
+        <div class="text-gray text-small">
+          <a rel="nofollow" class="link-gray" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;minimized comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="915529c87a8af0d6e38930edf2c7d0791ae277485029779f2762d1c2cc47ab8d" href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141">Sign in to view</a>
+        </div>
+      </div>
+    </summary>
+</details>
+
+
+    </div>
+  <div class=" unminimized-comment comment previewable-edit js-task-list-container js-comment timeline-comment timeline-comment--caret "
+       data-body-version="b8c04af8cf170fe5b07711491e28cee1"
+       data-unfurl-hide-url="/content_reference_attachments/hide"
+       data-unfurl-authenticity-token="dgnkFtrzPefJ4kzOJPpFMwEK8mse7mDQLhUOuAI7GePtwB9Si4Xq54Q2Z856FVn2iZDbBidZJ7EQGlrKYS8R1A==">
+
+    
+<div class="timeline-comment-header clearfix">
+  <div class="timeline-comment-actions js-timeline-comment-actions" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="details-overlay details-reset position-relative d-inline-block ">
+  <summary class="btn-link timeline-comment-action">
+    <svg aria-label="Show options" class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" role="img"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw show-more-popover text-gray-dark anim-scale-in" style="width:185px">
+        <clipboard-copy
+    class="dropdown-item btn-link"
+    for="issuecomment-383564077-permalink"
+    role="menuitem"
+    
+    >
+    Copy link
+  </clipboard-copy>
+
+        <button
+    type="button"
+    class="dropdown-item btn-link d-none js-comment-quote-reply"
+    role="menuitem">
+    Quote reply
+  </button>
+
+      
+  </details-menu>
+</details>
+
+  </div>
+
+
+    
+
+
+  
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+
+    <strong class="css-truncate expandable">
+      
+
+  <a class="author link-gray-dark css-truncate-target" show_full_name="false" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=550209" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/TripleEmcoder">TripleEmcoder</a>
+  
+
+    </strong>
+
+    commented
+
+
+      <a href="#issuecomment-383564077" id="issuecomment-383564077-permalink" class="link-gray timestamp js-timestamp"><relative-time datetime="2018-04-23T12:52:22Z">Apr 23, 2018</relative-time></a>
+
+
+    <span class="js-comment-edit-history">
+    </span>
+  </h3>
+</div>
+
+
+    <div class="edit-comment-hide js-edit-comment-hide" >
+
+      
+<task-lists disabled sortable>
+<table class="d-block">
+  <tbody class="d-block">
+    <tr class="d-block">
+      <td class="d-block comment-body markdown-body  js-comment-body">
+          <p>OK, thank you very much for the explanation. Good to know.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</task-lists>
+
+
+        
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+  
+  
+<div class="js-timeline-item js-timeline-progressive-focus-container" data-gid="MDEyOklzc3VlQ29tbWVudDM4NTI0NDAzNQ==">
+  
+    
+<div class="timeline-comment-wrapper js-comment-container"
+      data-gid="MDEyOklzc3VlQ29tbWVudDM4NTI0NDAzNQ=="
+      data-url="/_render_node/MDEyOklzc3VlQ29tbWVudDM4NTI0NDAzNQ==/timeline/issue_comment">
+
+  
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=11927312" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/avs099"><img class="avatar rounded-1" height="40" width="40" alt="@avs099" src="https://avatars2.githubusercontent.com/u/11927312?s=88&amp;v=4" /></a>
+
+</div>
+
+
+  
+<div class=" timeline-comment-group js-minimizable-comment-group js-targetable-comment" id="issuecomment-385244035">
+    <div class=" minimized-comment position-relative  d-none ">
+      
+
+  
+
+<details class="Details-element details-reset border rounded-1 bg-white"
+       data-body-version="bbf25afd392543714febabd3abb6ad6e">
+    <summary class="bg-gray border-bottom-0 py-0 px-2">
+      <div class="d-flex flex-justify-between flex-items-center">
+        <h3 class="timeline-comment-header-text f5 text-gray text-normal text-italic">
+              This comment has been minimized.
+
+        </h3>
+        <div class="text-gray text-small">
+          <a rel="nofollow" class="link-gray" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;minimized comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="915529c87a8af0d6e38930edf2c7d0791ae277485029779f2762d1c2cc47ab8d" href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141">Sign in to view</a>
+        </div>
+      </div>
+    </summary>
+</details>
+
+
+    </div>
+  <div class=" unminimized-comment comment previewable-edit js-task-list-container js-comment timeline-comment timeline-comment--caret "
+       data-body-version="bbf25afd392543714febabd3abb6ad6e"
+       data-unfurl-hide-url="/content_reference_attachments/hide"
+       data-unfurl-authenticity-token="49rPPoVgxESdps/iIjfG6LWP5tiSikprGe5FYs/n5AF4EzR61BYTRNBy5OJ82NotPRXPtas9DQon4REQrPPsNg==">
+
+    
+<div class="timeline-comment-header clearfix">
+  <div class="timeline-comment-actions js-timeline-comment-actions" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="details-overlay details-reset position-relative d-inline-block ">
+  <summary class="btn-link timeline-comment-action">
+    <svg aria-label="Show options" class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" role="img"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw show-more-popover text-gray-dark anim-scale-in" style="width:185px">
+        <clipboard-copy
+    class="dropdown-item btn-link"
+    for="issuecomment-385244035-permalink"
+    role="menuitem"
+    
+    >
+    Copy link
+  </clipboard-copy>
+
+        <button
+    type="button"
+    class="dropdown-item btn-link d-none js-comment-quote-reply"
+    role="menuitem">
+    Quote reply
+  </button>
+
+      
+  </details-menu>
+</details>
+
+  </div>
+
+
+    
+
+
+  
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+
+    <strong class="css-truncate expandable">
+      
+
+  <a class="author link-gray-dark css-truncate-target" show_full_name="false" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=11927312" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/avs099">avs099</a>
+  
+
+    </strong>
+
+    commented
+
+
+      <a href="#issuecomment-385244035" id="issuecomment-385244035-permalink" class="link-gray timestamp js-timestamp"><relative-time datetime="2018-04-29T11:23:07Z">Apr 29, 2018</relative-time></a>
+
+
+    <span class="js-comment-edit-history">
+        
+  <span class="d-inline-block text-gray-light">&#8226;</span>
+
+  <details class="details-overlay details-reset d-inline-block dropdown">
+    <summary class="btn-link no-underline text-gray js-notice">
+      <div class="position-relative">
+        <span>
+            edited
+        </span>
+        <svg height="11" class="octicon octicon-triangle-down v-align-middle" viewBox="0 0 12 16" version="1.1" width="8" aria-hidden="true"><path fill-rule="evenodd" d="M0 5l6 6 6-6H0z"/></svg>
+      </div>
+    </summary>
+    <details-menu class="anim-scale-in dropdown-menu dropdown-menu-se py-0" style="width:352px" src="/_render_node/MDEyOklzc3VlQ29tbWVudDM4NTI0NDAzNQ==/comments/comment_edit_history_log" preload>
+      <include-fragment class="octocat-spinner my-3" aria-label="Loading"></include-fragment>
+    </details-menu>
+  </details>
+
+    </span>
+  </h3>
+</div>
+
+
+    <div class="edit-comment-hide js-edit-comment-hide" >
+
+      
+<task-lists disabled sortable>
+<table class="d-block">
+  <tbody class="d-block">
+    <tr class="d-block">
+      <td class="d-block comment-body markdown-body  js-comment-body">
+          <p>got here searching for the same error code; turns out it's a duplicate of <a class="issue-link js-issue-link" data-error-text="Failed to load issue title" data-id="296943451" data-permission-text="Issue title is private" data-url="https://github.com/sjkp/letsencrypt-siteextension/issues/194" data-hovercard-type="issue" data-hovercard-url="/sjkp/letsencrypt-siteextension/issues/194/hovercard" href="https://github.com/sjkp/letsencrypt-siteextension/issues/194">#194</a> as well.  Whatever <a class="user-mention" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=347602" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dsghi">@dsghi</a> suggested indeed was the reason - make sure you assign service principal to <strong>RESOURCE GROUP</strong>, not to APP SERVICE.</p>
+<p>After I changed the permissions, things did not work. I waited for a few mins - nada. Then I deleted the app, created a new one - and only that helped. So once again - RTFM :)</p>
+<p><a class="user-mention" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/sjkp">@sjkp</a> I believe this ticket can be closed. I tried to update the wiki to EMPHASIZE that you NEED TO USE RESOURCE GROUP - seriously, it should be like that, I'm not the only one who made this mistake - but github does not support pull requests for wikis. So please please do that update :) Thanks again for your work.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</task-lists>
+
+
+        
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+  
+  
+<div class="js-timeline-item js-timeline-progressive-focus-container" data-gid="MDExOkNsb3NlZEV2ZW50MTc0MjM2OTQzNA==">
+  
+        <div class="discussion-item discussion-item-closed"  data-team-hovercards-enabled>
+  <h3 class="discussion-item-header f5 text-normal" id="event-1742369434">
+
+    <span class="discussion-item-icon">
+      <svg class="octicon octicon-circle-slash" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm0 1.3c1.3 0 2.5.44 3.47 1.17l-8 8A5.755 5.755 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zm0 11.41c-1.3 0-2.5-.44-3.47-1.17l8-8c.73.97 1.17 2.17 1.17 3.47 0 3.14-2.56 5.7-5.7 5.7z"/></svg>
+    </span>
+
+    
+
+        <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sjkp"><img class="avatar" height="20" width="20" alt="@sjkp" src="https://avatars3.githubusercontent.com/u/3397744?s=60&amp;v=4" /></a>
+  <a class="author link-gray-dark text-bold" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sjkp">sjkp</a>
+  
+
+
+      
+closed this
+
+
+    <a href="#event-1742369434" class="link-gray"><relative-time datetime="2018-07-19T12:01:36Z">Jul 19, 2018</relative-time></a>
+
+  </h3>
+</div>
+
+  <div class="TimelineItem--break mb-n2"></div>
+
+
+
+</div>
+
+  
+  
+<div class="js-timeline-item js-timeline-progressive-focus-container" data-gid="MDEyOklzc3VlQ29tbWVudDQxMTU2ODY1Nw==">
+  
+    
+<div class="timeline-comment-wrapper js-comment-container"
+      data-gid="MDEyOklzc3VlQ29tbWVudDQxMTU2ODY1Nw=="
+      data-url="/_render_node/MDEyOklzc3VlQ29tbWVudDQxMTU2ODY1Nw==/timeline/issue_comment">
+
+  
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a class="d-inline-block" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=43072" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/drmohundro"><img class="avatar rounded-1" height="40" width="40" alt="@drmohundro" src="https://avatars0.githubusercontent.com/u/43072?s=88&amp;v=4" /></a>
+
+</div>
+
+
+  
+<div class=" timeline-comment-group js-minimizable-comment-group js-targetable-comment" id="issuecomment-411568657">
+    <div class=" minimized-comment position-relative  d-none ">
+      
+
+  
+
+<details class="Details-element details-reset border rounded-1 bg-white"
+       data-body-version="fbc43a59b24f1ccb0e60448875f35cba">
+    <summary class="bg-gray border-bottom-0 py-0 px-2">
+      <div class="d-flex flex-justify-between flex-items-center">
+        <h3 class="timeline-comment-header-text f5 text-gray text-normal text-italic">
+              This comment has been minimized.
+
+        </h3>
+        <div class="text-gray text-small">
+          <a rel="nofollow" class="link-gray" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;minimized comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="915529c87a8af0d6e38930edf2c7d0791ae277485029779f2762d1c2cc47ab8d" href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141">Sign in to view</a>
+        </div>
+      </div>
+    </summary>
+</details>
+
+
+    </div>
+  <div class=" unminimized-comment comment previewable-edit js-task-list-container js-comment timeline-comment timeline-comment--caret "
+       data-body-version="fbc43a59b24f1ccb0e60448875f35cba"
+       data-unfurl-hide-url="/content_reference_attachments/hide"
+       data-unfurl-authenticity-token="6AGnKV4v/KMba2TVtkA8RimT/0pAhlLcrnHhTDlMpcZzyFxtD1kro1a/T9XoryCDoQnWJ3kxFb2QfrU+Wlit8Q==">
+
+    
+<div class="timeline-comment-header clearfix">
+  <div class="timeline-comment-actions js-timeline-comment-actions" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="details-overlay details-reset position-relative d-inline-block ">
+  <summary class="btn-link timeline-comment-action">
+    <svg aria-label="Show options" class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" role="img"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw show-more-popover text-gray-dark anim-scale-in" style="width:185px">
+        <clipboard-copy
+    class="dropdown-item btn-link"
+    for="issuecomment-411568657-permalink"
+    role="menuitem"
+    
+    >
+    Copy link
+  </clipboard-copy>
+
+        <button
+    type="button"
+    class="dropdown-item btn-link d-none js-comment-quote-reply"
+    role="menuitem">
+    Quote reply
+  </button>
+
+      
+  </details-menu>
+</details>
+
+  </div>
+
+
+    
+    <span class="timeline-comment-label tooltipped tooltipped-multiline tooltipped-s" aria-label="This user has previously committed to the letsencrypt-siteextension repository.">
+      Contributor
+    </span>
+
+
+  
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+
+    <strong class="css-truncate expandable">
+      
+
+  <a class="author link-gray-dark css-truncate-target" show_full_name="false" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=43072" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/drmohundro">drmohundro</a>
+  
+
+    </strong>
+
+    commented
+
+
+      <a href="#issuecomment-411568657" id="issuecomment-411568657-permalink" class="link-gray timestamp js-timestamp"><relative-time datetime="2018-08-08T22:07:26Z">Aug 8, 2018</relative-time></a>
+
+
+    <span class="js-comment-edit-history">
+    </span>
+  </h3>
+</div>
+
+
+    <div class="edit-comment-hide js-edit-comment-hide" >
+
+      
+<task-lists disabled sortable>
+<table class="d-block">
+  <tbody class="d-block">
+    <tr class="d-block">
+      <td class="d-block comment-body markdown-body  js-comment-body">
+          <p>Quick note if anyone else is having trouble, you shouldn't have to delete the app and create a new one, first try going to <a rel="nofollow" href="https://YOUR-SITE.scm.azurewebsites.net/SiteExtensions/">https://YOUR-SITE.scm.azurewebsites.net/SiteExtensions/</a> and then clicking "Restart Site" - that fixed the Resource Group permission issue for us.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</task-lists>
+
+
+        
+
+<div class="comment-reactions has-reactions js-reactions-container "
+
+    >
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-pick-reaction" action="/users/sjkp/reactions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="lptdT+ZQ1kBN6jmjX7HyMCc5gf/Mvw0iOpLqcowNwfnGwwuydyeyd/ip1rteZCg8Rhnnr47tuzDsttEybTWEwg==" />
+      <input type="hidden" name="input[subjectId]" value="MDEyOklzc3VlQ29tbWVudDQxMTU2ODY1Nw==">
+
+      <div class="comment-reactions-options">
+          <button disabled
+                  class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline "
+                  name="input[content]"
+                  type="submit"
+                  value="THUMBS_UP react"
+                  aria-label="SvenAelterman reacted with thumbs up emoji">
+            <g-emoji alias="+1" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" class="emoji mr-1">👍</g-emoji>
+            1
+          </button>
+      </div>
+</form></div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Rendered timeline since 2018-08-08 15:07:26 -->
+<div class="js-timeline-marker js-socket-channel js-updatable-content"
+      id="partial-timeline"
+      data-channel="issue:231607494"
+      data-url="/_render_node/MDU6SXNzdWUyMzE2MDc0OTQ=/issues/unread_timeline?variables%5BhasFocusedReviewComment%5D=false&amp;variables%5BhasFocusedReviewThread%5D=false&amp;variables%5BsyntaxHighlightingEnabled%5D=true&amp;variables%5BtimelinePageSize%5D=30&amp;variables%5BtimelineSince%5D=2018-08-08T22%3A07%3A26Z"
+      data-last-modified="Wed, 08 Aug 2018 22:07:26 GMT"
+      data-gid="MDU6SXNzdWUyMzE2MDc0OTQ=">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="d-none js-timeline-marker-form" action="/_graphql/MarkNotificationSubjectAsRead" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="QRWoVxvwk2CmMYEAKAuLbH4vSqT8108a2ZEMffQzyMnnWj2YJgAKBFzclAvtEc6bJ0e/ADYjS7fqeFL9Spp+ig==" />
+    <input type="hidden" name="variables[subjectId]" value="MDU6SXNzdWUyMzE2MDc0OTQ=">
+</form></div>
+
+
+          </div>
+
+
+          <div class="discussion-timeline-actions">
+                  
+<div class="flash flash-warn mt-3">
+    <a rel="nofollow" class="btn btn-primary" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;signed out comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="1d35cdda16a2e4c88728ab5521edf2ce536f7b77581bb1fa607882bf8a96c81d" href="/join?source=comment-repo">Sign up for free</a>
+    <strong>to join this conversation on GitHub</strong>.
+    Already have an account?
+    <a rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;signed out comment&quot;,&quot;repository_id&quot;:48821690,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;client_id&quot;:null,&quot;originating_request_id&quot;:&quot;207D:20AE:37C766:53EE29:5D68A626&quot;,&quot;originating_url&quot;:&quot;https://github.com/sjkp/letsencrypt-siteextension/issues/141&quot;,&quot;referrer&quot;:null,&quot;user_id&quot;:null}}" data-hydro-click-hmac="c83beb0195c61a94d9d656404e5dee9272c07be93de080e38e04d54feffcae1a" href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsjkp%2Fletsencrypt-siteextension%2Fissues%2F141">Sign in to comment</a>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3 pl-4">
+        
+<div id="partial-discussion-sidebar"
+  class="js-socket-channel js-updatable-content"
+  data-channel="issue:231607494"
+  data-gid="MDU6SXNzdWUyMzE2MDc0OTQ="
+  data-url="/sjkp/letsencrypt-siteextension/issues/141/show_partial?partial=issues%2Fsidebar"
+  data-project-hovercards-enabled>
+
+
+  <div class="discussion-sidebar-item sidebar-assignee js-discussion-sidebar-item">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-issue-sidebar-form" aria-label="Select assignees" action="/sjkp/letsencrypt-siteextension/issues/141/assignees" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="oaH9rwRHaPcsxdTUeKhq4Mmn/dhDyMUT10OMMiKo+hACPC4IdngOX5w9SVqdTYxtMhHu43h6uNqzcDpSTHqyUg==" />
+    
+  <div class="discussion-sidebar-heading text-bold">
+    Assignees
+  </div>
+
+    
+<span class="css-truncate js-issue-assignees">
+    No one assigned
+</span>
+
+</form></div>
+
+    <div class="discussion-sidebar-item sidebar-labels js-discussion-sidebar-item">
+  
+
+
+  <div class="discussion-sidebar-heading text-bold">
+    Labels
+  </div>
+
+  <div class="labels css-truncate js-issue-labels">
+    None yet
+</div>
+
+</div>
+
+    <div class="discussion-sidebar-item js-discussion-sidebar-item">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-issue-sidebar-form" aria-label="Select projects" action="/sjkp/letsencrypt-siteextension/projects/issues/141" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="jQINQcfVDWY3aUrA9Vljb0pNHpK41owhbHlMvFg47aQ1EExz30VfRwG7v3YmiOScA1afoTTnpFj/orOEdLKMyw==" />
+    
+  <div class="discussion-sidebar-heading text-bold">
+    Projects
+  </div>
+
+    
+<span class="css-truncate sidebar-projects">
+    None yet
+</span>
+
+</form></div>
+
+    <div class="discussion-sidebar-item sidebar-milestone js-discussion-sidebar-item">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-issue-sidebar-form" aria-label="Select milestones" action="/sjkp/letsencrypt-siteextension/issues/141/set_milestone?partial=issues%2Fsidebar%2Fshow%2Fmilestone" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="tVDSpivyTRPWNEBhojYWWlMoC2lesiuQDtk3xNJLNQXW2tGkU545p0620+J+4nla3l69A/TdcgTZABbTV/IcHw==" />
+    
+  <div class="discussion-sidebar-heading text-bold">
+    Milestone
+  </div>
+
+      No milestone
+
+</form></div>
+
+  
+  <div id="partial-users-participants" class="discussion-sidebar-item">
+  <div class="participation">
+
+    <div class="discussion-sidebar-heading text-bold">
+      6 participants
+    </div>
+    <div class="participation-avatars d-flex flex-wrap">
+        <a class="participant-avatar" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=5917631" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/ridicoulous">
+          <img class="avatar" src="https://avatars1.githubusercontent.com/u/5917631?s=52&amp;v=4" width="26" height="26" alt="@ridicoulous" /> 
+</a>        <a class="participant-avatar" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=3397744" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sjkp">
+          <img class="avatar" src="https://avatars1.githubusercontent.com/u/3397744?s=52&amp;v=4" width="26" height="26" alt="@sjkp" /> 
+</a>        <a class="participant-avatar" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=347602" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/dsghi">
+          <img class="avatar" src="https://avatars1.githubusercontent.com/u/347602?s=52&amp;v=4" width="26" height="26" alt="@dsghi" /> 
+</a>        <a class="participant-avatar" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=550209" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/TripleEmcoder">
+          <img class="avatar" src="https://avatars1.githubusercontent.com/u/550209?s=52&amp;v=4" width="26" height="26" alt="@TripleEmcoder" /> 
+</a>        <a class="participant-avatar" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=11927312" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/avs099">
+          <img class="avatar" src="https://avatars1.githubusercontent.com/u/11927312?s=52&amp;v=4" width="26" height="26" alt="@avs099" /> 
+</a>        <a class="participant-avatar" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=43072" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/drmohundro">
+          <img class="avatar" src="https://avatars3.githubusercontent.com/u/43072?s=52&amp;v=4" width="26" height="26" alt="@drmohundro" /> 
+</a>    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  
+
+</div>
+
+      </div>
+
+    </div>
+  </div>
+
+  </div>
+
+
+  </div>
+</div>
+
+    </main>
+  </div>
+  
+
+  </div>
+
+        
+<div class="footer container-lg width-full px-3" role="contentinfo">
+  <div class="position-relative d-flex flex-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <ul class="list-style-none d-flex flex-wrap ">
+      <li class="mr-3">&copy; 2019 <span title="0.49437s from unicorn-8559bb9898-7jl7m">GitHub</span>, Inc.</li>
+        <li class="mr-3"><a data-ga-click="Footer, go to terms, text:terms" href="https://github.com/site/terms">Terms</a></li>
+        <li class="mr-3"><a data-ga-click="Footer, go to privacy, text:privacy" href="https://github.com/site/privacy">Privacy</a></li>
+        <li class="mr-3"><a data-ga-click="Footer, go to security, text:security" href="https://github.com/security">Security</a></li>
+        <li class="mr-3"><a href="https://githubstatus.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a data-ga-click="Footer, go to help, text:help" href="https://help.github.com">Help</a></li>
+    </ul>
+
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mx-lg-4" href="https://github.com">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+   <ul class="list-style-none d-flex flex-wrap ">
+        <li class="mr-3"><a data-ga-click="Footer, go to contact, text:contact" href="https://github.com/contact">Contact GitHub</a></li>
+        <li class="mr-3"><a href="https://github.com/pricing" data-ga-click="Footer, go to Pricing, text:Pricing">Pricing</a></li>
+      <li class="mr-3"><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li class="mr-3"><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+        <li class="mr-3"><a href="https://github.blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
+
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+</div>
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+    <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 

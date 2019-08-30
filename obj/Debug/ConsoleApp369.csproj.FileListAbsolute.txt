@@ -13,3 +13,7 @@ D:\C\ConsoleApp369\obj\Debug\ConsoleApp369.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp369\obj\Debug\ConsoleApp369.csproj.CopyComplete
 D:\C\ConsoleApp369\obj\Debug\ConsoleApp369.exe
 D:\C\ConsoleApp369\obj\Debug\ConsoleApp369.pdb
+D:\C\ConsoleApp369\bin\Debug\RestSharp.dll
+D:\C\ConsoleApp369\bin\Debug\RestSharp.xml
+D:\C\ConsoleApp369\bin\Debug\Newtonsoft.Json.dll
+D:\C\ConsoleApp369\bin\Debug\Newtonsoft.Json.xml
