@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -13,17 +14,25 @@ namespace DBDll.Dll
     {
         public static void TransShow()
         {
-            using (SqlConnection conn = DBCommon.GetSqlConnection())
+            using (IDbConnection conn = DBCommon.GetSqlConnection())
             {
+                if(conn.State!=System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
                 using (var trans = conn.BeginTransaction())
                 {
-                    string sql = "update SOD2 set ModifiedDate=GETDATE() where SalesOrderDetailID%10=0;";
-                    int updatedRows=conn.Execute(sql, trans);
-                    trans.Commit();
-                    if(updatedRows<1)
+                    try
+                    {
+                        string sql = "update SOD2 set ModifiedDate=GETUTCDATE() where SalesOrderDetailID%10=0;";
+                        int updatedRows = conn.Execute(sql,new { }, trans,commandType:System.Data.CommandType.Text);
+                        trans.Commit();                        
+                    }
+                    catch(Exception ex)
                     {
                         trans.Rollback();
                     }
+                    
                 }
             }
         }
