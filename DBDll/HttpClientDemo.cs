@@ -14,8 +14,9 @@ namespace DBDll
             string textFile = Directory.GetCurrentDirectory() + "//" + "web.txt";
             using(StreamWriter webWriter=new StreamWriter(textFile,true))
             {
-                webWriter.WriteLine(response.Result);
+                webWriter.WriteLine(response.Result+"\n");
             }
+            
         }        
     }
 }

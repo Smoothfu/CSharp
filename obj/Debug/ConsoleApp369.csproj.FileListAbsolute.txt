@@ -17,3 +17,13 @@ D:\C\ConsoleApp369\bin\Debug\RestSharp.dll
 D:\C\ConsoleApp369\bin\Debug\RestSharp.xml
 D:\C\ConsoleApp369\bin\Debug\Newtonsoft.Json.dll
 D:\C\ConsoleApp369\bin\Debug\Newtonsoft.Json.xml
+D:\C\ConsoleApp369\bin\Debug\ServiceStack.Text.dll
+D:\C\ConsoleApp369\bin\Debug\System.Memory.dll
+D:\C\ConsoleApp369\bin\Debug\System.Numerics.Vectors.dll
+D:\C\ConsoleApp369\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\C\ConsoleApp369\bin\Debug\System.Buffers.dll
+D:\C\ConsoleApp369\bin\Debug\ServiceStack.Text.xml
+D:\C\ConsoleApp369\bin\Debug\System.Memory.xml
+D:\C\ConsoleApp369\bin\Debug\System.Numerics.Vectors.xml
+D:\C\ConsoleApp369\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\C\ConsoleApp369\bin\Debug\System.Buffers.xml
