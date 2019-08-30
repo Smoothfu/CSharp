@@ -9,7 +9,7 @@ namespace DBDll.Dll
 {
     public class DTConvert
     {
-        public static List<T> ConvertDataTableToList<T>(DataTable dt)
+        public static List<T> ConvertDTToList<T>(DataTable dt)
         {
             List<T> dataList = new List<T>();
             foreach(DataRow dr in dt.Rows)

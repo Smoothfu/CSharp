@@ -51,7 +51,7 @@ namespace ConsoleApp369
         static List<SODEntity> GetSODEntitiesListFromDT(DataTable dt)
         {
             List<SODEntity> sodEntitiesList = new List<SODEntity>();
-            sodEntitiesList = DTConvert.ConvertDataTableToList<SODEntity>(dt);
+            sodEntitiesList = DTConvert.ConvertDTToList<SODEntity>(dt);
             return sodEntitiesList;
         }
     }
