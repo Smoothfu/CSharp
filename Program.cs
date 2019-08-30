@@ -20,7 +20,7 @@ namespace ConsoleApp369
 
         static void HttpClientAsync(string url=null)
         {
-            url = "https://github.com/sjkp/letsencrypt-siteextension/issues/141";
+            url = "https://jsonplaceholder.typicode.com/todos/1";
             HttpClientDemo.HttpClientShow(url);
         }
 
