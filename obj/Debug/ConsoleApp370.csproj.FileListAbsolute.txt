@@ -20,8 +20,11 @@ D:\C\ConsoleApp370\bin\Debug\System.Numerics.Vectors.xml
 D:\C\ConsoleApp370\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\C\ConsoleApp370\bin\Debug\System.Threading.Channels.xml
 D:\C\ConsoleApp370\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\C\ConsoleApp370\obj\Debug\ConsoleApp370.csprojAssemblyReference.cache
 D:\C\ConsoleApp370\obj\Debug\ConsoleApp370.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp370\obj\Debug\ConsoleApp370.csproj.CopyComplete
 D:\C\ConsoleApp370\obj\Debug\ConsoleApp370.exe
 D:\C\ConsoleApp370\obj\Debug\ConsoleApp370.pdb
-D:\C\ConsoleApp370\obj\Debug\ConsoleApp370.csprojAssemblyReference.cache
+D:\C\ConsoleApp370\bin\Debug\log4net.dll
+D:\C\ConsoleApp370\bin\Debug\log4net.xml
+D:\C\ConsoleApp370\bin\Debug\log4net.config

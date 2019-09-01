@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Messaging;
 using System.Text;
@@ -10,10 +11,16 @@ namespace ConsoleApp370
 {
     class Program
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         static void Main(string[] args)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            log.Info("Start");
             RedisDemo();
             //FlushRedisDbs(0);
+            stopwatch.Stop();
+            log.Info($"Cost {stopwatch.ElapsedMilliseconds} milliseconds!");
         }
 
         static void RedisDemo()
