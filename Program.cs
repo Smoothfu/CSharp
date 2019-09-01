@@ -17,12 +17,19 @@ namespace ConsoleApp370
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             log.Info("Start");
-            RedisDemo();
+            //RedisDemo();
+            RedisAsyncDemo();
             //FlushRedisDbs(0);
             stopwatch.Stop();
-            log.Info($"Cost {stopwatch.ElapsedMilliseconds} milliseconds!");
+            //log.Info($"Cost synchronous {stopwatch.ElapsedMilliseconds} milliseconds!");
+            log.Info($"Cost asynchronous{stopwatch.ElapsedMilliseconds} milliseconds!");
         }
 
+
+        static async Task RedisAsyncDemo()
+        {
+            await RedisDemoAsync();
+        }
         static void RedisDemo()
         {
             using (var redis = ConnectionMultiplexer.Connect("localhost"))
@@ -33,6 +40,19 @@ namespace ConsoleApp370
                     string redisKey = Guid.NewGuid().ToString();                    
                     db.StringSet(redisKey, redisKey);
                 }   
+            }
+        }
+
+        static async Task RedisDemoAsync()
+        {
+            using (var redis = ConnectionMultiplexer.Connect("localhost"))
+            {
+                IDatabase db = redis.GetDatabase(0);
+                for (int i = 0; i < 100000; i++)
+                {
+                    string redisKey = Guid.NewGuid().ToString();
+                    await db.StringSetAsync(redisKey, redisKey);
+                }
             }
         }
 
