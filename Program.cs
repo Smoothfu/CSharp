@@ -14,8 +14,9 @@ namespace ConsoleApp371
     {
         static void Main(string[] args)
         {
-            DefaultDemo(20);
-            DefaultDemo();
+            SDemo SInstance = SDemo.GetSDemo();
+            Type type = SInstance.GetType();
+            Console.WriteLine(type.Name);
             Console.ReadLine();
         }
 
@@ -128,7 +129,30 @@ namespace ConsoleApp371
             set => name = value ?? "";
         }
         public Person(string name) => Name = name;
-        ~Person() => Console.WriteLine("Finalize");          
-        
+        ~Person() => Console.WriteLine("Finalize");                
     }
+
+    public sealed class SDemo
+    {
+        private static SDemo SInstance;
+        private SDemo()
+        {
+
+        }
+
+        private static object objLock = new object();
+
+        public static SDemo GetSDemo()
+        {
+            lock(objLock)
+            {
+                if(SInstance==null)
+                {
+                    SInstance = new SDemo();
+                }
+            }
+            return SInstance;
+        }
+    }
+
 }
