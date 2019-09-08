@@ -11,7 +11,7 @@
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" ItemsSource="{Binding SelectedSODDt,Mode=TwoWay,
+        <DataGrid Grid.Row="0" ItemsSource="{Binding SelectedSODS,Mode=TwoWay,
             UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="True" BorderBrush="Blue" 
                   BorderThickness="5"
                   SnapsToDevicePixels="True"  SelectedItem="{Binding SelectedSOD}"

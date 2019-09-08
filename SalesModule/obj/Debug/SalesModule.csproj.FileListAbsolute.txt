@@ -12,3 +12,4 @@ D:\C\WpfApp46\SalesModule\obj\Debug\SalesModule.csproj.GenerateResource.cache
 D:\C\WpfApp46\SalesModule\obj\Debug\SalesModule.csproj.CoreCompileInputs.cache
 D:\C\WpfApp46\SalesModule\obj\Debug\SalesModule.exe
 D:\C\WpfApp46\SalesModule\obj\Debug\SalesModule.pdb
+D:\C\WpfApp46\SalesModule\obj\Debug\SalesModule.csprojAssemblyReference.cache

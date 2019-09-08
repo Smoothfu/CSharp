@@ -12,3 +12,4 @@ D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.csproj.GenerateResourc
 D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.csproj.CoreCompileInputs.cache
 D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.exe
 D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.pdb
+D:\C\WpfApp46\ProductionModule\obj\Debug\ProductionModule.csprojAssemblyReference.cache

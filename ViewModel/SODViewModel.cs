@@ -349,13 +349,13 @@ namespace WpfApp46.ViewModel
         {
             SelectedSODIndex = SODDT.Rows.IndexOf(SelectedSOD.Row);
             InitialDataRowView = SelectedSOD;
-            SelectedSODDt.Clear();
+            SelectedSODS.Clear();
             for (int i=0;i<SelectedSOD.Row.ItemArray.Length;i++)
             {
-                SelectedSODDt.Columns.Add();
+                SelectedSODS.Columns.Add();
             }
 
-            SelectedSODDt.Rows.Add(SelectedSOD.Row.ItemArray);
+            SelectedSODS.Rows.Add(SelectedSOD.Row.ItemArray);
             UpdatedSOD = SelectedSOD;            
             EditWin.DataContext = this;
             EditWin.ShowDialog();
@@ -396,22 +396,22 @@ namespace WpfApp46.ViewModel
             InitSODDT();
         }
         
-        private DataTable selectedSODDt;
-        public DataTable SelectedSODDt
+        private DataTable selectedSODs;
+        public DataTable SelectedSODS
         {
             get
             {
-                if (selectedSODDt == null)
+                if (selectedSODs == null)
                 {
-                    selectedSODDt = new DataTable("Data Table in Edit window");
+                    selectedSODs = new DataTable("Data Table in Edit window");
                 }
-                return selectedSODDt;
+                return selectedSODs;
             }
             set
             {
-                if(value!= selectedSODDt)
+                if(value!= selectedSODs)
                 {
-                    selectedSODDt = value;
+                    selectedSODs = value;
                     NotifyPropertyChanged("SelectedSODDt");
                 }
             }

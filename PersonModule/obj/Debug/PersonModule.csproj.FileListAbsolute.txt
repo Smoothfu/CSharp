@@ -12,3 +12,4 @@ D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.csproj.GenerateResource.cache
 D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.csproj.CoreCompileInputs.cache
 D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.exe
 D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.pdb
+D:\C\WpfApp46\PersonModule\obj\Debug\PersonModule.csprojAssemblyReference.cache

@@ -12,3 +12,4 @@ D:\C\WpfApp46\HumanResourceModule\obj\Debug\HumanResourceModule.csproj.GenerateR
 D:\C\WpfApp46\HumanResourceModule\obj\Debug\HumanResourceModule.csproj.CoreCompileInputs.cache
 D:\C\WpfApp46\HumanResourceModule\obj\Debug\HumanResourceModule.exe
 D:\C\WpfApp46\HumanResourceModule\obj\Debug\HumanResourceModule.pdb
+D:\C\WpfApp46\HumanResourceModule\obj\Debug\HumanResourceModule.csprojAssemblyReference.cache

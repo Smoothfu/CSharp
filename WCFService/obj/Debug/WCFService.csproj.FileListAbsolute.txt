@@ -9,4 +9,3 @@ D:\C\WpfApp46\WCFService\bin\EntityFramework.SqlServer.dll
 D:\C\WpfApp46\WCFService\bin\EntityFramework.xml
 D:\C\WpfApp46\WCFService\bin\EntityFramework.SqlServer.xml
 D:\C\WpfApp46\WCFService\obj\Debug\WCFService.csproj.CopyComplete
-D:\C\WpfApp46\WCFService\obj\Debug\WCFService.csprojAssemblyReference.cache
