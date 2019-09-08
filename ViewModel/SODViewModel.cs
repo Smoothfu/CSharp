@@ -33,7 +33,7 @@ namespace WpfApp46.ViewModel
                 GetSalesOrderService.GetSODDTClient client = new GetSalesOrderService.GetSODDTClient();
                 SODDT = client.GetSalesOrderDetailDT();
             }
-            ColumnsCount = SODDT.Columns.Count;
+            ColumnsCount = SODDT.Columns.Count;             
         }
 
         #endregion
