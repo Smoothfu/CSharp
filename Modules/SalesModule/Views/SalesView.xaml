@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="SalesModule.Views.SalesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SalesModule.Views"
+             mc:Ignorable="d"  
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="LightBlue"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DarkBlue"/>
+                    <Setter Property="FontSize" Value="30"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Yellow"/>
+                </Trigger>                         
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="closeBtnStyle" TargetType="{x:Type Button}"> 
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Source="/WPFPrism;component/Resource/Images/CloseTrue.jpg"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Source="/WPFPrism;component/Resource/Images/CloseFalse.jpg"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="workBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontSize" Value="50"/>
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>                 
+            </Style.Triggers>            
+        </Style>
+        
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Sales" FontSize="30"/>
+        <Button  Grid.Row="0" Command="{Binding ExitCmd}" Style="{StaticResource closeBtnStyle}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding SalesOrderDetailCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  FontSize="20"
+                  AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding SelectedOrder,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  SnapsToDevicePixels="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SalesOrderID" Binding="{Binding SalesOrderID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="SalesOrderDetailID" Binding="{Binding SalesOrderDetailID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="CarrierTrackingNumber" Binding="{Binding CarrierTrackingNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="OrderQty" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="ProductID" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="SpecialOfferID" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="UnitPrice" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="UnitPriceDiscount" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="LineTotal" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="RowGuid" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="ModifiedDate" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>            
+        </DataGrid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Refresh" Command="{Binding RefreshCmd}" Style="{StaticResource workBtnStyle}"/>
+            <Button Grid.Column="1" Content="New"  Command="{Binding AddCmd}" Style="{StaticResource workBtnStyle}"/>
+            <Button Grid.Column="2" Content="Edit" Command="{Binding EditCmd}" IsEnabled="{Binding IsBtnEnabled,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource workBtnStyle}"/>
+            <Button Grid.Column="3" Content="Delete" Command="{Binding DeleteCmd}" IsEnabled="{Binding IsBtnEnabled,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource workBtnStyle}"/>
+        </Grid>
+    </Grid>
+</UserControl>
