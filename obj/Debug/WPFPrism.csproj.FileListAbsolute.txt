@@ -1,7 +1,3 @@
-D:\C\WPFPrism\obj\Debug\Shell.g.cs
-D:\C\WPFPrism\obj\Debug\App.g.cs
-D:\C\WPFPrism\obj\Debug\WPFPrism_MarkupCompile.cache
-D:\C\WPFPrism\obj\Debug\WPFPrism_MarkupCompile.lref
 D:\C\WPFPrism\bin\Debug\WPFPrism.exe.config
 D:\C\WPFPrism\bin\Debug\WPFPrism.exe
 D:\C\WPFPrism\bin\Debug\WPFPrism.pdb
@@ -16,7 +12,10 @@ D:\C\WPFPrism\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 D:\C\WPFPrism\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
 D:\C\WPFPrism\bin\Debug\Microsoft.Practices.Unity.dll
 D:\C\WPFPrism\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+D:\C\WPFPrism\bin\Debug\SalesModule.dll
 D:\C\WPFPrism\bin\Debug\System.Windows.Interactivity.dll
+D:\C\WPFPrism\bin\Debug\Infrastructure.dll
+D:\C\WPFPrism\bin\Debug\Newtonsoft.Json.dll
 D:\C\WPFPrism\bin\Debug\Microsoft.Practices.Prism.Composition.xml
 D:\C\WPFPrism\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
 D:\C\WPFPrism\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
@@ -29,6 +28,9 @@ D:\C\WPFPrism\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 D:\C\WPFPrism\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
 D:\C\WPFPrism\bin\Debug\SalesModule.pdb
 D:\C\WPFPrism\bin\Debug\SalesModule.dll.config
+D:\C\WPFPrism\bin\Debug\Infrastructure.pdb
+D:\C\WPFPrism\bin\Debug\Infrastructure.dll.config
+D:\C\WPFPrism\bin\Debug\Newtonsoft.Json.xml
 D:\C\WPFPrism\bin\Debug\de\System.Windows.Interactivity.resources.dll
 D:\C\WPFPrism\bin\Debug\en\System.Windows.Interactivity.resources.dll
 D:\C\WPFPrism\bin\Debug\es\System.Windows.Interactivity.resources.dll
@@ -39,6 +41,11 @@ D:\C\WPFPrism\bin\Debug\ko\System.Windows.Interactivity.resources.dll
 D:\C\WPFPrism\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 D:\C\WPFPrism\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 D:\C\WPFPrism\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+D:\C\WPFPrism\obj\Debug\WPFPrism.csprojAssemblyReference.cache
+D:\C\WPFPrism\obj\Debug\Shell.g.cs
+D:\C\WPFPrism\obj\Debug\App.g.cs
+D:\C\WPFPrism\obj\Debug\WPFPrism_MarkupCompile.cache
+D:\C\WPFPrism\obj\Debug\WPFPrism_MarkupCompile.lref
 D:\C\WPFPrism\obj\Debug\Shell.baml
 D:\C\WPFPrism\obj\Debug\WPFPrism.g.resources
 D:\C\WPFPrism\obj\Debug\WPFPrism.Properties.Resources.resources
@@ -47,8 +54,3 @@ D:\C\WPFPrism\obj\Debug\WPFPrism.csproj.CoreCompileInputs.cache
 D:\C\WPFPrism\obj\Debug\WPFPrism.csproj.CopyComplete
 D:\C\WPFPrism\obj\Debug\WPFPrism.exe
 D:\C\WPFPrism\obj\Debug\WPFPrism.pdb
-D:\C\WPFPrism\bin\Debug\SalesModule.dll
-D:\C\WPFPrism\bin\Debug\Infrastructure.dll
-D:\C\WPFPrism\bin\Debug\Infrastructure.pdb
-D:\C\WPFPrism\bin\Debug\Infrastructure.dll.config
-D:\C\WPFPrism\obj\Debug\WPFPrism.csprojAssemblyReference.cache

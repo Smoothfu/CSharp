@@ -13,6 +13,8 @@ using System.Collections.ObjectModel;
 using Infrastructure;
 using System.Windows;
 using SalesModule.Views;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace SalesModule.ViewModel
 {
@@ -60,7 +62,55 @@ namespace SalesModule.ViewModel
 
         private void SubmitCmdExecuted()
         {
+            int maxSalesOrderId = 0, maxSalesOrderDetailId = 0;
+            string selectMaxOrderIdSQL = "select top(1) SalesOrderID,SalesOrderDetailID from sales.SalesOrderDetail order by SalesOrderID desc;";
+            DataTable dt = DBHelper.ExecuteSelectSQL(selectMaxOrderIdSQL);
 
+            if (Int32.TryParse(dt.Rows[0][0]?.ToString(), out maxSalesOrderId) && Int32.TryParse(dt.Rows[0][1]?.ToString(), out maxSalesOrderDetailId))
+            {
+                SalesOrderID = maxSalesOrderId;
+                SalesOrderDetailID = maxSalesOrderDetailId+1;
+            }
+
+            if (IsNewWindow)
+            {
+                RowGuid = Guid.NewGuid();
+                CreatedAt = DateTime.Now;
+
+                string insertSQL = "insert into sales.SalesOrderDetail (SalesOrderID,CarrierTrackingNumber," +
+                    "OrderQty,ProductID,SpecialOfferID,UnitPrice,UnitPriceDiscount,rowguid,CreatedAt)" +
+                    "values('" + SalesOrderID + "','" + CarrierTrackingNumber + "','" + OrderQty +
+                    "','" + ProductID + "','" + SpecialOfferID + "','" + UnitPrice + "','" + UnitPriceDiscount +  "','" +
+                    Guid.NewGuid() + "','" + DateTime.Now + "')";
+                if (DBHelper.ExecuteDMLSQL(insertSQL))
+                {
+                    MessageBox.Show("Add new data successfully!");
+
+                    SalesOrderDetail sod = new SalesOrderDetail()
+                    {
+                        SalesOrderID = SalesOrderID,
+                        SalesOrderDetailID = SalesOrderDetailID,
+                        CarrierTrackingNumber = CarrierTrackingNumber,
+                        OrderQty=OrderQty,
+                        ProductID=ProductID,
+                        SpecialOfferID=SpecialOfferID,
+                        UnitPrice=UnitPrice,
+                        UnitPriceDiscount=UnitPriceDiscount,
+                        LineTotal=LineTotal,
+                        RowGuid=RowGuid,
+                        CreatedAt=CreatedAt
+                    };
+
+                    SalesOrderDetailCollection.Add(sod);
+                    WriteStringToJson(SalesOrderDetailCollection);
+                }
+            }
+        }
+
+        private void WriteStringToJson(ObservableCollection<SalesOrderDetail> collection)
+        {
+            string jsonString = JsonConvert.SerializeObject(collection, Formatting.Indented);
+            File.WriteAllText(JsonFile, jsonString, Encoding.UTF8);
         }
 
         private bool ExitCmdCanExecute()
@@ -70,11 +120,11 @@ namespace SalesModule.ViewModel
 
         private void ExitCmdExecuted()
         {
-            //MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure to exit the application", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
-            //if(messageBoxResult==MessageBoxResult.Yes)
-            //{
-            Application.Current.Shutdown();
-            //}
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure to exit the application", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
         }
 
         private bool DeleteCmdCanExecute()
@@ -414,6 +464,26 @@ namespace SalesModule.ViewModel
             }
         }
 
+        private string jsonFile;
+        public string JsonFile
+        {
+            get
+            {
+
+                jsonFile = "D:\C\WPFPrism\Modules\SalesModule\Resource\Data\JsonData.json";
+                return jsonFile;
+            }
+            set
+            {
+                if(value!=jsonFile)
+                {
+                    jsonFile = value;
+                    OnPropertyChanged("JsonFile");
+                }
+                    
+            }
+        }
+
         #region Edit Window
 
         private int salesOrderID;
@@ -587,8 +657,8 @@ namespace SalesModule.ViewModel
             }
         }
 
-        private DateTime modifiedDate;
-        public DateTime ModifiedDate
+        private DateTime? modifiedDate;
+        public DateTime? ModifiedDate
         {
             get
             {
@@ -604,8 +674,8 @@ namespace SalesModule.ViewModel
             }
         }
 
-        private DateTime createdAt;
-        public DateTime CreatedAt
+        private DateTime? createdAt;
+        public DateTime? CreatedAt
         {
             get
             {
@@ -626,3 +696,4 @@ namespace SalesModule.ViewModel
         #endregion
     }
 }
+

@@ -12,6 +12,13 @@ namespace Infrastructure
 {
     public static  class DBHelper
     {
+        static string ConnString { get; set; }
+
+        static DBHelper()
+        {
+            ConnString = GetSQLConString();
+        }
+
         static string GetSQLConString()
         {
             Configuration myDllConfig = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
@@ -23,9 +30,9 @@ namespace Infrastructure
          
         public static DataTable ExecuteSelectSQL(string selectSQL)
         {
-            string connString = GetSQLConString();
+            
             DataTable dt = new DataTable();
-            using(SqlConnection conn=new SqlConnection(connString))
+            using(SqlConnection conn=new SqlConnection(ConnString))
             {
                 if(conn.State!=ConnectionState.Open)
                 {
@@ -39,6 +46,23 @@ namespace Infrastructure
                 }
             }
             return dt;
+        }
+
+        public static bool ExecuteDMLSQL(string dmlSQL)
+        {
+            int executedResult = 0;
+            using(SqlConnection conn=new SqlConnection(ConnString))
+            {
+                if(conn.State!=ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                using(SqlCommand cmd=new SqlCommand(dmlSQL,conn))
+                {
+                   executedResult= cmd.ExecuteNonQuery();
+                }
+            }
+            return executedResult>0;
         }
     }
 }

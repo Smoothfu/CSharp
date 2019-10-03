@@ -61,8 +61,8 @@ namespace SalesModule.Models
             }
         }
 
-        private int orderQty;
-        public int OrderQty
+        private int? orderQty;
+        public int? OrderQty
         {
             get
             {
@@ -78,8 +78,8 @@ namespace SalesModule.Models
             }
         }
 
-        private int productID;
-        public int ProductID
+        private int? productID;
+        public int? ProductID
         {
             get
             {
@@ -95,8 +95,8 @@ namespace SalesModule.Models
             }
         }
 
-        private int specialOfferID;
-        public int SpecialOfferID
+        private int? specialOfferID;
+        public int? SpecialOfferID
         {
             get
             {
@@ -112,8 +112,8 @@ namespace SalesModule.Models
             }
         }
 
-        private decimal unitPrice;
-        public decimal UnitPrice
+        private decimal? unitPrice;
+        public decimal? UnitPrice
         {
             get
             {
@@ -129,8 +129,8 @@ namespace SalesModule.Models
             }
         }
 
-        private decimal unitPriceDiscount;
-        public decimal UnitPriceDiscount
+        private decimal? unitPriceDiscount;
+        public decimal? UnitPriceDiscount
         {
             get
             {
@@ -146,8 +146,8 @@ namespace SalesModule.Models
             }
         }
 
-        private decimal lineTotal;
-        public decimal LineTotal
+        private decimal? lineTotal;
+        public decimal? LineTotal
         {
             get
             {
@@ -180,8 +180,8 @@ namespace SalesModule.Models
             }
         }
 
-        private DateTime modifiedDate;
-        public DateTime ModifiedDate
+        private DateTime? modifiedDate;
+        public DateTime? ModifiedDate
         {
             get
             {
@@ -197,8 +197,8 @@ namespace SalesModule.Models
             }
         }
 
-        private DateTime createdAt;
-        public DateTime CreatedAt
+        private DateTime? createdAt;
+        public DateTime? CreatedAt
         {
             get
             {

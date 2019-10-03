@@ -1,6 +1,11 @@
+D:\C\WPFPrism\Modules\SalesModule\obj\Debug\Views\AddEditView.g.cs
+D:\C\WPFPrism\Modules\SalesModule\obj\Debug\Views\SalesView.g.cs
+D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule_MarkupCompile.cache
+D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule_MarkupCompile.lref
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\SalesModule.dll.config
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\SalesModule.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\SalesModule.pdb
+D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Infrastructure.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Prism.Composition.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
@@ -12,7 +17,10 @@ D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.ServiceLocation.
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Unity.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Newtonsoft.Json.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\System.Windows.Interactivity.dll
+D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Infrastructure.pdb
+D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Infrastructure.dll.config
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Prism.Composition.xml
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
@@ -23,6 +31,7 @@ D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.ServiceLocation.
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Unity.xml
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Newtonsoft.Json.xml
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\de\System.Windows.Interactivity.resources.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\en\System.Windows.Interactivity.resources.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\es\System.Windows.Interactivity.resources.dll
@@ -33,9 +42,7 @@ D:\C\WPFPrism\Modules\SalesModule\bin\Debug\ko\System.Windows.Interactivity.reso
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 D:\C\WPFPrism\Modules\SalesModule\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
-D:\C\WPFPrism\Modules\SalesModule\obj\Debug\Views\SalesView.g.cs
-D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule_MarkupCompile.cache
-D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule_MarkupCompile.lref
+D:\C\WPFPrism\Modules\SalesModule\obj\Debug\Views\AddEditView.baml
 D:\C\WPFPrism\Modules\SalesModule\obj\Debug\Views\SalesView.baml
 D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.g.resources
 D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.Properties.Resources.resources
@@ -44,9 +51,3 @@ D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.csproj.CoreCompileInputs
 D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.csproj.CopyComplete
 D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.dll
 D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.pdb
-D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Infrastructure.dll
-D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Infrastructure.pdb
-D:\C\WPFPrism\Modules\SalesModule\bin\Debug\Infrastructure.dll.config
-D:\C\WPFPrism\Modules\SalesModule\obj\Debug\Views\AddEditView.g.cs
-D:\C\WPFPrism\Modules\SalesModule\obj\Debug\Views\AddEditView.baml
-D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.csprojAssemblyReference.cache
