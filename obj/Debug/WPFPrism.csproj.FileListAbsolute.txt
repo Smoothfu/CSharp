@@ -54,3 +54,6 @@ D:\C\WPFPrism\obj\Debug\WPFPrism.csproj.CoreCompileInputs.cache
 D:\C\WPFPrism\obj\Debug\WPFPrism.csproj.CopyComplete
 D:\C\WPFPrism\obj\Debug\WPFPrism.exe
 D:\C\WPFPrism\obj\Debug\WPFPrism.pdb
+D:\C\WPFPrism\obj\Debug\Views\LoginView.g.cs
+D:\C\WPFPrism\obj\Debug\Views\LoginView.baml
+D:\C\WPFPrism\bin\Debug\App.config

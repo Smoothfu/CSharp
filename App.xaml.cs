@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFPrism.Views;
 
 namespace WPFPrism
 {
@@ -16,6 +17,8 @@ namespace WPFPrism
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            LoginView loginWindow = new LoginView();
+            loginWindow.Show();
             PrismBootstrapper bootStrapper = new PrismBootstrapper();
             bootStrapper.Run();
         }

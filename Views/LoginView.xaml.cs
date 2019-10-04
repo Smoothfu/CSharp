@@ -11,17 +11,27 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFPrism.ViewModel;
 
 namespace WPFPrism.Views
 {
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class LoginView : Window
     {
-        public Login()
+        public LoginView()
         {
             InitializeComponent();
+            LoginViewModel loginVM = new LoginViewModel();
+            if(loginVM.CloseAction==null)
+            {
+                loginVM.CloseAction = new Action(() =>
+                  {
+                      this.Close();
+                  });
+            }
+            this.DataContext = loginVM;
         }
     }
 }
