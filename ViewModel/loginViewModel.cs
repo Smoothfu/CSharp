@@ -23,6 +23,21 @@ namespace WPFPrism.ViewModel
         private void InitCmds()
         {
             LoginCmd = new DelegateCommand<object>(LoginCmdExecuted, LoginCmdCanExecute);
+            CancelCmd = new DelegateCommand(CancelCmdExecuted, CancelCmdCanExecute);
+        }
+
+        private bool CancelCmdCanExecute()
+        {
+            return true;
+        }
+
+        private void CancelCmdExecuted()
+        {
+            MessageBoxResult mbr = MessageBox.Show("Are you sure to quit login?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (mbr == MessageBoxResult.Yes)
+            {
+                CloseAction();
+            }
         }
 
         private bool LoginCmdCanExecute(object arg)
@@ -75,6 +90,8 @@ namespace WPFPrism.ViewModel
 
         #region Commands
         public DelegateCommand<object> LoginCmd { get;set; }
+        public DelegateCommand CancelCmd { get; set; }
+        public Action CloseAction { get; set; }
         #endregion
 
         #region properties
@@ -128,8 +145,7 @@ namespace WPFPrism.ViewModel
                 }
             }
         }
-
-        public Action CloseAction { get; set; }
+        
         #endregion
     }
 }
