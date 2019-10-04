@@ -62,18 +62,18 @@ namespace SalesModule.ViewModel
 
         private void SubmitCmdExecuted()
         {
-            int maxSalesOrderId = 0, maxSalesOrderDetailId = 0;
-            string selectMaxOrderIdSQL = "select top(1) SalesOrderID,SalesOrderDetailID from sales.SalesOrderDetail order by SalesOrderID desc;";
-            DataTable dt = DBHelper.ExecuteSelectSQL(selectMaxOrderIdSQL);
-
-            if (Int32.TryParse(dt.Rows[0][0]?.ToString(), out maxSalesOrderId) && Int32.TryParse(dt.Rows[0][1]?.ToString(), out maxSalesOrderDetailId))
-            {
-                SalesOrderID = maxSalesOrderId;
-                SalesOrderDetailID = maxSalesOrderDetailId+1;
-            }
-
+            //Add window
             if (IsNewWindow)
             {
+                int maxSalesOrderId = 0, maxSalesOrderDetailId = 0;
+                string selectMaxOrderIdSQL = "select top(1) SalesOrderID,SalesOrderDetailID from sales.SalesOrderDetail order by SalesOrderID desc;";
+                DataTable dt = DBHelper.ExecuteSelectSQL(selectMaxOrderIdSQL);
+
+                if (Int32.TryParse(dt.Rows[0][0]?.ToString(), out maxSalesOrderId) && Int32.TryParse(dt.Rows[0][1]?.ToString(), out maxSalesOrderDetailId))
+                {
+                    SalesOrderID = maxSalesOrderId;
+                    SalesOrderDetailID = maxSalesOrderDetailId + 1;
+                }
                 RowGuid = Guid.NewGuid();
                 CreatedAt = DateTime.Now;
 
@@ -86,7 +86,7 @@ namespace SalesModule.ViewModel
                 {
                     MessageBox.Show("Add new data successfully!");
 
-                    SalesOrderDetail sod = new SalesOrderDetail()
+                    SalesOrderDetail newOrder = new SalesOrderDetail()
                     {
                         SalesOrderID = SalesOrderID,
                         SalesOrderDetailID = SalesOrderDetailID,
@@ -101,14 +101,52 @@ namespace SalesModule.ViewModel
                         CreatedAt=CreatedAt
                     };
 
-                    SalesOrderDetailCollection.Add(sod);
+                    SalesOrderDetailCollection.Add(newOrder);
                     WriteStringToJson(SalesOrderDetailCollection);
                 }
+            }
+
+            //Edit window
+            if(!IsNewWindow)
+            {
+                SalesOrderDetail updateOrder = new SalesOrderDetail()
+                {
+                    SalesOrderID = SelectedOrder.SalesOrderID,
+                    SalesOrderDetailID = SelectedOrder.SalesOrderDetailID,
+                    CarrierTrackingNumber = CarrierTrackingNumber,
+                    OrderQty = OrderQty,
+                    ProductID = ProductID,
+                    SpecialOfferID = SpecialOfferID,
+                    UnitPrice = UnitPrice,
+                    UnitPriceDiscount = UnitPriceDiscount,
+                    RowGuid = SelectedOrder.RowGuid,
+                    ModifiedDate = DateTime.Now
+                };
+
+                string updateSQL = "update sales.salesorderdetail set CarrierTrackingNumber='" +
+                    CarrierTrackingNumber +"',OrderQty='" + OrderQty + "',ProductID='" + ProductID 
+                    + "',SpecialOfferID='"+ SpecialOfferID +"',UnitPrice='" + UnitPrice + 
+                    "',UnitPriceDiscount='" + UnitPriceDiscount + 
+                    "' where SalesOrderDetailID='"+ SalesOrderDetailID+"'";
+                if(DBHelper.ExecuteDMLSQL(updateSQL))
+                {
+                    MessageBox.Show("Add new data successfully!");
+
+                    var oldOrder = SalesOrderDetailCollection.Where(x => x.SalesOrderDetailID == SelectedOrder.SalesOrderDetailID).FirstOrDefault();
+                    int updateIndex = SalesOrderDetailCollection.IndexOf(oldOrder);
+                    if(updateIndex>0)
+                    {
+                        SalesOrderDetailCollection.RemoveAt(updateIndex);
+                        SalesOrderDetailCollection.Insert(updateIndex, updateOrder);
+                    }
+                }
+                
+                WriteStringToJson(SalesOrderDetailCollection);
             }
         }
 
         private void WriteStringToJson(ObservableCollection<SalesOrderDetail> collection)
-        {
+        {           
             string jsonString = JsonConvert.SerializeObject(collection, Formatting.Indented);
             File.WriteAllText(JsonFile, jsonString, Encoding.UTF8);
         }
@@ -135,18 +173,25 @@ namespace SalesModule.ViewModel
         private void DeleteCmdExecuted()
         {
             SalesOrderDetail toDeleteOrder = SelectedOrder;
-            if(toDeleteOrder!=null)
+            MessageBoxResult deleteMBR = MessageBox.Show("Are you sure to delete this order?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+            if (deleteMBR == MessageBoxResult.Yes)
             {
-                int toDeleteIndex = SalesOrderDetailCollection.IndexOf(toDeleteOrder);
-                if(toDeleteIndex>=0)
+                string deleteSQL = "delete from sales.salesorderdetail where salesorderdetailid='" + SelectedOrder.SalesOrderDetailID + "'";
+                if (DBHelper.ExecuteDMLSQL(deleteSQL))
                 {
-                    MessageBoxResult deleteMBR = MessageBox.Show("Are you sure to delete this order?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
-                    if(deleteMBR==MessageBoxResult.Yes)
+                    MessageBox.Show($"Delete {SelectedOrder.SalesOrderDetailID} order successfully!");
+                }
+                if (toDeleteOrder != null)
+                {
+                    int toDeleteIndex = SalesOrderDetailCollection.IndexOf(toDeleteOrder);
+                    if (toDeleteIndex >= 0)
                     {
                         SalesOrderDetailCollection.RemoveAt(toDeleteIndex);
                     }
+                    WriteStringToJson(SalesOrderDetailCollection);
                 }
             }
+            
         }
 
         private bool EditCmdCanExecute()
@@ -470,7 +515,7 @@ namespace SalesModule.ViewModel
             get
             {
 
-                jsonFile = "D:\C\WPFPrism\Modules\SalesModule\Resource\Data\JsonData.json";
+                jsonFile = @"D:\C\WPFPrism\Modules\SalesModule\Resource\Data\JsonData.json";
                 return jsonFile;
             }
             set
