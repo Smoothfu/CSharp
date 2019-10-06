@@ -57,3 +57,5 @@ D:\C\WPFPrism\obj\Debug\WPFPrism.pdb
 D:\C\WPFPrism\obj\Debug\Views\LoginView.g.cs
 D:\C\WPFPrism\obj\Debug\Views\LoginView.baml
 D:\C\WPFPrism\bin\Debug\App.config
+D:\C\WPFPrism\obj\Debug\Views\WelcomeView.g.cs
+D:\C\WPFPrism\obj\Debug\Views\WelcomeView.baml

@@ -72,13 +72,13 @@
                 <DataGridTextColumn Header="SalesOrderDetailID" Binding="{Binding SalesOrderDetailID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="CarrierTrackingNumber" Binding="{Binding CarrierTrackingNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="OrderQty" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="ProductID" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="SpecialOfferID" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="UnitPrice" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="UnitPriceDiscount" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="LineTotal" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="RowGuid" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="ModifiedDate" Binding="{Binding OrderQty,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="ProductID" Binding="{Binding ProductID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="SpecialOfferID" Binding="{Binding SpecialOfferID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="UnitPrice" Binding="{Binding UnitPrice,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="UnitPriceDiscount" Binding="{Binding UnitPriceDiscount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="LineTotal" Binding="{Binding LineTotal,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="RowGuid" Binding="{Binding RowGuid,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="ModifiedDate" Binding="{Binding ModifiedDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>            
         </DataGrid>
         <Grid Grid.Row="2">

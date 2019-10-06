@@ -130,11 +130,11 @@ namespace SalesModule.ViewModel
                     "' where SalesOrderDetailID='"+ SalesOrderDetailID+"'";
                 if(DBHelper.ExecuteDMLSQL(updateSQL))
                 {
-                    MessageBox.Show("Add new data successfully!");
+                    MessageBox.Show("Edit data successfully!");
 
                     var oldOrder = SalesOrderDetailCollection.Where(x => x.SalesOrderDetailID == SelectedOrder.SalesOrderDetailID).FirstOrDefault();
                     int updateIndex = SalesOrderDetailCollection.IndexOf(oldOrder);
-                    if(updateIndex>0)
+                    if(updateIndex>=0)
                     {
                         SalesOrderDetailCollection.RemoveAt(updateIndex);
                         SalesOrderDetailCollection.Insert(updateIndex, updateOrder);

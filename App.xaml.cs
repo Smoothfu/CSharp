@@ -18,7 +18,7 @@ namespace WPFPrism
         {
             base.OnStartup(e);
             LoginView loginWindow = new LoginView();
-            loginWindow.Show();
+            loginWindow.Show();     
             PrismBootstrapper bootStrapper = new PrismBootstrapper();
             bootStrapper.Run();
         }

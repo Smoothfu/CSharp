@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\C\WPFPrism\App.xaml
-21578910792
+3978742278
 
-9206051488
+10-1537052586
 130-322420275
-Shell.xaml;Views\LoginView.xaml;
+Shell.xaml;Views\LoginView.xaml;Views\WelcomeView.xaml;
 
 True
 
