@@ -513,9 +513,8 @@ namespace SalesModule.ViewModel
         public string JsonFile
         {
             get
-            {
-
-                jsonFile = @"D:\C\WPFPrism\Modules\SalesModule\Resource\Data\JsonData.json";
+            {            
+                jsonFile = "../../Modules/SalesModule/Resource/Data/JsonData.json";
                 return jsonFile;
             }
             set

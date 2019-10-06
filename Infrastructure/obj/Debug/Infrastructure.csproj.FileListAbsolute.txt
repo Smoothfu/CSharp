@@ -5,3 +5,4 @@ D:\C\WPFPrism\Infrastructure\bin\Debug\Infrastructure.pdb
 D:\C\WPFPrism\Infrastructure\obj\Debug\Infrastructure.csproj.CoreCompileInputs.cache
 D:\C\WPFPrism\Infrastructure\obj\Debug\Infrastructure.dll
 D:\C\WPFPrism\Infrastructure\obj\Debug\Infrastructure.pdb
+D:\C\WPFPrism\Infrastructure\obj\Debug\Infrastructure.csprojAssemblyReference.cache

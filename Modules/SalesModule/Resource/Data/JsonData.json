@@ -1384,5 +1384,33 @@
     "RowGuid": "1a0c02ec-9944-4d42-9f4a-e72d5eb74fdf",
     "ModifiedDate": "2011-05-31T00:00:00",
     "CreatedAt": null
+  },
+  {
+    "SalesOrderID": 43668,
+    "SalesOrderDetailID": 103,
+    "CarrierTrackingNumber": "365D-4C9A-BE",
+    "OrderQty": 4,
+    "ProductID": 762,
+    "SpecialOfferID": 1,
+    "UnitPrice": 419.4589,
+    "UnitPriceDiscount": 0.0000,
+    "LineTotal": 1677.835600,
+    "RowGuid": "ee1766a8-7f9c-4ecc-83a9-685a428bd0a4",
+    "ModifiedDate": "2011-05-31T00:00:00",
+    "CreatedAt": null
+  },
+  {
+    "SalesOrderID": 75123,
+    "SalesOrderDetailID": 121329,
+    "CarrierTrackingNumber": "ctn7",
+    "OrderQty": 7,
+    "ProductID": 988,
+    "SpecialOfferID": 16,
+    "UnitPrice": 7.0,
+    "UnitPriceDiscount": 1.0,
+    "LineTotal": null,
+    "RowGuid": "4cae3b4f-6a55-4e30-94aa-8cbde1413e9f",
+    "ModifiedDate": null,
+    "CreatedAt": "2019-10-06T15:38:44.5245936+08:00"
   }
 ]
