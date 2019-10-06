@@ -17,10 +17,12 @@ namespace WPFPrism
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            WelcomeView welcomeWin = new WelcomeView();
+            welcomeWin.Show();
             LoginView loginWindow = new LoginView();
             loginWindow.Show();     
-            PrismBootstrapper bootStrapper = new PrismBootstrapper();
-            bootStrapper.Run();
+            //PrismBootstrapper bootStrapper = new PrismBootstrapper();
+            //bootStrapper.Run();
         }
     }
 }

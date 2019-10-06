@@ -27,47 +27,64 @@
                     </Setter>
                 </Trigger>
             </Style.Triggers>
-        </Style>        
+        </Style>
+
+        <Style TargetType="{x:Type Ribbon}">
+            <Setter Property="IsMinimized" Value="True"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="IsMinimized" Value="False"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>        
-        <Ribbon Grid.Row="0" SelectedIndex="0">
+        <Ribbon Grid.Row="0" SelectedIndex="0" IsMinimized="True">
             <Ribbon.HelpPaneContent>
-                <RibbonButton Margin="0,0,30,0" SmallImageSource="pack://application:,,,/Resource/Images/Help.jpg"/>
+                <RibbonButton SmallImageSource="pack://application:,,,/Resource/Images/Help.jpg"/>
             </Ribbon.HelpPaneContent>
+            <!--<Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar> 
+                    <RibbonButton  Label="Save"/>
+                    <RibbonButton Label="Exit" Command="{Binding ExitCmd}" SmallImageSource="/Resource/Images/CloseTrue.jpg"/>
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>-->
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu KeyTip="F">
+                    <!--<RibbonApplicationMenuItem Header="Options" ImageSource="/Resource/Images/CloseTrue.jpg" />-->
+                    <RibbonApplicationMenuItem Command="{Binding ExitCmd}" Header="Exit" ImageSource="/Resource/Images/CloseTrue.jpg" />
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
             <RibbonTab Header="Modules">
                 <RibbonGroup>
-                    <RibbonMenuButton Label="Sales"/>
-                </RibbonGroup>
-                
+                    <RibbonMenuButton Label="Sales" Width="100"/>
+                </RibbonGroup>                
                 <RibbonGroup>
-                    <RibbonMenuButton Label="Person"/>
-                </RibbonGroup>
-                
+                    <RibbonMenuButton Label="Person" Width="100"/>
+                </RibbonGroup>                
                 <RibbonGroup>
-                    <RibbonMenuButton Label="dbo"/>
-                </RibbonGroup>
-                
+                    <RibbonMenuButton Label="dbo" Width="100"/>
+                </RibbonGroup>                
                 <RibbonGroup>
-                    <RibbonMenuButton Label="HumanResources"/>
-                </RibbonGroup>
-                
+                    <RibbonMenuButton Label="HumanResources" Width="100"/>
+                </RibbonGroup>                
                 <RibbonGroup>
-                    <RibbonMenuButton Label="Purchasing"/>
-                </RibbonGroup>
-                
+                    <RibbonMenuButton Label="Purchasing" Width="100"/>
+                </RibbonGroup>                
                 <RibbonGroup>
-                    <RibbonMenuButton Label="Production"/>
+                    <RibbonMenuButton Label="Production" Width="100"/>
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="Function">
-                
+            
+            <RibbonTab Header="Function">                
             </RibbonTab>
         </Ribbon>
-        <Button IsTabStop="True" Grid.Row="0" Command="{Binding ExitCmd}" Width="30" Height="30"  Style="{StaticResource closeBtnStyle}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <!--<Button IsTabStop="True" Grid.Row="0" Command="{Binding ExitCmd}" Width="30" Height="30"  Style="{StaticResource closeBtnStyle}" HorizontalAlignment="Right" VerticalAlignment="Top"/>-->
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="SalesRegion"/>
         
     </Grid>

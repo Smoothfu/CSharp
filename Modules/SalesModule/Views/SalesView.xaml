@@ -56,15 +56,13 @@
         </Style>
         
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="LightGray">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Sales" FontSize="30"/>
         <!--<Button  Grid.Row="0" Command="{Binding ExitCmd}" Style="{StaticResource closeBtnStyle}" HorizontalAlignment="Right" VerticalAlignment="Top"/>-->
-        <DataGrid Grid.Row="1" ItemsSource="{Binding SalesOrderDetailCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  FontSize="20"
+        <DataGrid Grid.Row="0" ItemsSource="{Binding SalesOrderDetailCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  FontSize="20"
                   AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding SelectedOrder,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                   SnapsToDevicePixels="True">
             <DataGrid.Columns>
@@ -81,7 +79,7 @@
                 <DataGridTextColumn Header="ModifiedDate" Binding="{Binding ModifiedDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>            
         </DataGrid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

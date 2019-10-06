@@ -18,17 +18,11 @@ namespace WPFPrism.Views
     /// <summary>
     /// Interaction logic for WelcomeView.xaml
     /// </summary>
-    public partial class WelcomeView : Page
+    public partial class WelcomeView : Window
     {
         public WelcomeView()
         {
             InitializeComponent();
-            _mainFrame.Navigate(new Shell());
-
-            Uri winUri = new Uri("pack://application:,,,/WPFPrism;component/Shell.xaml", UriKind.Relative);
-            NavigationService ns = NavigationService.GetNavigationService(this);
-            ns.Navigate(winUri);
-            ns.Navigate("");
         }
     }
 }

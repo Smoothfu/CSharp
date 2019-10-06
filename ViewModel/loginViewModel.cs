@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using WPFPrism.Views;
 
 namespace WPFPrism.ViewModel
 {
@@ -83,9 +84,30 @@ namespace WPFPrism.ViewModel
                 UserPwd = pwdBox.Password;
             }
 
+            if(string.IsNullOrWhiteSpace(UserName))
+            {
+                MessageBox.Show("UserName can not be null!");
+                return;
+            }
+
+            if(string.IsNullOrWhiteSpace(UserPwd))
+            {
+                MessageBox.Show("Password can not be null!");
+                return;
+            }
 
             if (LoginOn())
             {
+                PrismBootstrapper bootStrapper = new PrismBootstrapper();
+                bootStrapper.Run();
+                var allWindows = Application.Current.Windows;
+                foreach(var win in allWindows)
+                {
+                    if(win.GetType()==typeof(WelcomeView))
+                    {
+                        ((Window)win).Close();
+                    }
+                }
                 CloseAction();
             }
             else
