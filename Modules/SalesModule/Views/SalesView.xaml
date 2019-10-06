@@ -63,7 +63,7 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Sales" FontSize="30"/>
-        <Button  Grid.Row="0" Command="{Binding ExitCmd}" Style="{StaticResource closeBtnStyle}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <!--<Button  Grid.Row="0" Command="{Binding ExitCmd}" Style="{StaticResource closeBtnStyle}" HorizontalAlignment="Right" VerticalAlignment="Top"/>-->
         <DataGrid Grid.Row="1" ItemsSource="{Binding SalesOrderDetailCollection,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  FontSize="20"
                   AutoGenerateColumns="False" CanUserAddRows="False" SelectedItem="{Binding SelectedOrder,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                   SnapsToDevicePixels="True">

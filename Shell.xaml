@@ -31,16 +31,44 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Button Grid.Row="0" Command="{Binding ExitCmd}"  Style="{StaticResource closeBtnStyle}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-        <Ribbon Grid.Row="1" SelectedIndex="0">
+        </Grid.RowDefinitions>        
+        <Ribbon Grid.Row="0" SelectedIndex="0">
             <Ribbon.HelpPaneContent>
-                <RibbonButton SmallImageSource="pack://application:,,,/Resource/Images/Help.jpg"/>
+                <RibbonButton Margin="0,0,30,0" SmallImageSource="pack://application:,,,/Resource/Images/Help.jpg"/>
             </Ribbon.HelpPaneContent>
+            <RibbonTab Header="Modules">
+                <RibbonGroup>
+                    <RibbonMenuButton Label="Sales"/>
+                </RibbonGroup>
+                
+                <RibbonGroup>
+                    <RibbonMenuButton Label="Person"/>
+                </RibbonGroup>
+                
+                <RibbonGroup>
+                    <RibbonMenuButton Label="dbo"/>
+                </RibbonGroup>
+                
+                <RibbonGroup>
+                    <RibbonMenuButton Label="HumanResources"/>
+                </RibbonGroup>
+                
+                <RibbonGroup>
+                    <RibbonMenuButton Label="Purchasing"/>
+                </RibbonGroup>
+                
+                <RibbonGroup>
+                    <RibbonMenuButton Label="Production"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Function">
+                
+            </RibbonTab>
         </Ribbon>
-        <ContentControl Grid.Row="2" prism:RegionManager.RegionName="SalesRegion"/>
+        <Button IsTabStop="True" Grid.Row="0" Command="{Binding ExitCmd}" Width="30" Height="30"  Style="{StaticResource closeBtnStyle}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="SalesRegion"/>
+        
     </Grid>
 </Window>
