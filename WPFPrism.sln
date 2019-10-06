@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp\DemoApp.csproj", "{57B0C1DF-C31D-4679-8E90-6261D7B7FF16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonModule", "Modules\PersonModule\PersonModule.csproj", "{3BB28CF2-D14C-4195-9744-A1307F40D464}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +37,17 @@ Global
 		{57B0C1DF-C31D-4679-8E90-6261D7B7FF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57B0C1DF-C31D-4679-8E90-6261D7B7FF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57B0C1DF-C31D-4679-8E90-6261D7B7FF16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BB28CF2-D14C-4195-9744-A1307F40D464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BB28CF2-D14C-4195-9744-A1307F40D464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BB28CF2-D14C-4195-9744-A1307F40D464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BB28CF2-D14C-4195-9744-A1307F40D464}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C2131170-2FDB-4C00-B7D4-DE428267D8D6} = {66BB9FE7-759E-4510-8C17-198276EE7A4F}
+		{3BB28CF2-D14C-4195-9744-A1307F40D464} = {66BB9FE7-759E-4510-8C17-198276EE7A4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03DBF320-3F9C-4CA0-A62A-D2C003A43A9A}

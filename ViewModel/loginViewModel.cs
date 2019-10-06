@@ -14,7 +14,22 @@ namespace WPFPrism.ViewModel
 {
     public class LoginViewModel:BindableBase
     {
-        public LoginViewModel()
+        private static LoginViewModel LoginVM;
+
+        public static LoginViewModel GetLoginVM()
+        {
+            object objLock = new object();
+            lock(objLock)
+            {
+                if (LoginVM == null)
+                {
+                    LoginVM = new LoginViewModel();
+                }
+            }
+            return LoginVM;            
+        }
+
+        private LoginViewModel()
         {
             InitCmds();
         }
@@ -24,6 +39,21 @@ namespace WPFPrism.ViewModel
         {
             LoginCmd = new DelegateCommand<object>(LoginCmdExecuted, LoginCmdCanExecute);
             CancelCmd = new DelegateCommand(CancelCmdExecuted, CancelCmdCanExecute);
+            ExitCmd = new DelegateCommand(ExitCmdExecuted, ExitCmdCanExecute);
+        }
+
+        private bool ExitCmdCanExecute()
+        {
+            return true;
+        }
+
+        private void ExitCmdExecuted()
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure to exit the application", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
         }
 
         private bool CancelCmdCanExecute()
@@ -92,6 +122,7 @@ namespace WPFPrism.ViewModel
         public DelegateCommand<object> LoginCmd { get;set; }
         public DelegateCommand CancelCmd { get; set; }
         public Action CloseAction { get; set; }
+        public DelegateCommand ExitCmd { get; private set; }
         #endregion
 
         #region properties

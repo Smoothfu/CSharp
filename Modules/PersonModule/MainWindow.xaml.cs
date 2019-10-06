@@ -10,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFPrism.ViewModel;
 
-namespace WPFPrism
+namespace PersonModule
 {
     /// <summary>
-    /// Interaction logic for Shell.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Shell : Window
+    public partial class MainWindow : Window
     {
-        public Shell()
+        public MainWindow()
         {
             InitializeComponent();
-            LoginViewModel loginVM = LoginViewModel.GetLoginVM();
-            this.DataContext = loginVM;
         }
     }
 }

@@ -51,3 +51,4 @@ D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.csproj.CoreCompileInputs
 D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.csproj.CopyComplete
 D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.dll
 D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.pdb
+D:\C\WPFPrism\Modules\SalesModule\obj\Debug\SalesModule.csprojAssemblyReference.cache

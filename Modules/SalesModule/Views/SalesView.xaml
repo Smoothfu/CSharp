@@ -27,14 +27,14 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <Image Source="/WPFPrism;component/Resource/Images/CloseTrue.jpg"/>
+                            <Image Source="pack://application:,,,/SalesModule;component/Resource/Images/CloseTrue.jpg"/>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="False">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <Image Source="/WPFPrism;component/Resource/Images/CloseFalse.jpg"/>
+                            <Image Source="pack://application:,,,/SalesModule;component/Resource/Images/CloseFalse.jpg"/>
                         </Setter.Value>
                     </Setter>
                 </Trigger>

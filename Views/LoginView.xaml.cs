@@ -23,7 +23,7 @@ namespace WPFPrism.Views
         public LoginView()
         {
             InitializeComponent();
-            LoginViewModel loginVM = new LoginViewModel();
+            LoginViewModel loginVM = LoginViewModel.GetLoginVM();
             if(loginVM.CloseAction==null)
             {
                 loginVM.CloseAction = new Action(() =>

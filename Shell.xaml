@@ -7,7 +7,40 @@
         xmlns:prism="http://www.codeplex.com/prism"
         mc:Ignorable="d" WindowStyle="None" WindowState="Maximized" WindowStartupLocation="CenterScreen"
         Title="Shell" Height="450" Width="800">
+    <Window.Resources>        
+        <Style x:Key="closeBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Source="/Resource/Images/CloseTrue.jpg"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Source="/Resource/Images/CloseFalse.jpg"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>        
+    </Window.Resources>
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="SalesRegion"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Command="{Binding ExitCmd}"  Style="{StaticResource closeBtnStyle}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <Ribbon Grid.Row="1" SelectedIndex="0">
+            <Ribbon.HelpPaneContent>
+                <RibbonButton SmallImageSource="pack://application:,,,/Resource/Images/Help.jpg"/>
+            </Ribbon.HelpPaneContent>
+        </Ribbon>
+        <ContentControl Grid.Row="2" prism:RegionManager.RegionName="SalesRegion"/>
     </Grid>
 </Window>
