@@ -1,0 +1,6 @@
+D:\C\ConsoleApp378\DllHelper\bin\Debug\DllHelper.dll
+D:\C\ConsoleApp378\DllHelper\bin\Debug\DllHelper.pdb
+D:\C\ConsoleApp378\DllHelper\obj\Debug\DllHelper.csprojAssemblyReference.cache
+D:\C\ConsoleApp378\DllHelper\obj\Debug\DllHelper.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp378\DllHelper\obj\Debug\DllHelper.dll
+D:\C\ConsoleApp378\DllHelper\obj\Debug\DllHelper.pdb
