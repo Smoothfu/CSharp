@@ -15,6 +15,8 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using System.Reflection;
 using System.Threading;
+using System.Media;
+using System.Windows.Media;
 
 namespace ConsoleApp378
 {
@@ -22,10 +24,100 @@ namespace ConsoleApp378
     {
         static void Main(string[] args)
         {
+            MediaPlayerDemo();
+            Console.ReadLine(); 
+        }
+
+        static MediaPlayer mp3Player = new MediaPlayer();
+        static void MediaPlayerDemo()
+        {            
+            string mp3Path = Directory.GetCurrentDirectory() + @"\MediaResource\XXDDDJ.mp3";
+            mp3Player.Open(new Uri(mp3Path));
+            Console.WriteLine(" Start:Y;Exit:Q;Amplify:A;Decrease:D;Pause:P;C:Acclerate!");
+            string line;
+            while ((line = Console.ReadLine()) != null)
+            {
+                ControlMediaPlayer(line[0]);
+            }      
+        }
+
+        static void ControlMediaPlayer(char c)
+        {
+            if (mp3Player != null && mp3Player.HasAudio)
+            {
+                switch (c)
+                {
+                    //Start
+                    case 'Y':
+                        mp3Player.Play();
+                        ShowStatus(mp3Player);
+                        break;
+
+                    //Exit
+                    case 'Q':
+                        mp3Player.Stop();
+                        ShowStatus(mp3Player);
+                        break;
+
+                    //Amplify 
+                    case 'A':
+                        mp3Player.Volume = mp3Player.Volume + 0.1;
+                        ShowStatus(mp3Player);
+                        break;
+
+                    //Decrease
+                    case 'D':
+                        mp3Player.Volume = mp3Player.Volume - 0.1;
+                        ShowStatus(mp3Player);
+                        break;
+
+                    //Pause
+                    case 'P':
+                        mp3Player.Pause();
+                        ShowStatus(mp3Player);
+                        break;
+
+                    //Accelerate
+                    case 'C':
+                        mp3Player.SpeedRatio += 0.3;
+                        ShowStatus(mp3Player);
+                        break;
+                }
+            }
+        }
+
+        static void ShowStatus(MediaPlayer mPlayer)
+        {
+            if(mPlayer!=null)
+            {
+                string msg = $"Position:{mp3Player.Position},SpeedRatio:{mp3Player.SpeedRatio},IsMuted:{mp3Player.IsMuted}," +
+                    $"ScrubbingEnabled:{mp3Player.ScrubbingEnabled},Balance:{mp3Player.Balance},NaturalVideoWidth:{mp3Player.NaturalVideoWidth}"
+                    + $"Source:{mp3Player.Source}";
+                Console.WriteLine(msg);
+            }
+        }
+
+        #region 
+        static void ValueDemo()
+        {
+            string a = "hello";
+            string b = a;
+            
+            Console.WriteLine(ReferenceEquals(a, b));
+        }
+
+        static void BytesToImg()
+        {
+            string content = File.ReadAllText("10.txt");
+            byte[] imageBytes = Convert.FromBase64String(content);
+            MemoryStream ms = new MemoryStream(imageBytes);
+            Image image = Image.FromStream(ms, true, true);
+        }
+        static void WebDriverSeleniumDemo()
+        {
             string url = "http://image.baidu.com/search/index?ct=201326592&z=9&tn=baiduimage&word=%E5%88%98%E4%BA%A6%E8%8F%B2&pn=0&ie=utf-8&oe=utf-8&cl=2&lm=-1&fr=&se=&sme=&width=0&height=0";
             WebDriverDemo(url);
         }
-      
         static void WebDriverDemo(string url = "http://www.tieba.com/p/4325046994#!/l/p1")
         {
             ChromeDriver driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
@@ -169,6 +261,27 @@ namespace ConsoleApp378
             {
                 webClient.DownloadFile(lyfUrl, "image.png");
             }
+        }
+
+        #endregion
+    }
+
+    struct MyStruct
+    {
+        public int Age;
+        public string Name { get; set; }
+        public MyStruct(int age,string name)
+        {            
+            Age = age;
+            Name = name;
+        }        
+    }
+
+    public struct SecondStruct
+    {
+        public SecondStruct(int a,int b)
+        {
+
         }
     }
 }
