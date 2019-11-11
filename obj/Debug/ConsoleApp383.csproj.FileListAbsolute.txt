@@ -1,0 +1,6 @@
+D:\C\ConsoleApp383\bin\Debug\ConsoleApp383.exe.config
+D:\C\ConsoleApp383\bin\Debug\ConsoleApp383.exe
+D:\C\ConsoleApp383\bin\Debug\ConsoleApp383.pdb
+D:\C\ConsoleApp383\obj\Debug\ConsoleApp383.csprojAssemblyReference.cache
+D:\C\ConsoleApp383\obj\Debug\ConsoleApp383.exe
+D:\C\ConsoleApp383\obj\Debug\ConsoleApp383.pdb
