@@ -15,11 +15,11 @@ namespace ConsoleApp392
         static void Main(string[] args)
         {
             WebClientDownloadDemo();
-            Console.ReadLine();
         }
 
         static void WebClientDownloadDemo()
         {
+            //string url = "https://go.microsoft.com/fwlink/?linkid=2108895&amp;clcid=0x409";
             string url = "https://go.microsoft.com/fwlink/?linkid=866662";
             WebClient webClient = new WebClient();
             webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
