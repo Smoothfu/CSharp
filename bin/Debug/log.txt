@@ -1,0 +1,40 @@
+﻿In  .net 4.8,now 201911231902290212 BinaryFormatterDemo cost 2862 milliseconds.NewtonJsonDemo cost 1386 milliseconds.JsonSerializerDemo cost 3850 milliseconds.
+
+
+
+In  .net 4.8,now 201911231902368328 BinaryFormatterDemo cost 2517 milliseconds.NewtonJsonDemo cost 1947 milliseconds.JsonSerializerDemo cost 1263 milliseconds.
+
+
+
+In  .net 4.8,now 201911231902435410 BinaryFormatterDemo cost 3491 milliseconds.NewtonJsonDemo cost 1067 milliseconds.JsonSerializerDemo cost 1266 milliseconds.
+
+
+
+In  .net 4.8,now 201911231902478385 BinaryFormatterDemo cost 1952 milliseconds.NewtonJsonDemo cost 925 milliseconds.JsonSerializerDemo cost 1083 milliseconds.
+
+
+
+In  .net 4.8,now 201911231902516619 BinaryFormatterDemo cost 1806 milliseconds.NewtonJsonDemo cost 862 milliseconds.JsonSerializerDemo cost 964 milliseconds.
+
+
+
+In  .net 4.8,now 201911231902554310 BinaryFormatterDemo cost 1931 milliseconds.NewtonJsonDemo cost 937 milliseconds.JsonSerializerDemo cost 1053 milliseconds.
+
+
+
+In  .net 4.8,now 201911231902592745 BinaryFormatterDemo cost 1844 milliseconds.NewtonJsonDemo cost 832 milliseconds.JsonSerializerDemo cost 1188 milliseconds.
+
+
+
+In  .net 4.8,now 201911231903033709 BinaryFormatterDemo cost 2067 milliseconds.NewtonJsonDemo cost 838 milliseconds.JsonSerializerDemo cost 1060 milliseconds.
+
+
+
+In  .net 4.8,now 201911231903084380 BinaryFormatterDemo cost 3159 milliseconds.NewtonJsonDemo cost 1079 milliseconds.JsonSerializerDemo cost 1333 milliseconds.
+
+
+
+In  .net 4.8,now 201911231903132822 BinaryFormatterDemo cost 2396 milliseconds.NewtonJsonDemo cost 934 milliseconds.JsonSerializerDemo cost 1564 milliseconds.
+
+
+
