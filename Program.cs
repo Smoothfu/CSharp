@@ -11,15 +11,25 @@ namespace ConsoleApp392
     {
         static void Main(string[] args)
         {
-            EventDemo demo = new EventDemo(DateTime.Now);
-            demo.DemoEvent += Demo_DemoEvent;
-            demo.Dt = new DateTime(2019, 11, 23);
+            Adult adult = new Adult(18);
+            adult.AdultEvent += Adult_AdultEvent;
+            adult.Age = 20;
             Console.ReadLine();
         }
 
-        private static void Demo_DemoEvent(object sender, DemoArgs e)
+        private static void Adult_AdultEvent(object sender, AdultArgs e)
         {
-            Console.WriteLine($"DemoArgs has changed,and its value is {e.DemoDT}");
+            string msg = string.Empty;
+            int newAge = e.AdultAge;
+            if(newAge>=18)
+            {
+                msg = "Adult";
+            }
+            else
+            {
+                msg = "Adolescent";
+            }
+            Console.WriteLine($"The newly updated age is {newAge} and it's {msg} ");
         }
     }     
 
@@ -61,6 +71,47 @@ namespace ConsoleApp392
         public EventDemo(DateTime eventDT)
         {
             Dt = eventDT;
+        }
+    }
+
+    public class AdultArgs
+    {
+        public int AdultAge { get; set; }
+        public AdultArgs(int age)
+        {
+            AdultAge = age;
+        }
+    }
+
+    public class Adult
+    {
+        public event EventHandler<AdultArgs> AdultEvent;
+
+        public Adult(int adultAge)
+        {
+            Age = adultAge;
+        }
+
+        private int ageValue;
+        public int Age
+        {
+            get
+            {
+                return ageValue;
+            }
+            set
+            {
+                if(value!=ageValue)
+                {
+                    ageValue = value;
+                    RaisePropertyChanged(value);
+                }
+            }
+        }
+
+        private void RaisePropertyChanged(int value)
+        {
+            AdultEvent?.Invoke(this, new AdultArgs(value));
         }
     }
 
