@@ -1,0 +1,11 @@
+D:\C\ConsoleApp395\bin\Debug\ConsoleApp395.exe.config
+D:\C\ConsoleApp395\bin\Debug\ConsoleApp395.exe
+D:\C\ConsoleApp395\bin\Debug\ConsoleApp395.pdb
+D:\C\ConsoleApp395\obj\Debug\ConsoleApp395.exe
+D:\C\ConsoleApp395\obj\Debug\ConsoleApp395.pdb
+D:\C\ConsoleApp395\obj\Debug\ConsoleApp395.csprojAssemblyReference.cache
+D:\C\ConsoleApp395\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp395\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp395\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp395\bin\Debug\EntityFramework.SqlServer.xml
+D:\C\ConsoleApp395\obj\Debug\ConsoleApp395.csproj.CopyComplete
