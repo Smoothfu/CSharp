@@ -1,0 +1,16 @@
+D:\C\ConsoleApp409\bin\Debug\ConsoleApp409.exe.config
+D:\C\ConsoleApp409\bin\Debug\ConsoleApp409.exe
+D:\C\ConsoleApp409\bin\Debug\ConsoleApp409.pdb
+D:\C\ConsoleApp409\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp409\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp409\bin\Debug\Newtonsoft.Json.dll
+D:\C\ConsoleApp409\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp409\bin\Debug\EntityFramework.SqlServer.xml
+D:\C\ConsoleApp409\bin\Debug\Newtonsoft.Json.xml
+D:\C\ConsoleApp409\obj\Debug\ConsoleApp409.csprojAssemblyReference.cache
+D:\C\ConsoleApp409\obj\Debug\ConsoleApp409.csproj.CopyComplete
+D:\C\ConsoleApp409\obj\Debug\ConsoleApp409.exe
+D:\C\ConsoleApp409\obj\Debug\ConsoleApp409.pdb
+D:\C\ConsoleApp409\bin\Debug\log4net.config
+D:\C\ConsoleApp409\bin\Debug\log4net.dll
+D:\C\ConsoleApp409\bin\Debug\log4net.xml
