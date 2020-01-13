@@ -1,0 +1,10 @@
+D:\C\ConsoleApp410\bin\Debug\log4net.config
+D:\C\ConsoleApp410\bin\Debug\ConsoleApp410.exe.config
+D:\C\ConsoleApp410\bin\Debug\ConsoleApp410.exe
+D:\C\ConsoleApp410\bin\Debug\ConsoleApp410.pdb
+D:\C\ConsoleApp410\bin\Debug\log4net.dll
+D:\C\ConsoleApp410\bin\Debug\log4net.xml
+D:\C\ConsoleApp410\obj\Debug\ConsoleApp410.csprojAssemblyReference.cache
+D:\C\ConsoleApp410\obj\Debug\ConsoleApp410.csproj.CopyComplete
+D:\C\ConsoleApp410\obj\Debug\ConsoleApp410.exe
+D:\C\ConsoleApp410\obj\Debug\ConsoleApp410.pdb
