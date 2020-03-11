@@ -19,16 +19,37 @@ namespace ConsoleApp414
 
         private static void AttDemo()
         {
+            //var mis = typeof(Program).GetMethods();
+            //var atts= typeof(Program).GetCustomAttributes<TestAttribute>();
+            //if (atts != null && atts.Any())
+            //{
+            //    foreach(var att in atts)
+            //    {
+            //        Console.WriteLine($"{att.Repetitions},{att.Msg}");
+            //    }
+            //}
+            //if(mis!=null && mis.Any())
+            //{
+            //    foreach(var mi in mis)
+            //    { 
+            //        var ta = (TestAttribute)Attribute.GetCustomAttribute(mi, typeof(TestAttribute));
+            //        if(ta!=null)
+            //        {
+            //            Console.WriteLine($"{ta.Repetitions},{ta.Msg}");
+            //        }
+            //    }
+            //}
+
             var mis = typeof(Program).GetMethods();
             if(mis!=null && mis.Any())
             {
                 foreach(var mi in mis)
                 {
-                    var ta = (TestAttribute)Attribute.GetCustomAttribute(mi, typeof(TestAttribute));
+                    var ta = mi.GetCustomAttribute<TestAttribute>();
                     if(ta!=null)
                     {
-                        Console.WriteLine($"{ta.Repetitions},{ta.Msg}");
-                    }
+                        Console.WriteLine($"{ta?.Repetitions},{ta?.Msg}");
+                    }                   
                 }
             }
             
@@ -76,7 +97,7 @@ namespace ConsoleApp414
         }
     }
 
-    [AttributeUsage(AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Method,AllowMultiple =true,Inherited =true)]
     public class TestAttribute : Attribute
     {
         public int Repetitions { get; set; }
