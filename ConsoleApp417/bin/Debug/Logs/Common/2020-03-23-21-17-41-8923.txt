@@ -1,0 +1,4 @@
+2020-03-23 21:17:41,925 [1] INFO ConsoleApp417.Log4netHelper - Now is 202003232117416994,Guid is fa05ff9b-6bcd-4316-b59e-6141ce05c74c
+2020-03-23 21:17:41,941 [1] DEBUG ConsoleApp417.Log4netHelper - Now is 202003232117416994,Guid is fa05ff9b-6bcd-4316-b59e-6141ce05c74c
+2020-03-23 21:17:41,941 [1] ERROR ConsoleApp417.Log4netHelper - Now is 202003232117416994,Guid is fa05ff9b-6bcd-4316-b59e-6141ce05c74c
+2020-03-23 21:17:41,942 [1] WARN ConsoleApp417.Log4netHelper - Now is 202003232117416994,Guid is fa05ff9b-6bcd-4316-b59e-6141ce05c74c
