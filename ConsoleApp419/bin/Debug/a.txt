@@ -1,0 +1,491 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ConsoleApp419
+{
+    delegate void StringAction(string str);
+    public delegate T Transformer<T>(T arg);
+    public delegate void ProgressReporter(int percentComplete);
+    delegate int Transformer(int x);
+    public interface ITransformer
+    {
+        int Trans(int x);
+    }
+    delegate int CubeDel(int x);
+    delegate object ObjectRetriever();
+    public delegate void PriceChangedHandler(decimal oldPrice, decimal newPrice);
+    public delegate void EventHandler<TEventArgs>(object source, TEventArgs e) where TEventArgs : EventArgs;
+    public delegate void PriceChangedHandler2(object sender, PriceChangedEventArgs e);
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            IndexOutOfRangeExceptionDemo(args);
+            Console.ReadLine();
+        }
+
+        static void ReadFile()
+        {
+            StreamReader reader = null;
+            try
+            {
+                reader = File.OpenText("");
+                if(reader.EndOfStream)
+                {
+                    return;
+                }
+                Console.WriteLine(reader.ReadToEnd());
+            }
+            finally
+            {
+                if(reader!=null)
+                {
+                    reader.Dispose();
+                }
+            }
+        }
+
+        #region Demo
+        static void IndexOutOfRangeExceptionDemo(string[] args)
+        {
+            try
+            {
+                byte b = byte.Parse(args[0]);
+                Console.WriteLine(b);
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("Please provide at least one argument");
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("That's not a number!");
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("You've given me more than a byte!");
+            }
+            catch (WebException ex) when (ex.Status == WebExceptionStatus.Timeout)
+            {
+            }
+            catch (WebException ex) when (ex.Status == WebExceptionStatus.SendFailure)
+            {
+            }
+        }
+
+        static void DivideByZero()
+        {
+            try
+            {
+                int y = Calc(0);
+                Console.WriteLine(y);
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("X cannot be zero!");
+            }
+            Console.WriteLine("Program completed!");
+        }
+
+        static int Calc(int x) => 10 / x;
+
+        public event EventHandler ClickedEvent = delegate { };
+
+        void ClickedDemo()
+        {
+            ClickedEvent += delegate { Console.WriteLine("Clicked!"); };
+        }
+
+        static void TransXDemo()
+        {
+            Transformer trans = x => x * x * x;
+            Console.WriteLine(trans(100));
+        }
+
+        static void DelDemo()
+        {
+            Transformer trans = delegate (int x) { return x * x * x; };
+            Console.WriteLine(trans(1000));
+        }
+        static void ActionDemo()
+        {
+            Action[] actionArr = new Action[3];
+            for (int i = 0; i < 3; i++)
+            {
+                int temp = i;
+                actionArr[i] = () => Console.WriteLine(temp);
+            }
+
+            foreach (Action ac in actionArr)
+            {
+                ac();
+            }
+        }
+
+        static void Natural2Demo()
+        {
+            Func<int> nac = Natural2();
+            Console.WriteLine(nac());
+            Console.WriteLine(nac());
+            Console.WriteLine(nac());
+            Console.WriteLine(nac());
+        }
+
+        static Func<int> Natural2()
+        {
+            return () => { int seed = 0; return seed++; };
+        }
+        static void NaturalDemo()
+        {
+            Func<int> naturalFunc = Natural();
+            Console.WriteLine(naturalFunc());
+            Console.WriteLine(naturalFunc());
+            Console.WriteLine(naturalFunc());
+        }
+
+        static Func<int> Natural()
+        {
+            int seed = 0;
+            return () => seed++;
+        }
+
+        static void MultiplyDemo()
+        {
+            int factor = 2;
+            Func<int, int> multiplier = n => n * factor;
+            Console.WriteLine(multiplier(100000000));
+        }
+
+        static void FuncDemo()
+        {
+            Program obj = new Program();
+            int result = obj.GetLengthFunc("Make every second count", "Cherish the present moment");
+            Console.WriteLine(result);
+        }
+        Func<string, string, int> GetLengthFunc = (s1, s2) => s1.Length + s2.Length;
+        Action<int> act = x => Console.WriteLine(x * x * x);
+
+        Func<int, int, int> func = (x, y) => x + y;
+
+        Func<int, int> squareFunc = (x) => x * x;
+        Func<int, int> CubeFunc = (x) => x * x * x;
+
+        static void StockDemo()
+        {
+            Stock3 stk = new Stock3("SMIF");
+            stk.Price = 27.10M;
+            stk.PriceChangedEvent += StkPriceChangedEvent;
+            stk.Price = 31.59M;
+        }
+
+        private static void StkPriceChangedEvent(object source, PriceChangedEventArgs e)
+        {
+            if ((e.NewPrice - e.LastPrice) / e.LastPrice > 0.1M)
+            {
+                Console.WriteLine("Alert,10% stock price increase!");
+            }
+        }
+
+        PriceChangedHandler priceChangedEvent;
+        public event PriceChangedHandler PriceChangedEvent
+        {
+            add
+            {
+                priceChangedEvent += value;
+            }
+            remove
+            {
+                priceChangedEvent -= value;
+            }
+        }
+
+        static string RetrieveString() => "Current";
+
+        static void CubeDemo()
+        {
+            CubeDel cube = Cube;
+            IAsyncResult asyncResult = cube.BeginInvoke(1000, CubeCB, null);
+            int result = cube.EndInvoke(asyncResult);
+            Console.WriteLine(result);
+        }
+
+        private static void CubeCB(IAsyncResult ar)
+        {
+            Console.WriteLine(ar.AsyncState);
+        }
+
+        static void StringActionDemo()
+        {
+            StringAction sa = new StringAction(ActOnObject);
+            IAsyncResult asyncResult = sa.BeginInvoke("Current", Callback, null);
+            sa.EndInvoke(asyncResult);
+        }
+
+        private static void Callback(IAsyncResult ar)
+        {
+            Console.WriteLine(ar.AsyncState);
+        }
+
+        static void ActOnObject(object o) => Console.WriteLine(o);
+        static void DelegateInterfaceDemo()
+        {
+            int[] values = { 100, 200, 300 };
+            TransformAll(values, new Cube());
+            foreach (int i in values)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        static void TransformAll(int[] values, ITransformer t)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] = t.Trans(values[i]);
+            }
+        }
+
+        static void Transform<T>(T[] values, Func<T, T> transformer)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] = transformer(values[i]);
+            }
+        }
+
+        static void Transformer<T>(T[] values, Transformer<T> t)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] = t(values[i]);
+            }
+        }
+
+        static void DelegateTargetMethod()
+        {
+            Program x = new Program();
+            ProgressReporter pr = x.InstanceProgress;
+            pr(99);
+            Console.WriteLine(pr.Target == x);
+            Console.WriteLine(pr.Method);
+        }
+
+        void InstanceProgress(int percentComplete) => Console.WriteLine(percentComplete);
+
+        static void WriteProgressToConsole(int percentComplete) =>
+            Console.WriteLine(percentComplete);
+
+        static void WriteProgressToFile(int percentComplete) => System.IO.File.WriteAllText("progresst.txt", percentComplete.ToString());
+
+        static void HardWork(ProgressReporter pr)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                pr(i * 10);
+                System.Threading.Thread.Sleep(100);
+            }
+        }
+
+        static int Square(int x)
+        {
+            return x * x;
+        }
+
+        static int Cube(int x) => x * x * x;
+
+        static int SquareX(int x) => x * x;
+
+        static void Transform(int[] values, Transformer t)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] = t(values[i]);
+            }
+        }
+
+        #endregion
+    }
+
+    #region History
+    public class Stock2
+    {
+        public event EventHandler<PriceChangedEventArgs> PriceChangedEvent;
+        protected virtual void OnPriceChanged(PriceChangedEventArgs e)
+        {
+            var tempEvent = PriceChangedEvent;
+            if(tempEvent != null)
+            {
+                tempEvent(this, e);
+            }
+            PriceChangedEvent?.Invoke(this, e);
+        }
+    }
+
+    public class Square : ITransformer
+    {
+        public int Trans(int x) => x * x;        
+    }
+
+    public class Cube : ITransformer
+    {
+        public int Trans(int x) => x * x * x;        
+    }
+
+    public class Stock
+    {
+        string symbol;
+        decimal price;
+        public Stock(string symbolValue)
+        {
+            symbol = symbolValue;
+        }
+
+        public event PriceChangedHandler PriceChangedEvent;
+        public decimal Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                if (price == value)
+                {
+                    return;
+                }
+                decimal oldPrice = price;
+                price = value;
+                if(PriceChangedEvent!=null)
+                {
+                    PriceChangedEvent(oldPrice, price);
+                }
+            }
+        }         
+    }
+
+    public class PriceChangedEventArgs:System.EventArgs
+    {
+        public readonly decimal LastPrice;
+        public readonly decimal NewPrice;
+        public PriceChangedEventArgs(decimal lastPriceValue,decimal newPriceValue)
+        {
+            LastPrice = lastPriceValue;
+            NewPrice = newPriceValue;
+        }
+    }
+
+    public class PriceChangedEventArgs3 : EventArgs
+    {
+        public readonly decimal LastPrice;
+        public readonly decimal NewPrice;
+
+        public PriceChangedEventArgs3(decimal lastPriceValue, decimal newPriceValue)
+        {
+            LastPrice = lastPriceValue;
+            NewPrice = newPriceValue;
+        }
+    }
+
+    public class Stock3
+    {
+        string symbol;
+        decimal price;
+        public Stock3(string symbolValue)
+        {
+            symbol = symbolValue;
+        }
+
+        public event EventHandler<PriceChangedEventArgs> PriceChangedEvent;
+
+        protected virtual void OnPriceChanged(PriceChangedEventArgs e)
+        {
+            PriceChangedEvent?.Invoke(this, e);
+        }
+
+        public decimal Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                if (price == value)
+                {
+                    return;
+                }
+                decimal oldPrice = price;
+                price = value;
+                OnPriceChanged(new PriceChangedEventArgs(oldPrice, price));
+            }
+        }
+    }
+
+    public class Stock4
+    {
+        string symbol;
+        decimal price;
+        public Stock4(string symbolValue)
+        {
+            symbol = symbolValue;
+        }
+        public event EventHandler PriceChangedEvent;
+        protected virtual void OnPriceChanged(EventArgs e)
+        {
+            PriceChangedEvent?.Invoke(this, e);
+        }
+
+        public decimal Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                if (price == value)
+                {
+                    return;
+                }
+                price = value;
+                OnPriceChanged(EventArgs.Empty);
+            }
+        }
+    }
+
+    public interface IFoo
+    {
+        event EventHandler Ev;
+    }
+
+    class Foo : IFoo
+    {
+        private event EventHandler ev;
+        public event EventHandler Ev
+        {
+            add
+            {
+                ev += value;
+            }
+            remove
+            {
+                ev -= value;
+            }
+        }
+
+
+    }
+    #endregion
+
+    public class Foo2
+    {
+        public static event EventHandler<EventArgs> StaticEvent;
+        public virtual event EventHandler<EventArgs> VirtualEvent;
+    }
+}
