@@ -1,0 +1,16 @@
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\ConsoleApp435.exe.config
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\ConsoleApp435.exe
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\ConsoleApp435.pdb
+D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.csprojAssemblyReference.cache
+D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.csproj.CoreCompileInputs.cache
+D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.exe
+D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.pdb
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Security.AccessControl.dll
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Security.Permissions.dll
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Security.Principal.Windows.dll
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Security.AccessControl.xml
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Security.Permissions.xml
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Security.Principal.Windows.xml
+D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.csproj.CopyComplete
