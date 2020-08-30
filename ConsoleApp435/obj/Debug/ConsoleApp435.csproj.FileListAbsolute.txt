@@ -1,7 +1,6 @@
 D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\ConsoleApp435.exe.config
 D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\ConsoleApp435.exe
 D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\ConsoleApp435.pdb
-D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.csprojAssemblyReference.cache
 D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.csproj.CoreCompileInputs.cache
 D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.exe
 D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.pdb
