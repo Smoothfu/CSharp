@@ -13,3 +13,10 @@ D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Security.AccessControl.xml
 D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Security.Permissions.xml
 D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\System.Security.Principal.Windows.xml
 D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.csproj.CopyComplete
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\EntityFramework.dll
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\EntityFramework.SqlServer.dll
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\Newtonsoft.Json.dll
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\EntityFramework.xml
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\EntityFramework.SqlServer.xml
+D:\C\ConsoleApp435\ConsoleApp435\bin\Debug\Newtonsoft.Json.xml
+D:\C\ConsoleApp435\ConsoleApp435\obj\Debug\ConsoleApp435.csprojAssemblyReference.cache

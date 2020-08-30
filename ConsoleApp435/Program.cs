@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Threading;
+using Newtonsoft.Json;
 
 namespace ConsoleApp435
 {
@@ -17,8 +19,16 @@ namespace ConsoleApp435
         static int j = 0;
         static void Main(string[] args)
         {
-            SQLDemo();
-            //Console.ReadLine();
+            EFDemo();              
+        }
+
+        static void EFDemo()
+        {
+            using(AdventureWorks2017Entities db=new AdventureWorks2017Entities())
+            {
+                string jsonValue = JsonConvert.SerializeObject(db.SalesOrderDetails.ToList(), Formatting.Indented);
+                LogMsg("Db.json", jsonValue);
+            }
         }
 
         static void SQLDemo()
