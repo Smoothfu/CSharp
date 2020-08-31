@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Threading;
 using Newtonsoft.Json;
+using System.Net;
+using System.Net.Http;
+using System.Security.Policy;
 
 namespace ConsoleApp435
 {
@@ -19,7 +22,59 @@ namespace ConsoleApp435
         static int j = 0;
         static void Main(string[] args)
         {
-            EFDemo();              
+            Task t = Task.Run(() =>
+            {
+                WebClientDownloadCompleted();
+            });
+            t.Wait();           
+            
+        }
+
+        static void WebClientDownloadCompleted()
+        {
+            string url = "https://github.com/JamesNK/Newtonsoft.Json.git";
+            WebClient wc = new WebClient();
+            wc.DownloadProgressChanged += Wc_DownloadProgressChanged;
+            wc.DownloadFileAsync(new Uri(url), "newfile");    
+        }
+
+        private static void Wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            Console.WriteLine(e.BytesReceived);
+        }
+
+        static void WebClientDownload()
+        {
+            string url = "https://github.com/JamesNK/Newtonsoft.Json.git";
+            using(WebClient wc=new WebClient())
+            {
+                byte[] data = wc.DownloadData(url);
+                using(FileStream fs=new FileStream("newtonjson",FileMode.Create,FileAccess.Write))
+                {
+                    fs.Write(data, 0, data.Length);
+                }
+            }
+        }      
+
+        static void ConcurrentDemo()
+        {         
+
+            Thread t = new Thread(() =>
+              {
+                  for (int j = 0; j < 10000; j++)
+                  {
+                      Console.Write("j\t");
+                  }
+              });
+            t.Start();
+
+            Task.Run(() =>
+            {
+                for (int i = 0; i < 10000; i++)
+                {
+                    Console.Write("i\t");
+                }
+            });
         }
 
         static void EFDemo()
