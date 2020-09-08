@@ -1,0 +1,10 @@
+D:\C\CSharp\CSharp\bin\Debug\CSharp.exe.config
+D:\C\CSharp\CSharp\bin\Debug\CSharp.exe
+D:\C\CSharp\CSharp\bin\Debug\CSharp.pdb
+D:\C\CSharp\CSharp\bin\Debug\Delegates.dll
+D:\C\CSharp\CSharp\bin\Debug\Delegates.pdb
+D:\C\CSharp\CSharp\obj\Debug\CSharp.csprojAssemblyReference.cache
+D:\C\CSharp\CSharp\obj\Debug\CSharp.csproj.CoreCompileInputs.cache
+D:\C\CSharp\CSharp\obj\Debug\CSharp.csproj.CopyComplete
+D:\C\CSharp\CSharp\obj\Debug\CSharp.exe
+D:\C\CSharp\CSharp\obj\Debug\CSharp.pdb
