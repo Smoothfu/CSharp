@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Delegates.Dels;
 using Delegates.Dynamic;
+using IronPython.Hosting;
+using Microsoft.Scripting;
+using Microsoft.Scripting.Hosting;
 
 namespace CSharp
 {
@@ -14,8 +17,15 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            ExpandObjectDemo();
+            int result = (int)Calculate("2*3");
+            Console.WriteLine(result);
             Console.ReadLine();
+        }
+
+        static object Calculate(string expression)
+        {
+            ScriptEngine engine = Python.CreateEngine();
+            return engine.Execute(expression);
         }
 
         static void ExpandObjectDemo()
@@ -25,6 +35,11 @@ namespace CSharp
             x.FavoriteNumber = 7;
             Console.WriteLine(x.FavoriteColor);
             Console.WriteLine(x.FavoriteNumber);
+
+            var dict = (IDictionary<string, object>)x;
+            Console.WriteLine(dict["FavoriteColor"]);
+            Console.WriteLine(dict["FavoriteNumber"]);
+            Console.WriteLine(dict.Count);
         }
 
         static void DynamicInvokeMemberDemo()
