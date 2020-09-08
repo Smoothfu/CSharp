@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Delegates.Dels;
@@ -10,8 +11,23 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            DelBeginEndInvoke();
+            WebClientDownloadProgressChanged();
             Console.ReadLine();
+        }
+
+        static void WebClientDownloadProgressChanged()
+        {
+            string url = "https://download.microsoft.com/download/d/1/c/d1c74788-0c6b-4d23-896e-67cf849d31ed/SSMS-Setup-ENU.exe";
+            using (WebClient wc = new WebClient())
+            {
+                wc.DownloadProgressChanged += Wc_DownloadProgressChanged1;
+                wc.DownloadFileAsync(new Uri(url), "ssms.exe");
+            }
+        }
+
+        private static void Wc_DownloadProgressChanged1(object sender, DownloadProgressChangedEventArgs e)
+        {
+            Console.WriteLine($"TotalBytesToReceive:{e.TotalBytesToReceive},BytesReceived:{e.BytesReceived},ProgressPercentage:{e.ProgressPercentage}");
         }
 
         static void DelBeginEndInvoke()
