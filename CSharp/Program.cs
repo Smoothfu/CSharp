@@ -1,18 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Delegates.Dels;
+using Delegates.Dynamic;
+
 namespace CSharp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            WebClientDownloadProgressChanged();
+            ExpandObjectDemo();
             Console.ReadLine();
+        }
+
+        static void ExpandObjectDemo()
+        {
+            dynamic x = new ExpandoObject();
+            x.FavoriteColor = ConsoleColor.Green;
+            x.FavoriteNumber = 7;
+            Console.WriteLine(x.FavoriteColor);
+            Console.WriteLine(x.FavoriteNumber);
+        }
+
+        static void DynamicInvokeMemberDemo()
+        {
+            dynamic doi = new DynamicObjectInvoker();
+            doi.MakeMoney();
+            doi.MakeBigMoney();
         }
 
         static void WebClientDownloadProgressChanged()

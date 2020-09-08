@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dels\DelDemo.cs" />
+    <Compile Include="Dynamic\DynamicExpandObject.cs" />
+    <Compile Include="Dynamic\DynamicObjectInvoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
