@@ -18,7 +18,7 @@ namespace CSharp
         {
             DelDemo demo = new DelDemo();
             MathDel mathDel = demo.Add;
-            int x = 1, y = 100000;
+            int x = 1, y = 10000000;
             IAsyncResult asyncResult = mathDel.BeginInvoke(x, y, DelCB, "Test this");
             int result = mathDel.EndInvoke(asyncResult);
             Console.WriteLine(result);
