@@ -3,3 +3,4 @@ D:\C\CSharp\Delegates\bin\Debug\Delegates.pdb
 D:\C\CSharp\Delegates\obj\Debug\Delegates.csproj.CoreCompileInputs.cache
 D:\C\CSharp\Delegates\obj\Debug\Delegates.dll
 D:\C\CSharp\Delegates\obj\Debug\Delegates.pdb
+D:\C\CSharp\Delegates\obj\Debug\Delegates.csprojAssemblyReference.cache
