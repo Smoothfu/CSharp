@@ -69,3 +69,7 @@ D:\C\CSharp\CSharp\bin\Debug\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\C\CSharp\CSharp\bin\Debug\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\C\CSharp\CSharp\bin\Debug\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\C\CSharp\CSharp\bin\Debug\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\C\CSharp\CSharp\bin\Debug\Dapper.dll
+D:\C\CSharp\CSharp\bin\Debug\Newtonsoft.Json.dll
+D:\C\CSharp\CSharp\bin\Debug\Dapper.xml
+D:\C\CSharp\CSharp\bin\Debug\Newtonsoft.Json.xml

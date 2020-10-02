@@ -10,6 +10,13 @@ using Delegates.Dynamic;
 using IronPython.Hosting;
 using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
+using Dapper;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
+using System.Data.Common;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace CSharp
 {
@@ -17,9 +24,21 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            int result = (int)Calculate("2*3");
-            Console.WriteLine(result);
+            DapperQueryTDemo();
             Console.ReadLine();
+        }
+
+        static void  DapperQueryTDemo()
+        {
+            string selectSQL = "select * from dbo.FactInternetSales;";
+            string connString = ConfigurationManager.AppSettings.Get("SQLConnString");
+            using (IDbConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                var sqlResult = conn.Query<dynamic>(selectSQL);
+                string jsonValue = JsonConvert.SerializeObject(sqlResult, Formatting.Indented);
+                File.AppendAllText("DapperQuery2.txt", jsonValue);
+            }
         }
 
         static object Calculate(string expression)
