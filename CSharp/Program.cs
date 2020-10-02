@@ -30,8 +30,8 @@ namespace CSharp
 
         static void  DapperQueryTDemo()
         {
-            string selectSQL = "select * from dbo.FactInternetSales;";
-            string connString = ConfigurationManager.AppSettings.Get("SQLConnString");
+            string selectSQL = "select * from sales.SalesOrderDetail";
+            string connString = ConfigurationManager.AppSettings.Get("SQLDBConnString");
             using (IDbConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
